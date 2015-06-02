@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="19-cfe">
+                <source>company.edit.h1</source>
+                <target>My Company</target>
+            </trans-unit>
+            <trans-unit id="20-cfe">
+                <source>company.edit.h2</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="21-cfe">
+                <source>company.edit.breadcrumbh1</source>
+                <target>My Company</target>
+            </trans-unit>
+            <trans-unit id="22-cfe">
+                <source>company.edit.breadcrumbh2</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="23-cfe">
+                <source>company.edit.header</source>
+                <target>Edit company</target>
+            </trans-unit>
+            <trans-unit id="24-cfe">
+                <source>company.edit.submit</source>
+                <target>Submit</target>
+            </trans-unit>
+            <trans-unit id="25-cfe">
+                <source>company.new.h1</source>
+                <target>My Company</target>
+            </trans-unit>
+            <trans-unit id="26-cfe">
+                <source>company.new.h2</source>
+                <target>Create</target>
+            </trans-unit>
+            <trans-unit id="27-cfe">
+                <source>company.new.breadcrumbh1</source>
+                <target>My Company</target>
+            </trans-unit>
+            <trans-unit id="28-cfe">
+                <source>company.new.breadcrumbh2</source>
+                <target>Create</target>
+            </trans-unit>
+            <trans-unit id="29-cfe">
+                <source>company.new.header</source>
+                <target>Create company</target>
+            </trans-unit>
+            <trans-unit id="30-cfe">
+                <source>company.new.submit</source>
+                <target>Submit</target>
+            </trans-unit>
+            <trans-unit id="31-cfe">
+                <source>company.view.h1</source>
+                <target>My Company</target>
+            </trans-unit>
+            <trans-unit id="32-cfe">
+                <source>company.view.h2</source>
+                <target>View</target>
+            </trans-unit>
+            <trans-unit id="33-cfe">
+                <source>company.view.breadcrumbh1</source>
+                <target>My Company</target>
+            </trans-unit>
+            <trans-unit id="34-cfe">
+                <source>company.view.breadcrumbh2</source>
+                <target>View</target>
+            </trans-unit>
+            <trans-unit id="35-cfe">
+                <source>company.view.header</source>
+                <target>My Company</target>
+            </trans-unit>
+            <trans-unit id="36-cfe">
+                <source>company.view.btn.edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="37-cfe">
+                <source>company.view.th.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="38-cfe">
+                <source>company.view.th.address</source>
+                <target>Address</target>
+            </trans-unit>
+            <trans-unit id="39-cfe">
+                <source>company.view.th.town</source>
+                <target>Town</target>
+            </trans-unit>
+            <trans-unit id="40-cfe">
+                <source>company.view.th.country</source>
+                <target>Country</target>
+            </trans-unit>
+            <trans-unit id="41-cfe">
+                <source>company.view.th.code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="42-cfe">
+                <source>company.view.th.status</source>
+                <target>Status</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

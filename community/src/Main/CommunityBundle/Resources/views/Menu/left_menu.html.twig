@@ -1,0 +1,103 @@
+<aside class="left-side sidebar-offcanvas">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="" class="img-circle" alt="User Image" />
+                        </div>
+                        <div class="pull-left info">
+                        	{% if app.user.lastname == null %}
+                            <p>Hello, {{ app.user.username }}</p>
+                            {% else %}
+                            <p>Hello, {{ app.user.firstname }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li>
+                            <a href="{{ path('dashboard') }}">
+                                <i class="fa fa-dashboard"></i> <span>{% trans from "menu" %}menu.left.dashboard{% endtrans %}</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-user"></i> 
+                                <span>{% trans from "menu" %}menu.left.profile{% endtrans %}</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-child"></i> {% trans from "menu" %}menu.left.profile.presentation{% endtrans %}</a></li>
+                                <li><a href="#"><i class="fa fa-language"></i> {% trans from "menu" %}menu.left.profile.languages{% endtrans %}</a></li>
+                                <li><a href="#"><i class="fa fa-camera-retro"></i> {% trans from "menu" %}menu.left.profile.equipment{% endtrans %}</a></li>
+                                <li><a href="#"><i class="fa fa-check-square-o"></i> {% trans from "menu" %}menu.left.profile.specialities{% endtrans %}</a></li>
+                                <li><a href="#"><i class="fa fa-photo"></i> {% trans from "menu" %}menu.left.profile.book{% endtrans %}</a></li>
+                                <li><a href="#"><i class="fa fa-database"></i> {% trans from "menu" %}menu.left.profile.security{% endtrans %}</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-university"></i> 
+                                <span>{% trans from "menu" %}menu.left.company{% endtrans %}</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ path('company') }}"><i class="fa fa-info-circle"></i> {% trans from "menu" %}menu.left.company.identification{% endtrans %}</a></li>
+                                <li><a href="{{ path('iban') }}"><i class="fa fa-money"></i> {% trans from "menu" %}menu.left.company.bankdetails{% endtrans %}</a></li>
+                                <li><a href="{{ path('transactions') }}"><i class="fa fa-credit-card"></i> {% trans from "menu" %}menu.left.company.transactions{% endtrans %}</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-copyright"></i> 
+                                <span>{% trans from "menu" %}menu.left.offer{% endtrans %}</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ path('devis') }}"><i class="fa fa-briefcase"></i> {% trans from "menu" %}menu.left.offer.packs{% endtrans %}</a></li>
+                                <li><a href="{{ path('moves') }}"><i class="fa fa-car"></i> {% trans from "menu" %}menu.left.offer.travels{% endtrans %}</a></li>
+                                <li><a href="{{ path('availability') }}"><i class="fa fa-play"></i> {% trans from "menu" %}menu.left.offer.availability{% endtrans %}</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ path('service') }}">
+                                <i class="fa fa-calendar"></i> <span>{% trans from "menu" %}menu.left.services{% endtrans %}</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-envelope"></i> <span>{% trans from "menu" %}menu.left.mailbox{% endtrans %}</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-plus"></i> <span>{% trans from "menu" %}menu.left.invites{% endtrans %}</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-at"></i> <span>{% trans from "menu" %}menu.left.contact{% endtrans %}</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-question-circle"></i> <span>{% trans from "menu" %}menu.left.help{% endtrans %}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-line-chart"></i> <span>{% trans from "menu" %}menu.left.premium{% endtrans %}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>

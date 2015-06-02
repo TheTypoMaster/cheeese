@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+	        <trans-unit id="1">
+	                <source>menu.left.dashboard</source>
+	                <target>Tableau de bord</target>
+	        </trans-unit>
+	        <trans-unit id="2">
+	                <source>menu.left.profile</source>
+	                <target>Profil</target>
+	        </trans-unit>
+	        <trans-unit id="3">
+	                <source>menu.left.profile.presentation</source>
+	                <target>Présentation</target>
+	        </trans-unit>
+	        <trans-unit id="4">
+	                <source>menu.left.profile.languages</source>
+	                <target>Langues</target>
+	        </trans-unit>
+	        <trans-unit id="5">
+	                <source>menu.left.profile.equipment</source>
+	                <target>Equipement</target>
+	        </trans-unit>
+	        <trans-unit id="6">
+	                <source>menu.left.profile.specialities</source>
+	                <target>Spécialités</target>
+	        </trans-unit>
+	        <trans-unit id="7">
+	                <source>menu.left.profile.book</source>
+	                <target>Book</target>
+	        </trans-unit>
+	        <trans-unit id="8">
+	                <source>menu.left.profile.security</source>
+	                <target>Securité</target>
+	        </trans-unit>
+	        <trans-unit id="9">
+	                <source>menu.left.company</source>
+	                <target>Mon entreprise</target>
+	        </trans-unit>
+	        <trans-unit id="10">
+	                <source>menu.left.company.identification</source>
+	                <target>Identification</target>
+	        </trans-unit>
+	        <trans-unit id="11">
+	                <source>menu.left.company.bankdetails</source>
+	                <target>Détails bancaires</target>
+	        </trans-unit>
+	        <trans-unit id="12">
+	                <source>menu.left.company.transactions</source>
+	                <target>Transactions</target>
+	        </trans-unit>
+	        <trans-unit id="13">
+	                <source>menu.left.offer</source>
+	                <target>Mon offre</target>
+	        </trans-unit>
+	        <trans-unit id="14">
+	                <source>menu.left.offer.packs</source>
+	                <target>Mes devis</target>
+	        </trans-unit>
+	        <trans-unit id="15">
+	                <source>menu.left.offer.travels</source>
+	                <target>Zone de déplacements</target>
+	        </trans-unit>
+	        <trans-unit id="16">
+	                <source>menu.left.offer.availability</source>
+	                <target>Disponibilité</target>
+	        </trans-unit>
+	        <trans-unit id="17">
+	                <source>menu.left.services</source>
+	                <target>Prestations</target>
+	        </trans-unit>
+	        <trans-unit id="18">
+	                <source>menu.left.mailbox</source>
+	                <target>Messages</target>
+	        </trans-unit>
+	        <trans-unit id="19">
+	                <source>menu.left.invites</source>
+	                <target>Invitations</target>
+	        </trans-unit>
+	        <trans-unit id="20">
+	                <source>menu.left.contact</source>
+	                <target>Contact</target>
+	        </trans-unit>
+	        <trans-unit id="21">
+	                <source>menu.left.help</source>
+	                <target>Aide</target>
+	        </trans-unit>	        
+	        <trans-unit id="22">
+	                <source>menu.left.premium</source>
+	                <target>Devenir Premium</target>
+	        </trans-unit>
+	        <trans-unit id="23">
+	                <source>menu.membersince</source>
+	                <target>Membre depuis</target>
+	        </trans-unit>
+	        <trans-unit id="24">
+	                <source>menu.profile</source>
+	                <target>Profil</target>
+	        </trans-unit>
+	        <trans-unit id="25">
+	                <source>menu.signout</source>
+	                <target>Déconnexion</target>
+	        </trans-unit>
+        </body>
+    </file>
+</xliff>
+    

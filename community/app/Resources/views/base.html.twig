@@ -1,0 +1,102 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
+    {% block stylesheets %}
+    	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+	    {% stylesheets 
+	    'bundles/maincommunity/css/*' filter="cssrewrite" 
+	    'bundles/maincommunity/css/datatables/*' filter="cssrewrite"				
+	    %}
+	    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+	    {% endstylesheets %}
+    {% endblock %}
+	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+
+</head>
+<body class="skin-blue">
+ {# HEADER MENU SHOULD BE IMPORTED #}
+ {% block header_menu %}
+ {% include "MainCommunityBundle:Menu:header_menu.html.twig" %}
+ {% endblock %}
+ 
+<div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            {% block left_menu %}
+            {% include "MainCommunityBundle:Menu:left_menu.html.twig" %}
+            {% endblock %}
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->              
+                
+                <section class="content-header">
+                    <h1>
+                        {% block titleH1 %}{% endblock %}
+                        <small>{% block titleH2 %}{% endblock %}</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> {% block breadcrumbH1 %}{% endblock %}</a></li>
+                        <li class="active">{% block breadcrumbH2 %} {% endblock %}</li>
+                    </ol>
+                </section>
+                <section class="content">
+                   {{ render(controller('MainCommunityBundle:Default:headBandDisplay')) }}                
+	                {% block content %}            
+	                {% endblock %}
+                </section>
+				
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+<!-- ./wrapper -->
+{# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS -------------------------------- #}
+{% block javascripts %}
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+	    {% javascripts 
+	    '@MainCommunityBundle/Resources/public/js/plugins/morris/morris.min.js'
+	    '@MainCommunityBundle/Resources/public/js/plugins/sparkline/jquery.sparkline.min.js'
+	    '@MainCommunityBundle/Resources/public/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'
+	    '@MainCommunityBundle/Resources/public/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'
+	    '@MainCommunityBundle/Resources/public/js/plugins/jqueryKnob/jquery.knob.js'
+	    '@MainCommunityBundle/Resources/public/js/plugins/daterangepicker/daterangepicker.js'
+	    '@MainCommunityBundle/Resources/public/js/plugins/datepicker/bootstrap-datepicker.js'
+	    '@MainCommunityBundle/Resources/public/js/plugins/iCheck/icheck.min.js'
+	    '@MainCommunityBundle/Resources/public/js/plugins/datatables/jquery.dataTables.js'
+	    '@MainCommunityBundle/Resources/public/js/plugins/datatables/dataTables.bootstrap.js'
+	    '@MainCommunityBundle/Resources/public/js/AdminLTE/app.js'
+	    '@MainCommunityBundle/Resources/public/js/Added/company.js'
+	    '@MainCommunityBundle/Resources/public/js/Added/diacritics.js'
+	    
+	     %}
+	     <script type="text/javascript">
+    		var base = location.protocol + "//" + location.host + '{{ app.request.baseUrl }}';
+    	</script> 
+	    <script type="text/javascript" src="{{ asset_url }}"></script>
+	    
+		{% endjavascripts %}
+
+{% endblock %}
+
+{# ----------------------------------------------------------------------------------------------- JAVASCRIPTS_INLINE #}
+{% block javascripts_inline %}
+{% endblock %}
+</body>
+</html>

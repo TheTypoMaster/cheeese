@@ -1,0 +1,5 @@
+services:
+    registration.form.type:
+        class: Community\CommunityBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: community_user_registration }

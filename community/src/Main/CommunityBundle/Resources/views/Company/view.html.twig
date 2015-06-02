@@ -1,0 +1,48 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "company" %}company.view.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "company" %}company.view.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "company" %}company.view.breadcrumbh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "company" %}company.view.breadcrumbh2{% endtrans %}{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">{% trans from "company" %}company.view.header{% endtrans %}</h3>
+				</div>
+				<div class="box-body table-responsive no-passind">
+				 <table class="table table-hover">
+				 	<tbody>
+				 		<tr>
+				 			<th>{% trans from "company" %}company.view.th.title{% endtrans %}</th>
+				 			<th>{% trans from "company" %}company.view.th.address{% endtrans %}</th>
+				 			<th>{% trans from "company" %}company.view.th.town{% endtrans %}</th>
+				 			<th>{% trans from "company" %}company.view.th.country{% endtrans %}</th>
+				 			<th>{% trans from "company" %}company.view.th.code{% endtrans %}</th>
+				 			<th>{% trans from "company" %}company.view.th.status{% endtrans %}</th>
+				 			<th></th>
+				 		</tr>
+				 		<tr>
+				 		<td>{{ company.title }}</td>
+				 		<td>{{ company.address }}</td>
+				 		<td>{{ company.town.name }}</td>
+				 		<td>{{ company.country.name }}</td>
+				 		<td>{{ company.identification }}</td>
+				 		<td>
+				 		{% if 1 == company.status.id%}
+				 		<span class="label label-warning">{{ company.status.libelle }}</span>
+				 		{% elseif 2 == company.status.id%}
+				 		<span class="label label-danger">{{ company.status.libelle }}</span>
+				 		{% elseif 3 == company.status.id%}
+				 		<span class="label label-success">{{ company.status.libelle }}</span>
+				 		{% endif %}
+				 		</td>
+				 		<td><a class="btn btn-default btn-sm" href="{{ path('company_edit') }}">{% trans from "company" %}company.view.btn.edit{% endtrans %}</a></td>
+				 		</tr>
+				 	</tbody>
+				 </table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

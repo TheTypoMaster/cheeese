@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1-cfe">
+                <source>security.login.header</source>
+                <target>Sign In</target>
+            </trans-unit>
+            <trans-unit id="2-cfe">
+                <source>security.login.field.username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="3-cfe">
+                <source>security.login.field.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="4-cfe">
+                <source>security.login.field.rememberme</source>
+                <target>Remember me</target>
+            </trans-unit>
+            <trans-unit id="5-cfe">
+                <source>security.login.link.signin</source>
+                <target>Sign me in</target>
+            </trans-unit>
+            <trans-unit id="6-cfe">
+                <source>security.login.link.forgot</source>
+                <target>I forgot my password</target>
+            </trans-unit>
+            <trans-unit id="7-cfe">
+                <source>security.login.link.register</source>
+                <target>Register a new membership</target>
+            </trans-unit>
+            <trans-unit id="8-cfe">
+                <source>registration.register.header</source>
+                <target>Register a new membership</target>
+            </trans-unit>
+            <trans-unit id="9-cfe">
+                <source>registration.register.form.email</source>
+                <target>Enter email</target>
+            </trans-unit>
+            <trans-unit id="10-cfe">
+                <source>registration.register.form.username</source>
+                <target>Enter username</target>
+            </trans-unit>
+            <trans-unit id="11-cfe">
+                <source>registration.register.form.plainPassword.first</source>
+                <target>Enter password</target>
+            </trans-unit>
+            <trans-unit id="12-cfe">
+                <source>registration.register.form.plainPassword.second</source>
+                <target>Enter password again</target>
+            </trans-unit>
+            <trans-unit id="13-cfe">
+                <source>registration.register.submit</source>
+                <target>Register me</target>
+            </trans-unit>
+            <trans-unit id="14-cfe">
+                <source>registration.register.link</source>
+                <target>Log In</target>
+            </trans-unit>
+            <trans-unit id="15-cfe">
+                <source>resetting.request.header</source>
+                <target>I forgot my password</target>
+            </trans-unit>
+            <trans-unit id="16-cfe">
+                <source>resetting.request.field.username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="17-cfe">
+                <source>resetting.request.submit</source>
+                <target>Send</target>
+            </trans-unit>
+            <trans-unit id="18-cfe">
+                <source>resetting.request.login</source>
+                <target>Log In</target>
+            </trans-unit>
+            <trans-unit id="19-cfe">
+                <source>resetting.request.title</source>
+                <target>I forgot my password</target>
+            </trans-unit>
+            <trans-unit id="20-cfe">
+                <source>registration.register.checkemail.title</source>
+                <target>Check your email</target>
+            </trans-unit>
+            <trans-unit id="21-cfe">
+                <source>registration.register.checkemail.header</source>
+                <target>check your email</target>
+            </trans-unit>
+            <trans-unit id="22-cfe">
+                <source>registration.register.confirmed.title</source>
+                <target>Email confirmed</target>
+            </trans-unit>
+            <trans-unit id="23-cfe">
+                <source>registration.register.confirmed.header</source>
+                <target>Your email is confirmed</target>
+            </trans-unit> 
+                       
+        </body>
+    </file>
+</xliff>

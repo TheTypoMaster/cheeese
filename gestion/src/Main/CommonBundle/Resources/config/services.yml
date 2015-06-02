@@ -1,0 +1,41 @@
+imports:
+    - { resource: forms.yml }
+services:
+#services
+    service_town:
+        class: "Main\CommonBundle\Services\Geo\ServiceTown"
+        arguments: [@doctrine.orm.entity_manager]
+    service_user:
+        class: "Main\CommonBundle\Services\Users\ServiceUser"
+        arguments: [@doctrine.orm.entity_manager]
+    service_company:
+        class: "Main\CommonBundle\Services\Companies\ServiceCompany"
+        arguments: [@doctrine.orm.entity_manager, @service_container]
+    service_devis:
+        class: "Main\CommonBundle\Services\Offers\ServiceDevis"
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+    service_moves_radius:
+        class: "Main\CommonBundle\Services\Offers\ServiceMovesRadius"
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+    service_availability:
+        class: "Main\CommonBundle\Services\Offers\ServiceAvailability"
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+    service_search:
+        class: "Main\CommonBundle\Services\Search\ServiceSearch"
+        arguments: [@doctrine.orm.entity_manager, @service_container]
+    service_session:
+        class: "Main\CommonBundle\Services\Session\ServiceSession"
+        arguments: [@session]
+    service_prestation:
+        class: "Main\CommonBundle\Services\Services\ServicePrestation"
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+    service_notation:
+        class: "Main\CommonBundle\Services\Services\ServiceNotation"
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+    service_message:
+        class: "Main\CommonBundle\Services\Messages\ServiceMessage"
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+    listener_moves_radius:
+        class: Main\CommonBundle\Listener\MoveRadiusListener
+        tags:
+            - { name: doctrine.orm.entity_listener }

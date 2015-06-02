@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html class="bg-black">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {{'registration.register.link'|trans}} {% endblock %}</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+     {% block stylesheets %}
+    	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	    {% stylesheets 'bundles/maincommunity/css/*' filter="cssrewrite" %}
+	    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+	    {% endstylesheets %}
+    {% endblock %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+</head>
+<body class="bg-black">
+{% block fos_user_content %}
+<div class="form-box" id="login-box">
+    <div class="header">{{'registration.register.link'|trans}}</div>
+    {% if error %}
+	    <div>{{ error|trans }}</div>
+	{% endif %}
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <div class="body bg-gray">
+            <div class="form-group">
+                <input type="text" name="_username" class="form-control" placeholder="{{ 'security.login.field.username'|trans }}" value="{{ last_username }}"/>
+            </div>
+            <div class="form-group">
+                <input type="password" name="_password" class="form-control" placeholder="{{'security.login.field.password'|trans}}"/>
+            </div>
+            {#
+            <div class="form-group">
+                <input type="checkbox" name="remember_me"/> {{'security.login.field.rememberme'|trans}}
+            </div>
+            #}
+        </div>
+        <div class="footer">
+            <button type="submit" class="btn bg-olive btn-block">{{'security.login.link.signin'|trans}}</button>
+
+            <p><a href="{{ path('fos_user_resetting_request') }}">{{'security.login.link.forgot'|trans}}</a></p>
+
+            <a href="{{ path('fos_user_registration_register') }}" class="text-center">{{'security.login.link.register'|trans}}</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+</body>
+</html>

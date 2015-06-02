@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html class="bg-black">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {{ 'registration.register.confirmed.title' |trans }} {% endblock %}</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+     {% block stylesheets %}
+    	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	    {% stylesheets 'bundles/maincommunity/css/*' filter="cssrewrite" %}
+	    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+	    {% endstylesheets %}
+    {% endblock %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+</head>
+<body class="bg-black">
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+	<div class="form-box" id="login-box">
+	<div class="header">{{ 'registration.register.confirmed.header' |trans}}</div>
+	    <div class="body bg-gray">
+		    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+		    {% if app.session is not empty %}
+		        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+		        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+		    {% endif %}
+		 </div>
+	</div>		 
+{% endblock fos_user_content %}

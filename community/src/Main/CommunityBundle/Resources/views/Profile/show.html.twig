@@ -1,0 +1,11 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "profile" %}community.profile.view.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "profile" %}community.profile.view.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "profile" %}community.profile.view.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "profile" %}community.profile.view.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+
+	{% block fos_user_content %}
+		{% include "FOSUserBundle:Profile:show_content.html.twig" %}
+	{% endblock fos_user_content %}
+{% endblock %}

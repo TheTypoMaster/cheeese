@@ -1,0 +1,92 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "offers" %}community.availability.view.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "offers" %}community.availability.view.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "offers" %}community.availability.view.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "offers" %}community.availability.view.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+					<h4 class="page-header">
+                        {% trans from "offers" %}community.availability.page.header{% endtrans %}
+                        <small>{% trans from "offers" %}community.availability.page.header.small{% endtrans %}</small>
+                    </h4>
+                    
+                    <form action="{{ path('availability_submit') }}" method="post"}}>
+                    {% for i in 0..11 %}
+                    	<div class="col-md-4" style="height:370px; position:relative">                      	                            	
+                            <!-- Primary box -->
+                            {% if i == 0 %}
+                            	{% set time = "now"|date("U") %}
+                            	<div class="box box-solid box-success">                            	
+                            {% else %}
+                            	{% set value = "+"~ i ~ " month" %}
+                            	{% set time = value|date("U") %}
+                               <div class="box box-solid box-primary">                                                           
+                            {% endif %}
+                                <div class="box-header">
+                                    <h3 class="box-title">{{ time|date('m - Y', "Europe/Paris") }}</h3>
+                                </div>
+                                <div class="box-body">
+                                	<p>
+	                                    <table>
+										<thead>
+											<tr>
+												<th width="17%">{% trans from "offers" %}community.availability.th.sun{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.th.mon{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.th.tue{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.th.wed{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.th.thu{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.th.fri{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.th.sat{% endtrans %}</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+											{% set data = time|date('Y-m') %}
+											{% set daysInMonth = time|date('t') %}
+											{% set startDow = time|date('F 1\\s\\t Y')|date('w') %}
+											{% set dow = startDow %}
+											{% for day in range(1,daysInMonth) %}
+												{% if day < 10 %}
+													{% set day = 0 ~ day %}
+												{% endif %}
+												{% set dayValue = data ~ "-" ~ day %}
+												{% if loop.first and startDow != 0 %}
+													<td colspan="{{ startDow }}"></td>
+												{% endif %}
+												<td>
+													<div>
+														{% if date(dayValue) > date('now') %}
+														<div>{{ day }}</div>
+														<div>																												
+														<input type="checkbox" name="dates[]" value="{{ dayValue }}" {% if dayValue in dates %} checked {% endif %}>
+														</div>
+														{% else %}
+														<div></div><div></div>
+														{% endif %}													
+													</div>
+												</td>
+												{% if loop.last and dow != 6 %}
+													<td colspan="{{ 6 - dow }}">&nbsp;</td>
+												{% endif %}
+												{% if dow == 6 %}
+													{% set dow = 0 %}
+												</tr>
+												<tr>
+												{% else %}
+													{% set dow = dow + 1 %}
+												{% endif %}
+											{% endfor %}
+											</tr>
+										</tbody>
+									</table>
+								</p>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                    {% endfor %} 
+						<div class="col-md-12">
+							<div class="box-footer">
+								<button type="submit" class="btn btn-primary">{% trans from "offers" %}community.availability.btn.submit{% endtrans %}</button>					
+							</div>
+						</div>
+                    </form>    
+{% endblock %}

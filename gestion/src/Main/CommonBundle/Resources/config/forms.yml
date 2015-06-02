@@ -1,0 +1,51 @@
+services:
+#Form as service      
+    form_company:
+        class: "Main\CommonBundle\Form\Companies\FormCompanyType"
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+        tags:
+            - { name: form.type, alias: form_company }
+    form_confirm_company:
+        class: "Main\CommonBundle\Form\Companies\FormConfirmCompanyType"
+        tags:
+            - { name: form.type, alias: form_confirm_company }  
+    form_devis:
+        class: "Main\CommonBundle\Form\Offers\FormDevisType"
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+        tags:
+            - { name: form.type, alias: form_devis }
+    form_moves:
+        class: "Main\CommonBundle\Form\Offers\FormMovesType"
+        arguments: [@security.context]
+        tags:
+            - { name: form.type, alias: form_moves }
+    form_front_search:
+        class: "Main\CommonBundle\Form\Front\FormSearch"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_front_search }
+    form_front_devis_book:
+        class: "Main\CommonBundle\Form\Front\FormDevisBook"
+        arguments: [@session]
+        tags:
+            - { name: form.type, alias: form_front_devis_book }
+    form_message:
+        class: "Main\CommonBundle\Form\Messages\FormMessageType"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_message }
+    form_client_notation:
+        class: "Main\CommonBundle\Form\Evaluations\FormClientNotationType"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_client_notation }
+    form_photographer_notation:
+        class: "Main\CommonBundle\Form\Evaluations\FormPhotographerNotationType"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_photographer_notation }
+    form_evaluation:
+        class: "Main\CommonBundle\Form\Evaluations\FormEvaluationType"
+        arguments: [@security.context]
+        tags:
+            - { name: form.type, alias: form_evaluation }

@@ -1,0 +1,5 @@
+'Symfony2 is great': 'J''aime Symfony2'
+security.login.username: __security.login.username
+security.login.password: __security.login.password
+security.login.remember_me: __security.login.remember_me
+security.login.submit: __security.login.submit

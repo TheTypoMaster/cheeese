@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>            
+            <trans-unit id="100-cfe">
+                <source>community.service.index.h1</source>
+                <target>My Services</target>
+            </trans-unit>
+            <trans-unit id="101-cfe">
+                <source>community.service.index.h2</source>
+                <target>All my services</target>
+            </trans-unit>
+            <trans-unit id="102-cfe">
+                <source>community.service.index.breadh1</source>
+                <target>My Services</target>
+            </trans-unit>
+            <trans-unit id="103-cfe">
+                <source>community.service.index.breadh2</source>
+                <target>View</target>
+            </trans-unit>
+            <trans-unit id="104-cfe">
+                <source>community.service.index.header</source>
+                <target>My Services</target>
+            </trans-unit>
+            <trans-unit id="105-cfe">
+                <source>community.service.list.th.date</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="106-cfe">
+                <source>community.service.list.th.town</source>
+                <target>Town</target>
+            </trans-unit>
+            <trans-unit id="107-cfe">
+                <source>community.service.list.th.devis</source>
+                <target>Devis</target>
+            </trans-unit>
+            <trans-unit id="108-cfe">
+                <source>community.service.list.th.client</source>
+                <target>Client</target>
+            </trans-unit>
+            <trans-unit id="109-cfe">
+                <source>community.service.list.th.status</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="110-cfe">
+                <source>community.service.list.th.status.processing</source>
+                <target>EN_COURS</target>
+            </trans-unit>
+            <trans-unit id="111-cfe">
+                <source>community.service.list.th.status.photographer_ok</source>
+                <target>PHOTOGRAPHER_OK</target>
+            </trans-unit>
+            <trans-unit id="112-cfe">
+                <source>community.service.list.th.status.photographer_ko</source>
+                <target>PHOTOGRAPHER_KO</target>
+            </trans-unit>
+            <trans-unit id="113-cfe">
+                <source>community.service.list.th.status.client_ko</source>
+                <target>CLIENT_KO</target>
+            </trans-unit>
+            <trans-unit id="114-cfe">
+                <source>community.service.list.th.status.success</source>
+                <target>SUCCESS</target>
+            </trans-unit>
+            <trans-unit id="115-cfe">
+                <source>community.service.list.th.status.old</source>
+                <target>OLD</target>
+            </trans-unit>
+            <trans-unit id="116-cfe">
+                <source>community.service.list.btn.details</source>
+                <target>Details</target>
+            </trans-unit>
+            <trans-unit id="117-cfe">
+                <source>community.service.notation.h1</source>
+                <target>Evaluation</target>
+            </trans-unit>
+            <trans-unit id="118-cfe">
+                <source>community.service.notation.h2</source>
+                <target>My evaluation</target>
+            </trans-unit>
+            <trans-unit id="119-cfe">
+                <source>community.service.notation.breadh1</source>
+                <target>Evaluation</target>
+            </trans-unit>
+            <trans-unit id="120-cfe">
+                <source>community.service.notation.breadh2</source>
+                <target>My evaluation</target>
+            </trans-unit>
+            <trans-unit id="121-cfe">
+                <source>community.service.notation.header</source>
+                <target>My evaluation</target>
+            </trans-unit>
+            <trans-unit id="122-cfe">
+                <source>community.service.notation.btn.submit</source>
+                <target>Submit</target>
+            </trans-unit>
+            <trans-unit id="123-cfe">
+                <source>community.service.show.h1</source>
+                <target>Service</target>
+            </trans-unit>
+            <trans-unit id="124-cfe">
+                <source>community.service.show.h2</source>
+                <target>Detail</target>
+            </trans-unit>
+            <trans-unit id="125-cfe">
+                <source>community.service.show.breadh1</source>
+                <target>Service</target>
+            </trans-unit>
+            <trans-unit id="126-cfe">
+                <source>community.service.show.breadh2</source>
+                <target>Detail</target>
+            </trans-unit>
+            <trans-unit id="127-cfe">
+                <source>community.service.show.header</source>
+                <target>Service</target>
+            </trans-unit>
+            <trans-unit id="128-cfe">
+                <source>community.service.show.li.at</source>
+                <target>at</target>
+            </trans-unit>
+            <trans-unit id="129-cfe">
+                <source>community.service.show.btn.back</source>
+                <target>Back to list</target>
+            </trans-unit>
+            <trans-unit id="130-cfe">
+                <source>community.service.show.btn.approve</source>
+                <target>Approve this service</target>
+            </trans-unit>
+            <trans-unit id="131-cfe">
+                <source>community.service.show.btn.refuse</source>
+                <target>Refuse this service</target>
+            </trans-unit>
+            <trans-unit id="132-cfe">
+                <source>community.service.show.btn.evaluate</source>
+                <target>Evaluate this service</target>
+            </trans-unit>
+            <trans-unit id="133-cfe">
+                <source>community.service.show.btn.evaluations</source>
+                <target>Evaluations</target>
+            </trans-unit>
+            <trans-unit id="134-cfe">
+                <source>community.service.show.btn.evaluations.title.you</source>
+                <target>You</target>
+            </trans-unit>
+            <trans-unit id="135-cfe">
+                <source>community.service.show.btn.evaluations.client.notation.service</source>
+                <target>Prestation notation</target>
+            </trans-unit>
+            <trans-unit id="136-cfe">
+                <source>community.service.show.btn.evaluations.client.notation.photographer</source>
+                <target>Photographer notation</target>
+            </trans-unit>
+            <trans-unit id="137-cfe">
+                <source>community.service.show.btn.timeline</source>
+                <target>Timeline</target>
+            </trans-unit>
+            <trans-unit id="138-cfe">
+                <source>community.service.show.btn.timeline.title.you</source>
+                <target>You</target>
+            </trans-unit>
+            <trans-unit id="139-cfe">
+                <source>community.service.show.btn.response</source>
+                <target>Response</target>
+            </trans-unit>
+            <trans-unit id="140-cfe">
+                <source>community.service.show.btn.response.add</source>
+                <target>Add a response</target>
+            </trans-unit>
+            <trans-unit id="141-cfe">
+                <source>community.service.show.btn.response.btn.submit</source>
+                <target>Submit</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
