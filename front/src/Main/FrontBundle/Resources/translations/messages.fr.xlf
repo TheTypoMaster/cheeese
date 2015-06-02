@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>index.link.iam.company</source>
+                <target>Je suis une entreprise</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>index.link.iam.individual</source>
+                <target>Je suis un particulier</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>result.photographer.username</source>
+                <target>Photographe :</target>
+            </trans-unit>
+            <trans-unit id="21-ffe">
+                <source>result.photographer.note</source>
+                <target>Note :</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>result.photographer.prestations</source>
+                <target>Nombre de prestations</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>result.duration.libelle</source>
+                <target>Durée :</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>result.price</source>
+                <target>Prix :</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

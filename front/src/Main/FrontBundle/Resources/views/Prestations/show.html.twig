@@ -1,0 +1,149 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+	{#----------------------------------------------  DETAILS ---------------------------------------------------------- #}
+	<div class="col-md-12 content">
+  		<div class="panel panel-default">
+			<div class="panel-heading">
+				{% trans from "prestations" %}prestation.details.header{% endtrans %}
+			</div>
+			<div class="panel-body">
+				<div class="col-xs-6 col-sm-4">
+				<ul>
+				<li>{{ prestation.starttime | date('d/m/Y')}} {% trans from "prestations" %}prestation.show.li.at{% endtrans %} {{ prestation.starttime | date('h:m')}}</li>
+				<li>{{ prestation.address }} {{ prestation.town.name }} ({{ prestation.town.code }}) {{ prestation.town.country.name }}</li>
+				</ul>
+				</div>
+				<div class="col-xs-6 col-sm-4">
+				<ul>
+					<li>{{ prestation.devis.company.photographer.username }}</li>
+					<li>{{ prestation.devis.title }} </li>
+					<li>{{ prestation.devis.category.name }}</li>				
+				</ul>
+				</div>
+				<div class="col-xs-6 col-sm-4">
+				<ul>
+					<li>{{ prestation.price }} ({{ prestation.devis.currency.libelle }})</li>
+					<li>{{ prestation.duration.libelle }} </li>
+					<li>{{ prestation.status.libelle }}</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+		{#----------------------------------------------  NOTATION IF EXISTS ---------------------------------------------------------- #} 
+		
+	{% if commentAllowed  %}		
+		{% if null != commentClient %}
+		<div class="col-md-6 content">
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingOne">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			         {% trans from "prestations" %}prestation.show.evaluation.title{% endtrans %}
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+			      <div class="panel-body">
+			      		<p>{{ commentClient.prestationcomment }}</p>
+						<p>{{ commentClient.prestationnotation }} </p>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="headingTwo">
+				      <h4 class="panel-title">
+				        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				          {% trans from "prestations" %}prestation.show.photographer.title{% endtrans %}
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+				      <div class="panel-body">
+				      		<p>{{ commentClient.usercomment }}</p>
+							<p>{{ commentClient.usernotation }} </p>
+				      </div>
+				    </div>
+			  </div>
+
+			</div>
+		</div>
+		{% endif %}
+		{% if null != commentPhotographer %}
+		<div class="col-md-6 content">
+			<div class="panel panel-default">
+					<div class="panel-heading">
+						{{ prestation.devis.company.photographer.username }} {% trans from "prestations" %}prestation.show.evaluation.header{% endtrans %}
+					</div>
+					<div class="panel-body">
+						<div class="col-xs-12">
+							<p>{{ commentPhotographer.usercomment }} </p>
+							<p>{{ commentPhotographer.usernotation }} </p>
+						</div>
+					</div>
+			</div>
+		</div>
+		{% endif %}
+	{% endif %}
+	
+		<div class="col-md-12 text-center">
+	    	<a class="btn btn-default"  href="{{ path('user_services') }}">{% trans from "prestations" %}prestation.show.a.back{% endtrans %}</a>
+	    	{% if prestation.status.id == 1  or prestation.status.id == 2 %}
+	    		<a class="btn btn-danger"  href="{{ path('update_service', { 'id' : prestation.id, 'slug': 4 } ) }}">{% trans from "prestations" %}prestation.show.a.cancel{% endtrans %}</a>
+	    	{% endif %}
+	    	{% if prestation.status.id == 2 %}
+	    		<a class="btn btn-success"  href="{{ path('update_service', { 'id' : prestation.id, 'slug': 5 }) }}">{% trans from "prestations" %}prestation.show.a.confirm{% endtrans %}</a>
+	    	{% endif %}
+	    	
+	    	{% if commentAllowed %}
+	    		{% if  null == commentClient %}
+	    		<a class="btn btn-default"  href="{{ path('notation', { 'id' : prestation.id}) }}">{% trans from "prestations" %}prestation.show.a.evaluate{% endtrans %}</a>
+	    		{% endif %} 
+	    	{% endif %}
+    	</div>
+    	
+	{#----------------------------------------------  TIMELINE ---------------------------------------------------------- #} 
+	
+	<div class="col-md-12">
+		TIMELINE DE DISCUSSION
+		<ul class="timeline">
+		{% for message in messages %}
+			{% if message.sender.username == app.user.username %}
+				<li>
+          			<div class="timeline-panel">
+          				<div class="timeline-heading"> <h4 class="timeline-title"> {% trans from "prestations" %}prestation.show.timeline.you{% endtrans %}</h4> </div>
+            			<div class="timeline-body">
+              				<p>{{ message.content}}</p>
+              				<hr>
+              				<p>{{ message.createdAt | date('d/m/Y h:m')}}</p>
+            			</div>
+          			</div>
+        		</li>
+			{% else %}
+				<li class="timeline-inverted">
+          			<div class="timeline-panel">
+          				<div class="timeline-heading"> <h4 class="timeline-title"> {{ message.sender.username }}</h4> </div>
+            			<div class="timeline-body">
+              				<p> {{ message.content }}</p>
+							<hr>
+              				<p>{{ message.createdAt | date('d/m/Y h:m')}}</p>            			
+              			</div>
+          			</div>
+        		</li>
+			{% endif %}
+		{% endfor %}
+    	</ul>
+    </div>	
+    	{#----------------------------------------------  FORM ---------------------------------------------------------- #}
+    	{% if commentAllowed == false  %}
+		    {{ form_start(form) }}
+			   <div class="col-lg-12">
+				   {{ form_widget(form) }}
+			   <button type="submit" class="btn">{% trans from "prestations" %}prestation.show.form.btn.submit{% endtrans %}</button>
+			   </div>
+			{{ form_end(form) }}
+	   {% endif %}
+{% endblock %}

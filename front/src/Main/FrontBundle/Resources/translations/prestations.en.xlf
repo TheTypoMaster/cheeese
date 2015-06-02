@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="3">
+                <source>prestation.index.you</source>
+                <target>Hello</target>
+            </trans-unit>
+			<trans-unit id="4">
+                <source>prestation.index.th.date</source>
+                <target>Date</target>
+            </trans-unit>
+			<trans-unit id="5">
+                <source>prestation.index.th.town</source>
+                <target>Town</target>
+            </trans-unit>
+			<trans-unit id="6">
+                <source>prestation.index.th.devis</source>
+                <target>Devis</target>
+            </trans-unit>
+			<trans-unit id="7">
+                <source>prestation.index.th.photographer</source>
+                <target>Photographer</target>
+            </trans-unit>
+			<trans-unit id="8">
+                <source>prestation.index.th.status</source>
+                <target>Status</target>
+            </trans-unit>
+			<trans-unit id="9">
+                <source>prestation.index.btn.details</source>
+                <target>Details</target>
+            </trans-unit>
+			<trans-unit id="10">
+                <source>prestation.details.header</source>
+                <target>Prestation details</target>
+            </trans-unit>
+            <trans-unit id="10-ffe">
+                <source>prestation.btn.submit</source>
+                <target>Submit</target>
+            </trans-unit>
+			<trans-unit id="11">
+                <source>prestation.show.li.at</source>
+                <target>at</target>
+            </trans-unit>
+			<trans-unit id="12">
+                <source>prestation.show.evaluation.title</source>
+                <target>Prestation evaluation</target>
+            </trans-unit>
+			<trans-unit id="13">
+                <source>prestation.show.photographer.title</source>
+                <target>Photographer evaluation</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>prestation.show.evaluation.header</source>
+                <target>evaluation</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>prestation.show.a.back</source>
+                <target>Back to list</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>prestation.show.a.cancel</source>
+                <target>Cancel this service</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>prestation.show.a.confirm</source>
+                <target>Confirm this service</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>prestation.show.a.evaluate</source>
+                <target>Evaluate this service</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>prestation.show.timeline.you</source>
+                <target>You</target>
+            </trans-unit>
+            <trans-unit id="20-ffe">
+                <source>prestation.show.form.btn.submit</source>
+                <target>Submit</target>
+            </trans-unit> 
+        </body>
+    </file>
+</xliff>

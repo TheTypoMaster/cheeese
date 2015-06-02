@@ -1,0 +1,31 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+        
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/
+            anonymous:    true
+            provider: main
+            form_login:
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                default_target_path: index_public
+            logout:
+                path: fos_user_security_logout
+                target: index_public
+            
+
+    access_control:
+        - { path: ^/[a-z]+/devis/book, role: ROLE_PARTICULIER }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY  }
+

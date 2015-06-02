@@ -1,0 +1,13 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+
+{{ form_start(form) }}
+	   
+		<div class="col-lg-12">
+		   {{ form_widget(form) }}
+	   <button type="submit" class="btn">{% trans from "devis" %}devis.btn.submit{% endtrans %}</button>
+	   </div>
+	   {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+/front/web/bundles/
+/front/app/bootstrap.php.cache
+/front/app/cache/*
+/front/app/config/parameters.yml
+/front/app/logs/*
+/front/build/
+/front/vendor/
+/front/bin/
+/front/composer.phar

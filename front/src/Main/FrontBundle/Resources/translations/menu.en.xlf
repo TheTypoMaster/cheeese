@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="25">
+                <source>menu.contact</source>
+                <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>menu.services</source>
+                <target>Services</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>menu.profile</source>
+                <target>Profile</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>menu.logout</source>
+                <target>Logout</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>menu.login</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>menu.register</source>
+                <target>Register</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

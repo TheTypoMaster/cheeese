@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ path('index_public')}}">Cheeese</a>
+    </div>
+	{% if app.user %}
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">{% trans from "menu" %}menu.contact{% endtrans %}</a></li>
+      <li><a href="{{ path('user_services') }}">{% trans from "menu" %}menu.services{% endtrans %}</a></li>
+      <li><a href="#">{% trans from "menu" %}menu.profile{% endtrans %}</a></li>
+      <li><a href="{{ path('fos_user_security_logout') }}">{% trans from "menu" %}menu.logout{% endtrans %}</a></li>
+      <li>{% include "locale.html.twig" %}</li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+    {% else %}
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ path('fos_user_security_login') }}">{% trans from "menu" %}menu.login{% endtrans %}</a></li>
+        <li><a href="{{ path('fos_user_registration_register') }}">{% trans from "menu" %}menu.register{% endtrans %}</a></li>
+        <li><a href="#">{% trans from "menu" %}menu.contact{% endtrans %}</a></li>
+        <li>{% include "locale.html.twig" %}</li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+    {% endif %}
+  </div><!-- /.container-fluid -->
+</nav>

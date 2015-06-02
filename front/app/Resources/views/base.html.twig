@@ -1,0 +1,22 @@
+{% extends 'MopaBootstrapBundle::base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block head_style %}
+        
+		{% stylesheets filter='cssrewrite,?yui_css'
+		   '@MopaBootstrapBundle/Resources/public/bootstrap/bootstrap.css'
+		   '@YourNiceBundle/Resources/public/css/*'
+		%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet"
+		   media="screen" />
+		{% endstylesheets %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

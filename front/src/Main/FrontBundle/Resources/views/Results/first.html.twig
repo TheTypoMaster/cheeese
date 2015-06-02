@@ -1,0 +1,24 @@
+{% for result in results %}
+		<article class="search-result row">
+		<div class="col-xs-12 col-sm-12 col-md-3">
+					<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/sports" alt="Lorem ipsum" /></a>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2">
+					<ul class="meta-search">
+						<li>{% trans %}result.photographer.username{% endtrans %}<span>{{ result.company.photographer.username }}</span></li>
+						<li>{% trans %}result.photographer.note{% endtrans %}<span>{{ result.company.photographer.note }}</span></li>
+						<li>{% trans %}result.photographer.prestations{% endtrans %}<span>{{ result.company.photographer.prestations }}</span></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-7">
+					<h3><a href="#" title="">{{ result.title }}</a></h3>
+					<ul class="meta-search">
+						<li>{% trans %}result.duration.libelle{% endtrans %}<span>{{ result.duration.libelle }}</span></li>
+						<li>{% trans %}result.price{% endtrans %}<span>{{ result.price }} {{ result.currency.libelle}}</span></li>
+					</ul>
+					<p> {{ result. presentation |slice(1, 250) }}</p>						
+	                <span class="plus"><a href="{{ path('devis_attach', {'id': result.id}) }}" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+				</div>
+				<span class="clearfix border"></span>
+		</article>
+{% endfor %}

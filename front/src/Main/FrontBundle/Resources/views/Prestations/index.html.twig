@@ -1,0 +1,35 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+
+{% trans from "prestations" %}prestation.index.you{% endtrans %} {{ app.user.username }},
+	   {% if prestations|length == 0 %}
+	   		PAS DE RESULTATS -- A IMPLEMENTER
+	   {% else %}
+	   		<table class="table table-hover">
+			  <thead>
+			  	<tr>
+			  		<th>{% trans from "prestations" %}prestation.index.th.date{% endtrans %}</th>
+			  		<th>{% trans from "prestations" %}prestation.index.th.town{% endtrans %}</th>
+			  		<th>{% trans from "prestations" %}prestation.index.th.devis{% endtrans %}</th>
+			  		<th>{% trans from "prestations" %}prestation.index.th.photographer{% endtrans %}</th>
+			  		<th>{% trans from "prestations" %}prestation.index.th.status{% endtrans %}</th>
+			  		<th></th>
+			  	</tr>
+			  </thead>
+			  <tbody>
+			  	{% for prestation in prestations %}
+			  	<tr>
+			  		<td>{{ prestation.starttime | date('d-m-Y H:i')}}</td>
+			  		<td>{{ prestation.town.name }}</td>
+			  		<td>{{ prestation.devis.title }}</td>
+			  		<td>{{ prestation.devis.company.photographer.username }}</td>
+			  		<td>{{ prestation.status.libelle }}</td>
+			  		<td><a href="{{ path('show_service', {'id': prestation.id}) }}">{% trans from "prestations" %}prestation.index.btn.details{% endtrans %}</href></td>
+			  	</tr>
+			  	{% endfor %}
+			  </tbody>
+			</table>
+	   {% endif %}
+
+{% endblock %}
