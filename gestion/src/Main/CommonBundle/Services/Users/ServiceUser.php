@@ -24,6 +24,14 @@ class ServiceUser
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Users\User');
 	}	
-	
+
+	/**
+	*
+	*
+	*/
+	public function getUsersByRole($role)
+	{
+		return $this->repository->getUsersByRole($role);
+	}	
 	
 }

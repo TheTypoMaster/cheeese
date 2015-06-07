@@ -11,10 +11,10 @@ use Main\CommonBundle\Entity\Geo\Country as Country;
 use Main\CommonBundle\Entity\Status\PhotographerStatus as Status;
 
 /**
- * @ORM\Entity
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\EntityListeners({ "Main\CommonBundle\Listener\CompanyListener" })
  * @ORM\Table(name="companies.company")
  * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Companies\CompanyRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Company
 {

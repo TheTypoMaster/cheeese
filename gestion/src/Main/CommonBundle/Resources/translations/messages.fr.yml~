@@ -3,5 +3,3 @@ security.login.username: __security.login.username
 security.login.password: __security.login.password
 security.login.remember_me: __security.login.remember_me
 security.login.submit: __security.login.submit
-email.verification.ok.subject: 'Votre entreprise est valide'
-email.verification.ko.subject: 'Votre entreprise n''est pas valide'

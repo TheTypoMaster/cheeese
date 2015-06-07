@@ -1,0 +1,7 @@
+form.companytype.firstname.field: Prénom
+form.companytype.lastname.field: Nom
+form.companytype.title.field: Titre
+form.companytype.address.field: Adresse
+form.companytype.town.field: Commune
+form.companytype.identification.field: Identification
+form.companytype.country.field: Pays

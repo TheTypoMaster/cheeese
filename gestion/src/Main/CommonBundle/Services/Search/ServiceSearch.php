@@ -3,7 +3,7 @@
 namespace Main\CommonBundle\Services\Search;
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Photographers\Devis;
 
 class ServiceSearch 
@@ -20,13 +20,13 @@ class ServiceSearch
 	 */
 	private $repository;
 	
-	private $container;
+	private $securityContext;
 	
-	public function __construct(EntityManager $entityManager, ContainerInterface $container)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Photographers\Devis');
-		$this->container = $container;
+		$this->securityContext = $securityContext;
 	}
 	/**
 	 * Formulaire de recherche de devis (sans filtre)
