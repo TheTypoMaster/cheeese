@@ -1,4 +1,6 @@
 security:
+    role_hierarchy:
+        ROLE_PHOTOGRAPHER_VERIFIED:       ROLE_PHOTOGRAPHER
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
 
@@ -24,7 +26,11 @@ security:
                 path: fos_user_security_logout
                 target: dashboard
     access_control:
-        - { path: ^/[a-z]+/login$, role: IS_AUTHENTICATED_ANONYMOUSLY  }
-        - { path: ^/[a-z]+/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/[a-z]+/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/devis, role: ROLE_PHOTOGRAPHER_VERIFIED }
+        - { path: ^/moves, role: ROLE_PHOTOGRAPHER_VERIFIED }
+        - { path: ^/availability, role: ROLE_PHOTOGRAPHER_VERIFIED }
+        - { path: ^/service, role: ROLE_PHOTOGRAPHER_VERIFIED }
         - { path: ^/, role: ROLE_PHOTOGRAPHER }
