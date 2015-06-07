@@ -84,7 +84,7 @@ class CompanyController extends Controller
 		$company = $serviceCompany->getCompany($usr->getId());
 		if($company === null ){
 			return $this->redirect($this->generateUrl('company_new'));
-		}else {
+		}elseif(2 != $company->getStatus()->getId()) {
 			$form = $this->createForm('form_company', null, array(
 					'status'  		 => $company->getStatus()->getId(),
 					'title'	  		 => $company->getTitle(),
@@ -110,6 +110,9 @@ class CompanyController extends Controller
 					'form' 		=> $form->createView(),
 					'company'	=> $company						
 			));
+		}
+		else{
+			return $this->redirect($this->generateUrl('company'));
 		}
 	}
 }
