@@ -19,11 +19,9 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Main\GestionBundle\MainGestionBundle(),
             new Main\CommonBundle\MainCommonBundle(),
-        	new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-        	new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-        	new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         	new FOS\UserBundle\FOSUserBundle(),
-        	new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

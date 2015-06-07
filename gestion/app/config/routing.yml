@@ -1,0 +1,14 @@
+gestion_bundle_main:
+    resource: "@MainGestionBundle/Controller/"
+    type:     annotation
+#    prefix:   /{_locale}/
+#    requirements:
+#        _locale: |en|fr
+
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

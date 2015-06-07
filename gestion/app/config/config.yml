@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@MainCommonBundle/Resources/config/services.yml" }
 
 framework:
     #esi:             ~
@@ -93,5 +94,3 @@ fos_user:
             from_email:
                 address:        resetting@acmedemo.com
                 sender_name:    Resetting
-avanzu_admin_theme:
-        bower_bin: /usr/local/bin/bower # that's the default value
