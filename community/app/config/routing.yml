@@ -1,22 +1,21 @@
 community_bundle_main:
     resource: "@MainCommunityBundle/Controller/"
     type:     annotation
-    prefix:   /{_locale}/
-    requirements:
-        _locale: |en|fr
+#    prefix:   /{_locale}/
+#    requirements:
+#        _locale: |en|fr
 
 community_rest_bundle:
     type: rest
     prefix: /api
-    resource : Main\CommunityBundle\Controller\GeoController
-    
+    resource : Main\CommunityBundle\Controller\GeoController   
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-    prefix:   /{_locale}/
-    defaults: { _locale: en }
-    requirements:
-        _locale: |en|fr
+#    prefix:   /{_locale}/
+#    defaults: { _locale: en }
+#    requirements:
+#        _locale: |en|fr
 app:
     resource: @AppBundle/Controller/
     type:     annotation
