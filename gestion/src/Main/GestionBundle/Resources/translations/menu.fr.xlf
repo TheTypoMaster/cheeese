@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+	        <trans-unit id="1">
+	                <source>menu.left.dashboard</source>
+	                <target>Tableau de bord</target>
+	        </trans-unit>
+	        <trans-unit id="2">
+	                <source>menu.left.users</source>
+	                <target>Utilisateurs</target>
+	        </trans-unit>
+	        <trans-unit id="3">
+	                <source>menu.left.users.individuals</source>
+	                <target>Particuliers</target>
+	        </trans-unit>
+	        <trans-unit id="4">
+	                <source>menu.left.users.administrators</source>
+	                <target>Administrateurs</target>
+	        </trans-unit>
+	        <trans-unit id="5">
+	                <source>menu.left.users.photographers</source>
+	                <target>Photographes</target>
+	        </trans-unit>
+	        
+	        <trans-unit id="13">
+	                <source>menu.left.offers</source>
+	                <target>Devis</target>
+	        </trans-unit>
+	        <trans-unit id="17">
+	                <source>menu.left.services</source>
+	                <target>Prestations</target>
+	        </trans-unit>
+	        <trans-unit id="23">
+	                <source>menu.membersince</source>
+	                <target>Membre depuis</target>
+	        </trans-unit>
+	        <trans-unit id="24">
+	                <source>menu.profile</source>
+	                <target>Profil</target>
+	        </trans-unit>
+	        <trans-unit id="25">
+	                <source>menu.signout</source>
+	                <target>Déconnexion</target>
+	        </trans-unit>
+        </body>
+    </file>
+</xliff>
+    

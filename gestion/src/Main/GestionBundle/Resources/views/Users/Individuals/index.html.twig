@@ -1,0 +1,36 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans %}gestion.users.individuals.index.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans %}gestion.users.individuals.index.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-child"></i>
+{% trans %}gestion.users.individuals.index.breadh1{% endtrans %}
+{% endblock %}
+{% block breadcrumbH2 %}{% trans %}gestion.users.individuals.index.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+                <!-- Main content -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">{% trans %}gestion.users.individuals.index.h2{% endtrans %}</h3>
+                                </div><!-- /.box-header -->
+                                {% include "MainGestionBundle:Users:list.html.twig" %}
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+{% endblock %}
+
+{% block javascripts_inline %}
+        <script type="text/javascript">
+            $(function() {
+                $('#datatable').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
+{% endblock %}

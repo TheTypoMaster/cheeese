@@ -3,9 +3,158 @@
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="1">
-                <source>Symfony2 is great</source>
-                <target>J'aime Symfony2</target>
+                <source>gestion.services.index.h1</source>
+                <target>Prestations</target>
             </trans-unit>
+            <trans-unit id="2">
+                <source>gestion.services.index.h2</source>
+                <target>Liste des prestations</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>gestion.services.index.breadh1</source>
+                <target>Prestations</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>gestion.services.index.breadh2</source>
+                <target>Liste des prestations</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>gestion.offers.index.h1</source>
+                <target>Devis</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>gestion.offers.index.h2</source>
+                <target>Liste des devis</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>gestion.offers.index.breadh1</source>
+                <target>Devis</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>gestion.offers.index.breadh2</source>
+                <target>Liste des devis</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>gestion.users.administrators.index.h1</source>
+                <target>Administrateurs</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>gestion.users.administrators.index.h2</source>
+                <target>Liste des administrateurs</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>gestion.users.administrators.index.breadh1</source>
+                <target>Administrateurs</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>gestion.users.administrators.index.breadh2</source>
+                <target>Liste des administrateurs</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>gestion.users.individuals.index.h1</source>
+                <target>Particuliers</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>gestion.users.individuals.index.h2</source>
+                <target>Liste des particuliers</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>gestion.users.individuals.index.breadh1</source>
+                <target>Particuliers</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>gestion.users.individuals.index.breadh2</source>
+                <target>Liste des particuliers</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>gestion.users.photographers.index.h1</source>
+                <target>Photographes</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>gestion.users.photographers.index.h2</source>
+                <target>Liste des photographes</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>gestion.users.photographers.index.breadh1</source>
+                <target>Photographes</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>gestion.users.photographers.index.breadh2</source>
+                <target>Liste des photographes</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>gestion.users.list.username</source>
+                <target>Utilisateur</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>gestion.users.list.lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>gestion.users.list.firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>gestion.users.list.creationdate</source>
+                <target>Membre depuis</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>gestion.users.list.lastconnexion</source>
+                <target>Derniére connexion</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>gestion.users.list.prestation</source>
+                <target>Nombre de prestations</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>gestion.users.list.note</source>
+                <target>Note</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>gestion.users.list.btn.details</source>
+                <target>Détails</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>gestion.users.photographers.btn.verify</source>
+                <target>Vérifier photographes</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>gestion.users.photographers.verify.h2</source>
+                <target>Liste des photographes non vérifiés</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>gestion.users.photographers.verify.breadh2</source>
+                <target>Liste des photographes non vérifiés</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>gestion.users.photographers.list.address</source>
+                <target>Adresse</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>gestion.users.photographers.list.identification</source>
+                <target>Identification</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>gestion.users.photographers.list.creationdate</source>
+                <target>Date de création</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>gestion.users.photographers.list.update</source>
+                <target>Date maj</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>gestion.users.photographers.list.href.ok</source>
+                <target>Valide</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>gestion.users.photographers.list.href.ko</source>
+                <target>Non valide</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>gestion.users.photographers.list.btn.back</source>
+                <target>Retour</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
