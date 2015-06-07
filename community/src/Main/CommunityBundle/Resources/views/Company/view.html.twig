@@ -29,15 +29,19 @@
 				 		<td>{{ company.country.name }}</td>
 				 		<td>{{ company.identification }}</td>
 				 		<td>
-				 		{% if 1 == company.status.id%}
+				 		{% if 1 == company.status.id %}
 				 		<span class="label label-warning">{{ company.status.libelle }}</span>
-				 		{% elseif 2 == company.status.id%}
+				 		{% elseif 3 == company.status.id %}
 				 		<span class="label label-danger">{{ company.status.libelle }}</span>
-				 		{% elseif 3 == company.status.id%}
+				 		{% elseif 2 == company.status.id %}
 				 		<span class="label label-success">{{ company.status.libelle }}</span>
 				 		{% endif %}
 				 		</td>
-				 		<td><a class="btn btn-default btn-sm" href="{{ path('company_edit') }}">{% trans from "company" %}company.view.btn.edit{% endtrans %}</a></td>
+				 		<td>
+				 			{% if 2 != company.status.id %}
+				 			<a class="btn btn-default btn-sm" href="{{ path('company_edit') }}">{% trans from "company" %}company.view.btn.edit{% endtrans %}</a>
+				 			{% endif %}
+				 		</td>
 				 		</tr>
 				 	</tbody>
 				 </table>

@@ -29,10 +29,6 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="#"><i class="fa fa-child"></i> {% trans from "menu" %}menu.left.profile.presentation{% endtrans %}</a></li>
-                                <li><a href="#"><i class="fa fa-language"></i> {% trans from "menu" %}menu.left.profile.languages{% endtrans %}</a></li>
-                                <li><a href="#"><i class="fa fa-camera-retro"></i> {% trans from "menu" %}menu.left.profile.equipment{% endtrans %}</a></li>
-                                <li><a href="#"><i class="fa fa-check-square-o"></i> {% trans from "menu" %}menu.left.profile.specialities{% endtrans %}</a></li>
-                                <li><a href="#"><i class="fa fa-photo"></i> {% trans from "menu" %}menu.left.profile.book{% endtrans %}</a></li>
                                 <li><a href="#"><i class="fa fa-database"></i> {% trans from "menu" %}menu.left.profile.security{% endtrans %}</a></li>
                             </ul>
                         </li>
@@ -49,7 +45,7 @@
                                 <li><a href="{{ path('transactions') }}"><i class="fa fa-credit-card"></i> {% trans from "menu" %}menu.left.company.transactions{% endtrans %}</a></li>
                             </ul>
                         </li>
-                        
+                        {% if is_granted('ROLE_PHOTOGRAPHER_VERIFIED') %}
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-copyright"></i> 
@@ -68,35 +64,7 @@
                                 <i class="fa fa-calendar"></i> <span>{% trans from "menu" %}menu.left.services{% endtrans %}</span>
                             </a>
                         </li>
-                        
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-envelope"></i> <span>{% trans from "menu" %}menu.left.mailbox{% endtrans %}</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-plus"></i> <span>{% trans from "menu" %}menu.left.invites{% endtrans %}</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-at"></i> <span>{% trans from "menu" %}menu.left.contact{% endtrans %}</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-question-circle"></i> <span>{% trans from "menu" %}menu.left.help{% endtrans %}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-line-chart"></i> <span>{% trans from "menu" %}menu.left.premium{% endtrans %}</span>
-                            </a>
-                        </li>
+                        {% endif %}
                     </ul>
                 </section>
                 <!-- /.sidebar -->
