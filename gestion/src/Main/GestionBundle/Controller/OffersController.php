@@ -7,16 +7,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class OffersController extends Controller
 {
     /**
 	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
      *
      * @return Symfony\Component\HttpFoundation\Response
-	 * @Route("/", name="dashboard")
+	 * @Route("/offers", name="offers")
 	 */
-	public function dashboardAction(Request $request)
+	public function indexAction(Request $request)
 	{		
-		return $this->render('MainGestionBundle:Default:index.html.twig');	
+		return $this->render('MainGestionBundle:Offers:index.html.twig');	
 	}
 }
