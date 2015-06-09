@@ -17,6 +17,51 @@ class OffersController extends Controller
 	 */
 	public function indexAction(Request $request)
 	{		
-		return $this->render('MainGestionBundle:Offers:index.html.twig');	
+		$service = $this->get('service_devis');
+		$offers = $service->getAllDevis();
+		return $this->render('MainGestionBundle:Offers:index.html.twig',array(
+			'offers' => $offers
+			));	
+	}
+
+	/**
+	 *
+	 * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/devis/{id}", requirements={"id" = "\d+"}, name="devis_read")
+	 */
+	public function showAction($id)
+	{
+		$service = $this->get('service_devis');
+		$devis = $service->fetchPublic($id);
+		if(!$devis)
+		{
+			throw $this->createNotFoundException('Page inexistante');
+			
+		}
+		$servicePrestation = $this->get('service_prestation');
+		$prestations = $servicePrestation->getByDevis($devis->getId());
+		return $this->render('MainGestionBundle:Offers:show.html.twig',array(
+			'devis' 		=> $devis,
+			'services' 	  	=> $prestations
+			));	
+	}
+
+	/**
+	 *
+	 * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/devis/disable/{id}", requirements={"id" = "\d+"}, name="devis_edit")
+	 */
+	public function editAction($id)
+	{
+		$service = $this->get('service_devis');
+		$devis = $service->fetchPublic($id);
+		if(!$devis)
+		{
+			throw $this->createNotFoundException('Page inexistante');
+		}
+		$service->changeActive($devis, 0);
+		return $this->redirect($this->generateUrl('devis_read', array(
+			'id' => $id
+			)));
 	}
 }

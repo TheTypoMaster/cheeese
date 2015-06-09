@@ -1,0 +1,123 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "offers" %}gestion.devis.read.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "offers" %}gestion.devis.read.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "offers" %}gestion.devis.read.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "offers" %}gestion.devis.read.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+                <!-- Main content -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">{{ devis.title }}</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    {% if 1 == devis.active %}                                
+                                	<a class="btn btn-danger btn-sm" href="{{ path('devis_edit', {'id' : devis.id}) }}">
+                                        {% trans from "offers" %}gestion.devis.read.btn.disabled{% endtrans %}
+                                    </a>
+                                {% endif %}
+                                    <a class="btn btn-default btn-sm" href="{{ path('offers') }}">
+                                        {% trans from "offers" %}gestion.devis.read.btn.back{% endtrans %}
+                                    </a>
+                                </div>
+                                <div class="box-body">
+                                	<blockquote>
+                                		<p>{{ devis.presentation }}</p>
+                                		
+                                	</blockquote>
+                                	<dl class="dl-horizontal">
+                                		<dt> {% trans from "offers" %}gestion.devis.read.dt.category{% endtrans %} </dt>
+                                		<dd> {{ devis.category.name}} </dd>
+                                		<dt> {% trans from "offers" %}gestion.devis.read.dt.status{% endtrans %} </dt>
+                                		<dd>
+                                		 {% if 1 == devis.active %}
+                                                <td><span class="label label-success">{% trans from "offers" %}gestion.devis.read.dt.active.enabled{% endtrans %}</span></td>
+                                                {% elseif 0 == devis.active %}
+                                                <td><span class="label label-danger">{% trans from "offers" %}gestion.devis.read.dt.active.disabled{% endtrans %}</span></td>
+                                                {% endif %}
+                                       	</dd>
+                                       	{% if devis.prestations == 1 %}
+                                		<dt> {% trans from "offers" %}gestion.devis.read.dt.notation{% endtrans %} </dt>
+                                		<dd> {{ devis.note }} ({{ devis.prestations}} {% trans from "offers" %}gestion.devis.read.dt.notation.count{% endtrans %})</dd>
+                                		{% elseif devis.prestations > 1 %}
+                                		<dt> {% trans from "offers" %}gestion.devis.read.dt.notation{% endtrans %} </dt>
+                                		<dd> {{ devis.note }} ({{ devis.prestations}} {% trans from "offers" %}gestion.devis.read.dt.notation.count{% endtrans %})</dd>
+                                		{% endif %}
+                                	</dl>
+                                </div><!-- /.box-body -->                                
+                            </div><!-- /.box -->
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">
+                                        {% trans with {'%price%' : devis.currency.libelle}from "offers" %} 
+                                        gestion.devis.read.h3.prices %price%{% endtrans %}
+                                    </h3>
+                                </div>
+                                <div class="box-body">
+                                    <dl class="dl-horizontal">
+                                            
+                                            <dt> {% trans from "offers" %}gestion.devis.read.dt.duration{% endtrans %} </dt>
+                                            <dd> {{ devis.duration.libelle }} </dd>
+                                            <dt> {% trans from "offers" %}gestion.devis.read.dt.price{% endtrans %} </dt>
+                                            <dd> {{ devis.price }} </dd>
+                                           
+                                        </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">
+                                        {% trans from "offers" %}gestion.devis.read.h3.book{% endtrans %}
+                                    </h3>
+                                </div>
+                                <div class="box-body">
+                                    fsfsfsf
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {% if services|length == 0 %}
+                                	<div class="box">
+                                		<div class="box-header">
+                                        <h3 class="box-title">{% trans from "offers" %}gestion.devis.read.services.empty{% endtrans %}</h3>
+                                    	</div><!-- /.box-header -->                          
+                                    	<div class="box-body table-responsive">
+                                    	</div>
+                                	</div>
+                                {% else %}
+                                	<div class="box">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{{ services|length }} {% trans from "offers" %}gestion.devis.read.services{% endtrans %}</h3>
+                                    </div><!-- /.box-header -->
+                                    {#% include "MainCommunityBundle:Services:list.html.twig" %#}
+                                </div><!-- /.box -->
+                                
+                                {% endif %}
+                            </div>
+                        </div>
+{% endblock %}
+
+{% block javascripts_inline %}
+        <script type="text/javascript">
+            $(function() {
+                $('#datatable').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
+{% endblock %}

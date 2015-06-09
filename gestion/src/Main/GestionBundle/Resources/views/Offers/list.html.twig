@@ -1,0 +1,75 @@
+<div class="box-body table-responsive">
+                                	
+                                    <table id="datatable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>{% trans from "offers" %}gestion.offers.list.category{% endtrans %}</th>
+										  		<th>{% trans from "offers" %}
+                                                    gestion.offers.list.photographer{% endtrans %}
+                                                </th>
+										  		<th>{% trans from "offers"  %}gestion.offers.list.title{% endtrans %}</th>
+										  		<th>{% trans from "offers"  %}
+                                                    gestion.offers.list.prestations{% endtrans %}
+                                                </th>
+                                                <th>{% trans from "offers"  %}gestion.offers.list.note{% endtrans %}</th>
+                                                <th>{% trans from "offers"  %}gestion.offers.list.active{% endtrans %}</th>
+                                                <th>{% trans from "offers"  %}
+                                                    gestion.offers.list.createdAt{% endtrans %}
+                                                </th>
+										  		<th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for entity in offers %}
+        									<tr>
+                                                <td> {{ entity.category.name }} </td>
+                                                <td> {{ entity.company.photographer.username }} </td>
+                                                <td> {{ entity.title }} </td>
+                                                <td> {{ entity.prestations }} </td>
+                                                <td> {{ entity.note}} </td>
+                                                {% if 1 == entity.active %}
+                                                    <td>
+                                                        <span class="label label-success">
+                                                        {% trans from "offers" %}gestion.offers.list.active.td.enabled
+                                                        {% endtrans%}
+                                                        </span>
+                                                    </td>
+                                                {% else %}
+                                                    <td>
+                                                        <span class="label label-danger">
+                                                        {% trans from "offers" %}gestion.offers.list.active.td.disabled{% endtrans%}
+                                                        </span>
+                                                    </td>
+                                                {% endif %}
+                                                <td> {{ entity.createdat | date('d-m-Y H:i')}} </td>
+                                                {{ entity.id }}
+                                                <td>
+                                                    <form action="{{ path('devis_read', {'id' : entity.id}) }}">
+                                                        <button class="btn btn-default btn-sm">{% trans from "offers" %}gestion.offers.list.btn.details{% endtrans %}</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+    									{% endfor %}
+                                            
+                                            
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>{% trans from "offers"  %}
+                                                    gestion.offers.list.category{% endtrans %}
+                                                </th>
+                                                <th>{% trans from "offers"  %}
+                                                    gestion.offers.list.photographer{% endtrans %}
+                                                </th>
+                                                <th>{% trans from "offers"  %}gestion.offers.list.title{% endtrans %}</th>
+                                                <th>{% trans from "offers"  %}gestion.offers.list.prestations{% endtrans %}
+                                                </th>
+                                                <th>{% trans from "offers"  %}gestion.offers.list.note{% endtrans %}</th>
+                                                <th>{% trans from "offers"  %}gestion.offers.list.active{% endtrans %}</th>
+                                                <th>{% trans from "offers"  %}gestion.offers.list.createdAt{% endtrans %}
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div><!-- /.box-body -->

@@ -79,13 +79,24 @@ class ServiceDevis
 	
 	/**
 	 * 
-	 * @param unknown $devis
+	 * @param int $devis
 	 */
 	public function fetch($devis)
 	{
 		return $this->repository->findOneBy(array(
 				'id'			=> $devis,
-				'company'  => $this->getCurrentUSer()->getId()
+				'company'  		=> $this->getCurrentUSer()->getId()
+				));
+	}
+
+	/**
+	*
+	* @param int $devis
+	*/
+	public function fetchPublic($devis)
+	{
+		return $this->repository->findOneBy(array(
+				'id'			=> $devis,
 				));
 	}
 	
@@ -142,6 +153,15 @@ class ServiceDevis
 	public function hasPrestations(Devis $devis)
 	{
 		return $devis->getPrestations() > 0;
+	}
+
+	/**
+	*
+	*
+	*/
+	public function getAllDevis()
+	{
+		return $this->repository->findBy(array(), array('createdAt' => 'desc'));
 	}
 	
 	

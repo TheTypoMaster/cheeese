@@ -7,10 +7,30 @@
 {% endblock %}
 {% block breadcrumbH2 %}{% trans %}gestion.offers.index.breadh2{% endtrans %}{% endblock %}
 {% block content %}
-<!-- Main content -->
-                <section class="content">
+                <!-- Main content -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">{% trans %}gestion.offers.index.breadh2{% endtrans %}</h3>
+                                </div><!-- /.box-header -->
+                                {% include "MainGestionBundle:Offers:list.html.twig" %}
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+{% endblock %}
 
-                   
-
-                </section><!-- /.content -->
+{% block javascripts_inline %}
+        <script type="text/javascript">
+            $(function() {
+                $('#datatable').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
 {% endblock %}

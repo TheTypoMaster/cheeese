@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>gestion.offers.list.category</source>
+                <target>Catégorie</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>gestion.offers.list.photographer</source>
+                <target>Photographe</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>gestion.offers.list.title</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>gestion.offers.list.prestations</source>
+                <target>Commentaires</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>gestion.offers.list.note</source>
+                <target>Note</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>gestion.offers.list.active</source>
+                <target>Actif</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>gestion.offers.list.createdAt</source>
+                <target>Date de création</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>gestion.offers.list.btn.details</source>
+                <target>Détails</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>gestion.offers.list.active.td.enabled</source>
+                <target>Activé</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>gestion.offers.list.active.td.disabled</source>
+                <target>Désactivé</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>estion.devis.read.btn.disabled</source>
+                <target>Désactiver ce devis</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>gestion.devis.read.h1</source>
+                <target>Devis</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>gestion.devis.read.h2</source>
+                <target>Détails</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>gestion.devis.read.breadh1</source>
+                <target>Devis</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>gestion.devis.read.breadh2</source>
+                <target>Détails</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>gestion.devis.read.dt.category</source>
+                <target>Catégorie</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>gestion.devis.read.dt.status</source>
+                <target>Statut</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>gestion.devis.read.dt.active.enabled</source>
+                <target>Actif</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>gestion.devis.read.dt.active.disabled</source>
+                <target>Inactif</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>gestion.devis.read.dt.notation</source>
+                <target>Note</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>gestion.devis.read.h3.prices</source>
+                <target>Prix</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>gestion.devis.read.dt.duration</source>
+                <target>Durée</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>gestion.devis.read.h3.prices %price%</source>
+                <target>Prix (en %price%)</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>gestion.devis.read.dt.currency</source>
+                <target>Devise</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>gestion.devis.read.h3.book</source>
+                <target>Photos</target>
+            </trans-unit>
+             <trans-unit id="26">
+                <source>gestion.devis.read.services.empty</source>
+                <target>Pas de prestations pour ce devis</target>
+            </trans-unit>
+             <trans-unit id="27">
+                <source>gestion.devis.read.services</source>
+                <target>Liste des prestations</target>
+            </trans-unit>
+             <trans-unit id="28">
+                <source>gestion.devis.read.btn.disabled</source>
+                <target>Désactiver ce devis</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>gestion.devis.read.btn.back</source>
+                <target>Retour</target>
+            </trans-unit>
+             
+
+            
+
+        </body>
+    </file>
+</xliff>
