@@ -19,6 +19,8 @@
 /community/composer.phar
 /community/src/Main/CommonBundle/
 /gestion/web/bundles/
+/gestion/web/css/
+/gestion/web/js
 /gestion/app/bootstrap.php.cache
 /gestion/app/cache/*
 /gestion/app/config/parameters.yml
