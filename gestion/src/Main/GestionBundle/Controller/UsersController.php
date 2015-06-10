@@ -110,9 +110,9 @@ class UsersController extends Controller
 			$serviceCompany = $this->get('service_company');
 			$company = $serviceCompany->getCompany($id);
 
-			if (serviceCompany->isVerifiedCompany($company)) {
+			if ($serviceCompany->isVerifiedCompany($company)) {
 				$serviceDevis   	= $this->get('service_devis');
-				$devis = $serviceDevis->getAllByCompany($id)
+				$devis = $serviceDevis->getAllByCompany($id);
 				$servicePrestations = $this->get('service_prestation');
 				$services = $servicePrestations->listAllServices($id);
 			}
