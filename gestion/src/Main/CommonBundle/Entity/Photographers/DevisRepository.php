@@ -30,11 +30,13 @@ class DevisRepository extends EntityRepository
 			->andwhere('d.category = :categoryId')
 			->andwhere('a.day = :day')
 			->andwhere('m.town = :town')
+			->andWhere('d.active = :active')
 			->setParameters(array(
-					'status'	 => 1,
+					'status'	 => 2,
 					'categoryId' => $categoryId,
 					'day'		 => $day,
-					'town'		 => $townId
+					'town'		 => $townId,
+					'active'	 => 1
 					));
 		return $qb->getQuery()->getResult();
 	}
