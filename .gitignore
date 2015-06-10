@@ -1,4 +1,6 @@
 /front/web/bundles/
+/front/web/css/
+/front/web/js/
 /front/app/bootstrap.php.cache
 /front/app/cache/*
 /front/app/config/parameters.yml
@@ -9,6 +11,8 @@
 /front/composer.phar
 /front/src/Main/CommonBundle
 /community/web/bundles/
+/community/web/css/
+/community/web/js/
 /community/app/bootstrap.php.cache
 /community/app/cache/*
 /community/app/config/parameters.yml
@@ -20,7 +24,7 @@
 /community/src/Main/CommonBundle/
 /gestion/web/bundles/
 /gestion/web/css/
-/gestion/web/js
+/gestion/web/js/
 /gestion/app/bootstrap.php.cache
 /gestion/app/cache/*
 /gestion/app/config/parameters.yml
