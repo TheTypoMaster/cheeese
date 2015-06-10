@@ -88,7 +88,7 @@ class ServicePrestation
 			$this->em->persist($prestation);
 			$this->CreateFirstPrestationMessage($prestation, $client, $devis->getCompany()->getPhotographer(), 1, $message);
 			$this->em->flush();
-			return true;
+			return $prestation;
 		}catch(\Exception $e){
 			var_dump($e->getMessage());
 			return false;

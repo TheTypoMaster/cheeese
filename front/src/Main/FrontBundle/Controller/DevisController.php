@@ -34,7 +34,10 @@ class DevisController extends Controller
     			if ($form->isValid())
     			{
     				$prestationService = $this->get('service_prestation');
-					$prestationService->create($params['devis'], $params['town'], $params['day'], $params['address'], $params['startTime'], $params['message']);
+					$new = $prestationService->create($params['devis'], $params['town'], $params['day'], $params['address'], $params['startTime'], $params['message']);
+                    return $this->redirect($this->generateUrl('show_service', array(
+                        'id' => $new->getId()
+                        ))); 
     			}
     		}
     		return $this->render('MainFrontBundle:Devis:book.html.twig', array(
