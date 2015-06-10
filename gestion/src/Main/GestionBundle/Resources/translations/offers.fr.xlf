@@ -108,7 +108,7 @@
             </trans-unit>
              <trans-unit id="27">
                 <source>gestion.devis.read.services</source>
-                <target>Liste des prestations</target>
+                <target>Prestations</target>
             </trans-unit>
              <trans-unit id="28">
                 <source>gestion.devis.read.btn.disabled</source>
@@ -117,10 +117,7 @@
             <trans-unit id="29">
                 <source>gestion.devis.read.btn.back</source>
                 <target>Retour</target>
-            </trans-unit>
-             
-
-            
+            </trans-unit>           
 
         </body>
     </file>

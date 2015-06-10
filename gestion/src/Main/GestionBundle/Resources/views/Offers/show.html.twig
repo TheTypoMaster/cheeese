@@ -27,7 +27,9 @@
                                 		
                                 	</blockquote>
                                 	<dl class="dl-horizontal">
-                                		<dt> {% trans from "offers" %}gestion.devis.read.dt.category{% endtrans %} </dt>
+                                		<dt> {% trans from "offers" %}gestion.devis.read.dt.photographer{% endtrans %} </dt>
+                                        <dd> <a href="#">{{ devis.company.photographer.username}}</a> </dd>
+                                        <dt> {% trans from "offers" %}gestion.devis.read.dt.category{% endtrans %} </dt>
                                 		<dd> {{ devis.category.name}} </dd>
                                 		<dt> {% trans from "offers" %}gestion.devis.read.dt.status{% endtrans %} </dt>
                                 		<dd>
@@ -97,9 +99,9 @@
                                 {% else %}
                                 	<div class="box">
                                     <div class="box-header">
-                                        <h3 class="box-title">{{ services|length }} {% trans from "offers" %}gestion.devis.read.services{% endtrans %}</h3>
-                                    </div><!-- /.box-header -->
-                                    {#% include "MainCommunityBundle:Services:list.html.twig" %#}
+                                        <h3 class="box-title">
+                                            {% trans from "offers" %}gestion.devis.read.services{% endtrans %}</h3>
+                                    </div><!-- /.box-header -->                                    {% include "MainGestionBundle:Offers:list_prestations.html.twig" %}
                                 </div><!-- /.box -->
                                 
                                 {% endif %}

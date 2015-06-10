@@ -1,0 +1,56 @@
+<div class="box-body table-responsive">
+                                	
+                                    <table id="datatable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    {% trans from "services" %}gestion.offer.list.th.reference{% endtrans %}
+                                                </th>
+                                                <th>{% trans from "services" %}gestion.offer.list.th.client{% endtrans %}</th>
+                                                <th>{% trans from "services" %}gestion.offer.list.th.photographer{% endtrans %}</th>
+                                                <th>{% trans from "services" %}gestion.offer.list.th.date{% endtrans %}</th>
+										  		<th>{% trans from "services" %}gestion.offer.list.th.town{% endtrans %}</th>	
+										  		<th>{% trans from "services" %}gestion.offer.list.th.status{% endtrans %}</th>
+										  		<th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for entity in services %}
+        									<tr>
+                                                <td> coming </td>
+                                                <td> <a href="#">{{ entity.client.username }}</a></td>
+                                                <td> <a href="#">{{ entity.devis.company.photographer.username }}</a></td>
+                                                <td> {{ entity.starttime | date('d-m-Y H:i')}} </td>
+                                                <td> {{ entity.town.name }} </td>
+                                                {% if 1 == entity.status.id %}
+                                                <td><span class="label label-warning">
+                                                {% elseif 2 == entity.status.id %}
+                                                <td><span class="label label-warning">
+                                                {% elseif 3 == entity.status.id %}
+                                                <td><span class="label label-danger">
+                                                {% elseif 4 == entity.status.id %}
+                                                <td><span class="label label-danger">
+                                                {% elseif 5 == entity.status.id  %}
+                                                <td><span class="label label-success">
+                                                {% else %}
+                                                <td><span class="label label-primary">
+                                                {% endif %}
+                                                {{ entity.status.libelle }}
+                                                </span></td>
+                                                <td><form action="{{ path('service_show', {'id' : entity.id }) }}"><button class="btn btn-default btn-sm">{% trans from "services" %}gestion.offer.list.btn.details{% endtrans %}</button></form></td>
+                                            </tr>
+    									{% endfor %}
+                                            
+                                            
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>{% trans from "services" %}gestion.offer.list.th.date{% endtrans %}</th>
+										  		<th>{% trans from "services" %}gestion.offer.list.th.town{% endtrans %}</th>
+										  		<th>{% trans from "services" %}gestion.offer.list.th.client{% endtrans %}</th>
+										  		<th>{% trans from "services" %}gestion.offer.list.th.status{% endtrans %}</th>
+										  		<th></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div><!-- /.box-body -->

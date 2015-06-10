@@ -154,6 +154,10 @@
                 <source>gestion.users.photographers.list.btn.back</source>
                 <target>Retour</target>
             </trans-unit>
+            <trans-unit id="39">
+                <source>gestion.devis.read.dt.photographer</source>
+                <target>Photographe</target>
+            </trans-unit>
 
         </body>
     </file>

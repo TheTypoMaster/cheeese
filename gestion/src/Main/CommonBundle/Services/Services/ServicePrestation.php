@@ -135,6 +135,15 @@ class ServicePrestation
 	{
 		return $this->repository->findPhotographerServiceById($this->getCurrentUser()->getId(), $id);
 	}
+
+	/*
+	 * 
+	 * @param unknown $id
+	 */
+	public function getPrestation($id)
+	{
+		return $this->repository->findOneById($id);
+	}
 	
 	/**
 	 * 
@@ -148,6 +157,14 @@ class ServicePrestation
 		);
 	}
 	
+	/**
+	 * [getAllServices description]
+	 * @return [type]
+	 */
+	public function getAllServices()
+	{
+		return $this->repository->findBy(array(), array('createdAt' => 'desc'));
+	}
 	
 	/**
 	 * Initialisation du 1er Message concernant la prestation

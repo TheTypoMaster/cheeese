@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>gestion.service.show.h1</source>
+                <target>Prestation</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>gestion.service.show.h2</source>
+                <target>Détails</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>gestion.service.show.breadh1</source>
+                <target>Prestation</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>gestion.service.show.breadh2</source>
+                <target>Détails</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>gestion.service.show.li.at</source>
+                <target>à</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>gestion.service.show.header</source>
+                <target>Détails de la prestation</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>gestion.service.show.btn.back</source>
+                <target>Retour</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>gestion.service.show.btn.timeline</source>
+                <target>Timeline</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>gestion.offer.list.th.reference</source>
+                <target>Référence</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>gestion.offer.list.th.date</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>gestion.offer.list.th.town</source>
+                <target>Commune</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>gestion.offer.list.th.client</source>
+                <target>Client</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>gestion.offer.list.th.status</source>
+                <target>Statut</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>gestion.offer.list.btn.details</source>
+                <target>Détails</target>
+            </trans-unit>            
+             <trans-unit id="15">
+                <source>gestion.offer.list.th.photographer</source>
+                <target>Photographe</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>community.service.show.btn.evaluations</source>
+                <target>Evaluations</target>
+            </trans-unit>
+             <trans-unit id="17">
+                <source>community.service.show.btn.evaluations.client.notation.service</source>
+                <target>Notation de la prestation</target>
+            </trans-unit>
+             <trans-unit id="18">
+                <source>community.service.show.btn.evaluations.client.notation.photographer</source>
+                <target>Notation du photographe</target>
+            </trans-unit>
+            
+
+
+
+            
+            
+
+            
+
+        </body>
+    </file>
+</xliff>
