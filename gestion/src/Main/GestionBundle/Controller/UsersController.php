@@ -56,6 +56,8 @@ class UsersController extends Controller
 				'users' 	=> $users,
 				));
 	}
+
+
 	/**
 	*
 	* @Route(
@@ -76,4 +78,53 @@ class UsersController extends Controller
 		}
 	}
 
+	/**
+	 * [showuser description]
+	 * @param  [type]
+	 * @return [type]
+	 * @Route("/user/{id}", requirements={"id" = "\d+"}, name="user_show")
+	 */
+	public function showuser($id)
+	{
+		$serviceUser = $this->get('service_user');
+		$user = $serviceUser->getUser($id);
+		if(!$user) {
+			throw $this->createNotFoundException('Page inexistante');	
+		}
+		$roles = $user->getRoles();
+		if(in_array('ROLE_ADMIN', $roles)) {
+			return $this->render('MainGestionBundle:Users\Administrators:show.html.twig', array(
+				'user' 	=> $user,
+				));
+		}
+		elseif(in_array('ROLE_PARTICULIER', $roles)) {
+			$servicePrestations = $this->get('service_prestation');
+			return $this->render('MainGestionBundle:Users\Individuals:show.html.twig', array(
+				'user' 	=> $user,
+				));
+		}
+		else {
+			$devis 		 = null;
+			$prestations = null;
+
+			$serviceCompany = $this->get('service_company');
+			$company = $serviceCompany->getCompany($id);
+
+			if (serviceCompany->isVerifiedCompany($company)) {
+				$serviceDevis   	= $this->get('service_devis');
+				$devis = $serviceDevis->getAllByCompany($id)
+				$servicePrestations = $this->get('service_prestation');
+				$services = $servicePrestations->listAllServices($id);
+			}
+
+			
+			return $this->render('MainGestionBundle:Users\Photographers:show.html.twig', array(
+				'user' 			=> $user,
+				'company'		=> $company,
+				'verified'		=> $serviceCompany->isVerifiedCompany($company),
+				'devis'			=> $devis,
+				'prestations'	=> $prestations
+				));
+		}
+	}
 }

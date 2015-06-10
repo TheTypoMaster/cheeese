@@ -102,6 +102,14 @@ class ServicePrestation
 	{
 		return $this->repository->findPhotographerServices($this->getCurrentUser()->getId());
 	}
+
+	/**
+	 * List all services for a given photographer
+	 */
+	public function listAllServices($id)
+	{
+		return $this->repository->findPhotographerServices($id);
+	}
 	
 	/**
 	 * 

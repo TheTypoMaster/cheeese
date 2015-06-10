@@ -33,5 +33,15 @@ class ServiceUser
 	{
 		return $this->repository->getUsersByRole($role);
 	}	
+
+	/**
+	 * [getUserByRole description]
+	 * @param  [type]
+	 * @return [type]
+	 */
+	public function getUser($id)
+	{
+		return $this->repository->findOneById($id);
+	}
 	
 }

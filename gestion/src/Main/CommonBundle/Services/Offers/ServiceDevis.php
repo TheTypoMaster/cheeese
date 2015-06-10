@@ -47,6 +47,14 @@ class ServiceDevis
 	{
 		return $this->repository->findBy(array('company' => $this->getCurrentUSer()->getId()));
 	}
+
+	/**
+	 * Get all devis from a given company
+	 */
+	public function getAllByCompany($id)
+	{
+		return $this->repository->findBy(array('company' => $id));
+	}
 	
 	/**
 	 * 
