@@ -35,7 +35,7 @@ class UsersController extends Controller
 		}elseif($type === 'individuals') {
 			$users = $serviceUser->getUsersByRole('ROLE_PARTICULIER');			
 			return $this->render('MainGestionBundle:Users\Individuals:index.html.twig', array(
-				'users' => $users
+				'users' => $users,
 				));
 		}else{
 			throw $this->createNotFoundException('Page inexistante');
@@ -98,20 +98,23 @@ class UsersController extends Controller
 				));
 		}
 		elseif(in_array('ROLE_PARTICULIER', $roles)) {
+			$services = null;
 			$servicePrestations = $this->get('service_prestation');
+			$services = $servicePrestations->listAllClientServices($id);
 			return $this->render('MainGestionBundle:Users\Individuals:show.html.twig', array(
-				'user' 	=> $user,
+				'user' 		=> $user,
+				'services'	=> $services
 				));
 		}
-		else {
+		elseif(in_array('ROLE_PHOTOGRAPHER_VERIFIED', $roles) || in_array('ROLE_PHOTOGRAPHER', $roles)) {
 			$devis 		 = null;
-			$prestations = null;
+			$services = null;
 
 			$serviceCompany = $this->get('service_company');
 			$company = $serviceCompany->getCompany($id);
 
 			if ($serviceCompany->isVerifiedCompany($company)) {
-				$serviceDevis   	= $this->get('service_devis');
+				$serviceDevis  = $this->get('service_devis');
 				$devis = $serviceDevis->getAllByCompany($id);
 				$servicePrestations = $this->get('service_prestation');
 				$services = $servicePrestations->listAllServices($id);
@@ -122,8 +125,8 @@ class UsersController extends Controller
 				'user' 			=> $user,
 				'company'		=> $company,
 				'verified'		=> $serviceCompany->isVerifiedCompany($company),
-				'devis'			=> $devis,
-				'prestations'	=> $prestations
+				'offers'		=> $devis,
+				'services'		=> $services
 				));
 		}
 	}

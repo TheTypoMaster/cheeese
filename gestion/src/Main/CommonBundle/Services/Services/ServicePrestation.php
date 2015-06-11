@@ -110,6 +110,17 @@ class ServicePrestation
 	{
 		return $this->repository->findPhotographerServices($id);
 	}
+
+	/**
+	 * List all services for a given photographer
+	 */
+	public function listAllClientServices($id)
+	{
+		return $this->repository->findBy(
+				array('client' => $id ),
+				array('id' => 'DESC')
+				);
+	}
 	
 	/**
 	 * 

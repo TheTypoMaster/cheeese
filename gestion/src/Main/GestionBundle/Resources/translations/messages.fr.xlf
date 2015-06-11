@@ -158,6 +158,84 @@
                 <source>gestion.devis.read.dt.photographer</source>
                 <target>Photographe</target>
             </trans-unit>
+            <trans-unit id="40">
+                <source>gestion.users.photographers.show.h1</source>
+                <target>Photographe</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>gestion.users.photographers.show.h2</source>
+                <target>Détails</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>gestion.users.photographers.show.breadh2</source>
+                <target>Détails</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>gestion.users.photographers.show.breadh1</source>
+                <target>Photographe</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>gestion.users.show.h2.informations</source>
+                <target>Informations</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>gestion.users.show.h2.company</source>
+                <target>Entreprise</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>gestion.users.show.h2.devis</source>
+                <target>Devis</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>gestion.users.show.h2.services</source>
+                <target>Prestations</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>gestion.users.photographers.list.status</source>
+                <target>Statut</target>
+            </trans-unit>
+
+           <trans-unit id="49">
+                <source>gestion.users.show.username</source>
+                <target>Utilisateur</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>gestion.users.show.firstName</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>gestion.users.show.lastName</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>gestion.users.show.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>gestion.users.show.telephone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>gestion.users.show.createdAt</source>
+                <target>Membre depuis</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>gestion.users.show.lastLogin</source>
+                <target>Derniére connexion</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>gestion.users.show.note</source>
+                <target>Note</target>
+            </trans-unit>
+             <trans-unit id="57">
+                <source>gestion.users.show.commentaires</source>
+                <target>Commentaire(s)</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>gestion.users.photographers.show.btn.disabled</source>
+                <target>Désactiver utilisateur</target>
+            </trans-unit>
+            
 
         </body>
     </file>

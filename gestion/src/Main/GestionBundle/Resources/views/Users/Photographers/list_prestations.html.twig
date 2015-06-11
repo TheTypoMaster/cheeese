@@ -1,11 +1,12 @@
 <div class="box-body table-responsive">
                                     
-                                    <table id="datatable" class="table table-bordered table-striped">
+                                    <table id="datatable_prestations" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>
                                                     {% trans from "services" %}gestion.offer.list.th.reference{% endtrans %}
                                                 </th>
+                                                <th>{% trans from "services" %}gestion.offer.list.th.devis{% endtrans %}</th>
                                                 <th>{% trans from "services" %}gestion.offer.list.th.client{% endtrans %}</th>
                                                 <th>{% trans from "services" %}gestion.offer.list.th.date{% endtrans %}</th>
                                                 <th>{% trans from "services" %}gestion.offer.list.th.town{% endtrans %}</th>    
@@ -17,6 +18,8 @@
                                         {% for entity in services %}
                                             <tr>
                                                 <td> coming </td>
+                                                <td><a href="{{ path('devis_read', {'id' : entity.devis.id})}}">{{ entity.devis.title }}</a>
+                                                </td>
                                                 <td> <a href="{{ path('user_show', {'id' : entity.client.id})}}">{{ entity.client.username }}</a></td>
                                                 <td> {{ entity.starttime | date('d-m-Y H:i')}} </td>
                                                 <td> {{ entity.town.name }} </td>
@@ -46,9 +49,10 @@
                                                 <th>
                                                     {% trans from "services" %}gestion.offer.list.th.reference{% endtrans %}
                                                 </th>
-                                                <th>{% trans from "services" %}gestion.offer.list.th.date{% endtrans %}</th>
-                                                <th>{% trans from "services" %}gestion.offer.list.th.town{% endtrans %}</th>
+                                                 <th>{% trans from "services" %}gestion.offer.list.th.devis{% endtrans %}</th>
                                                 <th>{% trans from "services" %}gestion.offer.list.th.client{% endtrans %}</th>
+                                                <th>{% trans from "services" %}gestion.offer.list.th.date{% endtrans %}</th>
+                                                <th>{% trans from "services" %}gestion.offer.list.th.town{% endtrans %}</th>    
                                                 <th>{% trans from "services" %}gestion.offer.list.th.status{% endtrans %}</th>
                                                 <th></th>
                                             </tr>

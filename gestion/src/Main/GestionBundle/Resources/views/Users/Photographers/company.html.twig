@@ -1,0 +1,57 @@
+<div class="box-body table-responsive">
+                                    
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    {% trans %}gestion.users.photographers.list.address{% endtrans %}
+                                                </th>
+                                                <th>
+                                                    {% trans %}gestion.users.photographers.list.identification{% endtrans %}
+                                                </th>
+                                                <th>
+                                                    {% trans %}gestion.users.photographers.list.creationdate{% endtrans %}
+                                                </th>
+                                                <th>{% trans %}gestion.users.photographers.list.update{% endtrans %}</th>
+                                                <th>{% trans %}gestion.users.photographers.list.status{% endtrans %}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td> 
+                                                    {{ company.address }} , {{ company.town.name }}, {{ company.country.name }} 
+                                                </td>
+                                                <td> {{ company.identification }} </td>
+                                                <td> {{ company.createdat | date('d-m-Y H:i')}} </td>
+                                                <td> {{ company.updatedat | date('d-m-Y H:i')}} </td>
+                                                <td>
+                                                    {% if 1 == company.status.id %}
+                                                    <span class="label label-warning">{{ company.status.libelle }}</span>
+                                                    {% elseif 3 == company.status.id %}
+                                                    <span class="label label-danger">{{ company.status.libelle }}</span>
+                                                    {% elseif 2 == company.status.id %}
+                                                    <span class="label label-success">{{ company.status.libelle }}</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            
+                                            
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>
+                                                    {% trans %}gestion.users.photographers.list.address{% endtrans %}
+                                                </th>
+                                                <th>
+                                                    {% trans %}gestion.users.photographers.list.identification{% endtrans %}
+                                                </th>
+                                                <th>
+                                                    {% trans %}gestion.users.photographers.list.creationdate{% endtrans %}
+                                                </th>
+                                                <th>{% trans %}gestion.users.photographers.list.update{% endtrans %}</th>
+                                                
+                                                <th>{% trans %}gestion.users.photographers.list.status{% endtrans %}</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div><!-- /.box-body -->

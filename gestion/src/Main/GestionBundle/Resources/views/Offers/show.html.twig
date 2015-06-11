@@ -28,7 +28,7 @@
                                 	</blockquote>
                                 	<dl class="dl-horizontal">
                                 		<dt> {% trans from "offers" %}gestion.devis.read.dt.photographer{% endtrans %} </dt>
-                                        <dd> <a href="#">{{ devis.company.photographer.username}}</a> </dd>
+                                        <dd> <a href="{{ path('user_show', {'id' : devis.company.photographer.id}) }}">{{ devis.company.photographer.username}}</a> </dd>
                                         <dt> {% trans from "offers" %}gestion.devis.read.dt.category{% endtrans %} </dt>
                                 		<dd> {{ devis.category.name}} </dd>
                                 		<dt> {% trans from "offers" %}gestion.devis.read.dt.status{% endtrans %} </dt>

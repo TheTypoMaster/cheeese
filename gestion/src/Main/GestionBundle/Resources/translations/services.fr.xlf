@@ -74,6 +74,10 @@
                 <source>community.service.show.btn.evaluations.client.notation.photographer</source>
                 <target>Notation du photographe</target>
             </trans-unit>
+            <trans-unit id="19">
+                <source>gestion.offer.list.th.devis</source>
+                <target>Devis</target>
+            </trans-unit>
             
 
 
