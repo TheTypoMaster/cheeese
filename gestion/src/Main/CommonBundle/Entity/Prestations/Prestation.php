@@ -12,9 +12,10 @@ use Main\CommonBundle\Entity\Status\PrestationStatus as Status;
 use Main\CommonBundle\Entity\Utils\Duration as Duration;
 
 /**
- * @ORM\Entity
+ * @ORM\EntityListeners({ "Main\CommonBundle\Listener\PrestationListener" })
  * @ORM\Table(name="prestations.prestation")
  * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Prestations\PrestationRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Prestation
 {

@@ -10,8 +10,8 @@ use Main\CommonBundle\Entity\Users\User as User;
 
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="messages.message")
+ * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Messages\MessageRepository")
  */
 class Message
 {

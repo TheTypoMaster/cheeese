@@ -39,7 +39,7 @@ class ServiceMessage
 	{
 		return $this->repository->findBy(
 				array('prestation' => $prestation ),
-				array('id' => 'ASC')
+				array('id' => 'DESC')
 				);
 	}
 	
