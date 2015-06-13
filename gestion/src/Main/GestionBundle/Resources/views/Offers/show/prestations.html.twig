@@ -35,7 +35,10 @@
                                                 {% endif %}
                                                 {{ entity.status.libelle }}
                                                 </span></td>
-                                                <td><form action="{{ path('service_show', {'id' : entity.id }) }}"><button class="btn btn-default btn-sm">{% trans from "services" %}gestion.offer.list.btn.details{% endtrans %}</button></form></td>
+                                                <td>
+                                                    <form action="{{ path('service_show', {'id' : entity.id }) }}"><button class="btn btn-default btn-sm">{% trans from "services" %}gestion.offer.list.btn.details{% endtrans %}</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         {% endfor %}
                                             

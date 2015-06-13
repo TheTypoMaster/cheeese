@@ -101,7 +101,8 @@
                                     <div class="box-header">
                                         <h3 class="box-title">
                                             {% trans from "offers" %}gestion.devis.read.services{% endtrans %}</h3>
-                                    </div><!-- /.box-header -->                                    {% include "MainGestionBundle:Offers:list_prestations.html.twig" %}
+                                    </div><!-- /.box-header -->                                    
+                                    {% include "MainGestionBundle:Offers\\show:prestations.html.twig" %}
                                 </div><!-- /.box -->
                                 
                                 {% endif %}

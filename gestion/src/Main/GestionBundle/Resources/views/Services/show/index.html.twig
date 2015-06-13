@@ -1,0 +1,62 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "services" %}gestion.service.show.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "services" %}gestion.service.show.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-calendar"></i>{% trans from "services" %}gestion.service.show.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "services" %}gestion.service.show.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+                <!-- Main content -->
+                	<h2 class="page-header">{% trans from "services" %}gestion.service.show.header{% endtrans %}</h2>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title"></h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                	<div class="col-xs-6 col-sm-4">
+										<ul>
+										<li>REFERENCE COMING</li>
+										<li>{{ prestation.starttime | date('d/m/Y')}} {% trans from "services" %}gestion.service.show.li.at{% endtrans %} {{ prestation.starttime | date('H:i')}}</li>
+										<li>{{ prestation.address }} {{ prestation.town.name }} ({{ prestation.town.code }}) {{ prestation.town.country.name }}</li>
+										</ul>
+										</div>
+										<div class="col-xs-6 col-sm-4">
+										<ul>
+											<li><a href="#">{{ prestation.client.username }}</a></li>
+											<li><a href="#">{{ prestation.devis.company.photographer.username }}</a></li>
+											<li>{{ prestation.devis.title }} </li>
+											<li>{{ prestation.devis.category.name }}</li>				
+										</ul>
+										</div>
+										<div class="col-xs-6 col-sm-4">
+										<ul>
+											<li>{{ prestation.price }} ({{ prestation.devis.currency.libelle }})</li>
+											<li>{{ prestation.duration.libelle }} </li>
+											<li>{{ prestation.status.libelle }}</li>
+										</ul>
+										</div>
+                                
+	    							<a class="btn btn-default"  href="{{ path('services') }}">{% trans from "services" %}gestion.service.show.btn.back{% endtrans %}</a>
+									  
+									                                 
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                          </div>
+                       </div>
+
+	                     <h2 class="page-header">
+	                     	{% trans from "services" %}community.service.show.btn.evaluations{% endtrans %}
+	                     </h2>
+	                     
+                       <!-- NOTATION -->
+                       	{% include "MainGestionBundle:Services\\show:notation.html.twig" %}
+                      
+                       <h2 class="page-header">
+                       	{% trans from "services" %}gestion.service.show.btn.timeline{% endtrans %}
+                       </h2>
+                       <!-- TIMELINE -->
+                       	{% include "MainGestionBundle:Services\\show:timeline.html.twig" %}
+
+                            
+{% endblock %}

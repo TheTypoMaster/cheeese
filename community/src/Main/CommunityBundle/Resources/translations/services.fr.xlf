@@ -170,6 +170,30 @@
                 <source>community.service.show.btn.response.btn.submit</source>
                 <target>Soumettre</target>
             </trans-unit>
+            <trans-unit id="142-cfe">
+                <source>community.service.show.btn.timeline.title.status</source>
+                <target>Statut</target>
+            </trans-unit>
+            <trans-unit id="143-cfe">
+                <source>gestion.message.prestation.creation</source>
+                <target>Prestation créée</target>
+            </trans-unit>
+            <trans-unit id="144-cfe">
+                <source>gestion.message.prestation.preapproved</source>
+                <target>Prestation pré-approuvée</target>
+            </trans-unit>
+            <trans-unit id="145-cfe">
+                <source>gestion.message.prestation.refused</source>
+                <target>Prestation refusée</target>
+            </trans-unit>
+            <trans-unit id="146-cfe">
+                <source>gestion.message.prestation.canceled</source>
+                <target>Prestation annulée</target>
+            </trans-unit>
+            <trans-unit id="147-cfe">
+                <source>gestion.message.prestation.confirmed</source>
+                <target>Prestation validée</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

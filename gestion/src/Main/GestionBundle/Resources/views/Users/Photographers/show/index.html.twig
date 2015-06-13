@@ -54,24 +54,55 @@
                             </div>
                             </div>
                         </div>
-                      
+                      <div class="row">
+                        <div class="col-xs-12">  
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">{% trans %}gestion.users.show.h2.company{% endtrans %}</h3>
+                                </div><!-- /.box-header -->
+                                {% if null != company %}
+                                    {% include "MainGestionBundle:Users/Photographers\\show:company.html.twig" %}    
+                                {% endif %}
+                            </div>
+                            </div>
+                        </div>
+                       {% if verified %} 
+                      <div class="row">
+                        <div class="col-xs-12">  
+                            <div class="box">
+                            <div class="box-header">
+                                    <h3 class="box-title">{% trans %}gestion.users.show.h2.devis{% endtrans %}</h3>
+                                </div><!-- /.box-header -->
+                            {% include "MainGestionBundle:Users/Photographers\\show:devis.html.twig" %}    
+                            </div>
+                            </div>
+                        </div>
                       <div class="row">
                         <div class="col-xs-12">  
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">{% trans %}gestion.users.show.h2.services{% endtrans %}</h3>
                                 </div><!-- /.box-header -->
-                                {% if null != services %}
-                                    {% include "MainGestionBundle:Users/Individuals:list_prestations.html.twig" %}   
-                                {% endif %}
+                             {% include "MainGestionBundle:Users/Photographers\\show:prestations.html.twig" %}   
                             </div>
                             </div>
                         </div>
+                       {% endif %}
 {% endblock %}
 
 {% block javascripts_inline %}
         <script type="text/javascript">
             $(function() {
+                
+                $('#datatable').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+
                 $('#datatable_prestations').dataTable({
                     "bPaginate": true,
                     "bLengthChange": false,

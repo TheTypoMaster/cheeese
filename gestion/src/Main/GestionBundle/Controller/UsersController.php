@@ -52,7 +52,7 @@ class UsersController extends Controller
 	{
 			$serviceCompany = $this->get('service_company');
 			$users  = $serviceCompany->getPhotographersToVerify();
-			return $this->render('MainGestionBundle:Users\Photographers:verify.html.twig', array(
+			return $this->render('MainGestionBundle:Users\Photographers\verify:index.html.twig', array(
 				'users' 	=> $users,
 				));
 	}
@@ -93,7 +93,7 @@ class UsersController extends Controller
 		}
 		$roles = $user->getRoles();
 		if(in_array('ROLE_ADMIN', $roles)) {
-			return $this->render('MainGestionBundle:Users\Administrators:show.html.twig', array(
+			return $this->render('MainGestionBundle:Users\Administrators\show:index.html.twig', array(
 				'user' 	=> $user,
 				));
 		}
@@ -101,7 +101,7 @@ class UsersController extends Controller
 			$services = null;
 			$servicePrestations = $this->get('service_prestation');
 			$services = $servicePrestations->listAllClientServices($id);
-			return $this->render('MainGestionBundle:Users\Individuals:show.html.twig', array(
+			return $this->render('MainGestionBundle:Users\Individuals\show:index.html.twig', array(
 				'user' 		=> $user,
 				'services'	=> $services
 				));
@@ -121,7 +121,7 @@ class UsersController extends Controller
 			}
 
 			
-			return $this->render('MainGestionBundle:Users\Photographers:show.html.twig', array(
+			return $this->render('MainGestionBundle:Users\Photographers\show:index.html.twig', array(
 				'user' 			=> $user,
 				'company'		=> $company,
 				'verified'		=> $serviceCompany->isVerifiedCompany($company),

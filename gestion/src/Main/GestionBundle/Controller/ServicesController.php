@@ -43,7 +43,7 @@ class ServicesController extends Controller
 			$notationService = $this->get('service_notation');	
 			$notation_client = $notationService->findByPrestation($id, $service->getClient()->getId());
 			$notation_photographer = $notationService->findByPrestation($id, $service->getDevis()->getCompany()->getPhotographer()->getId());
-			return $this->render('MainGestionBundle:Services:show.html.twig', array(
+			return $this->render('MainGestionBundle:Services\show:index.html.twig', array(
 					'prestation' 			=> $service,
 					'messages'				=> $messages,
 					'commentClient'			=> $notation_client,

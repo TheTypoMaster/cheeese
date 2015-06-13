@@ -42,7 +42,6 @@
                                                     </td>
                                                 {% endif %}
                                                 <td> {{ entity.createdat | date('d-m-Y H:i')}} </td>
-                                                {{ entity.id }}
                                                 <td>
                                                     <form action="{{ path('devis_read', {'id' : entity.id}) }}">
                                                         <button class="btn btn-default btn-sm">{% trans from "offers" %}gestion.offers.list.btn.details{% endtrans %}</button>

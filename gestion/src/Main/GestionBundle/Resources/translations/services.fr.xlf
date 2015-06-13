@@ -78,7 +78,10 @@
                 <source>gestion.offer.list.th.devis</source>
                 <target>Devis</target>
             </trans-unit>
-            
+            <trans-unit id="20">
+                <source>community.service.show.btn.timeline.title.status</source>
+                <target>Statut</target>
+            </trans-unit>
 
 
 

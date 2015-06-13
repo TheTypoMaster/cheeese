@@ -77,7 +77,7 @@ class ServiceController extends Controller
 				$commentClient = $notationService->findByPrestation($id, $service->getClient()->getId());
 				$commentPhotographer = $notationService->findByPrestation($id);
 			}
-			return $this->render('MainCommunityBundle:Services:show.html.twig', array(
+			return $this->render('MainCommunityBundle:Services\show:index.html.twig', array(
 					'prestation' 			=> $service,
 					'messages'				=> $messages,
 					'commentAllowed' 		=> $allowed,

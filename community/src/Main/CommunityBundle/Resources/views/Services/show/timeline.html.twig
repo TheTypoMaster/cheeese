@@ -1,0 +1,69 @@
+<div class="row">
+                        <div class="col-xs-12">  
+                            <div class="box">
+                            <div class="box-header">
+                                    <h3 class="box-title">{% trans from "services" %}community.service.show.btn.timeline{% endtrans %}</h3>
+                                </div><!-- /.box-header -->
+                                <ul class="timeline">
+
+									{% for message in messages %}
+								 								
+									    <!-- timeline item -->
+									    {% if 1 == message.type %}
+									    	{% if message.sender.id != app.user.id %}
+											    <li>
+											        <!-- timeline icon -->								        
+											        <i class="fa fa-envelope bg-blue"></i>
+											        <div class="timeline-item">
+											            <span class="time"><i class="fa fa-clock-o"></i> {{ message.updatedat | date('d/m/Y H:i') }} </span>
+											
+											            <h3 class="timeline-header"><a href="#"> {{ message.sender.username }} </a></h3>
+											
+											            <div class="timeline-body"> {{ message.content }} </div>
+											        </div>
+											    </li>
+										    {% else %}
+											    <li>
+											        <!-- timeline icon -->
+											        {% if 1 == message.read %}
+											        	<i class="fa fa-envelope bg-green"></i>
+											        {% else %}								        
+											        	<i class="fa fa-envelope bg-orange"></i>
+											        {% endif %}	
+											        <div class="timeline-item">
+											        	<span class="time"><i class="fa fa-clock-o"></i> {{ message.updatedat | date('d/m/Y H:i') }} </span>
+											        	{% if 1 == message.read %}
+											            <h3 class="timeline-header"><a href="#" style="color:green;">{% trans from "services" %}community.service.show.btn.timeline.title.you{% endtrans %} </a></h3>
+														{% else %}
+											            <h3 class="timeline-header"><a href="#" style="color:orange;">{% trans from "services" %}community.service.show.btn.timeline.title.you{% endtrans %}  </a></h3>
+														{% endif %}
+											            <div class="timeline-body"> {{ message.content }} </div>
+											        </div>
+											    </li>
+										    {% endif %}
+									    {% elseif 2 == message.type %}
+									    		<li>
+									    			<i class="fa fa-camera bg-purple"></i>
+									    			 <div class="timeline-item">
+											        	<span class="time"><i class="fa fa-clock-o"></i> 
+											        		{{ message.updatedat | date('d/m/Y H:i') }} </span>
+											            <h3 class="timeline-header">
+											            	<a href="#" style="color:#932ab6 !important">
+											            		{% trans from "services" %}
+											            		community.service.show.btn.timeline.title.status
+											            		{% endtrans %} 
+											            	</a>
+											            </h3>
+														
+											            <div class="timeline-body"> 
+											            		{{ message.content }} 
+											            </div>
+											        </div>
+									    		</li>	
+									    {% endif %}
+									    
+								    {% endfor %}
+								</ul>
+                            </div>
+                            </div>
+                        </div>
