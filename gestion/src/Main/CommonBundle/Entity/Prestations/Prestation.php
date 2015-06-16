@@ -27,6 +27,13 @@ class Prestation
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
+
+	/**
+     * @var string
+     * @ORM\Column(name="reference", type="string", length=50, unique=true)
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+	private $reference;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Photographers\Devis", inversedBy="id", cascade={"remove"})
@@ -108,6 +115,24 @@ class Prestation
 	public function setId($id)
 	{
 		$this->id = $id;
+	}
+
+	/**
+	 * [getReference description]
+	 * @return [type]
+	 */
+	public function getReference()
+	{
+		return $this->reference;
+	}
+
+	/**
+	 * [setReference description]
+	 * @param [type]
+	 */
+	public function setReference($reference)
+	{
+		$this->reference = $reference;
 	}
 	
 	/**

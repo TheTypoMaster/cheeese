@@ -8,6 +8,9 @@ use Main\CommonBundle\Entity\Prestations\Prestation;
 use Main\CommonBundle\Entity\Users\User;
 use Main\CommonBundle\Entity\Photographers\Devis;
 use Main\CommonBundle\Entity\Messages\Message;
+use Main\CommonBundle\Services\Services\ServiceReference;
+use Main\CommonBundle\Services\Emails\ServiceEmail;
+
 
 class ServicePrestation
 {
@@ -32,17 +35,22 @@ class ServicePrestation
 	private $repository;
 	
 	protected $securityContext;
+
+	private $mailer;
 	
+	private $reference;
 	/**
 	 * 
 	 * @param EntityManager $entityManager
 	 * @param SecurityContext $securityContext
 	 */
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceReference $reference, ServiceEmail $mailer)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Prestations\Prestation');
 		$this->securityContext = $securityContext;
+		$this->reference = $reference;
+		$this->mailer = $mailer;
 	}
 	
 	/**
@@ -76,6 +84,7 @@ class ServicePrestation
 		
 		
 		$prestation = new Prestation();
+		$prestation->setReference($this->reference->generateReference());
 		$prestation->setDevis($devis);
 		$prestation->setClient($client);
 		$prestation->setTown($town);
