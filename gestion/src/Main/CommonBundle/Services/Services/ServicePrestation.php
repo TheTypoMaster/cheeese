@@ -97,6 +97,7 @@ class ServicePrestation
 			$this->em->persist($prestation);
 			$this->CreateFirstPrestationMessage($prestation, $client, $devis->getCompany()->getPhotographer(), 1, $message);
 			$this->em->flush();
+			$this->mailer->prestationUpdateEmail($prestation);
 			return $prestation;
 		}catch(\Exception $e){
 			var_dump($e->getMessage());
@@ -263,8 +264,10 @@ class ServicePrestation
 		$prestation->setStatus($status);
 		$prestation->setUpdatedAt(new \DateTime('now'));
 		try{
-			$this->em->persist($prestation);
 			$this->em->flush();
+			//Envoi du mail
+            $this->mailer->prestationUpdateEmail($prestation);
+				
 			return true;
 		}catch(\Exception $e){
 			var_dump($e->getMessage());

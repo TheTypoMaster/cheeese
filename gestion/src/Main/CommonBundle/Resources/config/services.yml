@@ -8,6 +8,9 @@ services:
     service_reference:
         class: "Main\CommonBundle\Services\Services\ServiceReference"
         arguments: []
+    service_session:
+        class: "Main\CommonBundle\Services\Session\ServiceSession"
+        arguments: [@session]
     service_town:
         class: "Main\CommonBundle\Services\Geo\ServiceTown"
         arguments: [@doctrine.orm.entity_manager]
@@ -26,9 +29,6 @@ services:
     service_search:
         class: "Main\CommonBundle\Services\Search\ServiceSearch"
         arguments: [@doctrine.orm.entity_manager, @security.context]
-    service_session:
-        class: "Main\CommonBundle\Services\Session\ServiceSession"
-        arguments: [@session]
     service_prestation:
         class: "Main\CommonBundle\Services\Services\ServicePrestation"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_reference, @service_email]
@@ -37,7 +37,7 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context]
     service_message:
         class: "Main\CommonBundle\Services\Messages\ServiceMessage"
-        arguments: [@doctrine.orm.entity_manager, @security.context]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_email]
     service_company:
         class: "Main\CommonBundle\Services\Companies\ServiceCompany"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_email]

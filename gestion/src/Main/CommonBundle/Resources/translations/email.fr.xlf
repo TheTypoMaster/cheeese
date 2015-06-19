@@ -10,6 +10,31 @@
                 <source>email.verification.ko.subject</source>
                 <target>Votre entreprise n'est pas valide</target>
             </trans-unit>
+            <trans-unit id="3">
+                <source>email.prestation.created.subject</source>
+                <target>Une nouvelle demande de prestation pour vous</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>email.prestation.pre_accepted.subject %reference%</source>
+                <target>%reference% a été pré-acceptée</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>email.prestation.refused.subject %reference%</source>
+                <target>%reference% a été refusée</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>email.prestation.canceled.subject %reference%</source>
+                <target>%reference% a été annulée</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>email.prestation.accepted.subject %reference%</source>
+                <target>%reference% a été validée</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>email.messages.prestation.subject</source>
+                <target>Vous avez un nouveau message</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

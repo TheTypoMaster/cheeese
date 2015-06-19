@@ -7,6 +7,8 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Messages\Message;
 use Main\CommonBundle\Entity\Prestations\Prestation;
 use Main\CommonBundle\Entity\Users\User;
+use Main\CommonBundle\Services\Emails\ServiceEmail;
+
 
 class ServiceMessage
 {
@@ -23,12 +25,17 @@ class ServiceMessage
 	private $repository;
 	
 	protected $securityContext;
+
+	private $mailer;
+
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceEmail $mailer)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Messages\Message');
 		$this->securityContext = $securityContext;
+		$this->mailer = $mailer;
+
 	}
 	
 	/**
@@ -82,6 +89,7 @@ class ServiceMessage
 		try{
 			$this->em->persist($message);
 			$this->em->flush();
+			$this->mailer->messageNotification($message);
 			return true;
 		}catch(\Exception $e){
 			var_dump($e->getMessage());
