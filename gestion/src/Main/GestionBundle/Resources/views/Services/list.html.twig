@@ -17,7 +17,7 @@
                                         <tbody>
                                         {% for entity in services %}
         									<tr>
-                                                <td> coming </td>
+                                                <td> {{ entity.reference }} </td>
                                                 <td> <a href="#">{{ entity.client.username }}</a></td>
                                                 <td> <a href="#">{{ entity.devis.company.photographer.username }}</a></td>
                                                 <td> {{ entity.starttime | date('d-m-Y H:i')}} </td>

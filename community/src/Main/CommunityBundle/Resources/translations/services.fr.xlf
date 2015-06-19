@@ -194,6 +194,10 @@
                 <source>gestion.message.prestation.confirmed</source>
                 <target>Prestation validée</target>
             </trans-unit>
+            <trans-unit id="148-cfe">
+                <source>community.service.list.th.reference</source>
+                <target>Référence</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

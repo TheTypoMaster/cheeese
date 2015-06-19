@@ -9,8 +9,8 @@ class ServiceReference
 {
     private $alphabet = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
     private $tailleAlphabet = null;
-    private $groupes = 4;
-    private $tailleGroupe = 5;
+    private $groupes = 2;
+    private $tailleGroupe = 6;
     private $taille = 20;
     
     /**

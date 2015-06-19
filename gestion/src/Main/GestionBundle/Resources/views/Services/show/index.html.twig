@@ -16,7 +16,7 @@
                                 <div class="box-body">
                                 	<div class="col-xs-6 col-sm-4">
 										<ul>
-										<li>REFERENCE COMING</li>
+										<li>{{ prestation.reference }}</li>
 										<li>{{ prestation.starttime | date('d/m/Y')}} {% trans from "services" %}gestion.service.show.li.at{% endtrans %} {{ prestation.starttime | date('H:i')}}</li>
 										<li>{{ prestation.address }} {{ prestation.town.name }} ({{ prestation.town.code }}) {{ prestation.town.country.name }}</li>
 										</ul>

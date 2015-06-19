@@ -17,7 +17,7 @@
                                         <tbody>
                                         {% for entity in services %}
                                             <tr>
-                                                <td> coming </td>
+                                                <td> {{ entity.reference }} </td>
                                                 <td><a href="{{ path('devis_read', {'id' : entity.devis.id})}}">{{ entity.devis.title }}</a>
                                                 </td>
                                                 <td> <a href="{{ path('user_show', {'id' : entity.client.id})}}">{{ entity.client.username }}</a></td>

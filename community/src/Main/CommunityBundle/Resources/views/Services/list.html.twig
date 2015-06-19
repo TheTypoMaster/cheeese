@@ -3,6 +3,9 @@
                                     <table id="datatable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
+                                                <th>
+                                                {% trans from "services" %}community.service.list.th.reference{% endtrans %}
+                                                </th>
                                                 <th>{% trans from "services" %}community.service.list.th.date{% endtrans %}</th>
 										  		<th>{% trans from "services" %}community.service.list.th.town{% endtrans %}</th>
 										  		<th>{% trans from "services" %}community.service.list.th.devis{% endtrans %}</th>
@@ -14,6 +17,7 @@
                                         <tbody>
                                         {% for entity in services %}
         									<tr>
+                                                <td> {{ entity.reference }} </td>
                                                 <td> {{ entity.starttime | date('d-m-Y H:i')}} </td>
                                                 <td> {{ entity.town.name }} </td>
                                                 <td> <a href="{{ path('devis_read', {'id' : entity.devis.id }) }}">{{ entity.devis.title }}</a></td>
@@ -39,7 +43,10 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>{% trans from "services" %}community.service.list.th.date{% endtrans %}</th>
+                                               <th>
+                                                {% trans from "services" %}community.service.list.th.reference{% endtrans %}
+                                                </th>
+                                                 <th>{% trans from "services" %}community.service.list.th.date{% endtrans %}</th>
 										  		<th>{% trans from "services" %}community.service.list.th.town{% endtrans %}</th>
 										  		<th>{% trans from "services" %}community.service.list.th.devis{% endtrans %}</th>
 										  		<th>{% trans from "services" %}community.service.list.th.client{% endtrans %}</th>

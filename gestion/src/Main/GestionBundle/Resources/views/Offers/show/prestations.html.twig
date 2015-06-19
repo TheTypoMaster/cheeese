@@ -16,7 +16,7 @@
                                         <tbody>
                                         {% for entity in services %}
                                             <tr>
-                                                <td> coming </td>
+                                                <td> {{ entity.reference }} </td>
                                                 <td> <a href="{{ path('user_show', {'id' : entity.client.id})}}">{{ entity.client.username }}</a></td>
                                                 <td> {{ entity.starttime | date('d-m-Y H:i')}} </td>
                                                 <td> {{ entity.town.name }} </td>
