@@ -31,7 +31,6 @@ class Prestation
 	/**
      * @var string
      * @ORM\Column(name="reference", type="string", length=50, unique=true)
-     * @ORM\GeneratedValue(strategy="NONE")
      */
 	private $reference;
 	
