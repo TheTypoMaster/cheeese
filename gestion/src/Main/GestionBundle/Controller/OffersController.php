@@ -40,8 +40,14 @@ class OffersController extends Controller
 		}
 		$servicePrestation = $this->get('service_prestation');
 		$prestations = $servicePrestation->getByDevis($devis->getId());
+		$servicePrices = $this->get('service_prices');
+		$serviceDevisBook = $this->get('service_devis_book');
+		$prices = $servicePrices->getPrices($devis);
+		$book = $serviceDevisBook->getBook($devis);
 		return $this->render('MainGestionBundle:Offers\show:index.html.twig',array(
 			'devis' 		=> $devis,
+			'prices'	  	=> $prices,
+			'book'		  	=> $book,
 			'services' 	  	=> $prestations
 			));	
 	}

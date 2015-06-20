@@ -4,6 +4,7 @@ namespace Main\CommonBundle\Form\Offers;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use Doctrine\ORM\EntityRepository;
+use Main\CommonBundle\Entity\Utils\DurationRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -14,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
 
-class FormDevisType extends AbstractType
+class FormDevisPricesType extends AbstractType
 {
 	protected $em;
 	
@@ -48,8 +49,20 @@ class FormDevisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	
-    	$builder->add('title', 'text', array(
-    			'label'	=> 'form.devis.field.title',
+        if($options['new']) {
+            $devis = $options['devis'];
+            $builder->add('duration', 'entity', array(
+                'label' => 'form.devis.field.duration',
+                'class' => 'MainCommonBundle:Utils\Duration',
+                'property' => 'libelle',
+                'attr' => array(
+                        'class' => 'form-control',
+                ),
+        ));    
+        }    	
+    	
+    	$builder->add('price', 'text', array(
+    			'label'	=> 'form.devis.field.price',
     			'attr' => array(
     					'class' => 'form-control',
     					'maxlength' => 50
@@ -58,37 +71,6 @@ class FormDevisType extends AbstractType
     					new NotBlank ( array(
     					)))
     	));
-    	$builder->add('category', 'entity', array(
-    			'label'	=> 'form.devis.field.category',
-    			'class' => 'MainCommonBundle:Utils\Category',
-    			'property' => 'name',
-    			/*
-    			'query_builder' => function(EntityRepository $er) {
-    				return $er->createQueryBuilder('c')
-    				->add('where', 'c.type = :type')
-   					->setParameter(':type', 2);
-    			},
-    			*/
-    			'attr' => array(
-    					'class' => 'form-control',
-    			),
-    			));
-        
-    	$builder->add('currency', 'entity', array(
-    			'label'	=> 'form.devis.field.currency',
-    			'class' => 'MainCommonBundle:Utils\Currency',
-    			'property' => 'libelle',
-    			'attr' => array(
-    					'class' => 'form-control',
-    			),
-    	));
-    	
-    	$builder->add('presentation', 'textarea', array(
-    			'label'	=> 'form.devis.field.presentation',
-    			'attr' => array(
-    					'class' => 'form-control',
-    			),
-    			));
     }
     
     /**
@@ -98,13 +80,15 @@ class FormDevisType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
     	$resolver->setDefaults(array(
-    			'data_class' => 'Main\CommonBundle\Entity\Photographers\Devis',
-    			'translation_domain' => 'form'
+    			'data_class'         => 'Main\CommonBundle\Entity\Photographers\DevisPrices',
+    			'translation_domain' => 'form',
+                'new'                => true,
+                'devis'              => null
     	));
     }
 
     public function getName()
     {
-        return 'form_devis';
+        return 'form_devis_prices';
     }
 }

@@ -5,8 +5,8 @@
 {% block breadcrumbH2 %}{% trans from "offers" %}community.availability.view.breadh2{% endtrans %}{% endblock %}
 {% block content %}
 					<h4 class="page-header">
-                        {% trans from "offers" %}community.availability.page.header{% endtrans %}
-                        <small>{% trans from "offers" %}community.availability.page.header.small{% endtrans %}</small>
+                        {% trans from "offers" %}community.availability.view.header.big{% endtrans %}
+                        <small>{% trans from "offers" %}community.availability.view.header.small{% endtrans %}</small>
                     </h4>
                     
                     <form action="{{ path('availability_submit') }}" method="post"}}>
@@ -29,13 +29,13 @@
 	                                    <table>
 										<thead>
 											<tr>
-												<th width="17%">{% trans from "offers" %}community.availability.th.sun{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.th.mon{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.th.tue{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.th.wed{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.th.thu{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.th.fri{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.th.sat{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.view.th.sun{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.view.th.mon{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.view.th.tue{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.view.th.wed{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.view.th.thu{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.view.th.fri{% endtrans %}</th>
+												<th width="17%">{% trans from "offers" %}community.availability.view.th.sat{% endtrans %}</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -85,7 +85,7 @@
                     {% endfor %} 
 						<div class="col-md-12">
 							<div class="box-footer">
-								<button type="submit" class="btn btn-primary">{% trans from "offers" %}community.availability.btn.submit{% endtrans %}</button>					
+								<button type="submit" class="btn btn-primary">{% trans from "offers" %}community.availability.view.btn.submit{% endtrans %}</button>					
 							</div>
 						</div>
                     </form>    

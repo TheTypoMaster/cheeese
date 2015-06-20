@@ -24,9 +24,7 @@
                                                 <th>{% trans from "offers" %}community.devis.view.th.category{% endtrans %}</th>
                                                 <th>{% trans from "offers" %}community.devis.view.th.title{% endtrans %}</th>
                                                 <th>{% trans from "offers" %}community.devis.view.th.presentation{% endtrans %}</th>
-                                                <th>{% trans from "offers" %}community.devis.view.th.duration{% endtrans %}</th>
-                                                <th>{% trans from "offers" %}community.devis.view.th.price{% endtrans %}</th>
-                                                <th>{% trans from "offers" %}community.devis.view.th.currency{% endtrans %}</th>
+                                               <th>{% trans from "offers" %}community.devis.view.th.currency{% endtrans %}</th>
                                                 <th>{% trans from "offers" %}community.devis.view.th.status{% endtrans %}</th>
                                                 <th>{% trans from "offers" %}community.devis.view.th.notation{% endtrans %}</th>
                                                 <th>{% trans from "offers" %}community.devis.view.th.actions{% endtrans %}</th>
@@ -38,8 +36,6 @@
                                                 <td> {{ entity.category.name}}</td>
                                                 <td> {{ entity.title }}</td>
                                                 <td> {{ entity.presentation|slice(0, 40) }}</td>
-                                                <td> {{ entity.duration.libelle }}</td>
-                                                <td> {{ entity.price }} </td>
                                                 <td> {{ entity.currency.libelle }}</td>
                                                 {% if 1 == entity.active %}
                                                 <td><span class="label label-success">{% trans from "offers" %}community.devis.view.active.enabled{% endtrans %}</span></td>
@@ -52,9 +48,6 @@
                                                 <td>{% trans from "offers" %}community.devis.view.prestation.0{% endtrans %}</td>
                                                 {% endif %}
                                                 <td>
-                                                	<form action="{{ path('devis_edit', {'id' : entity.id}) }}">
-                                                		<button class="btn btn-default btn-sm">{% trans from "offers" %}community.devis.view.btn.edit{% endtrans %}</button>
-                                                	</form>
                                                 	<form action="{{ path('devis_read', {'id' : entity.id}) }}">
                                                 		<button class="btn btn-default btn-sm">{% trans from "offers" %}community.devis.view.btn.details{% endtrans %}</button>
                                                 	</form>
@@ -69,8 +62,6 @@
                                                 <th>{% trans from "offers" %}community.devis.view.th.category{% endtrans %}</th>
                                                 <th>{% trans from "offers" %}community.devis.view.th.title{% endtrans %}</th>
                                                 <th>{% trans from "offers" %}community.devis.view.th.presentation{% endtrans %}</th>
-                                                <th>{% trans from "offers" %}community.devis.view.th.duration{% endtrans %}</th>
-                                                <th>{% trans from "offers" %}community.devis.view.th.price{% endtrans %}</th>
                                                 <th>{% trans from "offers" %}community.devis.view.th.currency{% endtrans %}</th>
                                                 <th>{% trans from "offers" %}community.devis.view.th.status{% endtrans %}</th>
                                                 <th>{% trans from "offers" %}community.devis.view.th.notation{% endtrans %}</th>

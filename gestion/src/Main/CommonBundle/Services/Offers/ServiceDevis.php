@@ -45,7 +45,10 @@ class ServiceDevis
 	 */
 	public function read()
 	{
-		return $this->repository->findBy(array('company' => $this->getCurrentUSer()->getId()));
+		return $this->repository->findBy(array(
+			'company' => $this->getCurrentUSer()->getId()
+			)
+		);
 	}
 
 	/**
@@ -53,7 +56,9 @@ class ServiceDevis
 	 */
 	public function getAllByCompany($id)
 	{
-		return $this->repository->findBy(array('company' => $id));
+		return $this->repository->findBy(array(
+			'company' => $id
+			));
 	}
 	
 	/**
@@ -64,21 +69,18 @@ class ServiceDevis
 	public function create($data)
 	{
 		$category = $this->em->getRepository('MainCommonBundle:Utils\Category')->findOneById($data['category']);
-		$duration = $this->em->getRepository('MainCommonBundle:Utils\Duration')->findOneById($data['duration']);
 		$currency = $this->em->getRepository('MainCommonBundle:Utils\Currency')->findOneById($data['currency']);
 	
 		$devis = new Devis();
 		$devis->setTitle($data['title']);
 		$devis->setCompany($this->getCurrentCompany());
 		$devis->setCategory($category);
-		$devis->setDuration($duration);
-		$devis->setPrice($data['price']);
 		$devis->setCurrency($currency);
 		$devis->setPresentation($data['presentation']);
 		try{
 			$this->em->persist($devis);
 			$this->em->flush();
-			return true;
+			return $devis;
 		}catch(\Exception $e){
 			var_dump($e->getMessage());
 			return false;
@@ -114,20 +116,16 @@ class ServiceDevis
 	 public function edit(Devis $devis, $data)
 	{
 		$category = $this->em->getRepository('MainCommonBundle:Utils\Category')->findOneById($data['category']);
-		$duration = $this->em->getRepository('MainCommonBundle:Utils\Duration')->findOneById($data['duration']);
 		$currency = $this->em->getRepository('MainCommonBundle:Utils\Currency')->findOneById($data['currency']);
 		
 		$devis->setTitle($data['title']);
 		$devis->setCategory($category);
-		$devis->setDuration($duration);
-		$devis->setPrice($data['price']);
 		$devis->setCurrency($currency);
 		$devis->setPresentation($data['presentation']);
 		$devis->setUpdatedAt(new \DateTime('now'));
 		try{
-			$this->em->persist($devis);
 			$this->em->flush();
-			return true;
+			return $devis;
 		}catch(\Exception $e){
 			var_dump($e->getMessage());
 			return false;
@@ -144,7 +142,6 @@ class ServiceDevis
 		$devis->setUpdatedAt(new \DateTime('now'));
 		$devis->setActive($value);
 		try{
-			$this->em->persist($devis);
 			$this->em->flush();
 			return true;
 		}catch(\Exception $e){

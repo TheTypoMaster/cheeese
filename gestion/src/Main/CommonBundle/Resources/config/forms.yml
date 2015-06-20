@@ -8,12 +8,17 @@ services:
     form_confirm_company:
         class: "Main\CommonBundle\Form\Companies\FormConfirmCompanyType"
         tags:
-            - { name: form.type, alias: form_confirm_company }  
+            - { name: form.type, alias: form_confirm_company }
     form_devis:
         class: "Main\CommonBundle\Form\Offers\FormDevisType"
         arguments: [@doctrine.orm.entity_manager, @security.context]
         tags:
             - { name: form.type, alias: form_devis }
+    form_devis_prices:
+        class: "Main\CommonBundle\Form\Offers\FormDevisPricesType"
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+        tags:
+            - { name: form.type, alias: form_devis_prices }
     form_moves:
         class: "Main\CommonBundle\Form\Offers\FormMovesType"
         arguments: [@security.context]

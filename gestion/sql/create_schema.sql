@@ -38,4 +38,4 @@ insert into utils.currency (id, libelle)
 -- --Duration
 insert into utils.duration (id, libelle)
 	VALUES
-	(1, '1h'), (2, '2h'), (3, '3h'),(4, 'demie'), (5, 'journee'), (6, 'soiree');
+	(1, '1h'), (2, '2h'), (3, '3h'),(4, '4h'), (5, '6h'), (6, '8h'), (7, '10h');

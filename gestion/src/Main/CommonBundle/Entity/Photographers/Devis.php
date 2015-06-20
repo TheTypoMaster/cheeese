@@ -52,19 +52,6 @@ class Devis
 	private $presentation;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Utils\Duration", inversedBy="id", cascade={"remove"})
-	 * @ORM\JoinColumn(name="duration", referencedColumnName="id")
-	 */
-	private $duration;
-	
-	/**
-	 * @var float $price
-	 *
-	 * @ORM\Column(name="price", type="float", nullable=false, columnDefinition="FLOAT")
-	 */
-	private $price;
-	
-	/**
 	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Utils\Currency", inversedBy="id", cascade={"remove"})
 	 * @ORM\JoinColumn(name="currency", referencedColumnName="id")
 	 */
@@ -72,8 +59,7 @@ class Devis
 	
 	/**
 	 *
-	 * @ORM\Column(columnDefinition="SMALLINT DEFAULT 0 NOT NULL")
-	
+	 * @ORM\Column(columnDefinition="SMALLINT DEFAULT 0 NOT NULL")	
 	 */
 	private $directpay;
 	
@@ -92,7 +78,7 @@ class Devis
 	/**
 	 *
 	 * @ORM\Column(columnDefinition="SMALLINT DEFAULT 1 NOT NULL")
-	
+	 *
 	 */
 	private $active;
 	
@@ -193,40 +179,6 @@ class Devis
 	public function setPresentation($presentation)
 	{
 		$this->presentation = $presentation;
-	}
-
-	/**
-	 * Return duration
-	 */
-	public function getDuration()
-	{
-		return $this->duration;
-	}
-	
-	/**
-	 *
-	 * @param Duration $duration
-	 */
-	public function setDuration(Duration $duration)
-	{
-		$this->duration = $duration;
-	}
-
-	/**
-	 * Return price
-	 */
-	public function getPrice()
-	{
-		return $this->price;
-	}
-	
-	/**
-	 *
-	 * @param float $price
-	 */
-	public function setPrice($price)
-	{
-		$this->price = $price;
 	}
 
 	/**

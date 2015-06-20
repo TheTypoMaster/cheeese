@@ -1,0 +1,132 @@
+community:
+    devis:
+        edit:
+            h1: Devis
+            h2: Editer
+            breadh1: Devis
+            breadh2: Editer
+            header: Editer devis
+            submit: Editer
+            btn:
+                enable: Activer ce devis
+                disable: Désactiver ce devis
+        new:
+            h1: Devis
+            h2: Créer
+            breadh1: Devis
+            breadh2: Créer
+            header: Nouveau devis
+            submit: Soumettre
+        read:
+            h1: Mes Devis
+            h2: Détails
+            breadh1: Mes Devis
+            breadh2: Détails
+            btn:
+                edit: Editer
+                back: Retour à la liste
+            dt:
+                category: Catégorie
+                duration: Durée	
+                price: Prix
+                currency: Devise
+                status: Statut
+                active:
+                    enabled: Actif
+                    disabled: inactif
+                notation: 
+                    title: Notation
+                    count: Commentaires
+            services:
+                empty: Pas de prestations pour ce devis
+                active: Prestations
+            prices:
+                title %currency%: Prix (en %currency%)
+                empty: Vous n'avez pas de prix rattachés à ce devis.
+                new:
+                    h1: Prix
+                    h2: Nouveau
+                    breadh1: Prix
+                    breadh2: Nouveau
+                    header: Nouveau prix pour  
+                    btn:
+                        submit: Soumettre
+                        back: Retour
+                edit:
+                    h2: Editer
+                    breadh2: Editer
+                    header %name% %duration%: Edition du prix de %duration%  pour %name%
+                btn:
+                    add: Ajouter
+                    edit: Editer
+                th:
+                    duration: Durée
+                    price: Prix
+                    status: Statut
+                    enabled: Actif
+                    disabled: Inactif
+                    btn:
+                        edit: Modifier prix
+                        enable: Activer
+                        disable: Désactiver
+            book:
+                title: Photos
+                empty: Vous n'avez pas de photos rattachées à ce devis.
+                btn:
+                    add: Ajouter
+        view:
+            h1: Mes devis
+            h2: voir
+            breadh1: Mes devis
+            breadh2: Voir
+            header: Mes devis
+            btn:
+                create: Créer
+                edit: Editer
+                details: Détails
+            th:
+                category: Catégorie
+                title: Titre
+                presentation: Presentation
+                duration: Durée
+                price: Prix
+                currency: Devise
+                status: Statut
+                notation: Notation
+                actions: Actions                
+            active: 
+                enabled: Actif
+                disabled: Inactif
+            prestation:
+                0: N/A
+    availability:
+        view:
+            h1: Disponibilités
+            h2: Calendrier
+            breadh1: Disponibilités
+            breadh2: Calendrier
+            header:
+                big: Mettez à jour vos disponibilités
+                small : Mettez à jour quand vous êtes disponible pour travailler
+            th:
+                sun: Dim
+                mon: Lun
+                tue: Mar
+                wed: Mer
+                thu: Jeu
+                fri: Ven
+                sat: Sam
+            btn:
+                submit: Mettre à jour
+    moves:
+        view:
+            h1: Mes déplacements
+            h2: Détails
+            breadh1: Mes déplacements
+            breadh2: Détails
+            helpblock: Les valeurs sont en kilométres
+            header:
+                big: Zone de déplacements
+                small: Mettez à jour votre zone de déplacements
+
+

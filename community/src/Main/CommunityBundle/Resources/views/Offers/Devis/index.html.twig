@@ -11,11 +11,7 @@
                                 <div class="box-header">
                                     <h3 class="box-title">{{ devis.title }}</h3>
                                 </div><!-- /.box-header -->
-                                <div class="box-body">
-                                    <form action="{{ path('devis_edit', {'id' : devis.id}) }}">
-                                	<button class="btn btn-default btn-sm">{% trans from "offers" %}community.devis.read.btn.edit{% endtrans %}</button>
-                                	</form>
-                                </div>
+                                
                                 <div class="box-body">
                                 	<blockquote>
                                 		<p>{{ devis.presentation }}</p>
@@ -24,12 +20,6 @@
                                 	<dl class="dl-horizontal">
                                 		<dt> {% trans from "offers" %}community.devis.read.dt.category{% endtrans %} </dt>
                                 		<dd> {{ devis.category.name}} </dd>
-                                		<dt> {% trans from "offers" %}community.devis.read.dt.duration{% endtrans %} </dt>
-                                		<dd> {{ devis.duration.libelle }} </dd>
-                                		<dt> {% trans from "offers" %}community.devis.read.dt.price{% endtrans %} </dt>
-                                		<dd> {{ devis.price }} </dd>
-                                		<dt> {% trans from "offers" %}community.devis.read.dt.currency{% endtrans %} </dt>
-                                		<dd> {{ devis.currency.libelle }} </dd>
                                 		<dt> {% trans from "offers" %}community.devis.read.dt.status{% endtrans %} </dt>
                                 		<dd>
                                 		 {% if 1 == devis.active %}
@@ -46,8 +36,26 @@
                                 		<dd> {{ devis.note }} ({{ devis.prestations}} {% trans from "offers" %}community.devis.read.dt.notation.count{% endtrans %})</dd>
                                 		{% endif %}
                                 	</dl>
-                                </div><!-- /.box-body -->                                
+                                </div><!-- /.box-body -->  
+                                <div class="box-footer">
+                                    <a href="{{ path('devis_edit', {'id' : devis.id}) }}" class="btn btn-primary btn-sm">
+                                        {% trans from "offers" %}community.devis.read.btn.edit{% endtrans %}
+                                    </a>
+                                    <a href="{{ path('devis')}}" class="btn btn-default btn-sm">{% trans from "offers" %}community.devis.read.btn.back{% endtrans %}</a>
+                                </div>                              
                             </div><!-- /.box -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            {% include "MainCommunityBundle:Offers\\Devis:book.html.twig" %}
+                        </div>
+                        <div class="col-xs-6">
+                            {% include "MainCommunityBundle:Offers\\Devis:prices.html.twig" %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
                             {% if services|length == 0 %}
                             	<div class="box">
                             		<div class="box-header">

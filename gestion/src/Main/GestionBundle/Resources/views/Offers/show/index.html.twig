@@ -62,14 +62,7 @@
                                     </h3>
                                 </div>
                                 <div class="box-body">
-                                    <dl class="dl-horizontal">
-                                            
-                                            <dt> {% trans from "offers" %}gestion.devis.read.dt.duration{% endtrans %} </dt>
-                                            <dd> {{ devis.duration.libelle }} </dd>
-                                            <dt> {% trans from "offers" %}gestion.devis.read.dt.price{% endtrans %} </dt>
-                                            <dd> {{ devis.price }} </dd>
-                                           
-                                        </dl>
+                                    {% include "MainGestionBundle:Offers\\show:prices.html.twig" %}
                                 </div>
                             </div>
                         </div>

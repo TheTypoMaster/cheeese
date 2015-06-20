@@ -1,0 +1,28 @@
+{% if book|length == 0 %}
+                            	<div class="box">
+                            		<div class="box-header">
+                                    <h3 class="box-title">
+                                        {% trans from "offers" %}community.devis.read.book.title{% endtrans %}
+                                    </h3>
+                                	</div><!-- /.box-header -->                          
+                                	<div class="box-body table-responsive">
+                                        <h4>
+                                            {% trans from "offers" %}community.devis.read.book.empty{% endtrans %}
+                                        </h4>
+                                	</div>
+                                    <div class="box-footer">
+                                       <a href="{{ path('photo_add', {'id' : devis.id}) }}" class="btn btn-primary btn-sm">
+                                        {% trans from "offers" %}community.devis.read.book.btn.add{% endtrans %}
+                                    </a> 
+                                    </div>
+                            	</div>
+                            {% else %}
+                            	<div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title"> 
+                                        {% trans from "offers" %}community.devis.read.book.title{% endtrans %}
+                                    </h3>
+                                </div><!-- /.box-header -->
+                            </div><!-- /.box -->
+                            
+                            {% endif %}
