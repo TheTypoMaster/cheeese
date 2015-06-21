@@ -19,16 +19,32 @@ class IbanController extends Controller
 	 */
 	public function createAction(Request $request)
 	{
-		$usr= $this->get('security.context')->getToken()->getUser();
-		$roles = $usr->getRoles();
-		//Find company
-		$serviceCompany = $this->get('service_company');
-		$company = $serviceCompany->getCompany($usr->getId());
-		if($company === null ){
-			return $this->redirect($this->generateUrl('company_new'));
+		$serviceIban = $this->get('service_iban');
+		$iban = $serviceIban->getIban();
+		if($iban !== null) {
+			return $this->redirect($this->generateUrl('iban'));
 		}else {
+			$form = $this->createForm('form_iban', null, array());
+			
+			$form->handleRequest($request);
+			if($request->isMethod('POST'))
+			{
+				$params = $request->request->get('form_iban');
+				if ($form->isValid())
+				{
+					$add = $serviceIban->create($params);
+					if($add) {
+						return $this->redirect($this->generateUrl('iban'));
+					}
+				}
+			
+			}
+			return $this->render('MainCommunityBundle:Iban:new.html.twig', array(
+					'form' 		=> $form->createView(),
+			));
 			
 		}
+		
 	}
 	/**
 	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
@@ -38,15 +54,14 @@ class IbanController extends Controller
 	 */
 	public function viewAction(Request $request)
 	{
-		$usr= $this->get('security.context')->getToken()->getUser();
-		$roles = $usr->getRoles();
-		//Find company
-		$serviceCompany = $this->get('service_company');
-		$company = $serviceCompany->getCompany($usr->getId());
-		if($company === null ){
-			return $this->redirect($this->generateUrl('company_new'));
+		$serviceIban = $this->get('service_iban');
+		$iban = $serviceIban->getIban();
+		if($iban === null ){
+			return $this->redirect($this->generateUrl('iban_new'));
 		}else {
-			
+			return $this->render('MainCommunityBundle:Iban:view.html.twig', array(
+					'iban' => $iban
+			));
 		}
 	}
 	
@@ -58,16 +73,28 @@ class IbanController extends Controller
 	 */
 	public function editAction(Request $request)
 	{
-		$usr= $this->get('security.context')->getToken()->getUser();
-		$roles = $usr->getRoles();
-		//Find company
-		//Appel du service d'inscription
-		$serviceCompany = $this->get('service_company');
-		$company = $serviceCompany->getCompany($usr->getId());
-		if($company === null ){
-			return $this->redirect($this->generateUrl('company_new'));
-		}else {
-			
+		$serviceIban = $this->get('service_iban');
+		$iban = $serviceIban->getIban();
+		if(!$iban){
+			return $this->redirect($this->generateUrl('iban_new'));
+		}else 
+		{
+			$form = $this->createForm('form_iban', $iban, array());
+			$form->handleRequest($request);
+			if($request->isMethod('POST'))
+			{
+				$params = $request->request->get('form_iban');
+				if($form->isValid()) {
+					$update = $serviceIban->update($iban, $params);
+					if($update){
+						return $this->redirect($this->generateUrl('iban'));
+					}
+				}
+			}			
+			return $this->render('MainCommunityBundle:Iban:edit.html.twig', array(
+					'form' 		=> $form->createView(),
+					'iban'		=> $iban						
+			));
 		}
 	}
 }

@@ -3,6 +3,7 @@
 namespace Main\CommonBundle\Entity\Companies;
 
 use Doctrine\ORM\Mapping as ORM;
+use Main\CommonBundle\Entity\Users\User as User;
 
 /**
  * @ORM\Entity
@@ -11,28 +12,188 @@ use Doctrine\ORM\Mapping as ORM;
 class Iban
 {
 	/**
-	 * @var bigint $id
-	 *
-	 * @ORM\Column(name="id", type="bigint", nullable=false)
 	 * @ORM\Id
-	 * @ORM\GeneratedValue(strategy="IDENTITY")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id", cascade={"remove"})
+	 * @ORM\JoinColumn(name="photographer", referencedColumnName="id")
 	 */
-	private $id;
+	private $photographer;
 	
 	/**
-	 * Return Id
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
-	
-	/**
+	 * @var text $name
 	 *
-	 * @param unknown $id
+	 * @ORM\Column(name="name", type="string", length=255, nullable=false)
 	 */
-	public function setId($id)
+	private $name;
+
+	/**
+	 * @var text $address
+	 *
+	 * @ORM\Column(name="address", type="string", length=255, nullable=false)
+	 */
+	private $address;
+
+	/**
+	 * @var text $name
+	 *
+	 * @ORM\Column(name="iban", type="string", length=255, nullable=false)
+	 */
+	private $iban;
+
+	/**
+	 * @var text $name
+	 *
+	 * @ORM\Column(name="bic", type="string", length=255, nullable=false)
+	 */
+	private $bic;
+
+	/**
+	 * @var datetime $createdAt
+	 * 
+	 * @ORM\Column(name="createdAt", type="datetime")
+	 */
+	private $createdAt;
+	
+	/**
+	 * @var datetime $updatedAt
+	 * 
+	 * @ORM\Column(name="updatedAt", type="datetime")
+	 */
+	private $updatedAt;
+	
+	/**
+	 * 
+	 */
+	public function getPhotographer()
 	{
-		$this->id = $id;
+		return $this->photographer;
 	}
+	
+	/**
+	 * 
+	 * @param User $photographer
+	 */
+	public function setPhotographer(User $photographer)
+	{
+		$this->photographer = $photographer;
+	}
+
+	/**
+	 * 
+	 */
+	public function getName()
+	{
+		return $this->name;
+	}
+	
+	/**
+	 * 
+	 * @param string $title
+	 */
+	public function setName($name)
+	{
+		$this->name = $name;
+	}
+
+	/**
+	 * 
+	 */
+	public function getIban()
+	{
+		return $this->iban;
+	}
+	
+	/**
+	 * 
+	 * @param string $title
+	 */
+	public function setIban($iban)
+	{
+		$this->iban = $iban;
+	}
+
+	/**
+	 * 
+	 */
+	public function getBic()
+	{
+		return $this->bic;
+	}
+	
+	/**
+	 * 
+	 * @param string $title
+	 */
+	public function setBic($bic)
+	{
+		$this->bic = $bic;
+	}
+	
+	/**
+	 * 
+	 */
+	public function getAddress()
+	{
+		return $this->address;
+	}
+	
+	/**
+	 * 
+	 * @param string $address
+	 */
+	public function setAddress($address)
+	{
+		$this->address = $address;
+	}
+
+
+	/**
+	 * Set createdAt
+	 *
+	 * @param datetime $createdAt
+	 */
+	public function setCreatedAt($createdAt)
+	{
+		$this->createdAt = $createdAt;
+	}
+	
+	/**
+	 * Get createdAt
+	 *
+	 * @return datetime
+	 */
+	public function getCreatedAt()
+	{
+		return $this->createdAt;
+	}
+	
+	/**
+	 * Set updatedAt
+	 *
+	 * @param datetime $updatedAt
+	 */
+	public function setUpdatedAt($updatedAt)
+	{
+		$this->updatedAt = $updatedAt;
+	}
+	
+	/**
+	 * Get updatedAt
+	 *
+	 * @return datetime
+	 */
+	public function getUpdatedAt()
+	{
+		return $this->updatedAt;
+	}
+	
+	/**
+	 * 
+	 */
+	public function __construct()
+	{
+		$this->createdAt = new \DateTime('now');
+		$this->updatedAt = new \DateTime('now');
+		//Ajout du status
+	}
+
 }

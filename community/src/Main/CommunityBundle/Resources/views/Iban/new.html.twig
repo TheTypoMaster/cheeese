@@ -1,0 +1,30 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "company" %}community.iban.new.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "company" %}community.iban.new.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "company" %}community.iban.new.breadcrumbh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "company" %}community.iban.new.breadcrumbh2{% endtrans %}{% endblock %}
+{% block content %}
+<section class="content">
+	<div class="row">
+			<div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">{% trans from "company" %}community.iban.new.header{% endtrans %}</h3>
+                                </div><!-- /.box-header -->
+                                <!-- form start -->
+                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                                    <div class="box-body">									
+                                        {{ form_rest(form) }}
+                                    </div><!-- /.box-body -->
+
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">
+                                        	{% trans from "company" %}community.iban.new.submit{% endtrans %}</button>
+                                    </div>
+                                {{ form_end(form) }}
+                            </div>
+		</div>	
+	</div>
+</section>
+{% endblock %}

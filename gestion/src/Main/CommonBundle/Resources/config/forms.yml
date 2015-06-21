@@ -5,6 +5,11 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context]
         tags:
             - { name: form.type, alias: form_company }
+    form_iban:
+        class: "Main\CommonBundle\Form\Companies\FormIbanType"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_iban }
     form_presentation:
         class: "Main\CommonBundle\Form\Users\FormPresentationType"
         arguments: [@security.context]
