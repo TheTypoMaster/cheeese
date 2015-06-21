@@ -28,8 +28,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-child"></i> {% trans from "menu" %}menu.left.profile.presentation{% endtrans %}</a></li>
-                                <li><a href="#"><i class="fa fa-database"></i> {% trans from "menu" %}menu.left.profile.security{% endtrans %}</a></li>
+                                <li><a href="{{ path('presentation') }}"><i class="fa fa-child"></i> {% trans from "menu" %}menu.left.profile.presentation{% endtrans %}</a></li>
+                                <li><a href="{{ path('security') }}"><i class="fa fa-database"></i> {% trans from "menu" %}menu.left.profile.security{% endtrans %}</a></li>
                             </ul>
                         </li>
                         

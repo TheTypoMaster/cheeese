@@ -1,0 +1,34 @@
+community:
+    presentation:
+        read:
+            h1: Photographe
+            h2: Détails
+            breadh1: Photographe
+            breadh2: Détails
+            dt:
+                firstname: Prénom
+                lastname: Nom
+                telephone: Téléphone
+                notation: Votre note
+                comments: Nombre de commentaires
+            btn:
+                edit: Modifier présentation
+                picture: Modifier photo de profil
+        edit:
+            h1: Photographe
+            h2: Edition
+            breadh1: Photographe
+            breadh2: Edition
+            header: Edition de vos détails
+            btn:
+                submit: Soumettre
+                back: Retour
+    security:
+        read:
+            h1: Sécurité
+            h2: Edition mot de passe
+            breadh1: Sécurité
+            breadh2: Edition mot de passe
+            header: Modifiez votre mot de passe
+            btn:
+                submit: Soumettre

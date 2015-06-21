@@ -1,0 +1,46 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "users" %}community.presentation.read.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "users" %}community.presentation.read.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "users" %}community.presentation.read.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "users" %}community.presentation.read.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+                <!-- Main content -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">{{ user.username }}</h3>
+                                </div><!-- /.box-header -->
+                                
+                                <div class="box-body">
+                                	<blockquote>
+                                		<p>{{ user.presentation }}</p>                                		
+                                	</blockquote>
+                                	<dl class="dl-horizontal">
+                                		<dt> {% trans from "users" %}community.presentation.read.dt.firstname{% endtrans %} 
+                                		</dt>
+                                		<dd> {{ user.firstname}} </dd>
+                                		<dt> {% trans from "users" %}community.presentation.read.dt.lastname{% endtrans %} 
+                                		</dt>
+                                		<dd> {{ user.lastname }} </dd>
+                                		<dt> {% trans from "users" %}community.presentation.read.dt.telephone{% endtrans %} 
+                                		</dt>
+                                		<dd> {{ user.telephone }} </dd>
+                                		<dt> {% trans from "users" %}community.presentation.read.dt.notation{% endtrans %} 
+                                		</dt>
+                                		<dd> {{ user.note }} </dd>
+                                		<dt> {% trans from "users" %}community.presentation.read.dt.comments{% endtrans %} 
+                                		</dt>
+                                		<dd> {{ user.prestations }} </dd>
+                                	</dl>
+                                </div><!-- /.box-body -->  
+                                <div class="box-footer">
+                                    <a href="{{ path('presentation_edit') }}" class="btn btn-primary btn-sm">
+                                        {% trans from "users" %}community.presentation.read.btn.edit{% endtrans %}
+                                    </a>
+                                    <a href="{{ path('devis')}}" class="btn btn-success btn-sm">{% trans from "users" %}community.presentation.read.btn.picture{% endtrans %}</a>
+                                </div>                              
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+{% endblock %}

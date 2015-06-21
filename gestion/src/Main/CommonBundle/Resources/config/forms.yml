@@ -5,6 +5,16 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context]
         tags:
             - { name: form.type, alias: form_company }
+    form_presentation:
+        class: "Main\CommonBundle\Form\Users\FormPresentationType"
+        arguments: [@security.context]
+        tags:
+            - { name: form.type, alias: form_presentation }
+    form_security:
+        class: "Main\CommonBundle\Form\Users\FormSecurityType"
+        arguments: [@security.context, @security.password_encoder ]
+        tags:
+            - { name: form.type, alias: form_security }
     form_confirm_company:
         class: "Main\CommonBundle\Form\Companies\FormConfirmCompanyType"
         tags:
@@ -19,6 +29,11 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context]
         tags:
             - { name: form.type, alias: form_devis_prices }
+    form_devis_book:
+        class: "Main\CommonBundle\Form\Offers\FormDevisBookType"
+        arguments: [@security.context]
+        tags:
+            - { name: form.type, alias: form_devis_book }
     form_moves:
         class: "Main\CommonBundle\Form\Offers\FormMovesType"
         arguments: [@security.context]

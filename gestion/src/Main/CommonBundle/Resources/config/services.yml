@@ -16,7 +16,7 @@ services:
         arguments: [@doctrine.orm.entity_manager]
     service_user:
         class: "Main\CommonBundle\Services\Users\ServiceUser"
-        arguments: [@doctrine.orm.entity_manager]
+        arguments: [@doctrine.orm.entity_manager, @security.context]
     service_devis:
         class: "Main\CommonBundle\Services\Offers\ServiceDevis"
         arguments: [@doctrine.orm.entity_manager, @security.context]
