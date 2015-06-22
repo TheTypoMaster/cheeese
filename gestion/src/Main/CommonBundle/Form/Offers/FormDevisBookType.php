@@ -11,6 +11,11 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\OptionsResolver\Options;
+
 
 class FormDevisBookType extends AbstractType
 {	
@@ -35,28 +40,56 @@ class FormDevisBookType extends AbstractType
 		return $this->securityContext->getToken()->getUser();
 	} 
 	
-	/**
-	 * 
-	 * @param FormBuilderInterface $builder
-	 * @param array $options
-	 */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-    		
-    	
-    	$builder
-        ->add('name')
+   
+    /**
+     * Construit le formulaire
+     *
+     * @param Symfony\Component\Form\FormBuilderInterface $builder Constructeur de formulaire
+     * @param aray $options Tableau de paramètre
+     *
+     * @see \Rip\ConsultationBundle\Form\SoutienFormBuilder::buildForm()
+     */
+    public function buildForm (FormBuilderInterface $builder, array $options)
+    {    
 
-        ->add('file')
-
-        ->add('profile', 'checkbox', array(
-                'label'     => 'form.devisbook.field.profile',
+       $builder->add('photo', 'file', array(
+            'label'    => 'Pièce d\'identité',
+            'constraints' => array(
+                new File(array(
+                    'maxSize' => '50000',
+                    'mimeTypes' => array(
+                        'image/jpeg', 
+                        'image/jpg'
+                    ),
+                )),
+                new NotNull()
+            )
+               
+        ));
+       $builder->add('profile', 'checkbox', array(
+                'label'     => 'Afficher publiquement ?',
                 'required'  => false,
-                'attr' => array(
-                    'class' => 'form-control'
-                    )
-            ));
+        ));
 
+        $builder->addEventListener ( FormEvents::PRE_SUBMIT, array (
+            $this,
+            'onPreSubmit'
+        ));
+    }
+
+     /**
+     * Méthode appelée avant la soumission du formulaire
+     *
+     * @param FormEvent $event
+     */
+    function onPreSubmit (FormEvent $event)
+    {
+        $data = $event->getData();  
+        $form = $event->getForm();       
+        echo '<pre>';
+        var_dump($data);
+        echo '</pre>';
+        //die;
     }
     
     /**
@@ -66,7 +99,6 @@ class FormDevisBookType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
     	$resolver->setDefaults(array(
-    			'data_class'         => 'Main\CommonBundle\Entity\Photographers\DevisBook',
     			'translation_domain' => 'form',
     	));
     }

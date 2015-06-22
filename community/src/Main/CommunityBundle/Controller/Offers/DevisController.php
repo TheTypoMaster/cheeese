@@ -314,6 +314,41 @@ class DevisController extends Controller
 	 */
 	public function addPhotoAction($id)
 	{
-
+		$usr= $this->get('security.context')->getToken()->getUser();
+		//@TODO: Check that the user has the rights
+		$serviceDevis = $this->get('service_devis');
+		$devis = $serviceDevis->fetch($id);
+		if(!$devis){
+				return $this->redirect($this->generateUrl('devis'));
+			}
+		else
+		{
+			$form = $this->createForm('form_devis_book', null, array());
+			$request = $this->get('request');
+			$form->handleRequest($request);
+			if($request->isMethod('POST'))
+			{
+				$params = $request->request->get('form_devis_book');
+				if ($form->isValid())
+				{
+					echo '<pre>';
+					var_dump($params);
+					echo '</pre>';
+					die;
+					//$servicePrices = $this->get('service_prices');					
+					if($add) {
+							return $this->redirect($this->generateUrl('devis_read', array(
+														'id' => $id
+														)
+													));
+					}
+				}
+			
+			}
+			return $this->render('MainCommunityBundle:Offers\Devis:book_form.html.twig', array(
+					'form'  => $form->createView(),
+					'devis'	=> $devis
+			));
+		}
 	}
 }
