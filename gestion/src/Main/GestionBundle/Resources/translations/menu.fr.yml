@@ -1,0 +1,14 @@
+menu:
+    left:
+        dashboard: Tableau de bord
+        users:
+            title: Utilisateurs
+            individuals: Particuliers
+            administrators: Administrateurs
+            photographers: Photographes
+        offers: Devis
+        services: Prestations
+    up:
+        membersince: Membre depuis
+        profile: Profil
+        signout: Déconnexion

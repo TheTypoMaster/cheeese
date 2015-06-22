@@ -1,0 +1,41 @@
+gestion:
+    offers:
+        list:
+            category: Catégorie
+            photographer: Photographe
+            title: Titre
+            prestations: Commentaires
+            note: Note
+            active:
+                title: Actif
+                td:
+                    enabled: Activer
+                    disabled: Désactiver
+            createdAt: Date de création
+            btn:
+                details: Détails
+    devis:
+        read:
+            h1: Devis
+            h2: Détails
+            breadh1: Devis
+            breadh2: Détails
+            services:
+                title: Prestations
+                empty: Pas de prestations pour ce devis
+            h3:
+                prices: Prix
+                prices %price%: Prix (en %price%)
+                book: Photos
+            dt:
+                category: Catégorie
+                status: Statut
+                notation: Note
+                duration: Durée
+                currency: Devise
+                active:
+                    enabled: Actif
+                    disabled: Inactif
+            btn:
+                disabled: Désactiver ce devis
+                back: Retour

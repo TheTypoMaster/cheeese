@@ -1,8 +1,8 @@
 {% extends '::base.html.twig'%}
-{% block titleH1 %}{% trans from "company" %}company.edit.h1{% endtrans %}{% endblock %}
-{% block titleH2 %}{% trans from "company" %}company.edit.h2{% endtrans %}{% endblock %}
-{% block breadcrumbH1 %}{% trans from "company" %}company.edit.breadcrumbh1{% endtrans %}{% endblock %}
-{% block breadcrumbH2 %}{% trans from "company" %}company.edit.breadcrumbh2{% endtrans %}{% endblock %}
+{% block titleH1 %}{% trans from "company" %}companies.company.edit.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "company" %}companies.company.edit.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "company" %}companies.company.edit.breadcrumbh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "company" %}companies.company.edit.breadcrumbh2{% endtrans %}{% endblock %}
 {% block content %}
 <section class="content">
 	<div class="row">
@@ -10,7 +10,7 @@
                             <!-- general form elements -->
                             <div class="box box-primary">
                                 <div class="box-header">
-                                    <h3 class="box-title">{% trans from "company" %}company.edit.header{% endtrans %}</h3>
+                                    <h3 class="box-title">{% trans from "company" %}companies.company.edit.header{% endtrans %}</h3>
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
                                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
@@ -19,7 +19,8 @@
                                     </div><!-- /.box-body -->
 
                                     <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary">{% trans from "company" %}company.edit.submit{% endtrans %}</button>
+                                        <button type="submit" class="btn btn-primary">
+                                            {% trans from "company" %}companies.company.edit.submit{% endtrans %}</button>
                                     </div>
                                 {{ form_end(form) }}
                             </div>

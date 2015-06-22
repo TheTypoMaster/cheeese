@@ -1,0 +1,91 @@
+gestion:
+    security:
+        login:
+            title: Connexion
+            field:
+                username: Utilisateur
+                password: Mot de passe
+            btn:
+                connect: Connexion    
+    services:
+        index:
+            h1: Prestations
+            h2: Liste des prestations
+            breadh1: Prestations
+            breadh2: Liste des prestations
+    offers:
+        index:
+            h1: Devis
+            h2: Liste des devis
+            breadh1: Devis
+            breadh2: Liste des devis
+    users:
+        administrators:
+            index:
+                h1: Administrateurs
+                h2: Liste des administrateurs
+                breadh1: Administrateurs
+                breadh2: Liste des administrateurs
+        individuals:
+            index:
+                h1: Particuliers
+                h2: Liste des particuliers
+                breadh1: Particuliers
+                breadh2: Liste des particuliers
+        photographers:
+            index:
+                h1: Photographes
+                h2: Liste des photographes
+                breadh1: Photographes
+                breadh2: Liste des photographes
+            verify:
+                h2: Liste des photographes non vérifiés
+                breadh2: Liste des photographes non vérifiés
+            list:
+                address: Adresse
+                identification: Identification
+                creationdate: Date de création
+                update: Date maj
+                status: Statut
+                href:
+                    ok: Valide
+                    ko: Non valide
+                btn:
+                    back: Retour
+            show:
+                h1: Photographe
+                h2: Détails
+                breadh2: Détails
+                breadh1: Photographe
+                btn:
+                    disabled: Désactiver utilisateur
+        show:
+                username: Utilisateur
+                firstName: Prénom
+                lastName: Nom
+                email: Email
+                telephone: Téléphone
+                createdAt: Membre depuis
+                lastLogin: Derniére connexion
+                note: Note
+                commentaires: Commentaire(s)
+                h2:
+                    informations: Informations
+                    company: Entreprise
+                    devis: Devis
+                    services: Prestations
+        list:
+            username: Utilisateur
+            lastname: Nom
+            firstname: Prénom
+            creationdate: Membre depuis
+            lastconnexion: Derniére connexion
+            prestation: Nombre de prestations
+            note: Note
+            btn:
+                details: Détails
+                verify: Vérifier photographes
+    devis:
+        read:
+            dt:
+                photographer: Photographe

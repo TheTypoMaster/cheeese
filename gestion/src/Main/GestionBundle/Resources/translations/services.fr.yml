@@ -1,0 +1,31 @@
+gestion:
+    service:
+        show:
+            h1: Prestation
+            h2: Détails
+            breadh1: Prestation
+            breadh2: Détails
+            header: Détails de la prestation
+            timeline: Timeline
+            li:
+                at: à
+            list:
+                th:
+                    reference: Référence
+                    date: Date
+                    town: Commune
+                    client: Client
+                    status: Statut
+                    photographer: Photographe
+                    devis: Devis
+                btn:
+                    details: Détails
+            evaluations:
+                client:
+                    notation:
+                        service: Notation de la prestation
+                        photographer: Notation du photographe
+
+            btn:
+                back: Retour
+                evaluations: Evaluations

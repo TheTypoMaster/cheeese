@@ -1,0 +1,17 @@
+community:
+    default:
+        headband:
+            info:
+                banner: Alert info!
+                message: nouveau message
+            warning:
+                banner: Alert warning!
+                message: awaiting
+            danger:
+                banner: Alert danger!
+                message: false data
+        index:
+            h1: Tableau d'accueil
+            h2: index
+            breadh1: Tableau d'accueil
+            breadh2: Index

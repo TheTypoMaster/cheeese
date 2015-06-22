@@ -1,0 +1,70 @@
+community:
+    service:
+        index:
+            h1: Mes prestations
+            h2: Toutes mes prestations
+            breadh1: Mes prestations
+            breadh2: Toutes mes prestations
+            header: Mes prestations
+        list:
+            th:
+                date: Date
+                town: Commune
+                devis: Devis
+                client: Client
+                status: Statut
+                reference:
+                    title: Référence
+                    processing: En cours
+                    photographer_ok: Pré-approuvée
+                    photographer_ko: Refusée
+                    client_ko: Annulée
+                    success: Confirmée
+                    old: Traitée
+            btn:
+                details: Détails
+        notation:
+            h1: Evaluation
+            h2: Mon evaluation
+            breadh1: Evaluation
+            breadh2: Mon evaluation
+            header: Mon evaluation
+            btn:
+                submit: Soumettre
+
+        show:
+            h1: Prestation
+            h2: Détails
+            breadh1: Prestation
+            breadh2: Détails
+            header: Prestation
+            li:
+                at: à
+            btn:
+                back: Retour à la liste
+                approve: Pré-approuver cette prestation
+                refuse: Refuser cette prestation
+                evaluate: Evaluer cette prestation
+                evaluations: 
+                    title:
+                        you: Vous
+                    client:
+                        notation:
+                            service: Notation de la prestation
+                            photographer: Notation du photographe
+            timeline: 
+                title:
+                    you: Vous
+                    status: Statut
+                messages:
+                    prestation:
+                        creation: Prestation créée
+                        preapproved: Prestation pré-approuvée
+                        refused: Prestation refusée
+                        canceled: Prestation annulée
+                        confirmed: Prestation validée
+
+            response: 
+                add: Ajouter une réponse
+                btn:
+                    submit: Soumettre

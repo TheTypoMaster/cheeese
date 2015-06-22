@@ -36,16 +36,16 @@
                                         {% else %}
                                         {{ app.user.firstname }} {{ app.user.lastname }}
                                         {% endif %}
-                                        <small>{% trans from "menu" %}menu.membersince{% endtrans %} {{ app.user.createdAt|date('d-m-Y') }}</small>
+                                        <small>{% trans from "menu" %}menu.up.membersince{% endtrans %} {{ app.user.createdAt|date('d-m-Y') }}</small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">{% trans from "menu" %}menu.profile{% endtrans %}</a>
+                                        <a href="#" class="btn btn-default btn-flat">{% trans from "menu" %}menu.up.profile{% endtrans %}</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">{% trans from "menu" %}menu.signout{% endtrans %}</a>
+                                        <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">{% trans from "menu" %}menu.up.signout{% endtrans %}</a>
                                     </div>
                                 </li>
                             </ul>

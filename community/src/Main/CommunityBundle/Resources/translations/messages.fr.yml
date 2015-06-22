@@ -1,0 +1,42 @@
+security:
+    login:
+        header: Connexion
+        field:
+            username: Utilisateur
+            password: Mot de passe
+            rememberme: Se rappeler de moi
+        link:
+            signin: Se connecter
+            forgot: J'ai oublié mon mot de passe
+            register: Inscription
+    register:
+        header: Nouveau membre
+        form:
+            email: Email
+            username: Nom d'utilisateur
+            plainPassword:
+                first: Mot de passe
+                second: Répétez mot de passe
+        btn:
+            submit: M'inscrire
+        link: Connexion
+    resetting:
+        request:
+            header: J'ai oublié mon mot de passe
+            field:
+                username: Utilisateur
+            btn:
+                submit: Envoyer
+            link:
+                login: Connexion
+            title: J'ai oublié mon mot de passe
+    registeration:
+        register:
+            login:
+                header: Connexion
+            checkemail:
+                title: Vérification de l'email
+                header: Vérifiez votre email
+            confirmed:
+                title: Email confirmé
+                header: Votre email est confirmé

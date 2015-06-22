@@ -16,7 +16,9 @@ community:
             breadh1: Devis
             breadh2: Créer
             header: Nouveau devis
-            submit: Soumettre
+            btn:
+                submit: Soumettre
+                back: Retour à la liste
         read:
             h1: Mes Devis
             h2: Détails
@@ -76,9 +78,9 @@ community:
                     add: Ajouter
         view:
             h1: Mes devis
-            h2: voir
+            h2: Liste
             breadh1: Mes devis
-            breadh2: Voir
+            breadh2: Liste
             header: Mes devis
             btn:
                 create: Créer
@@ -128,5 +130,7 @@ community:
             header:
                 big: Zone de déplacements
                 small: Mettez à jour votre zone de déplacements
+            btn:
+                submit: Soumettre
 
 

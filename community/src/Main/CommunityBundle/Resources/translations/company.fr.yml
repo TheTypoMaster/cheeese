@@ -1,0 +1,63 @@
+companies:
+    company:
+        edit:
+            h1: Mon entreprise
+            h2: Editer
+            breadcrumbh1: Mon entreprise
+            breadcrumbh2: Editer
+            header: Editer entreprise
+            btn:
+                submit: Soumettre
+        new:
+            h1: Mon entreprise
+            h2: Créer
+            breadcrumbh1: Mon entreprise
+            breadcrumbh2: Créer
+            header: Créer entreprise
+            btn:
+                submit: Soumettre
+        view:
+            h1: Mon entreprise
+            h2: Voir
+            breadcrumbh1: Mon entreprise
+            breadcrumbh2: Voir
+            header: Mon entreprise
+            btn:
+                edit: Editer
+            th:
+                title: Titre
+                address: Adresse
+                town: Commune
+                country: Pays
+                code: Siret
+                status: Statut
+    iban:
+        view:
+            h1: Détails bancaires
+            h2: Iban
+            breadcrumbh1: Détails bancaires
+            breadcrumbh2: Iban
+            header: Détails bancaires
+            th:
+                title: Nom de la banque
+                address: Adresse de la banque
+                iban: Iban
+                bic: BIC
+            btn:
+                edit: Editer
+        new:
+            h1: Détails bancaires
+            h2: Création
+            breadcrumbh1: Détails bancaires
+            breadcrumbh2: Création
+            header: Création de vos détails bancaires
+            btn:
+                submit: Soumettre
+        edit:
+            h1: Détails bancaires
+            h2: Edition
+            breadcrumbh1: Détails bancaires
+            breadcrumbh2: Edition
+            header: Edition de vos détails bancaires
+            btn:
+                submit: Soumettre
