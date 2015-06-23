@@ -20,9 +20,9 @@ community:
                 submit: Soumettre
                 back: Retour à la liste
         read:
-            h1: Mes Devis
+            h1: Devis
             h2: Détails
-            breadh1: Mes Devis
+            breadh1: Devis
             breadh2: Détails
             btn:
                 edit: Editer

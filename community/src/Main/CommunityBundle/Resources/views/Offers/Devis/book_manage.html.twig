@@ -1,15 +1,17 @@
 {% extends '::base.html.twig'%}
 {% block titleH1 %}{% trans from "offers" %}community.devis.read.h1{% endtrans %}{% endblock %}
-{% block titleH2 %}{% trans from "offers" %}community.devis.read.h2{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "offers" %}community.devis.read.book.title{% endtrans %}{% endblock %}
 {% block breadcrumbH1 %}{% trans from "offers" %}community.devis.read.breadh1{% endtrans %}{% endblock %}
-{% block breadcrumbH2 %}{% trans from "offers" %}community.devis.read.breadh2{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "offers" %}community.devis.read.book.title{% endtrans %}{% endblock %}
 {% block content %}
                 <!-- Main content -->
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">{{ devis.title }}</h3>
+                                    <h3 class="box-title">
+                                    	{% trans from "offers" %}community.devis.read.book.title{% endtrans %}
+                                    	</h3>
                                 </div><!-- /.box-header -->
                                 
                                 <div class="box-body table-responsive no-padding">
@@ -40,13 +42,13 @@
                                                 </td>
                                                 {% else %}
                                                 <td>
-                                                    <a href="" class="btn btn-primary btn-sm">
+                                                    <a href="{{ path('photo_cover', {'id' :devis.id, 'url' : entity['id']}) }}" class="btn btn-primary btn-sm">
                                                     {% trans from "offers" %}community.devis.read.book.btn.profile{% endtrans %}
                                                     </a>
                                                 </td>
                                                 {% endif %}
                                                 <td>
-                                                    <a href="{{ path('photo_delete', {'id' :devis.id, 'url' : entity['id']})}}" class="btn btn-danger btn-sm">
+                                                    <a href="{{ path('photo_delete', {'id' :devis.id, 'url' : entity['id']}) }}" class="btn btn-danger btn-sm">
                                                     {% trans from "offers" %}community.devis.read.book.btn.delete{% endtrans %}
                                                     </a>
                                                 </td>

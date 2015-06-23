@@ -165,4 +165,29 @@ class ServiceDevisBook
 			return false;
 		}
 	}
+
+	/**
+	 * [setcoverPhoto description]
+	 * @param  DevisBook $photo [description]
+	 * @param  Devis     $devis [description]
+	 * @return [type]           [description]
+	 */
+	public function setcoverPhoto(DevisBook $photo, Devis $devis)
+	{
+		$oldCover = $this->repository->findOneBy(array(
+			'profile' => 1,
+			'devis'	  => $devis->getId()
+			));
+		$photo->setProfile(1);
+		if($oldCover){
+		$oldCover->setProfile(0);		
+		}
+		try {
+			$this->em->flush();
+			return true;	
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+			return false;
+		}
+	}
 }

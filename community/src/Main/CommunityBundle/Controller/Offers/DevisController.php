@@ -403,4 +403,35 @@ class DevisController extends Controller
 		}
 
 	}
+
+	/**
+	 *
+	 * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/devis/{id}/cover-photos/{url}", requirements={"id" = "\d+"}, name="photo_cover")
+	 */
+	public function setCoverPhotoAction($id, $url)
+	{
+		$usr= $this->get('security.context')->getToken()->getUser();
+		//@TODO: Check that the user has the rights
+		$serviceDevis = $this->get('service_devis');
+		$devis = $serviceDevis->fetch($id);
+		if(!$devis){
+				return $this->redirect($this->generateUrl('devis'));
+			}
+		$servicePhoto = $this->get('service_devis_book');
+		$photo = $servicePhoto->fetchByUrl($url);
+		if(!$photo || ($id != $photo->getDevis()->getId())) {
+			return $this->redirect($this->generateUrl('devis'));
+		}
+		$update = $servicePhoto->setcoverPhoto($photo, $devis);
+		if($update)
+		{
+			return $this->redirect($this->generateUrl('photo_manage', array(
+														'id' => $id
+														)
+													));
+		}
+
+	}
+
 }
