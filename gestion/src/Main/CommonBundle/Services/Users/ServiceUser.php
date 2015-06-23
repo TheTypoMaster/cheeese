@@ -77,6 +77,12 @@ class ServiceUser
 		}
 	}
 
+	/**
+	 * [updatePassword description]
+	 * @param  User   $user [description]
+	 * @param  [type] $data [description]
+	 * @return [type]       [description]
+	 */
 	public function updatePassword(User $user, $data)
 	{
 		
@@ -89,6 +95,57 @@ class ServiceUser
 			var_dump($e->getMessage());
 			return false;
 		}
+	}
+
+	/**
+	 * [createUser description]
+	 * @param  [type] $data [description]
+	 * @return [type]       [description]
+	 */
+	public function createUser($data)
+	{
+		$username = $data['username'];
+		$email = $data['email'];
+		$password = $data['password'];
+		$user = new User();
+		$user->setPlainPassword($password);
+		$user->setEmail($email);
+		$user->setUsername($username);
+		$user->setRoles(array('ROLE_ADMIN'));
+		$user->setEnabled(1);
+		try {
+			$this->em->persist($user);
+			$this->em->flush();
+			return true;
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+			return false;
+			
+		}
+	}
+
+	/**
+	 * [disableAdmin description]
+	 * @param  User   $user [description]
+	 * @return [type]       [description]
+	 */
+	public function disableAdmin(User $user)
+	{
+		$roles = $user->getRoles();
+		if (in_array('ROLE_ADMIN', $roles))
+		{
+			$user->setEnabled(0);
+			$user->setUpdatedAt(new \DateTime('now'));
+			try{
+				$this->em->flush();				
+				return true;
+			}catch(\Exception $e){
+				var_dump($e->getMessage());
+				return false;
+			}
+		}
+		return false;
+
 	}
 	
 }

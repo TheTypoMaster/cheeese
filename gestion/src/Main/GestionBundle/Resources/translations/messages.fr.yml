@@ -26,6 +26,8 @@ gestion:
                 h2: Liste des administrateurs
                 breadh1: Administrateurs
                 breadh2: Liste des administrateurs
+                btn:
+                    create: Nouvel administrateur
         individuals:
             index:
                 h1: Particuliers
@@ -52,6 +54,7 @@ gestion:
                     ko: Non valide
                 btn:
                     back: Retour
+                    disable: Désactiver utilisateur
             show:
                 h1: Photographe
                 h2: Détails
@@ -69,6 +72,7 @@ gestion:
                 lastLogin: Derniére connexion
                 note: Note
                 commentaires: Commentaire(s)
+                enable: Statut
                 h2:
                     informations: Informations
                     company: Entreprise

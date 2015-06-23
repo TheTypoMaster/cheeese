@@ -15,6 +15,13 @@
                                     <h3 class="box-title">{% trans %}gestion.users.administrators.index.h2{% endtrans %}</h3>
                                 </div><!-- /.box-header -->
                                 {% include "MainGestionBundle:Users:list.html.twig" %}
+                                {% if is_granted('ROLE_SUPER_ADMIN')%}
+                                <div class="box-footer">
+                                    <a href="{{ path('create_user')}}" class="btn btn-primary">
+                                        {% trans %}gestion.users.administrators.index.btn.create{% endtrans %}
+                                    </a>
+                                </div>
+                                {% endif %}
                             </div><!-- /.box -->
                         </div>
                     </div>

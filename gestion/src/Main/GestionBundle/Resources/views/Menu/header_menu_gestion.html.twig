@@ -42,7 +42,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">{% trans from "menu" %}menu.up.profile{% endtrans %}</a>
+                                        <a href="{{ path('security')}}" class="btn btn-default btn-flat">{% trans from "menu" %}menu.up.profile{% endtrans %}</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">{% trans from "menu" %}menu.up.signout{% endtrans %}</a>

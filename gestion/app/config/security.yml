@@ -1,4 +1,6 @@
 security:
+    role_hierarchy:
+        ROLE_SUPER_ADMIN:       ROLE_ADMIN
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
 
@@ -25,4 +27,6 @@ security:
                 target: dashboard
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/create-user, role: ROLE_SUPER_ADMIN }
+        - { path: ^/disable-user, role: ROLE_SUPER_ADMIN }
         - { path: ^/, role: ROLE_ADMIN }

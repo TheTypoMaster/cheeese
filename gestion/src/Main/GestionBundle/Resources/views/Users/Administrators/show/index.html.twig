@@ -38,13 +38,20 @@
                                         <br>
                                         <dt> {% trans %}gestion.users.show.note{% endtrans %} </dt>
                                         <dd> {{ user.note }} ( {{ user.prestations }} {% trans %}gestion.users.show.commentaires{% endtrans %})</dd>
+                                        <dt>{% trans %}gestion.users.show.enable{% endtrans %}</dt>
+                                        <dd>{{ user.enabled }}</dd>
                                         
                                     </dl>
                                 </div><!-- /.box-body --> 
                                 <div class="box-footer clearfix">
-                                    <a class="btn btn-default pull-left" href="{{ path('users', {'type' : 'photographers' } ) }}">
+                                    <a class="btn btn-default " href="{{ path('users', {'type' : 'photographers' } ) }}">
                                         {% trans %}gestion.users.photographers.list.btn.back{% endtrans %}
                                     </a>
+                                    {% if is_granted('ROLE_SUPER_ADMIN') and 1 == user.enabled %}
+                                        <a class="btn btn-danger " href="{{ path('disable_user', {'id' : user.id } ) }}">
+                                        {% trans %}gestion.users.photographers.list.btn.disable{% endtrans %}
+                                    </a>
+                                    {% endif %}
                                 </div>  
                             </div>
                             </div>

@@ -1,0 +1,10 @@
+gestion:
+    security:
+        read:
+            h1: Sécurité
+            h2: Changement de mot de passe
+            breadh1: Sécurité
+            breadh2: Changement de mot de passe
+            header: Changez votre mot de passe
+            btn:
+                submit: Soumettre

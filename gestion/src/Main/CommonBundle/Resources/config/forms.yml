@@ -20,6 +20,11 @@ services:
         arguments: [@security.context, @security.password_encoder ]
         tags:
             - { name: form.type, alias: form_security }
+    form_create_admin:
+        class: "Main\CommonBundle\Form\Users\FormCreateAdminType"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_create_admin }
     form_confirm_company:
         class: "Main\CommonBundle\Form\Companies\FormConfirmCompanyType"
         tags:

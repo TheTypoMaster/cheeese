@@ -130,4 +130,58 @@ class UsersController extends Controller
 				));
 		}
 	}
+
+	/**
+	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/create-user", name="create_user")
+	 */
+	public function createAdminAction(Request $request)
+	{
+		$form = $this->createForm('form_create_admin', null, array());
+		$form->handleRequest($request);
+		if($request->isMethod('POST'))
+		{
+			$params = $request->request->get('form_create_admin');
+			if ($form->isValid())
+			{
+				$serviceUser = $this->get('service_user');
+				$create = $serviceUser->createUser($params);
+				if($create){
+					return $this->redirect($this->generateUrl('users', array(
+							'type' => 'administrators'
+						)));
+				}
+				
+			}
+				
+		}
+			return $this->render('MainGestionBundle:Users\Administrators\show:new.html.twig', array(
+				'form' 	=> $form->createView(),
+				));
+	}
+
+	/**
+	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/disable-user/{id}", name="disable_user")
+	 */
+	public function disableAdminAction($id)
+	{
+		$serviceUser = $this->get('service_user');
+		$user = $serviceUser->getUser($id);
+		if(!$user) {
+			return $this->redirect($this->generateUrl('users', array(
+							'type' => 'administrators'
+						)));
+		}
+		$disable = $serviceUser->disableAdmin($user);
+		if($disable){
+					return $this->redirect($this->generateUrl('user_show', array(
+							'id' => $id
+						)));
+				}
+	}
 }
