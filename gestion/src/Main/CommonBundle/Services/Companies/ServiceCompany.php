@@ -146,7 +146,9 @@ class ServiceCompany
 	*/
 	public function verifyPhotographer(Company $company, $result)
 	{
-		if(in_array('ROLE_ADMIN', $this->getCurrentUser()->getRoles())) {
+		if(in_array('ROLE_ADMIN', $this->getCurrentUser()->getRoles()) 
+			|| in_array('ROLE_SUPER_ADMIN', $this->getCurrentUser()->getRoles())) 
+		{
 			if($result == '0') {
 				$status = $this->em->getRepository('MainCommonBundle:Status\PhotographerStatus')->findOneById(self::VERIFICATION_KO);
 			}elseif ($result == '1') {
