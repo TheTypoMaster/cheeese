@@ -1,4 +1,4 @@
-{% if book|length == 0 %}
+{% if photos|length == 0 %}
                             	<div class="box">
                             		<div class="box-header">
                                     <h3 class="box-title">
@@ -24,12 +24,36 @@
                                     </h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
+                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                                            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            {% for photo in photos %}
+                                            {% if 1 == photo['profile']%}
+                                                <div class="item active">
+                                            {% else %}
+                                                <div class="item">
+                                            {% endif %}
+                                                <img src="data:{{ photo['type'] }};base64,{{ photo['content'] }}"> 
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                        </a>
+                                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="box-footer">
                                     <a href="{{ path('photo_manage', {'id' : devis.id} )}}" class="btn btn-default btn-sm">
                                         {% trans from "offers" %} community.devis.read.book.btn.manage{% endtrans %}
                                     </a>
-                                    {% if book|length < 3 %}
+                                    {% if photos|length < 3 %}
                                        <a href="{{ path('photo_add', {'id' : devis.id}) }}" class="btn btn-primary btn-sm">
                                         {% trans from "offers" %}community.devis.read.book.btn.add{% endtrans %}
                                         </a>

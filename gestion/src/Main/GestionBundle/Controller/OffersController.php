@@ -43,11 +43,11 @@ class OffersController extends Controller
 		$servicePrices = $this->get('service_prices');
 		$serviceDevisBook = $this->get('service_devis_book');
 		$prices = $servicePrices->getPrices($devis);
-		$book = $serviceDevisBook->getBook($devis);
+		$book = $serviceDevisBook->fetchBook($devis);
 		return $this->render('MainGestionBundle:Offers\show:index.html.twig',array(
 			'devis' 		=> $devis,
 			'prices'	  	=> $prices,
-			'book'		  	=> $book,
+			'photos'		=> $book,
 			'services' 	  	=> $prestations
 			));	
 	}

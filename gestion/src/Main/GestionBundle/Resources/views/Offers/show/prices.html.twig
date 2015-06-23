@@ -2,7 +2,7 @@
                             	                      
                                 	<div class="box-body table-responsive">
                                         <h4>
-                                            {% trans from "offers" %}community.devis.read.prices.empty{% endtrans %}
+                                            {% trans from "offers" %}gestion.devis.read.prices.empty{% endtrans %}
                                         </h4>
                                 	</div>
 {% else %}
@@ -11,13 +11,13 @@
                                         <tbody>
                                             <tr>
                                                 <th>
-                                                {% trans from "offers" %}community.devis.read.prices.th.duration{% endtrans %}
+                                                {% trans from "offers" %}gestion.devis.read.prices.th.duration{% endtrans %}
                                                 </th>
                                                 <th>
-                                                {% trans from "offers" %}community.devis.read.prices.th.price{% endtrans %}
+                                                {% trans from "offers" %}gestion.devis.read.prices.th.price{% endtrans %}
                                                 </th>
                                                 <th>
-                                                {% trans from "offers" %}community.devis.read.prices.th.status{% endtrans %}
+                                                {% trans from "offers" %}gestion.devis.read.prices.th.status{% endtrans %}
                                                 </th>
                                             </tr>
                                             {% for entity in prices %}
@@ -27,13 +27,14 @@
                                                 {% if 1 == entity.active %}
                                                 <td>
                                                     <span class="label label-success">
-                                                        {% trans from "offers" %}community.devis.read.prices.th.enabled{% endtrans %}
+                                                        {% trans from "offers" %}gestion.devis.read.prices.th.enabled{% endtrans %}
                                                     </span>
                                                 </td>
                                                 {% else %}
                                                 <td>
                                                     <span class="label label-warning">
-                                                        {% trans from "offers" %}community.devis.read.prices.th.disabled{% endtrans %}
+                                                        {% trans from "offers" %}gestion.devis.read.prices.th.disabled
+                                                        {% endtrans %}
                                                     </span>
                                                 </td>
                                                 {% endif %}

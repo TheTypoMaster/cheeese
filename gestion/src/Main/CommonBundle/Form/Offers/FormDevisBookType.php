@@ -56,7 +56,7 @@ class FormDevisBookType extends AbstractType
             'label'    => false,
             'constraints' => array(
                 new File(array(
-                    'maxSize' => '50000',
+                    'maxSize' => '1M',
                     'mimeTypes' => array(
                         'image/jpeg', 
                         'image/jpg'

@@ -87,12 +87,12 @@ class DevisController extends Controller
 			$servicePrices = $this->get('service_prices');
 			$serviceDevisBook = $this->get('service_devis_book');
 			$prices = $servicePrices->getPrices($devis);
-			$book = $serviceDevisBook->getBook($devis);
+			$photos = $serviceDevisBook->fetchbook($devis);
 			$prestations = $servicePrestation->getByDevis($devis->getId());
 			return $this->render('MainCommunityBundle:Offers\Devis:index.html.twig', array(
 					'devis' 	  => $devis,
 					'prices'	  => $prices,
-					'book'		  => $book,
+					'photos'	  => $photos,
 					'services' 	  => $prestations
 			));
 		}

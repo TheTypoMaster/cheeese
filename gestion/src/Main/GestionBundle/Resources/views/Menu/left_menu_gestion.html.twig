@@ -48,6 +48,14 @@
                                 <span>{% trans from "menu" %}menu.left.services{% endtrans %}</span>
                             </a>
                         </li>
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-globe"></i> 
+                                <span>{% trans from "menu" %}menu.left.geo{% endtrans %}</span>
+                            </a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </section>
                 <!-- /.sidebar -->

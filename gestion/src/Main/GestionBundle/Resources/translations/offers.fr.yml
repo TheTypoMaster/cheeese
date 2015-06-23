@@ -27,12 +27,21 @@ gestion:
                 prices: Prix
                 prices %price%: Prix (en %price%)
                 book: Photos
+            prices:
+                th:
+                    duration: Durée
+                    price: Prix
+                    status: Statut
+                    enabled: Actif
+                    disabled: Inactif
+
             dt:
                 category: Catégorie
                 status: Statut
                 notation: Note
                 duration: Durée
                 currency: Devise
+                photographer: Photographe
                 active:
                     enabled: Actif
                     disabled: Inactif
