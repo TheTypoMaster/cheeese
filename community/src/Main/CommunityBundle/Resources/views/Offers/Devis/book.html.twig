@@ -23,6 +23,19 @@
                                         {% trans from "offers" %}community.devis.read.book.title{% endtrans %}
                                     </h3>
                                 </div><!-- /.box-header -->
+                                <div class="box-body">
+                                </div>
+                                <div class="box-footer">
+                                    <a href="{{ path('photo_manage', {'id' : devis.id} )}}" class="btn btn-default btn-sm">
+                                        {% trans from "offers" %} community.devis.read.book.btn.manage{% endtrans %}
+                                    </a>
+                                    {% if book|length < 3 %}
+                                       <a href="{{ path('photo_add', {'id' : devis.id}) }}" class="btn btn-primary btn-sm">
+                                        {% trans from "offers" %}community.devis.read.book.btn.add{% endtrans %}
+                                        </a>
+                                     {% endif %}  
+
+                                    </div>
                             </div><!-- /.box -->
                             
                             {% endif %}

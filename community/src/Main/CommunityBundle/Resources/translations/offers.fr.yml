@@ -74,8 +74,15 @@ community:
             book:
                 title: Photos
                 empty: Vous n'avez pas de photos rattachées à ce devis.
+                th:
+                    profile: Photo de couverture
+                    yes: Oui
                 btn:
-                    add: Ajouter
+                    add: Ajouter une photo
+                    manage: Gérer les photos
+                    delete: Supprimer
+                    profile: Définir comme photo de couverture
+                    back: Retour
         view:
             h1: Mes devis
             h2: Liste

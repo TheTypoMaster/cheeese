@@ -53,7 +53,7 @@ class FormDevisBookType extends AbstractType
     {    
 
        $builder->add('photo', 'file', array(
-            'label'    => 'Pièce d\'identité',
+            'label'    => false,
             'constraints' => array(
                 new File(array(
                     'maxSize' => '50000',
@@ -63,33 +63,10 @@ class FormDevisBookType extends AbstractType
                     ),
                 )),
                 new NotNull()
+
             )
                
         ));
-       $builder->add('profile', 'checkbox', array(
-                'label'     => 'Afficher publiquement ?',
-                'required'  => false,
-        ));
-
-        $builder->addEventListener ( FormEvents::PRE_SUBMIT, array (
-            $this,
-            'onPreSubmit'
-        ));
-    }
-
-     /**
-     * Méthode appelée avant la soumission du formulaire
-     *
-     * @param FormEvent $event
-     */
-    function onPreSubmit (FormEvent $event)
-    {
-        $data = $event->getData();  
-        $form = $event->getForm();       
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
-        //die;
     }
     
     /**

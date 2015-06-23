@@ -331,13 +331,10 @@ class DevisController extends Controller
 				$params = $request->request->get('form_devis_book');
 				if ($form->isValid())
 				{
-					echo '<pre>';
-					var_dump($params);
-					echo '</pre>';
-					die;
-					//$servicePrices = $this->get('service_prices');					
+					$servicePhoto = $this->get('service_devis_book');
+					$add = $servicePhoto->addPhoto($devis, $form->getData());					
 					if($add) {
-							return $this->redirect($this->generateUrl('devis_read', array(
+							return $this->redirect($this->generateUrl('photo_manage', array(
 														'id' => $id
 														)
 													));
@@ -350,5 +347,60 @@ class DevisController extends Controller
 					'devis'	=> $devis
 			));
 		}
+	}
+
+	/**
+	 *
+	 * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/devis/{id}/manage-photos", requirements={"id" = "\d+"}, name="photo_manage")
+	 */
+	public function managePhotoAction($id)
+	{
+		$usr= $this->get('security.context')->getToken()->getUser();
+		//@TODO: Check that the user has the rights
+		$serviceDevis = $this->get('service_devis');
+		$devis = $serviceDevis->fetch($id);
+		if(!$devis){
+				return $this->redirect($this->generateUrl('devis'));
+			}
+		else
+		{
+			$servicePhoto = $this->get('service_devis_book');
+			$photos = $servicePhoto->fetchBook($devis);
+			return $this->render('MainCommunityBundle:Offers\Devis:book_manage.html.twig', array(
+					'photos'	=> $photos,
+					'devis'		=> $devis
+			));
+		}
+	}
+
+	/**
+	 *
+	 * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/devis/{id}/delete-photos/{url}", requirements={"id" = "\d+"}, name="photo_delete")
+	 */
+	public function deletePhotoAction($id, $url)
+	{
+		$usr= $this->get('security.context')->getToken()->getUser();
+		//@TODO: Check that the user has the rights
+		$serviceDevis = $this->get('service_devis');
+		$devis = $serviceDevis->fetch($id);
+		if(!$devis){
+				return $this->redirect($this->generateUrl('devis'));
+			}
+		$servicePhoto = $this->get('service_devis_book');
+		$photo = $servicePhoto->fetchByUrl($url);
+		if(!$photo || ($id != $photo->getDevis()->getId())) {
+			return $this->redirect($this->generateUrl('devis'));
+		}
+		$delete = $servicePhoto->deletePhoto($photo);
+		if($delete)
+		{
+			return $this->redirect($this->generateUrl('photo_manage', array(
+														'id' => $id
+														)
+													));
+		}
+
 	}
 }

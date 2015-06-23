@@ -1,0 +1,86 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "offers" %}community.devis.read.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "offers" %}community.devis.read.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "offers" %}community.devis.read.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "offers" %}community.devis.read.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+                <!-- Main content -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">{{ devis.title }}</h3>
+                                </div><!-- /.box-header -->
+                                
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th></th>
+                                                <th>{% trans from "offers" %}community.devis.read.book.th.profile{% endtrans %}</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                            {% for entity in photos %}
+                                            <tr>
+                                                <td> 
+                                                <img src="data:{{ entity['type'] }};base64,{{ entity['content'] }}" style="width:30%;height:30%;"> 
+                                                </td>
+                                                {% if 1 == entity['profile'] %}
+	                                                <td>
+	                                                    <span class="label label-success">
+	                                                        {% trans from "offers" %}community.devis.read.book.th.yes{% endtrans %}
+	                                                    </span>
+	                                                </td>
+                                                {% else %}
+                                                	<td></td>
+                                                {% endif %}
+                                                {% if 1 == entity['profile'] %}
+                                                <td>
+                                                </td>
+                                                {% else %}
+                                                <td>
+                                                    <a href="" class="btn btn-primary btn-sm">
+                                                    {% trans from "offers" %}community.devis.read.book.btn.profile{% endtrans %}
+                                                    </a>
+                                                </td>
+                                                {% endif %}
+                                                <td>
+                                                    <a href="{{ path('photo_delete', {'id' :devis.id, 'url' : entity['id']})}}" class="btn btn-danger btn-sm">
+                                                    {% trans from "offers" %}community.devis.read.book.btn.delete{% endtrans %}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                 <div class="box-footer">
+                                       <a href="{{ path('devis_read', {'id' : devis.id}) }}" class="btn btn-default btn-sm">
+                                        {% trans from "offers" %}community.devis.read.book.btn.back{% endtrans %}
+                                   		 </a> 
+                                   		  {% if photos|length < 3 %}
+                                       <a href="{{ path('photo_add', {'id' : devis.id}) }}" class="btn btn-primary btn-sm">
+                                        {% trans from "offers" %}community.devis.read.book.btn.add{% endtrans %}
+                                        </a>
+                                     {% endif %} 
+                                 </div>
+                            </div><!-- /.box -->                           
+                        </div>
+                    </div>
+{% endblock %}
+
+{% block javascripts_inline %}
+        <script type="text/javascript">
+            $(function() {
+                $('#datatable').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
+{% endblock %}

@@ -25,7 +25,7 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context]
     service_devis_book:
         class: "Main\CommonBundle\Services\Offers\ServiceDevisBook"
-        arguments: [@doctrine.orm.entity_manager, @security.context]
+        arguments: [@doctrine.orm.entity_manager, @security.context, "%upload_devis_path%"]
     service_moves_radius:
         class: "Main\CommonBundle\Services\Offers\ServiceMovesRadius"
         arguments: [@doctrine.orm.entity_manager, @security.context]

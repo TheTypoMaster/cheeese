@@ -19,7 +19,7 @@
                                         <strong>{{ devis.title }}</strong>                                        
                                     </h3>
                                 </div>
-                               <form action="#" method="post" {{ form_enctype(form) }}>
+                               {{ form_start(form) }}
                                     
                                     <div class="box-body">									
                                         {{ form_widget(form) }}
@@ -33,7 +33,7 @@
                                         	{% trans from "offers" %}community.devis.read.prices.new.btn.back{% endtrans %}
                                         </a>
                                     </div>
-                                </form>
+                                {{ form_end(form) }}
                             </div>
 		</div>	
 	</div>
