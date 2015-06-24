@@ -4,7 +4,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="{{ image64() }}"  class="img-circle" alt="User"/>
+                            <img src="{{ image64(app.user.photo, app.user.photoType) }}"  class="img-circle" alt="User"/>
                         </div>
                         <div class="pull-left info">
                         	{% if app.user.lastname == null %}
