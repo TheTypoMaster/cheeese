@@ -14,6 +14,9 @@ services:
     service_town:
         class: "Main\CommonBundle\Services\Geo\ServiceTown"
         arguments: [@doctrine.orm.entity_manager]
+    service_department:
+        class: "Main\CommonBundle\Services\Geo\ServiceDepartment"
+        arguments: [@doctrine.orm.entity_manager]
     service_user:
         class: "Main\CommonBundle\Services\Users\ServiceUser"
         arguments: [@doctrine.orm.entity_manager, @security.context]

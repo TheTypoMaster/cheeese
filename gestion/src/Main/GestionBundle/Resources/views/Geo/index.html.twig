@@ -1,0 +1,36 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans %}gestion.geo.index.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans %}gestion.geo.index.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-globe"></i>
+{% trans %}gestion.geo.index.breadh1{% endtrans %}
+{% endblock %}
+{% block breadcrumbH2 %}{% trans %}gestion.geo.index.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+                <!-- Main content -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">{% trans %}gestion.geo.index.header{% endtrans %}</h3>
+                                </div><!-- /.box-header -->
+                                {% include "MainGestionBundle:Geo:list.html.twig" %}
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+{% endblock %}
+
+{% block javascripts_inline %}
+        <script type="text/javascript">
+            $(function() {
+                $('#datatable').dataTable({
+                    "bPaginate": false,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
+{% endblock %}

@@ -50,7 +50,7 @@
                         </li>
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <li>
-                            <a href="#">
+                            <a href="{{ path('geo') }}">
                                 <i class="fa fa-globe"></i> 
                                 <span>{% trans from "menu" %}menu.left.geo{% endtrans %}</span>
                             </a>

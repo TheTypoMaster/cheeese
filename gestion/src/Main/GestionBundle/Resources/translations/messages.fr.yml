@@ -93,3 +93,21 @@ gestion:
         read:
             dt:
                 photographer: Photographe
+    geo:
+        index:
+            h1: Données géographiques
+            h2: Départements
+            breadh1: Données géographiques
+            breadh2: Départements
+            header: Liste des départements
+        dept:
+            code: code
+            name: Nom
+            country: Pays
+            visibility: Visibilité
+            status:
+                no: Gestion
+                photographer: Community
+                all: Tous
+            btn:
+                visibility: Mettre à jour visibilité
