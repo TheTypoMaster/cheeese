@@ -5,6 +5,8 @@ namespace Main\CommonBundle\Services\Users;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Users\User;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 class ServiceUser 
 {
@@ -15,6 +17,8 @@ class ServiceUser
 	private $em;
 
 	private $securityContext;
+
+	private $path;
 	
 	/**
 	 * 
@@ -22,11 +26,12 @@ class ServiceUser
 	 */
 	private $repository;
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, $uploadPath)
 	{
 		$this->em = $entityManager;
 		$this->securityContext = $securityContext;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Users\User');
+		$this->path = $uploadPath;
 	}	
 
 	/**
@@ -146,6 +151,48 @@ class ServiceUser
 		}
 		return false;
 
+	}
+	/**
+	 * [editPP description]
+	 * @param  User   $user [description]
+	 * @param  [type] $data [description]
+	 * @return [type]       [description]
+	 */
+	public function editPP(User $user, $data)
+	{
+		$photo = $data['photo'];
+		if ($photo instanceof UploadedFile) {
+                // traitement spéciale pour la pièce jointe
+                $pjPath	= $photo->getPathName ();
+                $mime 	= $photo->getMimeType();
+                $size 	= $photo->getSize();
+                $content = base64_encode ( fread ( fopen ( $pjPath, "r" ), filesize ( $pjPath ) ) );
+                $url	 = hash('sha256', $content.$user->getId()); 
+
+                if ($user->getPhoto() != $url) {
+                	 try {
+                            $file = fopen($this->path . $url, 'a');
+                            fputs($file, $content);
+                            fclose($file);
+                            if($user->getPhoto() != null) {
+                            	 unlink($this->path.$user->getPhoto());                        
+                            }
+                            $user->setPhoto($url);
+                            $user->setPhotoType($mime);
+                            $user->setUpdatedAt(new \DateTime('now'));
+                            $this->em->flush();				
+							return true;
+                        } catch (\Exception $e) {
+                        	var_dump($e->getMessage());
+                        	return false;
+                            //$this->logger->err('Impossible de créer un nouveau fichier : '.$e->getMessage());
+                            //$codeErr = 1;
+                            //throw $e;
+                       }
+                }
+        		return false;
+            }
+         return false;
 	}
 	
 }

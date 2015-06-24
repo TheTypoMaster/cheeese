@@ -45,6 +45,14 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $photo;
+
+    /**
+     * typeFichier
+     * @var string
+     *
+     * @ORM\Column(name="type_photo", type="string", length=30, nullable=true)
+     */
+    protected $photoType;
     
     /**
      * @var float $note
@@ -135,6 +143,24 @@ class User extends BaseUser
 	public function setPhoto($photo)
 	{
 		$this->photo = $photo;
+	}
+
+	/**
+	 * [getPhotoType description]
+	 * @return [type] [description]
+	 */
+	public function getPhotoType()
+	{
+		return $this->photoType;
+	}
+
+	/**
+	 * [setPhotoType description]
+	 * @param [type] $photoType [description]
+	 */
+	public function setPhotoType($photoType)
+	{
+		$this->photoType = $photoType;
 	}
 
 	/**

@@ -97,5 +97,35 @@ class UserController extends Controller
 			));
 	}
 
+	/**
+	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/presentation/pp", name="presentation_pp")
+	 */
+	public function profilPictureAction(Request $request)
+	{
+		$form = $this->createForm('form_devis_book', null, array());
+		$request = $this->get('request');
+		$form->handleRequest($request);
+		if($request->isMethod('POST'))
+			{
+				$params = $request->request->get('form_devis_book');
+				if ($form->isValid())
+				{
+					$serviceUser = $this->get('service_user');
+					$edit = $serviceUser->editPP($this->get('security.context')->getToken()->getUser(), $form->getData());					
+					if($edit) {
+							return $this->redirect($this->generateUrl('presentation'));
+					}
+				}
+			
+			}
+		return $this->render('MainCommunityBundle:Users:presentation_pp.html.twig', array(
+				'form'  => $form->createView(),
+		));
+
+	}
+
 
 }

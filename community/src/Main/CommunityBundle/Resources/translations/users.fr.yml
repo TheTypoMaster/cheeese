@@ -14,6 +14,15 @@ community:
             btn:
                 edit: Modifier présentation
                 picture: Modifier photo de profil
+            book:
+                h1: Photographe
+                h2: Photo de profil
+                breadh1: Photographe
+                breadh2: Photo de profil
+                header: Gérer votre photo de profil
+                btn:
+                    submit: Soumettre
+                    back: Retour
         edit:
             h1: Photographe
             h2: Edition

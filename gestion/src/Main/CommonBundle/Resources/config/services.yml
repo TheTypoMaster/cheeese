@@ -19,7 +19,7 @@ services:
         arguments: [@doctrine.orm.entity_manager]
     service_user:
         class: "Main\CommonBundle\Services\Users\ServiceUser"
-        arguments: [@doctrine.orm.entity_manager, @security.context]
+        arguments: [@doctrine.orm.entity_manager, @security.context, "%upload_pp_path%"]
     service_devis:
         class: "Main\CommonBundle\Services\Offers\ServiceDevis"
         arguments: [@doctrine.orm.entity_manager, @security.context]
@@ -66,3 +66,9 @@ services:
         class: Main\CommonBundle\Listener\PrestationListener
         tags:
             - { name: doctrine.orm.entity_listener }
+#Extension
+    twig_base64:
+        class: "Main\CommonBundle\Services\Extensions\TwigImage64"
+        arguments: [@security.context, "%upload_pp_path%"]
+        tags:
+            - { name: "twig.extension"}
