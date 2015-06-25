@@ -1,1 +1,20 @@
-'Symfony2 is great': 'J''aime Symfony2'
+email:
+    verification:
+        ok:
+            subject: Votre entreprise est valide
+        ko:
+            subject: Votre entreprise n'est pas valide
+    prestation:
+        created:
+            subject: Une nouvelle demande de prestation pour vous
+        pre_accepted:
+            subject %reference%: %reference% a été pré-acceptée
+        refused:
+            subject %reference%: %reference% a été refusée
+        canceled:
+            subject %reference%: %reference% a été annulée
+        accepted:
+            subject %reference%: %reference% a été validée
+    messages:
+        prestation:
+            subject: Vous avez un nouveau message
