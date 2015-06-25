@@ -25,13 +25,13 @@ class Message
 	private $id;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id")
 	 * @ORM\JoinColumn(name="sender", referencedColumnName="id")
 	 */
 	private $sender;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id")
 	 * @ORM\JoinColumn(name="receiver", referencedColumnName="id")
 	 */
 	private $receiver;
@@ -44,7 +44,7 @@ class Message
 	private $type;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Prestations\Prestation", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Prestations\Prestation", inversedBy="id")
 	 * @ORM\JoinColumn(name="prestation", referencedColumnName="id", nullable=true)
 	 */
 	private $prestation;

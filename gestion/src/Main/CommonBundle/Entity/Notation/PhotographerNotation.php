@@ -14,14 +14,14 @@ class PhotographerNotation
 {
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id")
 	 * @ORM\JoinColumn(name="photographer", referencedColumnName="id")
 	 */
 	private $photographer;
 	
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Prestations\Prestation", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Prestations\Prestation", inversedBy="id")
 	 * @ORM\JoinColumn(name="prestation", referencedColumnName="id")
 	 */
 	private $prestation;

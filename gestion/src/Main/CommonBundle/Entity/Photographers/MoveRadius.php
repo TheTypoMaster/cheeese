@@ -15,7 +15,7 @@ class MoveRadius
 {
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Companies\Company", inversedBy="photographer", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Companies\Company", inversedBy="photographer")
 	 * @ORM\JoinColumn(name="company", referencedColumnName="photographer")
 	 */
 	private $company;

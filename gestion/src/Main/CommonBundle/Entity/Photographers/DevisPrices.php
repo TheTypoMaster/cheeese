@@ -16,7 +16,7 @@ class DevisPrices
 {
 	/**
 	 * @ORM\JoinColumn(name="devis", referencedColumnName="id")
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Photographers\Devis", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Photographers\Devis", inversedBy="id")
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="NONE")
 	 */
@@ -24,7 +24,7 @@ class DevisPrices
 
 	/**
 	 * @ORM\JoinColumn(name="duration", referencedColumnName="id")
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Utils\Duration", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Utils\Duration", inversedBy="id")
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="NONE")
 	 */

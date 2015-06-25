@@ -35,19 +35,19 @@ class Prestation
 	private $reference;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Photographers\Devis", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Photographers\Devis", inversedBy="id")
 	 * @ORM\JoinColumn(name="devis", referencedColumnName="id")
 	 */
 	private $devis;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id")
 	 * @ORM\JoinColumn(name="client", referencedColumnName="id")
 	 */
 	private $client;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town", inversedBy="id")
 	 * @ORM\JoinColumn(name="town", referencedColumnName="id")
 	 */
 	private $town;
@@ -74,13 +74,13 @@ class Prestation
 	private $startTime;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Utils\Duration", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Utils\Duration", inversedBy="id")
 	 * @ORM\JoinColumn(name="duration", referencedColumnName="id")
 	 */
 	private $duration;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Status\PrestationStatus", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Status\PrestationStatus", inversedBy="id")
 	 * @ORM\JoinColumn(name="status", referencedColumnName="id")
 	 */
 	private $status;

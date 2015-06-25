@@ -13,7 +13,7 @@ class Iban
 {
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id")
 	 * @ORM\JoinColumn(name="photographer", referencedColumnName="id")
 	 */
 	private $photographer;
