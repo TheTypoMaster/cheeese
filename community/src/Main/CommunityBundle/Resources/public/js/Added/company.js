@@ -29,26 +29,22 @@
             cache: true,
             success: function (data) {
                 var suggestions = [];  
-                 //process response  
                 $.each(data, function(i, val){  
                     suggestions.push({"value": val.id, "label": val.name});  
                 });
                 $(input).autocomplete({
                     source: suggestions,                          
                     open: function (event, ui) {
-                        var termTemplate = "%s";
+                        var termTemplate = "<strong>%s</strong>";
                         var ac = $(this).data('ui-autocomplete');
-                        var term = ac.term;
-                      
+                        var term = ac.term;                      
                         var termCaps = term.toLowerCase().replace(/\b[a-z]/g, function(letter) {
                             return letter.toUpperCase();
-                        });
-                       
+                        });                       
                         var styledTerm = termTemplate.replace('%s', term);
                         var styledTermCaps = termTemplate.replace('%s', termCaps);
-                        console.log(ac.menu.element);
                         ac.menu.element.find('a').each(function() {
-                            var me = $(this);
+                            var me = $(this)
                             mapObj = {};
                             mapObj[term] = styledTerm;
                             mapObj[termCaps] = styledTermCaps;
@@ -58,6 +54,9 @@
                             });
                             me.html( str) ;
                         });
+                        var elem = document.getElementById('ui-id-1');
+                        elem.style.backgroundColor = 'white';
+                        elem.style.width = '80%';
                     },
                     change: function (event, ui) {
                         if(ui.item != null){
@@ -74,7 +73,7 @@
                         $(input).val(ui.item.label);
                     }
 
-                });  
+                });
             }
         });
         
