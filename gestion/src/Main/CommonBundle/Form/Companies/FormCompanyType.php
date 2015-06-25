@@ -41,7 +41,7 @@ class FormCompanyType extends AbstractType
     {
     	if($this->getCurrentUser()->getLastName() === null) {
     		$builder->add('firstname', 'text', array(
-    				'label' => 'form.companytype.firstname.field',
+    				'label' => 'form.companytype.field.firstname',
     				'attr' => array(
     						'class' => 'form-control',
     						'maxlength' => 50
@@ -51,7 +51,7 @@ class FormCompanyType extends AbstractType
     						)))
     				));
     		$builder->add('lastname', 'text', array(
-    				'label' => 'form.companytype.lastname.field',
+    				'label' => 'form.companytype.field.lastname',
     				'attr' => array(
     						'class' => 'form-control',
     						'maxlength' => 50
@@ -62,7 +62,7 @@ class FormCompanyType extends AbstractType
     				));
     	}
     	$builder->add('title', 'text', array(
-    			'label' => 'form.companytype.title.field',
+    			'label' => 'form.companytype.field.title',
     			'data' => $options['title'],
     			'attr' => array(
     					'class' => 'form-control',
@@ -72,8 +72,22 @@ class FormCompanyType extends AbstractType
     					new NotBlank ( array(
     					)))
     			));
+        $builder->add('country');
+
+        $builder->add('department');
+
+        $builder->add('town', 'text', array(
+                'label' => 'form.companytype.field.town',
+                'data' => $options['town'],
+                'attr' => array(
+                        'class' => 'form-control',
+                        'autocomplete' => 'off'
+                        )
+                ));
+
+
         $builder->add('address', 'text', array(
-        		'label' => 'form.companytype.address.field',
+        		'label' => 'form.companytype.field.address',
         		'data' => $options['address'],
         		'attr' => array(
         				'class' => 'form-control',
@@ -83,18 +97,11 @@ class FormCompanyType extends AbstractType
         				new NotBlank ( array(
         				)))
         		));
-        $builder->add('town', 'text', array(
-        		'label' => 'form.companytype.town.field',
-        		'data' => $options['town'],
-        		'attr' => array(
-        				'class' => 'form-control',
-        				'autocomplete' => 'off'
-        				)
-        		));
-        $builder->add('country');
+        
+        
         if ($options['status'] === 3) {
         	$builder->add('identification', 'text', array(
-        			'label' => 'form.companytype.identification.field',
+        			'label' => 'form.companytype.field.identification',
         			'disabled' => true,
         			'data' => $options['identification'],
         			'attr' => array(
@@ -106,7 +113,7 @@ class FormCompanyType extends AbstractType
         	));
         }else{
         	$builder->add('identification', 'text', array(
-        			'label' => 'form.companytype.identification.field',
+        			'label' => 'form.companytype.field.identification',
         			'data' => $options['identification'],
         			'attr' => array('class' => 'form-control'),
         			'constraints'   => array(
@@ -139,15 +146,22 @@ class FormCompanyType extends AbstractType
     					'name' => 'ASC'
     			)
     	);
-    	$paysElements   = array ();
+        $departments = $this->em->getRepository('MainCommonBundle:Geo\Department')->findAvailabeDepts(0);
+    	$paysElements   = array();
+        $dptElements    = array();
     	foreach ($pays as $element) {
     		$paysElements [$element->getId()] = $element->getName();
     	}    	 
+        foreach ($departments as $department) {
+            $dptElements[$department->getCode()] = $department->getName().' ['.$department->getCode().']';
+            # code...
+        }
     	// Ajout dans le formulaire
     	asort($paysElements);
+        asort($dptElements);
     	// Add the province element
     	$form->add ( 'country', 'choice', array (
-    			'label' => 'form.companytype.country.field',
+    			'label' => 'form.companytype.field.country',
     			'data' 			=> $event->getForm()->getConfig()->getOption('country'),
     			'choices'       => $paysElements,
     			'attr' => array('class' => 'form-control'),
@@ -160,6 +174,20 @@ class FormCompanyType extends AbstractType
     					))
     			)
     	));
+
+        $form->add ( 'department', 'choice', array (
+                'label' => 'form.companytype.field.department',
+                'choices'       => $dptElements,
+                'attr' => array('class' => 'form-control'),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )),
+                        new Choice(array(
+                                'choices' => array_keys($dptElements),
+                                'message' => 'Wrong value',
+                        ))
+                )
+        ));
     }
     
     /**

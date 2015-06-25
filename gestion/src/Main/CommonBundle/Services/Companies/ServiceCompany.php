@@ -62,25 +62,21 @@ class ServiceCompany
 	public function create($data)
 	{
 		$user = $this->getCurrentUser();
-		$country = $this->em->getRepository('MainCommonBundle:Geo\Country')->findOneById($data['country']);
-		$town = $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneBy(array(
-				'country' => $data['country'],
-				'name'	  => $data['town']	
-				));
-		$status = $this->em->getRepository('MainCommonBundle:Status\PhotographerStatus')->findOneById(self::TO_VERIFY);//TODO change avec constant
-		
 		$Company = new Company();
 		$Company->setPhotographer($user);
-		$Company->setTown($town);
-		$Company->setCountry($country);
+		$Company->setTown($this->em->getRepository('MainCommonBundle:Geo\Town')->findOneBy(array(
+				'country'    => $data['country'],
+				'department' => $data['department'],
+				'name'	     => $data['town']	
+				)));
+		$Company->setCountry($this->em->getRepository('MainCommonBundle:Geo\Country')->findOneById($data['country']));
 		$Company->setIdentification($data['identification']);
 		$Company->setTitle($data['title']);
 		$Company->setAddress($data['address']);
-		$Company->setStatus($status);
+		$Company->setStatus($this->em->getRepository('MainCommonBundle:Status\PhotographerStatus')->findOneById(self::TO_VERIFY));
 		try{
 			$this->em->persist($Company);
 			if(isset($data['firstname'])) {
-				$user = $this->getCurrentUser();
 				$user->setFirstName($data['firstname']);
 				$user->setLastName($data['lastname']);
 				$this->em->persist($user);

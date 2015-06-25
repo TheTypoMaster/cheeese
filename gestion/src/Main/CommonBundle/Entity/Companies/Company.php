@@ -21,7 +21,7 @@ class Company
 	
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id")
 	 * @ORM\JoinColumn(name="photographer", referencedColumnName="id")
 	 */
 	private $photographer;
@@ -41,13 +41,13 @@ class Company
 	private $address;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town", inversedBy="id")
 	 * @ORM\JoinColumn(name="town", referencedColumnName="id")
 	 */
 	private $town;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Country", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Country", inversedBy="id")
 	 * @ORM\JoinColumn(name="country", referencedColumnName="id")
 	 */
 	private $country;
@@ -60,7 +60,7 @@ class Company
 	private $identification;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Status\PhotographerStatus", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Status\PhotographerStatus", inversedBy="id")
 	 * @ORM\JoinColumn(name="status", referencedColumnName="id")
 	 */
 	private $status;

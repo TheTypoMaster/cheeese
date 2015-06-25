@@ -12,13 +12,12 @@ class GeoController extends Controller
 {
 	/**
 	 * @Rest\View
-	 * @Rest\Get("/country/{country_id}/town")
+	 * @Rest\Get("/department/{department}/{country_id}/towns")
 	 */
-	public function townAction(Request $request, $country_id)
+	public function townAction(Request $request, $department, $country_id)
 	{
 		$town = $this->get('service_town');
-		$contient = $request->query->get('contient');
-		return $town->findByCountry($country_id, $contient);
+		return $town->findByDepartment($department, $country_id);
 	}
 
 }

@@ -28,9 +28,13 @@ class ServiceTown
 	 * @param unknown $country
 	 * @param unknown $data
 	 */
-	public function findByCountry($country, $data)
+	public function findByDepartment($department, $country)
 	{
-		return $this->repository->findByCountry($country, $data);
+		return $this->repository->findBy(
+			array(
+				'department' => $department,
+				'country'	=> $country
+				));
 		
 	}
 }

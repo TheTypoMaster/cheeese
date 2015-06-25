@@ -3,11 +3,11 @@
 namespace Main\CommonBundle\Entity\Geo;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="geo.town")
- * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Geo\TownRepository")
  */
 class Town
 {
@@ -35,10 +35,17 @@ class Town
 	private $code;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Country", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Country", inversedBy="id")
 	 * @ORM\JoinColumn(name="country", referencedColumnName="id")
 	 */
 	private $country;
+
+	/**
+	 * @var string $id
+	 *
+	 * @ORM\Column(name="department", type="string", length=5, nullable=false)
+	 */
+	private $department;
 	
 	/**
 	 * @ORM\Column(name="latitude", type="decimal", precision=9, scale=7, nullable=false)
@@ -116,6 +123,16 @@ class Town
 	public function setCountry(Country $country)
 	{
 		$this->country = $country;
+	}
+
+	public function getDepartment()
+	{
+		return $this->department;
+	}
+
+	public function setDepartment(Department $department)
+	{
+		$this->department = $department;
 	}
 	
 	/**
