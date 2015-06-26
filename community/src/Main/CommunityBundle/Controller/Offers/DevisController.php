@@ -87,7 +87,7 @@ class DevisController extends Controller
 			$servicePrices = $this->get('service_prices');
 			$serviceDevisBook = $this->get('service_devis_book');
 			$prices = $servicePrices->getPrices($devis);
-			$photos = $serviceDevisBook->fetchbook($devis);
+			$photos = $serviceDevisBook->getbook($devis);
 			$prestations = $servicePrestation->getByDevis($devis->getId());
 			return $this->render('MainCommunityBundle:Offers\Devis:index.html.twig', array(
 					'devis' 	  => $devis,
@@ -366,7 +366,7 @@ class DevisController extends Controller
 		else
 		{
 			$servicePhoto = $this->get('service_devis_book');
-			$photos = $servicePhoto->fetchBook($devis);
+			$photos = $servicePhoto->getBook($devis);
 			return $this->render('MainCommunityBundle:Offers\Devis:book_manage.html.twig', array(
 					'photos'	=> $photos,
 					'devis'		=> $devis

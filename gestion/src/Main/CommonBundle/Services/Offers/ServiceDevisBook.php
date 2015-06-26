@@ -45,29 +45,6 @@ class ServiceDevisBook
 		return $this->repository->findByDevis($devis->getId());
 	}
 
-	public function fetchbook(Devis $devis)
-	{
-		$pjs = $this->repository->findByDevis($devis->getId());
-		$results = array();
-		foreach ($pjs as $pj) {
-			$finder = new Finder();
-			$finder->name($pj->getUrl());
-			foreach ($finder->in($this->path) as $file) {
-				if($pj->getUrl() == basename($file)) {
-					$results[] = array(
-						'id'		=> $pj->getUrl(),
-						'profile'	=> $pj->getProfile(),
-						'type' 		=> $pj->getFileType(),
-						'content'	=> $file->getContents()
-					);
-
-				}
-				
-			}
-		}
-		return $results;
-	}
-
 	/**
 	 * [addPhoto description]
 	 * @param Devis  $devis [description]

@@ -26,9 +26,9 @@
                                             {% for entity in photos %}
                                             <tr>
                                                 <td> 
-                                                <img src="data:{{ entity['type'] }};base64,{{ entity['content'] }}" style="width:30%;height:30%;"> 
+                                                <img src="{{ image64(entity.url, entity.fileType, 'devis') }}" style="width:30%;height:30%;"> 
                                                 </td>
-                                                {% if 1 == entity['profile'] %}
+                                                {% if 1 == entity.profile %}
 	                                                <td>
 	                                                    <span class="label label-success">
 	                                                        {% trans from "offers" %}community.devis.read.book.th.yes{% endtrans %}
@@ -37,18 +37,18 @@
                                                 {% else %}
                                                 	<td></td>
                                                 {% endif %}
-                                                {% if 1 == entity['profile'] %}
+                                                {% if 1 == entity.profile %}
                                                 <td>
                                                 </td>
                                                 {% else %}
                                                 <td>
-                                                    <a href="{{ path('photo_cover', {'id' :devis.id, 'url' : entity['id']}) }}" class="btn btn-primary btn-sm">
+                                                    <a href="{{ path('photo_cover', {'id' :devis.id, 'url' : entity.url}) }}" class="btn btn-primary btn-sm">
                                                     {% trans from "offers" %}community.devis.read.book.btn.profile{% endtrans %}
                                                     </a>
                                                 </td>
                                                 {% endif %}
                                                 <td>
-                                                    <a href="{{ path('photo_delete', {'id' :devis.id, 'url' : entity['id']}) }}" class="btn btn-danger btn-sm">
+                                                    <a href="{{ path('photo_delete', {'id' :devis.id, 'url' : entity.url}) }}" class="btn btn-danger btn-sm">
                                                     {% trans from "offers" %}community.devis.read.book.btn.delete{% endtrans %}
                                                     </a>
                                                 </td>

@@ -6,13 +6,16 @@ use Symfony\Component\Finder\Finder;
 class TwigImage64 extends \Twig_Extension
 {
 
-	protected $path;
+	protected $pathPP;
+
+    protected $pathBook;
     /**
     *
     */
-    public function __construct($uploadPath)
+    public function __construct($uploadPathPP, $uploadPathBook)
     {
-        $this->path = $uploadPath;
+        $this->pathPP   = $uploadPathPP;
+        $this->pathBook = $uploadPathBook;
     }
 
     public function getFunctions()
@@ -22,13 +25,17 @@ class TwigImage64 extends \Twig_Extension
         );
     }
     
-    public function image64($name, $type)
+    public function image64($name, $typeFile, $type)
     {
         $finder = new Finder();
         $content = null;
+        $path = $this->pathBook;
+        if ($type == 'pp') {
+            $path = $this->pathPP;
+        }
         if ($name != null) {
         	$finder->name($name);
-			foreach ($finder->in($this->path) as $file) {
+			foreach ($finder->in($path) as $file) {
 				if($name == basename($file)) {
 					$content = $file->getContents();
 				}

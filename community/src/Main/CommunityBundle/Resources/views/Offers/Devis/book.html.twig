@@ -32,12 +32,12 @@
                                         </ol>
                                         <div class="carousel-inner">
                                             {% for photo in photos %}
-                                            {% if 1 == photo['profile']%}
+                                            {% if 1 == photo.profile %}
                                                 <div class="item active">
                                             {% else %}
                                                 <div class="item">
                                             {% endif %}
-                                                <img src="data:{{ photo['type'] }};base64,{{ photo['content'] }}"> 
+                                                <img src="{{ image64(photo.url, photo.fileType, 'devis') }}"> 
                                                 </div>
                                             {% endfor %}
                                         </div>

@@ -69,6 +69,6 @@ services:
 #Extension
     twig_base64:
         class: "Main\CommonBundle\Services\Extensions\TwigImage64"
-        arguments: ["%upload_pp_path%"]
+        arguments: ["%upload_pp_path%", "%upload_devis_path%"]
         tags:
             - { name: "twig.extension"}
