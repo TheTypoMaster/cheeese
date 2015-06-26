@@ -1,0 +1,7 @@
+result:
+    photographer:
+        username: Photographe
+        note: Note :
+        prestations: Nombre de prestations
+        prices:
+            multiple: offres à partir de 

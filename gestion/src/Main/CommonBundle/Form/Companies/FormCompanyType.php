@@ -72,7 +72,12 @@ class FormCompanyType extends AbstractType
     					new NotBlank ( array(
     					)))
     			));
-        $builder->add('country');
+         $builder->add('country', 'entity', array(
+            'label' => 'form.companytype.field.country',
+            'class' => 'MainCommonBundle:Geo\Country',
+            'property' => 'name',
+            'attr' => array('class' => 'form-control')            
+            ));
 
         $builder->add('department');
 
@@ -139,42 +144,15 @@ class FormCompanyType extends AbstractType
     {
     
     	$form   = $event->getForm ();    
-    	// Réccupération des pays
-    	$pays = $this->em->getRepository('MainCommonBundle:Geo\Country')->findBy(
-    			array(),
-    			array(
-    					'name' => 'ASC'
-    			)
-    	);
+
         $departments = $this->em->getRepository('MainCommonBundle:Geo\Department')->findAvailabeDepts(0);
-    	$paysElements   = array();
         $dptElements    = array();
-    	foreach ($pays as $element) {
-    		$paysElements [$element->getId()] = $element->getName();
-    	}    	 
         foreach ($departments as $department) {
-            $dptElements[$department->getCode()] = $department->getName().' ['.$department->getCode().']';
+            $dptElements[$department->getCode()] = $department->getName();
             # code...
         }
     	// Ajout dans le formulaire
-    	asort($paysElements);
         asort($dptElements);
-    	// Add the province element
-    	$form->add ( 'country', 'choice', array (
-    			'label' => 'form.companytype.field.country',
-    			'data' 			=> $event->getForm()->getConfig()->getOption('country'),
-    			'choices'       => $paysElements,
-    			'attr' => array('class' => 'form-control'),
-    			'constraints'   => array(
-    					new NotBlank ( array(
-    					)),
-    					new Choice(array(
-    							'choices' => array_keys($paysElements),
-    							'message' => 'Wrong value',
-    					))
-    			)
-    	));
-
         $form->add ( 'department', 'choice', array (
                 'label' => 'form.companytype.field.department',
                 'choices'       => $dptElements,

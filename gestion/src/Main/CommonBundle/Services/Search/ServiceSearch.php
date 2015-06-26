@@ -5,6 +5,8 @@ namespace Main\CommonBundle\Services\Search;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Photographers\Devis;
+use Main\CommonBundle\Entity\Photographers\DevisPrices;
+use Main\CommonBundle\Entity\Photographers\DevisBook;
 
 class ServiceSearch 
 {
@@ -37,7 +39,21 @@ class ServiceSearch
 	public function searchFirstStep($category, $town, $day)
 	{
 		$date = new \DateTime(str_replace('/', '-', $day));
-		return $this->repository->findDevisFront($category, $town, $date->format('Y-m-d'));
+		$results = $this->repository->findDevisFront($category, $town, $date->format('Y-m-d'));
+		$end = array();
+		foreach ($results as $result) {
+			if ($result instanceof Devis) {
+				$end[$result->getId()]['devis'] = $result;
+			}
+			if ($result instanceof DevisBook) {
+				$end[$result->getDevis()->getId()]['book'] = $result;
+			}
+			if ($result instanceof DevisPrices) {
+				$end[$result->getDevis()->getId()]['prices'][] = $result;
+			}
+
+		}
+		return $end;
 	}
 	
 	

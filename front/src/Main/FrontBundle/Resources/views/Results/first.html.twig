@@ -1,23 +1,35 @@
 {% for result in results %}
 		<article class="search-result row">
-		<div class="col-xs-12 col-sm-12 col-md-3">
-					<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/sports" alt="Lorem ipsum" /></a>
-				</div>
 				<div class="col-xs-12 col-sm-12 col-md-2">
+					<a href="#" title="Lorem ipsum" class="thumbnail">
+					<img src="{{ image64(result['devis'].company.photographer.photo,result['devis'].company.photographer.photoType, 'pp')}}" alt="{{ result['devis'].company.photographer.username }}" /></a>
 					<ul class="meta-search">
-						<li>{% trans %}result.photographer.username{% endtrans %}<span>{{ result.company.photographer.username }}</span></li>
-						<li>{% trans %}result.photographer.note{% endtrans %}<span>{{ result.company.photographer.note }}</span></li>
-						<li>{% trans %}result.photographer.prestations{% endtrans %}<span>{{ result.company.photographer.prestations }}</span></li>
+						<li>
+							<strong>{{ result['devis'].company.photographer.username }}</strong></li>
+						{% if 0 != result['devis'].company.photographer.prestations  %}
+						<li>{% trans %}result.photographer.note{% endtrans %}<span>{{ result['devis'].company.photographer.note }}</span></li>
+						<li>{% trans %}result.photographer.prestations{% endtrans %}<span>{{ result['devis'].company.photographer.prestations }}</span></li>
+						{% endif %}
 					</ul>
 				</div>
-				<div class="col-xs-12 col-sm-12 col-md-7">
-					<h3><a href="#" title="">{{ result.title }}</a></h3>
-					<ul class="meta-search">
-						<li>{% trans %}result.duration.libelle{% endtrans %}<span>{{ result.duration.libelle }}</span></li>
-						<li>{% trans %}result.price{% endtrans %}<span>{{ result.price }} {{ result.currency.libelle}}</span></li>
-					</ul>
-					<p> {{ result. presentation |slice(1, 250) }}</p>						
-	                <span class="plus"><a href="{{ path('devis_attach', {'id': result.id}) }}" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+				<div class="col-xs-12 col-sm-12 col-md-10">
+					<a href="#">
+						<img src="{{ image64(result['book'].url,result['book'].fileType, 'devis')}}" alt="{{ result['devis'].title }}" /></a>
+					</a>
+					<h3><a href="#" title="">{{ result['devis'].title }}</a></h3>
+					<p> {{ result['devis']. presentation |slice(1, 250) }}</p>	
+					<p>
+						{% if 1 == result['prices']|length %}
+							<h4><strong> {{ result['prices'][0].price }} {{ result['devis'].currency.libelle}}</strong></h4>
+						{% elseif result['prices']|length > 1%}
+							<h4> {{ result['prices']|length}} {% trans %}result.photographer.prices.multiple{% endtrans %}
+							<strong> xxx {{ result['devis'].currency.libelle}}</strong>
+						</h4>
+						{% endif %}
+							
+					</p>
+
+	                <span class="plus"><a href="{{ path('devis_attach', {'id': result['devis'].id}) }}" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
 				</div>
 				<span class="clearfix border"></span>
 		</article>

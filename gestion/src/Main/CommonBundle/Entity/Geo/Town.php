@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\Index;
 /**
  * @ORM\Entity
  * @ORM\Table(name="geo.town")
+ * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Geo\TownRepository")
  */
 class Town
 {

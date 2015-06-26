@@ -19,9 +19,9 @@ class DefaultController extends Controller
     public function indexPublicAction(Request $request)
     {
     	$form = $this->createForm('form_front_search', null, array(
-    			'country' => 1,
     			'type' 	  => 1 
     			));
+        
     	$form->handleRequest($request);
     	$results = null;
     	$post = false;

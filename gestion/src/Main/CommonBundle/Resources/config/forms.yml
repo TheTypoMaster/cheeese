@@ -51,7 +51,7 @@ services:
             - { name: form.type, alias: form_moves }
     form_front_search:
         class: "Main\CommonBundle\Form\Front\FormSearch"
-        arguments: []
+        arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: form.type, alias: form_front_search }
     form_front_devis_book:

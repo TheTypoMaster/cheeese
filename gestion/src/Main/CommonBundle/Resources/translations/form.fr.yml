@@ -9,3 +9,7 @@ form:
             identification: Identification
             country: Pays
             department: Département
+    search:
+        placeholder:
+            town_text: Commune
+            date: Date

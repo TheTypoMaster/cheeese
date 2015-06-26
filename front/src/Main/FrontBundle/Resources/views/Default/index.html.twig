@@ -6,23 +6,15 @@
 	   
 		<div class="col-lg-12">
 	   	   {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+	   	   {{ form_widget(form.day, {'attr': {'class': 'form-control'}}) }}
+	   	   {{ form_widget(form.department, {'attr': {'class': 'form-control'}}) }}
 		   {{ form_widget(form.town_text, {'attr': {'class': 'form-control'}}) }}
 		   {{ form_widget(form.town_code) }}
 		   {{ form_widget(form.country) }}
-	   	   {{ form_widget(form.day, {'attr': {'class': 'form-control'}}) }}
 	   <button type="submit" class="btn">Submit</button>
 	   </div>
 	   {{ form_end(form) }}
-		
-	   <div class="col-lg-9">
-	   <p>
-		   {% if '1' == type %}
-		   	   <a href="{{ path('index_entreprise') }}">{% trans %}index.link.iam.company{% endtrans %}</a>
-		   {% else %}
-		   	   <a href="{{ path('index_public') }}">{% trans %}index.link.iam.individual{% endtrans %}</a>
-		   {% endif %}
-	   </p>
-	   </div>
+
    </div>
    {# ------------------------------------------ RESULTATS DE LA REQUETES ----------------------------------------------- #}
    {% if post %}
@@ -39,7 +31,6 @@
 			   '@MainFrontBundle/Resources/public/js/diacritics.js' %}
 <script type="text/javascript">
     var base = location.protocol + "//" + location.host + '{{ app.request.baseUrl }}';
-    var pays = '{{ country }}';
     </script>    
     <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}

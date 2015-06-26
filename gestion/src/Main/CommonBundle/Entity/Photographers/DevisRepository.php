@@ -21,22 +21,28 @@ class DevisRepository extends EntityRepository
 	 */
 	public function findDevisFront($categoryId, $townId, $day) {
 		$qb = $this->_em->createQueryBuilder();
-		$qb->select('d')
+		$qb->select('d', 'b', 'p')
 			->from('MainCommonBundle:Photographers\Devis', 'd')
 			->join('d.company', 'c')
 			->innerJoin('MainCommonBundle:Photographers\Availability', 'a', 'WITH', 'd.company = a.company')
 			->innerJoin('MainCommonBundle:Photographers\Move', 'm', 'WITH', 'd.company = m.company')
+			->innerJoin('MainCommonBundle:Photographers\DevisBook', 'b', 'WITH', 'd.id = b.devis')
+			->innerJoin('MainCommonBundle:Photographers\DevisPrices', 'p', 'WITH', 'd.id = p.devis')
 			->where('c.status = :status')
 			->andwhere('d.category = :categoryId')
 			->andwhere('a.day = :day')
 			->andwhere('m.town = :town')
 			->andWhere('d.active = :active')
+			->andWhere('b.profile = :profile')
+			->andWhere('p.active = :price')
 			->setParameters(array(
 					'status'	 => 2,
 					'categoryId' => $categoryId,
 					'day'		 => $day,
 					'town'		 => $townId,
-					'active'	 => 1
+					'active'	 => 1,
+					'profile'	 => 1,
+					'price'		 => 1
 					));
 		return $qb->getQuery()->getResult();
 	}
