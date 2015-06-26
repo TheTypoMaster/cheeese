@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="utils.duration")
+ * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Utils\DurationRepository")
  */
 class Duration
 {

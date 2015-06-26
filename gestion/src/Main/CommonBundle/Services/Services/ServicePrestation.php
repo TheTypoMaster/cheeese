@@ -70,14 +70,17 @@ class ServicePrestation
 	 * @param unknown $message
 	 * @return boolean
 	 */
-	public function create($devis, $town, $day, $address, $startTime, $message)
+	public function create($devis, $town, $day, $address, $startTime, $duration, $message)
 	{
 		$start      = str_replace('/', '-', $day).' '.$startTime['hour'].':'.$startTime['minute'].':00';
 		$devis 		= $this->em->getRepository('MainCommonBundle:Photographers\Devis')->findOneById($devis);
 		$client 	= $this->getCurrentUser();
 		$town 		= $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneById($town);
-		$price   	= $devis->getPrice();
-		$duration   = $devis->getDuration();
+		$devisPrice = $this->em->getRepository('MainCommonBundle:Photographers\DevisPrices')->findOneBy(array(
+			'devis' => $devis,
+			'duration' => $duration));
+		$duration   = $devisPrice->getDuration();
+		$price 		= $devisPrice->getPrice();
 		$address 	= $address;
 		$startTime 	= new \DateTime($start);
 		$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PRESTATION_ENCOURS);

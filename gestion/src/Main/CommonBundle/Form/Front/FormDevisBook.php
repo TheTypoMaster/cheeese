@@ -58,7 +58,17 @@ class FormDevisBook extends AbstractType
         		'input'  => 'datetime',
         		'widget' => 'choice',
         		'horizontal_input_wrapper_class' => 'col-lg-2',
-        ))        
+        )) 
+        ->add('duration', 'entity', array(
+                    'label' => 'form.devisbook.field.duration',
+                    'horizontal_input_wrapper_class'    => 'col-lg-4',
+                    'class' => 'MainCommonBundle:Utils\Duration',
+                    'property' => 'libelle',
+                    'query_builder' => function(EntityRepository $er) use ($devis)
+                    {
+                        return $er->findDurationsByDevis($devis);
+                    }
+            ))       
         ->add('message', 'textarea', array(
         		'label' => 'form.devisbook.field.message',
         		'error_type' => "block",
