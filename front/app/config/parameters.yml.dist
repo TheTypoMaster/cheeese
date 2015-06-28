@@ -13,3 +13,6 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+    upload_devis_path: "%kernel.root_dir%/../../upload/devis/"
+    upload_pp_path: "%kernel.root_dir%/../../upload/pp/"
+    commission_particulier: 5

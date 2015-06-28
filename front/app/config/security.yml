@@ -26,6 +26,6 @@ security:
             
 
     access_control:
-        - { path: ^/[a-z]+/devis/book, role: ROLE_PARTICULIER }
+        - { path: ^/devis/book, role: ROLE_PARTICULIER }
         - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY  }
 

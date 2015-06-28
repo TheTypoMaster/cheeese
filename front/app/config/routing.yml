@@ -1,9 +1,9 @@
 front_bundle_front:
     resource: "@MainFrontBundle/Controller/"
     type:     annotation
-    prefix:   /{_locale}/
-    requirements:
-        _locale: |en|fr
+#    prefix:   /{_locale}/
+#    requirements:
+#        _locale: |en|fr
 
 front_rest_bundle:
     type: rest
@@ -13,9 +13,9 @@ front_rest_bundle:
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-    prefix:   /{_locale}
-    requirements:
-        _locale: |en|fr
+ #   prefix:   /{_locale}
+ #   requirements:
+ #       _locale: |en|fr
 app:
     resource: @AppBundle/Controller/
     type:     annotation
