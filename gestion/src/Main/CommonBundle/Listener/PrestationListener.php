@@ -21,7 +21,7 @@ class PrestationListener
         switch ($status) {
             case 1:
                 //Creation message
-                $message = 'gestion.message.prestation.creation';
+                $message = 'message.created';
                 $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
                     $id, 2, $client, $photographer, $message);
                 break;
@@ -44,25 +44,25 @@ class PrestationListener
         switch ($status) {
             case 2:
                 //Refused message
-                $message = 'gestion.message.prestation.preapproved';
+                $message = 'message.preapproved';
                 $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
                     $id, 2, $photographer, $client, $message);
                 break;
             case 3:
                 //Pre approved message
-                $message = 'gestion.message.prestation.refused';
+                $message = 'message.refused';
                 $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
                     $id, 2, $photographer, $client, $message);
                 break;
             case 4:
                 //Canceled message
-                $message = 'gestion.message.prestation.canceled';
+                $message = 'message.canceled';
                 $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
                     $id, 2, $client, $photographer, $message);
                 break;
             case 5:
                 //Validate message
-                $message = 'gestion.message.prestation.confirmed';
+                $message = 'message.confirmed';
                 $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
                     $id, 2, $client, $photographer, $message);
                 break;
