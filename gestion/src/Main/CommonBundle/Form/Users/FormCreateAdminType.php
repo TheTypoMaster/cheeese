@@ -10,9 +10,10 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Validator\Constraints\EqualTo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\Length;
 
 class FormCreateAdminType extends AbstractType
 {
@@ -52,9 +53,13 @@ class FormCreateAdminType extends AbstractType
             'label' => 'form.createadmin.field.password',
             'attr' => array(
                 'class' => 'form-control'
-                )   
+                ),
+            'constraints' => array(
+                new NotNull(),
+                new NotBlank(),
+                new Length(array('min' => 7))  
             )
-        );
+        ));
     }
     
     /**
@@ -63,9 +68,26 @@ class FormCreateAdminType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-    	$resolver->setDefaults(array(
-            'translation_domain' => 'form'
-    	));
+        $resolver->setDefaults(array(
+        'data_class' => 'Main\CommonBundle\Entity\Users\User',
+        'constraints'     => array(
+            new UniqueEntity(
+                array(
+                    'fields' => array('username'),
+                    'repositoryMethod' => 'findByUsername'
+                    )
+                ),
+            new UniqueEntity(
+                array(
+                    'fields' => array('email'),
+                    'repositoryMethod' => 'findByEmail'
+                    )
+                ),
+
+            ),
+        //'cascade_validation' => true,
+        'translation_domain' => 'form'
+    ));
     }
 
     public function getName()
