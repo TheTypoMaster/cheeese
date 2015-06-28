@@ -1,11 +1,11 @@
 {% extends '::base.html.twig'%}
-{% block titleH1 %}{% trans from "users" %}gestion.security.read.h1{% endtrans %}{% endblock %}
+{% block titleH1 %}{% trans from "users" %}gestion.admin.new.h1{% endtrans %}{% endblock %}
 {% block titleH2 %}
-{% trans from "users" %}gestion.security.read.h2{% endtrans %}
+{% trans from "users" %}gestion.admin.new.h2{% endtrans %}
 {% endblock %}
-{% block breadcrumbH1 %}{% trans from "users" %}gestion.security.read.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "users" %}gestion.admin.new.breadh1{% endtrans %}{% endblock %}
 {% block breadcrumbH2 %}
-{% trans from "users" %}gestion.security.read.breadh2{% endtrans %}
+{% trans from "users" %}gestion.admin.new.breadh2{% endtrans %}
 {% endblock %}
 {% block content %}
 <section class="content">
@@ -14,7 +14,7 @@
                             <div class="box box-primary">
                                 <div class="box-header">
                                     <h3 class="box-title">
-                                    	{% trans from "users" %}gestion.security.read.header {% endtrans %}
+                                    	{% trans from "users" %}gestion.admin.new.header {% endtrans %}
                                     </h3>
                                 </div>
                                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
@@ -24,7 +24,7 @@
 
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">
-                                        	{% trans from "users" %}gestion.security.read.btn.submit{% endtrans %}
+                                        	{% trans from "users" %}gestion.admin.new.btn.submit{% endtrans %}
                                         </button>
                                     </div>
                                 {{ form_end(form) }}

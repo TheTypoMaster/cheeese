@@ -2,7 +2,7 @@
                         <div class="col-xs-12">  
                             <div class="box">
                             <div class="box-header">
-                                    <h3 class="box-title">{% trans from "services" %}gestion.service.show.btn.timeline{% endtrans %}</h3>
+                                    <h3 class="box-title"></h3>
                                 </div><!-- /.box-header -->
                                 <ul class="timeline">
 									{% for message in messages %}
@@ -47,13 +47,34 @@
 											            <h3 class="timeline-header">
 											            	<a href="#" style="color:#932ab6 !important">
 											            		{% trans from "services" %}
-											            		community.service.show.btn.timeline.title.status
+											            		gestion.service.show.timeline.status.title
 											            		{% endtrans %} 
 											            	</a>
 											            </h3>
 														
 											            <div class="timeline-body"> 
-											            		{{ message.content }} 
+											            	{% if 'message.created' == message.content %}
+											            		{% trans from "services" %}
+											            		gestion.service.show.timeline.status.created
+											            		{% endtrans %} 
+											            	{% elseif 'message.preapproved' == message.content %}
+											            	{% trans from "services" %}
+											            		gestion.service.show.timeline.status.preapproved
+											            		{% endtrans %} 
+											            	{% elseif 'message.refused' == message.content %}
+											            	{% trans from "services" %}
+											            		gestion.service.show.timeline.status.refused
+											            		{% endtrans %} 
+											            	{% elseif 'message.canceled' == message.content %}
+											            	{% trans from "services" %}
+											            		gestion.service.show.timeline.status.canceled
+											            		{% endtrans %} 
+											            	{% elseif 'message.confirmed' == message.content %}
+											            	{% trans from "services" %}
+											            		gestion.service.show.timeline.status.confirmed
+											            		{% endtrans %} 
+											            	{% endif %}
+
 											            </div>
 											        </div>
 									    		</li>	
@@ -61,6 +82,8 @@
 									    
 								    {% endfor %}
 								</ul>
+								<div class="box-footer">
+                                </div><!-- /.box-header -->
                             </div>
                             </div>
                         </div>

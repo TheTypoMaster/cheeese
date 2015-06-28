@@ -20,7 +20,8 @@ insert into status.photographerstatus (id, libelle)
 insert into status.prestationstatus (id, libelle) 
 	VALUES
 	(1, 'CREATED'), (2, 'PRE_CONFIRMED'), (3, 'REFUSED'),
-	(4, 'CANCELED')	,(5, 'CONFIRMED'),(6, 'PASSED'), (7, 'CLOSED');
+	(4, 'CANCELED')	,(5, 'CONFIRMED'),(6, 'PASSED'), (7, 'DELIVERED'),
+	(8, 'CLOSED');
 
 -- ----utils
 -- --Category

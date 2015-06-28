@@ -8,3 +8,12 @@ gestion:
             header: Changez votre mot de passe
             btn:
                 submit: Soumettre
+    admin:
+        new:
+            h1: Administrateurs
+            h2: Nouveau
+            breadh1: Administrateurs
+            breadh2: Nouveau
+            header: Créer un nouvel administateur
+            btn:
+                submit: Créer

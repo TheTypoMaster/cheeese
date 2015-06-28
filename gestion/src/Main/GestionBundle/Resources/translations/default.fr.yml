@@ -1,0 +1,17 @@
+gestion:
+    default:
+        index:
+            h1: Tableau de bord
+            h2: Accueil
+            breadh1: Tableau de bord
+            breadh2: Accueil
+    dashboard:
+        box:
+            prestations: prestations
+            verifications: Photographes a vérifier
+            verified: Photographes vérifiés
+            devis: Devis actifs
+            href:
+                more: En savoir plus
+        devis: Devis par categorie
+        prestations: Prestations par statut

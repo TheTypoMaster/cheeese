@@ -40,6 +40,8 @@ gestion:
                 h2: Liste des photographes
                 breadh1: Photographes
                 breadh2: Liste des photographes
+                btn:
+                    verify: Vérifier des photographes
             verify:
                 h2: Liste des photographes non vérifiés
                 breadh2: Liste des photographes non vérifiés

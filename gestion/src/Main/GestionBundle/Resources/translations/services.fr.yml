@@ -6,7 +6,17 @@ gestion:
             breadh1: Prestation
             breadh2: Détails
             header: Détails de la prestation
-            timeline: Timeline
+            h3:
+                evaluations: Evaluations
+                timeline: Timeline
+                transaction: Transaction
+            h4:
+                date: Adresse, date et durée
+                users: Utilisateurs
+                devis: Devis
+            h5:
+                photographer: Photographe
+                client: Client
             li:
                 at: à
             list:
@@ -21,11 +31,44 @@ gestion:
                 btn:
                     details: Détails
             evaluations:
+                title: Evaluations
                 client:
                     notation:
                         service: Notation de la prestation
                         photographer: Notation du photographe
+            timeline:
+                title: Timeline
+                status:
+                    title: Statut
+                    created: Prestation créée
+                    preapproved: Prestation pré-approuvée
+                    refused: Prestation refusée
+                    canceled: Prestation annulée
+                    confirmed: Prestation confirmée
+            transaction:
+                iban: Iban
+                price: Montant
+                comment: Commentaires
+                date: Date
 
             btn:
                 back: Retour
                 evaluations: Evaluations
+                pay: Payer photographe
+        pay:
+            h1: Prestation
+            h2: Payer
+            breadh1: Prestation
+            breadh2: Payer
+            header: Virement bancaire pour le compte de la prestation
+            btn:
+                back: Retour a la prestation
+                submit: Soumettre
+            h3: Informations
+            h4:
+                photographer: Photographe
+                iban: Iban
+                price: Montant a virer
+            p:
+                iban:
+                    empty: Le photographe n'a pas d'Iban renseigné.

@@ -4,13 +4,13 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    {% trans from "services" %}gestion.offer.list.th.reference{% endtrans %}
+                                                    {% trans from "services" %}gestion.service.show.list.th.reference{% endtrans %}
                                                 </th>
-                                                <th>{% trans from "services" %}gestion.offer.list.th.client{% endtrans %}</th>
-                                                <th>{% trans from "services" %}gestion.offer.list.th.photographer{% endtrans %}</th>
-                                                <th>{% trans from "services" %}gestion.offer.list.th.date{% endtrans %}</th>
-										  		<th>{% trans from "services" %}gestion.offer.list.th.town{% endtrans %}</th>	
-										  		<th>{% trans from "services" %}gestion.offer.list.th.status{% endtrans %}</th>
+                                                <th>{% trans from "services" %}gestion.service.show.list.th.client{% endtrans %}</th>
+                                                <th>{% trans from "services" %}gestion.service.show.list.th.photographer{% endtrans %}</th>
+                                                <th>{% trans from "services" %}gestion.service.show.list.th.date{% endtrans %}</th>
+										  		<th>{% trans from "services" %}gestion.service.show.list.th.town{% endtrans %}</th>	
+										  		<th>{% trans from "services" %}gestion.service.show.list.th.status{% endtrans %}</th>
 										  		<th></th>
                                             </tr>
                                         </thead>
@@ -37,7 +37,7 @@
                                                 {% endif %}
                                                 {{ entity.status.libelle }}
                                                 </span></td>
-                                                <td><form action="{{ path('service_show', {'id' : entity.id }) }}"><button class="btn btn-default btn-sm">{% trans from "services" %}gestion.offer.list.btn.details{% endtrans %}</button></form></td>
+                                                <td><form action="{{ path('service_show', {'id' : entity.id }) }}"><button class="btn btn-default btn-sm">{% trans from "services" %}gestion.service.show.list.btn.details{% endtrans %}</button></form></td>
                                             </tr>
     									{% endfor %}
                                             
@@ -46,13 +46,23 @@
                                         <tfoot>
                                             <tr>
                                                  <th>
-                                                    {% trans from "services" %}gestion.offer.list.th.reference{% endtrans %}
+                                                    {% trans from "services" %}gestion.service.show.list.th.reference{% endtrans %}
                                                 </th>
-                                                <th>{% trans from "services" %}gestion.offer.list.th.client{% endtrans %}</th>
-                                                <th>{% trans from "services" %}gestion.offer.list.th.photographer{% endtrans %}</th>
-                                                <th>{% trans from "services" %}gestion.offer.list.th.date{% endtrans %}</th>
-                                                <th>{% trans from "services" %}gestion.offer.list.th.town{% endtrans %}</th>    
-                                                <th>{% trans from "services" %}gestion.offer.list.th.status{% endtrans %}</th>
+                                                <th>
+                                                    {% trans from "services" %}gestion.service.show.list.th.client{% endtrans %}
+                                                </th>
+                                                <th>
+                                                    {% trans from "services" %}gestion.service.show.list.th.photographer{% endtrans %}
+                                                </th>
+                                                <th>
+                                                    {% trans from "services" %}gestion.service.show.list.th.date{% endtrans %}
+                                                </th>
+                                                <th>
+                                                    {% trans from "services" %}gestion.service.show.list.th.town{% endtrans %}
+                                                </th>    
+                                                <th>
+                                                    {% trans from "services" %}gestion.service.show.list.th.status{% endtrans %}
+                                                </th>
                                                 <th></th>
                                             </tr>
                                         </tfoot>
