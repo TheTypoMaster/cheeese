@@ -16,8 +16,25 @@ class DefaultController extends Controller
 	 * @Route("/", name="dashboard")
 	 */
 	public function dashboardAction(Request $request)
-	{		
-		return $this->render('MainGestionBundle:Default:index.html.twig');	
+	{	
+		$devisService 		= $this->get('service_devis');
+		$prestationService  = $this->get('service_prestation');
+		$companyService  	= $this->get('service_company');
+		$prestations  = $prestationService->countAll();
+		$devis 		  = $devisService->countAllActive();
+		$verify 	  = $companyService->countAllBy(1);
+		$verified 	  = $companyService->countAllBy(2);
+		$groupbydevis = $devisService->groupBy();
+		$groupbyprest = $prestationService->groupBy();
+
+		return $this->render('MainGestionBundle:Default:index.html.twig', array(
+			'prestations' 	=> $prestations,
+			'devis'			=> $devis,
+			'verify'		=> $verify,
+			'verified'		=> $verified,
+			'groupByDevis'	=> json_encode($groupbydevis),
+			'groupByPrest'	=> json_encode($groupbyprest),			
+			));	
 	}
 
 	/**
