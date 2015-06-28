@@ -16,4 +16,13 @@ class CompanyRepository extends EntityRepository
 			->setParameter('status', 1);	
 		return $qb->getQuery()->getSingleScalarResult();
 	}
+
+	public function countAllBy($arg) {
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('count(c)')
+			->from('MainCommonBundle:Companies\Company', 'c')
+			->where('c.status = :status')
+			->setParameter('status', $arg);	
+		return $qb->getQuery()->getSingleScalarResult();
+	}
 }

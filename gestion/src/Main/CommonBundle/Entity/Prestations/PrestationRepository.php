@@ -44,5 +44,24 @@ class PrestationRepository extends EntityRepository
 				));
 		return $qb->getQuery()->getSingleResult();
 	}
+
+	public function countAll() {
+		$qb = $this->_em->createQueryBuilder();
+		return $qb->select('count(p.id)')
+			->from('MainCommonBundle:Prestations\Prestation', 'p')
+            ->getQuery()
+            ->getSingleScalarResult();
+	}
+
+	public function groupBy($user) {
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('s.libelle as y','count(p.id) as a')
+			->from('MainCommonBundle:Prestations\Prestation', 'p')
+			->innerJoin('p.status', 's');
+		$qb->groupBy('s.libelle')
+			->having('count(p.id) > :value')
+			->setParameter('value', 0);
+		return $qb->getQuery()->getResult();
+	}
 	
 }

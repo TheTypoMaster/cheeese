@@ -46,5 +46,29 @@ class DevisRepository extends EntityRepository
 					));
 		return $qb->getQuery()->getResult();
 	}
+	/**
+	 * [countAll description]
+	 * @return [type] [description]
+	 */
+	public function countAllActive() {
+		$qb = $this->_em->createQueryBuilder();
+		return $qb->select('count(d.id)')
+			->from('MainCommonBundle:Photographers\Devis', 'd')
+			->where('d.active = :active')
+			->setParameter('active', 1)
+            ->getQuery()
+            ->getSingleScalarResult();
+	}
+
+	public function groupBy($user) {
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('c.name as label','count(d.id) as value')
+			->from('MainCommonBundle:Photographers\Devis', 'd')
+			->innerJoin('d.category', 'c');
+		$qb->groupBy('c.name')
+			->having('count(d.id) > :value')
+			->setParameter('value', 0);
+		return $qb->getQuery()->getResult();
+	}
 	
 }
