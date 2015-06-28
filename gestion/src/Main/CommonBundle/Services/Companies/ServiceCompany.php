@@ -124,7 +124,7 @@ class ServiceCompany
 	*/
 	public function getCountUnverifiedCompanies() 
 	{
-		return $this->repository->getCountUnverifiedCompanies() > 0 ;
+		return $this->countAllBy(1) > 0 ;
 	}
 
 	/**
@@ -173,5 +173,14 @@ class ServiceCompany
 	public function isVerifiedCompany(Company $company)
 	{
 		return $company->getStatus()->getId() == 2;
+	}
+
+	/**
+	 * [countAll description]
+	 * @return [type] [description]
+	 */
+	public function countAllBy($arg)
+	{
+		return $this->repository->countAllBy($arg);
 	}
 }
