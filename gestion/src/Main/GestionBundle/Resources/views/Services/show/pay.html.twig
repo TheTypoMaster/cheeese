@@ -1,0 +1,63 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "services" %}gestion.service.pay.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "services" %}gestion.service.pay.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-calendar"></i>{% trans from "services" %}gestion.service.pay.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "services" %}gestion.service.pay.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+                <!-- Main content -->
+                	<h2 class="page-header">
+                		{% trans from "services" %}gestion.service.pay.header{% endtrans %}  {{ prestation.reference }}
+                	</h2>
+                    <div class="row">
+                        <div class="col-xs-12">
+                        	<div class="box">
+                        		<div class="box-header">
+                                    <h3 class="box-title">
+										{% trans from "services" %}gestion.service.pay.h3{% endtrans %}
+                                    </h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                		<p>
+	                                		<h4>
+	                                			{% trans from "services" %}gestion.service.pay.h4.photographer{% endtrans %}
+	                                		</h4>	
+	                                		{{ prestation.devis.company.photographer.lastname }} {{ prestation.devis.company.photographer.firstname }}
+                                		</p>
+                                		<p>
+	                                		<h4>
+												{% trans from "services" %}gestion.service.pay.h4.iban{% endtrans %}
+	                                		</h4>
+	                                		{% if null != iban %}
+	                                			{{ iban.iban }}
+	                                			<br>
+	                                			{{ iban.bic }}
+	                                		{% else %}
+	                                			<strong>
+	                                			{% trans from "services" %}gestion.service.pay.p.iban.empty{% endtrans %}
+	                                			</strong>
+	                                		{% endif %}
+                                		</p>
+                                		<p>
+                                			<h4>
+												{% trans from "services" %}gestion.service.pay.h4.price{% endtrans %}
+	                                		</h4>
+	                                		{{ price }} {{ prestation.devis.currency.libelle }}
+                                		</p>
+                                		<p>
+                                			{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                                        	{{ form_rest(form) }}
+                                		</p>
+                                </div>
+                                <div class="box-footer">
+                                	<button type="submit" class="btn btn-primary">
+                                        {% trans from "services" %}gestion.service.pay.btn.submit{% endtrans %}
+                                    </button>
+                                	<a class="btn btn-default"  href="{{ path('service_show', {id: prestation.id}) }}">{% trans from "services" %}gestion.service.pay.btn.back{% endtrans %}</a>
+                                </div>
+                                    {{ form_end(form) }}
+
+                            </div>
+                        </div>                        
+                    </div>                            
+{% endblock %}

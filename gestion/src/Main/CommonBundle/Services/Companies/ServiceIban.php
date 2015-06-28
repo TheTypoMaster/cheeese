@@ -49,6 +49,18 @@ class ServiceIban
 	}
 	
 	/**
+	 * [getPhotographerIban description]
+	 * @param  [type] $user [description]
+	 * @return [type]       [description]
+	 */
+	public function getPhotographerIban($user)
+	{
+		return $this->repository->findOneBy(array(
+			'photographer' => $user 
+		));
+	}
+	
+	/**
 	 * 
 	 * @param unknown $data
 	 * @return boolean

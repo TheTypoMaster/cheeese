@@ -64,6 +64,11 @@ services:
         arguments: []
         tags:
             - { name: form.type, alias: form_message }
+    form_transaction:
+        class: "Main\CommonBundle\Form\Transactions\FormTransactionType"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_transaction }
     form_client_notation:
         class: "Main\CommonBundle\Form\Evaluations\FormClientNotationType"
         arguments: []

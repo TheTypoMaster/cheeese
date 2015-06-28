@@ -20,7 +20,9 @@ class ServicePrestation
 	const CLIENT_KO				= 4;
 	const PRESTATION_OK			= 5;
 	const OLD_PRESTATION		= 6;
-	const CLOSED_PRESTATION		= 7;
+	const PHOTOS_DELIVERED		= 7;
+	const CLOSED_PRESTATION		= 8;
+
 	
 	/**
 	 *
@@ -259,7 +261,7 @@ class ServicePrestation
 				break;
 			case 7:
 				if ($prestation->getStatus()->getId() == self::OLD_PRESTATION)
-					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CLOSED_PRESTATION);
+					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOS_DELIVERED);
 				break;
 		}
 		
@@ -277,6 +279,39 @@ class ServicePrestation
 			return false;
 		}
 	}
+
+	/**
+	 * [closePrestation description]
+	 * @param  Prestation $prestation [description]
+	 * @return [type]                 [description]
+	 */
+	public function closePrestation(Prestation $prestation)
+	{
+		$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CLOSED_PRESTATION);
+		$prestation->setStatus($status);
+		$prestation->setUpdatedAt(new \DateTime('now'));
+		try{
+			$this->em->flush();				
+			return true;
+		}catch(\Exception $e){
+			var_dump($e->getMessage());
+			return false;
+		}
+	}
+	/**
+	 * [isClosed description]
+	 * @param  Prestation $prestation [description]
+	 * @return boolean                [description]
+	 */
+	public function isClosed(Prestation $prestation)
+	{
+		return $prestation->getStatus()->getId() == self::CLOSED_PRESTATION;
+	}
+
+	public function isDelivered(Prestation $prestation)
+	{
+		return $prestation->getStatus()->getId() == self::PHOTOS_DELIVERED;
+	}
 	
 	/**
 	 * 
@@ -286,5 +321,24 @@ class ServicePrestation
 	public function isCommentAllowed(Prestation $prestation)
 	{
 		return $prestation->getStatus()->getId() == self::OLD_PRESTATION || $prestation->getStatus()->getId() == self::CLOSED_PRESTATION;
+	}
+
+	/**
+	 * [countAll description]
+	 * @return [type] [description]
+	 */
+	public function countAll()
+	{
+		return $this->repository->countAll();
+	}
+
+	/**
+	 * [groupBy description]
+	 * @param  [type] $user [description]
+	 * @return [type]       [description]
+	 */
+	public function groupBy($user = null) 
+	{
+		return $this->repository->groupBy($user);
 	}
 }

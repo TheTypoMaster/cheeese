@@ -13,3 +13,8 @@ form:
         placeholder:
             town_text: Commune
             date: Date
+    createadmin:
+        field:
+            username: Utilisateur
+            email: Email
+            password: Mot de passe

@@ -53,6 +53,9 @@ services:
     service_iban:
         class: "Main\CommonBundle\Services\Companies\ServiceIban"
         arguments: [@doctrine.orm.entity_manager, @security.context]
+    service_transaction:
+        class: "Main\CommonBundle\Services\Transactions\ServiceTransaction"
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_prestation]
 #Listeners
     listener_moves_radius:
         class: Main\CommonBundle\Listener\MoveRadiusListener

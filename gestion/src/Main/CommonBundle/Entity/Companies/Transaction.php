@@ -12,7 +12,7 @@ use Main\CommonBundle\Entity\Prestations\Prestation as Prestation;
  * @ORM\Entity
  * @ORM\Table(name="companies.transactions")
  */
-class Transactions
+class Transaction
 {
 	/**
 	 * @var bigint $id

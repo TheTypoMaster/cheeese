@@ -1,0 +1,25 @@
+<div class="col-xs-12">
+			<div class="box">
+				<div class="box-header"></div>
+				<div class="box-body table-responsive no-passind">
+				 <table class="table table-hover">
+				 	<tbody>
+				 		<tr>
+				 			<th>{% trans from "services" %}gestion.service.show.transaction.iban{% endtrans %}</th>
+				 			<th>{% trans from "services" %}gestion.service.show.transaction.price{% endtrans %}</th>
+				 			<th>{% trans from "services" %}gestion.service.show.transaction.comment{% endtrans %}</th>
+				 			<th>{% trans from "services" %}gestion.service.show.transaction.date{% endtrans %}</th>
+				 			<th></th>
+				 		</tr>
+				 		<tr>
+				 		<td>{{ transaction.iban }}</td>
+				 		<td>{{ transaction.price }}</td>
+				 		<td>{{ transaction.comment }}</td>	
+				 		<td>{{ transaction.createdAt | date('d-m-Y H:i') }}</td>				 		
+				 		</tr>
+				 	</tbody>
+				 </table>
+				</div>
+				<div class="box-footer"></div>
+			</div>
+		</div>
