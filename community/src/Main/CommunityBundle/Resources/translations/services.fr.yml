@@ -23,6 +23,8 @@ community:
                     client_ko: Annulée
                     success: Confirmée
                     old: Traitée
+                    delivered: Livrée
+                    closed: Cloturée
             btn:
                 details: Détails
         notation:

@@ -29,3 +29,13 @@ community:
                     more: En savoir plus...
             devis: Devis par catégorie
             prestations: Prestations par statut
+        week:
+            header: Vos prestations pour la semaine
+            th:
+                date: date
+                address: Adresse
+                offer: Devis
+                town: Commune
+            td:
+                btn:
+                    details: Détails

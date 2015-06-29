@@ -41,6 +41,7 @@ $(function() {
         data: groupByPrest,
         barColors: ['#00a65a', '#f56954'],
         xkey: 'y',
+	xLabelMargin: 5,
         ykeys: ['a'],
         hideHover: 'auto'
     });

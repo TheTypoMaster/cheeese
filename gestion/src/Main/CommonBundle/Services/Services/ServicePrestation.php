@@ -354,4 +354,10 @@ class ServicePrestation
 	{
 		return $this->repository->groupBy($user);
 	}
+
+	public function getWeekPrestations()
+	{
+		$next = date("Y-m-d",strtotime("+1 week"));
+		return $this->repository->getWeekPrestations($next, self::PRESTATION_OK, $this->getCurrentUser()->getId());
+	}
 }

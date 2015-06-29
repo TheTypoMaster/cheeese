@@ -37,17 +37,22 @@ class DefaultController extends Controller
 		$devisService 		= $this->get('service_devis');
 		$prestationService  = $this->get('service_prestation');
 		$radiusService		= $this->get('service_moves_radius');
+		$transactionService	= $this->get('service_transaction');
 		$prestations 	= $prestationService->countAllMyServices();
 		$devis 		 	= $devisService->CountAllMyActiveDevis();
 		$moves 		 	= $radiusService->getRadius();
 		$groupbydevis 	= $devisService->groupMyDevis();
 		$groupbyprest 	= $prestationService->groupMyPrestations();
+		$money			= $transactionService->getTotalMoney();
+		$week			= $prestationService->getWeekPrestations();
 		return $this->render('MainCommunityBundle:Default:index.html.twig',  array(
 				'prestations'	=> $prestations,
 				'devis'			=> $devis,
 				'moves'			=> $moves,
 				'groupByDevis'	=> json_encode($groupbydevis),
-				'groupByPrest'	=> json_encode($groupbyprest)
+				'groupByPrest'	=> json_encode($groupbyprest),
+				'money'			=> $money,
+				'week'			=> $week
 		));	
 	}
 

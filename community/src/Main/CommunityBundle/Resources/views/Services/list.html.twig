@@ -34,6 +34,10 @@
                                                 <td><span class="label label-success">{% trans from "services" %}community.service.list.td.status.success{% endtrans %}</span></td>
                                                 {% elseif 6 == entity.status.id %}
                                                 <td><span class="label label-primary">{% trans from "services" %}community.service.list.td.status.old{% endtrans %}</span></td>
+                                                {% elseif 7 == entity.status.id %}
+                                                <td><span class="label label-primary">{% trans from "services" %}community.service.list.td.status.delivered{% endtrans %}</span></td>
+                                                {% elseif 8 == entity.status.id %}
+                                                <td><span class="label label-primary">{% trans from "services" %}community.service.list.td.status.closed{% endtrans %}</span></td>
                                                 {% endif %}
                                                 <td><form action="{{ path('service_show', {'id' : entity.id }) }}"><button class="btn btn-default btn-sm">{% trans from "services" %}community.service.list.btn.details{% endtrans %}</button></form></td>
                                             </tr>

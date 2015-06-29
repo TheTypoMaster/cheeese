@@ -73,5 +73,23 @@ class PrestationRepository extends EntityRepository
 			->setParameter('value', 0);
 		return $qb->getQuery()->getResult();
 	}
+
+	public function getWeekPrestations($date, $status, $user)
+	{
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('p')
+		->from('MainCommonBundle:Prestations\Prestation', 'p')
+		->innerJoin('p.devis', 'd')
+		->where('p.startTime < :date')
+		->andWhere('d.company = :photographer')
+		->andWhere('p.status = :status')
+		->setParameters(array(
+				'date'			=> $date,
+				'photographer'	=> $user,
+				'status'		=> $status
+				))
+		->orderBy('p.startTime', 'ASC');
+		return $qb->getQuery()->getResult();	
+	}
 	
 }

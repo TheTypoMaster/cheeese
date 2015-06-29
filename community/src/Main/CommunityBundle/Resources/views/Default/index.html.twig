@@ -6,9 +6,7 @@
 {% block content %}
 <!-- Main content -->
                 <section class="content">
-                    {% if isRole('ROLE_PHOTOGRAPHER') %}
-                        {% include "MainCommunityBundle:Default:dashboard.html.twig" %} 
-                    {% elseif isRole('ROLE_PHOTOGRAPHER_VERIFIED') %}
+                    {% if is_granted('ROLE_PHOTOGRAPHER_VERIFIED') %}
                         {% include "MainCommunityBundle:Default:dashboard_verified.html.twig" %}
                     {% endif %}
                 </section><!-- /.content -->
