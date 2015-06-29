@@ -42,6 +42,10 @@ community:
             breadh1: Prestation
             breadh2: Détails
             header: Prestation
+            h4:
+                date: Adresse, date et durée
+                client: Client
+                devis: Devis
             li:
                 at: à
             btn:

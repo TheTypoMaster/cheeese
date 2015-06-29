@@ -9,34 +9,73 @@
                 		{% trans from "services" %}community.service.show.header{% endtrans %} {{ prestation.reference }}
                 	</h2>
                     <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title"></h3>
+                    	<div class="col-xs-4">
+                        	<div class="box">
+                        		<div class="box-header">
+                                    <h4 class="box-title">
+										{% trans from "services" %}community.service.show.h4.date{% endtrans %}
+                                    </h4>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
-                                	<div class="col-xs-6 col-sm-4">
-										<ul>
-										<li>{{ prestation.starttime | date('d/m/Y')}} {% trans from "services" %}community.service.show.li.at{% endtrans %} {{ prestation.starttime | date('H:i')}}</li>
-										<li>{{ prestation.address }} {{ prestation.town.name }} ({{ prestation.town.code }}) {{ prestation.town.country.name }}</li>
-										</ul>
-										</div>
-										<div class="col-xs-6 col-sm-4">
-										<ul>
-											<li>{{ prestation.client.username }}</li>
-											<li>{{ prestation.devis.title }} </li>
-											<li>{{ prestation.devis.category.name }}</li>				
-										</ul>
-										</div>
-										<div class="col-xs-6 col-sm-4">
-										<ul>
-											<li>{{ prestation.price }} ({{ prestation.devis.currency.libelle }})</li>
-											<li>{{ prestation.duration.libelle }} </li>
-											<li>{{ prestation.status.libelle }}</li>
-										</ul>
-										</div>
-                                
-	    							<a class="btn btn-default"  href="{{ path('service') }}">{% trans from "services" %}community.service.show.btn.back{% endtrans %}</a>
+                                		<p>
+                                			{{ prestation.address }} {{ prestation.town.name }} {{ prestation.town.code }} {{ prestation.town.country.name }}
+                                		</p>
+                                		<p>
+                                			{{ prestation.starttime | date('d/m/Y')}} {% trans from "services" %}community.service.show.li.at{% endtrans %} {{ prestation.starttime | date('H:i')}}
+                                		</p>
+                                		<p>
+                                			{{ prestation.duration.libelle }}
+                                		</p>
+                                </div>
+                                <div class="box-footer">
+                                	
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                        	<div class="box">
+	                        	<div class="box-header">
+	                                    <h4 class="box-title">
+	                                    {% trans from "services" %}community.service.show.h4.client{% endtrans %}
+	                                	</h4>
+	                            </div>
+	                            <div class="box-body">
+		                            <div class="user-panel">
+	                                    <div class="pull-left image">
+	                                        <img src="{{ image64(prestation.client.photo, prestation.client.photoType, 'pp') }}"  class="img-circle" />
+	                                    </div>
+	                                    {{ prestation.client.username }}
+                                        <br>
+                                        <i class="fa fa-star-o"></i> {{ prestation.client.note }}
+                                        <i class="fa fa-comment-o"></i> {{ prestation.client.prestations }}                                
+                                	</div>
+	                            </div><!-- /.box-header -->
+                                <div class="box-footer">
+                                </div>
+	                        </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                        	<div class="box">
+                        		<div class="box-header">
+	                                    <h4 class="box-title">
+	                                    {% trans from "services" %}community.service.show.h4.devis{% endtrans %}
+	                                	</h4>
+	                            </div>
+	                            <div class="box-body">
+	                            	<p><a href="{{ path('devis_read', {id: prestation.devis.id})}}">{{ prestation.devis.title }}</a></p>
+	                            	<p>{{ prestation.price }} ({{ prestation.devis.currency.libelle }})</p>
+	                            	<p>{{ prestation.status.libelle }}</p>
+	                            </div>
+                                 <div class="box-footer">
+                                    
+                                </div>
+                        	</div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <a class="btn btn-default"  href="{{ path('service') }}">{% trans from "services" %}community.service.show.btn.back{% endtrans %}</a>
 									{% if 1 == prestation.status.id %}
 									<a class="btn btn-success"  href="{{ path('service_edit', { 'id' : prestation.id, 'slug': 2 }) }}">{% trans from "services" %}community.service.show.btn.approve{% endtrans %}</a>
 									<a class="btn btn-danger"  href="{{ path('service_edit', { 'id' : prestation.id, 'slug': 3 }) }}">{% trans from "services" %}community.service.show.btn.refuse{% endtrans %}</a>
@@ -46,9 +85,7 @@
 							    		{% if  null == commentPhotographer %}
 							    			<a class="btn btn-default"  href="{{ path('notation', { 'id' : prestation.id}) }}">{% trans from "services" %}community.service.show.btn.evaluate{% endtrans %}</a>
 							    		{% endif %} 
-						    		{% endif %}                                  
-                                </div><!-- /.box-body -->
-                            </div><!-- /.box -->
+						    		{% endif %}   
                           </div>
                        </div>
                        
