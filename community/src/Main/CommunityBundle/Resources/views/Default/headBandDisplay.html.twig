@@ -1,4 +1,4 @@
-{% if 'ROLE_PHOTOGRAPHER' == role %}
+{% if is_granted('ROLE_PHOTOGRAPHER') %}
     {% if null == company %}
 		<div class="alert alert-info alert-dismissable">
 		<i class="fa fa-info"></i>

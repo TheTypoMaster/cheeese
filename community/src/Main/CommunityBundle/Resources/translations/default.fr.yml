@@ -2,16 +2,30 @@ community:
     default:
         headband:
             info:
-                banner: Alert info!
-                message: nouveau message
+                banner: Nouveau photographe
+                message: Bienvenue sur Cheeese, vous devez rentrer les données de votre entreprise (onglet Mon entreprise) afin de pouvoir continuer.
             warning:
-                banner: Alert warning!
-                message: awaiting
+                banner: Données en cours de validation
+                message: Vos données sont en cours de validation. En attendant, vous pouvez mettre à jour vos informations de profil si ce n''est pas déja fait.
+            success:
+                banner: Données valide
+                message: Votre entreprise a été validée, vous devez vous reconnecter pour pouvoir utiliser votre nouveau rôle.
             danger:
-                banner: Alert danger!
-                message: false data
+                banner: Données non valide
+                message: Votre entreprise n'a pu être validée. Merci de corriger vos données puis réessayez.
         index:
             h1: Tableau d'accueil
             h2: index
             breadh1: Tableau d'accueil
             breadh2: Index
+    dashboard:
+        verified:
+            box:
+                prestations: prestations
+                devis: Devis actifs
+                moves: Votre zone de déplacements
+                money: Gains avec Cheeese
+                href:
+                    more: En savoir plus...
+            devis: Devis par catégorie
+            prestations: Prestations par statut

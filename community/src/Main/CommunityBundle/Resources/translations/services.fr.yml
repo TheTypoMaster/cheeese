@@ -15,6 +15,8 @@ community:
                 status: Statut
                 reference:
                     title: Référence
+            td:    
+                status:
                     processing: En cours
                     photographer_ok: Pré-approuvée
                     photographer_ko: Refusée
@@ -53,9 +55,16 @@ community:
                             service: Notation de la prestation
                             photographer: Notation du photographe
             timeline: 
+                header: Timeline
                 title:
                     you: Vous
-                    status: Statut
+                    status: 
+                        title: Statut
+                        created: Prestation créée
+                        preapproved: Prestation pré-approuvée
+                        refused: Prestation refusée
+                        canceled: Prestation annulée
+                        confirmed: Prestation confirmée
                 messages:
                     prestation:
                         creation: Prestation créée

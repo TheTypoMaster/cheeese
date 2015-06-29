@@ -6,7 +6,7 @@
 {% block content %}
                 <!-- Main content -->
                 	<h2 class="page-header">
-                		{% trans from "services" %}community.service.show.header{% endtrans %} 
+                		{% trans from "services" %}community.service.show.header{% endtrans %} {{ prestation.reference }}
                 	</h2>
                     <div class="row">
                         <div class="col-xs-12">
@@ -17,7 +17,6 @@
                                 <div class="box-body">
                                 	<div class="col-xs-6 col-sm-4">
 										<ul>
-										<li>{{ prestation.reference }}</li>	
 										<li>{{ prestation.starttime | date('d/m/Y')}} {% trans from "services" %}community.service.show.li.at{% endtrans %} {{ prestation.starttime | date('H:i')}}</li>
 										<li>{{ prestation.address }} {{ prestation.town.name }} ({{ prestation.town.code }}) {{ prestation.town.country.name }}</li>
 										</ul>
@@ -61,18 +60,17 @@
 	                    {% include "MainCommunityBundle:Services\\show:notation.html.twig" %} 
                        {% endif %}
                        <h2 class="page-header">
-                       	{% trans from "services" %}community.service.show.btn.timeline{% endtrans %}
+                       	{% trans from "services" %}community.service.show.timeline.header{% endtrans %}
                        </h2>
                        <!-- TIMELINE -->
                        	{% include "MainCommunityBundle:Services\\show:timeline.html.twig" %}
 
                         {% if commentAllowed == false %}
-                        <h2 class="page-header">{% trans from "services" %}community.service.show.btn.response{% endtrans %}</h2>
+                        <h2 class="page-header">{% trans from "services" %}community.service.show.response.add{% endtrans %}</h2>
                         <div class="row">
                     		<div class="col-xs-12">
 	                            <div class="box">
 	                            	<div class="box-header">
-	                                    <h3 class="box-title">{% trans from "services" %}community.service.show.btn.response.add{% endtrans %}</h3>
 	                                </div><!-- /.box-header -->
 	                                <!-- form start -->
 	                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
@@ -81,7 +79,7 @@
 	                                    </div><!-- /.box-body -->
 	
 	                                    <div class="box-footer">
-	                                        <button type="submit" class="btn btn-primary">{% trans from "services" %}community.service.show.btn.response.btn.submit{% endtrans %}</button>
+	                                        <button type="submit" class="btn btn-primary">{% trans from "services" %}community.service.show.response.btn.submit{% endtrans %}</button>
 	                                    </div>
 	                                {{ form_end(form) }}
 	                            </div>

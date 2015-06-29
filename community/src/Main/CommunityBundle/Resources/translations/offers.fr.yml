@@ -41,7 +41,7 @@ community:
                     count: Commentaires
             services:
                 empty: Pas de prestations pour ce devis
-                active: Prestations
+                active: Prestation(s)
             prices:
                 title %currency%: Prix (en %currency%)
                 empty: Vous n'avez pas de prix rattachés à ce devis.

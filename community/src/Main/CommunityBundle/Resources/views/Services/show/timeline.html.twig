@@ -1,9 +1,9 @@
 <div class="row">
                         <div class="col-xs-12">  
                             <div class="box">
-                            <div class="box-header">
-                                    <h3 class="box-title">{% trans from "services" %}community.service.show.btn.timeline{% endtrans %}</h3>
+                            	<div class="box-header">
                                 </div><!-- /.box-header -->
+                                <div class="box-body">
                                 <ul class="timeline">
 
 									{% for message in messages %}
@@ -33,9 +33,9 @@
 											        <div class="timeline-item">
 											        	<span class="time"><i class="fa fa-clock-o"></i> {{ message.updatedat | date('d/m/Y H:i') }} </span>
 											        	{% if 1 == message.read %}
-											            <h3 class="timeline-header"><a href="#" style="color:green;">{% trans from "services" %}community.service.show.btn.timeline.title.you{% endtrans %} </a></h3>
+											            <h3 class="timeline-header"><a href="#" style="color:green;">{% trans from "services" %}community.service.show.timeline.title.you{% endtrans %} </a></h3>
 														{% else %}
-											            <h3 class="timeline-header"><a href="#" style="color:orange;">{% trans from "services" %}community.service.show.btn.timeline.title.you{% endtrans %}  </a></h3>
+											            <h3 class="timeline-header"><a href="#" style="color:orange;">{% trans from "services" %}community.service.show.timeline.title.you{% endtrans %}  </a></h3>
 														{% endif %}
 											            <div class="timeline-body"> {{ message.content }} </div>
 											        </div>
@@ -50,13 +50,34 @@
 											            <h3 class="timeline-header">
 											            	<a href="#" style="color:#932ab6 !important">
 											            		{% trans from "services" %}
-											            		community.service.show.btn.timeline.title.status
+											            		community.service.show.timeline.title.status.title
 											            		{% endtrans %} 
 											            	</a>
 											            </h3>
 														
-											            <div class="timeline-body"> 
-											            		{{ message.content }} 
+											             <div class="timeline-body"> 
+											            	{% if 'message.created' == message.content %}
+											            		{% trans from "services" %}
+											            		community.service.show.timeline.title.status.created
+											            		{% endtrans %} 
+											            	{% elseif 'message.preapproved' == message.content %}
+											            	{% trans from "services" %}
+											            		community.service.show.timeline.title.status.preapproved
+											            		{% endtrans %} 
+											            	{% elseif 'message.refused' == message.content %}
+											            	{% trans from "services" %}
+											            		community.service.show.timeline.title.status.refused
+											            		{% endtrans %} 
+											            	{% elseif 'message.canceled' == message.content %}
+											            	{% trans from "services" %}
+											            		community.service.show.timeline.title.status.canceled
+											            		{% endtrans %} 
+											            	{% elseif 'message.confirmed' == message.content %}
+											            	{% trans from "services" %}
+											            		community.service.show.timeline.title.status.confirmed
+											            		{% endtrans %} 
+											            	{% endif %}
+
 											            </div>
 											        </div>
 									    		</li>	
@@ -64,6 +85,7 @@
 									    
 								    {% endfor %}
 								</ul>
-                            </div>
-                            </div>
+							</div>
                         </div>
+                     </div>
+                </div>

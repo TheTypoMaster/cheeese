@@ -2,7 +2,7 @@
                             	<div class="box">
                             		<div class="box-header">
                                     <h3 class="box-title">
-                                        {% trans from "offers" %}community.devis.read.prices.title{% endtrans %}
+                                        {% trans with {'%currency%': devis.currency.libelle} from "offers" %}community.devis.read.prices.title %currency%{% endtrans %}
                                     </h3>
                                 	</div><!-- /.box-header -->                          
                                 	<div class="box-body table-responsive">

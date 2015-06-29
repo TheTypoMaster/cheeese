@@ -23,17 +23,17 @@
                                                 <td> <a href="{{ path('devis_read', {'id' : entity.devis.id }) }}">{{ entity.devis.title }}</a></td>
                                                 <td> {{ entity.client.username }}</td>
                                                 {% if 1 == entity.status.id %}
-                                                <td><span class="label label-default">{% trans from "services" %}community.service.list.th.status.processing{% endtrans %}</span></td>
+                                                <td><span class="label label-default">{% trans from "services" %}community.service.list.td.status.processing{% endtrans %}</span></td>
                                                 {% elseif 2 == entity.status.id %}
-                                                <td><span class="label label-warning">{% trans from "services" %}community.service.list.th.status.photographer_ok{% endtrans %}</span></td>
+                                                <td><span class="label label-warning">{% trans from "services" %}community.service.list.td.status.photographer_ok{% endtrans %}</span></td>
                                                 {% elseif 3 == entity.status.id %}
-                                                <td><span class="label label-danger">{% trans from "services" %}community.service.list.th.status.photographer_ko{% endtrans %}</span></td>
+                                                <td><span class="label label-danger">{% trans from "services" %}community.service.list.td.status.photographer_ko{% endtrans %}</span></td>
                                                 {% elseif 4 == entity.status.id %}
-                                                <td><span class="label label-danger">{% trans from "services" %}community.service.list.th.status.client_ko{% endtrans %}</span></td>
+                                                <td><span class="label label-danger">{% trans from "services" %}community.service.list.td.status.client_ko{% endtrans %}</span></td>
                                                 {% elseif 5 == entity.status.id  %}
-                                                <td><span class="label label-success">{% trans from "services" %}community.service.list.th.status.success{% endtrans %}</span></td>
+                                                <td><span class="label label-success">{% trans from "services" %}community.service.list.td.status.success{% endtrans %}</span></td>
                                                 {% elseif 6 == entity.status.id %}
-                                                <td><span class="label label-primary">{% trans from "services" %}community.service.list.th.status.old{% endtrans %}</span></td>
+                                                <td><span class="label label-primary">{% trans from "services" %}community.service.list.td.status.old{% endtrans %}</span></td>
                                                 {% endif %}
                                                 <td><form action="{{ path('service_show', {'id' : entity.id }) }}"><button class="btn btn-default btn-sm">{% trans from "services" %}community.service.list.btn.details{% endtrans %}</button></form></td>
                                             </tr>
