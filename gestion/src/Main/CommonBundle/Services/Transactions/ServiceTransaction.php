@@ -79,9 +79,18 @@ class ServiceTransaction
 		return $this->repository->findOneByPrestation($prestation->getId());
 	}
 
+	/**
+	 * [getByUser description]
+	 * @return [type] [description]
+	 */
 	public function getByUser()
 	{
 		return $this->repository->findByPhotographer($this->getCurrentUser()->getId());
+	}
+
+	public function getTotalMoney()
+	{
+		return $this->repository->getTotalMoney($this->getCurrentUser()->getId());
 	}
 	
 }

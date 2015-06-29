@@ -11,6 +11,7 @@ use Main\CommonBundle\Entity\Prestations\Prestation as Prestation;
 /**
  * @ORM\Entity
  * @ORM\Table(name="companies.transactions")
+ * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Companies\TransactionRepository")
  */
 class Transaction
 {
