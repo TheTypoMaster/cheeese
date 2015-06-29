@@ -61,3 +61,16 @@ companies:
             header: Edition de vos détails bancaires
             btn:
                 submit: Soumettre
+    transaction:
+        view:
+            h1: Transactions
+            h2: Liste
+            breadcrumbh1: Transactions
+            breadcrumbh2: Liste
+            header: Liste de vos transactions reçues
+            empty: Vous n'avez pas encore de transactions
+            th:
+                date: date
+                amount: Montant
+                iban: Iban
+                service: Prestation 

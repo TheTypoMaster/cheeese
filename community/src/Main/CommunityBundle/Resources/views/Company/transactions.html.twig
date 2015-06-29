@@ -1,0 +1,46 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "company" %}companies.transaction.view.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "company" %}companies.transaction.view.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "company" %}companies.transaction.view.breadcrumbh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "company" %}companies.transaction.view.breadcrumbh2{% endtrans %}{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">
+						{% trans from "company" %}companies.transaction.view.header{% endtrans %}</h3>
+				</div>
+				{% if transactions != null %}
+					<div class="box-body table-responsive no-passind">
+					 <table class="table table-hover">
+					 	<tbody>
+					 		<tr>
+					 			<th>{% trans from "company" %}companies.transaction.view.th.date{% endtrans %}</th>
+					 			<th>{% trans from "company" %}companies.transaction.view.th.amount{% endtrans %}</th>
+					 			<th>{% trans from "company" %}companies.transaction.view.th.iban{% endtrans %}</th>
+					 			<th>{% trans from "company" %}companies.transaction.view.th.service{% endtrans %}</th>
+					 			<th></th>
+					 		</tr>
+					 		{% for entity in transactions %}
+					 		<tr>
+					 		<td>{{ entity.createdAt | date('d-m-Y') }}</td>
+					 		<td>{{ entity.price }}</td>
+					 		<td>{{ entity.iban }}</td>
+					 		<td><a href="{{ path('service_show', {id : entity.prestation.id })}}">{{ entity.prestation.reference }}</a></td>
+					 		</tr>
+					 		{% endfor %}
+					 	</tbody>
+					 </table>
+					</div>
+				{% else %}
+					<div class="box-body">
+							<h3 class="box-title">
+								{% trans from "company" %}companies.transaction.view.empty{% endtrans %}
+							</h3>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
