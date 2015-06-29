@@ -323,15 +323,28 @@ class ServicePrestation
 		return $prestation->getStatus()->getId() == self::OLD_PRESTATION || $prestation->getStatus()->getId() == self::CLOSED_PRESTATION;
 	}
 
+	public function countAllMyServices()
+	{
+		return $this->countAll($this->getCurrentUser()->getId());
+	}
+
 	/**
 	 * [countAll description]
 	 * @return [type] [description]
 	 */
-	public function countAll()
+	public function countAll($user = null)
 	{
-		return $this->repository->countAll();
+		return $this->repository->countAll($user);
 	}
 
+	/**
+	 * [groupMyPrestations description]
+	 * @return [type] [description]
+	 */
+	public function groupMyPrestations()
+	{
+		return $this->groupBy($this->getCurrentUser()->getId());
+	}
 	/**
 	 * [groupBy description]
 	 * @param  [type] $user [description]

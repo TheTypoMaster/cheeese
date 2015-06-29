@@ -50,13 +50,17 @@ class DevisRepository extends EntityRepository
 	 * [countAll description]
 	 * @return [type] [description]
 	 */
-	public function countAllActive() {
+	public function countAllActive($user) {
 		$qb = $this->_em->createQueryBuilder();
-		return $qb->select('count(d.id)')
+		$qb->select('count(d.id)')
 			->from('MainCommonBundle:Photographers\Devis', 'd')
 			->where('d.active = :active')
-			->setParameter('active', 1)
-            ->getQuery()
+			->setParameter('active', 1);
+		if ($user != null) {
+			$qb->andwhere('d.company = :company')
+			   ->setParameter('company', $user);
+		}
+		return $qb->getQuery()
             ->getSingleScalarResult();
 	}
 
@@ -65,6 +69,10 @@ class DevisRepository extends EntityRepository
 		$qb->select('c.name as label','count(d.id) as value')
 			->from('MainCommonBundle:Photographers\Devis', 'd')
 			->innerJoin('d.category', 'c');
+		if ($user != null) {
+		$qb->where('d.company = :company')
+		   ->setParameter('company', $user);
+		}
 		$qb->groupBy('c.name')
 			->having('count(d.id) > :value')
 			->setParameter('value', 0);

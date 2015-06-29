@@ -17,16 +17,40 @@ class DefaultController extends Controller
 	{
 		$company = null;
 		$usr= $this->get('security.context')->getToken()->getUser();
-		$roles = $usr->getRoles();
-		//Find company
 		//Appel du service d'inscription
 		$serviceCompany = $this->get('service_company');
 		$company = $serviceCompany->getCompany($usr->getId());
-		
 		return $this->render('MainCommunityBundle:Default:headBandDisplay.html.twig', array(
-				'role'    => $roles[0],
-				'company' => $company
+				'company'		=> $company,
 		));
 		
 	}
+
+		/**
+	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/", name="dashboard")
+	 */
+	public function dashboardAction(Request $request)
+	{		
+		$devisService 		= $this->get('service_devis');
+		$prestationService  = $this->get('service_prestation');
+		$radiusService		= $this->get('service_moves_radius');
+		$prestations 	= $prestationService->countAllMyServices();
+		$devis 		 	= $devisService->CountAllMyActiveDevis();
+		$moves 		 	= $radiusService->getRadius();
+		$groupbydevis 	= $devisService->groupMyDevis();
+		$groupbyprest 	= $prestationService->groupMyPrestations();
+		return $this->render('MainCommunityBundle:Default:index.html.twig',  array(
+				'prestations'	=> $prestations,
+				'devis'			=> $devis,
+				'moves'			=> $moves,
+				'groupByDevis'	=> json_encode($groupbydevis),
+				'groupByPrest'	=> json_encode($groupbyprest)
+		));	
+	}
+
+	
+	
 }

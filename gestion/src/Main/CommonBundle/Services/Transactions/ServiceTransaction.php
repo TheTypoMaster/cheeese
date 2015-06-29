@@ -35,7 +35,12 @@ class ServiceTransaction
 		$this->service = $servicePrestation;
 	}	
 
-
+	/**
+	 *
+	 */
+	protected function getCurrentUser(){
+		return $this->securityContext->getToken()->getUser();
+	}
 
 	/**
 	 * [addPrice description]
@@ -72,6 +77,11 @@ class ServiceTransaction
 	public function get(Prestation $prestation)
 	{
 		return $this->repository->findOneByPrestation($prestation->getId());
+	}
+
+	public function getByUser()
+	{
+		return $this->repository->findByPhotographer($this->getCurrentUser()->getId());
 	}
 	
 }

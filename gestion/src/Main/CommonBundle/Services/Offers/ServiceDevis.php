@@ -169,13 +169,18 @@ class ServiceDevis
 		return $this->repository->findBy(array(), array('createdAt' => 'desc'));
 	}
 
+	public function CountAllMyActiveDevis()
+	{
+		return $this->countAllActive($this->getCurrentUSer()->getId());
+	}
+
 	/**
 	 * [countAll description]
 	 * @return [type] [description]
 	 */
-	public function countAllActive()
+	public function countAllActive($user = null)
 	{
-		return $this->repository->countAllActive();
+		return $this->repository->countAllActive($user);
 	}
 
 	/**
@@ -186,6 +191,11 @@ class ServiceDevis
 	public function groupBy($user = null) 
 	{
 		return $this->repository->groupBy($user);
+	}
+
+	public function groupMyDevis()
+	{
+		return $this->groupBy($this->getCurrentUSer()->getId());
 	}
 	
 	

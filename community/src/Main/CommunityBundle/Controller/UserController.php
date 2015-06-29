@@ -10,16 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserController extends Controller
 {
-	/**
-	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
-     *
-     * @return Symfony\Component\HttpFoundation\Response
-	 * @Route("/", name="dashboard")
-	 */
-	public function dashboardAction(Request $request)
-	{		
-		return $this->render('MainCommunityBundle:Default:index.html.twig');	
-	}
 
 	/**
 	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP

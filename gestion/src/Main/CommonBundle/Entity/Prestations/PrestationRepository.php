@@ -45,11 +45,16 @@ class PrestationRepository extends EntityRepository
 		return $qb->getQuery()->getSingleResult();
 	}
 
-	public function countAll() {
+	public function countAll($user) {
 		$qb = $this->_em->createQueryBuilder();
-		return $qb->select('count(p.id)')
-			->from('MainCommonBundle:Prestations\Prestation', 'p')
-            ->getQuery()
+		$qb->select('count(p.id)')
+			->from('MainCommonBundle:Prestations\Prestation', 'p');
+			if ($user != null) {
+				$qb->innerJoin('p.devis', 'd')
+				   ->where('d.company = :company')
+				   ->setParameter('company', $user);
+			}
+        return $qb->getQuery()
             ->getSingleScalarResult();
 	}
 
@@ -58,6 +63,11 @@ class PrestationRepository extends EntityRepository
 		$qb->select('s.libelle as y','count(p.id) as a')
 			->from('MainCommonBundle:Prestations\Prestation', 'p')
 			->innerJoin('p.status', 's');
+		if ($user != null) {
+			$qb->innerJoin('p.devis', 'd')
+			   ->where('d.company = :company')
+			   ->setParameter('company', $user);
+		}
 		$qb->groupBy('s.libelle')
 			->having('count(p.id) > :value')
 			->setParameter('value', 0);
