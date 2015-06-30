@@ -37,6 +37,9 @@ class FormMessageType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+    			'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     			));
     }
 

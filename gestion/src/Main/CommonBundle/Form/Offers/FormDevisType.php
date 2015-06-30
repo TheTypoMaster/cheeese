@@ -72,6 +72,9 @@ class FormDevisType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     			));
         
     	$builder->add('currency', 'entity', array(
@@ -80,7 +83,11 @@ class FormDevisType extends AbstractType
     			'property' => 'libelle',
     			'attr' => array(
     					'class' => 'form-control',
-    			),
+    			)
+                ,
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     	));
     	
     	$builder->add('presentation', 'textarea', array(
@@ -88,6 +95,9 @@ class FormDevisType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     			));
     }
     

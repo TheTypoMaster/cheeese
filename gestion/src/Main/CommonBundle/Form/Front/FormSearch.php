@@ -46,7 +46,10 @@ class FormSearch extends AbstractType
                         return $er->createQueryBuilder('c')
                         ->add('where', 'c.type = :type')
                         ->setParameter(':type', $type);
-                    }
+                    },
+                    'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
             ));
 
         $builder->add('department');
@@ -57,7 +60,10 @@ class FormSearch extends AbstractType
         		'attr' => array(
                         'placeholder'  => 'form.search.placeholder.town_text',
         				'autocomplete' => 'on'
-                    )
+                    ),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
         		));
     	
     	$builder->add ( 'town_code', 'hidden', array ());
@@ -72,7 +78,10 @@ class FormSearch extends AbstractType
         			'horizontal_input_wrapper_class'    => 'col-lg-4',
 	        		'attr'     => array(
                         'placeholder' => 'form.search.placeholder.date',
-                    )                           
+                    ),
+                    'constraints'   => array(
+                        new NotBlank ( array(
+                        )))                          
                 ));
         $builder->addEventListener ( FormEvents::PRE_SET_DATA, array (
                 $this,

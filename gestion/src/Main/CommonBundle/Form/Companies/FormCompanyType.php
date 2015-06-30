@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class FormCompanyType extends AbstractType
 {
@@ -87,7 +88,10 @@ class FormCompanyType extends AbstractType
                 'attr' => array(
                         'class' => 'form-control',
                         'autocomplete' => 'off'
-                        )
+                        ),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
                 ));
 
 
@@ -114,7 +118,12 @@ class FormCompanyType extends AbstractType
         					),
         			'constraints'   => array(
         					new NotBlank ( array(
-        					)))
+        					)),
+                            new Regex(array(
+                                   'pattern' => '/^[0-9]{3} ?[0-9]{3} ?[0-9]{3} ?[0-9]{5}$/',
+                                   'message' => 'form.company.field.identification' 
+                                ))
+                            )
         	));
         }else{
         	$builder->add('identification', 'text', array(
@@ -123,8 +132,12 @@ class FormCompanyType extends AbstractType
         			'attr' => array('class' => 'form-control'),
         			'constraints'   => array(
         					new NotBlank ( array(
-        					)))
-        	));
+        					)),
+                            new Regex(array(
+                                   'pattern' => '/^[0-9]{3} ?[0-9]{3} ?[0-9]{3} ?[0-9]{5}$/',
+                                   'message' => 'form.company.field.identification' 
+                                ))
+                	)));
         }
         $builder->add('photographer', 'hidden', array(
         		'data' => $this->getCurrentUser()->getId(),

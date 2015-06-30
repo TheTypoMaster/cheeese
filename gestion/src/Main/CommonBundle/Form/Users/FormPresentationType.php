@@ -49,12 +49,18 @@ class FormPresentationType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     		));
         $builder->add('lastName', 'text', array(
         		'label'	=> 'form.presentation.field.lastname',
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
         	));
 
        $builder->add('telephone', 'text', array(
@@ -62,13 +68,19 @@ class FormPresentationType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
         	));
     	
     	$builder->add('presentation', 'textarea', array(
-    			'label'	=> 'form.devis.field.presentation',
+    			'label'	=> 'form.presentation.field.presentation',
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     			));
     }
     

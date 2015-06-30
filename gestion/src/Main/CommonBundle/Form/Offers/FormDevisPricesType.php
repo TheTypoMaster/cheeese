@@ -52,17 +52,20 @@ class FormDevisPricesType extends AbstractType
         if($options['new']) {
             $devis = $options['devis'];
             $builder->add('duration', 'entity', array(
-                'label' => 'form.devis.field.duration',
+                'label' => 'form.devisprice.field.duration',
                 'class' => 'MainCommonBundle:Utils\Duration',
                 'property' => 'libelle',
                 'attr' => array(
                         'class' => 'form-control',
                 ),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
         ));    
         }    	
     	
     	$builder->add('price', 'text', array(
-    			'label'	=> 'form.devis.field.price',
+    			'label'	=> 'form.devisprice.field.price',
     			'attr' => array(
     					'class' => 'form-control',
     					'maxlength' => 50

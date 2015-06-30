@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\Iban;
 
 class FormIbanType extends AbstractType
 {
@@ -59,7 +60,7 @@ class FormIbanType extends AbstractType
     						),
     				'constraints'   => array(
     						new NotBlank (),
-    						//new Iban()
+    						new Iban()
     						)
     				));
     	$builder->add('bic', 'text', array(

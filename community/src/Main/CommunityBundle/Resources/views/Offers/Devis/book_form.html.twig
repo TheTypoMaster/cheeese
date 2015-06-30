@@ -1,12 +1,12 @@
 {% extends '::base.html.twig'%}
-{% block titleH1 %}{% trans from "offers" %}community.devis.read.prices.new.h1{% endtrans %}{% endblock %}
+{% block titleH1 %}{% trans from "offers" %}community.devis.read.book.new.h1{% endtrans %}{% endblock %}
 
 {% block titleH2 %}
-{% trans from "offers" %}community.devis.read.prices.new.h2{% endtrans %}
+{% trans from "offers" %}community.devis.read.book.new.h2{% endtrans %}
 {% endblock %}
-{% block breadcrumbH1 %}{% trans from "offers" %}community.devis.read.prices.new.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}{% trans from "offers" %}community.devis.read.book.new.breadh1{% endtrans %}{% endblock %}
 {% block breadcrumbH2 %}
-{% trans from "offers" %}community.devis.read.prices.new.breadh2{% endtrans %}
+{% trans from "offers" %}community.devis.read.book.new.breadh2{% endtrans %}
 {% endblock %}
 {% block content %}
 <section class="content">
@@ -15,7 +15,7 @@
                             <div class="box box-primary">
                                 <div class="box-header">
                                     <h3 class="box-title">
-                                    	{% trans from "offers" %}community.devis.read.prices.new.header {% endtrans %}
+                                    	{% trans from "offers" %}community.devis.read.book.new.header {% endtrans %}
                                         <strong>{{ devis.title }}</strong>                                        
                                     </h3>
                                 </div>
@@ -27,10 +27,10 @@
 
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">
-                                        	{% trans from "offers" %}community.devis.read.prices.new.btn.submit{% endtrans %}
+                                        	{% trans from "offers" %}community.devis.read.book.new.btn.submit{% endtrans %}
                                         </button>
                                         <a href="{{ path('devis_read', {'id' : devis.id}) }}" class="btn btn-default">
-                                        	{% trans from "offers" %}community.devis.read.prices.new.btn.back{% endtrans %}
+                                        	{% trans from "offers" %}community.devis.read.book.new.btn.back{% endtrans %}
                                         </a>
                                     </div>
                                 {{ form_end(form) }}

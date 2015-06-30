@@ -60,6 +60,9 @@ class FormEvaluationType extends AbstractType
     				'attr' => array(
     						'class' => 'form-control',
     				),
+                    'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     		));
     		 
     		$builder->add('prestation_comment', 'textarea', array(
@@ -67,6 +70,9 @@ class FormEvaluationType extends AbstractType
     				'attr' => array(
     						'class' => 'form-control',
     				),
+                    'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     		));
     	}
     	
@@ -78,6 +84,9 @@ class FormEvaluationType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     	));
     	
     	$builder->add('user_comment', 'textarea', array(
@@ -85,6 +94,9 @@ class FormEvaluationType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     	));
     }
     

@@ -57,7 +57,10 @@ class FormSecurityType extends AbstractType
     		'label' => 'form.security.field.old',
     		'attr' => array(
     			'class' => 'form-control'
-    			)	
+    			),
+            'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     		))
         ->add('newPassword', 'repeated', array(
             'type' => 'password',
@@ -66,13 +69,19 @@ class FormSecurityType extends AbstractType
             	'label' => 'form.security.field.pass1',
             	'attr' => array(
     			'class' => 'form-control'
-    			)
+    			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
             ),
             'second_options' => array(
             	'label' => 'form.security.field.pass2',
             	'attr' => array(
     			'class' => 'form-control'
-    			)
+    			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     		)
         ));
 
@@ -104,7 +113,7 @@ class FormSecurityType extends AbstractType
             'constraints' => array(
                 new EqualTo(array(
                        'value'   => $good,
-                       'message' => 'nonnnono' 
+                       'message' => 'form.security.field.old' 
                     ))
                 )   
             ));
@@ -118,6 +127,7 @@ class FormSecurityType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
     	$resolver->setDefaults(array(
+            'translation_domain' => 'form'
     	));
     }
 

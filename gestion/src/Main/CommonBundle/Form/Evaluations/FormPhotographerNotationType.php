@@ -42,6 +42,9 @@ class FormPhotographerNotationType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     	));
     	
     	$builder->add('client_comment', 'textarea', array(
@@ -49,6 +52,9 @@ class FormPhotographerNotationType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     	));
     }
     

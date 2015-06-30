@@ -51,13 +51,19 @@ class FormDevisBook extends AbstractType
         		'horizontal_input_wrapper_class'    => 'col-lg-4',
         		'attr' => array(
         				'placeholder' => 'Event address',
-        				)
-        		))
+        				),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
+        		)),
         ->add('startTime', 'time', array(
         		'label' => 'form.devisbook.field.startTime',
         		'input'  => 'datetime',
         		'widget' => 'choice',
         		'horizontal_input_wrapper_class' => 'col-lg-2',
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
         )) 
         ->add('duration', 'entity', array(
                     'label' => 'form.devisbook.field.duration',
@@ -67,7 +73,10 @@ class FormDevisBook extends AbstractType
                     'query_builder' => function(EntityRepository $er) use ($devis)
                     {
                         return $er->findDurationsByDevis($devis);
-                    }
+                    },
+                    'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
             ))       
         ->add('message', 'textarea', array(
         		'label' => 'form.devisbook.field.message',
@@ -76,7 +85,10 @@ class FormDevisBook extends AbstractType
         		'attr' => array(
         				'class' => 'input-large',
         				'placeholder' => 'input-large',
-        		)
+        		),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
         ));
         
         

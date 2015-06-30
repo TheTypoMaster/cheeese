@@ -41,6 +41,9 @@ class FormClientNotationType extends AbstractType
 		    			'attr' => array(
 		    					'class' => 'form-control',
 		    			),
+                        'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
 					));
     	
     	$builder->add('prestation_comment', 'textarea', array(
@@ -48,6 +51,9 @@ class FormClientNotationType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     			));
     
     	$builder->add('photographer_notation', 'choice', array(
@@ -57,6 +63,9 @@ class FormClientNotationType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     	));
     	
     	$builder->add('photographer_comment', 'textarea', array(
@@ -64,6 +73,9 @@ class FormClientNotationType extends AbstractType
     			'attr' => array(
     					'class' => 'form-control',
     			),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
     	));
     }
     
