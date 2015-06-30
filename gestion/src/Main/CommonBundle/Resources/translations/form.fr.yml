@@ -18,3 +18,33 @@ form:
             username: Utilisateur
             email: Email
             password: Mot de passe
+    presentation:
+        field:
+            firstname: Prénom
+            lastname: Nom
+            telephone: Téléphone
+            presentation: Présentation
+    security:
+        field:
+            old: Ancien mot de passe
+            pass1: Nouveau mot de passe
+            pass2: Confirmez nouveau mot de passe
+    iban:
+        field:
+            name: Nom de la banque
+            address: Adresse de la banque
+            iban: iban
+            bic: BIC
+    devis:
+        field:
+            title: Titre du devis
+            category: Catégorie du devis
+            currency: Devise
+            presentation: Présentation
+    devisprice:
+        field:
+            duration: Durée
+            price: Prix
+    moves:
+        field:
+            moves: Rayon de déplacement

@@ -8,6 +8,7 @@ use Main\CommonBundle\Entity\Photographers\DevisBook;
 use Main\CommonBundle\Entity\Photographers\Devis;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Finder\Finder;
+use Main\CommonBundle\Services\Session\ServiceSession;
 
 class ServiceDevisBook 
 {
@@ -26,13 +27,16 @@ class ServiceDevisBook
 	protected $securityContext;
 
 	protected $path;
+
+	private $session;
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, $path)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, $path)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Photographers\DevisBook');
 		$this->securityContext = $securityContext;
 		$this->path = $path;
+		$this->session = $service;
 	}
 
 	/**
@@ -69,6 +73,7 @@ class ServiceDevisBook
                             fclose($file);
                             return $this->createPhoto($devis, $url, $mime, $size);
                         } catch (\Exception $e) {
+                        	$this->session->errorFlahMessage();
                         	var_dump($e->getMessage());
                             //$this->logger->err('Impossible de créer un nouveau fichier : '.$e->getMessage());
                             //$codeErr = 1;
@@ -108,8 +113,10 @@ class ServiceDevisBook
 			$book->setFileSize($size);
 			$this->em->persist($book);
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.devis.book.create');
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -136,8 +143,10 @@ class ServiceDevisBook
 			unlink($this->path.$photo->getUrl());
 			$this->em->remove($photo);
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.devis.book.delete');
 			return true;
 		} catch (Exception $e) {
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -161,8 +170,10 @@ class ServiceDevisBook
 		}
 		try {
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.devis.book.edit');
 			return true;	
 		} catch (Exception $e) {
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}

@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Photographers\Devis;
 use Main\CommonBundle\Entity\Photographers\DevisPrices;
+use Main\CommonBundle\Services\Session\ServiceSession;
 
 class ServicePrices 
 {
@@ -22,12 +23,16 @@ class ServicePrices
 	private $repository;
 	
 	protected $securityContext;
+
+	private $session;
+
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Photographers\DevisPrices');
 		$this->securityContext = $securityContext;
+		$this->session = $service;
 	}	
 
 	/**
@@ -63,8 +68,10 @@ class ServicePrices
 			try{
 				$this->em->persist($price);
 				$this->em->flush();
+				$this->session->successFlahMessage('flash.message.devis.price.create');
 				return true;
 			}catch(\Exception $e){
+				$this->session->errorFlahMessage();
 				var_dump($e->getMessage());
 				return false;
 			}
@@ -98,9 +105,11 @@ class ServicePrices
 		$price->setActive($status);
 		$price->setUpdatedAt(new \DateTime('now'));
 		try{
-			$this->em->flush();				
+			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.devis.price.edit');			
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -117,9 +126,11 @@ class ServicePrices
 		$price->setPrice((double)$new);
 		$price->setUpdatedAt(new \DateTime('now'));
 		try{
-			$this->em->flush();				
+			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.devis.price.edit');			
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}

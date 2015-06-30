@@ -113,3 +113,36 @@ gestion:
                 all: Tous
             btn:
                 visibility: Mettre à jour visibilité
+flash:
+    message:
+            error: Un probléme est  survenue
+            iban:
+                new: Vos données bancaires ont bien étés enregistrées
+                edit: Vos données bancaires ont bien étés mises à jour
+            user:
+                edit: Votre presentation a bien été mise à jour
+                password: Votre mot de passe a bien été mis à jour
+                pp: Vous avez une nouvelle photo de profil
+                admin:
+                    create: Un nouveal administrateur a été créé
+                    disable: L'administrateur a bien été désactivé
+            devis:
+                edit: Le devis a bien été mis à jour
+                create: Votre devis a bien été créé
+                price:
+                    create: Le devis a un nouveau prix
+                    edit: Le prix a été mis à jour
+                book:
+                    create: La photo a bien été ajoutée au devis
+                    delete: La photo a bien été supprimée
+                    edit: Le devis a une nouvelle photo de couverture
+            moves:
+                edit: Votre rayon de déplacements a été mis à jour
+                create: Votre rayon de déplacements a bien été créé
+            prestation:
+                status: L'état de la prestation a été mis à jour
+                closed: La prestation a été clotûré
+            notation:
+                create: votre évaluation a bien été créée
+            transaction:
+                create: La transaction a bien été créée

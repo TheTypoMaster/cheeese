@@ -8,6 +8,8 @@ use Main\CommonBundle\Entity\Companies\Iban;
 use Main\CommonBundle\Entity\Prestations\Prestation;
 use Main\CommonBundle\Entity\Companies\Transaction;
 use Main\CommonBundle\Services\Services\ServicePrestation;
+use Main\CommonBundle\Services\Session\ServiceSession;
+
 
 class ServiceTransaction 
 {
@@ -26,13 +28,16 @@ class ServiceTransaction
 	protected $securityContext;
 
 	private $service;
-	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServicePrestation $servicePrestation)
+
+	private $session;
+
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServicePrestation $servicePrestation, ServiceSession $serviceSession)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Companies\Transaction');
 		$this->securityContext = $securityContext;
 		$this->service = $servicePrestation;
+		$this->session = $serviceSession;
 	}	
 
 	/**
@@ -61,8 +66,10 @@ class ServiceTransaction
 			$this->em->persist($transaction);
 			$this->em->flush();
 			$this->service->closePrestation($prestation);
+			$this->session->successFlahMessage('flash.message.transaction.create');
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}

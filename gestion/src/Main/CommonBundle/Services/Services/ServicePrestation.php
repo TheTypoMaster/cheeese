@@ -10,6 +10,8 @@ use Main\CommonBundle\Entity\Photographers\Devis;
 use Main\CommonBundle\Entity\Messages\Message;
 use Main\CommonBundle\Services\Services\ServiceReference;
 use Main\CommonBundle\Services\Emails\ServiceEmail;
+use Main\CommonBundle\Services\Session\ServiceSession;
+
 
 
 class ServicePrestation
@@ -41,18 +43,22 @@ class ServicePrestation
 	private $mailer;
 	
 	private $reference;
+
+	private $session;
+
 	/**
 	 * 
 	 * @param EntityManager $entityManager
 	 * @param SecurityContext $securityContext
 	 */
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceReference $reference, ServiceEmail $mailer)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceReference $reference, ServiceEmail $mailer,  ServiceSession $service)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Prestations\Prestation');
 		$this->securityContext = $securityContext;
 		$this->reference = $reference;
 		$this->mailer = $mailer;
+		$this->session = $service;
 	}
 	
 	/**
@@ -105,6 +111,7 @@ class ServicePrestation
 			$this->mailer->prestationUpdateEmail($prestation);
 			return $prestation;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -272,9 +279,10 @@ class ServicePrestation
 			$this->em->flush();
 			//Envoi du mail
             $this->mailer->prestationUpdateEmail($prestation);
-				
+			$this->session->successFlahMessage('flash.message.prestation.status');	
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -291,9 +299,11 @@ class ServicePrestation
 		$prestation->setStatus($status);
 		$prestation->setUpdatedAt(new \DateTime('now'));
 		try{
-			$this->em->flush();				
+			$this->em->flush();	
+			$this->session->successFlahMessage('flash.message.prestation.closed');			
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}

@@ -6,6 +6,8 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Photographers\MoveRadius;
 use Main\CommonBundle\Entity\Companies\Company;
+use Main\CommonBundle\Services\Session\ServiceSession;
+
 
 class ServiceMovesRadius 
 {
@@ -22,13 +24,16 @@ class ServiceMovesRadius
 	private $repository;
 	
 	protected $securityContext;
+
+	private $session;
 	
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Photographers\MoveRadius');
 		$this->securityContext = $securityContext;
+		$this->session = $service;
 		
 	}
 	
@@ -60,8 +65,10 @@ class ServiceMovesRadius
 		try{
 			$this->em->persist($radius);
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.moves.create');
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -77,8 +84,10 @@ class ServiceMovesRadius
 		try{
 			$this->em->persist($radius);
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.moves.edit');
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}

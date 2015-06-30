@@ -9,6 +9,8 @@ use Main\CommonBundle\Entity\Users\User as User;
 use Main\CommonBundle\Entity\Photographers\Devis as Devis;
 use Main\CommonBundle\Entity\Prestations\Evaluation as Evaluation;
 use Main\CommonBundle\Entity\Notation\ClientNotation as ClientNotation;
+use Main\CommonBundle\Services\Session\ServiceSession;
+
 class ServiceNotation
 {
 	/**
@@ -24,17 +26,20 @@ class ServiceNotation
 	private $repository;
 	
 	protected $securityContext;
+
+	private $session;
 	
 	/**
 	 *
 	 * @param EntityManager $entityManager
 	 * @param SecurityContext $securityContext
 	 */
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Prestations\Evaluation');
 		$this->securityContext = $securityContext;
+		$this->session = $service;
 	}
 	
 	/**
@@ -87,8 +92,10 @@ class ServiceNotation
 		try{
 			$this->em->persist($notation);
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.notation.create');
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			die;
 			return false;

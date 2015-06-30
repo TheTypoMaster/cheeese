@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Users\User;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Main\CommonBundle\Services\Session\ServiceSession;
 
 
 class ServiceUser 
@@ -20,18 +21,21 @@ class ServiceUser
 
 	private $path;
 	
+	private $session;
+
 	/**
 	 * 
 	 * @var string
 	 */
 	private $repository;
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, $uploadPath)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, $uploadPath)
 	{
 		$this->em = $entityManager;
 		$this->securityContext = $securityContext;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Users\User');
 		$this->path = $uploadPath;
+		$this->session = $service;
 	}	
 
 	/**
@@ -74,9 +78,11 @@ class ServiceUser
 		$user->setTelephone($data['telephone']);
 		$user->setUpdatedAt(new \DateTime('now'));
 		try{
-			$this->em->flush();				
+			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.user.edit');				
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -94,9 +100,11 @@ class ServiceUser
 		$user->setPlainPassword($data['newPassword']['first']);
 		$user->setUpdatedAt(new \DateTime('now'));
 		try{
-			$this->em->flush();				
+			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.user.password');				
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -121,8 +129,10 @@ class ServiceUser
 		try {
 			$this->em->persist($user);
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.user.admin.create');
 			return true;
 		} catch (Exception $e) {
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 			
@@ -142,9 +152,11 @@ class ServiceUser
 			$user->setEnabled(0);
 			$user->setUpdatedAt(new \DateTime('now'));
 			try{
-				$this->em->flush();				
+				$this->em->flush();	
+				$this->session->successFlahMessage('flash.message.user.admin.disable');			
 				return true;
 			}catch(\Exception $e){
+				$this->session->errorFlahMessage();
 				var_dump($e->getMessage());
 				return false;
 			}
@@ -180,9 +192,11 @@ class ServiceUser
                             $user->setPhoto($url);
                             $user->setPhotoType($mime);
                             $user->setUpdatedAt(new \DateTime('now'));
-                            $this->em->flush();				
+                            $this->em->flush();
+                            $this->session->successFlahMessage('flash.message.user.pp');			
 							return true;
                         } catch (\Exception $e) {
+                        	$this->session->errorFlahMessage();
                         	var_dump($e->getMessage());
                         	return false;
                             //$this->logger->err('Impossible de créer un nouveau fichier : '.$e->getMessage());

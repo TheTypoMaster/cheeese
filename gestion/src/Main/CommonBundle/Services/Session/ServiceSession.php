@@ -68,4 +68,15 @@ class ServiceSession
 	{
 		return $this->session->has('front_devis') && $this->session->has('front_search');
 	}
+
+	public function successFlahMessage($text)
+	{
+		$this->session->getFlashBag()->add('success', $text);
+
+	}
+
+	public function errorFlashMessage()
+	{
+		$this->session->getFlashBag()->add('error', 'flash.message.error');
+	}
 }

@@ -55,7 +55,25 @@
                     </ol>
                 </section>
                 <section class="content">
-                   {#{ render(controller('MainGestionBundle:Default:headBandDisplay')) }#}                
+                   {#{ render(controller('MainGestionBundle:Default:headBandDisplay')) }#}
+                   <div class="container">
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <br>
+                                {% for type, flashes in app.session.flashbag.all %}
+                                    {% for flash in flashes %}
+                                        <div class="alert alert-{{ type }} fade in" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert">
+                                                <span aria-hidden="true">&times;</span>
+                                                <span class="sr-only">Close</span>
+                                            </button>
+                                            <div style="text-align:center">{{ flash | trans }}</div>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>                
                     {% block content %}            
                     {% endblock %}
                 </section>

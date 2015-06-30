@@ -5,6 +5,7 @@ namespace Main\CommonBundle\Services\Companies;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Companies\Iban;
+use Main\CommonBundle\Services\Session\ServiceSession;
 
 class ServiceIban
 {
@@ -22,12 +23,15 @@ class ServiceIban
 	
 	private $securityContext;
 
+	private $session;
+
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Companies\Iban');
 		$this->securityContext = $securityContext;
+		$this->session = $service;
 	}	
 	
 	/**
@@ -77,8 +81,10 @@ class ServiceIban
 		try{
 			$this->em->persist($Iban);
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.iban.new');
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -97,8 +103,10 @@ class ServiceIban
 		$Iban->setUpdatedAt(new \DateTime('now'));
 		try{
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.iban.edit');
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}

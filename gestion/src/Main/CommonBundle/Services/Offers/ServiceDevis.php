@@ -5,6 +5,8 @@ namespace Main\CommonBundle\Services\Offers;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Photographers\Devis;
+use Main\CommonBundle\Services\Session\ServiceSession;
+
 
 class ServiceDevis 
 {
@@ -21,12 +23,16 @@ class ServiceDevis
 	private $repository;
 	
 	protected $securityContext;
+
+	private $session;
+
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Photographers\Devis');
 		$this->securityContext = $securityContext;
+		$this->session = $service;
 	}
 	
 	/**
@@ -80,8 +86,10 @@ class ServiceDevis
 		try{
 			$this->em->persist($devis);
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.devis.create');
 			return $devis;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -125,8 +133,10 @@ class ServiceDevis
 		$devis->setUpdatedAt(new \DateTime('now'));
 		try{
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.devis.edit');
 			return $devis;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -143,8 +153,10 @@ class ServiceDevis
 		$devis->setActive($value);
 		try{
 			$this->em->flush();
+			$this->session->successFlahMessage('flash.message.devis.edit');
 			return true;
 		}catch(\Exception $e){
+			$this->session->errorFlahMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
