@@ -48,3 +48,7 @@ form:
     moves:
         field:
             moves: Rayon de déplacement
+    evaluation:
+        field:
+            user_notation: Evaluation du client
+            user_comment: Vos commentaires

@@ -75,20 +75,16 @@ class FormEvaluationType extends AbstractType
                         )))
     		));
     	}
-    	
-    
-    	$builder->add('user_notation', 'choice', array(
-    			'label'		=> 'form.evaluation.field.user_notation',
-    			'choices'   => array(0 => '0',1 => '1',2 => '2',3 => '3',4 => '4',5 => '5'),
-    			'preferred_choices' => array(5),
-    			'attr' => array(
-    					'class' => 'form-control',
-    			),
-                'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
-    	));
-    	
+
+        $builder->add('user_notation', 'number', array(
+                'label'     => 'form.evaluation.field.user_notation',
+                'attr'      => array(
+                            'id'    => 'input-id',
+                            'class' => 'rating',
+                            'min'   => 0,
+                            'max'   => 5
+                    )
+            ));
     	$builder->add('user_comment', 'textarea', array(
     			'label'		=> 'form.evaluation.field.user_comment',
     			'attr' => array(
