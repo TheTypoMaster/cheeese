@@ -75,7 +75,8 @@
                         </div>
 
                         <div class="col-xs-12">
-                            <a class="btn btn-default"  href="{{ path('service') }}">{% trans from "services" %}community.service.show.btn.back{% endtrans %}</a>
+                            <a class="btn btn-default"  href="{{ path('service') }}">
+                                {% trans from "services" %}community.service.show.btn.back{% endtrans %}</a>
 									{% if 1 == prestation.status.id %}
 									<a class="btn btn-success"  href="{{ path('service_edit', { 'id' : prestation.id, 'slug': 2 }) }}">{% trans from "services" %}community.service.show.btn.approve{% endtrans %}</a>
 									<a class="btn btn-danger"  href="{{ path('service_edit', { 'id' : prestation.id, 'slug': 3 }) }}">{% trans from "services" %}community.service.show.btn.refuse{% endtrans %}</a>
@@ -91,7 +92,7 @@
                        
                        {% if commentAllowed %}
 	                     <h2 class="page-header">
-	                     	{% trans from "services" %}community.service.show.btn.evaluations{% endtrans %}
+	                     	{% trans from "services" %}community.service.show.evaluations.title{% endtrans %}
 	                     </h2>
 	                     <!-- EVALUTATION-->
 	                    {% include "MainCommunityBundle:Services\\show:notation.html.twig" %} 

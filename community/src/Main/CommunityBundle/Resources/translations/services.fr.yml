@@ -60,6 +60,8 @@ community:
                         notation:
                             service: Notation de la prestation
                             photographer: Notation du photographe
+            evaluations:
+                title: Evaluations
             timeline: 
                 header: Timeline
                 title:
