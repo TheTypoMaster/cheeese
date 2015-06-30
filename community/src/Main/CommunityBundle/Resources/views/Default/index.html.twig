@@ -13,8 +13,11 @@
 {% endblock %}
 
 {% block javascripts_inline %}
+{% javascripts '@MainCommunityBundle/Resources/public/js/Added/dashboard.js' %}
     <script type="text/javascript">
         var groupByDevis = "{{ groupByDevis }}";
         var groupByPrest = "{{ groupByPrest }}"
     </script>    
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
 {% endblock javascripts_inline %}

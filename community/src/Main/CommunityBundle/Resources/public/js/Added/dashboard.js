@@ -10,7 +10,6 @@ $(function() {
     //Make the dashboard widgets sortable Using jquery UI
     groupByDevis = JSON.parse(groupByDevis.replace(/&quot;/g,'"'));
     groupByPrest = JSON.parse(groupByPrest.replace(/&quot;/g,'"'));
-    console.log(groupByPrest);
     $(".connectedSortable").sortable({
         placeholder: "sort-highlight",
         connectWith: ".connectedSortable",
