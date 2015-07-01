@@ -43,13 +43,15 @@ class ServicesController extends Controller
 			$commentClient  = null;
 			$commentPhotographer = null;
 			$formView = null;
+			$allowed = false;
+			$passed = $prestationService->isPassed($service);
 			$messageService = $this->get('service_message');
 			$messageService->readMessages($id);
 			$messages = $messageService->getPrestationMessages($id);
 			
-			if(!$prestationService->isCommentAllowed($service))
+			if($prestationService->isCommentAllowed($service))
 			{
-				$allowed = false;
+				$allowed = true;
 				$form = $this->createForm('form_message', null, array());
 				$formView = $form->createView();
 				$request = $this->get('request');
@@ -66,9 +68,7 @@ class ServicesController extends Controller
 					}
 				}
 			}
-			else{
-				//Cas ou le client peut ajouter/voir son evaluation
-				$allowed = true;
+			if($passed){
 				$notationService = $this->get('service_notation');
 				$commentClient = $notationService->findByPrestation($id);
 				$commentPhotographer = $notationService->findByPrestation($id, $service->getDevis()->getCompany()->getPhotographer()->getId()); 
@@ -78,6 +78,7 @@ class ServicesController extends Controller
 					'prestation' 			=> $service,
 					'messages'	 			=> $messages,
 					'commentAllowed' 		=> $allowed,
+					'passed'				=> $passed,
 					'commentClient'	 		=> $commentClient,
 					'commentPhotographer'	=> $commentPhotographer,
 					'form'		 			=> $formView
@@ -123,24 +124,9 @@ class ServicesController extends Controller
 		{
 			$notationService = $this->get('service_notation');
 			$notation = $notationService->findByPrestation($id);
-			if($notation)
+			if($notation || !$prestationService->isPassed($service))
 			{
-				//Edit case
-				$form = $this->createForm('form_evaluation', $notation, array());
-				$request = $this->get('request');
-				$form->handleRequest($request);
-				if($request->isMethod('POST'))
-				{
-					$params = $request->request->get('form_evaluation');
-					if ($form->isValid())
-					{
-						$notationService->editEvaluation($notation, $params['user_notation'], $params['user_comment'], $params['prestation_notation'], $params['prestation_comment']);
-						return $this->redirect($this->generateUrl('show_service', array('id' => $id)));
-					}
-				}
-				return $this->render('MainFrontBundle:Prestations:notation_edit.html.twig', array(
-						'form'		 		=> $form->createView()
-				));
+				return $this->redirect($this->generateUrl('show_service', array('id' => $id)));
 			}else {
 				//Create case
 				$form = $this->createForm('form_evaluation', new Evaluation(), array());

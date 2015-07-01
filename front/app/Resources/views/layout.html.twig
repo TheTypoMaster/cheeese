@@ -6,7 +6,8 @@
 			<link rel="stylesheet" href="{{ asset('bundles/mainfront/css/ui-lightness/jquery-ui-1.10.4.custom.css') }}" type="text/css" media="all" />
             {% stylesheets '@MainFrontBundle/Resources/public/css/bootstrap.min.css'
                            '@MainFrontBundle/Resources/public/css/style.css'
-                           '@MainFrontBundle/Resources/public/css/datepicker.css' %}
+                           '@MainFrontBundle/Resources/public/css/datepicker.css' 
+                           '@MainFrontBundle/Resources/public/css/star-rating.min.css' %}
             	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
             {% endstylesheets %}            
 	{% endblock %}
@@ -26,6 +27,8 @@
 {% javascripts '@MainFrontBundle/Resources/public/js/library/jquery-1.11.1.js'
                '@MainFrontBundle/Resources/public/js/library/jquery-ui-1.10.4.custom.js'
                '@MainFrontBundle/Resources/public/js/library/bootstrap-datepicker.js'
+                '@MainFrontBundle/Resources/public/js/star-rating.min.js'
+
                 %}
     <script type="text/javascript">
 	    var base = location.protocol + "//" + location.host + '{{ app.request.baseUrl }}';

@@ -17,3 +17,15 @@
 		</div>
   	</div>
 {% endblock %}
+{% block bottom_script %}
+
+<script type="text/javascript">
+    $(function() {
+                var divsToHide = document.getElementsByClassName("caption");
+			    for(var i = 0; i < divsToHide.length; i++)
+			    {
+			    divsToHide[i].style.visibility="hidden";
+			    }
+            });
+    </script>    
+{% endblock bottom_script %}
