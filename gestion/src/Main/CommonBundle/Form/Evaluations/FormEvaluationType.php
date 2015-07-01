@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\NotEqualTo;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
@@ -53,16 +54,19 @@ class FormEvaluationType extends AbstractType
     	//si client
     	if($this->isClient())
     	{
-    		$builder->add('prestation_notation', 'choice', array(
+    		$builder->add('prestation_notation', 'number', array(
     				'label'		=> 'form.evaluation.field.prestation_notation',
-    				'choices'   => array(0 => '0',1 => '1',2 => '2',3 => '3',4 => '4',5 => '5'),
-    				'preferred_choices' => array(5),
-    				'attr' => array(
-    						'class' => 'form-control',
-    				),
+    				'attr'      => array(
+                            'class' => 'rating',
+                            'min'   => 0,
+                            'max'   => 5,
+                            'step'  => 0.1,
+                    ),
                     'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
+                        new NotEqualTo ( array(
+                            'value' => 0
+                            ))
+                        )
     		));
     		 
     		$builder->add('prestation_comment', 'textarea', array(
@@ -82,8 +86,14 @@ class FormEvaluationType extends AbstractType
                             'id'    => 'input-id',
                             'class' => 'rating',
                             'min'   => 0,
-                            'max'   => 5
-                    )
+                            'max'   => 5,
+                            'step'  => 0.1,
+                    ),
+                    'constraints'   => array(
+                        new NotEqualTo ( array(
+                            'value' => 0
+                            ))
+                        )
             ));
     	$builder->add('user_comment', 'textarea', array(
     			'label'		=> 'form.evaluation.field.user_comment',

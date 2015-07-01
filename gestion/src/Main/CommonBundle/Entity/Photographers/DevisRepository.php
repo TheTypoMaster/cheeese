@@ -78,5 +78,34 @@ class DevisRepository extends EntityRepository
 			->setParameter('value', 0);
 		return $qb->getQuery()->getResult();
 	}
+
+	public function updateNotation($devis, $date)
+	{
+		$qb = $this->_em->createQueryBuilder();
+		$note = $qb->select('avg(e.prestation_notation) as average', 'count(e.prestation_notation) as total')
+				->from('MainCommonBundle:Prestations\Evaluation', 'e')
+				->join('e.prestation', 'p')
+				->join('p.devis', 'd')
+				->where('d.id = :devis')
+        		->setParameter('devis', $devis)
+				->getQuery()
+				->getSingleResult();
+
+		if(isset($note['average']) && isset($note['total']))
+		{
+			$q = $qb->update('MainCommonBundle:Photographers\Devis', 'd')
+        			->set('d.note', $note['average'])
+        			->set('d.prestations', $note['total'])
+        			->set('d.updatedAt', ':date')
+        			->where('d.id = :id')
+        			->setParameters(array(
+        				'id' 	=> $devis,
+        				'date'	=> $date
+        				)
+        			)
+        			->getQuery();
+			$q->execute();		
+		}
+	}
 	
 }

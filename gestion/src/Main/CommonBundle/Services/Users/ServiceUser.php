@@ -208,5 +208,24 @@ class ServiceUser
             }
          return false;
 	}
+
+	/**
+	 * [updateNotation description]
+	 * @param  [type] $user [description]
+	 * @param  [type] $type [description]
+	 * @return [type]       [description]
+	 */
+	public function updateNotation($user, $type)
+	{
+		$date = new \DateTime('now');
+		if($type == 'client')
+		{
+			return $this->repository->updateClientNotation($user, $date);
+		}
+		elseif($type == 'photographer')
+		{
+			return $this->repository->updatePhotographerNotation($user, $date);
+		}
+	}
 	
 }

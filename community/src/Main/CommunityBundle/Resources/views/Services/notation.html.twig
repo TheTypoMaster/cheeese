@@ -25,3 +25,14 @@
                             	</div>
                             </div>
 {% endblock %}
+{% block javascripts_inline %}
+        <script type="text/javascript">
+            $(function() {
+                var divsToHide = document.getElementsByClassName("caption");
+			    for(var i = 0; i < divsToHide.length; i++)
+			    {
+			    divsToHide[i].style.visibility="hidden";
+			    }
+            });
+        </script>
+{% endblock %}

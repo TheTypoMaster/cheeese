@@ -55,7 +55,7 @@ class FormDevisBook extends AbstractType
                 'constraints'   => array(
                         new NotBlank ( array(
                         )))
-        		)),
+        		))
         ->add('startTime', 'time', array(
         		'label' => 'form.devisbook.field.startTime',
         		'input'  => 'datetime',

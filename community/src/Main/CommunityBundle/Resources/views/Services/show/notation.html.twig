@@ -1,72 +1,79 @@
 <div class="row">
-	                       {% if null != commentPhotographer %}
-	                        <div class="col-md-6">
-	                            <div class="box box-solid">
-	                                <div class="box-header">
-	                                    <h3 class="box-title">{% trans from "services" %}community.service.show.btn.evaluations.title.you{% endtrans %}</h3>
-	                                </div><!-- /.box-header -->
-	                                <div class="box-body">
-	                                    <blockquote>
-	                                        <p>{{ commentPhotographer.usercomment }}</p>
-	                                        <small><cite title="Source Title">{{ commentPhotographer.usernotation }}</cite></small>
-	                                    </blockquote>
-	                                </div>
-	                            </div>
-	                        </div>
-	                       {% endif %} 
-	                     {% if null != commentClient %}   
-		                    <div class="col-md-6">
-		                            <div class="box box-solid">
-		                                <div class="box-header">
-		                                    <h3 class="box-title">{{ prestation.client.username }}</h3>
-		                                </div><!-- /.box-header -->
-		                                <div class="box-body">
-		                                    <div class="box-group" id="accordion">
-		                                    {% if commentClient.prestationnotation > 3 %}
-		                                    	<div class="panel box box-success">
-		                                    {% elseif commentClient.prestationnotation == 3 %}
-		                                    	<div class="panel box box-primary">                                    	
-		                                    {% elseif commentClient.prestationnotation < 3 %}
-		                                    	<div class="panel box box-danger">
-		                                    {% endif %}
-		                                            <div class="box-header">
-		                                                <h4 class="box-title">
-		                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-		                                                       {% trans from "services" %}community.service.show.btn.evaluations.client.notation.service{% endtrans %}
-		                                                    </a>
-		                                                </h4>
-		                                            </div>
-		                                            <div id="collapseOne" class="panel-collapse collapse in">
-		                                                <div class="box-body">
-		                                                <p>{{ commentClient.prestationcomment }}</p>
-		                                                <p>{{ commentClient.prestationnotation }}</p>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-		                                    {% if commentClient.usernotation > 3 %}
-		                                    	<div class="panel box box-success">
-		                                    {% elseif commentClient.usernotation == 3 %}
-		                                    	<div class="panel box box-primary">                                    	
-		                                    {% elseif commentClient.usernotation < 3 %}
-		                                    	<div class="panel box box-danger">
-		                                    {% endif %}
-		                                            <div class="box-header">
-		                                                <h4 class="box-title">
-		                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-		                                                        {% trans from "services" %}community.service.show.btn.evaluations.client.notation.photographer{% endtrans %}
-		                                                    </a>
-		                                                </h4>
-		                                            </div>
-		                                            <div id="collapseTwo" class="panel-collapse collapse">
-		                                                <div class="box-body">
-														<p>{{ commentClient.usercomment }}</p>
-		                                                <p>{{ commentClient.usernotation }}</p>
-		                                                                                                </div>
-		                                            </div>
-		                                        </div>
-		                                    </div>
-		                                </div><!-- /.box-body -->
-		                            </div><!-- /.box -->
-		                        </div><!-- /.col -->
-		                   {% endif %}
-                       </div>
+	 <div class="col-xs-12">
+	    		{% if  null == commentPhotographer %}
+	    			<a class="btn btn-primary"  href="{{ path('notation', { 'id' : prestation.id}) }}">{% trans from "services" %}community.service.show.btn.evaluate{% endtrans %}</a>
+	    		{% endif %} 
+	 </div>
+	   {% if null != commentPhotographer and null != commentClient %}
+		    <div class="col-md-6">
+		        <div class="box box-solid">
+		            <div class="box-header">
+		                <h3 class="box-title">{% trans from "services" %}community.service.show.btn.evaluations.title.you{% endtrans %}</h3>
+		            </div><!-- /.box-header -->
+		            <div class="box-body">
+		                <blockquote>
+		                    <p>{{ commentPhotographer.usercomment }}</p>
+		                    <small><cite title="Source Title">{{ commentPhotographer.usernotation }}</cite></small>
+		                </blockquote>
+		            </div>
+		        </div>
+		    </div>  
+            <div class="col-md-6">
+                    <div class="box box-solid">
+                        <div class="box-header">
+                            <h3 class="box-title">{{ prestation.client.username }}</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="box-group" id="accordion">
+                            {% if commentClient.prestationnotation > 3 %}
+                            	<div class="panel box box-success">
+                            {% elseif commentClient.prestationnotation == 3 %}
+                            	<div class="panel box box-primary">                                    	
+                            {% elseif commentClient.prestationnotation < 3 %}
+                            	<div class="panel box box-danger">
+                            {% endif %}
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                               {% trans from "services" %}community.service.show.btn.evaluations.client.notation.service{% endtrans %}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                        <div class="box-body">
+                                        <p>{{ commentClient.prestationcomment }}</p>
+                                        <p>{{ commentClient.prestationnotation }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% if commentClient.usernotation > 3 %}
+                            	<div class="panel box box-success">
+                            {% elseif commentClient.usernotation == 3 %}
+                            	<div class="panel box box-primary">                                    	
+                            {% elseif commentClient.usernotation < 3 %}
+                            	<div class="panel box box-danger">
+                            {% endif %}
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                {% trans from "services" %}community.service.show.btn.evaluations.client.notation.photographer{% endtrans %}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse">
+                                        <div class="box-body">
+										<p>{{ commentClient.usercomment }}</p>
+                                        <p>{{ commentClient.usernotation }}</p>
+                                                                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+           {% else %}
+            <div class="col-xs-12">
+	    		<h4>{% trans from "services" %}community.service.show.evaluations.awaiting{% endtrans %}</h4>
+	 		</div>
+           {% endif %}
+       </div>

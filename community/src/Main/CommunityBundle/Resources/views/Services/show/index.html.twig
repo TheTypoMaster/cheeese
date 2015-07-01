@@ -79,18 +79,12 @@
                                 {% trans from "services" %}community.service.show.btn.back{% endtrans %}</a>
 									{% if 1 == prestation.status.id %}
 									<a class="btn btn-success"  href="{{ path('service_edit', { 'id' : prestation.id, 'slug': 2 }) }}">{% trans from "services" %}community.service.show.btn.approve{% endtrans %}</a>
-									<a class="btn btn-danger"  href="{{ path('service_edit', { 'id' : prestation.id, 'slug': 3 }) }}">{% trans from "services" %}community.service.show.btn.refuse{% endtrans %}</a>
-									
-									{% endif %}  
-									{% if commentAllowed %}
-							    		{% if  null == commentPhotographer %}
-							    			<a class="btn btn-default"  href="{{ path('notation', { 'id' : prestation.id}) }}">{% trans from "services" %}community.service.show.btn.evaluate{% endtrans %}</a>
-							    		{% endif %} 
-						    		{% endif %}   
+									<a class="btn btn-danger"  href="{{ path('service_edit', { 'id' : prestation.id, 'slug': 3 }) }}">{% trans from "services" %}community.service.show.btn.refuse{% endtrans %}</a
+									{% endif %}   
                           </div>
                        </div>
                        
-                       {% if commentAllowed %}
+                       {% if passed %}
 	                     <h2 class="page-header">
 	                     	{% trans from "services" %}community.service.show.evaluations.title{% endtrans %}
 	                     </h2>
@@ -103,25 +97,25 @@
                        <!-- TIMELINE -->
                        	{% include "MainCommunityBundle:Services\\show:timeline.html.twig" %}
 
-                        {% if commentAllowed == false %}
-                        <h2 class="page-header">{% trans from "services" %}community.service.show.response.add{% endtrans %}</h2>
-                        <div class="row">
-                    		<div class="col-xs-12">
-	                            <div class="box">
-	                            	<div class="box-header">
-	                                </div><!-- /.box-header -->
-	                                <!-- form start -->
-	                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-	                                    <div class="box-body">									
-	                                        {{ form_rest(form) }}
-	                                    </div><!-- /.box-body -->
-	
-	                                    <div class="box-footer">
-	                                        <button type="submit" class="btn btn-primary">{% trans from "services" %}community.service.show.response.btn.submit{% endtrans %}</button>
-	                                    </div>
-	                                {{ form_end(form) }}
-	                            </div>
-                        	</div>
-                        </div>
+                        {% if commentAllowed == true %}
+                            <h2 class="page-header">{% trans from "services" %}community.service.show.response.add{% endtrans %}</h2>
+                            <div class="row">
+                        		<div class="col-xs-12">
+    	                            <div class="box">
+    	                            	<div class="box-header">
+    	                                </div><!-- /.box-header -->
+    	                                <!-- form start -->
+    	                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+    	                                    <div class="box-body">									
+    	                                        {{ form_rest(form) }}
+    	                                    </div><!-- /.box-body -->
+    	
+    	                                    <div class="box-footer">
+    	                                        <button type="submit" class="btn btn-primary">{% trans from "services" %}community.service.show.response.btn.submit{% endtrans %}</button>
+    	                                    </div>
+    	                                {{ form_end(form) }}
+    	                            </div>
+                            	</div>
+                            </div>
                         {% endif %}
 {% endblock %}

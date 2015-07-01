@@ -210,5 +210,15 @@ class ServiceDevis
 		return $this->groupBy($this->getCurrentUSer()->getId());
 	}
 	
+	/**
+	 * [updateNotation description]
+	 * @param  [type] $devis [description]
+	 * @return [type]        [description]
+	 */
+	public function updateNotation($devis)
+	{
+		return $this->repository->updateNotation($devis, new \DateTime('now'));
+	}
+	
 	
 }

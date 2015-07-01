@@ -48,12 +48,14 @@ class ServiceController extends Controller
 			$commentClient  = null;
 			$commentPhotographer = null;
 			$formView = null;
+			$allowed = false;
+			$passed = $prestationService->isPassed($service);
 			$messageService = $this->get('service_message');
 			$messageService->readMessages($id);
 			$messages = $messageService->getPrestationMessages($id);
-			if(!$prestationService->isCommentAllowed($service))
+			if($prestationService->isCommentAllowed($service))
 			{
-				$allowed = false;
+				$allowed = true;
 				$form = $this->createForm('form_message', null, array());
 				$formView = $form->createView();
 				$request = $this->get('request');
@@ -70,17 +72,19 @@ class ServiceController extends Controller
 					}
 				}
 			}
-			else{
+			if($passed)
+			{
 				//Cas ou le client peut ajouter/voir son evaluation
-				$allowed = true;
 				$notationService = $this->get('service_notation');
 				$commentClient = $notationService->findByPrestation($id, $service->getClient()->getId());
 				$commentPhotographer = $notationService->findByPrestation($id);
 			}
+			
 			return $this->render('MainCommunityBundle:Services\show:index.html.twig', array(
 					'prestation' 			=> $service,
 					'messages'				=> $messages,
 					'commentAllowed' 		=> $allowed,
+					'passed'				=> $passed,
 					'commentClient'	 		=> $commentClient,
 					'commentPhotographer'	=> $commentPhotographer,
 					'form'		 			=> $formView
@@ -127,21 +131,9 @@ class ServiceController extends Controller
 		{
 			$notationService = $this->get('service_notation');
 			$notation = $notationService->findByPrestation($id);
-			if($notation)
+			if($notation || !$prestationService->isPassed($service))
 			{
-				//Edit case
-				$form = $this->createForm('form_evaluation', $notation, array());
-				$request = $this->get('request');
-				$form->handleRequest($request);
-				if($request->isMethod('POST'))
-				{
-					$params = $request->request->get('form_evaluation');
-					if ($form->isValid())
-					{
-						$notationService->editEvaluation($notation, $params['user_notation'], $params['user_comment']);
-						return $this->redirect($this->generateUrl('service_show', array('id' => $id)));
-					}
-				}
+				return $this->redirect($this->generateUrl('service_show', array('id' => $id)));
 				
 			}else {
 				//Create case

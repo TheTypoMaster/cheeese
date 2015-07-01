@@ -19,7 +19,7 @@ services:
         arguments: [@doctrine.orm.entity_manager]
     service_user:
         class: "Main\CommonBundle\Services\Users\ServiceUser"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session   , "%upload_pp_path%"]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "%upload_pp_path%"]
     service_devis:
         class: "Main\CommonBundle\Services\Offers\ServiceDevis"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session]
@@ -43,7 +43,7 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_reference, @service_email, @service_session]
     service_notation:
         class: "Main\CommonBundle\Services\Services\ServiceNotation"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, @service_devis, @service_user]
     service_message:
         class: "Main\CommonBundle\Services\Messages\ServiceMessage"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_email]

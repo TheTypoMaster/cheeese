@@ -330,7 +330,17 @@ class ServicePrestation
 	 */
 	public function isCommentAllowed(Prestation $prestation)
 	{
-		return $prestation->getStatus()->getId() == self::OLD_PRESTATION || $prestation->getStatus()->getId() == self::CLOSED_PRESTATION;
+		return $prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PRESTATION_OK;
+	}
+
+	/**
+	 * [isPassed description]
+	 * @param  Prestation $prestation [description]
+	 * @return boolean                [description]
+	 */
+	public function isPassed(Prestation $prestation)
+	{
+		return $prestation->getStatus()->getId() > self::PRESTATION_OK;
 	}
 
 	public function countAllMyServices()

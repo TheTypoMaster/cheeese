@@ -1,4 +1,4 @@
-{% extends '::base.html.twig'%}
+    {% extends '::base.html.twig'%}
 {% block titleH1 %}{% trans from "offers" %}community.devis.read.h1{% endtrans %}{% endblock %}
 {% block titleH2 %}{% trans from "offers" %}community.devis.read.h2{% endtrans %}{% endblock %}
 {% block breadcrumbH1 %}{% trans from "offers" %}community.devis.read.breadh1{% endtrans %}{% endblock %}
@@ -29,10 +29,10 @@
                                                 {% endif %}
                                        	</dd>
                                        	{% if devis.prestations == 1 %}
-                                		<dt> {% trans from "offers" %}community.devis.read.dt.notation{% endtrans %} </dt>
+                                		<dt> {% trans from "offers" %}community.devis.read.dt.notation.title{% endtrans %} </dt>
                                 		<dd> {{ devis.note }} ({{ devis.prestations}} {% trans from "offers" %}community.devis.read.dt.notation.count{% endtrans %})</dd>
                                 		{% elseif devis.prestations > 1 %}
-                                		<dt> {% trans from "offers" %}community.devis.read.dt.notation{% endtrans %} </dt>
+                                		<dt> {% trans from "offers" %}community.devis.read.dt.notation.title{% endtrans %} </dt>
                                 		<dd> {{ devis.note }} ({{ devis.prestations}} {% trans from "offers" %}community.devis.read.dt.notation.count{% endtrans %})</dd>
                                 		{% endif %}
                                 	</dl>

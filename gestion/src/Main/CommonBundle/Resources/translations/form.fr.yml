@@ -45,10 +45,18 @@ form:
         field:
             duration: Durée
             price: Prix
+    devisbook:
+        field:
+            address: Adresse de l'évenement
+            startTime: Heure de début
+            duration: Durée
+            message: Message
     moves:
         field:
             moves: Rayon de déplacement
     evaluation:
         field:
-            user_notation: Evaluation du client
+            user_notation: Evaluation utilisateur
             user_comment: Vos commentaires
+            prestation_notation: Evaluation de la prestation
+            prestation_comment: Vos commentaires sur la prestation

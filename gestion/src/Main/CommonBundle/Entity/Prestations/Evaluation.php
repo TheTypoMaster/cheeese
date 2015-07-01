@@ -27,7 +27,7 @@ class Evaluation
 	private $prestation;
 	
 	/**
-	 * @ORM\Column(name="prestation_notation", type="integer", nullable=true)
+	 * @ORM\Column(name="prestation_notation", type="float", nullable=true, columnDefinition="FLOAT")
 	 */
 	private $prestation_notation;
 	
@@ -37,7 +37,7 @@ class Evaluation
 	private $prestation_comment;
 	
 	/**
-	 * @ORM\Column(name="user_notation", type="integer", nullable=true)
+	 * @ORM\Column(name="user_notation", type="float", nullable=true, columnDefinition="FLOAT")
 	 */
 	private $user_notation;
 	
