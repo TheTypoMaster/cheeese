@@ -74,6 +74,13 @@ class PrestationRepository extends EntityRepository
 		return $qb->getQuery()->getResult();
 	}
 
+	/**
+	 * [getWeekPrestations description]
+	 * @param  [type] $date   [description]
+	 * @param  [type] $status [description]
+	 * @param  [type] $user   [description]
+	 * @return [type]         [description]
+	 */
 	public function getWeekPrestations($date, $status, $user)
 	{
 		$qb = $this->_em->createQueryBuilder();
@@ -90,6 +97,32 @@ class PrestationRepository extends EntityRepository
 				))
 		->orderBy('p.startTime', 'ASC');
 		return $qb->getQuery()->getResult();	
+	}
+
+	/**
+	 * [setPassedPrestations description]
+	 * @param [type] $date      [description]
+	 * @param [type] $day       [description]
+	 * @param [type] $status    [description]
+	 * @param [type] $newStatus [description]
+	 */
+	public function setPassedPrestations($date, $day, $status, $newStatus)
+	{
+		$qb = $this->_em->createQueryBuilder();
+		$q = $qb->update('MainCommonBundle:Prestations\Prestation', 'p')
+        		->set('p.status', ':new')
+        		->set('p.updatedAt', ':date')
+        		->where('p.status = :old')
+        		->andWhere('p.startTime < :day')
+        			->setParameters(array(
+        				'new'	=> $newStatus,
+        				'old'	=> $status,
+        				'date'	=> $date,
+        				'day'	=> $day
+        				)
+        			)
+        			->getQuery();
+			$q->execute();	
 	}
 	
 }
