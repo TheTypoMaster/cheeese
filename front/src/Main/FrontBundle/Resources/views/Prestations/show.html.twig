@@ -88,18 +88,21 @@
 	{% endif %}
 	
 		<div class="col-md-12 text-center">
-	    	<a class="btn btn-default"  href="{{ path('user_services') }}">{% trans from "prestations" %}prestation.show.a.back{% endtrans %}</a>
+	    	<a class="btn btn-default"  href="{{ path('user_services') }}">{% trans from "prestations" %}prestation.show.btn.back{% endtrans %}</a>
 	    	{% if prestation.status.id == 1  or prestation.status.id == 2 %}
-	    		<a class="btn btn-danger"  href="{{ path('update_service', { 'id' : prestation.id, 'slug': 4 } ) }}">{% trans from "prestations" %}prestation.show.a.cancel{% endtrans %}</a>
+	    		<a class="btn btn-danger"  href="{{ path('cancel_service', { 'id' : prestation.id } ) }}">{% trans from "prestations" %}prestation.show.btn.cancel{% endtrans %}</a>
 	    	{% endif %}
 	    	{% if prestation.status.id == 2 %}
-	    		<a class="btn btn-success"  href="{{ path('update_service', { 'id' : prestation.id, 'slug': 5 }) }}">{% trans from "prestations" %}prestation.show.a.confirm{% endtrans %}</a>
+	    		<a class="btn btn-success"  href="{{ path('confirm_service', { 'id' : prestation.id }) }}">{% trans from "prestations" %}prestation.show.btn.confirm{% endtrans %}</a>
 	    	{% endif %}
 	    	
 	    	{% if passed %}
 	    		{% if  null == commentClient %}
-	    		<a class="btn btn-primary"  href="{{ path('notation', { 'id' : prestation.id}) }}">{% trans from "prestations" %}prestation.show.a.evaluate{% endtrans %}</a>
+	    		<a class="btn btn-primary"  href="{{ path('notation', { 'id' : prestation.id}) }}">{% trans from "prestations" %}prestation.show.btn.evaluate{% endtrans %}</a>
 	    		{% endif %} 
+	    	{% endif %}
+	    	{% if treated %}
+	    	<a class="btn btn-success"  href="{{ path('deliver_service', { 'id' : prestation.id }) }}">{% trans from "prestations" %}prestation.show.btn.delivered{% endtrans %}</a>
 	    	{% endif %}
     	</div>
     	
@@ -109,28 +112,56 @@
 		TIMELINE DE DISCUSSION
 		<ul class="timeline">
 		{% for message in messages %}
-			{% if message.sender.username == app.user.username %}
-				<li>
-          			<div class="timeline-panel">
-          				<div class="timeline-heading"> <h4 class="timeline-title"> {% trans from "prestations" %}prestation.show.timeline.you{% endtrans %}</h4> </div>
-            			<div class="timeline-body">
-              				<p>{{ message.content}}</p>
-              				<hr>
-              				<p>{{ message.createdAt | date('d/m/Y h:m')}}</p>
-            			</div>
-          			</div>
-        		</li>
-			{% else %}
+			{% if 1 == message.type %}
+				{% if message.sender.username == app.user.username %}
+					<li>
+	          			<div class="timeline-panel">
+	          				<div class="timeline-heading"> <h4 class="timeline-title"> {% trans from "prestations" %}prestation.show.timeline.you{% endtrans %}</h4> </div>
+	            			<div class="timeline-body">
+	              				<p>{{ message.content}}</p>
+	              				<hr>
+	              				<p>{{ message.createdAt | date('d/m/Y h:m')}}</p>
+	            			</div>
+	          			</div>
+	        		</li>
+				{% else %}
+					<li class="timeline-inverted">
+	          			<div class="timeline-panel">
+	          				<div class="timeline-heading"> <h4 class="timeline-title"> {{ message.sender.username }}</h4> </div>
+	            			<div class="timeline-body">
+	              				<p> {{ message.content }}</p>
+								<hr>
+	              				<p>{{ message.createdAt | date('d/m/Y h:m')}}</p>            			
+	              			</div>
+	          			</div>
+	        		</li>
+				{% endif %}
+			{% elseif 2 == message.type%}
 				<li class="timeline-inverted">
-          			<div class="timeline-panel">
-          				<div class="timeline-heading"> <h4 class="timeline-title"> {{ message.sender.username }}</h4> </div>
-            			<div class="timeline-body">
-              				<p> {{ message.content }}</p>
-							<hr>
-              				<p>{{ message.createdAt | date('d/m/Y h:m')}}</p>            			
-              			</div>
-          			</div>
-        		</li>
+	          			<div class="timeline-panel">
+	          				<div class="timeline-heading"> <h4 class="timeline-title"> 
+	          					<strong>{% trans from "prestations" %}prestation.show.timeline.status.title{% endtrans %}</strong>
+	          				</h4> </div>
+	            			<div class="timeline-body">
+	              				<p> 
+	              					{% if 'message.created' == message.content %}
+										{% trans from "prestations" %}prestation.show.timeline.status.created{% endtrans %} 
+									{% elseif 'message.preapproved' == message.content %}
+										{% trans from "prestations" %}prestation.show.timeline.status.preapproved{% endtrans %} 
+									{% elseif 'message.refused' == message.content %}
+										{% trans from "prestations" %}prestation.show.timeline.status.refused{% endtrans %} 
+									{% elseif 'message.canceled' == message.content %}
+										{% trans from "prestations" %}prestation.show.timeline.status.canceled{% endtrans %} 
+									{% elseif 'message.confirmed' == message.content %}
+										{% trans from "prestations" %}prestation.show.timeline.status.confirmed{% endtrans %} 
+									{% endif %}
+
+	              				</p>
+								<hr>
+	              				<p>{{ message.createdAt | date('d/m/Y h:m')}}</p>            			
+	              			</div>
+	          			</div>
+	        		</li>
 			{% endif %}
 		{% endfor %}
     	</ul>
@@ -140,7 +171,7 @@
 		    {{ form_start(form) }}
 			   <div class="col-lg-12">
 				   {{ form_widget(form) }}
-			   <button type="submit" class="btn">{% trans from "prestations" %}prestation.show.form.btn.submit{% endtrans %}</button>
+			   <button type="submit" class="btn">{% trans from "prestations" %}prestation.show.btn.submit{% endtrans %}</button>
 			   </div>
 			{{ form_end(form) }}
 	   {% endif %}

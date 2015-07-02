@@ -44,6 +44,7 @@ class ServicesController extends Controller
 			$commentPhotographer = null;
 			$formView = null;
 			$allowed = false;
+			$treated = false;
 			$passed = $prestationService->isPassed($service);
 			$messageService = $this->get('service_message');
 			$messageService->readMessages($id);
@@ -69,6 +70,7 @@ class ServicesController extends Controller
 				}
 			}
 			if($passed){
+				$treated = $prestationService->isOld($service);
 				$notationService = $this->get('service_notation');
 				$commentClient = $notationService->findByPrestation($id);
 				$commentPhotographer = $notationService->findByPrestation($id, $service->getDevis()->getCompany()->getPhotographer()->getId()); 
@@ -79,35 +81,71 @@ class ServicesController extends Controller
 					'messages'	 			=> $messages,
 					'commentAllowed' 		=> $allowed,
 					'passed'				=> $passed,
+					'treated'				=> $treated,
 					'commentClient'	 		=> $commentClient,
 					'commentPhotographer'	=> $commentPhotographer,
 					'form'		 			=> $formView
 			));
 		}
 	}
-	
+
 	/**
-	 * @return Symfony\Component\HttpFoundation\Response
-	 * @Route("/service/{id}/update/{slug}", name="update_service")
+	 * [cancelService description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 * @Route("/service/{id}/cancel", name="cancel_service")
 	 */
-	public function updateService($id, $slug)
+	public function cancelServiceAction($id)
 	{
 		$prestationService = $this->get('service_prestation');
 		$service = $prestationService->getPrestationAsClient($id);
 		if(!$service) {
 			throw $this->createNotFoundException('The service does not exist');
 		}
-		else
-		{
-			if (!in_array($slug, array(4, 5)))
-			{
-				throw $this->createNotFoundException('Invalid slug');
-			}else{
-				$prestationService->updatePrestation($id, $slug);
-				return $this->redirect($this->generateUrl('show_service', array('id' => $id)));
-			}
+		else{
+			$prestationService->cancelPrestation($service);
+			return $this->redirect($this->generateUrl('show_service', array('id' => $id)));
 		}
 	}
+
+	/**
+	 * [confirmService description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 * @Route("/service/{id}/confirm", name="confirm_service")
+	 */
+	public function confirmServiceAction($id)
+	{
+		$prestationService = $this->get('service_prestation');
+		$service = $prestationService->getPrestationAsClient($id);
+		if(!$service) {
+			throw $this->createNotFoundException('The service does not exist');
+		}
+		else{
+			$prestationService->confirmPrestation($service);
+			return $this->redirect($this->generateUrl('show_service', array('id' => $id)));
+		}
+	}
+
+	/**
+	 * [passService description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 * @Route("/service/{id}/deliver_service", name="deliver_service")
+	 */
+	public function passServiceAction($id)
+	{
+		$prestationService = $this->get('service_prestation');
+		$service = $prestationService->getPrestationAsClient($id);
+		if(!$service) {
+			throw $this->createNotFoundException('The service does not exist');
+		}
+		else{
+			$prestationService->passPrestation($service);
+			return $this->redirect($this->generateUrl('show_service', array('id' => $id)));
+		}
+	}
+	
 
 	/**
 	 * @return Symfony\Component\HttpFoundation\Response

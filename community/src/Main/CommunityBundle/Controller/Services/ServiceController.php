@@ -91,6 +91,42 @@ class ServiceController extends Controller
 			));
 		}
 	}
+
+ 	/**
+	 * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/service/{id}/refuse", requirements={"id" = "\d+"}, name="service_refuse")
+	 */
+	public function refuseAction($id)
+	{
+		$prestationService = $this->get('service_prestation');
+		$service = $prestationService->getPrestationAsPhotographer($id);
+		if(!$service) {
+			throw $this->createNotFoundException('The service does not exist');
+		}
+		else
+		{
+			$prestationService->refusePrestation($service);
+			return $this->redirect($this->generateUrl('service_show', array('id' => $id)));
+		}
+	}
+
+	/**
+	 * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/service/{id}/pre-approve", requirements={"id" = "\d+"}, name="service_pre_approve")
+	 */
+	public function PreApprovePrestation($id)
+	{
+		$prestationService = $this->get('service_prestation');
+		$service = $prestationService->getPrestationAsPhotographer($id);
+		if(!$service) {
+			throw $this->createNotFoundException('The service does not exist');
+		}
+		else
+		{
+			$prestationService->PreApprovePrestation($service);
+			return $this->redirect($this->generateUrl('service_show', array('id' => $id)));
+		}
+	}
 	
 	/**
 	 *
