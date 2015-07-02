@@ -68,7 +68,7 @@ gestion:
             h4:
                 photographer: Photographe
                 iban: Iban
-                price: Montant a virer
+                price: Montant à virer
             p:
                 iban:
                     empty: Le photographe n'a pas d'Iban renseigné.

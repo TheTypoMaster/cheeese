@@ -70,55 +70,6 @@ class ServicePrestation
 	
 	/**
 	 * 
-	 * @param unknown $devis
-	 * @param unknown $town
-	 * @param unknown $day
-	 * @param unknown $address
-	 * @param unknown $startTime
-	 * @param unknown $message
-	 * @return boolean
-	 */
-	public function create($devis, $town, $day, $address, $startTime, $duration, $message)
-	{
-		$start      = str_replace('/', '-', $day).' '.$startTime['hour'].':'.$startTime['minute'].':00';
-		$devis 		= $this->em->getRepository('MainCommonBundle:Photographers\Devis')->findOneById($devis);
-		$client 	= $this->getCurrentUser();
-		$town 		= $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneById($town);
-		$devisPrice = $this->em->getRepository('MainCommonBundle:Photographers\DevisPrices')->findOneBy(array(
-			'devis' => $devis,
-			'duration' => $duration));
-		$duration   = $devisPrice->getDuration();
-		$price 		= $devisPrice->getPrice();
-		$address 	= $address;
-		$startTime 	= new \DateTime($start);
-		$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PRESTATION_ENCOURS);
-		
-		
-		$prestation = new Prestation();
-		$prestation->setReference($this->reference->generateReference());
-		$prestation->setDevis($devis);
-		$prestation->setClient($client);
-		$prestation->setTown($town);
-		$prestation->setPrice($price);
-		$prestation->setAddress($address);
-		$prestation->setStartTime($startTime);
-		$prestation->setDuration($duration);
-		$prestation->setStatus($status);	
-		try{
-			$this->em->persist($prestation);
-			$this->CreateFirstPrestationMessage($prestation, $client, $devis->getCompany()->getPhotographer(), 1, $message);
-			$this->em->flush();
-			$this->mailer->prestationUpdateEmail($prestation);
-			return $prestation;
-		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
-			var_dump($e->getMessage());
-			return false;
-		}
-	}
-	
-	/**
-	 * 
 	 */
 	public function listPhotographerServices()
 	{
@@ -207,85 +158,53 @@ class ServicePrestation
 		return $this->repository->findBy(array(), array('createdAt' => 'desc'));
 	}
 	
+
 	/**
-	 * Initialisation du 1er Message concernant la prestation
+	 * [PreApprovePrestation description]
+	 * @param Prestation $prestation [description]
 	 */
-	protected function CreateFirstPrestationMessage(Prestation $prestation, User $sender, User $receiver, $type, $content)
+	public function PreApprovePrestation(Prestation $prestation)
 	{
-		$message = new Message();
-		$message->setType($type);
-		$message->setPrestation($prestation);
-		$message->setSender($sender);
-		$message->setReceiver($receiver);
-		$message->setContent($content);
-		try{
-			$this->em->persist($message);
-			return true;
-		}catch(\Exception $e){
-			var_dump($e->getMessage());
-			return false;
-		}
-		
+		return $this->updatePrestation($prestation, self::PHOTOGRAPHER_OK);
 	}
 
 	/**
-	 * 
-	 * @param unknown $id
-	 * @param unknown $slug
-	 * @return boolean
+	 * [refusePrestation description]
+	 * @param  Prestation $prestation [description]
+	 * @return [type]                 [description]
 	 */
-	public function updatePrestation ($id, $slug)
+	public function refusePrestation(Prestation $prestation)
 	{
-		$prestation = $this->repository->findOneById($id);
-		//TODO : verifier l'etat ancien
-		switch ($slug)
-		{
-			case 2:
-				if ($prestation->getStatus()->getId() == self::PRESTATION_ENCOURS)
-					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOGRAPHER_OK);
-				break;
-			case 3:
-				//Cancel-photographer
-				if ($prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK)
-					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOGRAPHER_KO);
-				break;
-			case 4:
-				//Cancel-Client
-				if ($prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK)
-					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CLIENT_KO);
-				break;
-			case 5:
-				//Valide
-				if ($prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK)
-					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PRESTATION_OK);
-				break;
-			case 6:
-				if ($prestation->getStatus()->getId() == self::PRESTATION_OK)
-				{
-					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::OLD_PRESTATION);
-					//Initialisation de la notation
-				}
-				break;
-			case 7:
-				if ($prestation->getStatus()->getId() == self::OLD_PRESTATION)
-					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOS_DELIVERED);
-				break;
-		}
-		
-		
-		$prestation->setStatus($status);
-		$prestation->setUpdatedAt(new \DateTime('now'));
-		try{
-			$this->em->flush();
-			//Envoi du mail
-            $this->mailer->prestationUpdateEmail($prestation);
-			$this->session->successFlahMessage('flash.message.prestation.status');	
-			return true;
-		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
-			var_dump($e->getMessage());
-			return false;
-		}
+		return $this->updatePrestation($prestation, self::PHOTOGRAPHER_KO);
+	}
+
+	/**
+	 * [cancelPrestation description]
+	 * @param  Prestation $prestation [description]
+	 * @return [type]                 [description]
+	 */
+	public function cancelPrestation(Prestation $prestation)
+	{
+		return $this->updatePrestation($prestation, self::CLIENT_KO);
+	}
+
+	/**
+	 * [confirmPrestation description]
+	 * @param  Prestation $prestation [description]
+	 * @return [type]                 [description]
+	 */
+	public function confirmPrestation(Prestation $prestation)
+	{
+		return $this->updatePrestation($prestation, self::PRESTATION_OK);
+	}
+
+	/**
+	 * [PassPrestation description]
+	 * @param Prestation $prestation [description]
+	 */
+	public function PassPrestation(Prestation $prestation)
+	{
+		return $this->updatePrestation($prestation, self::PHOTOS_DELIVERED);
 	}
 
 	/**
@@ -295,18 +214,7 @@ class ServicePrestation
 	 */
 	public function closePrestation(Prestation $prestation)
 	{
-		$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CLOSED_PRESTATION);
-		$prestation->setStatus($status);
-		$prestation->setUpdatedAt(new \DateTime('now'));
-		try{
-			$this->em->flush();	
-			$this->session->successFlahMessage('flash.message.prestation.closed');			
-			return true;
-		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
-			var_dump($e->getMessage());
-			return false;
-		}
+		return $this->updatePrestation($prestation, self::CLOSED_PRESTATION);
 	}
 	/**
 	 * [isClosed description]
@@ -322,6 +230,16 @@ class ServicePrestation
 	{
 		return $prestation->getStatus()->getId() == self::PHOTOS_DELIVERED;
 	}
+
+	/**
+	 * [isOld description]
+	 * @param  Prestation $prestation [description]
+	 * @return boolean                [description]
+	 */
+	public function isOld(Prestation $prestation)
+	{
+		return $prestation->getStatus()->getId() == self::OLD_PRESTATION;
+	}
 	
 	/**
 	 * 
@@ -330,7 +248,7 @@ class ServicePrestation
 	 */
 	public function isCommentAllowed(Prestation $prestation)
 	{
-		return $prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PRESTATION_OK;
+		return $prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK || $prestation->getStatus()->getId() == self::PRESTATION_OK;
 	}
 
 	/**
@@ -380,4 +298,139 @@ class ServicePrestation
 		$next = date("Y-m-d",strtotime("+1 week"));
 		return $this->repository->getWeekPrestations($next, self::PRESTATION_OK, $this->getCurrentUser()->getId());
 	}
+
+
+	/**
+	 * 
+	 * @param unknown $devis
+	 * @param unknown $town
+	 * @param unknown $day
+	 * @param unknown $address
+	 * @param unknown $startTime
+	 * @param unknown $message
+	 * @return boolean
+	 */
+	public function create($devis, $town, $day, $address, $startTime, $duration, $message)
+	{
+		$start      = str_replace('/', '-', $day).' '.$startTime['hour'].':'.$startTime['minute'].':00';
+		$devis 		= $this->em->getRepository('MainCommonBundle:Photographers\Devis')->findOneById($devis);
+		$client 	= $this->getCurrentUser();
+		$town 		= $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneById($town);
+		$devisPrice = $this->em->getRepository('MainCommonBundle:Photographers\DevisPrices')->findOneBy(array(
+			'devis' => $devis,
+			'duration' => $duration));
+		$duration   = $devisPrice->getDuration();
+		$price 		= $devisPrice->getPrice();
+		$address 	= $address;
+		$startTime 	= new \DateTime($start);
+		$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PRESTATION_ENCOURS);
+		
+		
+		$prestation = new Prestation();
+		$prestation->setReference($this->reference->generateReference());
+		$prestation->setDevis($devis);
+		$prestation->setClient($client);
+		$prestation->setTown($town);
+		$prestation->setPrice($price);
+		$prestation->setAddress($address);
+		$prestation->setStartTime($startTime);
+		$prestation->setDuration($duration);
+		$prestation->setStatus($status);	
+		try{
+			$this->em->persist($prestation);
+			$this->CreateFirstPrestationMessage($prestation, $client, $devis->getCompany()->getPhotographer(), 1, $message);
+			$this->em->flush();
+			$this->mailer->prestationUpdateEmail($prestation);
+			return $prestation;
+		}catch(\Exception $e){
+			$this->session->errorFlashMessage();
+			var_dump($e->getMessage());
+			return false;
+		}
+	}
+
+		/**
+	 * Initialisation du 1er Message concernant la prestation
+	 */
+	protected function CreateFirstPrestationMessage(Prestation $prestation, User $sender, User $receiver, $type, $content)
+	{
+		$message = new Message();
+		$message->setType($type);
+		$message->setPrestation($prestation);
+		$message->setSender($sender);
+		$message->setReceiver($receiver);
+		$message->setContent($content);
+		try{
+			$this->em->persist($message);
+			return true;
+		}catch(\Exception $e){
+			var_dump($e->getMessage());
+			return false;
+		}
+		
+	}
+
+	/**
+	 * 
+	 * @param unknown $id
+	 * @param unknown $slug
+	 * @return boolean
+	 */
+	public function updatePrestation (Prestation $prestation, $slug)
+	{
+		switch ($slug)
+		{
+			case 2:
+				if ($prestation->getStatus()->getId() == self::PRESTATION_ENCOURS)
+					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOGRAPHER_OK);
+				break;
+			case 3:
+				//Cancel-photographer
+				if ($prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK)
+					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOGRAPHER_KO);
+				break;
+			case 4:
+				//Cancel-Client
+				if ($prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK)
+					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CLIENT_KO);
+				break;
+			case 5:
+				//Valide
+				if ($prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK)
+					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PRESTATION_OK);
+				break;
+			case 6:
+				if ($prestation->getStatus()->getId() == self::PRESTATION_OK)
+				{
+					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::OLD_PRESTATION);
+					//Initialisation de la notation
+				}
+				break;
+			case 7:
+				if ($prestation->getStatus()->getId() == self::OLD_PRESTATION)
+					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOS_DELIVERED);
+				break;
+			case 8:
+				if ($prestation->getStatus()->getId() == self::PHOTOS_DELIVERED)
+					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CLOSED_PRESTATION);
+				break;
+		}
+		
+		
+		$prestation->setStatus($status);
+		$prestation->setUpdatedAt(new \DateTime('now'));
+		try{
+			$this->em->flush();
+			//Envoi du mail
+            $this->mailer->prestationUpdateEmail($prestation);
+			$this->session->successFlahMessage('flash.message.prestation.status');	
+			return true;
+		}catch(\Exception $e){
+			$this->session->errorFlashMessage();
+			var_dump($e->getMessage());
+			return false;
+		}
+	}
+
+
 }

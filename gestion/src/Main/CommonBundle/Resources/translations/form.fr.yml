@@ -60,3 +60,6 @@ form:
             user_comment: Vos commentaires
             prestation_notation: Evaluation de la prestation
             prestation_comment: Vos commentaires sur la prestation
+    transaction:
+        field:
+            comments: Commentaires

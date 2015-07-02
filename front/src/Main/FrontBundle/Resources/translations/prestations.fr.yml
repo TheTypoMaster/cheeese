@@ -1,0 +1,37 @@
+prestation:
+    index:
+        you: Bonjour
+        th:
+            date: Date
+            town: Commune
+            devis: Devis
+            photographer: Photographe
+            status: Statut
+        btn:
+            details: Détails
+    show:
+        header: Détails de la prestation
+        btn:
+            submit: Envoyer
+            back: Retour à la liste
+            cancel: Annuler cette prestation
+            confirm: Confirmer cette prestation
+            evaluate: Evaluer cette prestation
+            delivered: Confirmer la reception des photos
+        li:
+            at: à
+        evaluation:
+            title: Evaluation de la préstation
+            header: Evaluation
+        photographer:
+            title: Evaluation du photographe
+        timeline:
+            you: Vous
+            title: Timeline
+            status:
+                title: Statut
+                created: Prestation créée
+                preapproved: Prestation pré-approuvée
+                refused: Prestation refusée
+                canceled: Prestation annulée
+                confirmed: Prestation confirmée

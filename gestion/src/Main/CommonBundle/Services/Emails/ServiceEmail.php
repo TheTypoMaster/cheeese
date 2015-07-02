@@ -56,6 +56,7 @@ class ServiceEmail
         $status = $prestation->getStatus()->getId();
         $photographer = $prestation->getDevis()->getCompany()->getPhotographer()->getEmail();
         $client = $prestation->getClient()->getEmail();
+        $template = null;
         switch ($status)
         {
             case 1:
@@ -115,9 +116,12 @@ class ServiceEmail
             */
 
         }
+        if($template != null) {
         $from = 'test@test.fr';
         $body = $this->templating->render($template, array('prestation' => $prestation));
-        $this->sendMessage($from, $to, $subject, $body);
+        $this->sendMessage($from, $to, $subject, $body);    
+        }
+        
     }
 
     /**
