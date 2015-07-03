@@ -33996,4 +33996,24 @@ COPY town (country,department,name,code,latitude,longitude) FROM stdin;
 1	95	Vémars	95470	49.066667	2.566667
 1	95	Villeron	95380	49.05	2.533333
 1	95	Villiers-le-Sec	95720	49.066667	2.4
+1	75	Paris 1er Arrondissement	75001	48.86	2.3411
+1	75	Paris 2éme Arrondissement	75002	48.869166	2.3405556
+1	75	Paris 3éme Arrondissement	75003	48.863819	2.3616583
+1	75	Paris 4éme Arrondissement	75004	48.855555	2.3555556
+1	75	Paris 5éme Arrondissement	75005	48.847222	2.3444443
+1	75	Paris 6éme Arrondissement	75006	48.85053	2.3322332
+1	75	Paris 7éme Arrondissement	75007	48.859166	2.3127778
+1	75	Paris 8éme Arrondissement	75008	48.874166	2.3111111
+1	75	Paris 9éme Arrondissement	75009	48.878280	2.3369666
+1	75	Paris 10éme Arrondissement	75010	48.875508	2.3578528
+1	75	Paris 11éme Arrondissement	75011	48.858677	2.3793055
+1	75	Paris 12éme Arrondissement	75012	48.840808	2.3881833
+1	75	Paris 13éme Arrondissement	75013	48.832222	2.3555556
+1	75	Paris 14éme Arrondissement	75014	48.833022	2.3268888
+1	75	Paris 15éme Arrondissement	75015	48.841327	2.3002917
+1	75	Paris 16éme Arrondissement	75016	48.863611	2.2764889
+1	75	Paris 17éme Arrondissement	75017	48.882244	2.3078388
+1	75	Paris 18éme Arrondissement	75018	48.89215	2.3444471
+1	75	Paris 19éme Arrondissement	75019	48.88235	2.3818221
+1	75	Paris 20éme Arrondissement	75020	48.865061	2.3990499
 \.
