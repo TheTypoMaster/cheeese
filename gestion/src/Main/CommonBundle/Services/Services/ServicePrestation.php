@@ -240,6 +240,15 @@ class ServicePrestation
 	{
 		return $prestation->getStatus()->getId() == self::OLD_PRESTATION;
 	}
+
+	/**
+	 * Update les prestations confirmées passées en old
+	 */
+	public function setPassedPrestations()
+	{
+		$date = new \DateTime('now');
+		$this->repository->setPassedPrestations($date, self::PRESTATION_OK, self::OLD_PRESTATION);
+	}
 	
 	/**
 	 * 

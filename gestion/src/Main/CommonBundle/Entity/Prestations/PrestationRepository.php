@@ -106,7 +106,7 @@ class PrestationRepository extends EntityRepository
 	 * @param [type] $status    [description]
 	 * @param [type] $newStatus [description]
 	 */
-	public function setPassedPrestations($date, $day, $status, $newStatus)
+	public function setPassedPrestations($date, $status, $newStatus)
 	{
 		$qb = $this->_em->createQueryBuilder();
 		$q = $qb->update('MainCommonBundle:Prestations\Prestation', 'p')
@@ -118,11 +118,13 @@ class PrestationRepository extends EntityRepository
         				'new'	=> $newStatus,
         				'old'	=> $status,
         				'date'	=> $date,
-        				'day'	=> $day
+        				'day'	=> $date->format('Y-m-d')
         				)
         			)
         			->getQuery();
 			$q->execute();	
 	}
+
+	
 	
 }
