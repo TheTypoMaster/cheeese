@@ -26,7 +26,7 @@
                                                 <td> {{ entity.company.photographer.username }} </td>
                                                 <td> {{ entity.title }} </td>
                                                 <td> {{ entity.prestations }} </td>
-                                                <td> {{ entity.note}} </td>
+                                                <td> {{ entity.note|number_format(2) }} </td>
                                                 {% if 1 == entity.active %}
                                                     <td>
                                                         <span class="label label-success">

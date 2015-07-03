@@ -42,7 +42,7 @@
                                         <dd> {{ user.lastlogin | date('d-m-Y H:i') }} </dd>
                                         <br>
                                         <dt> {% trans %}gestion.users.show.note{% endtrans %} </dt>
-                                        <dd> {{ user.note }} ( {{ user.prestations }} {% trans %}gestion.users.show.commentaires{% endtrans %})</dd>
+                                        <dd> {{ user.note|number_format(2) }} ( {{ user.prestations }} {% trans %}gestion.users.show.commentaires{% endtrans %})</dd>
                                         
                                     </dl>
                                 </div><!-- /.box-body --> 

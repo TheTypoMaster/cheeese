@@ -43,7 +43,7 @@
                                                 <td><span class="label label-danger">{% trans from "offers" %}community.devis.view.active.disabled{% endtrans %}</span></td>
                                                 {% endif %}
                                                 {% if entity.prestations != 0 %}
-                                                <td> {{ entity.note }}</td>
+                                                <td> {{ entity.note|number_format(2) }}</td>
                                                 {% else %}
                                                 <td>{% trans from "offers" %}community.devis.view.prestation.0{% endtrans %}</td>
                                                 {% endif %}

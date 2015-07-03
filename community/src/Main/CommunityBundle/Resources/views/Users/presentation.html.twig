@@ -28,7 +28,7 @@
                                 		<dd> {{ user.telephone }} </dd>
                                 		<dt> {% trans from "users" %}community.presentation.read.dt.notation{% endtrans %} 
                                 		</dt>
-                                		<dd> {{ user.note }} </dd>
+                                		<dd> {{ user.note|number_format(2) }} </dd>
                                 		<dt> {% trans from "users" %}community.presentation.read.dt.comments{% endtrans %} 
                                 		</dt>
                                 		<dd> {{ user.prestations }} </dd>

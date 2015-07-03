@@ -22,7 +22,7 @@
                                                 <td> {{ entity.createdat | date('d-m-Y H:i')}} </td>
                                                 <td> {{ entity.lastlogin | date('d-m-Y H:i')}} </td>
                                                 <td> {{ entity.prestations }} </td>
-                                                <td> {{ entity.note }} </td>
+                                                <td> {{ entity.note|number_format(2) }} </td>
                                                 <td><form action="{{ path('user_show', {'id' : entity.id }) }}">
                                                     <button class="btn btn-default btn-sm">
                                                     {% trans %}gestion.users.list.btn.details{% endtrans %}
