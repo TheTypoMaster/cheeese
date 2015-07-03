@@ -90,10 +90,10 @@
 		<div class="col-md-12 text-center">
 	    	<a class="btn btn-default"  href="{{ path('user_services') }}">{% trans from "prestations" %}prestation.show.btn.back{% endtrans %}</a>
 	    	{% if prestation.status.id == 1  or prestation.status.id == 2 %}
-	    		<a class="btn btn-danger"  href="{{ path('cancel_service', { 'id' : prestation.id } ) }}">{% trans from "prestations" %}prestation.show.btn.cancel{% endtrans %}</a>
+	    		<a class="btn btn-danger"  data-toggle="modal" data-target="#cancelModal">{% trans from "prestations" %}prestation.show.btn.cancel{% endtrans %}</a>
 	    	{% endif %}
 	    	{% if prestation.status.id == 2 %}
-	    		<a class="btn btn-success"  href="{{ path('confirm_service', { 'id' : prestation.id }) }}">{% trans from "prestations" %}prestation.show.btn.confirm{% endtrans %}</a>
+	    		<a class="btn btn-success" data-toggle="modal" data-target="#approveModal">{% trans from "prestations" %}prestation.show.btn.confirm{% endtrans %}</a>
 	    	{% endif %}
 	    	
 	    	{% if passed %}
@@ -102,7 +102,7 @@
 	    		{% endif %} 
 	    	{% endif %}
 	    	{% if treated %}
-	    	<a class="btn btn-success"  href="{{ path('deliver_service', { 'id' : prestation.id }) }}">{% trans from "prestations" %}prestation.show.btn.delivered{% endtrans %}</a>
+	    	<a class="btn btn-success" data-toggle="modal" data-target="#deliverModal">{% trans from "prestations" %}prestation.show.btn.delivered{% endtrans %}</a>
 	    	{% endif %}
     	</div>
     	
@@ -175,4 +175,7 @@
 			   </div>
 			{{ form_end(form) }}
 	   {% endif %}
+
+	    {% include "MainFrontBundle:Prestations:confirm_boxes.html.twig" %}
+
 {% endblock %}

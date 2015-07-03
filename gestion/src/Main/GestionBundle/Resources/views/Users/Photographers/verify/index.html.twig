@@ -23,6 +23,7 @@
                             </div><!-- /.box -->
                         </div>
                     </div>
+                    {% include "MainGestionBundle:Users/Photographers/verify:confirm_boxes.html.twig" %}
 {% endblock %}
 
 {% block javascripts_inline %}
@@ -37,5 +38,21 @@
                     "bAutoWidth": false
                 });
             });
+            $('#approveModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var id = button.data('id');
+                var modal = $(this);
+                var aSupprSplited = $('#aSuppr').attr('href').split('/');
+                aSupprSplited[aSupprSplited.length - 2] = id;
+                $('#aSuppr').attr('href', aSupprSplited.join('/'));
+             });
+             $('#refuseModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var id = button.data('id');
+                var modal = $(this);
+                var aSupprSplited = $('#aSuppr1').attr('href').split('/');
+                aSupprSplited[aSupprSplited.length - 2] = id;
+                $('#aSuppr1').attr('href', aSupprSplited.join('/'));
+             });
         </script>
 {% endblock %}

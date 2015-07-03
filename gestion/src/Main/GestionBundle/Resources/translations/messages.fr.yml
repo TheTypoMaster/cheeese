@@ -45,6 +45,13 @@ gestion:
             verify:
                 h2: Liste des photographes non vérifiés
                 breadh2: Liste des photographes non vérifiés
+                confirm:
+                    header: Décision définitive
+                    attention: Attention !
+                    message: Cette action est irrevérsible
+                    btn:
+                        back: Retour
+                        confirm: Confirmer
             list:
                 address: Adresse
                 identification: Identification

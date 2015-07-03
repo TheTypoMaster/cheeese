@@ -1,0 +1,102 @@
+<div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-danger" id="titleModal">
+                    	{% trans from "prestations" %}prestation.show.confirm.header{% endtrans %}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                <strong>{% trans from "prestations" %}prestation.show.confirm.attention{% endtrans %} </strong> {% trans from "prestations" %}prestation.show.confirm.message{% endtrans %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    	{% trans from "prestations" %}prestation.show.confirm.btn.back{% endtrans %}
+                    </button>
+                    <a href="{{ path('confirm_service', { 'id' : prestation.id }) }}" role="button" class="btn btn-success" id="aSuppr">
+                    	{% trans from "prestations" %}prestation.show.confirm.btn.confirm{% endtrans %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-danger" id="titleModal">
+                    {% trans from "prestations" %}prestation.show.confirm.header{% endtrans %}
+                	</h4>
+                </div>
+                <div class="modal-body">
+                <strong>{% trans from "prestations" %}prestation.show.confirm.attention{% endtrans %} </strong> {% trans from "prestations" %}prestation.show.confirm.message{% endtrans %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {% trans from "prestations" %}prestation.show.confirm.btn.back{% endtrans %}
+                </button>
+                    <a href="{{ path('cancel_service', { 'id' : prestation.id } ) }}" role="button" class="btn btn-danger">
+                    {% trans from "prestations" %}prestation.show.confirm.btn.confirm{% endtrans %}
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="deliverModal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog">
+            {% if null == commentClient %}
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-danger" id="titleModal">
+                    {% trans from "prestations" %}prestation.show.confirm.warningheader{% endtrans %}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                {% trans from "prestations" %}prestation.show.confirm.warningmessage{% endtrans %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {% trans from "prestations" %}prestation.show.confirm.btn.back{% endtrans %}
+                </button>
+                </div>
+            </div>
+            {% else %}
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-danger" id="titleModal">
+                    {% trans from "prestations" %}prestation.show.confirm.header{% endtrans %}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                <strong>{% trans from "prestations" %}prestation.show.confirm.attention{% endtrans %} </strong> {% trans from "prestations" %}prestation.show.confirm.message{% endtrans %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {% trans from "prestations" %}prestation.show.confirm.btn.back{% endtrans %}
+                </button>
+                    <a href="{{ path('deliver_service', { 'id' : prestation.id }) }}" role="button" class="btn btn-success">
+                    {% trans from "prestations" %}prestation.show.confirm.btn.confirm{% endtrans %}
+                </a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>

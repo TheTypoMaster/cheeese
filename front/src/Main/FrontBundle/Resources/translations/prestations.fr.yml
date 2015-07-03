@@ -11,6 +11,15 @@ prestation:
             details: Détails
     show:
         header: Détails de la prestation
+        confirm:
+                header: Décision définitive
+                warningheader: Evaluez cette prestation
+                attention: Attention !
+                message: Cette action est irréversible
+                warningmessage: Merci d'évaluer cette prestation avant de poursuivre
+                btn:
+                    back: Retour
+                    confirm: Confirmer
         btn:
             submit: Envoyer
             back: Retour à la liste

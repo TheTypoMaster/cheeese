@@ -35,10 +35,10 @@
                                                 <td> {{ entity.identification }} </td>
                                                 <td> {{ entity.createdat | date('d-m-Y H:i')}} </td>
                                                 <td> {{ entity.updatedat | date('d-m-Y H:i')}} </td>
-                                                <td> <a href="{{ path('verify-photographer', {'id': entity.photographer.id, 'result' : 1 }) }}" class="btn btn-success"> 
+                                                <td> <a class="btn btn-success" data-toggle="modal" data-target="#approveModal" data-id="{{ entity.photographer.id }}"> 
                                                     {% trans %}gestion.users.photographers.list.href.ok{% endtrans %} </a>
                                                 </td>   
-                                                <td> <a href="{{ path('verify-photographer', {'id': entity.photographer.id, 'result' : 0 }) }}" class="btn btn-danger">
+                                                <td> <a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal" data-id="{{ entity.photographer.id }}">
                                                     {% trans %}gestion.users.photographers.list.href.ko{% endtrans %}</a>
                                                 </td> 
                                             </tr>

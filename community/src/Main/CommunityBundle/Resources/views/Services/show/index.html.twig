@@ -47,7 +47,7 @@
 	                                    </div>
 	                                    {{ prestation.client.username }}
                                         <br>
-                                        <i class="fa fa-star-o"></i> {{ prestation.client.note }}
+                                        <i class="fa fa-star-o"></i> {{ prestation.client.note|number_format(2) }}
                                         <i class="fa fa-comment-o"></i> {{ prestation.client.prestations }}                                
                                 	</div>
 	                            </div><!-- /.box-header -->
@@ -78,8 +78,10 @@
                             <a class="btn btn-default"  href="{{ path('service') }}">
                                 {% trans from "services" %}community.service.show.btn.back{% endtrans %}</a>
 									{% if 1 == prestation.status.id %}
-									<a class="btn btn-success"  href="{{ path('service_pre_approve', { 'id' : prestation.id }) }}">{% trans from "services" %}community.service.show.btn.approve{% endtrans %}</a>
-									<a class="btn btn-danger"  href="{{ path('service_refuse', { 'id' : prestation.id }) }}">{% trans from "services" %}community.service.show.btn.refuse{% endtrans %}</a
+									<a class="btn btn-success" data-toggle="modal" data-target="#approveModal">{% trans from "services" %}community.service.show.btn.approve{% endtrans %}
+                                    </a>
+									<a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal">{% trans from "services" %}community.service.show.btn.refuse{% endtrans %}
+                                    </a>
 									{% endif %}   
                           </div>
                        </div>
@@ -118,4 +120,7 @@
                             	</div>
                             </div>
                         {% endif %}
+                        <!-- Confirm Boxes-->
+                        {% include "MainCommunityBundle:Services\\show:confirm_boxes.html.twig" %}
+
 {% endblock %}

@@ -52,7 +52,7 @@
                                                     {{ prestation.devis.company.photographer.username }}
                                         </a>
                                         <br>
-                                        <i class="fa fa-star-o"></i> {{ prestation.devis.company.photographer.note }}
+                                        <i class="fa fa-star-o"></i> {{ prestation.devis.company.photographer.note|number_format(2) }}
                                         <i class="fa fa-comment-o"></i> 
                                         {{ prestation.devis.company.photographer.prestations }}
                                         </ul> 
@@ -67,7 +67,7 @@
 	                                    </div>
 	                                    <a href="{{ path('user_show', {id : prestation.client.id} )}}">{{ prestation.client.username }}</a> 
                                         <br>
-                                        <i class="fa fa-star-o"></i> {{ prestation.client.note }}
+                                        <i class="fa fa-star-o"></i> {{ prestation.client.note|number_format(2) }}
                                         <i class="fa fa-comment-o"></i> {{ prestation.client.prestations }}                                
                                 	</div>
 	                            </div><!-- /.box-header -->

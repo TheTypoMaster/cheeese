@@ -48,11 +48,18 @@ community:
                 devis: Devis
             li:
                 at: à
+            confirm:
+                header: Décision définitive
+                attention: Attention !
+                message: Cette action est irréversible
             btn:
                 back: Retour à la liste
                 approve: Pré-approuver cette prestation
                 refuse: Refuser cette prestation
                 evaluate: Evaluer cette prestation
+                confirm:
+                    back: Retour
+                    confirm: Confirmer
                 evaluations: 
                     title:
                         you: Vous
