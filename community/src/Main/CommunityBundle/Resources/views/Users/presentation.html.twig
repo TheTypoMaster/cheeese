@@ -14,7 +14,7 @@
                                 
                                 <div class="box-body">
                                 	<blockquote>
-                                		<p>{{ user.presentation }}</p>                                		
+                                		<p>{{ user.presentation | raw }}</p>                                		
                                 	</blockquote>
                                 	<dl class="dl-horizontal">
                                 		<dt> {% trans from "users" %}community.presentation.read.dt.firstname{% endtrans %} 

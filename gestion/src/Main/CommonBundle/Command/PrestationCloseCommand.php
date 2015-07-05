@@ -33,6 +33,6 @@ class PrestationCloseCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $prestationService = $this->getContainer()->get('service_prestation');
-        return $prestationService->setPassedPrestations());
+        return $prestationService->setPassedPrestations();
     }
 }
