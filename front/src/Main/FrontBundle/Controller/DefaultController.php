@@ -33,7 +33,7 @@ class DefaultController extends Controller
     		{
     			//Recherche
     			$serviceSearch = $this->get('service_search');
-    			$results = $serviceSearch->searchFirstStep($params['category'], $params['town_code'], $params['day']);
+    			$results = $serviceSearch->searchFirstStep($params['category'], $params['town_code'], $params['day'], $request->getClientIp());
     			if(count($results) > 0) {
     				//Mise en session des parametres de recherche (sinon ca ne sert a rien de stocker en session)
     				$serviceSession = $this->get('service_session');

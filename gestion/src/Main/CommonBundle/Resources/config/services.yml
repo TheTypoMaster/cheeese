@@ -37,7 +37,9 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context]
     service_search:
         class: "Main\CommonBundle\Services\Search\ServiceSearch"
-        arguments: [@doctrine.orm.entity_manager, @security.context]
+        arguments: [@doctrine.orm.entity_manager, @security.context, "@logger"]
+        tags:
+            - { name: monolog.logger, channel: search }
     service_prestation:
         class: "Main\CommonBundle\Services\Services\ServicePrestation"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_reference, @service_email, @service_session]
