@@ -32,6 +32,16 @@ monolog:
                 VERBOSITY_VERY_VERBOSE: NOTICE
                 VERBOSITY_DEBUG: DEBUG
             channels: ["doctrine"]
+        login:
+            type: rotating_file
+            path: "%kernel.logs_dir%/auth.log"
+            level: info
+            channels: security
+        search:
+            type: rotating_file
+            path: "%kernel.logs_dir%/search.log"
+            level: info
+            channels: search
         # uncomment to get logging in your browser
         # you may have to allow bigger header sizes in your Web server configuration
         #firephp:
