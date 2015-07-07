@@ -25,7 +25,7 @@ class Category
 	private $id;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Country", inversedBy="id", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Country")
 	 * @ORM\JoinColumn(name="country", referencedColumnName="id")
 	 */
 	private $country;
@@ -54,7 +54,7 @@ class Category
 	/**
 	 *
 	 * @ORM\Column(columnDefinition="SMALLINT DEFAULT 1 NOT NULL")
-	
+	 *
 	 */
 	private $active;	
 	

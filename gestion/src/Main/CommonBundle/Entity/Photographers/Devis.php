@@ -26,7 +26,7 @@ class Devis
 	private $id;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Companies\Company", inversedBy="photographer")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Companies\Company", fetch="EAGER")
 	 * @ORM\JoinColumn(name="company", referencedColumnName="photographer")
 	 */
 	private $company;
@@ -39,7 +39,7 @@ class Devis
 	private $title;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Utils\Category", inversedBy="id")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Utils\Category", fetch="EAGER")
 	 * @ORM\JoinColumn(name="category", referencedColumnName="id")
 	 */
 	private $category;
@@ -52,7 +52,7 @@ class Devis
 	private $presentation;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Utils\Currency", inversedBy="id")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Utils\Currency", fetch="EAGER")
 	 * @ORM\JoinColumn(name="currency", referencedColumnName="id")
 	 */
 	private $currency;

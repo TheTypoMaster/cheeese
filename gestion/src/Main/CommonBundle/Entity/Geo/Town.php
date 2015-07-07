@@ -36,7 +36,7 @@ class Town
 	private $code;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Country", inversedBy="id")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Country")
 	 * @ORM\JoinColumn(name="country", referencedColumnName="id")
 	 */
 	private $country;

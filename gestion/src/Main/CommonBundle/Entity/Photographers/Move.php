@@ -15,14 +15,14 @@ class Move
 {
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Companies\Company", inversedBy="photographer")
-	 * @ORM\JoinColumn(name="company", referencedColumnName="photographer")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User")
+	 * @ORM\JoinColumn(name="company", referencedColumnName="id")
 	 */
 	private $company;
 	
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town", inversedBy="id")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town")
 	 * @ORM\JoinColumn(name="town", referencedColumnName="id")
 	 */
 	private $town;

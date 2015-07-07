@@ -14,14 +14,14 @@ class Evaluation
 {
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", fetch="EAGER")
 	 * @ORM\JoinColumn(name="scorer", referencedColumnName="id")
 	 */
 	private $scorer;
 	
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Prestations\Prestation", inversedBy="id")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Prestations\Prestation", fetch="EAGER")
 	 * @ORM\JoinColumn(name="prestation", referencedColumnName="id")
 	 */
 	private $prestation;

@@ -25,13 +25,13 @@ class Transaction
 	private $id;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", inversedBy="id")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User")
 	 * @ORM\JoinColumn(name="photographer", referencedColumnName="id")
 	 */
 	private $photographer;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Prestations\Prestation", inversedBy="id")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Prestations\Prestation")
 	 * @ORM\JoinColumn(name="prestation", referencedColumnName="id", nullable=true)
 	 */
 	private $prestation;

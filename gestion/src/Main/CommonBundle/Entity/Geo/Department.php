@@ -20,7 +20,7 @@ class Department
 	private $code;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Country", inversedBy="id")
+	 * @ORM\ManyToOne(targetEntity="Country")
 	 * @ORM\JoinColumn(name="country", referencedColumnName="id")
 	 * @ORM\Id
 	 */

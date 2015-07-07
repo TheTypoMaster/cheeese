@@ -15,8 +15,8 @@ class MoveRadius
 {
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Companies\Company", inversedBy="photographer")
-	 * @ORM\JoinColumn(name="company", referencedColumnName="photographer")
+	 * @ORM\OneToOne(targetEntity="Main\CommonBundle\Entity\Users\User")
+	 * @ORM\JoinColumn(name="company", referencedColumnName="id")
 	 */
 	private $company;
 	
