@@ -1,14 +1,4 @@
-Create SCHEMA companies;
-Create SCHEMA geo;
-Create SCHEMA messages;
-Create SCHEMA photographers;
-Create SCHEMA prestations;
-Create SCHEMA status;
-Create SCHEMA utils;
-Create SCHEMA users;
-Create SCHEMA notations;
 
-#GEO TOWN
 insert into geo.country (id, name, icon) VALUES (1, 'France', 'France');
 
 -- ------ STATUS
@@ -44,4 +34,4 @@ insert into utils.duration (id, libelle)
 -- --User
 INSERT INTO users.user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at,note, prestations, createdAt, updatedAt)
     VALUES 
-(1,'admin','admin','f_tamega@hotmail.com','f_tamega@hotmail.com',TRUE,'15x862pxtlj4w8wwggs4co8k0kcw0so','/HrsZQEEiMRK/H0QiwuBTRIVFMJ0APaSuvEHPzbrCt0MYwM7RgsR7xS7QripDb2UtLWv4bq4nWCPoDk/Rx3Org==',NOW(),FALSE,FALSE,NULL,NULL,NULL,'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}',FALSE,NULL,0,0,NOW(),NOW());
+(1,'admin','admin','test@test.com','test@test.com',TRUE,'15x862pxtlj4w8wwggs4co8k0kcw0so','/HrsZQEEiMRK/H0QiwuBTRIVFMJ0APaSuvEHPzbrCt0MYwM7RgsR7xS7QripDb2UtLWv4bq4nWCPoDk/Rx3Org==',NOW(),FALSE,FALSE,NULL,NULL,NULL,'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}',FALSE,NULL,0,0,NOW(),NOW());

@@ -1,3 +1,16 @@
+-- schemas
+
+Create SCHEMA companies;
+Create SCHEMA geo;
+Create SCHEMA messages;
+Create SCHEMA photographers;
+Create SCHEMA prestations;
+Create SCHEMA status;
+Create SCHEMA utils;
+Create SCHEMA users;
+Create SCHEMA notations;
+
+-- Tables
 CREATE TABLE notations.client (client INT NOT NULL, prestation BIGINT NOT NULL, prestation_notation INT DEFAULT NULL, prestation_comment TEXT DEFAULT NULL, photographer_notation INT DEFAULT NULL, photographer_comment TEXT DEFAULT NULL, createdAt TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updatedAt TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(client, prestation));
 CREATE INDEX IDX_B02BEF3BC7440455 ON notations.client (client);
 CREATE INDEX IDX_B02BEF3B51C88FAD ON notations.client (prestation);
