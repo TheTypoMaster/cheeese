@@ -28,7 +28,7 @@ class TransactionController extends Controller
 			return $this->redirect($this->generateUrl('company_new'));
 		}else {
 			$transactionService = $this->get('service_transaction');
-			$transactions = $transactionService->getByUser();
+			$transactions = $transactionService->getByUser($company);
 			return $this->render('MainCommunityBundle:Company:transactions.html.twig', array(
 					'transactions' 	=> $transactions,
 			));

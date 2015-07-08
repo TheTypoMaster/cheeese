@@ -27,7 +27,7 @@ class Devis
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Companies\Company", fetch="EAGER")
-	 * @ORM\JoinColumn(name="company", referencedColumnName="photographer")
+	 * @ORM\JoinColumn(name="company", referencedColumnName="id")
 	 */
 	private $company;
 	

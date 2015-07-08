@@ -51,7 +51,15 @@ class ServiceCompany
 	 */
 	public function getCompany($id)
 	{
-		return $this->repository->findOneBy(array('photographer' => $id ));
+		return $this->repository->findOneByPhotographer($id);
+	}
+
+	/**
+	 * 
+	 */
+	public function getCurrentCompany()
+	{
+		return $this->repository->findOneByPhotographer($this->getCurrentUser()->getId());
 	}
 	
 	/**
@@ -69,7 +77,6 @@ class ServiceCompany
 				'department' => $data['department'],
 				'name'	     => $data['town']	
 				)));
-		$Company->setCountry($this->em->getRepository('MainCommonBundle:Geo\Country')->findOneById($data['country']));
 		$Company->setIdentification($data['identification']);
 		$Company->setTitle($data['title']);
 		$Company->setAddress($data['address']);
@@ -95,13 +102,11 @@ class ServiceCompany
 	 */
 	public function update(Company $Company, $data)
 	{
-		$country = $this->em->getRepository('MainCommonBundle:Geo\Country')->findOneById($data['country']);
 		$town = $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneBy(array(
 				'country' => $data['country'],
 				'name'	  => $data['town']	
 				));
 		$Company->setTown($town);
-		$Company->setCountry($country);
 		$Company->setIdentification($data['identification']);
 		$Company->setTitle($data['title']);
 		$Company->setAddress($data['address']);

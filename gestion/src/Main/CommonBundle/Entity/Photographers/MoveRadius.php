@@ -13,9 +13,10 @@ use Main\CommonBundle\Entity\Companies\Company as Company;
  */
 class MoveRadius
 {
+
 	/**
 	 * @ORM\Id
-	 * @ORM\OneToOne(targetEntity="Main\CommonBundle\Entity\Users\User")
+	 * @ORM\OneToOne(targetEntity="Main\CommonBundle\Entity\Companies\Company")
 	 * @ORM\JoinColumn(name="company", referencedColumnName="id")
 	 */
 	private $company;
@@ -38,7 +39,7 @@ class MoveRadius
 	 * @ORM\Column(name="updatedAt", type="datetime")
 	 */
 	private $updatedAt;
-	
+
 	/**
 	 * Return photographer
 	 */

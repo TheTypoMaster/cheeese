@@ -15,22 +15,27 @@ use Main\CommonBundle\Entity\Geo\Town;
 class TownRepository extends EntityRepository
 {
 	/**
-	 * 
-	 * @param unknown $countryId
-	 * @param unknown $contient
+	 * [findByDeptAndCountry description]
+	 * @param  [type] $dept    [description]
+	 * @param  [type] $country [description]
+	 * @return [type]          [description]
 	 */
-	public function findByCountry($countryId, $contient) {
+	public function findByDeptAndCountry($dept, $country)
+	{
 		$qb = $this->_em->createQueryBuilder();
 		$qb->select('t')
 			->from('MainCommonBundle:Geo\Town', 't')
 			->where('t.country = :countryId')
-			->setParameter('countryId', $countryId);
-		if ($contient != null && strlen($contient) > 0) {
-			$qb->andWhere($qb->expr()->like("UPPER(TRIM(t.name))", ':contient'));
-			$qb->setParameter('contient', strtoupper($contient) . '%');
-		}
-		$qb->setMaxResults(5);
-		return $qb->getQuery()->getResult();
+			->andWhere('t.department = :deptId')
+			->setParameters(array(
+					'countryId' => $country,
+					'deptId'	=> $dept
+				));
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);
+		$query->useResultCache(true);
+		$query->setResultCacheLifetime(86400); //1 day
+		return $query->getResult();
 	}
 	
 	/**

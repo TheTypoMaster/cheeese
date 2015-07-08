@@ -43,7 +43,9 @@ class ServiceDevis
 	}
 	
 	protected function getCurrentCompany() {
-		return $this->em->getRepository('MainCommonBundle:Companies\Company')->findOneByPhotographer($this->getCurrentUSer()->getId());
+		return $this->em->getRepository('MainCommonBundle:Companies\Company')->findOneBy(array(
+				'photographer' => $this->getCurrentUSer()->getId()
+			));
 	}
 	
 	/**
@@ -52,7 +54,7 @@ class ServiceDevis
 	public function read()
 	{
 		return $this->repository->findBy(array(
-			'company' => $this->getCurrentUSer()->getId()
+			'company' => $this->getCurrentCompany()->getId()
 			)
 		);
 	}
@@ -76,20 +78,20 @@ class ServiceDevis
 	{
 		$category = $this->em->getRepository('MainCommonBundle:Utils\Category')->findOneById($data['category']);
 		$currency = $this->em->getRepository('MainCommonBundle:Utils\Currency')->findOneById($data['currency']);
-	
+		$company  = $this->getCurrentCompany();
 		$devis = new Devis();
 		$devis->setTitle($data['title']);
-		$devis->setCompany($this->getCurrentCompany());
+		$devis->setCompany($company);
 		$devis->setCategory($category);
 		$devis->setCurrency($currency);
 		$devis->setPresentation($data['presentation']);
 		try{
 			$this->em->persist($devis);
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.devis.create');
+			$this->session->successFlashMessage('flash.message.devis.create');
 			return $devis;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -103,7 +105,7 @@ class ServiceDevis
 	{
 		return $this->repository->findOneBy(array(
 				'id'			=> $devis,
-				'company'  		=> $this->getCurrentUSer()->getId()
+				'company'  		=> $this->getCurrentCompany()->getId()
 				));
 	}
 
@@ -133,10 +135,10 @@ class ServiceDevis
 		$devis->setUpdatedAt(new \DateTime('now'));
 		try{
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.devis.edit');
+			$this->session->successFlashMessage('flash.message.devis.edit');
 			return $devis;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -153,10 +155,10 @@ class ServiceDevis
 		$devis->setActive($value);
 		try{
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.devis.edit');
+			$this->session->successFlashMessage('flash.message.devis.edit');
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -183,7 +185,7 @@ class ServiceDevis
 
 	public function CountAllMyActiveDevis()
 	{
-		return $this->countAllActive($this->getCurrentUSer()->getId());
+		return $this->countAllActive($this->getCurrentCompany()->getId());
 	}
 
 	/**
@@ -207,7 +209,7 @@ class ServiceDevis
 
 	public function groupMyDevis()
 	{
-		return $this->groupBy($this->getCurrentUSer()->getId());
+		return $this->groupBy($this->getCurrentCompany()->getId());
 	}
 	
 	/**

@@ -30,11 +30,6 @@ class ServiceTown
 	 */
 	public function findByDepartment($department, $country)
 	{
-		return $this->repository->findBy(
-			array(
-				'department' => $department,
-				'country'	=> $country
-				));
-		
+		return $this->repository->findByDeptAndCountry($department, $country);	
 	}
 }

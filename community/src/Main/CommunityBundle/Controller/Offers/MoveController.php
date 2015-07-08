@@ -24,8 +24,7 @@ class MoveController extends Controller
 		$serviceCompany = $this->get('service_company');
 		$serviceMoves = $this->get('service_moves_radius');
 		$company = $serviceCompany->getCompany($usr->getId());		
-		$radiusMove = $serviceMoves->getRadius();
-		
+		$radiusMove = $serviceMoves->getRadius($company);		
 		if($radiusMove) {
 			$radius = $radiusMove->getRadius();
 		}else {

@@ -21,7 +21,8 @@ class PrestationRepository extends EntityRepository
 		$qb->select('p')
 			->from('MainCommonBundle:Prestations\Prestation', 'p')
 			->innerJoin('p.devis', 'd')
-			->where('d.company = :photographer')
+			->innerJoin('d.company', 'c')
+			->where('c.photographer = :photographer')
 			->setParameter('photographer', $user);		
 		return $qb->getQuery()->getResult();
 	}
@@ -36,8 +37,9 @@ class PrestationRepository extends EntityRepository
 		$qb->select('p')
 		->from('MainCommonBundle:Prestations\Prestation', 'p')
 		->innerJoin('p.devis', 'd')
+		->innerJoin('d.company', 'c')
 		->where('p.id = :id')
-		->andWhere('d.company = :photographer')
+		->andWhere('c.photographer = :photographer')
 		->setParameters(array(
 				'id'			=> $id,
 				'photographer'	=> $user
@@ -51,7 +53,8 @@ class PrestationRepository extends EntityRepository
 			->from('MainCommonBundle:Prestations\Prestation', 'p');
 			if ($user != null) {
 				$qb->innerJoin('p.devis', 'd')
-				   ->where('d.company = :company')
+				   ->innerJoin('d.company', 'c')
+				   ->where('c.photographer = :company')
 				   ->setParameter('company', $user);
 			}
         return $qb->getQuery()
@@ -65,7 +68,8 @@ class PrestationRepository extends EntityRepository
 			->innerJoin('p.status', 's');
 		if ($user != null) {
 			$qb->innerJoin('p.devis', 'd')
-			   ->where('d.company = :company')
+			   ->innerJoin('d.company', 'c')
+			   ->where('c.photographer = :company')
 			   ->setParameter('company', $user);
 		}
 		$qb->groupBy('s.libelle')
@@ -87,8 +91,9 @@ class PrestationRepository extends EntityRepository
 		$qb->select('p')
 		->from('MainCommonBundle:Prestations\Prestation', 'p')
 		->innerJoin('p.devis', 'd')
+		->innerJoin('d.company', 'c')
 		->where('p.startTime < :date')
-		->andWhere('d.company = :photographer')
+		->andWhere('c.photographer = :photographer')
 		->andWhere('p.status = :status')
 		->setParameters(array(
 				'date'			=> $date,

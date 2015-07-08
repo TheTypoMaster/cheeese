@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Companies\Iban;
 use Main\CommonBundle\Entity\Prestations\Prestation;
+use Main\CommonBundle\Entity\Companies\Company;
 use Main\CommonBundle\Entity\Companies\Transaction;
 use Main\CommonBundle\Services\Services\ServicePrestation;
 use Main\CommonBundle\Services\Session\ServiceSession;
@@ -66,10 +67,10 @@ class ServiceTransaction
 			$this->em->persist($transaction);
 			$this->em->flush();
 			$this->service->closePrestation($prestation);
-			$this->session->successFlahMessage('flash.message.transaction.create');
+			$this->session->successFlashMessage('flash.message.transaction.create');
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -90,12 +91,12 @@ class ServiceTransaction
 	 * [getByUser description]
 	 * @return [type] [description]
 	 */
-	public function getByUser()
+	public function getByUser(Company $company)
 	{
 		return $this->repository->findByPhotographer($this->getCurrentUser()->getId());
 	}
 
-	public function getTotalMoney()
+	public function getTotalMoney(Company $company)
 	{
 		return $this->repository->getTotalMoney($this->getCurrentUser()->getId());
 	}

@@ -14,7 +14,7 @@ class Availability
 {	
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Companies\Company")
 	 * @ORM\JoinColumn(name="company", referencedColumnName="id")
 	 */
 	private $company;

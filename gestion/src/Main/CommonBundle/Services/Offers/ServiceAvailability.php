@@ -42,18 +42,18 @@ class ServiceAvailability
 	/**
 	 * Get all devis
 	 */
-	public function getDates()
+	public function getDates(Company $company)
 	{
-		return $this->repository->getDates($this->getCurrentUser()->getId());
+		return $this->repository->getDates($company->getId());
 	}
 	
 	/**
 	 * 
 	 * @param unknown $dates
 	 */
-	public function updateDates($dates) 
+	public function updateDates(Company $company, $dates) 
 	{
-		return $this->repository->updateDates($this->getCurrentUser()->getId(), $dates);
+		return $this->repository->updateDates($company->getId(), $dates);
 	}
 	
 	/**

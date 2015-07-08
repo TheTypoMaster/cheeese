@@ -22,7 +22,7 @@ class AvailabilityController extends Controller
 		$serviceCompany = $this->get('service_company');
 		$serviceAvailability = $this->get('service_availability');
 		$company = $serviceCompany->getCompany($usr->getId());		
-		$dates = $serviceAvailability->getDates();
+		$dates = $serviceAvailability->getDates($company);
 		$dates = $serviceAvailability->prepareDates($dates);
 		return $this->render('MainCommunityBundle:Offers:availability.html.twig', array(
 				'company' 	=> $company->getPhotographer()->getId(),
@@ -44,8 +44,10 @@ class AvailabilityController extends Controller
 		{
 			$params = $request->request->all();
 			$dates = $params['dates'];
+			$serviceCompany = $this->get('service_company');
 			$serviceAvailability = $this->get('service_availability');
-			$update = $serviceAvailability->updateDates($dates); 
+			$company = $serviceCompany->getCompany($this->get('security.context')->getToken()->getUser()->getId());
+			$update = $serviceAvailability->updateDates($company, $dates); 
 			if($update) {
 				return $this->redirect($this->generateUrl('availability'));
 			}

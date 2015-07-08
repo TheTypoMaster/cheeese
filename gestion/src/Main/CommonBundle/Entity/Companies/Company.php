@@ -7,7 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Main\CommonBundle\Entity\Users\User as User;
 use Main\CommonBundle\Entity\Geo\Town as Town;
-use Main\CommonBundle\Entity\Geo\Country as Country;
 use Main\CommonBundle\Entity\Status\PhotographerStatus as Status;
 
 /**
@@ -20,7 +19,15 @@ class Company
 {
 	
 	/**
+	 * @var bigint $id
+	 *
+	 * @ORM\Column(name="id", type="bigint", nullable=false)
 	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="IDENTITY")
+	 */
+	private $id;
+
+	/**
 	 * @ORM\OneToOne(targetEntity="Main\CommonBundle\Entity\Users\User", fetch="EAGER")
 	 * @ORM\JoinColumn(name="photographer", referencedColumnName="id")
 	 */
@@ -41,16 +48,10 @@ class Company
 	private $address;
 	
 	/**
-	 * @ORM\OneToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town", fetch="EAGER")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town", fetch="EAGER")
 	 * @ORM\JoinColumn(name="town", referencedColumnName="id")
 	 */
 	private $town;
-	
-	/**
-	 * @ORM\OneToOne(targetEntity="Main\CommonBundle\Entity\Geo\Country", fetch="EAGER")
-	 * @ORM\JoinColumn(name="country", referencedColumnName="id")
-	 */
-	private $country;
 	
 	/**
 	 * @var text $lastname
@@ -78,7 +79,15 @@ class Company
 	 * @ORM\Column(name="updatedAt", type="datetime")
 	 */
 	private $updatedAt;
-	
+
+	/**
+	 * Return Id
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
+
 	/**
 	 * 
 	 */
@@ -145,23 +154,6 @@ class Company
 	public function setTown(Town $town)
 	{
 		$this->town = $town;
-	}
-	
-	/**
-	 *
-	 */
-	public function getCountry()
-	{
-		return $this->country;
-	}
-	
-	/**
-	 *
-	 * @param Country $country
-	 */
-	public function setCountry(Country $country)
-	{
-		$this->country = $country;
 	}
 	
 	/**

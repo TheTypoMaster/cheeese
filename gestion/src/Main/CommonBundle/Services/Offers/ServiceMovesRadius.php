@@ -47,9 +47,9 @@ class ServiceMovesRadius
 	/**
 	 * Get all devis
 	 */
-	public function getRadius()
+	public function getRadius(Company $company)
 	{
-		return $this->repository->findOneBy(array('company' => $this->getCurrentUser()->getId()));
+		return $this->repository->findOneBy(array('company' => $company->getId()));
 	}
 	
 	/**
@@ -65,10 +65,10 @@ class ServiceMovesRadius
 		try{
 			$this->em->persist($radius);
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.moves.create');
+			$this->session->successFlashMessage('flash.message.moves.create');
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -84,10 +84,10 @@ class ServiceMovesRadius
 		try{
 			$this->em->persist($radius);
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.moves.edit');
+			$this->session->successFlashMessage('flash.message.moves.edit');
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}

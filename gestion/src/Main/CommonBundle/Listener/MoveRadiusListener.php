@@ -14,7 +14,7 @@ class MoveRadiusListener
     	$entity = $event->getEntity();
         $entityManager = $event->getEntityManager();
         $towns = $entityManager->getRepository('MainCommonBundle:Geo\town')->getTownsIntoRadius($entity->getCompany()->getTown(), $entity->getRadius());
-        $entityManager->getRepository('MainCommonBundle:Photographers\Move')->UpdateMoves($entity->getCompany()->getPhotographer()->getId(), $towns);   
+        $entityManager->getRepository('MainCommonBundle:Photographers\Move')->UpdateMoves($entity->getCompany()->getId(), $towns);   
     }
 
     /** @ORM\PostUpdate */
@@ -23,6 +23,6 @@ class MoveRadiusListener
     	$entity = $event->getEntity();
         $entityManager = $event->getEntityManager();
         $towns = $entityManager->getRepository('MainCommonBundle:Geo\town')->getTownsIntoRadius($entity->getCompany()->getTown(), $entity->getRadius());
-        $entityManager->getRepository('MainCommonBundle:Photographers\Move')->UpdateMoves($entity->getCompany()->getPhotographer()->getId(), $towns);   
+        $entityManager->getRepository('MainCommonBundle:Photographers\Move')->UpdateMoves($entity->getCompany()->getId(), $towns);   
     }
 }

@@ -90,7 +90,7 @@ class CompanyController extends Controller
 					'title'	  		 => $company->getTitle(),
 					'address'		 => $company->getAddress(),
 					'town'	    	 => $company->getTown()->getName(),
-					'country' 		 => $company->getCountry()->getId(),
+					'country' 		 => $company->getTown()->getCountry()->getId(),
 					'identification' => $company->getIdentification(),
 					));
 				

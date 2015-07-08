@@ -11,8 +11,17 @@ use Main\CommonBundle\Entity\Users\User as User;
  */
 class Iban
 {
+
 	/**
+	 * @var bigint $id
+	 *
+	 * @ORM\Column(name="id", type="bigint", nullable=false)
 	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="IDENTITY")
+	 */
+	private $id;
+
+	/**
 	 * @ORM\OneToOne(targetEntity="Main\CommonBundle\Entity\Users\User")
 	 * @ORM\JoinColumn(name="photographer", referencedColumnName="id")
 	 */
@@ -60,6 +69,15 @@ class Iban
 	 */
 	private $updatedAt;
 	
+
+	/**
+	 * Return Id
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
+
 	/**
 	 * 
 	 */
