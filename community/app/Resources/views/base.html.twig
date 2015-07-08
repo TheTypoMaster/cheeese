@@ -56,9 +56,6 @@
                 </section>
                 <section class="content">
                    {{ render(controller('MainCommunityBundle:Default:headBandDisplay')) }}  
-                        <div class="row">
-                            <div class="col-sm-offset-1 col-sm-10">
-                                <br>
                                 {% for type, flashes in app.session.flashbag.all %}
                                     {% for flash in flashes %}
                                         <div class="alert alert-{{ type }} fade in" role="alert">
@@ -70,8 +67,6 @@
                                         </div>
                                     {% endfor %}
                                 {% endfor %}
-                            </div>
-                        </div>
 	                {% block content %}            
 	                {% endblock %}
                 </section>
