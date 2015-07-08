@@ -101,7 +101,7 @@ class ServiceNotation
 			$this->em->persist($notation);
 			$this->em->flush();
 			$this->updateNotations($notation);
-			$this->session->successFlahMessage('flash.message.notation.create');
+			$this->session->successFlashMessage('flash.message.notation.create');
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();

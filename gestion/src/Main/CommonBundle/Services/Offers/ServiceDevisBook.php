@@ -73,7 +73,7 @@ class ServiceDevisBook
                             fclose($file);
                             return $this->createPhoto($devis, $url, $mime, $size);
                         } catch (\Exception $e) {
-                        	$this->session->errorFlahMessage();
+                        	$this->session->errorFlashMessage();
                         	var_dump($e->getMessage());
                             //$this->logger->err('Impossible de créer un nouveau fichier : '.$e->getMessage());
                             //$codeErr = 1;
@@ -113,10 +113,10 @@ class ServiceDevisBook
 			$book->setFileSize($size);
 			$this->em->persist($book);
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.devis.book.create');
+			$this->session->successFlashMessage('flash.message.devis.book.create');
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -143,10 +143,10 @@ class ServiceDevisBook
 			unlink($this->path.$photo->getUrl());
 			$this->em->remove($photo);
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.devis.book.delete');
+			$this->session->successFlashMessage('flash.message.devis.book.delete');
 			return true;
 		} catch (Exception $e) {
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -170,10 +170,10 @@ class ServiceDevisBook
 		}
 		try {
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.devis.book.edit');
+			$this->session->successFlashMessage('flash.message.devis.book.edit');
 			return true;	
 		} catch (Exception $e) {
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}

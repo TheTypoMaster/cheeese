@@ -68,10 +68,10 @@ class ServicePrices
 			try{
 				$this->em->persist($price);
 				$this->em->flush();
-				$this->session->successFlahMessage('flash.message.devis.price.create');
+				$this->session->successFlashMessage('flash.message.devis.price.create');
 				return true;
 			}catch(\Exception $e){
-				$this->session->errorFlahMessage();
+				$this->session->errorFlashMessage();
 				var_dump($e->getMessage());
 				return false;
 			}
@@ -106,10 +106,10 @@ class ServicePrices
 		$price->setUpdatedAt(new \DateTime('now'));
 		try{
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.devis.price.edit');			
+			$this->session->successFlashMessage('flash.message.devis.price.edit');			
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -127,10 +127,10 @@ class ServicePrices
 		$price->setUpdatedAt(new \DateTime('now'));
 		try{
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.devis.price.edit');			
+			$this->session->successFlashMessage('flash.message.devis.price.edit');			
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}

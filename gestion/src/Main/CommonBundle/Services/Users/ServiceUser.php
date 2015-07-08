@@ -79,10 +79,10 @@ class ServiceUser
 		$user->setUpdatedAt(new \DateTime('now'));
 		try{
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.user.edit');				
+			$this->session->successFlashMessage('flash.message.user.edit');				
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -101,10 +101,10 @@ class ServiceUser
 		$user->setUpdatedAt(new \DateTime('now'));
 		try{
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.user.password');				
+			$this->session->successFlashMessage('flash.message.user.password');				
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -129,10 +129,10 @@ class ServiceUser
 		try {
 			$this->em->persist($user);
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.user.admin.create');
+			$this->session->successFlashMessage('flash.message.user.admin.create');
 			return true;
 		} catch (Exception $e) {
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 			
@@ -153,10 +153,10 @@ class ServiceUser
 			$user->setUpdatedAt(new \DateTime('now'));
 			try{
 				$this->em->flush();	
-				$this->session->successFlahMessage('flash.message.user.admin.disable');			
+				$this->session->successFlashMessage('flash.message.user.admin.disable');			
 				return true;
 			}catch(\Exception $e){
-				$this->session->errorFlahMessage();
+				$this->session->errorFlashMessage();
 				var_dump($e->getMessage());
 				return false;
 			}
@@ -193,10 +193,10 @@ class ServiceUser
                             $user->setPhotoType($mime);
                             $user->setUpdatedAt(new \DateTime('now'));
                             $this->em->flush();
-                            $this->session->successFlahMessage('flash.message.user.pp');			
+                            $this->session->successFlashMessage('flash.message.user.pp');			
 							return true;
                         } catch (\Exception $e) {
-                        	$this->session->errorFlahMessage();
+                        	$this->session->errorFlashMessage();
                         	var_dump($e->getMessage());
                         	return false;
                             //$this->logger->err('Impossible de créer un nouveau fichier : '.$e->getMessage());

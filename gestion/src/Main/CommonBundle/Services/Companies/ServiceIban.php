@@ -81,10 +81,10 @@ class ServiceIban
 		try{
 			$this->em->persist($Iban);
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.iban.new');
+			$this->session->successFlashMessage('flash.message.iban.new');
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}
@@ -103,10 +103,10 @@ class ServiceIban
 		$Iban->setUpdatedAt(new \DateTime('now'));
 		try{
 			$this->em->flush();
-			$this->session->successFlahMessage('flash.message.iban.edit');
+			$this->session->successFlashMessage('flash.message.iban.edit');
 			return true;
 		}catch(\Exception $e){
-			$this->session->errorFlahMessage();
+			$this->session->errorFlashMessage();
 			var_dump($e->getMessage());
 			return false;
 		}

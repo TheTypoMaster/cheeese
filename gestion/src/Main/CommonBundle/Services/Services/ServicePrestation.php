@@ -432,7 +432,7 @@ class ServicePrestation
 			$this->em->flush();
 			//Envoi du mail
             $this->mailer->prestationUpdateEmail($prestation);
-			$this->session->successFlahMessage('flash.message.prestation.status');	
+			$this->session->successFlashMessage('flash.message.prestation.status');	
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
