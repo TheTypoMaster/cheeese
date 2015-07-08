@@ -40,28 +40,6 @@ class FormCompanyType extends AbstractType
 	
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	if($this->getCurrentUser()->getLastName() === null) {
-    		$builder->add('firstname', 'text', array(
-    				'label' => 'form.companytype.field.firstname',
-    				'attr' => array(
-    						'class' => 'form-control',
-    						'maxlength' => 50
-    						),
-    				'constraints'   => array(
-    						new NotBlank ( array(
-    						)))
-    				));
-    		$builder->add('lastname', 'text', array(
-    				'label' => 'form.companytype.field.lastname',
-    				'attr' => array(
-    						'class' => 'form-control',
-    						'maxlength' => 50
-    						),
-    				'constraints'   => array(
-    						new NotBlank ( array(
-    						)))
-    				));
-    	}
     	$builder->add('title', 'text', array(
     			'label' => 'form.companytype.field.title',
     			'data' => $options['title'],

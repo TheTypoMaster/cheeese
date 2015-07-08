@@ -44,7 +44,11 @@ class DevisRepository extends EntityRepository
 					'profile'	 => 1,
 					'price'		 => 1
 					));
-		return $qb->getQuery()->getResult();
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);
+		$query->useResultCache(true);
+		$query->setResultCacheLifetime(600); //10 mns
+		return $query->getResult();
 	}
 	/**
 	 * [countAll description]
