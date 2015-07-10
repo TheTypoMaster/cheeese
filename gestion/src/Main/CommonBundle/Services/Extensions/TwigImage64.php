@@ -41,7 +41,10 @@ class TwigImage64 extends \Twig_Extension
 				}
 				
 			} 
-		}  	             
+		}  	
+        elseif($name == null && $type == 'pp') {
+            //choisir une photo par défaut
+        }             
         return sprintf('data:%s;base64,%s', $type, $content);
     }
     
