@@ -26,7 +26,8 @@
         "knplabs/knp-menu-bundle": "dev-master",
         "knplabs/knp-menu": "2.0.*@dev",
         "friendsofsymfony/rest-bundle" : "1.5.3",
-        "jms/serializer-bundle" : "dev-master"
+        "jms/serializer-bundle" : "dev-master",
+        "leaseweb/memcache-bundle": "*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

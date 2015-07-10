@@ -26,7 +26,9 @@ class DurationRepository extends EntityRepository
 				'active' => 1,
 				'devis' => $devis
 				));
-			return $qb;
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);
+		return $qb;
     } 
 	
 }

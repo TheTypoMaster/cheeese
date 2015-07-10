@@ -51,7 +51,7 @@ class ServiceCompany
 	 */
 	public function getCompany($id)
 	{
-		return $this->repository->findOneByPhotographer($id);
+		return $this->repository->getCompany($id);
 	}
 
 	/**
@@ -59,7 +59,7 @@ class ServiceCompany
 	 */
 	public function getCurrentCompany()
 	{
-		return $this->repository->findOneByPhotographer($this->getCurrentUser()->getId());
+		return $this->repository->getCompany($this->getCurrentUser()->getId());
 	}
 	
 	/**

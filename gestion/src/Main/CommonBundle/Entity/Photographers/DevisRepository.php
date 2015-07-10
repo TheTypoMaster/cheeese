@@ -35,6 +35,7 @@ class DevisRepository extends EntityRepository
 			->andWhere('d.active = :active')
 			->andWhere('b.profile = :profile')
 			->andWhere('p.active = :price')
+			->andWhere('d.active = :active')
 			->setParameters(array(
 					'status'	 => 2,
 					'categoryId' => $categoryId,
@@ -46,8 +47,7 @@ class DevisRepository extends EntityRepository
 					));
 		$query = $qb->getQuery();
 		$query->useQueryCache(true);
-		$query->useResultCache(true);
-		$query->setResultCacheLifetime(600); //10 mns
+		$query->useResultCache(true, 1200, 'findDevisFront');
 		return $query->getResult();
 	}
 	/**
@@ -64,8 +64,9 @@ class DevisRepository extends EntityRepository
 			$qb->andwhere('d.company = :company')
 			   ->setParameter('company', $user);
 		}
-		return $qb->getQuery()
-            ->getSingleScalarResult();
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);
+		return $query->getSingleScalarResult();
 	}
 
 	public function groupBy($user) {
@@ -80,6 +81,8 @@ class DevisRepository extends EntityRepository
 		$qb->groupBy('c.name')
 			->having('count(d.id) > :value')
 			->setParameter('value', 0);
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);
 		return $qb->getQuery()->getResult();
 	}
 

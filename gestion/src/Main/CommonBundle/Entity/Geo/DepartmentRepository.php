@@ -17,7 +17,10 @@ class DepartmentRepository extends EntityRepository
 			->from('MainCommonBundle:Geo\Department', 'd')
 			->where('d.active > :active')
 			->setParameter('active', $value);
-			return $qb->getQuery()->getResult();
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);
+		$query->useResultCache(true, 21600, 'findAvailabeDepts');
+		return $qb->getQuery()->getResult();
 	}
 
 }

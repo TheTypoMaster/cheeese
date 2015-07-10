@@ -34,7 +34,7 @@ class TownRepository extends EntityRepository
 		$query = $qb->getQuery();
 		$query->useQueryCache(true);
 		$query->useResultCache(true);
-		$query->setResultCacheLifetime(86400); //1 day
+		$query->useResultCache(true, 86400, 'findByDeptAndCountry');
 		return $query->getResult();
 	}
 	

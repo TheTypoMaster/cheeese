@@ -91,9 +91,10 @@ class ServiceTransaction
 	 * [getByUser description]
 	 * @return [type] [description]
 	 */
-	public function getByUser(Company $company)
+	public function getByUser()
 	{
-		return $this->repository->findByPhotographer($this->getCurrentUser()->getId());
+		//return $this->repository->findByPhotographer($this->getCurrentUser()->getId());
+		return $this->repository->getTransactions($this->getCurrentUser()->getId());
 	}
 
 	public function getTotalMoney(Company $company)

@@ -21,8 +21,10 @@ class UserRepository extends EntityRepository
 		$qb->select('u')
 			->from('MainCommonBundle:Users\User', 'u')
 			->where('u.roles LIKE :roles')
-        	->setParameter('roles', '%"'.$role.'"%');	
-		return $qb->getQuery()->getResult();
+        	->setParameter('roles', '%"'.$role.'"%');
+        $query = $qb->getQuery();
+		$query->useQueryCache(true);	
+		return $query->getResult();
 	}
 
 	public function updateClientNotation($user, $date)

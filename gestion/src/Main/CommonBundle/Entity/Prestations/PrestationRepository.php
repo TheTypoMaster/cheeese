@@ -23,8 +23,10 @@ class PrestationRepository extends EntityRepository
 			->innerJoin('p.devis', 'd')
 			->innerJoin('d.company', 'c')
 			->where('c.photographer = :photographer')
-			->setParameter('photographer', $user);		
-		return $qb->getQuery()->getResult();
+			->setParameter('photographer', $user);
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);	
+		return $query->getResult();
 	}
 	
 	/**
@@ -44,7 +46,9 @@ class PrestationRepository extends EntityRepository
 				'id'			=> $id,
 				'photographer'	=> $user
 				));
-		return $qb->getQuery()->getSingleResult();
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);
+		return $query->getSingleResult();
 	}
 
 	public function countAll($user) {
@@ -57,8 +61,9 @@ class PrestationRepository extends EntityRepository
 				   ->where('c.photographer = :company')
 				   ->setParameter('company', $user);
 			}
-        return $qb->getQuery()
-            ->getSingleScalarResult();
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);
+        return $query->getSingleScalarResult();
 	}
 
 	public function groupBy($user) {
@@ -75,7 +80,9 @@ class PrestationRepository extends EntityRepository
 		$qb->groupBy('s.libelle')
 			->having('count(p.id) > :value')
 			->setParameter('value', 0);
-		return $qb->getQuery()->getResult();
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);
+		return $query->getResult();
 	}
 
 	/**
@@ -101,7 +108,9 @@ class PrestationRepository extends EntityRepository
 				'status'		=> $status
 				))
 		->orderBy('p.startTime', 'ASC');
-		return $qb->getQuery()->getResult();	
+		$query = $qb->getQuery();
+		$query->useQueryCache(true);
+		return $query->getResult();	
 	}
 
 	/**
