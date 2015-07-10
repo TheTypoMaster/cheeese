@@ -102,37 +102,4 @@
                             </div><!-- /.box -->
 
                         </section><!-- right col -->
-                        {% if week|length > 0 %}
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">
-                                        <i class="fa fa-tasks"></i>
-                                        {% trans from "default"%}community.dashboard.week.header{% endtrans %}</h3>
-                                </div><!-- /.box-header -->
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>{% trans from "default"%}community.dashboard.week.th.date{% endtrans %}</th>
-                                            <th>{% trans from "default"%}community.dashboard.week.th.address{% endtrans %}</th>
-                                            <th>{% trans from "default"%}community.dashboard.week.th.town{% endtrans %}</th>
-                                            <th>{% trans from "default"%}community.dashboard.week.th.offer{% endtrans %}</th>
-                                            <th></th>
-                                        </tr>
-                                        {% for entity in week %}
-                                        <tr>
-                                            <td>{{ entity.starttime | date('d-m-Y H:i')}}</td>
-                                            <td>{{ entity.address }}</td>
-                                            <td>{{ entity.town.name }}</td>
-                                            <td>{{ entity.devis.title }}</td>
-                                            <td>
-                                                <form action="{{ path('service_show', {'id' : entity.id }) }}"><button class="btn btn-default btn-sm">{% trans from "default" %}community.dashboard.week.td.btn.details{% endtrans %}</button></form>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
-                                    </table>
-                                </div><!-- /.box-body -->
-                            </div><!-- /.box -->
-                        </div>
-                        {% endif %}
                     </div><!-- /.row (main row) -->                        

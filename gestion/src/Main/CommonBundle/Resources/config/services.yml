@@ -77,3 +77,8 @@ services:
         arguments: ["%upload_pp_path%", "%upload_devis_path%"]
         tags:
             - { name: "twig.extension"}
+    twig_week_prestations:
+        class: "Main\CommonBundle\Services\Extensions\TwigWeekPrestations"
+        arguments: [@doctrine.orm.entity_manager, @security.context, @translator.default]
+        tags:
+            - { name: "twig.extension"}

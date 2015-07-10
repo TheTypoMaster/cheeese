@@ -29,3 +29,7 @@ menu:
         membersince: Membre depuis
         profile: Profil
         signout: Déconnexion
+        week:
+            one: Vous avez une prestation confirmée durant les 7 prochains jours
+            more %count%: Vous avez %count% prestations confirmées durant les 7 prochains jours
+            all: Tout voir

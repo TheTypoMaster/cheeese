@@ -15,9 +15,48 @@
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
-                        
+                        {% if is_granted('ROLE_PHOTOGRAPHER_VERIFIED') %}
+                          <li class="dropdown messages-menu">
+                            {% set prestations = weekprestations() %}
+                            {% if prestations|length > 0 %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <i class="fa fa-bell-o"></i>
+                              <span class="label label-success">{{ prestations|length }}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li class="header">
+                                {% if 1 == prestations|length %}
+                                        {% trans from "menu" %}menu.up.week.one{% endtrans %}
+                                    {% else %}
+                                         {% trans with {'%count%': prestations|length } from "menu" %}menu.up.week.more %count%{% endtrans %}
+                                    {% endif %}
+
+                              </li>
+                              <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+                                  {% for prestation in prestations %}
+                                        <li>
+                                        <a href="{{ path('service_show', { id : prestation.id})}}">
+                                        <div class="pull-left">
+                                            <img class="img-circle" src="{{ image64(prestation.client.photo, prestation.client.photoType, 'pp') }}" alt="{{ prestation.client.username }}" height="40" width="40"/>
+                                        </div>
+                                        <h4>{{ prestation.devis.category.name }}
+                                        <small><i class="fa fa-clock-o"></i>{{ prestation.startTime|date('d-m-Y')}}</small>
+                                        </h4>
+                                        <p>{{ prestation.town.name }}</p>
+                                        </a>
+                                        </li>
+                                    {% endfor %}
+                                 </ul>
+                              </li>
+                              <li class="footer"><a href="{{ path('service')}}">{% trans from "menu" %}menu.up.week.all{% endtrans %}</a></li>
+                            </ul>
+                            {% endif %} 
+                        </li>
+                        {% endif %}
                         <!-- Tasks: style can be found in dropdown.less -->
-                        
+                    
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
