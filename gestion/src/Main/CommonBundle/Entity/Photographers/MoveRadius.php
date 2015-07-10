@@ -9,6 +9,7 @@ use Main\CommonBundle\Entity\Companies\Company as Company;
  * @ORM\Entity
  * @ORM\EntityListeners({ "Main\CommonBundle\Listener\MoveRadiusListener" })
  * @ORM\Table(name="photographers.moves_radius")
+ * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Photographers\MoveRadiusRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class MoveRadius

@@ -49,7 +49,7 @@ class ServiceMovesRadius
 	 */
 	public function getRadius(Company $company)
 	{
-		return $this->repository->findOneBy(array('company' => $company->getId()));
+		return $this->repository->getRadius($company->getId());
 	}
 	
 	/**
