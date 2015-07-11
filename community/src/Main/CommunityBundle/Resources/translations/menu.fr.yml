@@ -33,3 +33,6 @@ menu:
             one: Vous avez une prestation confirmée durant les 7 prochains jours
             more %count%: Vous avez %count% prestations confirmées durant les 7 prochains jours
             all: Tout voir
+    footer:
+        help: Aide et contact
+        copyrights: Tout droits reservés

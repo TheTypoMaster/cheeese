@@ -56,6 +56,19 @@ class DefaultController extends Controller
 		));	
 	}
 
+		/**
+	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/help", name="help")
+	 */
+	public function helpAction(Request $request)
+	{		
+		
+		return $this->render('MainCommunityBundle:Default:help.html.twig',  array(
+		));	
+	}
+
 	
 	
 }

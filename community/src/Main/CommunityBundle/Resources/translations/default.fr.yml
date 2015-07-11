@@ -18,6 +18,11 @@ community:
             h2: index
             breadh1: Tableau d'accueil
             breadh2: Index
+        help:
+            h1: Aide & contacts
+            h2: page d'aides
+            breadh1: Aide & contacts
+            breadh2: Page d'aides
     dashboard:
         verified:
             box:

@@ -68,11 +68,16 @@
                                     {% endfor %}
                                 {% endfor %}
 	                {% block content %}            
-	                {% endblock %}
-                </section>
-				
-            </aside><!-- /.right-side -->
+	                   
+                    {% endblock %}                                       
+                </section>	
+                <div class="main-footer navbar-fixed-bottom">
+                    {% include "MainCommunityBundle:Menu:footer.html.twig" %}
+                </div>		
+                	
+            </aside><!-- /.right-side -->            
         </div><!-- ./wrapper -->
+
 <!-- ./wrapper -->
 {# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS -------------------------------- #}
 {% block javascripts %}

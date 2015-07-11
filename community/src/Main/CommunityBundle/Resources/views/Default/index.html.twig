@@ -5,11 +5,9 @@
 {% block breadcrumbH2 %}{% trans from "default" %}community.default.index.breadh2{% endtrans %}{% endblock %}
 {% block content %}
 <!-- Main content -->
-                <section class="content">
                     {% if is_granted('ROLE_PHOTOGRAPHER_VERIFIED') %}
                         {% include "MainCommunityBundle:Default:dashboard_verified.html.twig" %}
                     {% endif %}
-                </section><!-- /.content -->
 {% endblock %}
 
 {% block javascripts_inline %}
