@@ -115,7 +115,7 @@ class UsersController extends Controller
 
 			if ($serviceCompany->isVerifiedCompany($company)) {
 				$serviceDevis  = $this->get('service_devis');
-				$devis = $serviceDevis->getAllByCompany($id);
+				$devis = $serviceDevis->getAllByCompany($company->getId());
 				$servicePrestations = $this->get('service_prestation');
 				$services = $servicePrestations->listAllServices($id);
 			}

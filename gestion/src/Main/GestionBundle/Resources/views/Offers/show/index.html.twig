@@ -41,10 +41,10 @@
                                        	</dd>
                                        	{% if devis.prestations == 1 %}
                                 		<dt> {% trans from "offers" %}gestion.devis.read.dt.notation{% endtrans %} </dt>
-                                		<dd> {{ devis.note|number_format(2) }} ({{ devis.prestations}} {% trans from "offers" %}gestion.devis.read.dt.notation.count{% endtrans %})</dd>
+                                		<dd> {{ devis.note|number_format(2) }} ({{ devis.prestations}} {% trans from "offers" %}gestion.devis.read.dt.comments{% endtrans %})</dd>
                                 		{% elseif devis.prestations > 1 %}
                                 		<dt> {% trans from "offers" %}gestion.devis.read.dt.notation{% endtrans %} </dt>
-                                		<dd> {{ devis.note|number_format(2) }} ({{ devis.prestations}} {% trans from "offers" %}gestion.devis.read.dt.notation.count{% endtrans %})</dd>
+                                		<dd> {{ devis.note|number_format(2) }} ({{ devis.prestations}} {% trans from "offers" %}gestion.devis.read.dt.comments{% endtrans %})</dd>
                                 		{% endif %}
                                 	</dl>
                                 </div><!-- /.box-body -->                                

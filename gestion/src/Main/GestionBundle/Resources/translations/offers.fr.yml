@@ -9,8 +9,8 @@ gestion:
             active:
                 title: Actif
                 td:
-                    enabled: Activer
-                    disabled: Désactiver
+                    enabled: Actif
+                    disabled: Inactif
             createdAt: Date de création
             btn:
                 details: Détails
@@ -39,6 +39,7 @@ gestion:
                 category: Catégorie
                 status: Statut
                 notation: Note
+                comments: Commentaire(s)
                 duration: Durée
                 currency: Devise
                 photographer: Photographe
