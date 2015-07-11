@@ -50,7 +50,8 @@ class TwigWeekPrestations extends \Twig_Extension
     public function weekprestations()
     {
         $next = date("Y-m-d",strtotime("+1 week"));
-		$prestations =  $this->repository->getWeekPrestations($next, 5, $this->getCurrentUser()->getId()); 
+        $today = date("Y-m-d",strtotime("today"));
+		$prestations =  $this->repository->getWeekPrestations($today, $next, 5, $this->getCurrentUser()->getId()); 
         return $prestations;
     }
     

@@ -92,25 +92,27 @@ class PrestationRepository extends EntityRepository
 	 * @param  [type] $user   [description]
 	 * @return [type]         [description]
 	 */
-	public function getWeekPrestations($date, $status, $user)
+	public function getWeekPrestations($today, $max, $status, $user)
 	{
 		$qb = $this->_em->createQueryBuilder();
 		$qb->select('p')
 		->from('MainCommonBundle:Prestations\Prestation', 'p')
 		->innerJoin('p.devis', 'd')
 		->innerJoin('d.company', 'c')
-		->where('p.startTime < :date')
+		->where('p.startTime < :max')
+		->andwhere('p.startTime >= :start')
 		->andWhere('c.photographer = :photographer')
 		->andWhere('p.status = :status')
 		->setParameters(array(
-				'date'			=> $date,
+				'max'			=> $max,
+				'start'			=> $today,
 				'photographer'	=> $user,
 				'status'		=> $status
 				))
 		->orderBy('p.startTime', 'ASC');
 		$query = $qb->getQuery();
 		$query->useQueryCache(true);
-		$query->useResultCache(true, 21600, 'getWeekPrestations'); //6h
+		$query->useResultCache(true, 10800, 'getWeekPrestations'); //3h
 		return $query->getResult();	
 	}
 

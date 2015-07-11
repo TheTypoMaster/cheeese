@@ -305,7 +305,8 @@ class ServicePrestation
 	public function getWeekPrestations()
 	{
 		$next = date("Y-m-d",strtotime("+1 week"));
-		return $this->repository->getWeekPrestations($next, self::PRESTATION_OK, $this->getCurrentUser()->getId());
+		$today = date("Y-m-d",strtotime("today"));
+		return $this->repository->getWeekPrestations($today, $next, self::PRESTATION_OK, $this->getCurrentUser()->getId());
 	}
 
 
