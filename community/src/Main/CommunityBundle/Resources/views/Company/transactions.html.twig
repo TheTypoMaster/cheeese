@@ -1,7 +1,8 @@
 {% extends '::base.html.twig'%}
 {% block titleH1 %}{% trans from "company" %}companies.transaction.view.h1{% endtrans %}{% endblock %}
 {% block titleH2 %}{% trans from "company" %}companies.transaction.view.h2{% endtrans %}{% endblock %}
-{% block breadcrumbH1 %}{% trans from "company" %}companies.transaction.view.breadcrumbh1{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-credit-card"></i>{% trans from "company" %}companies.transaction.view.breadcrumbh1{% endtrans %}{% endblock %}
 {% block breadcrumbH2 %}{% trans from "company" %}companies.transaction.view.breadcrumbh2{% endtrans %}{% endblock %}
 {% block content %}
 	<div class="row">
