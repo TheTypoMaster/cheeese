@@ -10,9 +10,10 @@ use Main\CommonBundle\Entity\Utils\Currency as Currency;
 use Main\CommonBundle\Entity\Utils\Duration as Duration;
 
 /**
- * @ORM\Entity
+ * @ORM\EntityListeners({ "Main\CommonBundle\Listener\DevisListener" })
  * @ORM\Table(name="photographers.devis")
  * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Photographers\DevisRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Devis
 {

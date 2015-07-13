@@ -12,8 +12,9 @@ class TransactionRepository extends EntityRepository
 			->where('t.photographer = :photographer')
 			->setParameter('photographer', $user);	
 		$query = $qb->getQuery();
+		$query->setResultCacheId('getTotalMoney_'.$user);
 		$query->useResultCache(true);
-		$query->useResultCache(true, 21600, 'getTotalMoney');
+		$query->useResultCache(true, 21600, 'getTotalMoney_'.$user);
 		return $qb->getQuery()->getSingleScalarResult();
 	}
 
@@ -26,8 +27,9 @@ class TransactionRepository extends EntityRepository
 			->setParameter('user', $user);	
 
 		$query = $qb->getQuery();
+		$query->setResultCacheId('getTransactions_'.$user);
 		$query->useResultCache(true);
-		$query->useResultCache(true, 21600, 'getTransactions');
+		$query->useResultCache(true, 21600, 'getTransactions_'.$user);
 		return $qb->getQuery()->getResult();
 	}
 }

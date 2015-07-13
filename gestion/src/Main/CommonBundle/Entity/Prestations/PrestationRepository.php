@@ -111,8 +111,9 @@ class PrestationRepository extends EntityRepository
 				))
 		->orderBy('p.startTime', 'ASC');
 		$query = $qb->getQuery();
+		$query->setResultCacheId('getWeekPrestations_'.$user);
 		$query->useQueryCache(true);
-		$query->useResultCache(true, 10800, 'getWeekPrestations'); //3h
+		$query->useResultCache(true, 10800, 'getWeekPrestations_'.$user); //3h
 		return $query->getResult();	
 	}
 

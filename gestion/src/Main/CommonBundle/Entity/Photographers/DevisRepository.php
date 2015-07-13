@@ -13,6 +13,20 @@ use Doctrine\ORM\EntityRepository;
 class DevisRepository extends EntityRepository
 {
 	
+	public function getCompanyDevis($company)
+	{
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('d')
+			->from('MainCommonBundle:Photographers\Devis', 'd')
+			->where('d.company = :company')
+			->setParameter('company', $company);
+		$query = $qb->getQuery();
+		$query->setResultCacheId('getCompanyDevis_'.$company);
+		$query->useQueryCache(true);
+		$query->useResultCache(true, 10800, 'getCompanyDevis_'.$company); //3h
+		return $query->getResult();
+
+	}
 	/**
 	 * 
 	 * @param unknown $categoryId
@@ -46,8 +60,9 @@ class DevisRepository extends EntityRepository
 					'price'		 => 1
 					));
 		$query = $qb->getQuery();
+		$query->setResultCacheId('findDevisFront_'.$categoryId.'_'.$townId.'_'.$day);
 		$query->useQueryCache(true);
-		$query->useResultCache(true, 1200, 'findDevisFront');
+		$query->useResultCache(true, 1200, 'findDevisFront_'.$categoryId.'_'.$townId.'_'.$day);
 		return $query->getResult();
 	}
 	/**

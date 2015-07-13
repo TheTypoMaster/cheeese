@@ -66,7 +66,15 @@ services:
     listener_company:
         class: Main\CommonBundle\Listener\CompanyListener
         tags:
-            - { name: doctrine.orm.entity_listener, event: postUpdate }
+            - { name: doctrine.orm.entity_listener }
+    listener_iban:
+        class: Main\CommonBundle\Listener\IbanListener
+        tags:
+            - { name: doctrine.orm.entity_listener }
+    listener_devis:
+        class: Main\CommonBundle\Listener\DevisListener
+        tags:
+            - { name: doctrine.orm.entity_listener }
     listener_prestation:
         class: Main\CommonBundle\Listener\PrestationListener
         tags:

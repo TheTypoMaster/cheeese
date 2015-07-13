@@ -16,9 +16,9 @@ class IbanRepository extends EntityRepository
 			->setParameter('user', $user);	
 
 		$query = $qb->getQuery();
+		$query->setResultCacheId('getIban_'.$user);
 		$query->useQueryCache(true);
-		$query->useResultCache(true);
-		$query->useResultCache(true, 21600, 'getIban');
-		return $qb->getQuery()->getSingleResult();
+		$query->useResultCache(true, 21600, 'getIban_'.$user);
+		return $qb->getQuery()->getOneOrNullResult();
 	}
 }

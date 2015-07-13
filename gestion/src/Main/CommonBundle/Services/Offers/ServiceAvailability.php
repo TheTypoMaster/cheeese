@@ -63,11 +63,12 @@ class ServiceAvailability
 	 */
 	public function prepareDates($dates)
 	{
+
 		$result = array();
 		if ($dates !== null) {
 			foreach($dates as $date)
 			{
-				$result[] = $date['day'];
+				$result[] = $date['day']->format('Y-m-d');
 			}
 		}
 		return $result;

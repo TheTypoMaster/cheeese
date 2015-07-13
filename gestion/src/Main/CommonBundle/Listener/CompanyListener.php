@@ -7,12 +7,22 @@ use Main\CommonBundle\Entity\Companies\Company as Company;
 
 class CompanyListener
 {	
+    /** @ORM\PostPersist */
+    public function postPersist(Company $company, LifecycleEventArgs $event)
+    {
+        $entity = $event->getEntity();
+        $entityManager = $event->getEntityManager();
+        $cacheDriver = $entityManager->getConfiguration()->getResultCacheImpl();
+        $cacheDriver->delete('getCompany_'.$company->getPhotographer()->getId());
+    }
 
     /** @ORM\PostUpdate */
     public function postUpdate(Company $company, LifecycleEventArgs $event) 
     {  
     	$entity = $event->getEntity();
     	$entityManager = $event->getEntityManager();
+        $cacheDriver = $entityManager->getConfiguration()->getResultCacheImpl();
+        $cacheDriver->delete('getCompany_'.$company->getPhotographer()->getId());
         //Mise a jour du role du photographe
         $photographer = $company->getPhotographer();
         switch ($company->getStatus()->getId()) {

@@ -82,7 +82,6 @@ class ServiceMovesRadius
 		$radius->setRadius($data['radius']);
 		$radius->setUpdatedAt(new \DateTime('now'));
 		try{
-			$this->em->persist($radius);
 			$this->em->flush();
 			$this->session->successFlashMessage('flash.message.moves.edit');
 			return true;
@@ -91,6 +90,5 @@ class ServiceMovesRadius
 			var_dump($e->getMessage());
 			return false;
 		}
-	}
-	
+	}	
 }

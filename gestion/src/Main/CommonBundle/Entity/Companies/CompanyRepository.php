@@ -43,9 +43,9 @@ class CompanyRepository extends EntityRepository
 			->where('c.photographer = :user')
 			->setParameter('user', $user);	
 		$query = $qb->getQuery();
+		$query->setResultCacheId('getCompany_'.$user);
 		$query->useQueryCache(true);
-		$query->useResultCache(true);
-		$query->useResultCache(true, 21600, 'getCompany');
-		return $query->getSingleResult();
+		$query->useResultCache(true, 21600, 'getCompany_'.$user);//6h
+		return $query->getOneOrNullResult();
 	}
 }

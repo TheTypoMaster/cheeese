@@ -6,9 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Main\CommonBundle\Entity\Users\User as User;
 
 /**
- * @ORM\Entity
+ * @ORM\EntityListeners({ "Main\CommonBundle\Listener\IbanListener" })
  * @ORM\Table(name="companies.iban")
  * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Companies\IbanRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Iban
 {

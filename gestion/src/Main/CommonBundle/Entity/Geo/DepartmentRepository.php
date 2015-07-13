@@ -18,6 +18,7 @@ class DepartmentRepository extends EntityRepository
 			->where('d.active > :active')
 			->setParameter('active', $value);
 		$query = $qb->getQuery();
+		$query->setResultCacheId('findAvailabeDepts');
 		$query->useQueryCache(true);
 		$query->useResultCache(true, 21600, 'findAvailabeDepts');
 		return $qb->getQuery()->getResult();

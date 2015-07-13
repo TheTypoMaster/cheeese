@@ -26,8 +26,10 @@ class MoveRadiusRepository extends EntityRepository
 			->where('m.company = :company')
 			->setParameter('company', $company);
 		$query = $qb->getQuery();
+		$query->setResultCacheId('getRadius_'.$company);
 		$query->useQueryCache(true);
-		return $query->getSingleResult();
+		$query->useResultCache(true, 21600, 'getRadius_'.$company);
+		return $query->getOneOrNullResult();
 	}
 	
 	

@@ -19,7 +19,16 @@ class AvailabilityRepository extends EntityRepository
 	 */
 	public function getDates($company)
 	{		
-		return $this->_em->getConnection()->fetchAll('select day from photographers.availability where company = ?', array($company));
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('a.day')
+			->from('MainCommonBundle:Photographers\availability', 'a')
+			->where('a.company = :company')
+			->setParameter('company', $company);
+		$query = $qb->getQuery();
+		$query->setResultCacheId('getAvailability_'.$company);
+		$query->useQueryCache(true);
+		$query->useResultCache(true, 21600, 'getAvailability_'.$company);
+		return $query->getResult();
 	}
 	
 	/**
@@ -41,6 +50,8 @@ class AvailabilityRepository extends EntityRepository
 	public function createDates($company, $dates)
 	{
 		$now = new \DateTime('now');
+		$cacheDriver = $this->_em->getConfiguration()->getResultCacheImpl();
+        $cacheDriver->delete('getAvailability_'.$company);
 		foreach ($dates as $date)
 		{
 		$this->_em->getConnection()->insert('photographers.availability', array(

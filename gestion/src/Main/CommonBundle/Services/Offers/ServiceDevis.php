@@ -53,10 +53,7 @@ class ServiceDevis
 	 */
 	public function read()
 	{
-		return $this->repository->findBy(array(
-			'company' => $this->getCurrentCompany()->getId()
-			)
-		);
+		return $this->repository->getCompanyDevis($this->getCurrentCompany()->getId());
 	}
 
 	/**

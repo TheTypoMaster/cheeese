@@ -83,11 +83,6 @@ class ServiceCompany
 		$Company->setStatus($this->em->getRepository('MainCommonBundle:Status\PhotographerStatus')->findOneById(self::TO_VERIFY));
 		try{
 			$this->em->persist($Company);
-			if(isset($data['firstname'])) {
-				$user->setFirstName($data['firstname']);
-				$user->setLastName($data['lastname']);
-				$this->em->persist($user);
-			}
 			$this->em->flush();
 			return true;
 		}catch(\Exception $e){
@@ -114,7 +109,6 @@ class ServiceCompany
 		$status = $this->em->getRepository('MainCommonBundle:Status\PhotographerStatus')->findOneById(self::TO_VERIFY);
 		$Company->setStatus($status);
 		try{
-			$this->em->persist($Company);
 			$this->em->flush();
 			return true;
 		}catch(\Exception $e){
@@ -158,7 +152,6 @@ class ServiceCompany
 			$company->setUpdatedAt(new \DateTime('now'));
 			$company->setStatus($status);
 			try{
-				$this->em->persist($company);
 				$this->em->flush();
 				//Envoi du mail
             	$this->mailer->companyVerificationEmail($company->getPhotographer(),$company->getStatus()->getId());
