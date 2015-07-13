@@ -11,6 +11,11 @@
                     </h4>
                     
                     <form action="{{ path('availability_submit') }}" method="post"}}>
+                    	<div class="col-md-12">
+							<p>
+								<button type="submit" class="btn btn-primary">{% trans from "offers" %}community.availability.view.btn.submit{% endtrans %}</button>
+							</p>						
+						</div>
                     {% for i in 0..11 %}
                     	<div class="col-md-4" style="height:370px; position:relative">                      	                            	
                             <!-- Primary box -->
@@ -84,10 +89,6 @@
                             </div><!-- /.box -->
                         </div><!-- /.col -->
                     {% endfor %} 
-						<div class="col-md-12">
-							<div class="box-footer">
-								<button type="submit" class="btn btn-primary">{% trans from "offers" %}community.availability.view.btn.submit{% endtrans %}</button>					
-							</div>
-						</div>
+						
                     </form>    
 {% endblock %}
