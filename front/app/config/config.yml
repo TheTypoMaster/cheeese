@@ -137,13 +137,13 @@ fos_user:
             enabled: true
             from_email:
                 address:        resetting@acmedemo.com
-                sender_name:    Confirmation
+                sender_name:    cheeese
     resetting:
         email:
             template: GestionGestionBundle:User:resetting.email.html.twig
             from_email:
                 address:        resetting@acmedemo.com
-                sender_name:    Resetting
+                sender_name:    cheeese
 # Rest Configuration
 fos_rest:
     param_fetcher_listener: true

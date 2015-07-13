@@ -112,7 +112,6 @@ lsw_memcache:
         sessions:
             servers:
                 - { host: localhost, tcp_port: 11212 }
-                
 #fosuser
 fos_user:
     db_driver: orm 
@@ -125,13 +124,12 @@ fos_user:
             enabled: true
             from_email:
                 address:        resetting@acmedemo.com
-                sender_name:    Confirmation
+                sender_name:    cheeese
     resetting:
         email:
             from_email:
                 address:        resetting@acmedemo.com
-                sender_name:    Resetting
-                
+                sender_name:    cheeese 
 # Rest Configuration
 fos_rest:
     param_fetcher_listener: true

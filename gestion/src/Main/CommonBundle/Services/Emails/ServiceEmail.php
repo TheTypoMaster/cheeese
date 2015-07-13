@@ -41,7 +41,7 @@ class ServiceEmail
     		$subject = $this->translator->trans('email.verification.ok.subject', array(), 'email');
         	
     	}
-    	$from = 'test@test.fr';
+        $message->setFrom(array('test@test.fr' => 'cheeese'));
     	$to = $photographer->getEmail();
         $body = $this->templating->render($template, array('photographer' => $photographer));
         $this->sendMessage($from, $to, $subject, $body);
@@ -150,7 +150,7 @@ class ServiceEmail
     {
         $mail = \Swift_Message::newInstance();
         $mail
-            ->setFrom($from)
+            ->setFrom(array($from => 'cheeese'))
             ->setTo($to)
             ->setSubject($subject)
             ->setBody($body)
