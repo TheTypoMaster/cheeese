@@ -10,7 +10,7 @@ use Twig_Environment as Environment;
 
 class ServiceEmail 
 {
-	
+	const EMAIL   = 'test@test.fr';
 	protected $mailer;
 
     protected $templating;
@@ -41,7 +41,7 @@ class ServiceEmail
     		$subject = $this->translator->trans('email.verification.ok.subject', array(), 'email');
         	
     	}
-        $message->setFrom(array('test@test.fr' => 'cheeese'));
+        $from = self::EMAIL;
     	$to = $photographer->getEmail();
         $body = $this->templating->render($template, array('photographer' => $photographer));
         $this->sendMessage($from, $to, $subject, $body);
@@ -117,7 +117,7 @@ class ServiceEmail
 
         }
         if($template != null) {
-        $from = 'test@test.fr';
+        $from = self::EMAIL;
         $body = $this->templating->render($template, array('prestation' => $prestation));
         $this->sendMessage($from, $to, $subject, $body);    
         }
@@ -134,7 +134,7 @@ class ServiceEmail
         $to = $message->getReceiver()->getEmail();
         $template = 'MainCommonBundle:Emails\Messages:prestation.html.twig';
         $subject = $this->translator->trans('email.messages.prestation.subject', array(), 'email');
-        $from = 'test@test.fr';
+        $from = self::EMAIL;
         $body = $this->templating->render($template, array('prestation' => $message->getPrestation()));
         $this->sendMessage($from, $to, $subject, $body);
 

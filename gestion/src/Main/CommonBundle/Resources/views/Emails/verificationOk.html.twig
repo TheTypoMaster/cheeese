@@ -1,7 +1,14 @@
+{% extends "MainCommonBundle:Emails:email.html.twig" %}
+{% block h1 %}
 {{ photographer.username }},
+{% endblock %}
+{% block p_lead %}test p lead{% endblock %}
+{% block p %}
 <p>
 	<a href="">Testons maintenant l'effet</a>
 	<p>
 		C'est du <strong>HTML</strong>
 	</p>
 </p>
+{% endblock %}
+{% block link %}http://yahoo.fr{% endblock %}

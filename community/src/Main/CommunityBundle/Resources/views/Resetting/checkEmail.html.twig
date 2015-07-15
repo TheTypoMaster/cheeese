@@ -27,7 +27,12 @@
 	        <p>
 			{{ 'resetting.check_email'|trans({'%email%': email}) }}
 			</p>
-	    </div>		
+	    </div>
+	    <div class="footer">
+	    <p>
+	    	<a href="{{ path('fos_user_security_login') }}">{{'registration.register.link'|trans}}</a>
+	    </p>	
+	    </div>	
 	</div>
 {% endblock fos_user_content %}
 

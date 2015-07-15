@@ -1,0 +1,12 @@
+{% block subject %} welcome {% endblock %}
+
+{% block body_html %}
+	{% embed "MainCommonBundle:Emails:email.html.twig" %}
+		{% block h1 %}{{ user.username }}{% endblock %}
+		{% block p_lead %}test p lead{% endblock %}
+		{% block p %}confirmation{% endblock %}
+		{% block panel %}panel confirmation{% endblock %}
+		{% block link %}{{ confirmationUrl }}{% endblock %}
+
+	{% endembed %}
+{% endblock %}

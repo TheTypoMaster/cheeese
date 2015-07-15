@@ -2,7 +2,7 @@ menu:
     left:
         dashboard: Tableau de bord
         profile: 
-            title: Mon profile
+            title: Mon Profil
             presentation: Présentation
             languages: Langues
             equipment: Equipement
@@ -11,12 +11,12 @@ menu:
             security: Sécurité
         company:
             title: Mon entreprise 
-            identification: Identification
+            identification: identification
             bankdetails: Détails bancaires
-            transactions: Transactions
+            transactions: transactions
         offer: 
             title: Mon offre
-            packs: Mes devis
+            packs: Mes devis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
             travels: Zone de déplacements
             availability: Disponibilités
         services: Prestations
@@ -24,7 +24,7 @@ menu:
         invites: Invitations
         contact: Contact
         help: Aide
-        premium: Devenir premium
+        premium: Devenir premium                                                                                                                                            
     up:
         membersince: Membre depuis
         profile: Profil
