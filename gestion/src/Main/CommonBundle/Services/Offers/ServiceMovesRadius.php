@@ -3,6 +3,7 @@
 namespace Main\CommonBundle\Services\Offers;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Photographers\MoveRadius;
 use Main\CommonBundle\Entity\Companies\Company;
@@ -26,14 +27,17 @@ class ServiceMovesRadius
 	protected $securityContext;
 
 	private $session;
+
+	private $logger;
 	
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, LoggerInterface $logger)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Photographers\MoveRadius');
 		$this->securityContext = $securityContext;
 		$this->session = $service;
+		$this->logger = $logger;
 		
 	}
 	
@@ -69,7 +73,7 @@ class ServiceMovesRadius
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}
@@ -87,7 +91,7 @@ class ServiceMovesRadius
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}	

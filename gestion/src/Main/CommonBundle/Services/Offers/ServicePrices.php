@@ -3,6 +3,7 @@
 namespace Main\CommonBundle\Services\Offers;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Photographers\Devis;
 use Main\CommonBundle\Entity\Photographers\DevisPrices;
@@ -26,13 +27,16 @@ class ServicePrices
 
 	private $session;
 
+	private $logger;
+
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, LoggerInterface $logger)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Photographers\DevisPrices');
 		$this->securityContext = $securityContext;
 		$this->session = $service;
+		$this->logger = $logger;
 	}	
 
 	/**
@@ -72,7 +76,7 @@ class ServicePrices
 				return true;
 			}catch(\Exception $e){
 				$this->session->errorFlashMessage();
-				var_dump($e->getMessage());
+				$this->logger->error($e->getMessage());
 				return false;
 			}
 		}
@@ -110,7 +114,7 @@ class ServicePrices
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}
@@ -131,7 +135,7 @@ class ServicePrices
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}

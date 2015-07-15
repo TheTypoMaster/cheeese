@@ -3,6 +3,7 @@
 namespace Main\CommonBundle\Services\Transactions;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Companies\Iban;
 use Main\CommonBundle\Entity\Prestations\Prestation;
@@ -32,13 +33,16 @@ class ServiceTransaction
 
 	private $session;
 
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServicePrestation $servicePrestation, ServiceSession $serviceSession)
+	private $logger;
+
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServicePrestation $servicePrestation, ServiceSession $serviceSession, LoggerInterface $logger)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Companies\Transaction');
 		$this->securityContext = $securityContext;
 		$this->service = $servicePrestation;
 		$this->session = $serviceSession;
+		$this->logger = $logger;
 	}	
 
 	/**
@@ -71,7 +75,7 @@ class ServiceTransaction
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 		

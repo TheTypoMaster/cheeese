@@ -3,6 +3,7 @@
 namespace Main\CommonBundle\Services\Offers;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Photographers\DevisBook;
 use Main\CommonBundle\Entity\Photographers\Devis;
@@ -29,14 +30,17 @@ class ServiceDevisBook
 	protected $path;
 
 	private $session;
+
+	private $logger;
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, $path)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, $path, LoggerInterface $logger)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Photographers\DevisBook');
 		$this->securityContext = $securityContext;
 		$this->path = $path;
 		$this->session = $service;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -74,7 +78,7 @@ class ServiceDevisBook
                             return $this->createPhoto($devis, $url, $mime, $size);
                         } catch (\Exception $e) {
                         	$this->session->errorFlashMessage();
-                        	var_dump($e->getMessage());
+                        	$this->logger->error($e->getMessage());
                             //$this->logger->err('Impossible de créer un nouveau fichier : '.$e->getMessage());
                             //$codeErr = 1;
                             //throw $e;
@@ -117,7 +121,7 @@ class ServiceDevisBook
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}
@@ -147,7 +151,7 @@ class ServiceDevisBook
 			return true;
 		} catch (Exception $e) {
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}
@@ -174,7 +178,7 @@ class ServiceDevisBook
 			return true;	
 		} catch (Exception $e) {
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}

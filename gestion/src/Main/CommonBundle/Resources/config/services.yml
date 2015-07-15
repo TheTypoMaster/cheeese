@@ -16,22 +16,22 @@ services:
         arguments: [@doctrine.orm.entity_manager]
     service_department:
         class: "Main\CommonBundle\Services\Geo\ServiceDepartment"
-        arguments: [@doctrine.orm.entity_manager]
+        arguments: [@doctrine.orm.entity_manager, "@logger"]
     service_user:
         class: "Main\CommonBundle\Services\Users\ServiceUser"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "%upload_pp_path%"]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "%upload_pp_path%", "@logger"]
     service_devis:
         class: "Main\CommonBundle\Services\Offers\ServiceDevis"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]
     service_prices:
         class: "Main\CommonBundle\Services\Offers\ServicePrices"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]
     service_devis_book:
         class: "Main\CommonBundle\Services\Offers\ServiceDevisBook"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "%upload_devis_path%"]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "%upload_devis_path%", "@logger"]
     service_moves_radius:
         class: "Main\CommonBundle\Services\Offers\ServiceMovesRadius"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]
     service_availability:
         class: "Main\CommonBundle\Services\Offers\ServiceAvailability"
         arguments: [@doctrine.orm.entity_manager, @security.context]
@@ -42,22 +42,22 @@ services:
             - { name: monolog.logger, channel: search }
     service_prestation:
         class: "Main\CommonBundle\Services\Services\ServicePrestation"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_reference, @service_email, @service_session]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_reference, @service_email, @service_session, "@logger"]
     service_notation:
         class: "Main\CommonBundle\Services\Services\ServiceNotation"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, @service_devis, @service_user]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, @service_devis, @service_user, "@logger"]
     service_message:
         class: "Main\CommonBundle\Services\Messages\ServiceMessage"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_email]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_email, "@logger"]
     service_company:
         class: "Main\CommonBundle\Services\Companies\ServiceCompany"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_email]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_email, "@logger"]
     service_iban:
         class: "Main\CommonBundle\Services\Companies\ServiceIban"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]
     service_transaction:
         class: "Main\CommonBundle\Services\Transactions\ServiceTransaction"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_prestation, @service_session]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_prestation, @service_session, "@logger"]
 #Listeners
     listener_moves_radius:
         class: Main\CommonBundle\Listener\MoveRadiusListener

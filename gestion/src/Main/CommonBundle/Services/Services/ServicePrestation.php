@@ -3,6 +3,7 @@
 namespace Main\CommonBundle\Services\Services;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Prestations\Prestation;
 use Main\CommonBundle\Entity\Users\User;
@@ -46,12 +47,14 @@ class ServicePrestation
 
 	private $session;
 
+	private $logger;
+
 	/**
 	 * 
 	 * @param EntityManager $entityManager
 	 * @param SecurityContext $securityContext
 	 */
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceReference $reference, ServiceEmail $mailer,  ServiceSession $service)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceReference $reference, ServiceEmail $mailer,  ServiceSession $service, LoggerInterface $logger)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Prestations\Prestation');
@@ -59,6 +62,7 @@ class ServicePrestation
 		$this->reference = $reference;
 		$this->mailer = $mailer;
 		$this->session = $service;
+		$this->logger = $logger;
 	}
 	
 	/**
@@ -354,7 +358,7 @@ class ServicePrestation
 			return $prestation;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}
@@ -374,7 +378,7 @@ class ServicePrestation
 			$this->em->persist($message);
 			return true;
 		}catch(\Exception $e){
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 		
@@ -437,7 +441,7 @@ class ServicePrestation
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}

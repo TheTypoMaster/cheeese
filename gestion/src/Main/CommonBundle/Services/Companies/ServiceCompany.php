@@ -3,6 +3,7 @@
 namespace Main\CommonBundle\Services\Companies;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Companies\Company;
 use Main\CommonBundle\Services\Emails\ServiceEmail;
@@ -28,14 +29,16 @@ class ServiceCompany
 	private $securityContext;
 
 	private $mailer;
+
+	private $logger;
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceEmail $mailer)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceEmail $mailer, LoggerInterface $logger)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Companies\Company');
 		$this->securityContext = $securityContext;
 		$this->mailer = $mailer;
-
+		$this->logger = $logger;
 	}	
 	
 	/**
@@ -86,7 +89,7 @@ class ServiceCompany
 			$this->em->flush();
 			return true;
 		}catch(\Exception $e){
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}
@@ -112,7 +115,7 @@ class ServiceCompany
 			$this->em->flush();
 			return true;
 		}catch(\Exception $e){
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}
@@ -157,8 +160,7 @@ class ServiceCompany
             	$this->mailer->companyVerificationEmail($company->getPhotographer(),$company->getStatus()->getId());
 				return true;
 		}catch(\Exception $e){
-			var_dump($e->getMessage());
-			die();
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 		}

@@ -3,6 +3,7 @@
 namespace Main\CommonBundle\Services\Messages;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Messages\Message;
 use Main\CommonBundle\Entity\Prestations\Prestation;
@@ -28,13 +29,16 @@ class ServiceMessage
 
 	private $mailer;
 
+	private $logger;
+
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceEmail $mailer)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceEmail $mailer, LoggerInterface $logger)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Messages\Message');
 		$this->securityContext = $securityContext;
 		$this->mailer = $mailer;
+		$this->logger = $logger;
 
 	}
 	
@@ -92,7 +96,7 @@ class ServiceMessage
 			$this->mailer->messageNotification($message);
 			return true;
 		}catch(\Exception $e){
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 		

@@ -3,6 +3,7 @@
 namespace Main\CommonBundle\Services\Users;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Users\User;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -23,19 +24,22 @@ class ServiceUser
 	
 	private $session;
 
+	private $logger;
+
 	/**
 	 * 
 	 * @var string
 	 */
 	private $repository;
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, $uploadPath)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, $uploadPath, LoggerInterface $logger)
 	{
 		$this->em = $entityManager;
 		$this->securityContext = $securityContext;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Users\User');
 		$this->path = $uploadPath;
 		$this->session = $service;
+		$this->logger = $logger;
 	}	
 
 	/**
@@ -83,7 +87,7 @@ class ServiceUser
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}
@@ -105,7 +109,7 @@ class ServiceUser
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}
@@ -133,7 +137,7 @@ class ServiceUser
 			return true;
 		} catch (Exception $e) {
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 			
 		}
@@ -157,7 +161,7 @@ class ServiceUser
 				return true;
 			}catch(\Exception $e){
 				$this->session->errorFlashMessage();
-				var_dump($e->getMessage());
+				$this->logger->error($e->getMessage());
 				return false;
 			}
 		}
@@ -197,7 +201,7 @@ class ServiceUser
 							return true;
                         } catch (\Exception $e) {
                         	$this->session->errorFlashMessage();
-                        	var_dump($e->getMessage());
+                        	$this->logger->error($e->getMessage());
                         	return false;
                             //$this->logger->err('Impossible de créer un nouveau fichier : '.$e->getMessage());
                             //$codeErr = 1;

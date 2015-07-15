@@ -2,6 +2,7 @@
 
 namespace Main\CommonBundle\Services\Geo;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Main\CommonBundle\Entity\Geo\Department;
 
 
@@ -12,6 +13,8 @@ class ServiceDepartment
 	 * @var EntityManager
 	 */
 	private $em;
+
+	private $logger;
 	
 	/**
 	 * 
@@ -19,10 +22,11 @@ class ServiceDepartment
 	 */
 	private $repository;
 	
-	public function __construct(EntityManager $entityManager)
+	public function __construct(EntityManager $entityManager, LoggerInterface $logger)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Geo\Department');
+		$this->logger = $logger;
 	}	
 
 	/**
@@ -64,7 +68,7 @@ class ServiceDepartment
 				$this->em->flush();				
 				return true;
 			}catch(\Exception $e){
-				var_dump($e->getMessage());
+				$this->logger->error($e->getMessage());
 				return false;
 			}
 		}

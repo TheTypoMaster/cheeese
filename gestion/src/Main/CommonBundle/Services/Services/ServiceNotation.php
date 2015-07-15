@@ -3,6 +3,7 @@
 namespace Main\CommonBundle\Services\Services;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Prestations\Prestation as Prestation;
 use Main\CommonBundle\Entity\Users\User as User;
@@ -34,13 +35,15 @@ class ServiceNotation
 	private $devis;
 
 	private $user;
+
+	private $logger;
 	
 	/**
 	 *
 	 * @param EntityManager $entityManager
 	 * @param SecurityContext $securityContext
 	 */
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, ServiceDevis $serviceDevis, ServiceUser $serviceUser)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, ServiceDevis $serviceDevis, ServiceUser $serviceUser, LoggerInterface $logger)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Prestations\Evaluation');
@@ -48,6 +51,7 @@ class ServiceNotation
 		$this->session = $service;
 		$this->devis = $serviceDevis;
 		$this->user = $serviceUser;
+		$this->logger = $logger;
 	}
 	
 	/**
@@ -105,7 +109,7 @@ class ServiceNotation
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			die;
 			return false;
 		}
@@ -133,7 +137,7 @@ class ServiceNotation
 			$this->updateNotations($notation);
 			return true;
 		}catch(\Exception $e){
-			var_dump($e->getMessage());
+			$this->logger->error($e->getMessage());
 			return false;
 		}
 	}
