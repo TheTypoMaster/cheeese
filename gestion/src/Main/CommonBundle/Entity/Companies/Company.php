@@ -56,7 +56,7 @@ class Company
 	/**
 	 * @var text $lastname
 	 *
-	 * @ORM\Column(name="identification", type="string", length=50, nullable=false, unique=true)
+	 * @ORM\Column(name="identification", type="string", length=50, nullable=false)
 	 */
 	private $identification;
 	
