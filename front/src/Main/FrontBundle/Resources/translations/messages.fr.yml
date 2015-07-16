@@ -38,3 +38,21 @@ flash:
                 create: votre évaluation a bien été créée
             transaction:
                 create: La transaction a bien été créée
+about:
+    menu:
+        about: A propos
+        services: Nos services
+        contact: Contact
+    head:
+        btn: Cliquez ici
+    section1:
+        h2: Votre événement mérite une belle photo
+        p: Pour vos événements, trouvez et réservez les meilleurs photographes selon votre budget, vos disponibilités et votre localité
+        btn: Ouverture du service en Novembre!
+    section2:
+        h2: A votre service !
+    photographers:
+        h2: Vous êtes photographe? Rejoignez la communauté!
+        btn: C'est ouvert !
+    section3:
+        h2: Restons en contact !

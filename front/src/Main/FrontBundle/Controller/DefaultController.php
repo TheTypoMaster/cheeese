@@ -86,4 +86,15 @@ class DefaultController extends Controller
     			'results'	=> $results
 		));
     }
+
+    /**
+     * [aboutAction description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     * @Route("/about", name="about")
+     */
+    public function aboutAction(Request $request)
+    {
+        return $this->render('MainFrontBundle:Default:about.html.twig');
+    }
 }

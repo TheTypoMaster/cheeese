@@ -78,6 +78,19 @@ class DefaultController extends Controller
 		));	
 	}
 
+
+	/**
+	 * [aboutAction description]
+	 * @param  Request $request [description]
+	 * @return [type]           [description]
+	 * @Route("/about", name="about")
+	 */
+	public function aboutAction(Request $request)
+	{
+		return $this->render('MainCommunityBundle:Default:about.html.twig',  array(
+		));	
+	}
+
 	
 	
 }

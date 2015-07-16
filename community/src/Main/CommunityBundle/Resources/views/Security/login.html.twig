@@ -44,8 +44,11 @@
             <button type="submit" class="btn bg-olive btn-block">{{'security.login.link.signin'|trans}}</button>
 
             <p><a href="{{ path('fos_user_resetting_request') }}">{{'security.login.link.forgot'|trans}}</a></p>
-
-            <a href="{{ path('fos_user_registration_register') }}" class="text-center">{{'security.login.link.register'|trans}}</a>
+            <p>
+            <a href="{{ path('fos_user_registration_register') }}" class="text-center">{{'security.login.link.register'|trans}}</a></p>
+            <p>
+            <a href="{{ path('about') }}" class="text-center">{{'security.about.link'|trans}}</a>
+            </p>
         </div>
     </form>
 </div>

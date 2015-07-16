@@ -1,4 +1,6 @@
 security:
+    about:
+        link: A propos
     login:
         header: Connexion
         field:
@@ -73,3 +75,16 @@ flash:
                 create: votre évaluation a bien été créée
             transaction:
                 create: La transaction a bien été créée
+about:
+    menu:
+        about: A propos
+        join: Rejoindre
+        contact: Contact
+    section1:
+        h2: A propos de weare cheeese
+    section2:
+        h2: Rejoindre weare cheeese
+        a: Rejoindre
+        p: Mettre conditions et liste des départements ouverts
+    section3:
+        h2: Restez en contact avec cheeese
