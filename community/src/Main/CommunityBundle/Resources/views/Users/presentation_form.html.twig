@@ -22,6 +22,10 @@
                                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
                                     <div class="box-body">									
                                         {{ form_rest(form) }}
+                                        {{ form_widget(form.presentation) }}
+                                        <p class="help-block">
+                                        {% trans from "forms" %}help.presentation.field.presentation {% endtrans %}
+                                        </p>
                                     </div>
 
                                     <div class="box-footer">
