@@ -25,12 +25,16 @@ companies:
             btn:
                 edit: Editer
             th:
-                title: Titre
+                title: Dénomination sociale
                 address: Adresse
-                town: Commune
+                town: Ville
                 country: Pays
                 code: Siret
                 status: Statut
+            status:
+                to_verify: En cours de vérification
+                refused: Refusée
+                accepted: Vérifiée
     iban:
         view:
             h1: Détails bancaires
@@ -44,7 +48,7 @@ companies:
                 iban: Iban
                 bic: BIC
             btn:
-                edit: Editer
+                edit: Editer            
         new:
             h1: Détails bancaires
             h2: Création

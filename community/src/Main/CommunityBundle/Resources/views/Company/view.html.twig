@@ -32,11 +32,17 @@
 				 		<td>{{ company.identification }}</td>
 				 		<td>
 				 		{% if 1 == company.status.id %}
-				 		<span class="label label-warning">{{ company.status.libelle }}</span>
+				 		<span class="label label-warning">
+				 			{% trans from "company" %}companies.company.view.status.to_verify{% endtrans %}
+				 		</span>
 				 		{% elseif 3 == company.status.id %}
-				 		<span class="label label-danger">{{ company.status.libelle }}</span>
+				 		<span class="label label-danger">
+				 			{% trans from "company" %}companies.company.view.status.refused{% endtrans %}
+				 		</span>
 				 		{% elseif 2 == company.status.id %}
-				 		<span class="label label-success">{{ company.status.libelle }}</span>
+				 		<span class="label label-success">
+				 			{% trans from "company" %}companies.company.view.status.accepted{% endtrans %}
+				 		</span>
 				 		{% endif %}
 				 		</td>
 				 		<td>

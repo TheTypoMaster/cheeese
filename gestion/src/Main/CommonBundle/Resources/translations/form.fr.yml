@@ -5,13 +5,13 @@ form:
             lastname: Nom
             title: Titre
             address: Adresse
-            town: Commune
-            identification: Identification
+            town: Ville
+            identification: N° Siret
             country: Pays
             department: Département
     search:
         placeholder:
-            town_text: Commune
+            town_text: ville
             date: Date
     createadmin:
         field:
