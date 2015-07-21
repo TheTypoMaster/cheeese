@@ -48,6 +48,7 @@ class FormPresentationType extends AbstractType
     			'label'	=> 'form.presentation.field.firstname',
     			'attr' => array(
     					'class' => 'form-control',
+                        'placeholder'  => 'form.presentation.field.placeholder.firstname'
     			),
                 'constraints'   => array(
                         new NotBlank ( array(
@@ -57,6 +58,7 @@ class FormPresentationType extends AbstractType
         		'label'	=> 'form.presentation.field.lastname',
     			'attr' => array(
     					'class' => 'form-control',
+                        'placeholder'  => 'form.presentation.field.placeholder.lastname'
     			),
                 'constraints'   => array(
                         new NotBlank ( array(
@@ -67,6 +69,7 @@ class FormPresentationType extends AbstractType
         		'label'	=> 'form.presentation.field.telephone',
     			'attr' => array(
     					'class' => 'form-control',
+                        'placeholder'  => 'form.presentation.field.placeholder.telephone'
     			),
                 'constraints'   => array(
                         new NotBlank ( array(
@@ -77,6 +80,7 @@ class FormPresentationType extends AbstractType
     			'label'	=> 'form.presentation.field.presentation',
     			'attr' => array(
     					'class' => 'form-control',
+                        'placeholder'  => 'form.presentation.field.placeholder.presentation'
     			),
                 'constraints'   => array(
                         new NotBlank ( array(

@@ -12,8 +12,14 @@
                                 <div class="box-header">
                                     <h3 class="box-title">{{ user.username }}</h3>
                                 </div><!-- /.box-header -->
-                                
+                                <p>
+                                <div class="pull-center image">
+                                        <img src="{{ image64(app.user.photo, app.user.photoType, 'pp') }}"  class="img-circle" height="160" width="160" />
+                                    </div>
+
+                                </p>
                                 <div class="box-body">
+                                    
                                 	<blockquote>
                                 		<p>{{ user.presentation | raw }}</p>                                		
                                 	</blockquote>

@@ -24,6 +24,11 @@ form:
             lastname: Nom
             telephone: Téléphone
             presentation: Présentation
+            placeholder:
+                presentation: Votre Présentation ici
+                firstname: Votre Prénom
+                lastname: Votre Nom
+                telephone: Votre Téléphone
     security:
         field:
             old: Ancien mot de passe
