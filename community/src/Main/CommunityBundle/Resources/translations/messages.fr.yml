@@ -80,7 +80,9 @@ flash:
                 edit: Votre rayon de déplacements a été mis à jour
                 create: Votre rayon de déplacements a bien été créé
             prestation:
-                status: L'état de la prestation a été mis à jour
+                status: 
+                    index: L'état de la prestation a été mis à jour
+                    pre_approved: Vous avez pré-approuvé la prestation. Le client doit maintenant confirmer la réservation. Nous vous tenons au courant :)
                 closed: La prestation a été clotûré
             notation:
                 create: votre évaluation a bien été créée

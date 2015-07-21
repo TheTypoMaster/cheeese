@@ -396,37 +396,55 @@ class ServicePrestation
 		{
 			case 2:
 				if ($prestation->getStatus()->getId() == self::PRESTATION_ENCOURS)
+					{
 					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOGRAPHER_OK);
+					$flashMessage = 'flash.message.prestation.status.pre_approved';	
+					}					
 				break;
 			case 3:
 				//Cancel-photographer
 				if ($prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK)
-					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOGRAPHER_KO);
+					{
+						$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOGRAPHER_KO);
+						$flashMessage = 'flash.message.prestation.status.index';
+					}					
 				break;
 			case 4:
 				//Cancel-Client
 				if ($prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK)
-					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CLIENT_KO);
+					{
+						$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CLIENT_KO);
+						$flashMessage = 'flash.message.prestation.status.index';
+					}					
 				break;
 			case 5:
 				//Valide
 				if ($prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK)
+				{
 					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PRESTATION_OK);
+					$flashMessage = 'flash.message.prestation.status.index';
+				}					
 				break;
 			case 6:
 				if ($prestation->getStatus()->getId() == self::PRESTATION_OK)
 				{
 					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::OLD_PRESTATION);
-					//Initialisation de la notation
+					$flashMessage = 'flash.message.prestation.status.index';
 				}
 				break;
 			case 7:
 				if ($prestation->getStatus()->getId() == self::OLD_PRESTATION)
+				{
 					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PHOTOS_DELIVERED);
+					$flashMessage = 'flash.message.prestation.status.index';
+				}
 				break;
 			case 8:
 				if ($prestation->getStatus()->getId() == self::PHOTOS_DELIVERED)
+				{
 					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CLOSED_PRESTATION);
+					$flashMessage = 'flash.message.prestation.status.index';
+				}
 				break;
 		}
 		
@@ -437,7 +455,7 @@ class ServicePrestation
 			$this->em->flush();
 			//Envoi du mail
             $this->mailer->prestationUpdateEmail($prestation);
-			$this->session->successFlashMessage('flash.message.prestation.status');	
+			$this->session->successFlashMessage($flashMessage);	
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
