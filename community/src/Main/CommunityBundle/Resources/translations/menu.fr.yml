@@ -8,7 +8,7 @@ menu:
             equipment: Equipement
             specialities: Spécialités
             book: Book
-            security: Sécurité
+            security: Sécurité, mot de passe
         company:
             title: Mon entreprise 
             identification: identification

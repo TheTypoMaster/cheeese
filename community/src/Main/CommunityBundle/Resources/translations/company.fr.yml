@@ -1,26 +1,26 @@
 companies:
     company:
         edit:
-            h1: Mon entreprise
+            h1: Identification
             h2: Editer
-            breadcrumbh1: Mon entreprise
+            breadcrumbh1: Identification
             breadcrumbh2: Editer
             header: Editer entreprise
             btn:
                 submit: Soumettre
         new:
-            h1: Mon entreprise
+            h1: Identification
             h2: Créer
-            breadcrumbh1: Mon entreprise
+            breadcrumbh1: Identification
             breadcrumbh2: Créer
             header: Créer entreprise
             btn:
                 submit: Soumettre
         view:
-            h1: Mon entreprise
-            h2: Voir
-            breadcrumbh1: Mon entreprise
-            breadcrumbh2: Voir
+            h1: Identification
+            h2: Détails
+            breadcrumbh1: Identification
+            breadcrumbh2: Détails
             header: Mon entreprise
             btn:
                 edit: Editer

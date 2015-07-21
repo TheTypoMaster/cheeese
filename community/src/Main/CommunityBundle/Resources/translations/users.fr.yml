@@ -1,9 +1,9 @@
 community:
     presentation:
         read:
-            h1: Photographe
+            h1: Présentation
             h2: Détails
-            breadh1: Photographe
+            breadh1: Présentation
             breadh2: Détails
             dt:
                 firstname: Prénom
@@ -15,18 +15,18 @@ community:
                 edit: Modifier présentation
                 picture: Modifier photo de profil
             book:
-                h1: Photographe
+                h1: Présentation
                 h2: Photo de profil
-                breadh1: Photographe
+                breadh1: Présentation
                 breadh2: Photo de profil
                 header: Gérer votre photo de profil
                 btn:
                     submit: Soumettre
                     back: Retour
         edit:
-            h1: Photographe
+            h1: Présentation
             h2: Edition
-            breadh1: Photographe
+            breadh1: Présentation
             breadh2: Edition
             header: Edition de vos détails
             btn:

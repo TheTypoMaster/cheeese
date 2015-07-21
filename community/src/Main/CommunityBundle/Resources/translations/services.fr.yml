@@ -1,9 +1,9 @@
 community:
     service:
         index:
-            h1: Mes prestations
+            h1: Prestations
             h2: Toutes mes prestations
-            breadh1: Mes prestations
+            breadh1: Prestations
             breadh2: Toutes mes prestations
             header: Mes prestations
         list:

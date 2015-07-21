@@ -14,9 +14,9 @@ community:
                 banner: Données non valide
                 message: Votre entreprise n'a pu être validée. Merci de corriger vos données puis réessayez.
         index:
-            h1: Tableau d'accueil
+            h1: Tableau de bord
             h2: index
-            breadh1: Tableau d'accueil
+            breadh1: Tableau de bord
             breadh2: Index
         help:
             h1: Aide & contacts
