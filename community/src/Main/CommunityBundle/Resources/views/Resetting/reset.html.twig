@@ -2,7 +2,7 @@
 <html class="bg-black">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {{ 'resetting.reset.submit' |trans }} {% endblock %}</title>
+    <title>{% block title %} {{ 'security.resetting.reset.title' |trans }} {% endblock %}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
      {% block stylesheets %}
@@ -20,7 +20,26 @@
 </head>
 <body class="bg-black">
 {% block fos_user_content %}
-{% include "MainCommunityBundle:Resetting:reset_content.html.twig" %}
+<div class="form-box" id="login-box">
+    <div class="header">{{ 'security.resetting.reset.header' |trans}}</div> 
+    
+    <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+    <div class="body bg-gray">
+        {{ form_errors(form.plainPassword.first)}}
+        <div class="form-group">
+            {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'security.resetting.reset.form.plainPassword.first'|trans, 'required': 'required', 'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'security.resetting.reset.form.plainPassword.second'|trans, 'required': 'required', 'class': 'form-control'}}) }}
+        </div>
+        {{ form_rest(form)}}
+    </div>
+     <div class="footer">
+                <input type="submit" class="btn bg-olive btn-block" value="{{ 'security.resetting.reset.btn.submit'|trans }}" /> 
+            </div>
+</form>
+    
+</div>
 {% endblock fos_user_content %}
 
 </body>

@@ -23,15 +23,26 @@ security:
             submit: M'inscrire
         link: Connexion
     resetting:
+        reset:
+            title: Modification de mon mot de passe
+            header: Nouveau mot de passe
+            form:
+                plainPassword:
+                    first: Nouveau mot de passe
+                    second: Confirmer nouveau mot de passe
+            btn:
+                submit: Confirmer
         request:
-            header: J'ai oublié mon mot de passe
+            title: Mot de passe oublié
+            header: Mot de passe oublié
             field:
                 username: Utilisateur
             btn:
                 submit: Envoyer
             link:
-                login: Connexion
-            title: J'ai oublié mon mot de passe
+                login: Retour à la page de connexion
+            password_already_requested: Un lien a déja été envoyé à cet utilisateur. Veuillez vérifier votre email.
+            check_email: Un email de confirmation vient de vous être envoyé. Merci de cliquer sur le lien contenu dans ce mail.
     registeration:
         register:
             login:

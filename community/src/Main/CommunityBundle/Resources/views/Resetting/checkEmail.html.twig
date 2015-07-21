@@ -18,19 +18,18 @@
 
     <![endif]-->
 </head>
-{% trans_default_domain 'FOSUserBundle' %}
 <body class="bg-black">
 {% block fos_user_content %}
 	<div class="form-box" id="login-box">
-		<div class="header">{{ 'resetting.request.header' |trans}}</div>	
+		<div class="header">{{ 'security.resetting.request.header' |trans}}</div>	
 	    <div class="body bg-gray">
 	        <p>
-			{{ 'resetting.check_email'|trans({'%email%': email}) }}
+			{{ 'security.resetting.request.check_email'|trans({'%email%': email}) }}
 			</p>
 	    </div>
 	    <div class="footer">
 	    <p>
-	    	<a href="{{ path('fos_user_security_login') }}">{{'registration.register.link'|trans}}</a>
+	    	<a href="{{ path('fos_user_security_login') }}">{{'security.resetting.request.link.login'|trans}}</a>
 	    </p>	
 	    </div>	
 	</div>

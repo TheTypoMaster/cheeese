@@ -1,5 +1,3 @@
-{% trans_default_domain 'FOSUserBundle' %}
-
 <div class="form-box" id="login-box">
 	<div class="header">{{ 'security.resetting.request.header' |trans}}</div>	
 	
@@ -9,13 +7,15 @@
             <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
         {% endif %}
         <div class="form-group">
-	        <input type="text" id="username" name="username" required="required" class="form-control" placeholder="{{ 'resetting.request.username'|trans }}" />
+	        <input type="text" id="username" name="username" required="required" class="form-control" placeholder="{{ 'security.resetting.request.field.username'|trans }}" />
         </div>
     </div>
      <div class="footer">
-	            <button type="submit" class="btn bg-olive btn-block">{{'resetting.request.submit'|trans}}</button>
+	            <button type="submit" class="btn bg-olive btn-block">{{'security.resetting.request.btn.submit'|trans}}</button>
 	
-	            <p><a href="{{ path('fos_user_security_login') }}">{{'registration.register.link'|trans}}</a></p>
+	            <p>
+	            	<a href="{{ path('fos_user_security_login') }}">{{'security.resetting.request.link.login'|trans}}</a>
+	            </p>
 	
 	        </div>
 </form>
