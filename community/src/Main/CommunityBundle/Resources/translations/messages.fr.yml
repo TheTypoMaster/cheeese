@@ -2,7 +2,9 @@ security:
     about:
         link: A propos
     login:
-        header: Connexion
+        title: Bienvenue sur Cheeese!
+        header: Bienvenue sur Cheeese!
+        error: Utilisateur ou/et mot de passe incorrects
         field:
             username: Utilisateur
             password: Mot de passe
@@ -10,7 +12,7 @@ security:
         link:
             signin: Se connecter
             forgot: J'ai oublié mon mot de passe
-            register: Inscription
+            register: Vous n'avez encore pas de compte ?
     register:
         header: Nouveau membre
         form:

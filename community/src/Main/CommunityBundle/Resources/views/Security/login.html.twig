@@ -2,7 +2,7 @@
 <html class="bg-black">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {{'registration.register.link'|trans}} {% endblock %}</title>
+    <title>{% block title %} {{'security.login.title'|trans}} {% endblock %}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
      {% block stylesheets %}
@@ -23,7 +23,7 @@
 <div class="form-box" id="login-box">
     <div class="header">{{'security.login.header'|trans}}</div>
     {% if error %}
-	    <div>{{ error|trans }}</div>
+	    <div>{{'security.login.error'|trans}}</div>
 	{% endif %}
     <form action="{{ path("fos_user_security_check") }}" method="post">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
