@@ -182,7 +182,17 @@ img {
   background-color: #eaeaec !important;
 }
 .bg-black {
-  background-color: #222222 !important;
+    display: table;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    background: url(../css/about/img/intro-bg.jpg) no-repeat bottom center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 .bg-red {
   background-color: #f56954 !important;
