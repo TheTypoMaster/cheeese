@@ -43,14 +43,20 @@ class AvailabilityController extends Controller
 		if($request->isMethod('POST'))
 		{
 			$params = $request->request->all();
-			$dates = $params['dates'];
-			$serviceCompany = $this->get('service_company');
 			$serviceAvailability = $this->get('service_availability');
-			$company = $serviceCompany->getCompany($this->get('security.context')->getToken()->getUser()->getId());
-			$update = $serviceAvailability->updateDates($company, $dates); 
-			if($update) {
-				return $this->redirect($this->generateUrl('availability'));
+			if (count($params) == 0) {
+				$serviceAvailability->errorDates(); 
 			}
+			else {
+				$dates = $params['dates'];
+				$serviceCompany = $this->get('service_company');
+				$company = $serviceCompany->getCompany($this->get('security.context')->getToken()->getUser()->getId());
+				$update = $serviceAvailability->updateDates($company, $dates); 
+				if($update) {
+					return $this->redirect($this->generateUrl('availability'));
+				}
+			}
+			
 		}
 		return $this->redirect($this->generateUrl('availability'));
 		

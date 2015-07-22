@@ -155,6 +155,7 @@ community:
             header:
                 big: Mettez à jour vos disponibilités
                 small : Mettez à jour quand vous êtes disponible pour travailler
+            selectall: Tout
             th:
                 sun: Dim
                 mon: Lun

@@ -9,7 +9,6 @@
                         {% trans from "offers" %}community.availability.view.header.big{% endtrans %}
                         <small>{% trans from "offers" %}community.availability.view.header.small{% endtrans %}</small>
                     </h4>
-                    
                     <form action="{{ path('availability_submit') }}" method="post"}}>
                     	<div class="col-md-12">
 							<p>
@@ -31,6 +30,7 @@
                                     <h3 class="box-title">{{ time|date('m - Y', "Europe/Paris") }}</h3>
                                 </div>
                                 <div class="box-body">
+                                	<input type="checkbox" class="all-{{ i }}" /> {% trans from "offers" %}community.availability.view.selectall{% endtrans %}</th>
                                 	<p>
 	                                    <table>
 										<thead>
@@ -63,7 +63,7 @@
 														{% if date(dayValue) > date('now') %}
 														<div>{{ day }}</div>
 														<div>																												
-														<input type="checkbox" name="dates[]" value="{{ dayValue }}" {% if dayValue in dates %} checked {% endif %}>
+														<input class="month--{{ i }}" type="checkbox" name="dates[]" value="{{ dayValue }}" {% if dayValue in dates %} checked {% endif %}>
 														</div>
 														{% else %}
 														<div></div><div></div>
@@ -91,4 +91,96 @@
                     {% endfor %} 
 						
                     </form>    
+{% endblock %}
+{% block javascripts_inline %}
+        <script type="text/javascript">
+            $(function () {
+            	$('input.all-0').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--0').iCheck('check');
+				        } else {
+				            $('input.month--0').iCheck('uncheck');
+				        }
+				});
+				$('input.all-1').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--1').iCheck('check');
+				        } else {
+				            $('input.month--1').iCheck('uncheck');
+				        }
+				});
+				$('input.all-2').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--2').iCheck('check');
+				        } else {
+				            $('input.month--2').iCheck('uncheck');
+				        }
+				});
+				$('input.all-3').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--3').iCheck('check');
+				        } else {
+				            $('input.month--3').iCheck('uncheck');
+				        }
+				});
+				$('input.all-4').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--4').iCheck('check');
+				        } else {
+				            $('input.month--4').iCheck('uncheck');
+				        }
+				});
+				$('input.all-5').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--5').iCheck('check');
+				        } else {
+				            $('input.month--5').iCheck('uncheck');
+				        }
+				});
+				$('input.all-6').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--6').iCheck('check');
+				        } else {
+				            $('input.month--6').iCheck('uncheck');
+				        }
+				});
+				$('input.all-7').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--7').iCheck('check');
+				        } else {
+				            $('input.month--7').iCheck('uncheck');
+				        }
+				});
+				$('input.all-8').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--8').iCheck('check');
+				        } else {
+				            $('input.month--8').iCheck('uncheck');
+				        }
+				});
+				$('input.all-9').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--9').iCheck('check');
+				        } else {
+				            $('input.month--9').iCheck('uncheck');
+				        }
+				});
+				$('input.all-10').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--10').iCheck('check');
+				        } else {
+				            $('input.month--10').iCheck('uncheck');
+				        }
+				});
+				$('input.all-11').on('ifChecked ifUnchecked', function(event) { 
+				        if (event.type == 'ifChecked') {
+				            $('input.month--11').iCheck('check');
+				        } else {
+				            $('input.month--11').iCheck('uncheck');
+				        }
+				});
+            	
+				   
+});
+        </script>
 {% endblock %}

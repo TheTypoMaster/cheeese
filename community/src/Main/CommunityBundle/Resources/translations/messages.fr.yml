@@ -55,7 +55,7 @@ security:
                 header: Votre email est confirmé
 flash:
     message:
-            error: Un probléme est  survenue
+            error: Un probléme est survenu
             iban:
                 new: Vos données bancaires ont bien étés enregistrées
                 edit: Vos données bancaires ont bien étés mises à jour
@@ -88,6 +88,9 @@ flash:
                 create: votre évaluation a bien été créée
             transaction:
                 create: La transaction a bien été créée
+            availability:
+                index: Votre calendrier a bien été mis à jour
+                error: Merci de rentrer au moins une date
 about:
     menu:
         about: A propos

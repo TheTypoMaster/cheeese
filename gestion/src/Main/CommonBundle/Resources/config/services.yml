@@ -34,7 +34,7 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]
     service_availability:
         class: "Main\CommonBundle\Services\Offers\ServiceAvailability"
-        arguments: [@doctrine.orm.entity_manager, @security.context]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session]
     service_search:
         class: "Main\CommonBundle\Services\Search\ServiceSearch"
         arguments: [@doctrine.orm.entity_manager, @security.context, "@logger"]

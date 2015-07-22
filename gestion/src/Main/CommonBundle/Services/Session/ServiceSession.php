@@ -79,4 +79,9 @@ class ServiceSession
 	{
 		$this->session->getFlashBag()->add('danger', 'flash.message.error');
 	}
+
+	public function errorFlashMessageCustom($message)
+	{
+		$this->session->getFlashBag()->add('danger', $message);
+	}
 }
