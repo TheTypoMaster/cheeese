@@ -46,6 +46,9 @@ form:
             category: Catégorie du devis
             currency: Devise
             presentation: Présentation
+            placeholder:
+                title: Exemple : Séance shooting en studio, Mariage de rêve, Votre incroyable Anniversaire, ...
+                presentation: Exemple : 1h ou 2h de shooting en agence, dont 15 min de maquillage par une maquilleuse professionnelle. Vous repartez avec un book de 100 photos en basse résolution, ainsi que 4 photos retouchées remises sur clé USB
     devisprice:
         field:
             duration: Durée

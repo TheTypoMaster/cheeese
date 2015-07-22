@@ -1,0 +1,55 @@
+<div class="modal fade" id="activeModal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-danger" id="titleModal">
+                    	{% trans from "offers" %}community.devis.view.modal.activate.header{% endtrans %}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                <strong>
+                    {% trans from "offers" %}community.devis.view.modal.activate.confirm.attention{% endtrans %} </strong> 
+                    {% trans from "offers" %}community.devis.view.modal.activate.confirm.message{% endtrans %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    	{% trans from "offers" %}community.devis.view.modal.activate.btn.back{% endtrans %}
+                    </button>
+                    <a href="{{ path('devis_enable', {'id' : 0}) }}" role="button" class="btn btn-success" id="aSuppr">
+                    	{% trans from "offers" %}community.devis.view.modal.activate.btn.confirm{% endtrans %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="desactiveModal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-danger" id="titleModal">
+                    {% trans from "offers" %}community.devis.view.modal.desactivate.header{% endtrans %}
+                	</h4>
+                </div>
+                <div class="modal-body">
+                <strong>{% trans from "offers" %}community.devis.view.modal.desactivate.confirm.attention{% endtrans %} </strong> {% trans from "offers" %}community.devis.view.modal.desactivate.confirm.message{% endtrans %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {% trans from "offers" %}community.devis.view.modal.desactivate.btn.back{% endtrans %}
+                </button>
+                    <a href="{{ path('devis_disable', {'id' : 0}) }}" role="button" class="btn btn-danger" id="aSuppr1">
+                    {% trans from "offers" %}community.devis.view.modal.desactivate.btn.confirm{% endtrans %}
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>

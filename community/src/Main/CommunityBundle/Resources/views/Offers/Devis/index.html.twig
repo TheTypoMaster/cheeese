@@ -41,7 +41,8 @@
                                 <div class="box-footer">
                                     <a href="{{ path('devis_edit', {'id' : devis.id}) }}" class="btn btn-primary btn-sm">
                                         {% trans from "offers" %}community.devis.read.btn.edit{% endtrans %}
-                                    </a>
+                                    </a>                                    
+                                    <a href="{{ path('devis_new')}}" class="btn btn-success btn-sm">{% trans from "offers" %}community.devis.read.btn.new{% endtrans %}</a>
                                     <a href="{{ path('devis')}}" class="btn btn-default btn-sm">{% trans from "offers" %}community.devis.read.btn.back{% endtrans %}</a>
                                 </div>                              
                             </div><!-- /.box -->

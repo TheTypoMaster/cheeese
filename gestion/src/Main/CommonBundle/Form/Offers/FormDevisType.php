@@ -52,7 +52,8 @@ class FormDevisType extends AbstractType
     			'label'	=> 'form.devis.field.title',
     			'attr' => array(
     					'class' => 'form-control',
-    					'maxlength' => 50
+    					'maxlength' => 50,
+                        'placeholder'  => 'form.devis.field.placeholder.title'
     			),
     			'constraints'   => array(
     					new NotBlank ( array(
@@ -94,6 +95,7 @@ class FormDevisType extends AbstractType
     			'label'	=> 'form.devis.field.presentation',
     			'attr' => array(
     					'class' => 'form-control',
+                        'placeholder'  => 'form.devis.field.placeholder.presentation'
     			),
                 'constraints'   => array(
                         new NotBlank ( array(

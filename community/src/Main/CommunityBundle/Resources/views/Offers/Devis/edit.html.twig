@@ -15,11 +15,34 @@
                                 <!-- form start -->
                                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
                                     <div class="box-body">									
+                                        {{ form_label(form.title) }}                         
+                                        {{ form_widget(form.title) }}
+                                        {{ form_errors(form.title) }}
+                                        <p class="help-block">
+                                        {% trans from "forms" %}help.devis.field.title {% endtrans %}
+                                        </p>
+
+                                        {{ form_label(form.category) }} 
+                                        {{ form_widget(form.category) }}
+                                        {{ form_errors(form.category) }}
+
+                                        {{ form_label(form.currency) }} 
+                                        {{ form_widget(form.currency) }}
+                                        {{ form_errors(form.currency) }}
+
+                                        {{ form_label(form.presentation) }} 
+                                        {{ form_widget(form.presentation) }}
+                                        {{ form_errors(form.presentation) }}
+                                         <p class="help-block">
+                                        {% trans from "forms" %}help.devis.field.presentation {% endtrans %}
+                                        </p>
+                                        
                                         {{ form_rest(form) }}
                                     </div><!-- /.box-body -->
 
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">{% trans from "offers" %}community.devis.edit.submit{% endtrans %}</button>
+                                        <a href="{{ path('devis_read', {'id' : devis.id}) }}"  class="btn btn-default">{% trans from "offers" %}community.devis.edit.btn.back{% endtrans %}</a>
                                     </div>
                                 {{ form_end(form) }}
                                 <div class="box-footer">

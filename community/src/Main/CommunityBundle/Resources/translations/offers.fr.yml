@@ -10,7 +10,12 @@ community:
             btn:
                 enable: Activer ce devis
                 disable: Désactiver ce devis
+                back: Retour
         new:
+            help:
+                h4: Nouveau devis
+                p1: Pour chaque devis, vous devez définir un titre, une catégorie, une devise et une présentation
+                p2: Ensuite, il faudra également illustrer votre devis avec des photos (3 photos maximum) et définir vos prix, en fonction de la durée de vos prestations. Nous vous conseillons d’être brefs, mais précis
             h1: Devis
             h2: Créer
             breadh1: Devis
@@ -27,6 +32,7 @@ community:
             btn:
                 edit: Editer
                 back: Retour à la liste
+                new: Nouveau devis
             dt:
                 category: Catégorie
                 duration: Durée	
@@ -40,7 +46,7 @@ community:
                     title: Notation
                     count: Commentaires
             services:
-                empty: Pas de prestations pour ce devis
+                empty: Vous n'avez pas encore de prestations pour ce devis. Vous pouvez modifier votre devis à tout moment, pour essayer d'obtenir d'avantage de demandes
                 active: Prestation(s)
             prices:
                 title %currency%: Prix (en %currency%)
@@ -73,7 +79,7 @@ community:
                         disable: Désactiver
             book:
                 title: Photos
-                empty: Vous n'avez pas de photos rattachées à ce devis.
+                empty: Vous n'avez pas encore de photos rattachées à ce devis. Illustrez votre devis avec les photos de votre choix. Vous pouvez ajouter jusqu'à 3 photos.
                 new:
                     h1: Photos
                     h2: Nouvelle photo
@@ -93,15 +99,21 @@ community:
                     profile: Définir comme photo de couverture
                     back: Retour
         view:
+            help:
+                h4: Bienvenue dans votre rubrique "Mes Devis"
+                p1: Ici, vous définissez tous les devis que vous allez proposer sur Cheeese. Le nombre de devis est illimité. Pour créer un devis, cliquez sur "Créer un devis"
+                p2: Pour augmenter vos chances d’être contacté, nous vous conseillons de remplir des devis illustrant chacune de vos expertises, et de proposer pour chaque devis différents prix/durées. Votre profil ressortira ainsi plus fréquemment dans les résultats de recherches.
             h1: Mes devis
             h2: Liste
             breadh1: Mes devis
             breadh2: Liste
             header: Mes devis
             btn:
-                create: Créer
+                create: Créer un devis
                 edit: Editer
-                details: Détails
+                details: Détails / Modifier
+                activate: Activer
+                desactivate: Désactiver
             th:
                 category: Catégorie
                 title: Titre
@@ -110,11 +122,28 @@ community:
                 price: Prix
                 currency: Devise
                 status: Statut
-                notation: Notation
+                notation: Note
                 actions: Actions                
             active: 
                 enabled: Actif
                 disabled: Inactif
+            modal:
+                activate:
+                    header: Activer ce devis?
+                    confirm:
+                        attention: Voulez vous activer ce devis?
+                        message: Il pourra apparaître dans les résultats des recherches
+                    btn:
+                        back: Retour
+                        confirm: Confirmer
+                desactivate:
+                    header: Désactiver ce devis?
+                    confirm:
+                        attention: Voulez vous désactiver ce devis?
+                        message: Il ne pourra plus apparaître dans les résultats des recherches
+                    btn:
+                        back: Retour
+                        confirm: Confirmer
             prestation:
                 0: N/A
     availability:

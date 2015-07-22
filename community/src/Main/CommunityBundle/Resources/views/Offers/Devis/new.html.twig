@@ -7,6 +7,11 @@
 {% block content %}
 <section class="content">
 	<div class="row">
+            <div class="callout callout-info">
+                 <h4>{% trans from "offers" %}community.devis.new.help.h4{% endtrans %}</h4>
+                 <p>{% trans from "offers" %}community.devis.new.help.p1{% endtrans %}</p>
+                 <p>{% trans from "offers" %}community.devis.new.help.p2{% endtrans %}</p>
+            </div>
 			<div class="col-md-12">
                             <!-- general form elements -->
                             <div class="box box-primary">
@@ -15,7 +20,29 @@
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
                                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-                                    <div class="box-body">									
+                                    <div class="box-body">		
+                                        {{ form_label(form.title) }}                         
+                                        {{ form_widget(form.title) }}
+                                        {{ form_errors(form.title) }}
+                                        <p class="help-block">
+                                        {% trans from "forms" %}help.devis.field.title {% endtrans %}
+                                        </p>
+
+                                        {{ form_label(form.category) }} 
+                                        {{ form_widget(form.category) }}
+                                        {{ form_errors(form.category) }}
+
+                                        {{ form_label(form.currency) }} 
+                                        {{ form_widget(form.currency) }}
+                                        {{ form_errors(form.currency) }}
+
+                                        {{ form_label(form.presentation) }} 
+                                        {{ form_widget(form.presentation) }}
+                                        {{ form_errors(form.presentation) }}
+                                         <p class="help-block">
+                                        {% trans from "forms" %}help.devis.field.presentation {% endtrans %}
+                                        </p>
+
                                         {{ form_rest(form) }}
                                     </div><!-- /.box-body -->
 

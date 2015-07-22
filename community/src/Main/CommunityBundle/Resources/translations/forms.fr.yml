@@ -2,3 +2,7 @@ help:
     presentation:
         field:
             presentation: Bloc d'aide
+    devis:
+        field:
+            title: Soyez le plus précis possible
+            presentation: Soyez le plus précis possible
