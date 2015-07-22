@@ -2,6 +2,11 @@ form:
     security:
         field:
             old: Mauvais mot de passe
+            newPassword: Le mot de passe doit faire au moins 6 caractéres, avec une majuscule, une minuscule et un chiffre
     company:
         field:
             identification: Merci de rentrer un siret valide
+    user:
+        field:
+            plainPassword: Le mot de passe doit faire au moins 6 caractéres, avec une majuscule, une minuscule et un chiffre
+            username: Le nom doit comporter au moins 5 caractéres avec seulement des chiffres et des lettres.

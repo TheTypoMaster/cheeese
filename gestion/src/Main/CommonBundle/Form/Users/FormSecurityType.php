@@ -13,6 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\EqualTo;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class FormSecurityType extends AbstractType
 {
@@ -71,8 +72,12 @@ class FormSecurityType extends AbstractType
     			'class' => 'form-control'
     			),
                 'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
+                        new NotBlank ( array()),
+                        new Regex(array(
+                            'pattern' => '/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}/',
+                            'message' => 'form.security.field.newPassword'
+                            ))
+                        )
             ),
             'second_options' => array(
             	'label' => 'form.security.field.pass2',

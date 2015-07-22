@@ -2,7 +2,7 @@
 <html class="bg-black">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {{ 'Register' |trans }} {% endblock %}</title>
+    <title>{% block title %} {{ 'security.register.title' |trans }} {% endblock %}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
      {% block stylesheets %}
@@ -26,9 +26,11 @@
 	    <div class="body bg-gray">
 	            <div class="form-group">
 	                {{ form_widget(form.email, {'attr': {'placeholder': 'security.register.form.email'|trans, 'required': 'required', 'class': 'form-control'}}) }}
+	                {{ form_errors(form.email) }}
 	            </div>
 	            <div class="form-group">
 	                {{ form_widget(form.username, {'attr': {'placeholder': 'security.register.form.username'|trans, 'required': 'required', 'class': 'form-control'}}) }}
+	                {{ form_errors(form.username) }}
 	            </div>
 	            <div class="form-group">
 	            {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'security.register.form.plainPassword.first'|trans, 'required': 'required', 'class': 'form-control'}}) }}
@@ -39,6 +41,12 @@
 	            <div class="form-group">
 	             {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'security.register.form.plainPassword.second'|trans, 'required': 'required', 'class': 'form-control'}}) }}
 	            </div>
+	            <p>
+	            	<p>
+	            		{{ 'security.register.cgu.p' |trans}}
+	            	</p>
+	            	<a href="#">{{ 'security.register.cgu.link' |trans}}</a>
+	            </p>
 	        </div>
 	        {{ form_rest(form) }}
 	        <div class="footer">

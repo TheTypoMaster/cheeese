@@ -133,7 +133,7 @@ class ServiceUser
 		try {
 			$this->em->persist($user);
 			$this->em->flush();
-			$this->session->successFlashMessage('flash.message.user.admin.create');
+			//$this->session->successFlashMessage('flash.message.user.admin.create');
 			return true;
 		} catch (Exception $e) {
 			$this->session->errorFlashMessage();

@@ -2,7 +2,7 @@
 <html class="bg-black">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {{ 'registration.register.checkemail.title' |trans }} {% endblock %}</title>
+    <title>{% block title %} {{ 'security.register.checkemail.title' |trans }} {% endblock %}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
      {% block stylesheets %}
@@ -19,19 +19,17 @@
     <![endif]-->
 </head>
 <body class="bg-black">
-{% trans_default_domain 'FOSUserBundle' %}
-
 {% block fos_user_content %}
 
 	<div class="form-box" id="login-box">
-	<div class="header">{{ 'registration.register.checkemail.header' |trans}}</div>
+	<div class="header">{{ 'security.register.checkemail.header' |trans}}</div>
 	    <div class="body bg-gray">
-	                <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+	                <p>{{ 'security.register.checkemail.p %email%'|trans({'%email%': user.email}) }}</p>
 
         </div>
         <div class="footer">
         <p>
-            <a href="{{ path('fos_user_security_login') }}">{{'registration.register.link'|trans}}</a>
+            <a href="{{ path('fos_user_security_login') }}">{{'security.register.checkemail.link'|trans}}</a>
         </p>
         </div>
 	</div>

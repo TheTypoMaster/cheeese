@@ -1,7 +1,7 @@
 <?php
 
 namespace Main\CommonBundle\Entity\Users;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,6 +18,22 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @Assert\Regex(
+     *  pattern="/^[a-zA-Z0-9]{5,50}+$/",
+     *  message="form.user.field.username"
+     * )
+     */
+    protected $username;
+
+    /**
+     * @Assert\Regex(
+     *  pattern="/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}/",
+     *  message="form.user.field.plainPassword"
+     * )
+     */
+    protected $plainPassword;
     
     /**
      * @var text $presentation

@@ -15,15 +15,26 @@ security:
             register: Vous n'avez encore pas de compte ?
     register:
         header: Nouveau membre
+        title: Inscrivez vous sur Cheeese
         form:
             email: Email
             username: Nom d'utilisateur
             plainPassword:
                 first: Mot de passe
                 second: Répétez mot de passe
+            constraints:
+                username: Au moins 5 caractéres avec seulement des chiffres et des lettres
         btn:
             submit: M'inscrire
         link: Connexion
+        checkemail:
+            title: Inscrivez vous sur Cheeese
+            header: Nouveau membre
+            p %email%: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte.
+            link: Connexion
+        cgu:
+            p: En vous inscrivant, vous confirmez que vous acceptez les Conditions Générales d'utilisation
+            link: Lire les CGU
     resetting:
         reset:
             title: Modification de mon mot de passe
