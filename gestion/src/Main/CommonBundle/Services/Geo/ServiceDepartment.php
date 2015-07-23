@@ -63,6 +63,10 @@ class ServiceDepartment
 		if($dept->getActive() != 2) 
 		{
 			$active = $dept->getActive() + 1;
+			
+		}else {
+			$active = 0;
+		}
 			$dept->setActive($active);
 			try{
 				$this->em->flush();				
@@ -71,6 +75,5 @@ class ServiceDepartment
 				$this->logger->error($e->getMessage());
 				return false;
 			}
-		}
 	}
 }

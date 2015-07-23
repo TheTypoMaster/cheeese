@@ -17,6 +17,9 @@ services:
     service_department:
         class: "Main\CommonBundle\Services\Geo\ServiceDepartment"
         arguments: [@doctrine.orm.entity_manager, "@logger"]
+    service_commission:
+        class: "Main\CommonBundle\Services\Commission\ServiceCommission"
+        arguments: [@doctrine.orm.entity_manager, @service_session, "@logger"]
     service_user:
         class: "Main\CommonBundle\Services\Users\ServiceUser"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "%upload_pp_path%", "@logger"]

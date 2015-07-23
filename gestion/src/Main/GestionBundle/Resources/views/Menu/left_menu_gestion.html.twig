@@ -49,11 +49,21 @@
                             </a>
                         </li>
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
-                        <li>
-                            <a href="{{ path('geo') }}">
-                                <i class="fa fa-globe"></i> 
-                                <span>{% trans from "menu" %}menu.left.geo{% endtrans %}</span>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-arrows"></i> 
+                                <span>{% trans from "menu" %}menu.left.options.title{% endtrans %}</span>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
+                            <ul class="treeview-menu">                                
+                                <li>
+                                    <a href="{{ path('geo') }}">
+                                        <i class="fa fa-globe"></i> 
+                                        <span>{% trans from "menu" %}menu.left.options.geo{% endtrans %}</span>
+                                    </a>
+                                </li>
+                                <li><a href="{{ path('commission') }}"><i class="fa fa-money"></i> {% trans from "menu" %}menu.left.options.commission{% endtrans %}</a></li>                               
+                            </ul>
                         </li>
                         {% endif %}
                     </ul>

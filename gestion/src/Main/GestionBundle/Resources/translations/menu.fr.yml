@@ -8,7 +8,10 @@ menu:
             photographers: Photographes
         offers: Devis
         services: Prestations
-        geo: Donnés Géo
+        options:
+            title: options
+            geo: Données Géo
+            commission: Commissions
     up:
         membersince: Membre depuis
         profile: Profil

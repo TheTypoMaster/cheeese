@@ -1,0 +1,36 @@
+{% extends '::base.html.twig'%}
+{% block title %}{% trans %}gestion.commission.edit.h1{% endtrans %}{% endblock %}
+{% block titleH1 %}{% trans %}gestion.commission.edit.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans %}gestion.commission.edit.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-money"></i>{% trans %}gestion.commission.edit.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans %}gestion.commission.edit.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+<section class="content">
+	<div class="row">
+			<div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">
+                                        {% trans with {'%type%' : commission.name}%}gestion.commission.edit.header %type%{% endtrans %}</h3>
+                                </div><!-- /.box-header -->
+                                <!-- form start -->
+                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                                    <div class="box-body">									
+                                        {{ form_rest(form) }}
+                                    </div><!-- /.box-body -->
+
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary" data-confirm="test">
+                                        	{% trans %}gestion.commission.edit.btn.submit{% endtrans %}</button>
+                                        <a href="{{ path('commission')}}" class="btn btn-default">
+                                        	{% trans %}gestion.commission.edit.btn.back{% endtrans %}
+                                        </a>
+                                    </div>
+                                {{ form_end(form) }}
+                            </div>
+		</div>	
+	</div>
+</section>
+{% endblock %}

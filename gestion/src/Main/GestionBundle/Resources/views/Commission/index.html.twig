@@ -1,0 +1,58 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans %}gestion.commission.index.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans %}gestion.commission.index.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-money"></i>
+{% trans %}gestion.commission.index.breadh1{% endtrans %}
+{% endblock %}
+{% block breadcrumbH2 %}{% trans %}gestion.commission.index.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+                <!-- Main content -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">{% trans %}gestion.commission.index.header{% endtrans %}</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body table-responsive">
+                                	
+                                    <table id="datatable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>{% trans %}gestion.commission.index.th.name{% endtrans %}</th>
+										  		<th>{% trans %}gestion.commission.index.th.customer{% endtrans %}</th>
+										  		<th>{% trans %}gestion.commission.index.th.photographer{% endtrans %}</th>
+										  		<th>{% trans %}gestion.commission.index.th.premium{% endtrans %}</th>
+										  		<th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for entity in commissions %}
+        									<tr>
+                                                <td> {{ entity.name }} </td>
+                                                <td> {{ entity.customer }} % </td>
+                                                <td> {{ entity.photographer }} %</td>
+                                                <td> {{ entity.premium }} %</td>
+                                                <td>
+                                                	{% if entity.id == 1 %}
+                                                	<a href="{{ path('commission_particuliers') }}" class="btn btn-default">
+                                                		{% trans %}gestion.commission.index.th.btn{% endtrans %}
+                                                	</a>
+                                                	{% else %}
+                                                	<a href="{{ path('commission_entreprises') }}" class="btn btn-default">
+                                                		{% trans %}gestion.commission.index.th.btn{% endtrans %}
+                                                	</a>
+                                                	{% endif %}
+                                                </td>
+                                            </tr>
+    									{% endfor %}
+                                            
+                                            
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.box-body -->
+                                
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+{% endblock %}

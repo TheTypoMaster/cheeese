@@ -10,3 +10,7 @@ form:
         field:
             plainPassword: Le mot de passe doit faire au moins 6 caractéres, avec une majuscule, une minuscule et un chiffre
             username: Le nom doit comporter au moins 5 caractéres avec seulement des chiffres et des lettres.
+    commission:
+        field:
+            max: La commission ne peut pas dépasser 50%
+            min: La commission ne peut pas être inférieur à 3%

@@ -32,9 +32,10 @@ class TownRepository extends EntityRepository
 					'deptId'	=> $dept
 				));
 		$query = $qb->getQuery();
+		$query->setResultCacheId('findByDeptAndCountry_'.$dept.'_'.$country);
 		$query->useQueryCache(true);
 		$query->useResultCache(true);
-		$query->useResultCache(true, 86400, 'findByDeptAndCountry');
+		$query->useResultCache(true, 86400, 'findByDeptAndCountry_'.$dept.'_'.$country);
 		return $query->getResult();
 	}
 	

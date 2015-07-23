@@ -35,15 +35,11 @@
                                                     </span>
                                                 </td>
                                                 {% endif %}
-                                                {% if 2 != entity.active %}
                                                 <td>
                                                 	<a href="{{ path('geo_update_dept', {'country' : entity.country.id, 'code' : entity.code}) }}" class="label label-primary">
                                                 		{% trans %}gestion.geo.dept.btn.visibility{% endtrans %}
                                                 	</a>
                                                 </td>
-                                                {% else %}
-                                                <td></td>
-                                                {% endif %}
                                             </tr>
     									{% endfor %}
                                             

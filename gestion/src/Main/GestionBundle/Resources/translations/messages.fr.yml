@@ -120,6 +120,28 @@ gestion:
                 all: Tous
             btn:
                 visibility: Mettre à jour visibilité
+    commission:
+        index:
+            h1: Commissions
+            h2: Gestion des commissions
+            breadh1: Commissions
+            breadh2: Gestion des commissions
+            header: Liste des commissions
+            th:
+                name: Type de prestation
+                customer: Commission client
+                photographer: Commission photographer
+                premium: Commission photographe premium
+                btn: Modifier
+        edit:
+            h1: Commission
+            h2: Edition
+            breadh1: Commission
+            breadh2: Edition
+            header %type%: Edition de la commission pour le type %type%
+            btn:
+                submit: Soumettre
+                back: Retour
 flash:
     message:
             error: Un probléme est  survenue
@@ -153,3 +175,5 @@ flash:
                 create: votre évaluation a bien été créée
             transaction:
                 create: La transaction a bien été créée
+            commission:
+                index: La commission a bien été mise à jour

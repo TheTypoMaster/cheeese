@@ -84,3 +84,8 @@ services:
         arguments: [@security.context]
         tags:
             - { name: form.type, alias: form_evaluation }
+    form_commission:
+        class: "Main\CommonBundle\Form\Commissions\FormCommissionType"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_commission }
