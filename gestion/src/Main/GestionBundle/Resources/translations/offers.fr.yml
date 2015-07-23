@@ -34,6 +34,7 @@ gestion:
                     status: Statut
                     enabled: Actif
                     disabled: Inactif
+                empty: Pas de prix
 
             dt:
                 category: Catégorie

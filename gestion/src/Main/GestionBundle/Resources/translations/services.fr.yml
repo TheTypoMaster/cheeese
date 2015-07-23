@@ -23,7 +23,8 @@ gestion:
                 th:
                     reference: Référence
                     date: Date
-                    town: Commune
+                    town: Ville
+                    category: Catégorie
                     client: Client
                     status: Statut
                     photographer: Photographe
