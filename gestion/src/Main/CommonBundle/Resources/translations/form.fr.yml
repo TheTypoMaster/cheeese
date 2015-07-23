@@ -61,7 +61,10 @@ form:
             message: Message
     moves:
         field:
-            moves: Rayon de déplacement
+            moves: Rayon de déplacements
+            values:
+                no: Pas de déplacements
+
     evaluation:
         field:
             user_notation: Evaluation utilisateur

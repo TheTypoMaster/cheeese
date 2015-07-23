@@ -7,6 +7,34 @@
 {% block breadcrumbH2 %}{% trans from "offers" %}community.moves.view.breadh2{% endtrans %}{% endblock %}
 {% block content %}
                 <!-- Main content -->
+                	{% if radius == 0 %}
+                		<div class="callout callout-warning">
+                            <h4>{% trans from "offers" %}community.moves.view.help.no.h4{% endtrans %}</h4>
+                            <p>{% trans with {'%town%': company.town.name} from "offers" %}community.moves.view.help.no.p1 %town%{% endtrans %}</p>
+                            <p>
+                            	<strong>
+                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}</p>
+                            	</strong>
+                        </div>
+                	{% elseif radius == 1 %}
+                		<div class="callout callout-info">
+                            <h4>{% trans from "offers" %}community.moves.view.help.has.h4{% endtrans %}</h4>
+                            <p>{% trans with {'%town%': company.town.name} from "offers" %}community.moves.view.help.has.p1 %town%{% endtrans %}</p>
+                            <p>
+                            	<strong>
+                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}</p>
+                            	</strong>
+                        </div>
+                	{% else %}
+                		<div class="callout callout-info">
+                            <h4>{% trans from "offers" %}community.moves.view.help.has.h4{% endtrans %}</h4>
+                            <p>{% trans with {'%town%': company.town.name, '%kms%': radius} from "offers" %}community.moves.view.help.has.p %kms% %town%{% endtrans %}</p>
+                            <p>
+                            	<strong>
+                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}</p>
+                            	</strong>
+                        </div>
+                	{% endif %}
                     <h4 class="page-header">
                         {% trans from "offers" %}community.moves.view.header.big{% endtrans %}
                         <small>{% trans from "offers" %}community.moves.view.header.small{% endtrans %}</small>
@@ -43,7 +71,6 @@
         var longitude = {{ company.town.longitude }};
         citymap = { center: new google.maps.LatLng(latitude, longitude) };        
         var initrad = {{ radius }}; 
-        console.log(initrad);
         // Create the map.
           mapOptions = {
             zoom: getZoom(initrad),   
@@ -75,7 +102,7 @@
 		        switch(rad){
 		        			case 0:
 		        				return 11;
-		        			case 10:
+		        			case 1:
 		        				return 11;
 		                    case 10:
 		                        return 10;

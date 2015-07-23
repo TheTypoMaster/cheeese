@@ -178,5 +178,14 @@ community:
                 small: Mettez à jour votre zone de déplacements
             btn:
                 submit: Soumettre
+            help:
+                has:
+                    h4: Votre zone de déplacements est définie
+                    p %kms% %town%: %kms% kms autour de %town%
+                    p1 %town%: Vous ne vous déplacez pas hors de %town%
+                no:
+                    h4: Votre zone de déplacements n'est pas encore définie
+                    p1 %town%: Merci de choisir un nombre de kilométres pour vos déplacements autour de %town% (vous pouvez aussi ne pas vous déplacer si vous ne travaillez que dans votre studio).
+                p: Attention : votre zone de déplacement détermine le rayon dans lequel vous êtes susceptibles de vous déplacer pour réaliser une de vos prestations, à vos frais
 
 

@@ -45,7 +45,13 @@ class FormMovesType extends AbstractType
     	
     	$builder->add('radius', 'choice', array(
     			'label'	=> 'form.moves.field.moves',
-    			'choices'   => array(10 => '10', 25 => '25',50 => '50',75 => '75',100 => '100'),
+    			'choices'   => array(
+                            1   => 'form.moves.field.values.no',
+                            10  => '10', 
+                            25  => '25',
+                            50  => '50',
+                            75  => '75',
+                            100 => '100'),
     			'attr' => array(
     					'class' => 'form-control',
     			),
