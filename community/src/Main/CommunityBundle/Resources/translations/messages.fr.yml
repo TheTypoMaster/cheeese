@@ -117,3 +117,16 @@ about:
         p: Mettre conditions et liste des départements ouverts
     section3:
         h2: Restez en contact avec cheeese
+error:
+    404:
+        title: Oups! Page inexistante.
+        p: Il semblerait que la page souhaitée n'existe pas ou plus.
+        a: Sortez moi de là!
+    403:
+        title: Oups! Accés interdit.
+        p: Il semblerait que vous n'ayez pas le droit d'accéder à cette page.
+        a: Sortez moi de là!
+    500:
+        title: Oups! Quelque chose a mal tourné.
+        p: Nous allons travailler sur ce probléme de suite
+        a: Sortez moi de là!

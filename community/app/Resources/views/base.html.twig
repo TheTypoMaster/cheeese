@@ -31,30 +31,36 @@
 <body class="skin-blue">
  {# HEADER MENU SHOULD BE IMPORTED #}
  {% block header_menu %}
- {% include "MainCommunityBundle:Menu:header_menu.html.twig" %}
+    {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include "MainCommunityBundle:Menu:header_menu.html.twig" %}
+    {% endif %}
  {% endblock %}
  
 <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
             {% block left_menu %}
-            {% include "MainCommunityBundle:Menu:left_menu.html.twig" %}
+                {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% include "MainCommunityBundle:Menu:left_menu.html.twig" %}
+                {% endif %}
             {% endblock %}
 
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">
                 <!-- Content Header (Page header) -->              
-                
-                <section class="content-header">
-                    <h1>
-                        {% block titleH1 %}{% endblock %}
-                        <small>{% block titleH2 %}{% endblock %}</small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#">{% block breadcrumbH1 %}{% endblock %}</a></li>
-                        <li class="active">{% block breadcrumbH2 %} {% endblock %}</li>
-                    </ol>
-                </section>
+                {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <section class="content-header">
+                        <h1>
+                            {% block titleH1 %}{% endblock %}
+                            <small>{% block titleH2 %}{% endblock %}</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#">{% block breadcrumbH1 %}{% endblock %}</a></li>
+                            <li class="active">{% block breadcrumbH2 %} {% endblock %}</li>
+                        </ol>
+                    </section>
+                {% endif %}
                 <section class="content">
+                    {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
                    {{ render(controller('MainCommunityBundle:Default:headBandDisplay')) }}  
                                 {% for type, flashes in app.session.flashbag.all %}
                                     {% for flash in flashes %}
@@ -67,13 +73,16 @@
                                         </div>
                                     {% endfor %}
                                 {% endfor %}
+                    {% endif %}
 	                {% block content %}            
 	                   
                     {% endblock %}                                       
-                </section>	
-                <div class="main-footer navbar-fixed-bottom">
-                    {% include "MainCommunityBundle:Menu:footer.html.twig" %}
-                </div>		
+                </section>
+                {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}	
+                    <div class="main-footer navbar-fixed-bottom">
+                        {% include "MainCommunityBundle:Menu:footer.html.twig" %}
+                    </div>	
+                {% endif %}	
                 	
             </aside><!-- /.right-side -->            
         </div><!-- ./wrapper -->
