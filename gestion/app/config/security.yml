@@ -30,4 +30,5 @@ security:
         - { path: ^/create-user, role: ROLE_SUPER_ADMIN }
         - { path: ^/disable-user, role: ROLE_SUPER_ADMIN }
         - { path: ^/geo, role: ROLE_SUPER_ADMIN }
+        - { path: ^/commission, role: ROLE_SUPER_ADMIN }
         - { path: ^/, role: ROLE_ADMIN }

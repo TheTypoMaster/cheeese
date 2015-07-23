@@ -13,6 +13,11 @@ insert into status.prestationstatus (id, libelle)
 	(8, 'CLOSED');
 
 -- ----utils
+-- ---Commission
+insert into utils.commission(id, name, customer, photographer, premium)
+	VALUES
+	(1, 'Particuliers', 7, 7, 5),
+	(2, 'Entreprises', 10, 10, 5);
 -- --Category
 insert into utils.category (id, country, type, name, icon, active)
 	VALUES

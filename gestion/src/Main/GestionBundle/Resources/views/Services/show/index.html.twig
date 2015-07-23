@@ -55,8 +55,7 @@
                                         <i class="fa fa-star-o"></i> {{ prestation.devis.company.photographer.note|number_format(2) }}
                                         <i class="fa fa-comment-o"></i> 
                                         {{ prestation.devis.company.photographer.prestations }}
-                                        </ul> 
-                                    	                                 
+                                        </ul>                                                        
                                 	</div>
 	                                <h5>
 		                            	{% trans from "services" %}gestion.service.show.h5.client{% endtrans %}
@@ -90,10 +89,35 @@
 	                            <div class="box-body">
 	                            	<p><a href="{{ path('devis_read', {id: prestation.devis.id})}}">{{ prestation.devis.title }}</a></p>
 	                            	<p>{{ prestation.devis.category.name }}</p>
-	                            	<p>{{ prestation.price }} ({{ prestation.devis.currency.libelle }})</p>
-	                            	<p>{{ prestation.status.libelle }}</p>
+                                    <p>
+                                        <dl>
+                                            <dt>{% trans from "services" %}gestion.service.show.price{% endtrans %}</dt>
+                                            <dd>{{ prestation.price }} ({{ prestation.devis.currency.libelle }})</dd>
+                                            <dt>
+                                                {% trans from "services" %}gestion.service.show.commission.photographer{% endtrans %}</dt>
+                                            <dd>{{ prestation.commission.photographer}} %
+                                            {% if editCommPhot %}
+                                                <a class="btn btn-primary btn-sm"  href="{{path('service_commission', {'id' : prestation.id, 'type' : 2})}}">
+                                            {% trans from "services" %}gestion.service.show.commission.btn.photographer{% endtrans %}
+                                                 </a>
+                                            {% endif %}
+                                            </dd> 
+                                            <dt>
+                                            {% trans from "services" %}gestion.service.show.commission.customer{% endtrans %}</dt>
+                                            </dt>
+                                            <dd>{{ prestation.commission.customer}} %
+                                            {% if editCommCust %}
+                                            <a class="btn btn-primary btn-sm"  href="{{path('service_commission', {'id' : prestation.id, 'type' : 1})}}">
+                                            {% trans from "services" %}gestion.service.show.commission.btn.customer{% endtrans %}
+                                            </a>
+                                            {% endif %}
+                                            </dd>   
+                                        </dl>
+                                    </p>
+                                    <p>{{ prestation.status.libelle }}</p>
+
 	                            </div>
-                                 <div class="box-footer">
+                                 <div class="box-footer">                                    
                                     
                                 </div>
                         	</div>

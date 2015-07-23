@@ -9,10 +9,11 @@ use Main\CommonBundle\Entity\Prestations\Prestation;
 use Main\CommonBundle\Entity\Users\User;
 use Main\CommonBundle\Entity\Photographers\Devis;
 use Main\CommonBundle\Entity\Messages\Message;
+use Main\CommonBundle\Entity\Prestations\Commission as CommissionPrestation;
 use Main\CommonBundle\Services\Services\ServiceReference;
 use Main\CommonBundle\Services\Emails\ServiceEmail;
 use Main\CommonBundle\Services\Session\ServiceSession;
-
+use Main\CommonBundle\Services\Services\ServiceCommission;
 
 
 class ServicePrestation
@@ -49,12 +50,19 @@ class ServicePrestation
 
 	private $logger;
 
+	private $serviceCommissionPrestation;
 	/**
 	 * 
 	 * @param EntityManager $entityManager
 	 * @param SecurityContext $securityContext
 	 */
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceReference $reference, ServiceEmail $mailer,  ServiceSession $service, LoggerInterface $logger)
+	public function __construct(EntityManager $entityManager, 
+								SecurityContext $securityContext, 
+								ServiceReference $reference, 
+								ServiceEmail $mailer, 
+								ServiceSession $service, 
+								LoggerInterface $logger, 								
+								ServiceCommission $commissionServicePrestation)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Prestations\Prestation');
@@ -62,7 +70,8 @@ class ServicePrestation
 		$this->reference = $reference;
 		$this->mailer = $mailer;
 		$this->session = $service;
-		$this->logger = $logger;
+		$this->logger = $logger;		
+		$this->serviceCommissionPrestation = $commissionServicePrestation;
 	}
 	
 	/**
@@ -305,12 +314,38 @@ class ServicePrestation
 	{
 		return $this->repository->groupBy($user);
 	}
-
+	/**
+	 * [getWeekPrestations description]
+	 * @return [type] [description]
+	 */
 	public function getWeekPrestations()
 	{
 		$next = date("Y-m-d",strtotime("+1 week"));
 		$today = date("Y-m-d",strtotime("today"));
 		return $this->repository->getWeekPrestations($today, $next, self::PRESTATION_OK, $this->getCurrentUser()->getId());
+	}
+
+	/**
+	 * [canEditCommissionCustomer description]
+	 * @param  Prestation $prestation [description]
+	 * @return [type]                 [description]
+	 */
+	public function canEditCommissionCustomer(Prestation $prestation) {
+		return $prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK;
+	}
+
+	/**
+	 * [canEditCommissionPhotographer description]
+	 * @param  Prestation $prestation [description]
+	 * @return [type]                 [description]
+	 */
+	public function canEditCommissionPhotographer(Prestation $prestation)
+	{
+		return  $prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || 
+				$prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK || 
+				$prestation->getStatus()->getId() == self::PRESTATION_OK || 
+				$prestation->getStatus()->getId() == self::OLD_PRESTATION;
+
 	}
 
 
@@ -326,19 +361,21 @@ class ServicePrestation
 	 */
 	public function create($devis, $town, $day, $address, $startTime, $duration, $message)
 	{
-		$start      = str_replace('/', '-', $day).' '.$startTime['hour'].':'.$startTime['minute'].':00';
 		$devis 		= $this->em->getRepository('MainCommonBundle:Photographers\Devis')->findOneById($devis);
 		$client 	= $this->getCurrentUser();
 		$town 		= $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneById($town);
+		$address 	= $address;
+		$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PRESTATION_ENCOURS);
+
 		$devisPrice = $this->em->getRepository('MainCommonBundle:Photographers\DevisPrices')->findOneBy(array(
 			'devis' => $devis,
 			'duration' => $duration));
 		$duration   = $devisPrice->getDuration();
-		$price 		= $devisPrice->getPrice();
-		$address 	= $address;
+		$price 		= $devisPrice->getPrice();		
+		$start      = str_replace('/', '-', $day).' '.$startTime['hour'].':'.$startTime['minute'].':00';
 		$startTime 	= new \DateTime($start);
-		$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PRESTATION_ENCOURS);
-		
+
+		$commission = $this->serviceCommissionPrestation->generateCommission($devis);		
 		
 		$prestation = new Prestation();
 		$prestation->setReference($this->reference->generateReference());
@@ -350,6 +387,7 @@ class ServicePrestation
 		$prestation->setStartTime($startTime);
 		$prestation->setDuration($duration);
 		$prestation->setStatus($status);	
+		$prestation->setCommission($commission);
 		try{
 			$this->em->persist($prestation);
 			$this->CreateFirstPrestationMessage($prestation, $client, $devis->getCompany()->getPhotographer(), 1, $message);

@@ -45,10 +45,14 @@ class ServicesController extends Controller
 			$notation_photographer = $notationService->findByPrestation($id, $service->getDevis()->getCompany()->getPhotographer()->getId());
 			$transaction = null;
 			$closed = false;
-			$delivered = false;
+			$delivered = $prestationService->isDelivered($service);
+			$editCommissionCustomer = $prestationService->canEditCommissionCustomer($service);
+			$editCommissionPhotographer = $prestationService->canEditCommissionPhotographer($service);
+			/*
 			if($prestationService->isDelivered($service)) {
 				$delivered = true;
 			}
+			*/
 			if($prestationService->isClosed($service)) {
 				$transactionService = $this->get('service_transaction');
 				$closed = true;
@@ -61,8 +65,59 @@ class ServicesController extends Controller
 					'commentPhotographer'	=> $notation_photographer,
 					'transaction'			=> $transaction,
 					'delivered'				=> $delivered,
-					'closed'				=> $closed
+					'closed'				=> $closed,
+					'editCommCust'			=> $editCommissionCustomer,
+					'editCommPhot'			=> $editCommissionPhotographer
 			));
+		}
+	}
+
+	/**
+	 * [editCommissionAction description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 * @Route("/service/{id}/commission/{type}", requirements={"id" = "\d+"}, name="service_commission")
+	 */
+	public function editCommissionAction($id, $type)
+	{
+		$prestationService = $this->get('service_prestation');
+		$service = $prestationService->getPrestation($id);
+		if(!$service) {
+			throw $this->createNotFoundException('The service does not exist');
+		}
+		else
+		{
+			if ($type != 1 && $type != 2)
+			{
+				throw $this->createNotFoundException('The service does not exist');
+			}else{
+				$form = $this->createForm('form_commission_prestation', $service->getCommission(), array(
+					'type' => $type
+					));
+				$request = $this->get('request');
+				$form->handleRequest($request);
+				if($request->isMethod('POST'))
+				{
+					$params = $request->request->get('form_commission_prestation');
+					if ($form->isValid())
+					{
+						$serviceCommission = $this->get('service_prestation_commission');
+						$edit = $serviceCommission->editCommission($service->getCommission(), $type, $params);
+						if($edit) {
+							return $this->redirect($this->generateUrl('service_show', array(
+								'id' => $service->getId()
+								))
+							);
+						}
+					}
+				}
+				return $this->render('MainGestionBundle:Services\show:commission.html.twig', array(
+						'prestation' => $service,
+						'form'		=> $form->createView(),
+						'type'		=> $type
+				));
+
+			}
 		}
 	}
 
@@ -82,7 +137,7 @@ class ServicesController extends Controller
 		{
 			$ibanService = $this->get('service_iban');
 			$iban = $ibanService->getPhotographerIban($service->getDevis()->getCompany()->getPhotographer()->getId());
-			$commission = ($service->getPrice() * $this->container->getParameter('commission_particulier'))/100;
+			$commission = ($service->getPrice() * $service->getCommission()->getPhotographer())/100;
 			$price = $service->getPrice() - $commission;
 			$form = $this->createForm('form_transaction', null, array());
 			$request = $this->get('request');

@@ -17,7 +17,7 @@
 						<img src="{{ image64(result['book'].url,result['book'].fileType, 'devis')}}" alt="{{ result['devis'].title }}" /></a>
 					</a>
 					<h3><a href="#" title="">{{ result['devis'].title }}</a></h3>
-					<p> {{ result['devis']. presentation |slice(1, 250) }}</p>	
+					<p> {{ result['devis']. presentation |slice(0, 250) }}</p>	
 					<p>
 						{% if 1 == result['prices']|length %}
 							<h4><strong> {{ result['prices'][0].price }} {{ result['devis'].currency.libelle}}</strong></h4>

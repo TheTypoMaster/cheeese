@@ -56,6 +56,13 @@ gestion:
                 back: Retour
                 evaluations: Evaluations
                 pay: Payer photographe
+            price: Prix de la prestation
+            commission:
+                customer: Commission client
+                photographer: Commission photographe
+                btn:
+                    customer: Modifier
+                    photographer: Modifier
         pay:
             h1: Prestation
             h2: Payer
@@ -73,3 +80,12 @@ gestion:
             p:
                 iban:
                     empty: Le photographe n'a pas d'Iban renseigné.
+        commission:
+            h1: Prestation
+            h2: Commissions
+            breadh1: Prestation
+            breadh2: Commissions
+            header: Edition des commissions de la prestation
+            h3:
+                customer: Modification de la commission client
+                photographer: Modification de la commission photographe

@@ -43,9 +43,12 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context, "@logger"]
         tags:
             - { name: monolog.logger, channel: search }
+    service_prestation_commission:
+        class: "Main\CommonBundle\Services\Services\ServiceCommission"
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger", @service_commission]
     service_prestation:
         class: "Main\CommonBundle\Services\Services\ServicePrestation"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_reference, @service_email, @service_session, "@logger"]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_reference, @service_email, @service_session, "@logger", @service_prestation_commission]
     service_notation:
         class: "Main\CommonBundle\Services\Services\ServiceNotation"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, @service_devis, @service_user, "@logger"]

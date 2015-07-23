@@ -89,3 +89,8 @@ services:
         arguments: []
         tags:
             - { name: form.type, alias: form_commission }
+    form_commission_prestation:
+        class: "Main\CommonBundle\Form\Commissions\FormCommissionPrestationType"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_commission_prestation }

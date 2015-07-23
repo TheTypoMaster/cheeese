@@ -1,0 +1,41 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans from "services" %}gestion.service.commission.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "services" %}gestion.service.commission.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-calendar"></i>{% trans from "services" %}gestion.service.commission.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "services" %}gestion.service.commission.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+                <!-- Main content -->
+                	<h2 class="page-header">
+                		{% trans from "services" %}gestion.service.commission.header{% endtrans %}  {{ prestation.reference }}
+                	</h2>
+                    <div class="row">
+                        <div class="col-xs-12">
+                        	<div class="box">
+                        		<div class="box-header">
+                                    <h3 class="box-title">
+                                    	{% if type == 1%}
+										{% trans from "services" %}gestion.service.commission.h3.customer{% endtrans %}
+										{% elseif type == 2%}
+											{% trans from "services" %}gestion.service.commission.h3.photographer{% endtrans %}
+										{% endif %}
+                                    </h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                		<p>
+                                			{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                                        	{{ form_rest(form) }}
+                                		</p>
+                                </div>
+                                <div class="box-footer">
+                                	<button type="submit" class="btn btn-primary">
+                                        {% trans from "services" %}gestion.service.pay.btn.submit{% endtrans %}
+                                    </button>
+                                	<a class="btn btn-default"  href="{{ path('service_show', {id: prestation.id}) }}">{% trans from "services" %}gestion.service.pay.btn.back{% endtrans %}</a>
+                                </div>
+                                    {{ form_end(form) }}
+
+                            </div>
+                        </div>                        
+                    </div>                            
+{% endblock %}

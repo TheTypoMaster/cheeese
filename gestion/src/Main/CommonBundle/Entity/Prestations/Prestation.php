@@ -10,6 +10,7 @@ use Main\CommonBundle\Entity\Users\User as User;
 use Main\CommonBundle\Entity\Geo\Town as Town;
 use Main\CommonBundle\Entity\Status\PrestationStatus as Status;
 use Main\CommonBundle\Entity\Utils\Duration as Duration;
+use Main\CommonBundle\Entity\Prestations\Commission as Commission;
 
 /**
  * @ORM\EntityListeners({ "Main\CommonBundle\Listener\PrestationListener" })
@@ -84,6 +85,12 @@ class Prestation
 	 * @ORM\JoinColumn(name="status", referencedColumnName="id")
 	 */
 	private $status;
+
+	/**
+	 * @ORM\OneToOne(targetEntity="Main\CommonBundle\Entity\Prestations\Commission", fetch="EAGER", cascade={"persist"})
+	 * @ORM\JoinColumn(name="commission", referencedColumnName="id")
+	 */
+	private $commission;
 	
 	/**
 	 * @var datetime $createdAt
@@ -267,6 +274,20 @@ class Prestation
 	public function setStatus(Status $status)
 	{
 		$this->status = $status;
+	}
+
+	public function getCommission()
+	{
+		return $this->commission;
+	}
+
+	/**
+	 * [setCommission description]
+	 * @param Commission $commission [description]
+	 */
+	public function setCommission(Commission $commission)
+	{
+		$this->commission = $commission;
 	}
 	
 	/**

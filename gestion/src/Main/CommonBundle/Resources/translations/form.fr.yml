@@ -78,4 +78,11 @@ form:
         field:
             customer: Commission client:
             photographer: Commission photographe
-            premium: Commisison photographe premium
+            premium: Commission photographe premium
+    commissionprestation:
+        field:
+            comment: Commentaires
+            customer: Commission client
+            photographer: Commission photographe
+        placeholder:
+            comment: Merci de tout historiser!!

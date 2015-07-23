@@ -14,3 +14,7 @@ form:
         field:
             max: La commission ne peut pas dépasser 50%
             min: La commission ne peut pas être inférieur à 3%
+    commissionprestation:
+        field:
+            max: La commission ne peut pas dépasser 50%
+            min: La commission ne peut pas être inférieur à 3%
