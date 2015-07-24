@@ -1,12 +1,38 @@
-{% block subject %} welcome {% endblock %}
+{% block subject %} 
+	{% trans with {"%name%" : user.username} from "email" %}fosuser.community.confirmation.subject %name%
+	{% endtrans %} 
+{% endblock %}
 
 {% block body_html %}
 	{% embed "MainCommonBundle:Emails:email.html.twig" %}
-		{% block h1 %}{{ user.username }}{% endblock %}
-		{% block p_lead %}test p lead{% endblock %}
-		{% block p %}confirmation{% endblock %}
-		{% block panel %}panel confirmation{% endblock %}
+		{% block h1 %}{{ user.username }},{% endblock %}
+		{% block p_lead %}
+			{% trans from "email" %}fosuser.community.confirmation.p_lead
+			{% endtrans %}
+		{% endblock %}
+		{% block p1 %}
+			{% trans from "email" %}fosuser.community.confirmation.p1
+			{% endtrans %}
+		{% endblock %}
+		{% block p2 %}
+			{% trans from "email" %}fosuser.community.confirmation.p2
+			{% endtrans %}
+		{% endblock %}
+		{% block panel %}
+			{% trans from "email" %}fosuser.community.confirmation.panel
+			{% endtrans %}
+		{% endblock %}
 		{% block link %}{{ confirmationUrl }}{% endblock %}
+		{% block text %}
+			{% trans from "email" %}fosuser.community.confirmation.text
+			{% endtrans %}
+		{% endblock %}
+
+		{% block mail %}
+			{% trans from "email" %}generic.mail.photographer
+			{% endtrans %}
+		{% endblock %}
+
 
 	{% endembed %}
 {% endblock %}

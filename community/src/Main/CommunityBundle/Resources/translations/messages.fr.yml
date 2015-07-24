@@ -33,8 +33,13 @@ security:
             p %email%: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte.
             link: Connexion
         cgu:
-            p: En vous inscrivant, vous confirmez que vous acceptez les Conditions Générales d'utilisation
+            p: En vous inscrivant, vous confirmez que vous acceptez les Conditions Générales du site.
             link: Lire les CGU
+        confirmation:
+            title: Félicitations
+            header: Félicitations
+            p %username%: Félicitations %username%, votre compte est maintenant activé.
+            link: Votre espace.
     resetting:
         reset:
             title: Modification de mon mot de passe

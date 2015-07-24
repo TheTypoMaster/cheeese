@@ -1,20 +1,17 @@
-email:
-    verification:
-        ok:
-            subject: Votre entreprise est valide
-        ko:
-            subject: Votre entreprise n'est pas valide
-    prestation:
-        created:
-            subject: Une nouvelle demande de prestation pour vous
-        pre_accepted:
-            subject %reference%: %reference% a été pré-acceptée
-        refused:
-            subject %reference%: %reference% a été refusée
-        canceled:
-            subject %reference%: %reference% a été annulée
-        accepted:
-            subject %reference%: %reference% a été validée
-    messages:
-        prestation:
-            subject: Vous avez un nouveau message
+fosuser:
+    community:
+        confirmation:
+            subject %name%: Bienvenue sur Cheeese, %name%
+            p_lead: Vous venez de vous inscrire sur Cheeese. Pour activer votre compte, merci de cliquer sur ce lien en dessous de page.
+            p1: Cheeese fait la promesse à ses utilisateurs de les mettre en contact avec des professionnels de la photographie.
+            p2: Afin de pouvoir tenir cette promesse, nous vous invitons à vous rendre au plus vite dans la section « Identification » de l’onglet « Mon entreprise » et à renseigner votre numéro SIRET. Nous pourrons ainsi vérifier votre statut de professionnel et vous pourrez ensuite profiter librement de votre espace.
+            panel: Pour activer votre compte
+            text: Cliquez ici
+        resetting:
+generic:
+    connect:
+        withus: Restons connectés
+        mail: Email
+    mail:
+        photographer: photographers@cheee.se
+        client: clients@cheee.se

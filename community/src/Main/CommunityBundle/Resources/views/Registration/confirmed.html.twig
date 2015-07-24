@@ -2,7 +2,7 @@
 <html class="bg-black">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {{ 'registration.register.confirmed.title' |trans }} {% endblock %}</title>
+    <title>{% block title %} {{ 'security.register.confirmation.title' |trans }} {% endblock %}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
      {% block stylesheets %}
@@ -19,18 +19,12 @@
     <![endif]-->
 </head>
 <body class="bg-black">
-
-{% trans_default_domain 'FOSUserBundle' %}
-
 {% block fos_user_content %}
 	<div class="form-box" id="login-box">
-	<div class="header">{{ 'registration.register.confirmed.header' |trans}}</div>
+	<div class="header">{{ 'security.register.confirmation.header' |trans}}</div>
 	    <div class="body bg-gray">
-		    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-		    {% if app.session is not empty %}
-		        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
-		        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
-		    {% endif %}
+		    <p>{{ 'security.register.confirmation.p %username%'|trans({'%username%': user.username}) }}</p>
+		    <p><a href="{{ path('dashboard') }}">{{ 'security.register.confirmation.link'|trans }}</a></p>
 		 </div>
 	</div>		 
 {% endblock fos_user_content %}
