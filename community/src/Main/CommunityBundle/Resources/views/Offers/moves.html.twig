@@ -13,8 +13,9 @@
                             <p>{% trans with {'%town%': company.town.name} from "offers" %}community.moves.view.help.no.p1 %town%{% endtrans %}</p>
                             <p>
                             	<strong>
-                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}</p>
+                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
                             	</strong>
+                            </p>
                         </div>
                 	{% elseif radius == 1 %}
                 		<div class="callout callout-info">
@@ -22,8 +23,9 @@
                             <p>{% trans with {'%town%': company.town.name} from "offers" %}community.moves.view.help.has.p1 %town%{% endtrans %}</p>
                             <p>
                             	<strong>
-                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}</p>
+                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
                             	</strong>
+                            </p>
                         </div>
                 	{% else %}
                 		<div class="callout callout-info">
@@ -31,8 +33,9 @@
                             <p>{% trans with {'%town%': company.town.name, '%kms%': radius} from "offers" %}community.moves.view.help.has.p %kms% %town%{% endtrans %}</p>
                             <p>
                             	<strong>
-                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}</p>
+                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
                             	</strong>
+                            </p>
                         </div>
                 	{% endif %}
                     <h4 class="page-header">

@@ -25,6 +25,11 @@ community:
                 submit: Soumettre
                 back: Retour à la liste
         read:
+            headband:
+                warning:
+                    banner: Attention
+                    message1: Pour que votre devis apparaisse dans les résultats de recherche, vous devez l’illustrer avec une photo de couverture et fixer au moins un prix
+                    message2: Vous pouvez fixer autant de prix que vous le voulez (chaque prix correspond à un nombre d’heures déterminé).
             h1: Devis
             h2: Détails
             breadh1: Devis
@@ -49,7 +54,11 @@ community:
                 empty: Vous n'avez pas encore de prestations pour ce devis. Vous pouvez modifier votre devis à tout moment, pour essayer d'obtenir d'avantage de demandes
                 active: Prestation(s)
             prices:
-                title %currency%: Prix (en %currency%)
+                help:
+                    h4: Prix de vos prestations
+                    p1: Ici, vous définissez les durées et les prix de vos prestations pour le devis créé. En fonction du nombre d’heures de votre prestation, vous définissez un prix correspondant.
+                    p2: Vous pouvez en définir autant que vous voulez, et cela augmente vos chances d'apparaître dans les résultats de recherche des clients.
+                title: Prix
                 empty: Vous n'avez pas de prix rattachés à ce devis.
                 new:
                     h1: Prix
@@ -78,6 +87,9 @@ community:
                         enable: Activer
                         disable: Désactiver
             book:
+                banner:
+                    warning: Attention!
+                    message: Merci de choisir une photo de couverture pour ce devis
                 title: Photos
                 empty: Vous n'avez pas encore de photos rattachées à ce devis. Illustrez votre devis avec les photos de votre choix. Vous pouvez ajouter jusqu'à 3 photos.
                 new:
@@ -148,13 +160,16 @@ community:
                 0: N/A
     availability:
         view:
+            help:
+                h4: Calendrier
+                p: Pour pouvoir apparaitre dans les résultats de recherche, il est nécessaire de sélectionner les dates auxquelles vous êtes disponibles.
             h1: Disponibilités
             h2: Calendrier
             breadh1: Disponibilités
             breadh2: Calendrier
             header:
                 big: Mettez à jour vos disponibilités
-                small : Mettez à jour quand vous êtes disponible pour travailler
+                small : Indiquez vos disponibilités pour réaliser vos prestations à l’aide du calendrier ci-dessous
             selectall: Tout
             th:
                 sun: Dim

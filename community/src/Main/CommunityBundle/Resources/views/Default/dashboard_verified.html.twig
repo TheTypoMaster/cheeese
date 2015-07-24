@@ -1,3 +1,16 @@
+{% if devis == 0 or moves == null %}
+    <div class="alert alert-success alert-dismissable">
+        <i class="fa fa-check"></i>
+        <b>{% trans with {'%user%' : app.user.username}from "default" %}community.dashboard.headband.success.banner %user%{% endtrans %}</b>
+        <br>
+        {% trans from "default" %}community.dashboard.headband.success.message{% endtrans %}
+        <ul>
+            <li>{% trans from "default" %}community.dashboard.headband.success.li1{% endtrans %}</li>
+            <li>{% trans from "default" %}community.dashboard.headband.success.li2{% endtrans %}</li>
+            <li>{% trans from "default" %}community.dashboard.headband.success.li3{% endtrans %}</li>
+        </ul>
+    </div>
+{% endif %}
 <div class="row">                       
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->

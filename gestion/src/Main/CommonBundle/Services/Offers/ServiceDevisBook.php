@@ -182,4 +182,22 @@ class ServiceDevisBook
 			return false;
 		}
 	}
+
+	/**
+	 * [hasCover description]
+	 * @param  [type]  $photos [description]
+	 * @return boolean         [description]
+	 */
+	public function hasCover($photos)
+	{
+		$has = false;
+		if (count($photos) > 0) {
+			foreach ($photos as $photo) {
+				if ($photo->getProfile() == 1) 
+					$has = true;
+			}
+		}
+		
+		return $has;
+	}
 }

@@ -5,11 +5,13 @@ community:
                 banner: Nouveau photographe
                 message: Bienvenue sur Cheeese, vous devez rentrer les données de votre entreprise (onglet Mon entreprise) afin de pouvoir continuer.
             warning:
-                banner: Données en cours de validation
-                message: Vos données sont en cours de validation. En attendant, vous pouvez mettre à jour vos informations de profil si ce n''est pas déja fait.
+                banner: Vos données en cours de validation
+                message1: Nous vérifions actuellement votre statut professionnel (via votre numéro SIRET). Nous vous enverrons un email dans moins de 24 heures, une fois cette vérification effectuée. Merci pour votre patience ! 
+                message2: En attendant, vous pouvez d'ores et déjà commencer à compléter votre profil dans la section "Profil". A très vite !
             success:
-                banner: Données valide
-                message: Votre entreprise a été validée, vous devez vous reconnecter pour pouvoir utiliser votre nouveau rôle.
+                banner: Données validées
+                message1: Félicitations, votre inscription a été validée par l'équipe de Cheeese !
+                message2: Reconnectez-vous pour accéder à votre nouvel espace et proposer vos prestations. Merci et à très vite !
             danger:
                 banner: Données non valide
                 message: Votre entreprise n'a pu être validée. Merci de corriger vos données puis réessayez.
@@ -24,6 +26,13 @@ community:
             breadh1: Aide & contacts
             breadh2: Page d'aides
     dashboard:
+        headband:
+            success:
+                banner %user%: Bienvenue %user% sur votre nouvel espace !
+                message: Pour apparaître dans les résultats des recherches clients, il vous faudra enrichir votre offre en :
+                li1: Créant des devis
+                li2: Mettant à jour votre rayon de déplacements
+                li3: Gardant à jour vos disponibilités
         verified:
             box:
                 prestations: prestations

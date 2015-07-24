@@ -12,10 +12,16 @@ prestation:
     show:
         header: Détails de la prestation
         confirm:
-                header: Décision définitive
+                header:
+                    cancel: Vous êtes sur le point d’annuler cette réservation !
+                    confirm: Vous êtes sur le point de confirmer votre réservation ! 
                 warningheader: Evaluez cette prestation
-                attention: Attention !
-                message: Cette action est irréversible
+                attention:
+                    cancel: Attention, cette action mettra un terme à la réservation en cours.
+                    confirm: Nous sommes ravis que vous ayez trouvé un photographe pour votre évènement.
+                message:
+                    cancel: Avez-vous tenter de négocier avec le photographe?
+                    confirm: En confirmant cette réservation, le paiement sera effectué et vous acceptez nos conditions d’annulation.
                 warningmessage: Merci d'évaluer cette prestation avant de poursuivre
                 btn:
                     back: Retour

@@ -7,7 +7,38 @@
 {% block breadcrumbH2 %}{% trans from "services" %}community.service.index.breadh2{% endtrans %}{% endblock %}
 {% block content %}
                 <!-- Main content -->
+                {% if services|length > 0 %}
                     <div class="row">
+                        <div class="callout callout-info">
+                            <h4>{% trans from "services" %}community.service.index.help.h4{% endtrans %}</h4>
+                            <br>
+                            <ul>
+                                <li>{% trans from "services" %}community.service.index.help.li1.status {% endtrans %}
+                                : {% trans from "services" %}community.service.index.help.li1.message {% endtrans %}
+                                </li>
+                                <li>{% trans from "services" %}community.service.index.help.li2.status {% endtrans %}
+                                : {% trans from "services" %}community.service.index.help.li2.message {% endtrans %}
+                                </li>
+                                <li>{% trans from "services" %}community.service.index.help.li3.status {% endtrans %}
+                                : {% trans from "services" %}community.service.index.help.li3.message {% endtrans %}
+                                </li>
+                                <li>{% trans from "services" %}community.service.index.help.li4.status {% endtrans %}
+                                : {% trans from "services" %}community.service.index.help.li4.message {% endtrans %}
+                                </li>
+                                <li>{% trans from "services" %}community.service.index.help.li5.status {% endtrans %}
+                                : {% trans from "services" %}community.service.index.help.li5.message {% endtrans %}
+                                </li>
+                                <li>{% trans from "services" %}community.service.index.help.li6.status {% endtrans %}
+                                : {% trans from "services" %}community.service.index.help.li6.message {% endtrans %}
+                                </li>
+                                <li>{% trans from "services" %}community.service.index.help.li7.status {% endtrans %}
+                                : {% trans from "services" %}community.service.index.help.li7.message {% endtrans %}
+                                </li>
+                                <li>{% trans from "services" %}community.service.index.help.li8.status {% endtrans %}
+                                : {% trans from "services" %}community.service.index.help.li8.message {% endtrans %}
+                                </li>
+                            </ul>
+                        </div>
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
@@ -17,6 +48,20 @@
                             </div><!-- /.box -->
                         </div>
                     </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                    <div class="box-header">
+                                        <h3 class="box-title">{% trans from "services" %}community.service.index.empty.header{% endtrans %}</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        {% trans from "services" %}community.service.index.empty.body{% endtrans %}
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
 {% endblock %}
 
 {% block javascripts_inline %}

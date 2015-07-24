@@ -6,6 +6,35 @@ community:
             breadh1: Prestations
             breadh2: Toutes mes prestations
             header: Mes prestations
+            empty:
+                header: Pas de prestations
+                body: Vous n'avez pas de prestations
+            help:
+                h4: Dans cet espace, vous retrouvez le détail de vos prestations, ainsi que leur statut
+                li1:
+                    status: En cours 
+                    message: Vous avez reçu une nouvelle demande, mais vous n’avez pas encore pré-approuvé ou refusé
+                li2:
+                    status: Pré-approuvée
+                    message: Vous avez pré-accepté la prestation, vous attendez désormais que le client confirme ou annule
+                li3:
+                    status: Refusée
+                    message: Vous avez refusé la prestation
+                li4:
+                    status: Annulée
+                    message: Le client a annulé sa demande
+                li5:
+                    status: Confirmée 
+                    message: La prestation est réservée
+                li6:
+                    status: Traitée
+                    message: La prestation a été traitée
+                li7:
+                    status: Livrée
+                    message: Le client a confirmer la fin de la prestation, vous allez bientôt recevoir un virement bancaire.
+                li8:
+                    status: Cloturée
+                    message: Vous avez été payé pour la prestation. Elle est cloturée.
         list:
             th:
                 date: Date
@@ -48,11 +77,18 @@ community:
                 devis: Devis
             li:
                 at: à
-            confirm:
-                header: Décision définitive
-                attention: Attention !
-                message: Cette action est irréversible
             btn:
+                back : Retour
+            confirm:
+                header:
+                    pre_accept: Vous êtes sur le point de pré-accepter cette réservation !
+                    refuse: Vous êtes sur le point de refuser cette réservation !
+                attention:
+                    pre_accept: Nous sommes ravis que vous ayez trouvé un évènement à photographier.
+                    refuse: Attention, cette action mettra un terme à la réservation en cours.
+                message:
+                    pre_accept: En pré-acceptant cette réservation, le client aura la possibilité de confirmer la réservation.
+                    refuse: Avez-vous tenter de proposer autre chose au client?
                 back: Retour à la liste
                 approve: Pré-approuver cette prestation
                 refuse: Refuser cette prestation

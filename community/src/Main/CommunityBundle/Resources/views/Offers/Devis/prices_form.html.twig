@@ -20,6 +20,11 @@
 {% endblock %}
 {% block content %}
 <section class="content">
+    <div class="callout callout-info">
+        <h4>{% trans from "offers" %}community.devis.read.prices.help.h4{% endtrans %}</h4>
+        <p>{% trans from "offers" %}community.devis.read.prices.help.p1{% endtrans %}</p>
+        <p>{% trans from "offers" %}community.devis.read.prices.help.p2{% endtrans %}</p>
+    </div>
 	<div class="row">
 			<div class="col-md-12">
                             <div class="box box-primary">
@@ -32,6 +37,7 @@
                                         {% trans with {'%name%':devis.title, '%duration%':price.duration.libelle} from "offers" %}community.devis.read.prices.edit.header %name% %duration%{% endtrans %}                                        
                                         {% endif %}
                                     </h3>
+                                    <i class="fa fa-eur"></i>
                                 </div>
                                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
                                     <div class="box-body">									

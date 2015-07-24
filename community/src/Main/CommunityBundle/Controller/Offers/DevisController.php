@@ -367,9 +367,11 @@ class DevisController extends Controller
 		{
 			$servicePhoto = $this->get('service_devis_book');
 			$photos = $servicePhoto->getBook($devis);
+			$cover = $servicePhoto->hasCover($photos);
 			return $this->render('MainCommunityBundle:Offers\Devis:book_manage.html.twig', array(
 					'photos'	=> $photos,
-					'devis'		=> $devis
+					'devis'		=> $devis,
+					'cover'		=> $cover
 			));
 		}
 	}

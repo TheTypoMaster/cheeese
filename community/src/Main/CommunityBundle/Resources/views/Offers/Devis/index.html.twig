@@ -7,6 +7,15 @@
 {% block breadcrumbH2 %}{% trans from "offers" %}community.devis.read.breadh2{% endtrans %}{% endblock %}
 {% block content %}
                 <!-- Main content -->
+                {% if photos == null or prices == null %}
+                <div class="alert alert-warning alert-dismissable">
+                    <i class="fa fa-warning"></i>
+                    <b>{% trans from "offers" %}community.devis.read.headband.warning.banner{% endtrans %}</b>
+                    {% trans from "offers" %}community.devis.read.headband.warning.message1{% endtrans %}
+                    <br>
+                    {% trans from "offers" %}community.devis.read.headband.warning.message2{% endtrans %}
+                </div>
+                {% endif %}
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
