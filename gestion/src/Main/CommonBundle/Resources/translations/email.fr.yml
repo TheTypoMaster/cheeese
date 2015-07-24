@@ -28,7 +28,41 @@ community:
             p2: Vous pouvez dès à présent vous reconnecter pour accéder à votre nouvel espace et compléter votre profil de manière à pouvoir proposer vos prestations. Si vous êtes déjà connecté à la réception de cet email, il vous suffit de vous déconnecter et de vous reconnecter. 
             panel: Grâce à Cheeese, vous allez pouvoir être mis en relation avec de nouveaux clients et accroître votre visibilité.
             text: Cliquez ici pour accéder à votre nouvel espace
-    prestation:
+prestation:
+    accepted:
+        subject:
+        p_lead:
+        p1:
+        p2:
+        panel:
+        text:
+    canceled:
+        subject: Votre réservation a été annulée 
+        p_lead %reference%: Malheureusement, votre réservation %reference% a été annulée avant paiement par le client.
+        p1: Nous sommes désolés qu'une opportunité comme celle ci ne ce soit pas concrétisée.
+        panel: En mettant à jour régulierement vos offres, vous maintenez vos chances de toujours apparaître dans les résultats de recherche des clients.
+        text: Accédez à votre espace
+    created:
+        subject: Félicitations ! Vous avez reçu une nouvelle demande
+        p_lead %reference%: Nous sommes ravis de vous annoncer que vous avez reçu une nouvelle demande de prestation %reference%
+        p1: Vous pouvez dès à présent pré-approuver cette demande, la refuser ou discuter via la messagerie si vous avez besoin de plus d’informations pour prendre votre décision. 
+        p2: Attention, en pré-approuvant cette demande, vous acceptez nos conditions d’annulation. 
+        panel: Nous vous conseillons de répondre à cette demande dès que possible, afin de maximiser vos chances de réservation.
+        text: Cliquez ici pour consulter cette demande
+    pre_accepted:
+        subject:
+        p_lead:
+        p1:
+        p2:
+        panel:
+        text:
+    refused:
+        subject:
+        p_lead:
+        p1:
+        p2:
+        panel:
+        text:
 generic:
     connect:
         withus: Restons connectés

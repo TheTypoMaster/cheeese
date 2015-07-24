@@ -71,7 +71,7 @@ class ServiceEmail
             case 1:
                 $to = $photographer;
                 $template = 'MainCommonBundle:Emails\Prestations:created.html.twig';
-                $subject = $this->translator->trans('email.prestation.created.subject', array(), 'email');
+                $subject = $this->translator->trans('prestation.created.subject', array(), 'email');
                 break;
             case 2:
                 //PHOTOGRAPHER_OK
@@ -96,9 +96,7 @@ class ServiceEmail
                 $to = $photographer;
                 $template = 'MainCommonBundle:Emails\Prestations:canceled.html.twig';
                 $subject = $this->translator->trans(
-                    'email.prestation.canceled.subject %reference%', 
-                    array('%reference%' => $prestation->getReference()), 
-                    'email');
+                    'prestation.canceled.subject',array(),'email');
                 break;
             case 5:
             //Valide
