@@ -1,4 +1,25 @@
-{% extends "MainCommonBundle:Emails:email.html.twig" %}
-{% block h1 %}H1 test{% endblock %}
-{% block p_lead %}test p lead{% endblock %}
-{% block p %}test p{% endblock %}
+{% embed "MainCommonBundle:Emails:email.html.twig" %}
+		{% block h1 %}{{ prestation.client.username }},{% endblock %}
+		{% block p_lead %}
+			{% trans with{'%reference%' : prestation.reference} from "email" %}prestation.refused.p_lead %reference%
+			{% endtrans %}
+		{% endblock %}
+		{% block p1 %}
+			{% trans from "email" %}prestation.refused.p1
+			{% endtrans %}
+		{% endblock %}
+		{% block panel %}
+			{% trans from "email" %}prestation.refused.panel
+			{% endtrans %}
+		{% endblock %}
+		{% block link %}{{ base_url}}/{% endblock %}
+		{% block text %}
+			{% trans from "email" %}prestation.refused.text
+			{% endtrans %}
+		{% endblock %}
+
+		{% block mail %}
+			{% trans from "email" %}generic.mail.client
+			{% endtrans %}
+		{% endblock %}
+	{% endembed %}

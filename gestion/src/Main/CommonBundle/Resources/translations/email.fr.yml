@@ -30,39 +30,43 @@ community:
             text: Cliquez ici pour accéder à votre nouvel espace
 prestation:
     accepted:
-        subject:
-        p_lead:
-        p1:
-        p2:
-        panel:
-        text:
+        subject: Félicitations ! Vous avez une nouvelle réservation
+        p_lead %reference%: Nous sommes ravis de vous annoncer que la prestation %reference% a été payée par le client
+        p1: Pour rappel, vous êtes tenus de respecter ce qui est décrit dans la prestation réservée, et ce qui a été convenu à travers votre conversation sur notre messagerie.
+        p2: Nous vous transfèrerons le montant de la réservation effectuée sur votre compte, déduction faite des frais de services, une fois que le client aura confirmé avoir bien reçu le livrable convenu. S’il ne confirme pas, et si nous n’avons pas reçu de plaintes de la part du client, nous effectuerons le virement 30 jours après la date de la prestation.
+        panel: Pour plus d'informations sur cette prestation
+        text: cliquez ici
     canceled:
         subject: Votre réservation a été annulée 
-        p_lead %reference%: Malheureusement, votre réservation %reference% a été annulée avant paiement par le client.
-        p1: Nous sommes désolés qu'une opportunité comme celle ci ne ce soit pas concrétisée.
-        panel: En mettant à jour régulierement vos offres, vous maintenez vos chances de toujours apparaître dans les résultats de recherche des clients.
+        p_lead %reference%: Malheureusement, la réservation en cours %reference% a été annulée par le client. Le client n’ayant pas confirmé la réservation, aucun virement sur votre compte ne sera effectué.
+        p1: Nous sommes désolés qu'une opportunité comme celle-ci ne se soit pas concrétisée.
+        panel: En mettant à jour régulièrement vos offres, vous maintenez vos chances de toujours apparaître dans les résultats de recherche des clients.
         text: Accédez à votre espace
     created:
         subject: Félicitations ! Vous avez reçu une nouvelle demande
         p_lead %reference%: Nous sommes ravis de vous annoncer que vous avez reçu une nouvelle demande de prestation %reference%
         p1: Vous pouvez dès à présent pré-approuver cette demande, la refuser ou discuter via la messagerie si vous avez besoin de plus d’informations pour prendre votre décision. 
-        p2: Attention, en pré-approuvant cette demande, vous acceptez nos conditions d’annulation. 
+        p2: Attention, en pré-approuvant cette demande, vous acceptez nos conditions d’annulation.
         panel: Nous vous conseillons de répondre à cette demande dès que possible, afin de maximiser vos chances de réservation.
         text: Cliquez ici pour consulter cette demande
     pre_accepted:
-        subject:
-        p_lead:
-        p1:
-        p2:
-        panel:
-        text:
+        subject: Félicitations ! Votre demande a été pré-acceptée
+        p_lead %reference% %photographer%: Nous sommes ravis de vous annoncer que votre demande %reference% a été pré-acceptée par %photographer% 
+        p1: Vous pouvez dès à présent confirmer votre réservation, l’annuler ou discuter via la messagerie si vous avez besoin de plus d’informations pour prendre votre décision.
+        p2: Attention, en confirmant votre réservation, vous serez prélevé du montant de la prestation et vous acceptez nos conditions d’annulation. Rassurez-vous, nous ne payons le photographe que lorsque nous avons eu votre confirmation que la prestation s’est déroulée comme prévue, et que vous avez reçu vos photos.
+        panel: Nous vous conseillons de répondre dès que possible, afin de maximiser vos chances de réservation. Vous pouvez consulter cette demande en vous rendant sur votre 
+        text: espace
     refused:
-        subject:
-        p_lead:
-        p1:
-        p2:
-        panel:
-        text:
+        subject: Votre demande a été refusée par le photographe
+        p_lead %reference%: Malheureusement, votre demande de réservation %reference% a été refusée par le photographe. Rassurez-vous, vous n’avez pas été débité.
+        p1: Heureusement, il y a d’autres photographes sur Cheeese ! Nous vous invitons à continuer vos recherches sur notre site et nous espérons que vous trouverez rapidement un photographe pour votre évènement.
+        panel: Renouvelez votre recherche en 
+        text: cliquant ici
+    message:
+        subject: Vous avez reçu un nouveau message
+        p_lead %reference%: Vous avez reçu un nouveau message concernant la prestation %reference%
+        panel: Vous pouvez le consulter et répondre directement sur votre
+        text: conversation
 generic:
     connect:
         withus: Restons connectés

@@ -77,19 +77,13 @@ class ServiceEmail
                 //PHOTOGRAPHER_OK
                 $to = $client;
                 $template = 'MainCommonBundle:Emails\Prestations:pre_accepted.html.twig';
-                $subject = $this->translator->trans(
-                    'email.prestation.pre_accepted.subject %reference%', 
-                    array('%reference%' => $prestation->getReference()),
-                    'email');
+                $subject = $this->translator->trans('prestation.pre_accepted.subject', array(),'email');
                 break;
             case 3:
             //Cancel-photographer
                 $to = $client;
                 $template = 'MainCommonBundle:Emails\Prestations:refused.html.twig';
-                $subject = $this->translator->trans(
-                    'email.prestation.refused.subject %reference%', 
-                    array('%reference%' => $prestation->getReference()), 
-                    'email');
+                $subject = $this->translator->trans('prestation.refused.subject',array(),'email');
                 break;
             case 4:
             //Cancel-Client
@@ -103,9 +97,7 @@ class ServiceEmail
                 $to = $photographer;
                 $template = 'MainCommonBundle:Emails\Prestations:accepted.html.twig';
                 $subject = $this->translator->trans(
-                    'email.prestation.accepted.subject %reference%', 
-                    array('%reference%' => $prestation->getReference()), 
-                    'email');;
+                    'prestation.accepted.subject',array(), 'email');;
                 break;
             /*
             case 6:
@@ -144,9 +136,24 @@ class ServiceEmail
     {
         $to = $message->getReceiver()->getEmail();
         $template = 'MainCommonBundle:Emails\Messages:prestation.html.twig';
-        $subject = $this->translator->trans('email.messages.prestation.subject', array(), 'email');
-        $from = self::EMAIL;
-        $body = $this->templating->render($template, array('prestation' => $message->getPrestation()));
+        $subject = $this->translator->trans('prestation.message.subject', array(), 'email');
+        $from = self::EMAIL; 
+        if ($to == $message->getPrestation()->getClient()->getEmail()) {
+            $body = $this->templating->render($template, array(
+                'prestation'    => $message->getPrestation(),
+                'user'          => $message->getReceiver(),
+                'base_url'      => $this->front,
+                'type'          => 1
+                ));
+                
+        }else {
+            $body = $this->templating->render($template, array(
+                'prestation'    => $message->getPrestation(),
+                'user'          => $message->getReceiver(),
+                'base_url'      => $this->community,
+                'type'          => 2
+                ));
+        }
         $this->sendMessage($from, $to, $subject, $body);
 
 
