@@ -1,14 +1,31 @@
-{% extends "MainCommonBundle:Emails:email.html.twig" %}
-{% block h1 %}
-{{ photographer.username }},
-{% endblock %}
-{% block p_lead %}test p lead{% endblock %}
-{% block p %}
-<p>
-	<a href="">Testons maintenant l'effet</a>
-	<p>
-		C'est du <strong>HTML</strong>
-	</p>
-</p>
-{% endblock %}
-{% block link %}http://yahoo.fr{% endblock %}
+{% embed "MainCommonBundle:Emails:email.html.twig" %}
+		{% block h1 %}{{ photographer.username }},{% endblock %}
+		{% block p_lead %}
+			{% trans from "email" %}community.verification.ok.p_lead
+			{% endtrans %}
+		{% endblock %}
+		{% block p1 %}
+			{% trans from "email" %}community.verification.ok.p1
+			{% endtrans %}
+		{% endblock %}
+		{% block p2 %}
+			{% trans from "email" %}community.verification.ok.p2
+			{% endtrans %}
+		{% endblock %}
+		{% block panel %}
+			{% trans from "email" %}community.verification.ok.panel
+			{% endtrans %}
+		{% endblock %}
+		{% block link %}{{ base_url}}/{% endblock %}
+		{% block text %}
+			{% trans from "email" %}community.verification.ok.text
+			{% endtrans %}
+		{% endblock %}
+
+		{% block mail %}
+			{% trans from "email" %}generic.mail.photographer
+			{% endtrans %}
+		{% endblock %}
+
+
+	{% endembed %}

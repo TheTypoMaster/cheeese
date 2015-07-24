@@ -17,14 +17,24 @@ class ServiceEmail
 
     protected $translator;
 
+    protected $community;
+
+    protected $front;
+
     /**
     *
     */
-    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $twig, Translator $translator)
+    public function __construct(\Swift_Mailer $mailer, 
+                                \Twig_Environment $twig, 
+                                Translator $translator,
+                                $linkCommunity,
+                                $linkFront)
     {
         $this->mailer = $mailer;
         $this->templating = $twig;
         $this->translator = $translator;
+        $this->community = $linkCommunity;
+        $this->front = $linkFront;
 
     }
     
@@ -35,14 +45,14 @@ class ServiceEmail
     {
     	if($status == 2) {
     		$template = 'MainCommonBundle:Emails:verificationOk.html.twig';
-        	$subject = $this->translator->trans('email.verification.ok.subject', array(), 'email');
+        	$subject = $this->translator->trans('community.verification.ok.subject %name%', array('%name%' => $photographer->getUsername()), 'email');
     	}else {
     		$template = 'MainCommonBundle:Emails:verificationKO.html.twig';
     		$subject = $this->translator->trans('community.verification.ko.subject', array(), 'email');
     	}
         $from = self::EMAIL;
     	$to = $photographer->getEmail();
-        $body = $this->templating->render($template, array('photographer' => $photographer));
+        $body = $this->templating->render($template, array('photographer' => $photographer, 'base_url' => $this->community));
         $this->sendMessage($from, $to, $subject, $body);
     }
     /**
@@ -117,7 +127,11 @@ class ServiceEmail
         }
         if($template != null) {
         $from = self::EMAIL;
-        $body = $this->templating->render($template, array('prestation' => $prestation));
+        if ($to == $photographer) {            
+            $body = $this->templating->render($template, array('prestation' => $prestation, 'base_url' => $this->community));
+        }elseif ($to == $client) {
+           $body = $this->templating->render($template, array('prestation' => $prestation, 'base_url' => $this->front));
+        }        
         $this->sendMessage($from, $to, $subject, $body);    
         }
         

@@ -1,4 +1,4 @@
-{% embed "MainCommonBundle:Emails:email.html.twig" %}
+	{% embed "MainCommonBundle:Emails:email.html.twig" %}
 		{% block h1 %}{{ photographer.username }},{% endblock %}
 		{% block p_lead %}
 			{% trans from "email" %}community.verification.ko.p_lead
@@ -16,9 +16,16 @@
 			{% trans from "email" %}community.verification.ko.panel
 			{% endtrans %}
 		{% endblock %}
+		{% block link %} {{ base_url}}/company{% endblock %}
+		{% block text %}
+			{% trans from "email" %}community.verification.ko.text
+			{% endtrans %}
+		{% endblock %}
 
 		{% block mail %}
 			{% trans from "email" %}generic.mail.photographer
 			{% endtrans %}
 		{% endblock %}
-{% endembed %}
+
+
+	{% endembed %}

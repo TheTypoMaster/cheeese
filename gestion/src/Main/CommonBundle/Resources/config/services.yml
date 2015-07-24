@@ -4,7 +4,7 @@ services:
 #services
     service_email:
         class: "Main\CommonBundle\Services\Emails\ServiceEmail"
-        arguments: [@mailer, @twig, @translator.default]
+        arguments: [@mailer, @twig, @translator.default, "%link_community%", "%link_front%"]
     service_reference:
         class: "Main\CommonBundle\Services\Services\ServiceReference"
         arguments: []

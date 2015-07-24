@@ -19,9 +19,15 @@ community:
             p_lead: Vous vous êtes récemment inscrit en tant que photographe sur Cheeese
             p1: Malheureusement, nous n’avons pas pu valider votre compte pour le moment. Le numéro SIRET que vous avez renseigné ne nous permet pas de vérifier que vous êtes un photographe disposant d’un statut professionnel, une condition nécessaire pour faire partie de notre communauté de photographes.
             p2: Il est possible que votre numéro SIRET ne soit plus valide, ou que vous l’ayez mal renseigné lors de la saisie. N’hésitez pas à faire une nouvelle tentative !
-            panel: Merci et nous espérons vous compter parmi notre communauté très bientôt,
-            text: Cliquez ici pour vous connecter à votre compte
+            panel: Merci et nous espérons vous compter parmi notre communauté très bientôt.
+            text: Cliquez ici pour modifier vos données d'entreprise.
         ok:
+            subject %name%: Félicitations %name%! Vos données ont été validées
+            p_lead: Félicitations, votre inscription a été validée par notre équipe !
+            p1: Nous sommes très heureux de vous compter parmi la communauté des photographes professionnels de Cheeese.
+            p2: Vous pouvez dès à présent vous reconnecter pour accéder à votre nouvel espace et compléter votre profil de manière à pouvoir proposer vos prestations. Si vous êtes déjà connecté à la réception de cet email, il vous suffit de vous déconnecter et de vous reconnecter. 
+            panel: Grâce à Cheeese, vous allez pouvoir être mis en relation avec de nouveaux clients et accroître votre visibilité.
+            text: Cliquez ici pour accéder à votre nouvel espace
     prestation:
 generic:
     connect:
