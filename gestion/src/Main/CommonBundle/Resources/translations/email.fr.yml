@@ -8,6 +8,21 @@ fosuser:
             panel: Pour activer votre compte
             text: Cliquez ici
         resetting:
+            subject %name%: Réinitialisez votre mot de passe %name%
+            p_lead: Vous avez récemment demander à réinitialiser votre mot de passe.
+            panel: Pour le faire
+            text: Cliquez ici
+community:
+    verification:
+        ko:
+            subject: Votre numéro SIRET n’est pas valide
+            p_lead: Vous vous êtes récemment inscrit en tant que photographe sur Cheeese
+            p1: Malheureusement, nous n’avons pas pu valider votre compte pour le moment. Le numéro SIRET que vous avez renseigné ne nous permet pas de vérifier que vous êtes un photographe disposant d’un statut professionnel, une condition nécessaire pour faire partie de notre communauté de photographes.
+            p2: Il est possible que votre numéro SIRET ne soit plus valide, ou que vous l’ayez mal renseigné lors de la saisie. N’hésitez pas à faire une nouvelle tentative !
+            panel: Merci et nous espérons vous compter parmi notre communauté très bientôt,
+            text: Cliquez ici pour vous connecter à votre compte
+        ok:
+    prestation:
 generic:
     connect:
         withus: Restons connectés

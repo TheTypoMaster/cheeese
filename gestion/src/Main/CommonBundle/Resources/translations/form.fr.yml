@@ -3,7 +3,7 @@ form:
         field:
             firstname: Prénom
             lastname: Nom
-            title: Titre
+            title: Dénomination sociale
             address: Adresse
             town: Ville
             identification: N° Siret

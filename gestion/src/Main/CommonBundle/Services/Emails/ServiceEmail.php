@@ -38,8 +38,7 @@ class ServiceEmail
         	$subject = $this->translator->trans('email.verification.ok.subject', array(), 'email');
     	}else {
     		$template = 'MainCommonBundle:Emails:verificationKO.html.twig';
-    		$subject = $this->translator->trans('email.verification.ok.subject', array(), 'email');
-        	
+    		$subject = $this->translator->trans('community.verification.ko.subject', array(), 'email');
     	}
         $from = self::EMAIL;
     	$to = $photographer->getEmail();
@@ -157,7 +156,6 @@ class ServiceEmail
             ->setContentType('text/html');
 
         $this->mailer->send($mail);
-    }
-	
-	
+        
+    }	
 }

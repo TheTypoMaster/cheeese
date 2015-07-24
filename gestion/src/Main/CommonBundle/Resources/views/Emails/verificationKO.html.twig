@@ -1,6 +1,24 @@
-{% extends "MainCommonBundle:Emails:email.html.twig" %}
-{% block h1 %}H1 test{% endblock %}
-{% block p_lead %}test p lead{% endblock %}
-{% block p %}
-<strong>C'est ko fiston</strong>
-{% endblock %}
+{% embed "MainCommonBundle:Emails:email.html.twig" %}
+		{% block h1 %}{{ photographer.username }},{% endblock %}
+		{% block p_lead %}
+			{% trans from "email" %}community.verification.ko.p_lead
+			{% endtrans %}
+		{% endblock %}
+		{% block p1 %}
+			{% trans from "email" %}community.verification.ko.p1
+			{% endtrans %}
+		{% endblock %}
+		{% block p2 %}
+			{% trans from "email" %}community.verification.ko.p2
+			{% endtrans %}
+		{% endblock %}
+		{% block panel %}
+			{% trans from "email" %}community.verification.ko.panel
+			{% endtrans %}
+		{% endblock %}
+
+		{% block mail %}
+			{% trans from "email" %}generic.mail.photographer
+			{% endtrans %}
+		{% endblock %}
+{% endembed %}

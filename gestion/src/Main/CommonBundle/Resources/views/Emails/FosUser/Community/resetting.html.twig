@@ -1,12 +1,29 @@
-{% block subject %} Test Resetting your password{% endblock %}
+{% block subject %} 
+	{% trans with {"%name%" : user.username} from "email" %}fosuser.community.resetting.subject %name%
+	{% endtrans %}
+{% endblock %}
 
 {% block body_html %}
 	{% embed "MainCommonBundle:Emails:email.html.twig" %}
-		{% block h1 %}H1 test{% endblock %}
-		{% block p_lead %}test p lead{% endblock %}
-		{% block p %}request{% endblock %}
-		{% block panel %}panel{% endblock %}
+		{% block h1 %}{{ user.username }},{% endblock %}
+		{% block p_lead %}
+			{% trans from "email" %}fosuser.community.resetting.p_lead
+			{% endtrans %}
+		{% endblock %}
+		{% block panel %}
+			{% trans from "email" %}fosuser.community.resetting.panel
+			{% endtrans %}
+		{% endblock %}
 		{% block link %}{{ confirmationUrl }}{% endblock %}
+		{% block text %}
+			{% trans from "email" %}fosuser.community.resetting.text
+			{% endtrans %}
+		{% endblock %}
+
+		{% block mail %}
+			{% trans from "email" %}generic.mail.photographer
+			{% endtrans %}
+		{% endblock %}
 
 	{% endembed %}
 {% endblock %}
