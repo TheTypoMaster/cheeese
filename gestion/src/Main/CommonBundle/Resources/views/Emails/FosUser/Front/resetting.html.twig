@@ -1,0 +1,29 @@
+{% block subject %} 
+	{% trans with {"%name%" : user.username} from "email" %}fosuser.front.resetting.subject %name%
+	{% endtrans %}
+{% endblock %}
+
+{% block body_html %}
+	{% embed "MainCommonBundle:Emails:email.html.twig" %}
+		{% block h1 %}{{ user.username }},{% endblock %}
+		{% block p_lead %}
+			{% trans from "email" %}fosuser.front.resetting.p_lead
+			{% endtrans %}
+		{% endblock %}
+		{% block panel %}
+			{% trans from "email" %}fosuser.front.resetting.panel
+			{% endtrans %}
+		{% endblock %}
+		{% block link %}{{ confirmationUrl }}{% endblock %}
+		{% block text %}
+			{% trans from "email" %}fosuser.front.resetting.text
+			{% endtrans %}
+		{% endblock %}
+
+		{% block mail %}
+			{% trans from "email" %}generic.mail.client
+			{% endtrans %}
+		{% endblock %}
+
+	{% endembed %}
+{% endblock %}

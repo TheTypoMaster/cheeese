@@ -138,9 +138,10 @@ fos_user:
             from_email:
                 address:        resetting@acmedemo.com
                 sender_name:    cheeese
+            template: MainCommonBundle:Emails\\FosUser\\Front:confirmation.html.twig
     resetting:
         email:
-            template: GestionGestionBundle:User:resetting.email.html.twig
+            template: MainCommonBundle:Emails\\FosUser\\Front:resetting.html.twig
             from_email:
                 address:        resetting@acmedemo.com
                 sender_name:    cheeese

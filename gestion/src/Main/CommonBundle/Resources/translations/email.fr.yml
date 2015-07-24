@@ -12,6 +12,18 @@ fosuser:
             p_lead: Vous avez récemment demander à réinitialiser votre mot de passe.
             panel: Pour le faire
             text: Cliquez ici
+    front:
+        confirmation:
+            subject %name%: Bienvenue sur Cheeese, %name%
+            p_lead: Vous venez de vous inscrire sur Cheeese. Nous sommes ravis de vous compter parmis nos utilisateurs !
+            p1: Grâce à Cheeese, vous allez pouvoir trouver et réserver des photographes pour vos évènements en quelques clics, et en toute sécurité !
+            panel: Pour activer votre compte, merci de cliquer sur ce
+            text: lien d’activation.
+        resetting:
+            subject %name%: Réinitialisez votre mot de passe %name%
+            p_lead: Vous avez récemment demander à réinitialiser votre mot de passe.
+            panel: Pour le faire
+            text: Cliquez ici
 community:
     verification:
         ko:
