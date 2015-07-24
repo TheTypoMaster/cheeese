@@ -1,7 +1,7 @@
 <div class="row">
 	 <div class="col-xs-12">
 	    		{% if  null == commentPhotographer %}
-	    			<a class="btn btn-primary"  href="{{ path('notation', { 'id' : prestation.id}) }}">{% trans from "services" %}community.service.show.btn.evaluate{% endtrans %}</a>
+	    			<a class="btn btn-primary"  href="{{ path('notation', { 'id' : prestation.id}) }}">{% trans from "services" %}community.service.show.confirm.evaluate{% endtrans %}</a>
 	    		{% endif %} 
 	 </div>
 	   {% if null != commentPhotographer and null != commentClient %}

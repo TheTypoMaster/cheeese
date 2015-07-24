@@ -79,6 +79,11 @@ community:
                 at: à
             btn:
                 back : Retour
+            price:
+                lead: Prix de la prestation
+                devis: Prix du devis
+                tax: Frais de service
+                total: Total à percevoir
             confirm:
                 header:
                     pre_accept: Vous êtes sur le point de pré-accepter cette réservation !

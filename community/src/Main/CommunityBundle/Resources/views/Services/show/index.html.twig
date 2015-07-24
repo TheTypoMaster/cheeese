@@ -66,9 +66,33 @@
 	                                	</h4>
 	                            </div>
 	                            <div class="box-body">
-	                            	<p><a href="{{ path('devis_read', {id: prestation.devis.id})}}">{{ prestation.devis.title }}</a></p>
-	                            	<p>{{ prestation.price }} ({{ prestation.devis.currency.libelle }})</p>
-	                            	<p>{{ prestation.status.libelle }}</p>
+	                            	<p><a href="{{ path('devis_read', {id: prestation.devis.id})}}">{{ prestation.devis.title }}</a></p>                            	
+	                            	<p>
+                                        {{ include('MainCommunityBundle:Services:status.html.twig', 
+                                        {id: prestation.status.id}, with_context = false) }}
+                                    </p>
+                                    <p class="lead">{% trans from "services" %}community.service.show.price.lead{% endtrans %}</p>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th style="width:50%">{% trans from "services" %}community.service.show.price.devis{% endtrans %}:</th>
+                                                        <td>{{ prestation.price}}€</td>
+                                                    </tr>
+                                                    <tr>
+                                                        {% set pourcent = prestation.price*prestation.commission.photographer/100 %}
+                                                        <th style="width:50%">{% trans from "services" %}community.service.show.price.tax{% endtrans %}:</th>
+                                                        <td>{{ pourcent|number_format(2)}}€</td>
+                                                    </tr>
+                                                    <tr>
+                                                        {% set total = prestation.price - pourcent %}
+                                                        <th style="width:50%">{% trans from "services" %}community.service.show.price.total{% endtrans %}:</th>
+                                                        <td>{{total|number_format(2)}}€</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </p>
 	                            </div>
                                  <div class="box-footer">
                                     

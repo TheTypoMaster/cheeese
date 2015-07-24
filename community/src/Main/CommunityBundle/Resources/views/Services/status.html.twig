@@ -1,0 +1,17 @@
+{% if 1 == id %}
+    <span class="label label-default">{% trans from "services" %}community.service.list.td.status.processing{% endtrans %}</span>
+{% elseif 2 == id %}
+    <span class="label label-warning">{% trans from "services" %}community.service.list.td.status.photographer_ok{% endtrans %}</span>
+{% elseif 3 == id %}
+    <span class="label label-danger">{% trans from "services" %}community.service.list.td.status.photographer_ko{% endtrans %}</span>
+{% elseif 4 == id %}
+    <span class="label label-danger">{% trans from "services" %}community.service.list.td.status.client_ko{% endtrans %}</span>
+{% elseif 5 == id  %}
+    <span class="label label-success">{% trans from "services" %}community.service.list.td.status.success{% endtrans %}</span>
+{% elseif 6 == id %}
+    <span class="label label-primary">{% trans from "services" %}community.service.list.td.status.old{% endtrans %}</span>
+{% elseif 7 == id %}
+    <span class="label label-primary">{% trans from "services" %}community.service.list.td.status.delivered{% endtrans %}</span>
+{% elseif 8 == id %}
+    <span class="label label-primary">{% trans from "services" %}community.service.list.td.status.closed{% endtrans %}</span>
+{% endif %}

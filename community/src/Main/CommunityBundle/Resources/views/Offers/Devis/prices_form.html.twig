@@ -36,8 +36,8 @@
                                         {% else %}
                                         {% trans with {'%name%':devis.title, '%duration%':price.duration.libelle} from "offers" %}community.devis.read.prices.edit.header %name% %duration%{% endtrans %}                                        
                                         {% endif %}
+                                        (€)
                                     </h3>
-                                    <i class="fa fa-eur"></i>
                                 </div>
                                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
                                     <div class="box-body">									
