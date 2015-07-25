@@ -45,13 +45,15 @@ class ServiceController extends Controller
 		}
 		else
 		{
+			$messageService = $this->get('service_message');
+			$messageNotification= $this->get('service_notification');
 			$commentClient  = null;
 			$commentPhotographer = null;
 			$formView = null;
 			$allowed = false;
-			$passed = $prestationService->isPassed($service);
-			$messageService = $this->get('service_message');
+			$passed = $prestationService->isPassed($service);			
 			$messageService->readMessages($id);
+			$messageNotification->readNotifications($id);
 			$messages = $messageService->getPrestationMessages($id);
 			if($prestationService->isCommentAllowed($service))
 			{

@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 
 
-class TwigWeekPrestations extends \Twig_Extension
+class TwigDataRequest extends \Twig_Extension
 {
 
 	/**
@@ -21,6 +21,8 @@ class TwigWeekPrestations extends \Twig_Extension
 	 * @var string
 	 */
 	private $repository;
+
+	private $repositoryMessages;
 	
 	private $securityContext;
 
@@ -29,7 +31,8 @@ class TwigWeekPrestations extends \Twig_Extension
 	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, Translator $translator)
 	{
 		$this->em = $entityManager;
-		$this->repository = $this->em->getRepository('MainCommonBundle:Prestations\Prestation');
+		$this->repositoryNotifications = $this->em->getRepository('MainCommonBundle:Messages\Notification');
+		$this->repositoryMessages = $this->em->getRepository('MainCommonBundle:Messages\Message');
 		$this->securityContext = $securityContext;
 		$this->translator = $translator;
 
@@ -39,7 +42,8 @@ class TwigWeekPrestations extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'weekprestations' => new \Twig_Function_Method($this, 'weekprestations')
+            'notifications' => new \Twig_Function_Method($this, 'notifications'),
+            'messagesNotifs'	  => new \Twig_Function_Method($this, 'messagesNotifs'),
             );
     }
     
@@ -47,12 +51,22 @@ class TwigWeekPrestations extends \Twig_Extension
 		return $this->securityContext->getToken()->getUser();
 	}
 
-    public function weekprestations()
+	/**
+	 * [messagesNotif description]
+	 * @return [type] [description]
+	 */
+	public function messagesNotifs()
+	{
+		return $this->repositoryMessages->getUnreadPrestationsMessages($this->getCurrentUser()->getId());
+	}
+
+	/**
+	 * [weekprestations description]
+	 * @return [type] [description]
+	 */
+    public function notifications()
     {
-        $next = date("Y-m-d",strtotime("+1 week"));
-        $today = date("Y-m-d",strtotime("today"));
-		$prestations =  $this->repository->getWeekPrestations($today, $next, 5, $this->getCurrentUser()->getId()); 
-        return $prestations;
+        return $this->repositoryNotifications->getUnreadPrestationsNotifications($this->getCurrentUser()->getId());
     }
     
     public function getName()

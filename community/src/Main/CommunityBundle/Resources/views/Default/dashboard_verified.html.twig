@@ -11,108 +11,135 @@
         </ul>
     </div>
 {% endif %}
-<div class="row">                       
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-aqua">
-                                <div class="inner">
-                                    <h3>{{ prestations }}</h3>
-                                    <p>{% trans from "default"%}community.dashboard.verified.box.prestations{% endtrans %}</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-bag"></i>
-                                </div>
-                                <a href="{{ path('service') }}" class="small-box-footer">
-                                    {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %} 
-                                    <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-maroon">
-                                <div class="inner">
-                                    <h3>{{ devis }}</h3>
-                                    <p>{% trans from "default"%}community.dashboard.verified.box.devis{% endtrans %}</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios7-pricetag-outline"></i>
-                                </div>
-                                <a href="{{ path('devis') }}" class="small-box-footer">
-                                    {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %} 
-                                    <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-purple">
-                                <div class="inner">
-                                    {% if moves != null %}
-                                    <h3>{{ moves.radius }} <sup style="font-size: 20px">kms</sup></h3>
-                                    {% else %}
-                                    <h3>0 <sup style="font-size: 20px">kms</sup></h3>
-                                    {% endif %}
-                                    <p>{% trans from "default"%}community.dashboard.verified.box.moves{% endtrans %}</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios7-briefcase-outline"></i>
-                                </div>
-                                    <a href="{{ path('moves') }}" class="small-box-footer">
-                                    {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %} 
-                                    <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-yellow">
-                                <div class="inner">
-                                    <h3>{{ money }}<sup style="font-size: 20px">€</sup></h3>
-                                    <p>{% trans from "default"%}community.dashboard.verified.box.money{% endtrans %}</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <a href="{{ path('transactions')}}" class="small-box-footer">
-                                    {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %} 
-                                    <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                    </div><!-- /.row -->
-                    <!-- Main row -->
-                    <div class="row">
-                        <!-- Left col -->
-                        <section class="col-lg-6 connectedSortable">
-                            <!-- Custom tabs (Charts with tabs)-->
-                            <div class="nav-tabs-custom">
-                                <!-- Tabs within a box -->
-                                <ul class="nav nav-tabs pull-right">
-                                    <li class="pull-left header"><i class="fa fa-unsorted"></i>
-                                    {% trans from "default"%}community.dashboard.verified.devis{% endtrans %}
-                                    </li>
-                                </ul>
-                                <div class="tab-content no-padding">
-                                    <div class="chart tab-pane active" id="sales-chart" style="position: relative; height: 300px;"></div>
-                                </div>
-                            </div><!-- /.nav-tabs-custom -->               
-                        </section><!-- /.Left col -->
-                        <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                        <section class="col-lg-6 connectedSortable"> 
-                           <div class="nav-tabs-custom">
-                                <!-- Tabs within a box -->
-                                <ul class="nav nav-tabs pull-right">
-                                    <li class="pull-left header"><i class="fa fa-inbox"></i>
-                                    {% trans from "default"%}community.dashboard.verified.prestations{% endtrans %}
-                                    </li>
-                                </ul>
-                                <div class="tab-content no-padding">
-                                    <div class="chart tab-pane active" id="bar-chart" style="position: relative; height: 300px;"></div>
-                                </div>
-                            </div><!-- /.nav-tabs-custom -->   
-                                
-                            </div><!-- /.box -->
+    <div class="row">                       
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>{{ prestations }}</h3>
+                    <p>{% trans from "default"%}community.dashboard.verified.box.prestations{% endtrans %}</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="{{ path('service') }}" class="small-box-footer">
+                    {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %} <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-maroon">
+                <div class="inner">
+                    <h3>{{ devis }}</h3>
+                    <p>{% trans from "default"%}community.dashboard.verified.box.devis{% endtrans %}</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios7-pricetag-outline"></i>
+               </div>
+                <a href="{{ path('devis') }}" class="small-box-footer">
+                    {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %}<i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    {% if moves != null %}
+                        <h3>{{ moves.radius }} <sup style="font-size: 20px">kms</sup></h3>
+                    {% else %}
+                    <h3>0 <sup style="font-size: 20px">kms</sup></h3>
+                    {% endif %}
+                    <p>{% trans from "default"%}community.dashboard.verified.box.moves{% endtrans %}</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios7-briefcase-outline"></i>
+                </div>
+                <a href="{{ path('moves') }}" class="small-box-footer">
+                    {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %}<i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>{{ money }}<sup style="font-size: 20px">€</sup></h3>
+                    <p>{% trans from "default"%}community.dashboard.verified.box.money{% endtrans %}</p>
+                </div>
+                <div class="icon">
+                   <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="{{ path('transactions')}}" class="small-box-footer">
+                   {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %} 
+                    <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div><!-- ./col -->
+    </div><!-- /.row -->
+    <!-- Main row -->
+    <div class="row">
+        <section class="col-lg-6 connectedSortable">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs pull-right">
+                    <li class="pull-left header"><i class="fa fa-unsorted"></i>
+                       {% trans from "default"%}community.dashboard.verified.devis{% endtrans %}
+                    </li>
+                </ul>
+                <div class="tab-content no-padding">
+                        <div class="chart tab-pane active" id="sales-chart" style="position: relative; height: 300px;">
+                        </div>
+                </div>
+            </div><!-- /.nav-tabs-custom -->               
+        </section><!-- /.Left col -->
+        <section class="col-lg-6 connectedSortable"> 
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs pull-right">
+                    <li class="pull-left header"><i class="fa fa-inbox"></i>
+                       {% trans from "default"%}community.dashboard.verified.prestations{% endtrans %}
+                    </li>
+                </ul>
+                <div class="tab-content no-padding">
+                    <div class="chart tab-pane active" id="bar-chart" style="position: relative; height: 300px;">
+                    </div>
+                </div>
+            </div><!-- /.nav-tabs-custom -->   
+        </section><!-- right col -->
+    </div>
 
-                        </section><!-- right col -->
-                    </div><!-- /.row (main row) -->                        
+    {% if week|length > 0 %}
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            <i class="fa fa-tasks"></i>
+                                {% trans from "default"%}community.dashboard.week.header{% endtrans %}
+                        </h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>{% trans from "default"%}community.dashboard.week.th.date{% endtrans %}</th>
+                                <th>{% trans from "default"%}community.dashboard.week.th.address{% endtrans %}</th>
+                                <th>{% trans from "default"%}community.dashboard.week.th.town{% endtrans %}</th>
+                                <th>{% trans from "default"%}community.dashboard.week.th.offer{% endtrans %}</th>
+                                <th></th>
+                            </tr>
+                            {% for entity in week %}
+                                <tr>
+                                    <td>{{ entity.starttime | date('d-m-Y H:i')}}</td>
+                                    <td>{{ entity.address }}</td>
+                                    <td>{{ entity.town.name }}</td>
+                                    <td>{{ entity.devis.title }}</td>
+                                    <td>
+                                        <form action="{{ path('service_show', {'id' : entity.id }) }}"><button class="btn btn-default btn-sm">{% trans from "default" %}community.dashboard.week.td.btn.details{% endtrans %}</button></form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+        <br><br>
+    {% endif %}
+
+                        

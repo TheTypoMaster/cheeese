@@ -23,6 +23,9 @@ services:
     service_commission:
         class: "Main\CommonBundle\Services\Commission\ServiceCommission"
         arguments: [@doctrine.orm.entity_manager, @service_session, "@logger"]
+    service_notification:
+        class: "Main\CommonBundle\Services\Messages\ServiceNotification"
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]
     service_user:
         class: "Main\CommonBundle\Services\Users\ServiceUser"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "%upload_pp_path%", "@logger"]
@@ -51,7 +54,7 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger", @service_commission]
     service_prestation:
         class: "Main\CommonBundle\Services\Services\ServicePrestation"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_reference, @service_email, @service_session, "@logger", @service_prestation_commission]
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_reference, @service_email, @service_session, "@logger", @service_prestation_commission, @service_notification]
     service_notation:
         class: "Main\CommonBundle\Services\Services\ServiceNotation"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, @service_devis, @service_user, "@logger"]
@@ -92,14 +95,22 @@ services:
         class: Main\CommonBundle\Listener\EmailListener
         tags:
             - { name: doctrine.orm.entity_listener }
+    listener_message:
+        class: Main\CommonBundle\Listener\MessageListener
+        tags:
+            - { name: doctrine.orm.entity_listener }
+    listener_notification:
+        class: Main\CommonBundle\Listener\NotificationListener
+        tags:
+            - { name: doctrine.orm.entity_listener }
 #Extension
     twig_base64:
         class: "Main\CommonBundle\Services\Extensions\TwigImage64"
         arguments: ["%upload_pp_path%", "%upload_devis_path%"]
         tags:
             - { name: "twig.extension"}
-    twig_week_prestations:
-        class: "Main\CommonBundle\Services\Extensions\TwigWeekPrestations"
+    Twig_Data_Request:
+        class: "Main\CommonBundle\Services\Extensions\TwigDataRequest"
         arguments: [@doctrine.orm.entity_manager, @security.context, @translator.default]
         tags:
             - { name: "twig.extension"}

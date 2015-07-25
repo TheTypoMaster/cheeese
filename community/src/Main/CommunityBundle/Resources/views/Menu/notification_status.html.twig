@@ -1,0 +1,16 @@
+{% if id == 1 %}
+    <i class="fa fa-warning warning"></i>
+        {% trans from "menu" %}menu.up.notification.created{% endtrans %}  
+{% elseif id == 4 %}
+	<i class="fa fa-warning danger"></i>
+        {% trans from "menu" %}menu.up.notification.canceled{% endtrans %}
+{% elseif id == 5 %}
+	<i class="fa fa-warning success"></i>
+        {% trans from "menu" %}menu.up.notification.confirmed{% endtrans %}
+{% elseif id == 7 %}
+	<i class="fa fa-warning primary"></i>
+        {% trans from "menu" %}menu.up.notification.delivered{% endtrans %}
+{% elseif id == 8 %}
+	<i class="fa fa-warning primary"></i>
+        {% trans from "menu" %}menu.up.notification.closed{% endtrans %}
+{% endif %}

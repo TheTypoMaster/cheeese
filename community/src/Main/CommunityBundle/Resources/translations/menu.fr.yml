@@ -31,9 +31,19 @@ menu:
         profile: Profil
         signout: Déconnexion
         week:
-            one: Vous avez une prestation confirmée durant les 7 prochains jours
-            more %count%: Vous avez %count% prestations confirmées durant les 7 prochains jours
-            all: Tout voir
+            one: Vous avez une nouvelle notification concernant vos prestations
+            more %count%: Vous avez %count% nouvelles notifications concernant vos prestations
+        messages:
+            one: Vous avez une nouveau messages
+            more %count%: Vous avez %count% nouveaux messages
+            from: Vous avez un nouveau message
+            from %user%:  de %user% concernant la prestation
+        notification:
+            created: Vous avez une nouvelle demande
+            canceled: Une demande a été annulée
+            confirmed: Une demande a été confirmée
+            delivered: Une demande a été notée
+            closed: Une demande a été cloturée
     footer:
         help: Aide et contact
         copyrights: Tous droits réservés

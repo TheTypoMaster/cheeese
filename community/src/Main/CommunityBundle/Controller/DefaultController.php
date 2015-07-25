@@ -47,6 +47,7 @@ class DefaultController extends Controller
 			$groupbydevis = null;
 			$groupbyprest = null;
 			$money 		  = null;
+			$week 		  = null;
 		}else {
 			$prestations 	= $prestationService->countAllMyServices();
 			$devis 		 	= $devisService->CountAllMyActiveDevis();
@@ -54,6 +55,7 @@ class DefaultController extends Controller
 			$groupbydevis 	= $devisService->groupMyDevis();
 			$groupbyprest 	= $prestationService->groupMyPrestations();
 			$money			= $transactionService->getTotalMoney($company);	
+			$week			= $prestationService->getWeekPrestations();
 		}		
 		return $this->render('MainCommunityBundle:Default:index.html.twig',  array(
 				'prestations'	=> $prestations,
@@ -62,6 +64,7 @@ class DefaultController extends Controller
 				'groupByDevis'	=> json_encode($groupbydevis),
 				'groupByPrest'	=> json_encode($groupbyprest),
 				'money'			=> $money,
+				'week'			=> $week
 		));	
 	}
 

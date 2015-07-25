@@ -36,5 +36,55 @@ class MessageRepository extends EntityRepository
 				'updatedAt' 	=> $date->format('Y-m-d H:i:s'),
 				));	
 	}
+
+	/**
+	 * [getUnreadPrestationMessages description]
+	 * @param  [type] $user [description]
+	 * @return [type]       [description]
+	 */
+	public function getUnreadPrestationsMessages($user) {
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('m')
+			->from('MainCommonBundle:Messages\Message', 'm')
+			->where('m.receiver = :user')
+			->andWhere('m.read = :status')
+			->andWhere('m.type = :type')
+			->setParameters(array(
+					'user'  	=> $user,
+					'status'	=> 0,
+					'type'		=> 1 //Concerne les prestations uniquement
+				));
+		$query = $qb->getQuery();
+		$query->setResultCacheId('getUnreadPrestationsMessages_'.$user);
+		$query->useQueryCache(true);
+		$query->useResultCache(true, 3600, 'getUnreadPrestationsMessages_'.$user);//1h
+		return $query->getResult();
+	}
+	
+	/**
+	 * [getUnreadPrestationMessages description]
+	 * @param  [type] $user       [description]
+	 * @param  [type] $prestation [description]
+	 * @return [type]             [description]
+	 */
+	public function getUnreadPrestationMessages($user, $prestation)
+	{
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('m')
+			->from('MainCommonBundle:Messages\Message', 'm')
+			->where('m.receiver = :user')
+			->andWhere('m.read = :status')
+			->andWhere('m.prestation = :prestation')
+			->setParameters(array(
+					'user'  		=> $user,
+					'status'		=> 0,
+					'prestation'	=> $prestation //Concerne les prestations uniquement
+				));
+		$query = $qb->getQuery();
+		$query->setResultCacheId('getUnreadPrestationMessages_'.$user.'_'.$prestation);
+		$query->useQueryCache(true);
+		$query->useResultCache(true, 3600, 'getUnreadPrestationMessages_'.$user.'_'.$prestation);//1h
+		return $query->getResult();
+	}
 	
 }

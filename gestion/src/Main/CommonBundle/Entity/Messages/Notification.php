@@ -10,12 +10,12 @@ use Main\CommonBundle\Entity\Users\User as User;
 
 
 /**
- * @ORM\EntityListeners({ "Main\CommonBundle\Listener\MessageListener" })
- * @ORM\Table(name="messages.message")
- * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Messages\MessageRepository")
+ * @ORM\EntityListeners({ "Main\CommonBundle\Listener\NotificationListener" })
+ * @ORM\Table(name="messages.notification")
+ * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Messages\NotificationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Message
+class Notification
 {
 	/**
 	 * @var bigint $id
@@ -26,11 +26,6 @@ class Message
 	 */
 	private $id;
 	
-	/**
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User")
-	 * @ORM\JoinColumn(name="sender", referencedColumnName="id")
-	 */
-	private $sender;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User")
@@ -59,7 +54,7 @@ class Message
 	private $read;
 	
 	/**
-	 * @ORM\Column(name="content", type="text", nullable=false)
+	 * @ORM\Column(name="content", type="bigint", nullable=false)
 	 */
 	private $content;
 	
@@ -94,23 +89,6 @@ class Message
 	public function setId($id)
 	{
 		$this->id = $id;
-	}
-	
-	/**
-	 * 
-	 */
-	public function getSender()
-	{
-		return $this->sender;
-	}
-	
-	/**
-	 * 
-	 * @param User $sender
-	 */
-	public function setSender(User $sender)
-	{
-		$this->sender = $sender;
 	}
 	
 	/**

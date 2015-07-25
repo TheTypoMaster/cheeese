@@ -14,7 +14,7 @@ use Main\CommonBundle\Services\Services\ServiceReference;
 use Main\CommonBundle\Services\Emails\ServiceEmail;
 use Main\CommonBundle\Services\Session\ServiceSession;
 use Main\CommonBundle\Services\Services\ServiceCommission;
-
+use Main\CommonBundle\Services\Messages\ServiceNotification;
 
 class ServicePrestation
 {
@@ -51,6 +51,8 @@ class ServicePrestation
 	private $logger;
 
 	private $serviceCommissionPrestation;
+
+	private $notification;
 	/**
 	 * 
 	 * @param EntityManager $entityManager
@@ -62,7 +64,8 @@ class ServicePrestation
 								ServiceEmail $mailer, 
 								ServiceSession $service, 
 								LoggerInterface $logger, 								
-								ServiceCommission $commissionServicePrestation)
+								ServiceCommission $commissionServicePrestation,
+								ServiceNotification $notificationService)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Prestations\Prestation');
@@ -72,6 +75,7 @@ class ServicePrestation
 		$this->session = $service;
 		$this->logger = $logger;		
 		$this->serviceCommissionPrestation = $commissionServicePrestation;
+		$this->notification = $notificationService;
 	}
 	
 	/**
@@ -393,6 +397,7 @@ class ServicePrestation
 			$this->CreateFirstPrestationMessage($prestation, $client, $devis->getCompany()->getPhotographer(), 1, $message);
 			$this->em->flush();
 			$this->mailer->prestationUpdateEmail($prestation);
+			$this->notification->createPrestationNotification($prestation);
 			return $prestation;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
@@ -493,6 +498,7 @@ class ServicePrestation
 			$this->em->flush();
 			//Envoi du mail
             $this->mailer->prestationUpdateEmail($prestation);
+            $this->notification->createPrestationNotification($prestation);
 			$this->session->successFlashMessage($flashMessage);	
 			return true;
 		}catch(\Exception $e){

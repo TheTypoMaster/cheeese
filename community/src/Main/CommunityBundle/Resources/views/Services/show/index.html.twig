@@ -104,9 +104,9 @@
                             <a class="btn btn-default"  href="{{ path('service') }}">
                                 {% trans from "services" %}community.service.show.btn.back{% endtrans %}</a>
 									{% if 1 == prestation.status.id %}
-									<a class="btn btn-success" data-toggle="modal" data-target="#approveModal">{% trans from "services" %}community.service.show.btn.approve{% endtrans %}
+									<a class="btn btn-success" data-toggle="modal" data-target="#approveModal">{% trans from "services" %}community.service.show.confirm.approve{% endtrans %}
                                     </a>
-									<a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal">{% trans from "services" %}community.service.show.btn.refuse{% endtrans %}
+									<a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal">{% trans from "services" %}community.service.show.confirm.refuse{% endtrans %}
                                     </a>
 									{% endif %}   
                           </div>
@@ -145,6 +145,7 @@
     	                            </div>
                             	</div>
                             </div>
+                            <br><br>
                         {% endif %}
                         <!-- Confirm Boxes-->
                         {% include "MainCommunityBundle:Services\\show:confirm_boxes.html.twig" %}

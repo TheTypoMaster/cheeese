@@ -108,12 +108,7 @@ class ServiceMessage
 	 */
 	public function readMessages($prestation)
 	{
-		$messages = $this->repository->findBy(array(
-				'prestation' => $prestation,
-				'receiver'	 => $this->getCurrentUser()->getId(),
-				'read'		 => 0
-				));
-		
+		$messages = $this->repository->getUnreadPrestationMessages($this->getCurrentUser()->getId(), $prestation);	
 		if(count($messages) > 0)
 		{
 			//Update et rendre a 1
@@ -121,7 +116,6 @@ class ServiceMessage
 			{
 				$message->setRead(1);
 				$message->setUpdatedAt(new \DateTime('now'));
-				$this->em->persist($message);				
 			}
 			$this->em->flush();
 		}

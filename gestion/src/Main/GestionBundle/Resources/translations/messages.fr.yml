@@ -169,7 +169,8 @@ flash:
                 edit: Votre rayon de déplacements a été mis à jour
                 create: Votre rayon de déplacements a bien été créé
             prestation:
-                status: L'état de la prestation a été mis à jour
+                status:
+                    index: L'état de la prestation a été mis à jour
                 closed: La prestation a été clotûré
             notation:
                 create: votre évaluation a bien été créée

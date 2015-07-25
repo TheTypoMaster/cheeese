@@ -15,10 +15,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">
-                    	{% trans from "services" %}community.service.show.btn.confirm.back{% endtrans %}
+                    	{% trans from "services" %}community.service.show.confirm.confirm.back{% endtrans %}
                     </button>
                     <a href="{{ path('service_pre_approve', { 'id' : prestation.id }) }}" role="button" class="btn btn-success" id="aSuppr">
-                    	{% trans from "services" %}community.service.show.btn.confirm.confirm{% endtrans %}
+                    	{% trans from "services" %}community.service.show.confirm.confirm.confirm{% endtrans %}
                     </a>
                 </div>
             </div>
@@ -42,10 +42,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">
-                    {% trans from "services" %}community.service.show.btn.confirm.back{% endtrans %}
+                    {% trans from "services" %}community.service.show.confirm.confirm.back{% endtrans %}
                 </button>
                     <a href="{{ path('service_refuse', { 'id' : prestation.id }) }}" role="button" class="btn btn-danger">
-                    {% trans from "services" %}community.service.show.btn.confirm.confirm{% endtrans %}
+                    {% trans from "services" %}community.service.show.confirm.confirm.confirm{% endtrans %}
                 </a>
                 </div>
             </div>

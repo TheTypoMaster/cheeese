@@ -16,41 +16,76 @@
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
                         {% if is_granted('ROLE_PHOTOGRAPHER_VERIFIED') %}
-                          <li class="dropdown messages-menu">
-                            {% set prestations = weekprestations() %}
-                            {% if prestations|length > 0 %}
+                            <li class="dropdown messages-menu">
+                                {% set messages = messagesNotifs() %}
+                                {% if messages|length > 0 %}
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                    <i class="fa fa-envelope"></i>
+                                    <span class="label label-success">{{ messages|length }}</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="header">
+                                            {% if 1 == messages|length %}
+                                                {% trans from "menu" %}menu.up.messages.one{% endtrans %}
+                                            {% else %}
+                                                {% trans with {'%count%': messages|length } from "menu" %}menu.up.messages.more %count%{% endtrans %}
+                                            {% endif %}
+
+                                        </li>
+                                        <li>
+                                            <ul class="menu">
+                                                {% for message in messages %}
+                                                    <li>
+                                                        <a href="{{ path('service_show', { id : message.prestation.id})}}">
+                                                        <div class="pull-left">
+                                                            <img class="img-circle" src="{{ image64(message.prestation.client.photo, message.prestation.client.photoType, 'pp') }}" alt="{{ message.prestation.client.username }}" height="40" width="40"/>
+                                                        </div>
+                                                        <h4>{% trans from "menu" %}menu.up.messages.from {% endtrans %}</h4>
+                                                        <p>
+                                                            {% trans with {'%user%': message.prestation.client.username } from "menu" %}menu.up.messages.from %user%{% endtrans %}                                      </p>
+                                                        <p>
+                                                        {{ message.prestation.reference }}
+                                                        </p>
+                                                        </a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                        <li class="footer"><a href="#"></a></li>
+                                    </ul>
+                                {% endif %}                                
+                            </li>
+                          <li class="dropdown notifications-menu">
+                            {% set notifications = notifications() %}
+                            {% if notifications|length > 0 %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                              <i class="fa fa-bell-o"></i>
-                              <span class="label label-success">{{ prestations|length }}</span>
+                              <i class="fa fa-warning"></i>
+                              <span class="label label-warning">{{ notifications|length }}</span>
                             </a>
                             <ul class="dropdown-menu">
                               <li class="header">
-                                {% if 1 == prestations|length %}
+                                {% if 1 == notifications|length %}
                                         {% trans from "menu" %}menu.up.week.one{% endtrans %}
                                     {% else %}
-                                         {% trans with {'%count%': prestations|length } from "menu" %}menu.up.week.more %count%{% endtrans %}
+                                         {% trans with {'%count%': notifications|length } from "menu" %}menu.up.week.more %count%{% endtrans %}
                                     {% endif %}
 
                               </li>
                               <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                  {% for prestation in prestations %}
+                                    {% for notification in notifications %}
                                         <li>
-                                        <a href="{{ path('service_show', { id : prestation.id})}}">
-                                        <div class="pull-left">
-                                            <img class="img-circle" src="{{ image64(prestation.client.photo, prestation.client.photoType, 'pp') }}" alt="{{ prestation.client.username }}" height="40" width="40"/>
-                                        </div>
-                                        <h4>{{ prestation.devis.category.name }}
-                                        <small><i class="fa fa-clock-o"></i>{{ prestation.startTime|date('d-m-Y')}}</small>
-                                        </h4>
-                                        <p>{{ prestation.town.name }}</p>
-                                        </a>
+                                            <a href="{{ path('service_show', { id : notification.prestation.id})}}">
+                                                {{ include('MainCommunityBundle:Menu:notification_status.html.twig', 
+                                        {id: notification.prestation.status.id}, with_context = false) }}
+                                                
+                                            </a>                                        
                                         </li>
-                                    {% endfor %}
+                                    {% endfor %}                                  
                                  </ul>
                               </li>
-                              <li class="footer"><a href="{{ path('service')}}">{% trans from "menu" %}menu.up.week.all{% endtrans %}</a></li>
+                              <li class="footer"><a href="#"></a></li>
                             </ul>
                             {% endif %} 
                         </li>
