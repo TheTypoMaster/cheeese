@@ -15,9 +15,14 @@ services:
         arguments: [@security.context]
         tags:
             - { name: form.type, alias: form_presentation }
+    form_email:
+        class: "Main\CommonBundle\Form\Users\FormEmailType"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_email }
     form_security:
         class: "Main\CommonBundle\Form\Users\FormSecurityType"
-        arguments: [@security.context, @security.password_encoder ]
+        arguments: [@security.context, @security.password_encoder]
         tags:
             - { name: form.type, alias: form_security }
     form_create_admin:

@@ -2,9 +2,12 @@ imports:
     - { resource: forms.yml }
 services:
 #services
+    service_preference_emails:
+        class: "Main\CommonBundle\Services\Users\ServiceEmail"
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]
     service_email:
         class: "Main\CommonBundle\Services\Emails\ServiceEmail"
-        arguments: [@mailer, @twig, @translator.default, "%link_community%", "%link_front%"]
+        arguments: [@mailer, @twig, @translator.default, @service_preference_emails, "%link_community%", "%link_front%"]
     service_reference:
         class: "Main\CommonBundle\Services\Services\ServiceReference"
         arguments: []
@@ -83,6 +86,10 @@ services:
             - { name: doctrine.orm.entity_listener }
     listener_prestation:
         class: Main\CommonBundle\Listener\PrestationListener
+        tags:
+            - { name: doctrine.orm.entity_listener }
+    listener_email:
+        class: Main\CommonBundle\Listener\EmailListener
         tags:
             - { name: doctrine.orm.entity_listener }
 #Extension

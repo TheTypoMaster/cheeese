@@ -6,6 +6,7 @@ use Main\CommonBundle\Entity\Users\User;
 use Main\CommonBundle\Entity\Prestations\Prestation;
 use Main\CommonBundle\Entity\Messages\Message;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
+use Main\CommonBundle\Services\Users\ServiceEmail as ServicePreference;
 use Twig_Environment as Environment;
 
 class ServiceEmail 
@@ -27,12 +28,14 @@ class ServiceEmail
     public function __construct(\Swift_Mailer $mailer, 
                                 \Twig_Environment $twig, 
                                 Translator $translator,
+                                ServicePreference $preferenceEmail,
                                 $linkCommunity,
                                 $linkFront)
     {
         $this->mailer = $mailer;
         $this->templating = $twig;
         $this->translator = $translator;
+        $this->preference = $preferenceEmail;
         $this->community = $linkCommunity;
         $this->front = $linkFront;
 
@@ -63,41 +66,46 @@ class ServiceEmail
      */
     public function prestationUpdateEmail(Prestation $prestation) {
         $status = $prestation->getStatus()->getId();
-        $photographer = $prestation->getDevis()->getCompany()->getPhotographer()->getEmail();
-        $client = $prestation->getClient()->getEmail();
+        $photographer = $prestation->getDevis()->getCompany()->getPhotographer();
+        $client = $prestation->getClient();
         $template = null;
         switch ($status)
         {
             case 1:
-                $to = $photographer;
+                $to = $photographer->getEmail();
                 $template = 'MainCommonBundle:Emails\Prestations:created.html.twig';
                 $subject = $this->translator->trans('prestation.created.subject', array(), 'email');
+                $send = $this->canReceiveEmails($photographer, 1);
                 break;
             case 2:
                 //PHOTOGRAPHER_OK
-                $to = $client;
+                $to = $client->getEmail();
                 $template = 'MainCommonBundle:Emails\Prestations:pre_accepted.html.twig';
                 $subject = $this->translator->trans('prestation.pre_accepted.subject', array(),'email');
+                $send = $this->canReceiveEmails($client, 1);
                 break;
             case 3:
             //Cancel-photographer
-                $to = $client;
+                $to = $client->getEmail();
                 $template = 'MainCommonBundle:Emails\Prestations:refused.html.twig';
                 $subject = $this->translator->trans('prestation.refused.subject',array(),'email');
+                $send = $this->canReceiveEmails($client, 1);
                 break;
             case 4:
             //Cancel-Client
-                $to = $photographer;
+                $to = $photographer->getEmail();
                 $template = 'MainCommonBundle:Emails\Prestations:canceled.html.twig';
                 $subject = $this->translator->trans(
                     'prestation.canceled.subject',array(),'email');
+                $send = $this->canReceiveEmails($photographer, 1);
                 break;
             case 5:
             //Valide
-                $to = $photographer;
+                $to = $photographer->getEmail();
                 $template = 'MainCommonBundle:Emails\Prestations:accepted.html.twig';
                 $subject = $this->translator->trans(
                     'prestation.accepted.subject',array(), 'email');;
+                $send = $this->canReceiveEmails($photographer, 1);
                 break;
             /*
             case 6:
@@ -115,11 +123,11 @@ class ServiceEmail
             */
 
         }
-        if($template != null) {
+        if($template != null && $send) {
         $from = self::EMAIL;
-        if ($to == $photographer) {            
+        if ($to == $photographer->getEmail()) {            
             $body = $this->templating->render($template, array('prestation' => $prestation, 'base_url' => $this->community));
-        }elseif ($to == $client) {
+        }elseif ($to == $client->getEmail()) {
            $body = $this->templating->render($template, array('prestation' => $prestation, 'base_url' => $this->front));
         }        
         $this->sendMessage($from, $to, $subject, $body);    
@@ -154,11 +162,12 @@ class ServiceEmail
                 'type'          => 2
                 ));
         }
-        $this->sendMessage($from, $to, $subject, $body);
-
-
+        
+        $send = $this->canReceiveEmails($message->getReceiver(), 2);
+        if ($send){
+            $this->sendMessage($from, $to, $subject, $body);
+        }
     }
-
     
 
     /**
@@ -177,4 +186,24 @@ class ServiceEmail
         $this->mailer->send($mail);
         
     }	
+
+    /**
+     * [canReceiveEmails description]
+     * @param  User   $user [description]
+     * @param  [type] $type [description]
+     * @return [type]       [description]
+     */
+    protected function canReceiveEmails(User $user, $type)
+    {
+        $result = true;
+        $emails = $this->preference->getPreferences($user);
+        if ($type == 1)
+        {
+            return $emails->getPrestation();
+        }elseif($type == 2) {
+            return $emails->getMessages();
+        }else{
+            return $emails->getNewsletter();
+        }
+    }
 }

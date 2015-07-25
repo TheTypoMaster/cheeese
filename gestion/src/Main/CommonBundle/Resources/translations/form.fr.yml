@@ -86,3 +86,11 @@ form:
             photographer: Commission photographe
         placeholder:
             comment: Merci de tout historiser!!
+    email:
+        field:
+            prestation: Recevoir un email à chaque fois que l'une de mes prestations est mise à jour?
+            message: Recevoir un email à chaque fois que je recois un message?
+            newsletter: Recevoir notre newsletter?
+        choices:
+            yes: Oui
+            no: Non

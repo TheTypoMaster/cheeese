@@ -109,6 +109,8 @@ flash:
             availability:
                 index: Votre calendrier a bien été mis à jour
                 error: Merci de rentrer au moins une date
+            email:
+                index: Vos préférences ont bien étés mis à jour
 about:
     menu:
         about: A propos

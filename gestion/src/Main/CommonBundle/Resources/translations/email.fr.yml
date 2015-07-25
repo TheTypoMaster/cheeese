@@ -82,7 +82,9 @@ prestation:
 generic:
     connect:
         withus: Restons connectés
-        mail: Email
+        mail: Email        
+        cgu: Conditions générales d'utilisation
+        preference: Gérer mes préférences e-mail
     mail:
         photographer: photographers@cheee.se
         client: clients@cheee.se

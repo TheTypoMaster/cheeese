@@ -117,5 +117,35 @@ class UserController extends Controller
 
 	}
 
+	/**
+	 * [preferencesAction description]
+	 * @param  Request $request [description]
+	 * @return [type]           [description]
+	 * @Route("/preferences", name="preferences")
+	 */
+	public function preferencesAction(Request $request)
+	{
+		$servicePreference = $this->get('service_preference_emails');
+		$preference = $servicePreference->getCurrentPreferences();
+		$form = $this->createForm('form_email', $preference, array());
+		$form->handleRequest($request);
+		if($request->isMethod('POST'))
+		{
+			$params = $request->request->get('form_email');
+			if ($form->isValid())
+			{
+				$edit = $servicePreference->updatePreferences($preference, $params);
+				if($edit){
+					return $this->redirect($this->generateUrl('preferences'));
+				}
+				
+			}
+				
+		}
+		return $this->render('MainCommunityBundle:Users:email.html.twig', array(
+			'form' => $form->createView()
+			));
+	}
+
 
 }

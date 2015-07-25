@@ -7,7 +7,7 @@
 {% block breadcrumbH2 %}{% trans from "offers" %}community.devis.read.breadh2{% endtrans %}{% endblock %}
 {% block content %}
                 <!-- Main content -->
-                {% if photos == null or prices == null %}
+                {% if cover == false or prices == null %}
                 <div class="alert alert-warning alert-dismissable">
                     <i class="fa fa-warning"></i>
                     <b>{% trans from "offers" %}community.devis.read.headband.warning.banner{% endtrans %}</b>

@@ -41,3 +41,12 @@ community:
             header: Modifiez votre mot de passe
             btn:
                 submit: Soumettre
+    email:
+        read:
+            h1: Gestion des préférences
+            h2: E-mails
+            breadh1: Gestion des préférences
+            breadh2: E-mails
+            header: Modifiez vos préférences E-mails
+            btn:
+                submit: Soumettre

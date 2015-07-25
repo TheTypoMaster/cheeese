@@ -88,12 +88,14 @@ class DevisController extends Controller
 			$serviceDevisBook = $this->get('service_devis_book');
 			$prices = $servicePrices->getPrices($devis);
 			$photos = $serviceDevisBook->getbook($devis);
+			$cover = $serviceDevisBook->hasCover($photos);
 			$prestations = $servicePrestation->getByDevis($devis->getId());
 			return $this->render('MainCommunityBundle:Offers\Devis:index.html.twig', array(
 					'devis' 	  => $devis,
 					'prices'	  => $prices,
 					'photos'	  => $photos,
-					'services' 	  => $prestations
+					'services' 	  => $prestations,
+					'cover'		  => $cover
 			));
 		}
 	}
@@ -367,11 +369,10 @@ class DevisController extends Controller
 		{
 			$servicePhoto = $this->get('service_devis_book');
 			$photos = $servicePhoto->getBook($devis);
-			$cover = $servicePhoto->hasCover($photos);
+			
 			return $this->render('MainCommunityBundle:Offers\Devis:book_manage.html.twig', array(
 					'photos'	=> $photos,
 					'devis'		=> $devis,
-					'cover'		=> $cover
 			));
 		}
 	}

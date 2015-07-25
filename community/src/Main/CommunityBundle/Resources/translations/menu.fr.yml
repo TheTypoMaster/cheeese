@@ -9,6 +9,7 @@ menu:
             specialities: Spécialités
             book: Book
             security: Sécurité, mot de passe
+            emails: Préférences emails
         company:
             title: Mon entreprise 
             identification: identification
