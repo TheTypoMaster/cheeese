@@ -46,8 +46,9 @@ class FormEmailType extends AbstractType
     			'class' => 'form-control'
     			),
             'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
+                        new NotBlank ( array()),
+                        new Choice(array('choices' => array(0, 1)))
+                        )
     		))
     	->add('messages', 'choice',array(
     		'label' => 'form.email.field.message',
@@ -56,8 +57,9 @@ class FormEmailType extends AbstractType
     			'class' => 'form-control'
     			),
             'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
+                        new NotBlank ( array()),
+                        new Choice(array('choices' => array(0, 1)))
+                        )
     		))
     	->add('newsletter', 'choice',array(
     		'label' => 'form.email.field.newsletter',
@@ -66,8 +68,9 @@ class FormEmailType extends AbstractType
     			'class' => 'form-control'
     			),
             'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
+                        new NotBlank ( array()),
+                        new Choice(array('choices' => array(0, 1)))
+                        )
     		));
         
 

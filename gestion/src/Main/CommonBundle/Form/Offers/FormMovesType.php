@@ -56,8 +56,11 @@ class FormMovesType extends AbstractType
     					'class' => 'form-control',
     			),
     			'constraints'   => array(
-    					new NotBlank ( array(
-    					)))
+    					new NotBlank (array()),
+                        new Choice(array(
+                            'choices'   => array('1', '10', '25', '50', '75', '100')
+                            ))
+                        )
     	));
     }
     

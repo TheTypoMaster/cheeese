@@ -1,8 +1,25 @@
 help:
     presentation:
         field:
+            firstName: Votre prénom
+            lastName: Votre nom
+            telephone: Votre numéro de téléphone
             presentation: Bloc d'aide
     devis:
         field:
             title: Soyez le plus précis possible
             presentation: Soyez le plus précis possible
+    company:
+        field:
+            title: Le nom de votre entreprise
+            country: Le pays de votre entreprise
+            department: Le département de votre entreprise
+            town: La ville de votre entreprise
+            address: L'adresse de votre entreprise
+            identification: Le numéro SIRET de votre entreprise
+    iban:
+        field:
+            name: Le nom de votre banque
+            address: L'adresse de votre banque
+            iban: Le Iban de votre compte bancaire
+            bic: Le code BIC de votre compte bancaire

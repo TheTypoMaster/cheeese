@@ -14,6 +14,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class FormDevisPricesType extends AbstractType
 {
@@ -59,8 +60,7 @@ class FormDevisPricesType extends AbstractType
                         'class' => 'form-control',
                 ),
                 'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
+                        new NotBlank ( array()))
         ));    
         }    	
     	
@@ -71,8 +71,10 @@ class FormDevisPricesType extends AbstractType
     					'maxlength' => 50
     			),
     			'constraints'   => array(
-    					new NotBlank ( array(
-    					)))
+    					new NotBlank ( array()),
+                        new Regex(array(
+                            'pattern' => '/(\d+(.\d+)?)/',
+                        )))
     	));
     }
     

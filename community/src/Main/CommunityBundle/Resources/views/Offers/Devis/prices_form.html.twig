@@ -36,11 +36,26 @@
                                         {% else %}
                                         {% trans with {'%name%':devis.title, '%duration%':price.duration.libelle} from "offers" %}community.devis.read.prices.edit.header %name% %duration%{% endtrans %}                                        
                                         {% endif %}
-                                        (€)
                                     </h3>
                                 </div>
                                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-                                    <div class="box-body">									
+                                    <div class="box-body">
+                                    {% if new %}	
+                                    <div class="form-group {% if not form.duration.vars.valid %}has-error{% endif %}">                             
+                                        {{ form_label(form.duration) }}                         
+                                        {{ form_widget(form.duration) }}
+                                        <div class="text-red">
+                                        {{ form_errors(form.duration) }}
+                                        </div>
+                                        </div>
+                                    {% endif %}
+                                        <div class="form-group {% if not form.price.vars.valid %}has-error{% endif %}">
+                                        {{ form_label(form.price) }} 
+                                        {{ form_widget(form.price) }}
+                                        <div class="text-red">
+                                        {{ form_errors(form.price) }}
+                                        </div>
+                                        </div>                                     								
                                         {{ form_rest(form) }}
                                     </div>
 

@@ -35,7 +35,8 @@ class MoveController extends Controller
 		if($request->isMethod('POST'))
 		{
 			$params = $request->request->get('form_moves');
-			if($radius === 0) {
+			if ($form->isValid()) {
+				if($radius === 0) {
 				$add = $serviceMoves->create($params, $company);
 				if($add) {
 					return $this->redirect($this->generateUrl('moves'));
@@ -46,6 +47,7 @@ class MoveController extends Controller
 					return $this->redirect($this->generateUrl('moves'));
 				}
 			}
+		}			
 			
 		}
 		return $this->render('MainCommunityBundle:Offers:moves.html.twig', array(

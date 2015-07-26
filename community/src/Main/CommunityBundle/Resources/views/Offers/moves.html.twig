@@ -52,9 +52,17 @@
                                 </div><!-- /.box-body -->
                                 <!-- form start -->
                                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-                                    <div class="box-body">									
-                                        {{ form_rest(form) }}
+                                    <div class="box-body">	
+                                    <div class="form-group {% if not form.radius.vars.valid %}has-error{% endif %}">                             
+                                        {{ form_label(form.radius) }}                    
+                                        {{ form_widget(form.radius) }}
+                                        <div class="text-red">
+                                        {{ form_errors(form.radius) }}
+                                        </div>
                                         <span class="help-block">{% trans from "offers" %}community.moves.view.helpblock{% endtrans %}</span>
+                                        </div>								
+                                        {{ form_rest(form) }}
+                                        
                                     </div><!-- /.box-body -->
 
                                     <div class="box-footer">

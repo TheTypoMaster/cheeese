@@ -15,28 +15,44 @@
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
                                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-                                    <div class="box-body">									
+                                    <div class="box-body">
+                                        <div class="form-group {% if not form.title.vars.valid %}has-error{% endif %}">								
                                         {{ form_label(form.title) }}                         
                                         {{ form_widget(form.title) }}
+                                        <div class="text-red">
                                         {{ form_errors(form.title) }}
+                                        </div>
                                         <p class="help-block">
                                         {% trans from "forms" %}help.devis.field.title {% endtrans %}
                                         </p>
+                                        </div>
 
+                                        <div class="form-group {% if not form.category.vars.valid %}has-error{% endif %}">
                                         {{ form_label(form.category) }} 
                                         {{ form_widget(form.category) }}
+                                        <div class="text-red">
                                         {{ form_errors(form.category) }}
-
+                                        </div>
+                                        </div>
+                                        
+                                        <div class="form-group {% if not form.currency.vars.valid %}has-error{% endif %}">
                                         {{ form_label(form.currency) }} 
                                         {{ form_widget(form.currency) }}
+                                        <div class="text-red">
                                         {{ form_errors(form.currency) }}
+                                        </div>
+                                        </div>
 
+                                        <div class="form-group {% if not form.presentation.vars.valid %}has-error{% endif %}">
                                         {{ form_label(form.presentation) }} 
                                         {{ form_widget(form.presentation) }}
+                                        <div class="text-red">
                                         {{ form_errors(form.presentation) }}
+                                        </div>
                                          <p class="help-block">
                                         {% trans from "forms" %}help.devis.field.presentation {% endtrans %}
                                         </p>
+                                      </div>
                                         
                                         {{ form_rest(form) }}
                                     </div><!-- /.box-body -->

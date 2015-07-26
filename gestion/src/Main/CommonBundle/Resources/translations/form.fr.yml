@@ -52,7 +52,7 @@ form:
     devisprice:
         field:
             duration: Durée
-            price: Prix
+            price: Prix (€)
     devisbook:
         field:
             address: Adresse de l'évenement

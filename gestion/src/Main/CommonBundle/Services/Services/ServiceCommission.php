@@ -61,12 +61,12 @@ class ServiceCommission
 	 */
 	public function generateCommission(Devis $devis)
 	{
-		$roles = $devis->getCompany()->getPhotographer()->getRoles();		
-		if($devis->getCategory()->getId() == 1)
+		$roles = $devis->getCompany()->getPhotographer()->getRoles();	
+		if($devis->getCategory()->getType() == 1)
 		{
 			$commission = $this->serviceCommission->getCommissionParticulier();
 			$commissionClient = $commission->getCustomer();			
-		}elseif($devis->getCategory()->getId() == 2 ) {
+		}elseif($devis->getCategory()->getType() == 2 ) {
 			$commission = $this->serviceCommission->getCommissionEntreprise();
 			$commissionClient = $commission->getCustomer();
 		}
