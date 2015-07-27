@@ -21,6 +21,26 @@
                                 <i class="fa fa-dashboard"></i> <span>{% trans from "menu" %}menu.left.dashboard{% endtrans %}</span>
                             </a>
                         </li>
+                        {% if is_granted('ROLE_PHOTOGRAPHER_VERIFIED') %}
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-copyright"></i> 
+                                <span>{% trans from "menu" %}menu.left.offer.title{% endtrans %}</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ path('devis') }}"><i class="fa fa-briefcase"></i> {% trans from "menu" %}menu.left.offer.packs{% endtrans %}</a></li>
+                                <li><a href="{{ path('moves') }}"><i class="fa fa-car"></i> {% trans from "menu" %}menu.left.offer.travels{% endtrans %}</a></li>
+                                <li><a href="{{ path('availability') }}"><i class="fa fa-play"></i> {% trans from "menu" %}menu.left.offer.availability{% endtrans %}</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ path('service') }}">
+                                <i class="fa fa-calendar"></i> <span>{% trans from "menu" %}menu.left.services{% endtrans %}</span>
+                            </a>
+                        </li>
+                        {% endif %}
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-user"></i> 
@@ -46,26 +66,6 @@
                                 <li><a href="{{ path('transactions') }}"><i class="fa fa-credit-card"></i> {% trans from "menu" %}menu.left.company.transactions{% endtrans %}</a></li>
                             </ul>
                         </li>
-                        {% if is_granted('ROLE_PHOTOGRAPHER_VERIFIED') %}
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-copyright"></i> 
-                                <span>{% trans from "menu" %}menu.left.offer.title{% endtrans %}</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="{{ path('devis') }}"><i class="fa fa-briefcase"></i> {% trans from "menu" %}menu.left.offer.packs{% endtrans %}</a></li>
-                                <li><a href="{{ path('moves') }}"><i class="fa fa-car"></i> {% trans from "menu" %}menu.left.offer.travels{% endtrans %}</a></li>
-                                <li><a href="{{ path('availability') }}"><i class="fa fa-play"></i> {% trans from "menu" %}menu.left.offer.availability{% endtrans %}</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li>
-                            <a href="{{ path('service') }}">
-                                <i class="fa fa-calendar"></i> <span>{% trans from "menu" %}menu.left.services{% endtrans %}</span>
-                            </a>
-                        </li>
-                        {% endif %}
                     </ul>
                 </section>
                 <!-- /.sidebar -->

@@ -17,7 +17,7 @@ class DefaultController extends Controller
 	{
 		$company = null;
 		$usr= $this->get('security.context')->getToken()->getUser();
-		//Appel du service d'inscription
+		$roles = $usr->getRoles();
 		$serviceCompany = $this->get('service_company');
 		$company = $serviceCompany->getCompany($usr->getId());
 		return $this->render('MainCommunityBundle:Default:headBandDisplay.html.twig', array(
@@ -92,6 +92,18 @@ class DefaultController extends Controller
 	{
 		return $this->render('MainCommunityBundle:Default:about.html.twig',  array(
 		));	
+	}
+
+	/**
+	 * [logoutAfterValidAction description]
+	 * @param  Request $request [description]
+	 * @return [type]           [description]
+	 */
+	public function logoutAfterValidAction(Request $request)
+	{
+		$this->get('security.context')->getToken()->setAuthenticated(false);
+		$response = new Response();
+		return $response;
 	}
 
 	

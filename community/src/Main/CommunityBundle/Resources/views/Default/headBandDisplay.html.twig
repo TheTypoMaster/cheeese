@@ -14,13 +14,7 @@
 		{% trans from "default" %}community.default.headband.warning.message2{% endtrans %}
 		</div>
 	{% elseif 2 == company.status.id %}
-		<div class="alert alert-success alert-dismissable">
-		<i class="fa fa-check"></i>
-		<b>{% trans from "default" %}community.default.headband.success.banner{% endtrans %}</b>
-		{% trans from "default" %}community.default.headband.success.message1{% endtrans %}
-		<br>
-		{% trans from "default" %}community.default.headband.success.message2{% endtrans %}
-		</div>
+		{{ render(controller('MainCommunityBundle:Default:logoutAfterValid')) }}
 	{% elseif 3 == company.status.id %}
 		<div class="alert alert-danger alert-dismissable">
 		<i class="fa fa-ban"></i>
