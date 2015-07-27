@@ -1,0 +1,99 @@
+{% extends '::base.html.twig'%}
+{% block title %}{% trans from "services" %}community.service.edit.h1{% endtrans %}{% endblock %}
+{% block titleH1 %}{% trans from "services" %}community.service.edit.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "services" %}community.service.edit.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-calendar"></i>{% trans from "services" %}community.service.edit.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "services" %}community.service.edit.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+	<div class="row">
+			<div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">
+                                    	{% if slug == 'price' %}
+                                    	{% trans with {'%reference%' : prestation.reference} from "services" %}
+                                    	community.service.edit.header.price %reference%
+                                    	{% endtrans %}
+                                    	{% elseif slug == 'date' %}
+                                    	{% trans with {'%reference%' : prestation.reference} from "services" %}
+                                    	community.service.edit.header.date %reference%
+                                    	{% endtrans %}
+                                    	{% elseif slug == 'duration' %}
+                                    	{% trans with {'%reference%' : prestation.reference} from "services" %}
+                                    	community.service.edit.header.duration %reference%
+                                    	{% endtrans %}
+                                    	{% endif %}
+
+                                    </h3>
+                                </div><!-- /.box-header -->
+                                <!-- form start -->
+                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                                    <div class="box-body">
+                                        {% if slug == 'price' %}
+                                        	<div class="form-group {% if not form.price.vars.valid %}has-error{% endif %}">								
+	                                        {{ form_label(form.price) }}                         
+	                                        {{ form_widget(form.price) }}
+	                                        <div class="text-red">
+	                                        {{ form_errors(form.price) }}
+	                                        </div>
+	                                        </div>
+
+                                        {% elseif slug == 'date' %} 
+                                        	<div class="form-group {% if not form.date.vars.valid %}has-error{% endif %}">								
+                                        	{{ form_label(form.date) }} 
+                                        	<div class="input-group">
+											<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+											</div>
+											{{ form_widget(form.date) }}
+											</div>                        
+	                                        
+	                                        <div class="text-red">
+	                                        {{ form_errors(form.date) }}
+	                                        </div>
+	                                        <p class="help-block">
+                                        			{% trans from "forms" %}help.prestation.field.date {% endtrans %}
+                                        		</p>
+	                                        </div>
+	                                        <div class="bootstrap-timepicker">
+	                                        	<div class="form-group {% if not form.time.vars.valid %}has-error{% endif %}">								
+                                        		{{ form_label(form.time) }} 
+                                        		<div class="input-group"> 
+                                        		<div class="input-group-addon">
+												<i class="fa fa-clock-o"></i>
+												</div>       	
+												{{ form_widget(form.time) }}
+												</div>
+	                                        	<div class="text-red">
+	                                        	{{ form_errors(form.time) }}
+	                                        	</div>
+	                                        	<p class="help-block">
+                                        			{% trans from "forms" %}help.prestation.field.time {% endtrans %}
+                                        		</p>
+	                                        	</div>
+	                                        </div>
+	                                        
+
+                                        {% elseif slug == 'duration' %}
+                                        	<div class="form-group {% if not form.duration.vars.valid %}has-error{% endif %}">								
+	                                        {{ form_label(form.duration) }}                         
+	                                        {{ form_widget(form.duration) }}
+	                                        <div class="text-red">
+	                                        {{ form_errors(form.duration) }}
+	                                        </div>
+	                                        </div>
+                                        {% endif %}                                
+                                        {{ form_rest(form) }}
+                                    </div><!-- /.box-body -->
+
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">{% trans from "services" %}community.service.edit.btn.submit{% endtrans %}</button>
+                                        <a href="{{ path('service_show', {'id' : prestation.id}) }}"  class="btn btn-default">{% trans from "services" %}community.service.edit.btn.back{% endtrans %}</a>
+                                    </div>
+                                {{ form_end(form) }}
+                            </div>
+		</div>	
+	</div>
+{% endblock %}

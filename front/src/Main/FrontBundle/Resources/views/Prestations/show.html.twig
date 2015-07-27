@@ -10,7 +10,7 @@
 			<div class="panel-body">
 				<div class="col-xs-6 col-sm-4">
 				<ul>
-				<li>{{ prestation.starttime | date('d/m/Y')}} {% trans from "prestations" %}prestation.show.li.at{% endtrans %} {{ prestation.starttime | date('h:m')}}</li>
+				<li>{{ prestation.starttime | date('d/m/Y')}} {% trans from "prestations" %}prestation.show.li.at{% endtrans %} {{ prestation.starttime | date('H:m')}}</li>
 				<li>{{ prestation.address }} {{ prestation.town.name }} ({{ prestation.town.code }}) {{ prestation.town.country.name }}</li>
 				</ul>
 				</div>
@@ -144,18 +144,7 @@
 	          				</h4> </div>
 	            			<div class="timeline-body">
 	              				<p> 
-	              					{% if 'message.created' == message.content %}
-										{% trans from "prestations" %}prestation.show.timeline.status.created{% endtrans %} 
-									{% elseif 'message.preapproved' == message.content %}
-										{% trans from "prestations" %}prestation.show.timeline.status.preapproved{% endtrans %} 
-									{% elseif 'message.refused' == message.content %}
-										{% trans from "prestations" %}prestation.show.timeline.status.refused{% endtrans %} 
-									{% elseif 'message.canceled' == message.content %}
-										{% trans from "prestations" %}prestation.show.timeline.status.canceled{% endtrans %} 
-									{% elseif 'message.confirmed' == message.content %}
-										{% trans from "prestations" %}prestation.show.timeline.status.confirmed{% endtrans %} 
-									{% endif %}
-
+	              					{{ include('MainFrontBundle:Prestations:timeline_status.html.twig', {message: message}, with_context = false) }}
 	              				</p>
 								<hr>
 	              				<p>{{ message.createdAt | date('d/m/Y h:m')}}</p>            			

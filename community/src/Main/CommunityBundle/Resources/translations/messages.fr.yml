@@ -102,6 +102,10 @@ flash:
                     index: L'état de la prestation a été mis à jour
                     pre_approved: Vous avez pré-approuvé la prestation. Le client doit maintenant confirmer la réservation. Nous vous tenons au courant :)
                 closed: La prestation a été clotûré
+                edit:
+                    price: La prestation a un nouveau prix
+                    duration: La prestation a une nouvelle durée
+                    date: La prestation a une nouvelle date
             notation:
                 create: votre évaluation a bien été créée
             transaction:

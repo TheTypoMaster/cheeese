@@ -94,3 +94,9 @@ form:
         choices:
             yes: Oui
             no: Non
+    prestation:
+        field:
+            duration: Durée
+            price: Prix
+            date: Date
+            time: Heure de début

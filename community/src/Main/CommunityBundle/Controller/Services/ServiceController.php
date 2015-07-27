@@ -144,12 +144,37 @@ class ServiceController extends Controller
 		}
 		else
 		{
-			if (!in_array($slug, array(2, 3)))
+			if ($service->getStatus()->getId() != 1 || !in_array($slug, array('price', 'duration', 'date')))
 			{
-				throw $this->createNotFoundException('Invalid slug');
-			}else{
-				$prestationService->updatePrestation($id, $slug);
 				return $this->redirect($this->generateUrl('service_show', array('id' => $id)));
+			}else{
+				$form = $this->createForm('form_prestation', null, array(
+					'devis' 	=> $service->getDevis()->getId(),
+					'slug'		=> $slug,
+					'date'		=> $service->getStartTime(),
+					'price' 	=> $service->getPrice(),
+					'duration' 	=> $service->getDuration()
+					));
+				$request = $this->get('request');
+				$form->handleRequest($request);
+				if($request->isMethod('POST'))
+				{
+					$params = $request->request->get('form_prestation');
+					if ($form->isValid())
+					{
+						$edit = $prestationService->updateAsPhotographer($params, $service, $slug);
+						if($edit) 
+							{
+							return $this->redirect($this->generateUrl('service_show', array('id' => $id)));
+							}
+					}
+					
+				}
+				return $this->render('MainCommunityBundle:Services:edit.html.twig', array(
+						'form'	=> $form->createView(),
+						'slug'	=> $slug,
+						'prestation' => $service
+						));
 			}
 		}
 	}

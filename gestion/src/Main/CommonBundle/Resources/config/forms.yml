@@ -99,3 +99,8 @@ services:
         arguments: []
         tags:
             - { name: form.type, alias: form_commission_prestation }
+    form_prestation:
+        class: "Main\CommonBundle\Form\Services\FormPrestationType"
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: form.type, alias: form_prestation }

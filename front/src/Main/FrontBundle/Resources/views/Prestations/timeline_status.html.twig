@@ -1,0 +1,33 @@
+{% if 1 == message.model %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.created
+		{% endtrans %} 
+	{% elseif 2 == message.model %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.preapproved
+		{% endtrans %} 
+	{% elseif 3 == message.model %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.refused
+		{% endtrans %} 
+	{% elseif 4 == message.model %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.canceled
+		{% endtrans %} 
+	{% elseif 5 == message.model %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.confirmed
+		{% endtrans %} 
+	{% elseif 11 == message.model %}
+		{% trans with {'%data%' : message.content} from "prestations" %}
+			prestation.show.timeline.edit.date %data%
+		{% endtrans %}
+	{% elseif 12 == message.model %}
+		{% trans with {'%data%' : message.content} from "prestations" %}
+			prestation.show.timeline.edit.price %data%
+		{% endtrans %} 
+	{% elseif 13 == message.model %}
+		{% trans with {'%data%' : message.content} from "prestations" %}
+			prestation.show.timeline.edit.duration %data%
+		{% endtrans %} 
+	{% endif %}

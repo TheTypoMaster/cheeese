@@ -122,6 +122,10 @@ community:
                         refused: Prestation refusée
                         canceled: Prestation annulée
                         confirmed: Prestation confirmée
+                    edit:
+                        price %data%: Nouveau prix %data%
+                        date %data%: Nouvelle date %data%
+                        duration %data%: Nouvelle durée %data%
                 messages:
                     prestation:
                         creation: Prestation créée
@@ -129,8 +133,26 @@ community:
                         refused: Prestation refusée
                         canceled: Prestation annulée
                         confirmed: Prestation validée
+            edit:
+
+                btn:
+                    price: Proposer un nouveau prix
+                    date: Proposer une nouvelle date
+                    duration: Proposer une nouvelle durée
 
             response: 
                 add: Ajouter une réponse
                 btn:
                     submit: Soumettre
+        edit:
+            h1: Prestation
+            h2: Modification
+            breadh1: Prestation
+            breadh2: Modification
+            header:
+                price %reference%: Proposer un nouveau prix à la prestation %reference%
+                duration %reference%: Proposer une nouvelle durée à la prestation %reference%
+                date %reference%: Proposer une nouvelle date à la prestation %reference%
+            btn:
+                back: Retour
+                submit: Soumettre

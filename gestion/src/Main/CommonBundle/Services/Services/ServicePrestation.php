@@ -427,6 +427,40 @@ class ServicePrestation
 		
 	}
 
+	public function updateAsPhotographer($params, Prestation $prestation, $slug)
+	{
+		if ($slug == 'price'){
+			$prestation->setPrice($params['price']);
+			$flashMessage = 'flash.message.prestation.edit.price';
+		}elseif($slug == 'duration')
+		{
+			$devisPrice = $this->em->getRepository('MainCommonBundle:Photographers\DevisPrices')->findOneBy(array(
+			'devis' => $prestation->getDevis()->getId(),
+			'duration' => $params['duration']));
+			$duration   = $devisPrice->getDuration();
+			$flashMessage = 'flash.message.prestation.edit.duration';
+			$prestation->setDuration($duration);
+		}elseif($slug == 'date'){
+			$start      = str_replace('/', '-', $params['date']).' '.$params['time'].':00';
+			$startTime 	= new \DateTime($start);
+			$flashMessage = 'flash.message.prestation.edit.date';
+			$prestation->setStartTime($startTime);
+		}
+		$prestation->setUpdatedAt(new \DateTime('now'));
+		try{
+			$this->em->flush();
+			//Envoi du mail
+            //$this->notification->createPrestationNotification($prestation);
+			$this->session->successFlashMessage($flashMessage);	
+			return true;
+		}catch(\Exception $e){
+			var_dump($e->getMessage());die;
+			$this->session->errorFlashMessage();
+			$this->logger->error($e->getMessage());
+			return false;
+		}
+	}
+
 	/**
 	 * 
 	 * @param unknown $id

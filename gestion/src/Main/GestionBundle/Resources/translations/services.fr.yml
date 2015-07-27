@@ -46,6 +46,10 @@ gestion:
                     refused: Prestation refusée
                     canceled: Prestation annulée
                     confirmed: Prestation confirmée
+                edit:
+                    price %data%: Nouveau prix %data%
+                    date %data%: Nouvelle date %data%
+                    duration %data%: Nouvelle durée %data%
             transaction:
                 iban: Iban
                 price: Montant

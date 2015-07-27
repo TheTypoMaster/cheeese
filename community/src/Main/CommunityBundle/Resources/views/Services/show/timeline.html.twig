@@ -55,30 +55,8 @@
 											            	</a>
 											            </h3>
 														
-											             <div class="timeline-body"> 
-											            	{% if 'message.created' == message.content %}
-											            		{% trans from "services" %}
-											            		community.service.show.timeline.title.status.created
-											            		{% endtrans %} 
-											            	{% elseif 'message.preapproved' == message.content %}
-											            	{% trans from "services" %}
-											            		community.service.show.timeline.title.status.preapproved
-											            		{% endtrans %} 
-											            	{% elseif 'message.refused' == message.content %}
-											            	{% trans from "services" %}
-											            		community.service.show.timeline.title.status.refused
-											            		{% endtrans %} 
-											            	{% elseif 'message.canceled' == message.content %}
-											            	{% trans from "services" %}
-											            		community.service.show.timeline.title.status.canceled
-											            		{% endtrans %} 
-											            	{% elseif 'message.confirmed' == message.content %}
-											            	{% trans from "services" %}
-											            		community.service.show.timeline.title.status.confirmed
-											            		{% endtrans %} 
-											            	{% endif %}
-
-											            </div>
+											             {{ include('MainCommunityBundle:Services\\show:timeline_status.html.twig', 
+                                        				{message: message}, with_context = false) }}
 											        </div>
 									    		</li>	
 									    {% endif %}

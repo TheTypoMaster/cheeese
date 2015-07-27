@@ -48,7 +48,7 @@ class PrestationRepository extends EntityRepository
 				));
 		$query = $qb->getQuery();
 		$query->useQueryCache(true);
-		return $query->getSingleResult();
+		return $query->getOneOrNullResult();
 	}
 
 	public function countAll($user) {

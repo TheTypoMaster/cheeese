@@ -23,3 +23,7 @@ help:
             address: L'adresse de votre banque
             iban: Le Iban de votre compte bancaire
             bic: Le code BIC de votre compte bancaire
+    prestation:
+        field:
+            date: Format jj/mm/aaaa
+            time: Format hh:mm

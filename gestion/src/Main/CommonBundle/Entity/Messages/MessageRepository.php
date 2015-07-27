@@ -21,7 +21,7 @@ class MessageRepository extends EntityRepository
 	 * @param  int $message  [description]
 	 * @return string           [description]
 	 */
-	public function createMessagePrestation($prestation, $type, $sender, $receiver, $message)
+	public function createMessagePrestation($prestation, $type, $model, $sender, $receiver, $message)
 	{
 
 		$date = new \DateTime('now');
@@ -29,6 +29,7 @@ class MessageRepository extends EntityRepository
 				'sender' 		=> $sender,
 				'receiver' 		=> $receiver,
 				'type' 			=> $type,
+				'model'			=> $model,
 				'prestation' 	=> $prestation,
 				'read' 			=> 1,
 				'content' 		=> $message,

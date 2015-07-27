@@ -51,31 +51,8 @@
 											            		{% endtrans %} 
 											            	</a>
 											            </h3>
-														
-											            <div class="timeline-body"> 
-											            	{% if 'message.created' == message.content %}
-											            		{% trans from "services" %}
-											            		gestion.service.show.timeline.status.created
-											            		{% endtrans %} 
-											            	{% elseif 'message.preapproved' == message.content %}
-											            	{% trans from "services" %}
-											            		gestion.service.show.timeline.status.preapproved
-											            		{% endtrans %} 
-											            	{% elseif 'message.refused' == message.content %}
-											            	{% trans from "services" %}
-											            		gestion.service.show.timeline.status.refused
-											            		{% endtrans %} 
-											            	{% elseif 'message.canceled' == message.content %}
-											            	{% trans from "services" %}
-											            		gestion.service.show.timeline.status.canceled
-											            		{% endtrans %} 
-											            	{% elseif 'message.confirmed' == message.content %}
-											            	{% trans from "services" %}
-											            		gestion.service.show.timeline.status.confirmed
-											            		{% endtrans %} 
-											            	{% endif %}
-
-											            </div>
+											            {{ include('MainGestionBundle:Services\\show:timeline_status.html.twig', 
+                                        				{message: message}, with_context = false) }}			            
 											        </div>
 									    		</li>	
 								 		{% endif %}						

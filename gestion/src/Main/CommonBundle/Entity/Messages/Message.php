@@ -44,6 +44,13 @@ class Message
 	 * @ORM\Column(name="type", type="smallint", nullable=false)
 	 */
 	private $type;
+
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="model", type="smallint", nullable=true)
+	 */
+	private $model;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Prestations\Prestation", fetch="EAGER")
@@ -145,6 +152,23 @@ class Message
 	public function setType($type)
 	{
 		$this->type = $type;
+	}
+
+	/**
+	 * Return active
+	 */
+	public function getModel()
+	{
+		return $this->model;
+	}
+	
+	/**
+	 *
+	 * @param tinyint $active
+	 */
+	public function setModel($model)
+	{
+		$this->model = $model;
 	}
 	
 	/**
