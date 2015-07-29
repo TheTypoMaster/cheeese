@@ -59,7 +59,7 @@
                		
                 </div>
                 <div class="box-footer">
-                    {% if 1 == prestation.status.id %}
+                    {% if 1 == prestation.status.id or 2 == prestation.status.id %}
                         <a href="{{ path('service_edit',{ 'id' : prestation.id, 'slug' : 'date' }) }}" class="btn btn-primary btn-sm">
                            {% trans from "services" %}community.service.show.edit.btn.date{% endtrans %}
                         </a>
@@ -122,7 +122,7 @@
                     </div>
 	            </div>
                 <div class="box-footer">
-                    {% if 1 == prestation.status.id %}
+                    {% if 1 == prestation.status.id or 2 == prestation.status.id %}
                         <a href="{{ path('service_edit',{ 'id' : prestation.id, 'slug' : 'price' }) }}" class="btn btn-primary btn-sm">
                         {% trans from "services" %}community.service.show.edit.btn.price{% endtrans %}
                         </a>
@@ -138,6 +138,8 @@
 		{% if 1 == prestation.status.id %}
 			<a class="btn btn-success" data-toggle="modal" data-target="#approveModal">{% trans from "services" %}community.service.show.confirm.approve{% endtrans %}
             </a>
+        {% endif %}
+        {% if 1 == prestation.status.id or 2 == prestation.status.id %}
 			<a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal">{% trans from "services" %}community.service.show.confirm.refuse{% endtrans %}
             </a>
 		{% endif %}   
