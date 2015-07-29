@@ -40,6 +40,13 @@ class Prestation
 	 * @ORM\JoinColumn(name="devis", referencedColumnName="id")
 	 */
 	private $devis;
+
+	/**
+	 * @var text $presentation
+	 *
+	 * @ORM\Column(name="rappel", type="text", nullable=true)
+	 */
+	private $rappel;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Users\User", fetch="EAGER")
@@ -155,6 +162,24 @@ class Prestation
 	public function setDevis(Devis $devis)
 	{
 		$this->devis = $devis;
+	}
+
+	/**
+	 * [getRappel description]
+	 * @return [type] [description]
+	 */
+	public function getRappel()
+	{
+		return $this->rappel;
+	}
+	
+	/**
+	 * [setRappel description]
+	 * @param [type] $rappel [description]
+	 */
+	public function setRappel($rappel)
+	{
+		$this->rappel = $rappel;
 	}
 	
 	/**

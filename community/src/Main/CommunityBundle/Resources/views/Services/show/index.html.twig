@@ -6,167 +6,181 @@
 <i class="fa fa-calendar"></i>{% trans from "services" %}community.service.show.breadh1{% endtrans %}{% endblock %}
 {% block breadcrumbH2 %}{% trans from "services" %}community.service.show.breadh2{% endtrans %}{% endblock %}
 {% block content %}
-                <div class="callout callout-info">
-                            a fournir
+    <div class="callout callout-info">
+        a fournir
                             
+    </div>
+    <!-- Main content -->
+    <h2 class="page-header">
+    	{% trans from "services" %}community.service.show.header{% endtrans %} {{ prestation.reference }}
+    </h2>
+    <div class="row">
+      	<div class="col-xs-4">
+           	<div class="box">
+           		<div class="box-header">
+                    <h4 class="box-title">
+						{% trans from "services" %}community.service.show.h4.details{% endtrans %}
+                    </h4>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="user-panel">
+                        <div class="pull-right image">
+                            <img src="{{ image64(prestation.client.photo, prestation.client.photoType, 'pp') }}"  class="img-circle" />
                         </div>
-                <!-- Main content -->
-                	<h2 class="page-header">
-                		{% trans from "services" %}community.service.show.header{% endtrans %} {{ prestation.reference }}
-                	</h2>
-                    <div class="row">
-                    	<div class="col-xs-4">
-                        	<div class="box">
-                        		<div class="box-header">
-                                    <h4 class="box-title">
-										{% trans from "services" %}community.service.show.h4.date{% endtrans %}
-                                    </h4>
-                                </div><!-- /.box-header -->
-                                <div class="box-body">
-                                		<p>
-                                			{{ prestation.address }} {{ prestation.town.name }} {{ prestation.town.code }} {{ prestation.town.country.name }}
-                                		</p>
-                                		<p>
-                                			{{ prestation.starttime | date('d/m/Y')}} {% trans from "services" %}community.service.show.li.at{% endtrans %} {{ prestation.starttime | date('H:i')}}
-                                		</p>
-                                		<p>
-                                			{{ prestation.duration.libelle }}
-                                		</p>
-                                </div>
-                                <div class="box-footer">
-                                    {% if 1 == prestation.status.id %}
-                                        <a href="{{ path('service_edit',{ 'id' : prestation.id, 'slug' : 'date' }) }}" class="btn btn-primary btn-sm">
-                                            {% trans from "services" %}community.service.show.edit.btn.date{% endtrans %}
-                                        </a>
-                                        <a href="{{ path('service_edit',{ 'id' : prestation.id, 'slug' : 'duration' }) }}" class="btn btn-primary btn-sm">
-                                            {% trans from "services" %}community.service.show.edit.btn.duration{% endtrans %}
-                                        </a>                                        
-                                    {% endif %}
-                                	
-                                </div>
-                            </div>
+                            {{ prestation.client.username }}
+                        <br>
+                        <i class="fa fa-star-o"></i> {{ prestation.client.note|number_format(2) }}
+                        <i class="fa fa-comment-o"></i> {{ prestation.client.prestations }}
+                    </div>
+                    <p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}community.service.show.details.address{% endtrans %}:</th>
+                                        <td>{{ prestation.address }} {{ prestation.town.name }} {{ prestation.town.code }} {{ prestation.town.country.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}community.service.show.details.date{% endtrans %}:</th>
+                                        <td>{{ prestation.starttime | date('d/m/Y')}} {% trans from "services" %}community.service.show.li.at{% endtrans %} {{ prestation.starttime | date('H:i')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}community.service.show.details.duration{% endtrans %}:</th>
+                                        <td>{{ prestation.duration.libelle }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}community.service.show.details.status{% endtrans %}:</th>
+                                        <td>{{ include('MainCommunityBundle:Services:status.html.twig',{id: prestation.status.id}, with_context = false) }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                    </p>
+               		
+                </div>
+                <div class="box-footer">
+                    {% if 1 == prestation.status.id %}
+                        <a href="{{ path('service_edit',{ 'id' : prestation.id, 'slug' : 'date' }) }}" class="btn btn-primary btn-sm">
+                           {% trans from "services" %}community.service.show.edit.btn.date{% endtrans %}
+                        </a>
+                        <a href="{{ path('service_edit',{ 'id' : prestation.id, 'slug' : 'duration' }) }}" class="btn btn-primary btn-sm">
+                           {% trans from "services" %}community.service.show.edit.btn.duration{% endtrans %}
+                        </a>                                        
+                    {% endif %}
+                </div>
+            </div>
+        </div>
 
-                        <div class="col-xs-4">
-                        	<div class="box">
-	                        	<div class="box-header">
-	                                    <h4 class="box-title">
-	                                    {% trans from "services" %}community.service.show.h4.client{% endtrans %}
-	                                	</h4>
-	                            </div>
-	                            <div class="box-body">
-		                            <div class="user-panel">
-	                                    <div class="pull-left image">
-	                                        <img src="{{ image64(prestation.client.photo, prestation.client.photoType, 'pp') }}"  class="img-circle" />
-	                                    </div>
-	                                    {{ prestation.client.username }}
-                                        <br>
-                                        <i class="fa fa-star-o"></i> {{ prestation.client.note|number_format(2) }}
-                                        <i class="fa fa-comment-o"></i> {{ prestation.client.prestations }}                                
-                                	</div>
-	                            </div><!-- /.box-header -->
-                                <div class="box-footer">
-                                </div>
-	                        </div>
-                        </div>
+        <div class="col-xs-4">
+            <div class="box">
+	            <div class="box-header">
+	                <h4 class="box-title">
+	                    {% trans from "services" %}community.service.show.h4.devis{% endtrans %}
+	                </h4>
+	            </div>
+	            <div class="box-body">
+                    <p>
+                        <a href="{{ path('devis_read', {id: prestation.devis.id})}}">{{ prestation.devis.title }}</a>
+                    </p> 
+                    <h5>
+                        <strong>{% trans from "services" %}community.service.show.h5.devis{% endtrans %}</strong>
+                    </h5>
+                    <p>{{ prestation.rappel|nl2br }}</p> 
+		        </div><!-- /.box-header -->
+                <div class="box-footer">
+                </div>
+	        </div>
+        </div>
 
-                        <div class="col-xs-4">
-                        	<div class="box">
-                        		<div class="box-header">
-	                                    <h4 class="box-title">
-	                                    {% trans from "services" %}community.service.show.h4.devis{% endtrans %}
-	                                	</h4>
-	                            </div>
-	                            <div class="box-body">
-	                            	<p><a href="{{ path('devis_read', {id: prestation.devis.id})}}">{{ prestation.devis.title }}</a></p>                            	
-	                            	<p>
-                                        {{ include('MainCommunityBundle:Services:status.html.twig', 
-                                        {id: prestation.status.id}, with_context = false) }}
-                                    </p>
-                                    <p class="lead">{% trans from "services" %}community.service.show.price.lead{% endtrans %}</p>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <th style="width:50%">{% trans from "services" %}community.service.show.price.devis{% endtrans %}:</th>
-                                                        <td>{{ prestation.price}}€
-                                                            
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {% set pourcent = prestation.price*prestation.commission.photographer/100 %}
-                                                        <th style="width:50%">{% trans from "services" %}community.service.show.price.tax{% endtrans %}:</th>
-                                                        <td>{{ pourcent|number_format(2)}}€</td>
-                                                    </tr>
-                                                    <tr>
-                                                        {% set total = prestation.price - pourcent %}
-                                                        <th style="width:50%">{% trans from "services" %}community.service.show.price.total{% endtrans %}:</th>
-                                                        <td>{{total|number_format(2)}}€</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </p>
-	                            </div>
-                                 <div class="box-footer">
-                                    {% if 1 == prestation.status.id %}
-                                        <a href="{{ path('service_edit',{ 'id' : prestation.id, 'slug' : 'price' }) }}" class="btn btn-primary btn-sm">
-                                            {% trans from "services" %}community.service.show.edit.btn.price{% endtrans %}
-                                        </a>
-                                    {% endif %}
-                                </div>
-                        	</div>
-                        </div>
+        <div class="col-xs-4">
+            <div class="box">
+                <div class="box-header">
+	                <h4 class="box-title">
+	                    {% trans from "services" %}community.service.show.h4.price{% endtrans %}
+	                </h4>
+	            </div>
+	            <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th style="width:50%">{% trans from "services" %}community.service.show.price.devis{% endtrans %}:</th>
+                                    <td>{{ prestation.price}}€</td>
+                                </tr>
+                                <tr>
+                                    {% set pourcent = prestation.price*prestation.commission.photographer/100 %}
+                                    <th style="width:50%">{% trans from "services" %}community.service.show.price.tax{% endtrans %}:</th>
+                                    <td>{{ pourcent|number_format(2)}}€</td>
+                                </tr>
+                                <tr>
+                                    {% set total = prestation.price - pourcent %}
+                                    <th style="width:50%">{% trans from "services" %}community.service.show.price.total{% endtrans %}:</th>
+                                    <td>{{total|number_format(2)}}€</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+	            </div>
+                <div class="box-footer">
+                    {% if 1 == prestation.status.id %}
+                        <a href="{{ path('service_edit',{ 'id' : prestation.id, 'slug' : 'price' }) }}" class="btn btn-primary btn-sm">
+                        {% trans from "services" %}community.service.show.edit.btn.price{% endtrans %}
+                        </a>
+                    {% endif %}
+                </div>
+        </div>
+    </div>
 
-                        <div class="col-xs-12">
-                            <a class="btn btn-default"  href="{{ path('service') }}">
-                                {% trans from "services" %}community.service.show.btn.back{% endtrans %}</a>
-								{% if 1 == prestation.status.id %}
-									<a class="btn btn-success" data-toggle="modal" data-target="#approveModal">{% trans from "services" %}community.service.show.confirm.approve{% endtrans %}
-                                    </a>
-									<a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal">{% trans from "services" %}community.service.show.confirm.refuse{% endtrans %}
-                                    </a>
-								{% endif %}   
-                          </div>
-                       </div>
+    <div class="col-xs-12">
+        <a class="btn btn-default"  href="{{ path('service') }}">
+            {% trans from "services" %}community.service.show.btn.back{% endtrans %}
+        </a>
+		{% if 1 == prestation.status.id %}
+			<a class="btn btn-success" data-toggle="modal" data-target="#approveModal">{% trans from "services" %}community.service.show.confirm.approve{% endtrans %}
+            </a>
+			<a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal">{% trans from "services" %}community.service.show.confirm.refuse{% endtrans %}
+            </a>
+		{% endif %}   
+    </div>
+    </div>
                        
-                       {% if passed %}
-	                     <h2 class="page-header">
-	                     	{% trans from "services" %}community.service.show.evaluations.title{% endtrans %}
-	                     </h2>
-	                     <!-- EVALUTATION-->
-	                    {% include "MainCommunityBundle:Services\\show:notation.html.twig" %} 
-                       {% endif %}
-                       <h2 class="page-header">
-                       	{% trans from "services" %}community.service.show.timeline.header{% endtrans %}
-                       </h2>
-                       <!-- TIMELINE -->
-                       	{% include "MainCommunityBundle:Services\\show:timeline.html.twig" %}
+    {% if passed %}
+	   <h2 class="page-header">
+	        {% trans from "services" %}community.service.show.evaluations.title{% endtrans %}
+	    </h2>
+	    <!-- EVALUTATION-->
+	    {% include "MainCommunityBundle:Services\\show:notation.html.twig" %} 
+    {% endif %}
+        <h2 class="page-header">
+            {% trans from "services" %}community.service.show.timeline.header{% endtrans %}
+        </h2>
+        <!-- TIMELINE -->
+         {% include "MainCommunityBundle:Services\\show:timeline.html.twig" %}
 
-                        {% if commentAllowed == true %}
-                            <h2 class="page-header">{% trans from "services" %}community.service.show.response.add{% endtrans %}</h2>
-                            <div class="row">
-                        		<div class="col-xs-12">
-    	                            <div class="box">
-    	                            	<div class="box-header">
-    	                                </div><!-- /.box-header -->
+        {% if commentAllowed == true %}
+            <h2 class="page-header">{% trans from "services" %}community.service.show.response.add{% endtrans %}</h2>
+            <div class="row">
+                <div class="col-xs-12">
+    	            <div class="box">
+    	                <div class="box-header">
+    	                </div><!-- /.box-header -->
     	                                <!-- form start -->
-    	                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-    	                                    <div class="box-body">									
-    	                                        {{ form_rest(form) }}
-    	                                    </div><!-- /.box-body -->
+    	                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                        <div class="box-body">									
+                            {{ form_rest(form) }}
+                        </div><!-- /.box-body -->
     	
-    	                                    <div class="box-footer">
-    	                                        <button type="submit" class="btn btn-primary">{% trans from "services" %}community.service.show.response.btn.submit{% endtrans %}</button>
-    	                                    </div>
-    	                                {{ form_end(form) }}
-    	                            </div>
-                            	</div>
-                            </div>
-                        {% endif %}
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">{% trans from "services" %}community.service.show.response.btn.submit{% endtrans %}</button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
 
-                            <br><br>
-                        <!-- Confirm Boxes-->
-                        {% include "MainCommunityBundle:Services\\show:confirm_boxes.html.twig" %}
+        <br><br>
+        <!-- Confirm Boxes-->
+        {% include "MainCommunityBundle:Services\\show:confirm_boxes.html.twig" %}
 
 {% endblock %}

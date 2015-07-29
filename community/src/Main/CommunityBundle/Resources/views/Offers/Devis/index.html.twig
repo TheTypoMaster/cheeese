@@ -1,4 +1,4 @@
-    {% extends '::base.html.twig'%}
+{% extends '::base.html.twig'%}
 {% block title %}{% trans from "offers" %}community.devis.read.h1{% endtrans %}{% endblock %}
 {% block titleH1 %}{% trans from "offers" %}community.devis.read.h1{% endtrans %}{% endblock %}
 {% block titleH2 %}{% trans from "offers" %}community.devis.read.h2{% endtrans %}{% endblock %}
@@ -25,7 +25,7 @@
                                 
                                 <div class="box-body">
                                 	<blockquote>
-                                		<p>{{ devis.presentation|raw }}</p>
+                                		<p>{{ devis.presentation|nl2br }}</p>
                                 		
                                 	</blockquote>
                                 	<dl class="dl-horizontal">

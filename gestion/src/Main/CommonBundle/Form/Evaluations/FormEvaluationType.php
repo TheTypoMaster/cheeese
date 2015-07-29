@@ -52,8 +52,12 @@ class FormEvaluationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     { 
     	//si client
+        $labelNote = 'form.evaluation.field.user_notation.photographer';
+        $labelComment = 'form.evaluation.field.user_comment.photographer';
     	if($this->isClient())
     	{
+            $labelNote = 'form.evaluation.field.user_notation.client';
+            $labelComment = 'form.evaluation.field.user_comment.client';
     		$builder->add('prestation_notation', 'number', array(
     				'label'		=> 'form.evaluation.field.prestation_notation',
     				'attr'      => array(
@@ -81,7 +85,7 @@ class FormEvaluationType extends AbstractType
     	}
 
         $builder->add('user_notation', 'number', array(
-                'label'     => 'form.evaluation.field.user_notation',
+                'label'     => $labelNote,
                 'attr'      => array(
                             'id'    => 'input-id',
                             'class' => 'rating',
@@ -96,7 +100,7 @@ class FormEvaluationType extends AbstractType
                         )
             ));
     	$builder->add('user_comment', 'textarea', array(
-    			'label'		=> 'form.evaluation.field.user_comment',
+    			'label'		=> $labelComment,
     			'attr' => array(
     					'class' => 'form-control',
     			),

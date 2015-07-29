@@ -6,14 +6,19 @@ gestion:
             breadh1: Prestation
             breadh2: Détails
             header: Détails de la prestation
+            details:
+                address: Adresse
+                date: Date
+                duration: durée
+                status: Statut
             h3:
                 evaluations: Evaluations
                 timeline: Timeline
                 transaction: Transaction
             h4:
-                date: Adresse, date et durée
-                users: Utilisateurs
-                devis: Devis
+                details: Client et détails
+                price: Photographe et prix
+                devis: Devis concerné
             h5:
                 photographer: Photographe
                 client: Client

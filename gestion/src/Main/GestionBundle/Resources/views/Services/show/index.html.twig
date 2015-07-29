@@ -6,145 +6,167 @@
 {% block breadcrumbH2 %}{% trans from "services" %}gestion.service.show.breadh2{% endtrans %}{% endblock %}
 {% block content %}
                 <!-- Main content -->
-                	<h2 class="page-header">
-                		{% trans from "services" %}gestion.service.show.header{% endtrans %} : {{ prestation.reference }}
-                	</h2>
-                    <div class="row">
-                        <div class="col-xs-4">
-                        	<div class="box">
-                        		<div class="box-header">
-                                    <h4 class="box-title">
-										{% trans from "services" %}gestion.service.show.h4.date{% endtrans %}
-                                    </h4>
-                                </div><!-- /.box-header -->
-                                <div class="box-body">
-                                		<p>
-                                			{{ prestation.address }} {{ prestation.town.name }} {{ prestation.town.code }} {{ prestation.town.country.name }}
-                                		</p>
-                                		<p>
-                                			{{ prestation.starttime | date('d/m/Y')}} {% trans from "services" %}gestion.service.show.li.at{% endtrans %} {{ prestation.starttime | date('H:i')}}
-                                		</p>
-                                		<p>
-                                			{{ prestation.duration.libelle }}
-                                		</p>
-                                </div>
-                                <div class="box-footer">
-                                	<a class="btn btn-default"  href="{{ path('services') }}">{% trans from "services" %}gestion.service.show.btn.back{% endtrans %}</a>
-                                </div>
-                            </div>
+<h2 class="page-header">
+	{% trans from "services" %}gestion.service.show.header{% endtrans %} : {{ prestation.reference }}
+</h2>
+<div class="row">
+    <div class="col-xs-4">
+    	<div class="box">
+    		<div class="box-header">
+                <h4 class="box-title">
+					{% trans from "services" %}gestion.service.show.h4.details{% endtrans %}
+                </h4>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="user-panel">
+                    <div class="pull-right image">
+                        <img src="{{ image64(prestation.client.photo, prestation.client.photoType, 'pp') }}"  class="img-circle" />
+                    </div>
+                    <a href="{{ path('user_show', {id : prestation.client.id} )}}">{{ prestation.client.username }}</a> 
+                    <br>
+                    <i class="fa fa-star-o"></i> {{ prestation.client.note|number_format(2) }}
+                    <i class="fa fa-comment-o"></i> {{ prestation.client.prestations }}                                
+                </div>
+                <p>
+                    <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}gestion.service.show.details.address{% endtrans %}:</th>
+                                        <td>{{ prestation.address }} {{ prestation.town.name }} {{ prestation.town.code }} {{ prestation.town.country.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}gestion.service.show.details.date{% endtrans %}:</th>
+                                        <td>{{ prestation.starttime | date('d/m/Y')}} {% trans from "services" %}community.service.show.li.at{% endtrans %} {{ prestation.starttime | date('H:i')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}gestion.service.show.details.duration{% endtrans %}:</th>
+                                        <td>{{ prestation.duration.libelle }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}gestion.service.show.details.status{% endtrans %}:</th>
+                                        <td>{{ prestation.status.libelle }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="col-xs-4">
-                        	<div class="box">
-	                        	<div class="box-header">
-	                                    <h4 class="box-title">
-	                                    {% trans from "services" %}gestion.service.show.h4.users{% endtrans %}
-	                                	</h4>
-	                            </div>
-	                            <div class="box-body">
-                                	<h5>
-                                		{% trans from "services" %}gestion.service.show.h5.photographer{% endtrans %}
-                                	</h5>
-                                	<div class="user-panel">
-	                                    <div class="pull-left image">
-	                                        <img src="{{ image64(prestation.devis.company.photographer.photo, prestation.devis.company.photographer.photoType, 'pp') }}"  class="img-circle" />
-	                                    </div> 
-                                        <a href="{{ path('user_show', {id : prestation.devis.company.photographer.id}) }}">
-                                                    {{ prestation.devis.company.photographer.username }}
-                                        </a>
-                                        <br>
-                                        <i class="fa fa-star-o"></i> {{ prestation.devis.company.photographer.note|number_format(2) }}
-                                        <i class="fa fa-comment-o"></i> 
-                                        {{ prestation.devis.company.photographer.prestations }}
-                                        </ul>                                                        
-                                	</div>
-	                                <h5>
-		                            	{% trans from "services" %}gestion.service.show.h5.client{% endtrans %}
-		                            </h5>
-		                            <div class="user-panel">
-	                                    <div class="pull-left image">
-	                                        <img src="{{ image64(prestation.client.photo, prestation.client.photoType, 'pp') }}"  class="img-circle" />
-	                                    </div>
-	                                    <a href="{{ path('user_show', {id : prestation.client.id} )}}">{{ prestation.client.username }}</a> 
-                                        <br>
-                                        <i class="fa fa-star-o"></i> {{ prestation.client.note|number_format(2) }}
-                                        <i class="fa fa-comment-o"></i> {{ prestation.client.prestations }}                                
-                                	</div>
-	                            </div><!-- /.box-header -->
-                                <div class="box-footer">
-                                    {% if delivered %}
-                                        <a class="btn btn-success"  href="{{ path('service_pay', {id: prestation.id}) }}">
-                                            {% trans from "services" %}gestion.service.show.btn.pay{% endtrans %}
-                                        </a>
-                                    {% endif %}
-                                </div>
-	                        </div>
-                        </div>
-                        <div class="col-xs-4">
-                        	<div class="box">
-                        		<div class="box-header">
-	                                    <h4 class="box-title">
-	                                    {% trans from "services" %}gestion.service.show.h4.devis{% endtrans %}
-	                                	</h4>
-	                            </div>
-	                            <div class="box-body">
-	                            	<p><a href="{{ path('devis_read', {id: prestation.devis.id})}}">{{ prestation.devis.title }}</a></p>
-	                            	<p>{{ prestation.devis.category.name }}</p>
-                                    <p>
-                                        <dl>
-                                            <dt>{% trans from "services" %}gestion.service.show.price{% endtrans %}</dt>
-                                            <dd>{{ prestation.price }} ({{ prestation.devis.currency.libelle }})</dd>
-                                            <dt>
-                                                {% trans from "services" %}gestion.service.show.commission.photographer{% endtrans %}</dt>
-                                            <dd>{{ prestation.commission.photographer}} %
-                                            {% if editCommPhot %}
-                                                <a class="btn btn-primary btn-sm"  href="{{path('service_commission', {'id' : prestation.id, 'type' : 2})}}">
+                </p>
+            		
+            </div>
+            <div class="box-footer">
+            	<a class="btn btn-default"  href="{{ path('services') }}">{% trans from "services" %}gestion.service.show.btn.back{% endtrans %}</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+    	<div class="box">
+        	<div class="box-header">
+                    <h4 class="box-title">
+                    {% trans from "services" %}gestion.service.show.h4.devis{% endtrans %}
+                	</h4>
+            </div>
+            <div class="box-body">
+            	
+                <p><strong>{{ prestation.devis.category.name }}</strong></p>
+                <p><a href="{{ path('devis_read', {id: prestation.devis.id})}}">{{ prestation.devis.title }}</a></p>
+                <p>{{ prestation.rappel|nl2br }}</p>
+                
+            </div><!-- /.box-header -->
+            <div class="box-footer">
+                {% if delivered %}
+                    <a class="btn btn-success"  href="{{ path('service_pay', {id: prestation.id}) }}">
+                        {% trans from "services" %}gestion.service.show.btn.pay{% endtrans %}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+    	<div class="box">
+    		<div class="box-header">
+                    <h4 class="box-title">
+                    {% trans from "services" %}gestion.service.show.h4.price{% endtrans %}
+                	</h4>
+            </div>
+            <div class="box-body">
+                <div class="user-panel">
+                    <div class="pull-right image">
+                        <img src="{{ image64(prestation.devis.company.photographer.photo, prestation.devis.company.photographer.photoType, 'pp') }}"  class="img-circle" />
+                    </div> 
+                    <a href="{{ path('user_show', {id : prestation.devis.company.photographer.id}) }}">
+                    {{ prestation.devis.company.photographer.username }}
+                    </a>
+                    <br>
+                    <i class="fa fa-star-o"></i> {{ prestation.devis.company.photographer.note|number_format(2) }}
+                    <i class="fa fa-comment-o"></i> 
+                    {{ prestation.devis.company.photographer.prestations }}
+                    </ul>                                                        
+                </div>
+            	
+                <p>
+                    <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}gestion.service.show.price{% endtrans %}:</th>
+                                        <td>{{ prestation.price }} € </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}gestion.service.show.commission.photographer{% endtrans %}:</th>
+                                        <td>{{ prestation.commission.photographer}} %</td>
+                                        <td>
+                                        {% if editCommPhot %}                                        
+                                            <a class="btn btn-primary btn-sm"  href="{{path('service_commission', {'id' : prestation.id, 'type' : 2})}}">
                                             {% trans from "services" %}gestion.service.show.commission.btn.photographer{% endtrans %}
-                                                 </a>
-                                            {% endif %}
-                                            </dd> 
-                                            <dt>
-                                            {% trans from "services" %}gestion.service.show.commission.customer{% endtrans %}</dt>
-                                            </dt>
-                                            <dd>{{ prestation.commission.customer}} %
-                                            {% if editCommCust %}
+                                            </a>
+                                        {% endif %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:30%">{% trans from "services" %}gestion.service.show.commission.customer{% endtrans %}:</th>
+                                        <td>{{ prestation.commission.customer}} %</td>
+                                        <td>
+                                        {% if editCommCust %}
                                             <a class="btn btn-primary btn-sm"  href="{{path('service_commission', {'id' : prestation.id, 'type' : 1})}}">
                                             {% trans from "services" %}gestion.service.show.commission.btn.customer{% endtrans %}
                                             </a>
-                                            {% endif %}
-                                            </dd>   
-                                        </dl>
-                                    </p>
-                                    <p>{{ prestation.status.libelle }}</p>
-
-	                            </div>
-                                 <div class="box-footer">                                    
-                                    
-                                </div>
-                        	</div>
+                                        {% endif %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                       </div>
+                </p>
+            </div>
+             <div class="box-footer">                                    
+                
+            </div>
+    	</div>
+    </div>
+   </div>
 
-	                     <h3 class="page-header">
-	                     	{% trans from "services" %}gestion.service.show.h3.evaluations{% endtrans %}
-	                     </h3>
-	                     
-                       <!-- NOTATION -->
-                       	{% include "MainGestionBundle:Services\\show:notation.html.twig" %}
-                      
-                       <h3 class="page-header">
-                       	{% trans from "services" %}gestion.service.show.h3.timeline{% endtrans %}
-                       </h3>
-                       <!-- TIMELINE -->
-                       	{% include "MainGestionBundle:Services\\show:timeline.html.twig" %}
+     <h3 class="page-header">
+     	{% trans from "services" %}gestion.service.show.h3.evaluations{% endtrans %}
+     </h3>
+     
+   <!-- NOTATION -->
+   	{% include "MainGestionBundle:Services\\show:notation.html.twig" %}
+  
+   <h3 class="page-header">
+   	{% trans from "services" %}gestion.service.show.h3.timeline{% endtrans %}
+   </h3>
+   <!-- TIMELINE -->
+   	{% include "MainGestionBundle:Services\\show:timeline.html.twig" %}
 
-                        {% if closed %}
-                        <h3 class="page-header">
-                        {% trans from "services" %}gestion.service.show.h3.transaction{% endtrans %}
-                       </h3>
-                       <!-- TIMELINE -->
-                        {% include "MainGestionBundle:Services\\show:transaction.html.twig" %}
-                        {% endif %}
-                    </div>
+    {% if closed %}
+    <h3 class="page-header">
+    {% trans from "services" %}gestion.service.show.h3.transaction{% endtrans %}
+   </h3>
+   <!-- TRANSACTION -->
+    {% include "MainGestionBundle:Services\\show:transaction.html.twig" %}
+    {% endif %}
+</div>
 
                             
 {% endblock %}

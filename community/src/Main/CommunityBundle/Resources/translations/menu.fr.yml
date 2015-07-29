@@ -42,8 +42,9 @@ menu:
             created: Vous avez une nouvelle demande
             canceled: Une demande a été annulée
             confirmed: Une demande a été confirmée
-            delivered: Une demande a été notée
-            closed: Une demande a été cloturée
+            old: Vous pouvez noter votre prestation
+            delivered: Votre prestation a été évaluée
+            closed: Votre prestation a été cloturée
     footer:
         help: Aide et contact
         copyrights: Tous droits réservés

@@ -108,14 +108,10 @@ class ServiceNotification
                 $to = $photographer;
                 $subject = self::PRESTATION_OK;
                 break;
-            /*
             case 6:
-                $to = '';
-                $subject = '';
-                $template = '';
-                $body = '';
+                $to = $photographer;
+                $subject = self::OLD_PRESTATION;
                 break;
-            */
             case 7:
                 $to = $photographer;
                 $subject = self::PHOTOS_DELIVERED;

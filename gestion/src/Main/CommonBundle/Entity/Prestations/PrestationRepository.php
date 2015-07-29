@@ -124,23 +124,19 @@ class PrestationRepository extends EntityRepository
 	 * @param [type] $status    [description]
 	 * @param [type] $newStatus [description]
 	 */
-	public function setPassedPrestations($date, $status, $newStatus)
+	public function getPassedPrestation($date, $status)
 	{
 		$qb = $this->_em->createQueryBuilder();
-		$q = $qb->update('MainCommonBundle:Prestations\Prestation', 'p')
-        		->set('p.status', ':new')
-        		->set('p.updatedAt', ':date')
-        		->where('p.status = :old')
-        		->andWhere('p.startTime < :day')
-        			->setParameters(array(
-        				'new'	=> $newStatus,
-        				'old'	=> $status,
-        				'date'	=> $date,
-        				'day'	=> $date->format('Y-m-d')
-        				)
-        			)
-        			->getQuery();
-			$q->execute();	
+		$qb->select('p')
+		->from('MainCommonBundle:Prestations\Prestation', 'p')
+		->where('p.startTime < :day')
+		->andWhere('p.status = :status')
+		->setParameters(array(
+				'day'			=> $date->format('Y-m-d'),
+				'status'		=> $status
+				));
+		$query = $qb->getQuery();
+		return $query->getResult();	
 	}
 
 	

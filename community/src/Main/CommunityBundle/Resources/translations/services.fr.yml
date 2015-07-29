@@ -62,6 +62,11 @@ community:
             breadh1: Evaluation
             breadh2: Mon evaluation
             header: Mon evaluation
+            help:
+                h4: Votre notation de la prestation.
+                p1: Notre communauté repose sur des commentaires honnêtes et transparents, ainsi que une attribution d’étoiles (plus vous mettez d’étoiles, plus vous êtes contents). Cela permet aux photographes et aux clients d’avoir une idée de la personne avec qui ils traitent, et de motiver leur décision finale.
+                p2: Nous vous remercions pour le temps que vous prendrez pour remplir cette évaluation.
+                caution: Attention, une fois soumise, votre évaluation ne pourra pas être modifiée.
             btn:
                 submit: Soumettre
 
@@ -72,18 +77,24 @@ community:
             breadh2: Détails
             header: Prestation
             h4:
-                date: Adresse, date et durée
-                client: Client
-                devis: Devis
+                details: Client et détails de la prestation
+                price: Prix de la prestation
+                devis: Devis concerné
+            h5:
+                devis: Rappel du contenu du devis:
             li:
                 at: à
             btn:
                 back : Retour
             price:
-                lead: Prix de la prestation
                 devis: Prix du devis
                 tax: Frais de service
                 total: Total à percevoir
+            details:
+                address: Adresse
+                date: Date
+                duration: durée
+                status: Statut
             confirm:
                 header:
                     pre_accept: Vous êtes sur le point de pré-accepter cette réservation !

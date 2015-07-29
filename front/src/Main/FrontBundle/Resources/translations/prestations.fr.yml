@@ -14,14 +14,17 @@ prestation:
         confirm:
                 header:
                     cancel: Vous êtes sur le point d’annuler cette réservation !
-                    confirm: Vous êtes sur le point de confirmer votre réservation ! 
+                    confirm: Vous êtes sur le point de confirmer votre réservation !
+                    deliver: Vous êtes sur le point de confirmer la réception des photos !
                 warningheader: Evaluez cette prestation
                 attention:
                     cancel: Attention, cette action mettra un terme à la réservation en cours.
                     confirm: Nous sommes ravis que vous ayez trouvé un photographe pour votre évènement.
+                    deliver: Nous sommes ravis que vous ayez bien reçu les photos tel que convenu avec le photographe lors de votre réservation.
                 message:
                     cancel: Avez-vous tenter de négocier avec le photographe?
                     confirm: En confirmant cette réservation, le paiement sera effectué et vous acceptez nos conditions d’annulation.
+                    deliver: Une fois cette confirmation effectuée, nous allons procéder au paiement du photographe. 
                 warningmessage: Merci d'évaluer cette prestation avant de poursuivre
                 btn:
                     back: Retour

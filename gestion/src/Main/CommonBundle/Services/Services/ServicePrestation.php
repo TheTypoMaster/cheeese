@@ -263,8 +263,24 @@ class ServicePrestation
 	 */
 	public function setPassedPrestations()
 	{
-		$date = new \DateTime('now');
-		$this->repository->setPassedPrestations($date, self::PRESTATION_OK, self::OLD_PRESTATION);
+		$status = $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::OLD_PRESTATION);
+		$prestations = $this->repository->getPassedPrestation(new \DateTime('now'), self::PRESTATION_OK);
+		if (count($prestations) > 0 ){
+			foreach ($prestations as $prestation) {
+			$prestation->setStatus($status);
+			$prestation->setUpdatedAt(new \DateTime('now'));
+			try{
+				$this->em->flush();
+				//Envoi du mail
+	            //$this->mailer->prestationUpdateEmail($prestation);
+	            $this->notification->createPrestationNotification($prestation);
+				return true;
+			}catch(\Exception $e){
+				$this->logger->error($e->getMessage());
+				return false;
+			}
+			}
+		}		
 	}
 	
 	/**
@@ -384,6 +400,7 @@ class ServicePrestation
 		$prestation = new Prestation();
 		$prestation->setReference($this->reference->generateReference());
 		$prestation->setDevis($devis);
+		$prestation->setRappel($devis->getPresentation());
 		$prestation->setClient($client);
 		$prestation->setTown($town);
 		$prestation->setPrice($price);

@@ -67,8 +67,12 @@ form:
 
     evaluation:
         field:
-            user_notation: Evaluation utilisateur
-            user_comment: Vos commentaires
+            user_notation: 
+                photographer: Evaluation du client
+                client: Evaluation du photographe
+            user_comment: 
+                photographer: Vos commentaires sur le client
+                client: Vos commentaires sur le photographe
             prestation_notation: Evaluation de la prestation
             prestation_comment: Vos commentaires sur la prestation
     transaction:

@@ -78,3 +78,6 @@ companies:
                 amount: Montant
                 iban: Iban
                 service: Prestation 
+            help:
+                h4: Liste de vos transactions
+                p1: Retrouvez ici le détail de vos transactions. Une transaction correspond à un virement effectué sur votre compte bancaire.
