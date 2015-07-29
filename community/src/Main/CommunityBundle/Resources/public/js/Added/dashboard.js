@@ -10,6 +10,34 @@ $(function() {
     //Make the dashboard widgets sortable Using jquery UI
     groupByDevis = JSON.parse(groupByDevis.replace(/&quot;/g,'"'));
     groupByPrest = JSON.parse(groupByPrest.replace(/&quot;/g,'"'));
+    groupByPrest.forEach(function(entry) {
+        switch(entry['y']) {
+            case 'CREATED':
+                entry['y'] = 'En cours';
+                break;
+            case 'PRE_CONFIRMED':
+                entry['y'] = 'Pré-confirmée';
+                break;
+            case 'REFUSED':
+                entry['y'] = 'Refusée';
+                break;
+            case 'CANCELED':
+                entry['y'] = 'Annulée';
+                break;
+            case 'CONFIRMED':
+                entry['y'] = 'Confirmée';
+                break;
+            case 'PASSED':
+                entry['y'] = 'Traitée';
+                break;
+            case 'DELIVERED':
+                entry['y'] = 'Delivrée';
+                break;
+            case 'CLOSED':
+                entry['y'] = 'Clotûrée';
+                break;
+            } 
+    });
     $(".connectedSortable").sortable({
         placeholder: "sort-highlight",
         connectWith: ".connectedSortable",
@@ -40,9 +68,10 @@ $(function() {
         data: groupByPrest,
         barColors: ['#00a65a', '#f56954'],
         xkey: 'y',
-	xLabelAngle: 60,
+	    xLabelAngle: 30,
         ykeys: ['a'],
-        hideHover: 'auto'
+        hideHover: 'auto',
+        yLabelFormat: function(y){return y != Math.round(y)?'':y;},
     });
 
 });
