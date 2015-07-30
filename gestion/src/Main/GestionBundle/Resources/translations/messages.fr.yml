@@ -28,12 +28,22 @@ gestion:
                 breadh2: Liste des administrateurs
                 btn:
                     create: Nouvel administrateur
+            show:
+                h1: Administrateur
+                h2: Détails
+                breadh1: Administrateur
+                breadh2: Détails
         individuals:
             index:
                 h1: Particuliers
                 h2: Liste des particuliers
                 breadh1: Particuliers
                 breadh2: Liste des particuliers
+            show:
+                h1: Particulier
+                h2: Détails
+                breadh1: Particulier
+                breadh2: Détails
         photographers:
             index:
                 h1: Photographes
@@ -87,6 +97,9 @@ gestion:
                     company: Entreprise
                     devis: Devis
                     services: Prestations
+                status:
+                    enabled: Activé
+                    disabled: Désactivé
         list:
             username: Utilisateur
             lastname: Nom
@@ -154,7 +167,7 @@ flash:
                 pp: Vous avez une nouvelle photo de profil
                 admin:
                     create: Un nouveal administrateur a été créé
-                    disable: L'administrateur a bien été désactivé
+                    disable: L'utilisateur a bien été désactivé
             devis:
                 edit: Le devis a bien été mis à jour
                 create: Votre devis a bien été créé

@@ -177,11 +177,9 @@ class UsersController extends Controller
 							'type' => 'administrators'
 						)));
 		}
-		$disable = $serviceUser->disableAdmin($user);
-		if($disable){
-					return $this->redirect($this->generateUrl('user_show', array(
+		$serviceUser->disableUser($user);
+		return $this->redirect($this->generateUrl('user_show', array(
 							'id' => $id
 						)));
-				}
 	}
 }

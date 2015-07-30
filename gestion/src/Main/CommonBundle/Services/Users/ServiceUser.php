@@ -148,23 +148,32 @@ class ServiceUser
 	 * @param  User   $user [description]
 	 * @return [type]       [description]
 	 */
-	public function disableAdmin(User $user)
+	public function disableUser(User $user)
 	{
-		$roles = $user->getRoles();
-		if (in_array('ROLE_ADMIN', $roles))
-		{
-			$user->setEnabled(0);
-			$user->setUpdatedAt(new \DateTime('now'));
-			try{
-				$this->em->flush();	
-				$this->session->successFlashMessage('flash.message.user.admin.disable');			
-				return true;
-			}catch(\Exception $e){
-				$this->session->errorFlashMessage();
-				$this->logger->error($e->getMessage());
-				return false;
+		$admin = $this->getCurrentUser()->getRoles();
+
+		if (in_array('ROLE_SUPER_ADMIN', $admin)) {
+			$roles = $user->getRoles();
+			if (in_array('ROLE_ADMIN', $roles) || 
+				in_array('ROLE_PARTICULIER', $roles) ||
+				in_array('ROLE_PHOTOGRAPHER', $roles) ||
+				in_array('ROLE_PHOTOGRAPHER_VERIFIED', $roles)
+				)
+			{
+				$user->setEnabled(0);
+				$user->setUpdatedAt(new \DateTime('now'));
+				try{
+					$this->em->flush();	
+					$this->session->successFlashMessage('flash.message.user.admin.disable');			
+					return true;
+				}catch(\Exception $e){
+					$this->session->errorFlashMessage();
+					$this->logger->error($e->getMessage());
+					return false;
+				}
 			}
 		}
+		
 		return false;
 
 	}

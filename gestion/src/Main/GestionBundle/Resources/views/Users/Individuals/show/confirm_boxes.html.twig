@@ -1,0 +1,26 @@
+<div class="modal fade" id="disableModal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-danger" id="titleModal">
+                    {% trans %}gestion.users.photographers.verify.confirm.header{% endtrans %}
+                	</h4>
+                </div>
+                <div class="modal-body">
+                <strong>{% trans %}gestion.users.photographers.verify.confirm.attention{% endtrans %} </strong> {% trans %}gestion.users.photographers.verify.confirm.message{% endtrans %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {% trans %}gestion.users.photographers.verify.confirm.btn.back{% endtrans %}
+                </button>
+                    <a href="{{ path('disable_user', {'id': 0 }) }}" role="button" class="btn btn-danger" id="aSuppr1">
+                    {% trans %}gestion.users.photographers.verify.confirm.btn.confirm{% endtrans %}
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
