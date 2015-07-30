@@ -266,19 +266,20 @@ class ServicePrestation
 		$status = $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::OLD_PRESTATION);
 		$prestations = $this->repository->getPassedPrestation(new \DateTime('now'), self::PRESTATION_OK);
 		if (count($prestations) > 0 ){
+
 			foreach ($prestations as $prestation) {
 			$prestation->setStatus($status);
 			$prestation->setUpdatedAt(new \DateTime('now'));
+			$this->notification->createPrestationNotification($prestation);
+			}
 			try{
 				$this->em->flush();
 				//Envoi du mail
 	            //$this->mailer->prestationUpdateEmail($prestation);
-	            $this->notification->createPrestationNotification($prestation);
 				return true;
 			}catch(\Exception $e){
 				$this->logger->error($e->getMessage());
 				return false;
-			}
 			}
 		}		
 	}
