@@ -51,11 +51,6 @@ class ServiceIban
 	 */
 	public function getIban()
 	{
-		/*
-		return $this->repository->findOneBy(array(
-			'photographer' => $this->getCurrentUser()->getId() 
-		));
-		*/
 		return $this->repository->getIban($this->getCurrentUser()->getId());
 	}
 	

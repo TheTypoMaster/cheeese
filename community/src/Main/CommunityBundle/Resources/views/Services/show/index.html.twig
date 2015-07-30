@@ -120,6 +120,16 @@
                             </tbody>
                         </table>
                     </div>
+                    {% if iban == null %}
+                    <p>
+                        <div class="alert alert-danger alert-dismissable">
+                            <i class="fa fa-ban"></i>
+                            <b>{% trans from "services" %}community.service.show.iban.b{% endtrans %}</b>
+                            {% trans from "services" %}community.service.show.iban.p{% endtrans %}
+                            <a href="{{ path('iban')}}">{% trans from "services" %}community.service.show.iban.a{% endtrans %}</a>
+                        </div>
+                    </p>
+                    {% endif %}
 	            </div>
                 <div class="box-footer">
                     {% if 1 == prestation.status.id or 2 == prestation.status.id %}

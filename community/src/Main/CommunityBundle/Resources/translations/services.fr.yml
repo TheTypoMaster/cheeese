@@ -90,6 +90,10 @@ community:
                 devis: Prix du devis
                 tax: Frais de service
                 total: Total à percevoir
+            iban:
+                b: Attention!
+                p: Vous n'avez toujours pas rentré vos coordonnées bancaires.Cliquez
+                a: ici
             details:
                 address: Adresse
                 date: Date

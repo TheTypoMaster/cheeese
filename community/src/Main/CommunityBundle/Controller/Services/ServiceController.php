@@ -47,6 +47,7 @@ class ServiceController extends Controller
 		{
 			$messageService = $this->get('service_message');
 			$messageNotification= $this->get('service_notification');
+			$ibanService = $this->get('service_iban');
 			$commentClient  = null;
 			$commentPhotographer = null;
 			$formView = null;
@@ -55,6 +56,7 @@ class ServiceController extends Controller
 			$messageService->readMessages($id);
 			$messageNotification->readNotifications($id);
 			$messages = $messageService->getPrestationMessages($id);
+			$iban = $ibanService->getIban();
 			if($prestationService->isCommentAllowed($service))
 			{
 				$allowed = true;
@@ -89,7 +91,8 @@ class ServiceController extends Controller
 					'passed'				=> $passed,
 					'commentClient'	 		=> $commentClient,
 					'commentPhotographer'	=> $commentPhotographer,
-					'form'		 			=> $formView
+					'form'		 			=> $formView,
+					'iban'					=> $iban
 			));
 		}
 	}
