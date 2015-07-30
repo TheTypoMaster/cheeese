@@ -51,8 +51,21 @@ about:
         btn: Ouverture du service en Novembre!
     section2:
         h2: A votre service !
+        camera:
+            h3: Professionnels
+            text: Tous les photographes disposent d’un numéro SIRET valide
+        eur:
+            h3: Transparence
+            text: Un prix final affiché. Paiement en toute sécurité sans mauvaise surprise
+        star:
+            h3: Confiance
+            text: Vous donnez votre avis et vous notez les photographes
+        heart:
+            h3: Sur mesure
+            text: Pour chaque prestation , il vous est possible d’échanger avec le photographe et d’affiner votre devis
     photographers:
         h2: Vous êtes photographe? Rejoignez la communauté!
-        btn: C'est ouvert !
+        btn: C'est ouvert et gratuit!
     section3:
         h2: Restons en contact !
+        text: Vous avez une question, une remarque, une envie partiuclière ? N’hésitez pas à nous contacter, nous vous répondons dans les plus brefs délais.

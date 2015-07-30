@@ -120,14 +120,22 @@ about:
         about: A propos
         join: Rejoindre
         contact: Contact
+    head:
+        h1: Cheeese
+        p1: Vous êtes photographe professionnel ?
+        p2: Inscription gratuite, simple et sans engagement.
     section1:
-        h2: A propos de weare cheeese
+        h2: Notre promesse
+        p1: Cheeese, c’est la conviction qu’il doit être possible pour tout un chacun de trouver et de réserver une prestation photographique pour un évènement en quelques clics seulement, et en toute sécurité. En fonction de son budget, de sa localité, et de ses disponibilités
+        p2: Cheeese, c’est aussi la conviction qu’il doit être possible pour les photographes de proposer leurs prestations librement, de gérer leurs réservations facilement, d’échanger avec des clients potentiels, et cela sans payer d’abonnements qui ne leur assurent aucune retombées économiques. Grâce à un espace de gestion privé que nous mettons à leur disposition gratuitement.
+        p3: Shooting photo, anniversaire, mariage, reportage, etc... : en vous inscrivant et en proposant vos prestations sur XXXX, nous vous permettons d’augmenter votre visibilité, de trouver et fidéliser des nouveaux clients, de gagner plus d’argent et de booster votre réputation.
     section2:
-        h2: Rejoindre weare cheeese
+        h2: Vous avez un numéro SIRET?
         a: Rejoindre
-        p: Mettre conditions et liste des départements ouverts
+        p: Rejoignez notre communauté et bénéficiez de nos services. Créez votre profil en quelques minutes seulement ! 
     section3:
         h2: Restez en contact avec cheeese
+        p: Une question ? Contactez-nous ! 
 error:
     404:
         title: Oups! Page inexistante.
