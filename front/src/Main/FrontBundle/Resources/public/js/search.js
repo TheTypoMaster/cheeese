@@ -14,8 +14,8 @@ $('#form_front_search_day').datepicker({
 	format: "dd/mm/yyyy",
 	autoclose: true,
 	language: 'fr', // A recuperer avec la locale
-	startDate: '+1d',
-	endDate: '+1y'
+	startDate: 'today',
+	endDate: '+6m'
 });
 //AUTOCOMPLETE
 // Sélection code INSEE
