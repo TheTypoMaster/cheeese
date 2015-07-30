@@ -83,11 +83,9 @@ class FormCompanyType extends AbstractType
         		'constraints'   => array(
         				new NotBlank ( array(
         				)))
-        		));
-        
-        
-        if ($options['status'] === 3) {
-        	$builder->add('identification', 'text', array(
+        		));        
+        if ($options['status'] === '2') {
+                    $builder->add('identification', 'text', array(
         			'label' => 'form.companytype.field.identification',
         			'disabled' => true,
         			'data' => $options['identification'],

@@ -79,40 +79,36 @@ class CompanyController extends Controller
 	{
 		$usr= $this->get('security.context')->getToken()->getUser();
 		//Find company
-		//Appel du service d'inscription
 		$serviceCompany = $this->get('service_company');
 		$company = $serviceCompany->getCompany($usr->getId());
 		if($company === null ){
 			return $this->redirect($this->generateUrl('company_new'));
-		}elseif(2 != $company->getStatus()->getId()) {
-			$form = $this->createForm('form_company', null, array(
-					'status'  		 => $company->getStatus()->getId(),
-					'title'	  		 => $company->getTitle(),
-					'address'		 => $company->getAddress(),
-					'town'	    	 => $company->getTown()->getName(),
-					'country' 		 => $company->getTown()->getCountry()->getId(),
-					'identification' => $company->getIdentification(),
-					));
-				
-			$form->handleRequest($request);
-			if($request->isMethod('POST'))
-			{
-				$params = $request->request->get('form_company');
-				if($form->isValid()) {
-					$update = $serviceCompany->update($company, $params);
-					if($update){
-						return $this->redirect($this->generateUrl('company'));
-					}
+		}
+		$form = $this->createForm('form_company', null, array(
+				'status'  		 => $company->getStatus()->getId(),
+				'title'	  		 => $company->getTitle(),
+				'address'		 => $company->getAddress(),
+				'town'	    	 => $company->getTown()->getName(),
+				'country' 		 => $company->getTown()->getCountry()->getId(),
+				'identification' => $company->getIdentification(),
+				));
+			
+		$form->handleRequest($request);
+		if($request->isMethod('POST'))
+		{
+			$params = $request->request->get('form_company');
+			if($form->isValid()) {
+				$update = $serviceCompany->update($company, $params);
+				if($update){
+					return $this->redirect($this->generateUrl('company'));
 				}
 			}
+		}
 			
-			return $this->render('MainCommunityBundle:Company:edit.html.twig', array(
-					'form' 		=> $form->createView(),
-					'company'	=> $company						
-			));
-		}
-		else{
-			return $this->redirect($this->generateUrl('company'));
-		}
+		return $this->render('MainCommunityBundle:Company:edit.html.twig', array(
+				'form' 		=> $form->createView(),
+				'company'	=> $company						
+		));
+		
 	}
 }

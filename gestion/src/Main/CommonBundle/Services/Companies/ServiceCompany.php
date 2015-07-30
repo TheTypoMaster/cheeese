@@ -109,13 +109,12 @@ class ServiceCompany
 		$Company->setTitle($data['title']);
 		$Company->setAddress($data['address']);
 		$Company->setUpdatedAt(new \DateTime('now'));
-		$status = $this->em->getRepository('MainCommonBundle:Status\PhotographerStatus')->findOneById(self::TO_VERIFY);
-		$Company->setStatus($status);
 		try{
 			$this->em->flush();
 			return true;
 		}catch(\Exception $e){
 			$this->logger->error($e->getMessage());
+			var_dump($e->getMessage());die;
 			return false;
 		}
 	}
