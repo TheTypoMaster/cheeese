@@ -1,0 +1,64 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{% trans %}search.index.title{% endtrans %}{% endblock %}
+{% block content %}
+   <div class="row text-center">
+	   {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+	   		<div class="col-xs-12 col-md-3 form-group {% if not form.category.vars.valid %}has-error{% endif %}">
+	   	   {{ form_widget(form.category) }}
+	   		</div>
+	   		<div class="col-xs-12 col-md-2 form-group {% if not form.day.vars.valid %}has-error{% endif %}">
+	   	   <div class="input-group">
+	   	   		{{ form_widget(form.day) }}
+	   	   		<span class="input-group-addon">
+	   	   		<i class="glyphicon glyphicon-calendar"></i>
+	   	   		</span>
+	   			</div>
+	   		</div>
+	   		<div class="col-xs-12 col-md-2 form-group {% if not form.day.vars.valid %}has-error{% endif %}">
+	   	   {{ form_widget(form.department) }}
+	   		</div>
+	   		<div class="col-xs-12 col-md-3 form-group {% if not form.day.vars.valid %}has-error{% endif %}">
+	   	   <div class="input-group">
+		   		{{ form_widget(form.town_text) }}
+		   		<span class="input-group-addon">
+		   		<i class="glyphicon glyphicon-map-marker"></i>
+		   		</span>
+				</div>
+		   {{ form_widget(form.town_code) }}
+			</div>
+	  	 <button type="submit" class="btn btn-normal">
+	  	 	{% trans %}search.index.btn.submit{% endtrans %}
+	  	 </button>
+	  	 {{ form_errors(form) }}
+	  	 {{ form_rest(form) }}
+	   {{ form_end(form) }}
+
+   </div>
+   {# ------------------------------------------ RESULTATS DE LA REQUETES ----------------------------------------------- #}
+   <hr>
+   	{% if search %}
+    	{% if results|length == 0 %}
+    	{% include "MainFrontBundle:Results:empty.html.twig" %}
+		{% elseif results|length > 0 %}
+		  <h2 class="lead">
+		  	<strong class="text-danger">{{ results|length }}</strong>
+		  	{% if results|length == 1 %}
+		  		{% trans %}search.main.results.count.one{% endtrans %}
+		  	{% else %}
+		  		{% trans %}search.main.results.count.more{% endtrans %}
+		  	{% endif %}
+			</h2>
+	  		{% include "MainFrontBundle:Results:first.html.twig" %}
+		{% endif %}
+	{% endif %}
+{% endblock %}
+
+{% block bottom_script %}
+{% javascripts '@MainFrontBundle/Resources/public/js/search.js'
+			   '@MainFrontBundle/Resources/public/js/diacritics.js' %}
+<script type="text/javascript">
+    var base = location.protocol + "//" + location.host + '{{ app.request.baseUrl }}';
+    </script>    
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock bottom_script %}

@@ -1,3 +1,15 @@
+search:
+    index:
+        btn:
+            submit: Trouver
+    main:
+        results:
+            count:
+                empty: 
+                    header: Pas de devis 
+                    p: Il semblerait qu'aucun devis ne soit disponible dans ces critères de recherche.
+                one: devis trouvé pour votre recherche
+                more: devis trouvés pour votre recherche
 result:
     photographer:
         username: Photographe
@@ -5,6 +17,9 @@ result:
         prestations: Nombre de prestations
         prices:
             multiple: offres à partir de 
+        btn:
+            details: Détails
+            save: Sauvegarder
 flash:
     message:
             error: Un probléme est  survenue
@@ -69,3 +84,32 @@ about:
     section3:
         h2: Restons en contact !
         text: Vous avez une question, une remarque, une envie partiuclière ? N’hésitez pas à nous contacter, nous vous répondons dans les plus brefs délais.
+devis:
+    show:
+        photographer:
+            header: A propos du photographe
+            since: Membre depuis le  
+        comments:
+            header: Commentaires
+            empty: Pas de commentaires pour ce devis
+        help:
+            header: Aide
+        why:
+            header: Pourquoi nous choisir
+        anonymous:
+            connect: Connectez vous
+            or: ou
+            register: inscrivez vous
+            text: pour découvrir les prix de ce devis et pour faire une demande de prestation au photographe
+        form:
+            header: Demande de prestation
+            btn:
+                submit: Envoyer demande
+            price:
+                devis: Prix du devis
+                tax: Frais de service
+                total: Total
+            help:
+                message: Il ne vous sera demandé de payer que lorsque le photographe aura pré-approuvé votre demande
+                date %photographer%: Dates de disponibilités de %photographer%
+                town %photographer% %radius% %hometown%: %photographer% se déplace dans un rayon de %radius% kms autour de %hometown%

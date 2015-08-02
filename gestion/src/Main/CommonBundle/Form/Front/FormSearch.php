@@ -2,6 +2,7 @@
 namespace Main\CommonBundle\Form\Front;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,76 +19,83 @@ class FormSearch extends AbstractType
 	
 	/**
 	 */
-	protected $em;        
+	protected $em; 
+
+    private $session; 
+
+    private $data;      
     
     /**
      * 
      * @param EntityManager $entityManager
      * @param string $options
      */
-    function __construct(EntityManager $entityManager,$options = null) {
+    function __construct(EntityManager $entityManager,Session $session, $options = null) {
         $this->em = $entityManager;
+        $this->session = $session;
         $this->options = $options;
+        $this->data = $this->fetchSearchArgs();
     
     }
 	 
 	
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	
         $type = $options['type'];
         $builder->add('category', 'entity', array(
-                    'label' => false,
-                    'horizontal_input_wrapper_class'    => 'col-lg-4',
-                    'class' => 'MainCommonBundle:Utils\Category',
-                    'property' => 'name',
+                    'label'         => 'form.search.field.category',
+                    'class'         => 'MainCommonBundle:Utils\Category',
+                    'empty_value'   => 'form.search.empty.category',
+                    'data'          => $this->data['category'],
+                    'property'      => 'name',
                     'query_builder' => function(EntityRepository $er) use ($type)
                     {
                         return $er->createQueryBuilder('c')
                         ->add('where', 'c.type = :type')
                         ->setParameter(':type', $type);
                     },
+                    'attr' => array(
+                        'class' => 'form-control selecter_2',
+                        ),
                     'constraints'   => array(
                         new NotBlank ( array(
                         )))
             ));
 
         $builder->add('department');
-    	
     	$builder->add('town_text', 'text', array(
-    			'label' => false,
-    			'horizontal_input_wrapper_class'    => 'col-lg-4',
+    			'label'         => false,
+                'required'      => false,
+                'data'          => $this->data['town_text'],
         		'attr' => array(
                         'placeholder'  => 'form.search.placeholder.town_text',
+                        'class' => 'form-control',
         				'autocomplete' => 'on'
-                    ),
-                'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
+                    )
         		));
     	
-    	$builder->add ( 'town_code', 'hidden', array ());
+    	$builder->add( 'town_code', 'hidden', array (
+            'data' => $this->data['town_code']));
     	
         $builder->add('country', 'hidden', array(
         		'data' => $options['country']
         		));
         $builder ->add ( 'day', 'date', array (
-        			'label' => false,
-                    'widget'    => 'single_text',
-                    'format'    => 'dd/MM/yyyy' ,
-        			'horizontal_input_wrapper_class'    => 'col-lg-4',
-	        		'attr'     => array(
+        			'label'         => false,
+                    'required'      => false,
+                    'data'          => $this->data['day'],
+                    'widget'        => 'single_text',
+                    'format'        => 'dd/MM/yyyy' ,
+	        		'attr'          => array(
                         'placeholder' => 'form.search.placeholder.date',
-                    ),
-                    'constraints'   => array(
-                        new NotBlank ( array(
-                        )))                          
+                        'class' => 'form-control',
+                    )                          
                 ));
-        $builder->addEventListener ( FormEvents::PRE_SET_DATA, array (
+                $builder->addEventListener ( FormEvents::PRE_SET_DATA, array (
                 $this,
                 'onPreSetData'
         ));
-    }
+            }
     
      /**
      * Méthode appelée avant l'hydratation du formulaire
@@ -103,23 +111,52 @@ class FormSearch extends AbstractType
         $dptElements    = array();
         foreach ($departments as $department) {
             $dptElements[$department->getCode()] = $department->getName();
-            # code...
         }
         // Ajout dans le formulaire
         asort($dptElements);
         $form->add ( 'department', 'choice', array (
-                'label' => false,
+                'label'         => false,
+                'required'      => false,
+                'empty_value'   => 'form.search.empty.department',
+                'data'          => $this->data['department'],
                 'choices'       => $dptElements,
-                'attr' => array('class' => 'form-control'),
-                'constraints'   => array(
-                        new NotBlank ( array(
-                        )),
-                        new Choice(array(
-                                'choices' => array_keys($dptElements),
-                                'message' => 'Wrong value',
-                        ))
-                )
+                'attr'          => array('class' => 'form-control selecter_2'),
         ));
+    }
+
+    /**
+     * 
+     */
+    private function getSession(){
+        return $this->session;
+    }
+
+    private function fetchSearchArgs()
+    {
+        $session = $this->getSession()->get('front_search');
+        $results = array(
+            'category' => null,
+            'town_text' => null,
+            'town_code' => null,
+            'day'       => null,
+            'department' => null
+            );
+        if($session) {
+            if(isset($session['category']) && $session['category'] != null){
+                $results['category'] = $this->em->getRepository('MainCommonBundle:Utils\Category')->findOneById($session['category']);
+            }
+            if(isset($session['town_code']) && $session['town_code'] != null){
+                $town = $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneById($session['category']);
+                $results['town_code'] = $session['town_code'];
+                $results['town_text'] = $town->getName();
+                $results['department'] = $town->getDepartment();
+            }
+            if(isset($session['day']) && $session['day'] != null ){
+                $results['day'] = new \DateTime(str_replace('/', '-', $session['day']));
+            }
+
+        }
+        return $results;
     }
 
     /**
@@ -129,8 +166,8 @@ class FormSearch extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
     	$resolver->setDefaults(array(
-    			'country' 		     => null,
-    			'type'			     => null,
+    			'country' 		     => 1,
+    			'type'			     => 1,
     			'translation_domain' => 'form'
     	));
     }

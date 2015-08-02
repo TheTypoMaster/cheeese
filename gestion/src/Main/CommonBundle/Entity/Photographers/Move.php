@@ -22,7 +22,7 @@ class Move
 	
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town")
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town", fetch="EAGER")
 	 * @ORM\JoinColumn(name="town", referencedColumnName="id")
 	 */
 	private $town;

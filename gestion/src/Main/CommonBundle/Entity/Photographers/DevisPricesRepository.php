@@ -12,5 +12,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class DevisPricesRepository extends EntityRepository
 {
+	/**
+	 * [getPricesByDuration description]
+	 * @param  [type] $devis [description]
+	 * @return [type]        [description]
+	 */
+	public function getPricesByDuration($devis)
+	{
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('p.price as price', 'd.id')
+			->from('MainCommonBundle:Photographers\DevisPrices', 'p')
+			->leftjoin('p.duration', 'd')
+			->where('p.devis = :devis')
+			->setParameter('devis', $devis);
+		$query = $qb->getQuery();
+		$query->setResultCacheId('getPricesByDuration'.$devis);
+		$query->useQueryCache(true);
+		return $query->getResult();
+	}
 	
 }

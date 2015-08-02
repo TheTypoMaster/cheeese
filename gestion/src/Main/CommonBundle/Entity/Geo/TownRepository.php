@@ -23,7 +23,7 @@ class TownRepository extends EntityRepository
 	public function findByDeptAndCountry($dept, $country)
 	{
 		$qb = $this->_em->createQueryBuilder();
-		$qb->select('t')
+		$qb->select('(t.name) as name','t.id as id')
 			->from('MainCommonBundle:Geo\Town', 't')
 			->where('t.country = :countryId')
 			->andWhere('t.department = :deptId')
@@ -62,6 +62,26 @@ class TownRepository extends EntityRepository
     $stmt->bindValue("radius", $radius);
     $stmt->execute();
     return $stmt->fetchAll();
+	}
+
+	/**
+	 * [findByPhotographer description]
+	 * @param  [type] $photographer [description]
+	 * @return [type]               [description]
+	 */
+	public function findTownsByCompany($company)
+	{
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('(t.name) as name','t.id as id')
+			->from('MainCommonBundle:Photographers\Move', 'm')
+			->leftjoin('m.town', 't')
+			->where('m.company = :company')
+			->setParameter('company',$company);
+		$query = $qb->getQuery();
+		$query->setResultCacheId('findTownsByPhotographer_'.$company);
+		$query->useQueryCache(true);
+		$query->useResultCache(true, 86400, 'findTownsByPhotographer_'.$company);
+		return $query->getResult();
 	}
 	
 }

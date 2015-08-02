@@ -60,6 +60,5 @@ class AvailabilityRepository extends EntityRepository
 				'createdAt'	=> $now->format('Y-m-d H:i:s')
 				));	
 		}
-	}
-	
+	}	
 }

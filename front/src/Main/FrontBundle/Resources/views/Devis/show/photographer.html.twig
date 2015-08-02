@@ -1,0 +1,28 @@
+<div class="panel panel-warning">
+		<div class="panel-heading text-center">
+			 	<i class="glyphicon glyphicon-camera"></i> {% trans %}devis.show.photographer.header{% endtrans %}
+		</div>
+		<div class="panel-body">
+            <div class="text-center">
+                <img src="{{ image64(devis.company.photographer.photo, devis.company.photographer.photoType, 'pp') }}"  class="img-circle"  height="80" width="80"/>
+            </div>
+                        
+			<h4 class="text-center">{{ devis.company.photographer.username }}</h4>
+			<p>
+			<i>
+				"{{ devis.company.photographer.presentation|nl2br }}"
+			</i>
+			</p>
+			{% if devis.company.photographer.prestations != 0 %}
+			<p class="text-center">
+				{{ devis.company.photographer.note|number_format(2) }} ({{ devis.company.photographer.prestations }})
+			</p>
+			{% endif %}
+			<p class="text-center">
+				<i class="glyphicon glyphicon-map-marker"></i> {{ devis.company.town.name }}
+			</p>
+			<p class="text-center">
+				<i class="glyphicon glyphicon-ok"></i> {% trans %}devis.show.photographer.since{% endtrans %} {{ devis.company.photographer.createdAt|date('d-m-Y') }}
+			</p>
+		</div>
+	</div>

@@ -159,5 +159,15 @@ class ServiceNotation
 
         } 
 	}
+
+	/**
+	 * [getDevisEvaluation description]
+	 * @param  Devis  $devis [description]
+	 * @return [type]        [description]
+	 */
+	public function getDevisEvaluation(Devis $devis)
+	{
+		return $this->repository->getbyDevis($devis->getId());
+	}
 	
 }

@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\Length;
 
 class FormDevisType extends AbstractType
 {
@@ -98,8 +99,10 @@ class FormDevisType extends AbstractType
                         'placeholder'  => 'form.devis.field.placeholder.presentation'
     			),
                 'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
+                        new NotBlank ( array()),
+                        new Length(array(
+                            'min' => 140
+                            )))
     			));
     }
     

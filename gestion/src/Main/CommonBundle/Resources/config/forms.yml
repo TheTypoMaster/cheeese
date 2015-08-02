@@ -54,9 +54,14 @@ services:
         arguments: [@security.context]
         tags:
             - { name: form.type, alias: form_moves }
+    form_front_index_search:
+        class: "Main\CommonBundle\Form\Front\FormIndexSearch"
+        arguments: [@doctrine.orm.entity_manager, @session]
+        tags:
+            - { name: form.type, alias: form_front_index_search }
     form_front_search:
         class: "Main\CommonBundle\Form\Front\FormSearch"
-        arguments: [@doctrine.orm.entity_manager]
+        arguments: [@doctrine.orm.entity_manager, @session]
         tags:
             - { name: form.type, alias: form_front_search }
     form_front_devis_book:

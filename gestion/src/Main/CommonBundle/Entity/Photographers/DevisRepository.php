@@ -33,32 +33,39 @@ class DevisRepository extends EntityRepository
 	 * @param unknown $townId
 	 * @param unknown $day
 	 */
-	public function findDevisFront($categoryId, $townId, $day) {
+	public function findDevisFront($categoryId, $townId, $day, $min, $max) {
 		$qb = $this->_em->createQueryBuilder();
 		$qb->select('d', 'b', 'p')
 			->from('MainCommonBundle:Photographers\Devis', 'd')
 			->join('d.company', 'c')
-			->innerJoin('MainCommonBundle:Photographers\Availability', 'a', 'WITH', 'd.company = a.company')
-			->innerJoin('MainCommonBundle:Photographers\Move', 'm', 'WITH', 'd.company = m.company')
 			->innerJoin('MainCommonBundle:Photographers\DevisBook', 'b', 'WITH', 'd.id = b.devis')
 			->innerJoin('MainCommonBundle:Photographers\DevisPrices', 'p', 'WITH', 'd.id = p.devis')
 			->where('c.status = :status')
-			->andwhere('d.category = :categoryId')
-			->andwhere('a.day = :day')
-			->andwhere('m.town = :town')
 			->andWhere('d.active = :active')
 			->andWhere('b.profile = :profile')
 			->andWhere('p.active = :price')
-			->andWhere('d.active = :active')
 			->setParameters(array(
-					'status'	 => 2,
-					'categoryId' => $categoryId,
-					'day'		 => $day,
-					'town'		 => $townId,
+					'status'	 => 2,			
 					'active'	 => 1,
 					'profile'	 => 1,
 					'price'		 => 1
 					));
+			
+			if ($categoryId != null) {
+				$qb->andwhere('d.category = :categoryId')
+					->setParameter('categoryId', $categoryId);
+			}
+			elseif ($townId != null) {
+				$qb->innerJoin('MainCommonBundle:Photographers\Move', 'm', 'WITH', 'd.company = m.company')
+					->andwhere('m.town = :town')
+					->setParameter('town', $townId);
+			}
+			if ($day != null) {
+				$qb->innerJoin('MainCommonBundle:Photographers\Availability', 'a', 'WITH', 'd.company = a.company')
+				->andwhere('a.day = :day')
+				->setParameter('day',$day);
+			}	
+			
 		$query = $qb->getQuery();
 		$query->setResultCacheId('findDevisFront_'.$categoryId.'_'.$townId.'_'.$day);
 		$query->useQueryCache(true);
@@ -128,6 +135,38 @@ class DevisRepository extends EntityRepository
         			->getQuery();
 			$q->execute();		
 		}
+	}
+	
+	/**
+	 * [getDevisPublic description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function getDevisPublic($id)
+	{
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('d')
+			->from('MainCommonBundle:Photographers\Devis', 'd')
+			->innerJoin('MainCommonBundle:Companies\Company', 'c', 'WITH', 'd.company = c.id')
+			->innerJoin('MainCommonBundle:Photographers\DevisBook', 'b', 'WITH', 'd.id = b.devis')
+			->innerJoin('MainCommonBundle:Photographers\DevisPrices', 'p', 'WITH', 'd.id = p.devis')
+			->where('d.id = :id')
+			->andwhere('c.status = :status')
+			->andWhere('d.active = :active')
+			->andWhere('b.profile = :profile')
+			->andWhere('p.active = :price')
+			->setParameters(array(
+					'id' 		 => $id,
+					'active'	 => 1,
+					'profile'	 => 1,
+					'price'		 => 1,
+					'status'	 => 2
+					));
+		$query = $qb->getQuery();
+		$query->setResultCacheId('getDevisPublic_'.$id);
+		$query->useQueryCache(true);
+		$query->useResultCache(true, 3600, 'getDevisPublic_'.$id);
+		return $query->getOneOrNullResult();
 	}
 	
 }

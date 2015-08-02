@@ -382,18 +382,17 @@ class ServicePrestation
 	 */
 	public function create($devis, $town, $day, $address, $startTime, $duration, $message)
 	{
-		$devis 		= $this->em->getRepository('MainCommonBundle:Photographers\Devis')->findOneById($devis);
 		$client 	= $this->getCurrentUser();
 		$town 		= $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneById($town);
 		$address 	= $address;
 		$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::PRESTATION_ENCOURS);
 
 		$devisPrice = $this->em->getRepository('MainCommonBundle:Photographers\DevisPrices')->findOneBy(array(
-			'devis' => $devis,
+			'devis' => $devis->getId(),
 			'duration' => $duration));
 		$duration   = $devisPrice->getDuration();
 		$price 		= $devisPrice->getPrice();		
-		$start      = str_replace('/', '-', $day).' '.$startTime['hour'].':'.$startTime['minute'].':00';
+		$start      = str_replace('/', '-', $day).' '.$startTime.':00';
 		$startTime 	= new \DateTime($start);
 
 		$commission = $this->serviceCommissionPrestation->generateCommission($devis);		

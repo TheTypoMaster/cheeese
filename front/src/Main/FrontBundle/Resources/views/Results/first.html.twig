@@ -1,36 +1,43 @@
 {% for result in results %}
-		<article class="search-result row">
-				<div class="col-xs-12 col-sm-12 col-md-2">
-					<a href="#" title="Lorem ipsum" class="thumbnail">
-					<img src="{{ image64(result['devis'].company.photographer.photo,result['devis'].company.photographer.photoType, 'pp')}}" alt="{{ result['devis'].company.photographer.username }}" /></a>
-					<ul class="meta-search">
-						<li>
-							<strong>{{ result['devis'].company.photographer.username }}</strong></li>
-						{% if 0 != result['devis'].company.photographer.prestations  %}
-						<li>{% trans %}result.photographer.note{% endtrans %}<span>{{ result['devis'].company.photographer.note }}</span></li>
-						<li>{% trans %}result.photographer.prestations{% endtrans %}<span>{{ result['devis'].company.photographer.prestations }}</span></li>
-						{% endif %}
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-10">
-					<a href="#">
-						<img src="{{ image64(result['book'].url,result['book'].fileType, 'devis')}}" alt="{{ result['devis'].title }}" /></a>
-					</a>
-					<h3><a href="#" title="">{{ result['devis'].title }}</a></h3>
-					<p> {{ result['devis']. presentation |slice(0, 250) }}</p>	
-					<p>
+		<article class="search-result">
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<img class="img-rounded" src="{{ image64(result['book'].url,result['book'].fileType, 'devis')}}" alt="{{ result['devis'].title }}"/>
+					<div class="caption text-center">
+						<h3><strong>{{ result['devis'].title }}</strong></h3>
+						<p>(note et nombre d'avis du devis)</p>
+						<p>{{ result['devis'].presentation |slice(0, 140)|nl2br }}...</p>
+						<hr>
+						<p>
+							<div class="text-center">
+                				<img src="{{ image64(result['devis'].company.photographer.photo, result['devis'].company.photographer.photoType, 'pp') }}"  class="img-circle"  height="40" width="40"/>
+                				<p>
+                					{{ result['devis'].company.photographer.username }}
+                				</p>
+                				{% if result['devis'].company.photographer.prestations != 0 %}
+	                				<p>
+	                					{{ result['devis'].company.photographer.note|number_format(2) }} ({{ result['devis'].company.photographer.prestations }})
+	                				</p>
+	                			{% endif %}                			
+            				</div>                            
+						</p>
+						<hr>
+						<p>
 						{% if 1 == result['prices']|length %}
-							<h4><strong> {{ result['prices'][0].price }} {{ result['devis'].currency.libelle}}</strong></h4>
+							<h6><span class="heading-note">
+								{{ result['prices'][0].price }} €
+							</span></h6>
 						{% elseif result['prices']|length > 1%}
-							<h4> {{ result['prices']|length}} {% trans %}result.photographer.prices.multiple{% endtrans %}
-							<strong> xxx {{ result['devis'].currency.libelle}}</strong>
-						</h4>
+							<h6><span class="heading-note">
+								{{ result['prices']|length}} {% trans %}result.photographer.prices.multiple{% endtrans %} {{ result['minimum'] }} €
+						</span></h6>
 						{% endif %}
 							
-					</p>
-
-	                <span class="plus"><a href="{{ path('devis_attach', {'id': result['devis'].id}) }}" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+						</p>
+						<p>
+							<a class="btn btn-warning" role="button" href="{{ path('devis_show', {'id': result['devis'].id}) }}">{% trans %}result.photographer.btn.details{% endtrans %}</a>
+						</p>
 				</div>
-				<span class="clearfix border"></span>
+			</div>				
 		</article>
 {% endfor %}

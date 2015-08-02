@@ -25,13 +25,15 @@ class ServiceSession
 	 * @param unknown $town_name
 	 * @param unknown $day
 	 */
-	public function setSearchArgs($category, $town_code, $town_name, $day)
+	public function setSearchArgs($category, $town_code = null, $town_name = null, $day = null, $min = null, $max =null)
 	{
 		$this->session->set('front_search', array(
 				'category'  	=> $category,
-				'town_code'		=> $town_code,
-				'town_name'		=> $town_name,
-				'day'			=> $day
+				'town'			=> $town_code,
+				'town_text'		=> $town_name,
+				'day'			=> $day,
+				'min'			=> $min,
+				'max'			=> $max
 				));
 	}
 	
@@ -64,9 +66,9 @@ class ServiceSession
 	 * Si les variables obligatoires sont la
 	 * @return boolean
 	 */
-	public function isDevisVariablesSet() 
+	public function isSearchVariablesSet() 
 	{
-		return $this->session->has('front_devis') && $this->session->has('front_search');
+		return $this->session->has('front_search');
 	}
 
 	public function successFlashMessage($text)
@@ -83,5 +85,12 @@ class ServiceSession
 	public function errorFlashMessageCustom($message)
 	{
 		$this->session->getFlashBag()->add('danger', $message);
+	}
+
+	public function remove($text)
+	{
+		if ($this->session->has($text)) {
+			$this->session->remove($text);
+		}
 	}
 }

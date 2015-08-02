@@ -1,0 +1,73 @@
+<div class="panel panel-primary">
+	<div class="panel-heading text-center">
+			{% trans %}devis.show.form.header{% endtrans %}
+	</div>
+	<div class="panel-body">
+		{{ form_start(form) }}
+			<div class="col-xs-12 col-md-5 form-group {% if not form.town_text.vars.valid %}has-error{% endif %}">
+				<div class="input-group">
+		   		{{ form_widget(form.town_text) }}
+		   		<span class="input-group-addon">
+		   		<i class="glyphicon glyphicon-map-marker"></i>
+		   		</span>
+				</div>
+				<p class="help-block">
+                {% trans with{'%photographer%' : devis.company.photographer.username, '%radius%': radius.radius, '%hometown%': devis.company.town.name}%}devis.show.form.help.town %photographer% %radius% %hometown%{% endtrans %}
+            	</p>
+	   	   		{{ form_widget(form.town_code) }}
+
+	   	   </div>
+	   	   <div class="col-xs-12 col-md-4 form-group {% if not form.day.vars.valid %}has-error{% endif %}">
+	   	   		<div class="input-group">
+	   	   			{{ form_widget(form.day) }}
+	   	   			<span class="input-group-addon">
+	   	   			<i class="glyphicon glyphicon-calendar"></i>
+	   	   			</span>
+	   			</div>
+	   			<p class="help-block">
+                {% trans with{'%photographer%' : devis.company.photographer.username} %}devis.show.form.help.date %photographer%{% endtrans %}
+            </p>
+		   </div>
+		   <div class="col-xs-12 col-md-3 form-group {% if not form.startTime.vars.valid %}has-error{% endif %}">
+		   		{{ form_widget(form.startTime) }}
+			</div>
+			<div class="col-xs-12 col-md-9 form-group {% if not form.address.vars.valid %}has-error{% endif %}">
+		   {{ form_widget(form.address) }}
+			</div>
+			<div class="col-xs-12 col-md-3 form-group {% if not form.duration.vars.valid %}has-error{% endif %}">
+		   	{{ form_widget(form.duration) }}
+			</div>
+			<div class="col-xs-12 col-md-12">
+				<ul class="list-group" id="price">
+					<li class="list-group-item">
+					<span class="badge" id="devis_price"></span>
+					<strong>{% trans %}devis.show.form.price.devis{% endtrans %} :</strong>
+					</li>
+					<li class="list-group-item">
+					<span class="badge" id="devis_tax"></span>
+					<strong>{% trans %}devis.show.form.price.tax{% endtrans %} :</strong>
+					</li>
+					<li class="list-group-item">
+					<span class="badge badge-primary" id="devis_total"></span>
+					<strong>{% trans %}devis.show.form.price.total{% endtrans %} :</strong>
+					</li>
+				</ul>
+				
+			</div>
+			<div class="col-xs-12 col-md-12">
+			<hr>
+			</div>
+		   <div class="col-xs-12 col-md-12 form-group {% if not form.message.vars.valid %}has-error{% endif %}">
+		   {{ form_widget(form.message) }}
+		   <p class="help-block">
+                {% trans %}devis.show.form.help.message{% endtrans %}
+            </p>
+		   </div>
+		   {{ form_rest(form) }}
+		   <hr>
+		   <button type="submit" class="btn btn-primary pull-right">
+		   	{% trans %}devis.show.form.btn.submit{% endtrans %}
+		   </button>
+	   {{ form_end(form) }}
+	</div>
+</div>

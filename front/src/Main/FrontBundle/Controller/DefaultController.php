@@ -18,27 +18,19 @@ class DefaultController extends Controller
 	 */
     public function indexPublicAction(Request $request)
     {
-    	$form = $this->createForm('form_front_search', null, array(
-    			'type' 	  => 1 
-    			));
-        
+    	$form = $this->createForm('form_front_index_search', null, array());        
     	$form->handleRequest($request);
     	$results = null;
     	$post = false;
     	if($request->isMethod('POST'))
     	{
-    		$params = $request->request->get('form_front_search');
-    		$post = true;
+    		$params = $request->request->get('form_front_index_search');
     		if ($form->isValid())
     		{
-    			//Recherche
-    			$serviceSearch = $this->get('service_search');
-    			$results = $serviceSearch->searchFirstStep($params['category'], $params['town_code'], $params['day'], $request->getClientIp());
-    			if(count($results) > 0) {
-    				//Mise en session des parametres de recherche (sinon ca ne sert a rien de stocker en session)
-    				$serviceSession = $this->get('service_session');
-    				$serviceSession->setSearchArgs($params['category'], $params['town_code'], $params['town_text'], $params['day']);
-    			}
+                $serviceSession = $this->get('service_session');
+                $serviceSession->remove('front_search');
+                $serviceSession->setSearchArgs($params['category']);
+    			return $this->redirect($this->generateUrl('search'));
     		}
     	
     	}
@@ -49,7 +41,42 @@ class DefaultController extends Controller
     			'country'   => 1,
     			'results'	=> $results
 		));
-    }   
+    } 
+
+    /**
+     * [searchAction description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     * @Route("/search", name="search")
+     */
+    public function searchAction(Request $request)
+    {   
+        $serviceSession = $this->get('service_session');
+        $serviceSearch = $this->get('service_search');
+        $results = array();
+        $search = false;
+        if ($serviceSession->isSearchVariablesSet()){
+            $search = true;
+            $results = $serviceSearch->searchFirstStep($serviceSession->getSearchArgs(), $request->getClientIp());
+        }
+        $form = $this->createForm('form_front_search', null, array());
+        $form->handleRequest($request);
+        if($request->isMethod('POST'))
+        {
+            $params = $request->request->get('form_front_search');                       
+            if ($form->isValid())
+            {
+                $serviceSession->setSearchArgs($params['category'], $params['town_code'], $params['town_text'], $params['day']);
+                $search = true;
+                $results = $serviceSearch->searchFirstStep($serviceSession->getSearchArgs(), $request->getClientIp());
+             }      
+        }
+        return $this->render('MainFrontBundle:Default:search.html.twig', array(
+            'form'      => $form->createView(),
+            'search'    => $search,
+            'results'   => $results
+            ));
+    }
 
     /**
      * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP

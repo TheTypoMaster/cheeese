@@ -19,6 +19,10 @@ class FormDevisBook extends AbstractType
 {	
 	
 	private $session;
+
+    private $town;
+
+    private $date;
 	
 	/**
 	 * 
@@ -34,56 +38,76 @@ class FormDevisBook extends AbstractType
 	
     public function buildForm(FormBuilderInterface $builder, array $options)
     {   	
-    	$devis = $this->getSession()->get('front_devis');
-    	$search = $this->getSession()->get('front_search'); 
-        $builder
-        ->add('devis', 'hidden', array(
-        		'data' => $devis
-        		))
-        ->add('day', 'hidden', array(
-        		'data' => $search['day']
-        ))
-        ->add('town', 'hidden', array(
-        		'data' => $search['town_code']
-        ))
+        $devis = $options['devis'];
+        $builder->add('town_text', 'text', array(
+                'label'         => false,
+                'required'      => false,
+                'data'          => $this->setText($options['town']),
+                'attr' => array(
+                        'placeholder'  => 'form.search.placeholder.town_text',
+                        'class' => 'form-control',
+                        'autocomplete' => 'on'
+                    )
+                ))
+        
+        ->add( 'town_code', 'hidden', array (
+            'data' => $this->setTown($options['town']),
+            ))
+        
+        ->add('country', 'hidden', array(
+                ))
+        ->add ( 'day', 'date', array (
+                    'label'         => false,
+                    'required'      => false,
+                    'widget'        => 'single_text',
+                    'format'        => 'dd-MM-yyyy' ,
+                    'data'          => $this->setDate($options['date']),
+                    'attr'          => array(
+                        'class' => 'form-control',
+                        'placeholder' => 'form.search.placeholder.date',
+                    )                          
+                ))
         ->add('address', 'text', array(
-        		'label' => 'form.devisbook.field.address',
-        		'horizontal_input_wrapper_class'    => 'col-lg-4',
+        		'label' => false,
         		'attr' => array(
         				'placeholder' => 'Event address',
+                        'class' => 'form-control',
         				),
                 'constraints'   => array(
                         new NotBlank ( array(
                         )))
         		))
-        ->add('startTime', 'time', array(
-        		'label' => 'form.devisbook.field.startTime',
-        		'input'  => 'datetime',
-        		'widget' => 'choice',
-        		'horizontal_input_wrapper_class' => 'col-lg-2',
+        ->add('startTime', 'choice', array(
+        		'label' => false,
+                'empty_value' => 'form.search.empty.startTime',
+        		'choices'  => $this->getTimeChoices(),
+                'attr' => array(
+                        'class' => 'form-control selecter_3',
+                        ),
                 'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
+                        new NotBlank ( array()),
+                        new Choice(array('choices' => array_keys($this->getTimeChoices()))))
         )) 
         ->add('duration', 'entity', array(
-                    'label' => 'form.devisbook.field.duration',
-                    'horizontal_input_wrapper_class'    => 'col-lg-4',
+                    'label' => false,
                     'class' => 'MainCommonBundle:Utils\Duration',
                     'property' => 'libelle',
+                    'empty_value' => 'form.search.empty.duration',
                     'query_builder' => function(EntityRepository $er) use ($devis)
                     {
                         return $er->findDurationsByDevis($devis);
                     },
+                    'attr' => array(
+                        'class' => 'form-control selecter_3',
+                        ),
                     'constraints'   => array(
                         new NotBlank ( array(
                         )))
             ))       
         ->add('message', 'textarea', array(
-        		'label' => 'form.devisbook.field.message',
-        		'error_type' => "block",
-        		'help_block' => 'Associated help text!',
+        		'label' => false,
         		'attr' => array(
-        				'class' => 'input-large',
+        				'class' => 'form-control input-large',
         				'placeholder' => 'input-large',
         		),
                 'constraints'   => array(
@@ -101,7 +125,10 @@ class FormDevisBook extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
     	$resolver->setDefaults(array(
-    			'translation_domain' => 'form'
+    			'translation_domain' => 'form',
+                'devis'              => null,
+                'town'               => null,
+                'date'               => null
     			));
     }
     
@@ -112,6 +139,99 @@ class FormDevisBook extends AbstractType
     	return $this->session;
     }
 
+    private function getTimeChoices(){
+        return array(
+            '00:00' => '00:00',
+            '00:30' => '00:30',
+            '01:00' => '01:00',
+            '01:30' => '01:30',
+            '02:00' => '02:00',
+            '02:30' => '02:30',
+            '03:00' => '03:00',
+            '03:30' => '03:30',
+            '04:00' => '04:00',
+            '04:30' => '04:30',
+            '05:00' => '05:00',
+            '05:30' => '05:30',
+            '06:00' => '06:00',
+            '06:30' => '06:30',
+            '07:00' => '07:00',
+            '07:30' => '07:30',
+            '08:00' => '08:00',
+            '08:30' => '08:30',
+            '09:00' => '09:00',
+            '09:30' => '09:30',
+            '10:00' => '10:00',
+            '10:30' => '10:30',
+            '11:00' => '11:00',
+            '11:30' => '11:30',
+            '12:00' => '12:00',
+            '12:30' => '12:30',
+            '13:00' => '13:00',
+            '13:30' => '13:30',
+            '14:00' => '14:00',
+            '14:30' => '14:30',
+            '15:00' => '15:00',
+            '15:30' => '15:30',
+            '16:00' => '16:00',
+            '16:30' => '16:30',
+            '17:00' => '17:00',
+            '17:30' => '17:30',
+            '18:00' => '18:00',
+            '18:30' => '18:30',
+            '19:00' => '19:00',
+            '19:30' => '19:30',
+            '20:00' => '20:00',
+            '20:30' => '20:30',
+            '21:00' => '21:00',
+            '21:30' => '21:30',
+            '22:00' => '22:00',
+            '22:30' => '22:30',
+            '23:00' => '23:00',
+            '23:30' => '23:30'
+            );
+    }
+
+    /**
+     * [setDate description]
+     * @param [type] $arg [description]
+     */
+    private function setDate($arg) {
+        $date = null;
+        if($arg != null) {
+            $date = new \DateTime($arg);
+        }
+        return $date;
+    }
+
+    /**
+     * [setText description]
+     * @param [type] $arg [description]
+     */
+    private function setText($arg){
+        $town = null;
+        if($arg != null && isset($arg['text'])) {
+            $town = $arg['text'];
+        }
+        return $town;
+    }
+
+    /**
+     * [setTown description]
+     * @param [type] $arg [description]
+     */
+    private function setTown($arg){
+        $town = null;
+        if($arg != null && isset($arg['id'])) {
+            $town = $arg['id'];
+        }
+        return $town;
+    }
+
+    /**
+     * [getName description]
+     * @return [type] [description]
+     */
     public function getName()
     {
         return 'form_front_devis_book';

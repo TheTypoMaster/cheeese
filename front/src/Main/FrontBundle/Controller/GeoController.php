@@ -20,4 +20,23 @@ class GeoController extends Controller
 		return $town->findByDepartment($department, $country_id);
 	}
 
+	/**
+	 * @Rest\View
+	 * @Rest\Get("/company/{company}/towns")
+	 */
+	public function townByUserAction(Request $request, $company)
+	{
+		$town = $this->get('service_town');
+		return $town->findTownsByCompany($company);
+	}
+
+    /**
+     * @Rest\View
+     * @Rest\Get("/company/{company}/dates")
+     */
+    public function datesByUserAction(Request $request, $company)
+    {
+        $town = $this->get('service_availability');
+        return $town->findDatesByCompany($company);
+    }
 }

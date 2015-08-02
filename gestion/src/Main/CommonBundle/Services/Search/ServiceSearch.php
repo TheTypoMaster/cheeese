@@ -48,16 +48,20 @@ class ServiceSearch
 	 * @param unknown $town
 	 * @param unknown $day
 	 */
-	public function searchFirstStep($category, $town, $day, $ip)
+	public function searchFirstStep($args, $ip)
 	{
 		$user = 0;
 		if ($this->securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
 			$user = $this->getCurrentUser()->getId();
 		}
-		$date = new \DateTime(str_replace('/', '-', $day));
+		if ($args['day'] != null) {
+			$date = new \DateTime(str_replace('/', '-', $args['day']));
+			$args['day'] = $date->format('Y-m-d');
+		}
 		$end = array();
-		$results = $this->repository->findDevisFront($category, $town, $date->format('Y-m-d'));
+		$results = $this->repository->findDevisFront($args['category'], $args['town'], $args['day'], $args['min'], $args['max']);
 		foreach ($results as $result) {
+			
 			if ($result instanceof Devis) {
 				$end[$result->getId()]['devis'] = $result;
 			}
@@ -66,6 +70,14 @@ class ServiceSearch
 			}
 			if ($result instanceof DevisPrices) {
 				$end[$result->getDevis()->getId()]['prices'][] = $result;
+				if(isset($end[$result->getDevis()->getId()]['minimum']))
+				{
+					if($end[$result->getDevis()->getId()]['minimum'] > $result->getPrice()) {
+						$end[$result->getDevis()->getId()]['minimum'] = $result->getPrice();
+					}
+				}else{
+					$end[$result->getDevis()->getId()]['minimum'] = $result->getPrice();
+				}
 			}
 
 		}
@@ -73,9 +85,9 @@ class ServiceSearch
 		$tolog = array(
 				'User'		=> $user,
 				'Ip'		=> $ip,
-				'Date'		=> $date->format('Y-m-d'),
-				'Category'	=> $category,
-				'Town'		=> $town,
+				'Date'		=> $args['day'],
+				'Category'	=> $args['category'],
+				'Town'		=> $args['town'],
 				'Results'	=> count($end)
 			);
 		$this->logger->info(json_encode($tolog));

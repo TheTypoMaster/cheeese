@@ -9,6 +9,7 @@ use Main\CommonBundle\Entity\Prestations\Prestation as Prestation;
 /**
  * @ORM\Entity
  * @ORM\Table(name="prestations.evaluation")
+ * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Prestations\EvaluationRepository")
  */
 class Evaluation
 {

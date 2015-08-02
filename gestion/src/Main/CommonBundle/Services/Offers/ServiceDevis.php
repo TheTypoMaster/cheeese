@@ -223,5 +223,14 @@ class ServiceDevis
 		return $this->repository->updateNotation($devis, new \DateTime('now'));
 	}
 	
+	/**
+	 * [getDevisPublic description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function getDevisPublic($id)
+	{
+		return $this->repository->getDevisPublic($id);
+	}
 	
 }

@@ -8,7 +8,7 @@ help:
     devis:
         field:
             title: Soyez le plus précis possible
-            presentation: Soyez le plus précis possible
+            presentation: Soyez le plus précis possible en au moins 140 caractéres
     company:
         field:
             title: Le nom de votre entreprise

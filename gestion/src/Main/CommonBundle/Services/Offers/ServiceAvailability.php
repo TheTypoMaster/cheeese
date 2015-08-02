@@ -85,9 +85,47 @@ class ServiceAvailability
 		return $result;
 	}
 
+	/**
+	 * [errorDates description]
+	 * @return [type] [description]
+	 */
 	public function errorDates()
 	{
 		$this->session->errorFlashMessageCustom('flash.message.availability.error');
+	}
+
+	/**
+	 * [findDatesByCompany description]
+	 * @param  [type] $company [description]
+	 * @return [type]          [description]
+	 */
+	public function findDatesByCompany($company)
+	{
+		$dates = $this->repository->getDates($company);
+		$results = array();
+		if(count($dates) > 0) {
+			foreach ($dates as $date) {
+				if ($date["day"] instanceof \DateTime) {
+	  			$results[] = $date["day"]->format('d-m-Y');
+				}				
+			}
+		}		
+		return $results;
+	}
+
+	/**
+	 * [isDateAvailable description]
+	 * @param  [type]  $arg   [description]
+	 * @param  [type]  $dates [description]
+	 * @return boolean        [description]
+	 */
+	public function isDateAvailable($arg, $dates) {
+		$date = str_replace('/', '-', $arg);
+		$result = null;
+		if(in_array($date, $dates)) {
+			$result = $date;
+		}
+		return $result;
 	}
 
 	

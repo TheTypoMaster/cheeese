@@ -1,0 +1,38 @@
+<div class="panel panel-success">
+		<div class="panel-heading text-center">
+			<i class="glyphicon glyphicon-comment"></i> {% trans %}devis.show.comments.header{% endtrans %} ({{ devis.prestations }})
+		</div>
+		<div class="panel-body">
+			{% if devis.prestations == 0 %}
+			<p class="text-center">
+			{% trans %}devis.show.comments.empty{% endtrans %} 
+			</p>
+			{% else %}
+				<div class="table-responsive">
+                    <table class="table">
+						{% for comment in comments %}
+							<th style="width:30%">
+								<div class="text-center">
+                					<img class="img-rounded" src="{{ image64(comment.prestation.client.photo, comment.prestation.client.photoType, 'pp') }}" height="40" width="40"/>
+            					</div>
+            					<p class="text-center">
+            						<u>{{ comment.prestation.client.username }}</u>
+            					</p>
+            					<p class="text-center">	
+            						<i class="glyphicon glyphicon-calendar"></i>{{ comment.prestation.startTime|date('d-m-Y') }}
+            					</p>
+            					<p class="text-center">
+            						<i class="glyphicon glyphicon-map-marker"></i>{{ comment.prestation.town.name }}
+            					</p>
+            					
+							</th>
+                            <td>
+                            	<p>{{ comment.prestationNotation|number_format(2) }}</p>
+                            	<i>{{ comment.prestationComment }}</i>
+                            </td>
+						{% endfor %}
+	  				</table>
+	  			</div>				
+			{% endif %}			
+		</div>
+	</div>

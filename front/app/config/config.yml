@@ -34,7 +34,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [MopaBootstrapBundle, MainFrontBundle]
+    bundles:        [MainFrontBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -75,9 +75,6 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-imports:
-#    - { resource: MopaBootstrapSandboxBundle/Resources/config/themes.yml }
-#    - { resource: MopaBootstrapSandboxBundle/Resources/config/examples/example_menu.yml }
 
 lsw_memcache:
     session:
@@ -118,13 +115,6 @@ lsw_memcache:
         sessions:
             servers:
                 - { host: localhost, tcp_port: 11212 }
-
-mopa_bootstrap:
-    menu: ~
-    form: ~
-    icons:
-        icon_set: glyphicons
-        shortcut: icon
 #fosuser
 fos_user:
     db_driver: orm 

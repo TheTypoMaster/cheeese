@@ -139,5 +139,15 @@ class ServicePrices
 			return false;
 		}
 	}
+
+	/**
+	 * [getPricesByDuration description]
+	 * @param  Devis  $devis [description]
+	 * @return [type]        [description]
+	 */
+	public function getPricesByDuration(Devis $devis)
+	{
+		return $this->repository->getPricesByDuration($devis->getId());
+	}
 	
 }

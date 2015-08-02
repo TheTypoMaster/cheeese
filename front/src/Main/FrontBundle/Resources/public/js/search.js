@@ -17,8 +17,8 @@ $('#form_front_search_day').datepicker({
 	startDate: 'today',
 	endDate: '+6m'
 });
+
 //AUTOCOMPLETE
-// Sélection code INSEE
 var department  = $("#form_front_search_department");
 var town        = $("#form_front_search_town_text");
 var codeInput = $("#form_front_search_town_code");
@@ -40,61 +40,62 @@ $(form_front_search_department).change(function(e) {
 });
 var department = $(dept).val();
 var input = town;
-$.ajax({
-    url: base + '/api/department/'+ department + '/' + 1 + '/towns',
-    type:"get",
-    dataType: 'json',
-    async: true,
-    cache: true,
-    success: function (data) {
-        var suggestions = [];  
-        $.each(data, function(i, val){  
-            suggestions.push({"value": val.id, "label": val.name});  
-        });
-        $(input).autocomplete({
-            source: suggestions,                          
-            open: function (event, ui) {
-                var termTemplate = "<strong>%s</strong>";
-                var ac = $(this).data('ui-autocomplete');
-                var term = ac.term;                      
-                var termCaps = term.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-                    return letter.toUpperCase();
-                });                       
-                var styledTerm = termTemplate.replace('%s', term);
-                var styledTermCaps = termTemplate.replace('%s', termCaps);
-                ac.menu.element.find('a').each(function() {
-                    var me = $(this)
-                    mapObj = {};
-                    mapObj[term] = styledTerm;
-                    mapObj[termCaps] = styledTermCaps;
-                    var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
-                    str = me.text().replace(re, function(matched){
-                      return mapObj[matched];
+if( department.length != 0 ){    
+    $.ajax({
+        url: base + '/api/department/'+ department + '/' + 1 + '/towns',
+        type:"get",
+        dataType: 'json',
+        async: true,
+        cache: true,
+        success: function (data) {
+            var suggestions = [];  
+            $.each(data, function(i, val){  
+                suggestions.push({"value": val.id, "label": val.name});  
+            });
+            $(input).autocomplete({
+                source: suggestions,                          
+                open: function (event, ui) {
+                    var termTemplate = "<strong>%s</strong>";
+                    var ac = $(this).data('ui-autocomplete');
+                    var term = ac.term;                      
+                    var termCaps = term.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                        return letter.toUpperCase();
+                    });                       
+                    var styledTerm = termTemplate.replace('%s', term);
+                    var styledTermCaps = termTemplate.replace('%s', termCaps);
+                    ac.menu.element.find('a').each(function() {
+                        var me = $(this)
+                        mapObj = {};
+                        mapObj[term] = styledTerm;
+                        mapObj[termCaps] = styledTermCaps;
+                        var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
+                        str = me.text().replace(re, function(matched){
+                          return mapObj[matched];
+                        });
+                        me.html( str) ;
                     });
-                    me.html( str) ;
-                });
-            },
-            change: function (event, ui) {
-                if(ui.item != null){
-                   return;
+                },
+                change: function (event, ui) {
+                    if(ui.item != null){
+                       return;
+                    }
+                    $(input).val('');
+                    $(codeInput).val('');
+                },
+                select: function (event, ui) {
+                    event.preventDefault();
+                    $(input).val(ui.item.label);
+                   	$(codeInput).val(ui.item.value);
+
+                },
+                focus: function (event, ui) {
+                    event.preventDefault();
+                    $(input).val(ui.item.label);
+                    $(codeInput).val(ui.item.value);
                 }
-                $(input).val('');
-                $(codeInput).val('');
-            },
-            select: function (event, ui) {
-                event.preventDefault();
-                $(input).val(ui.item.label);
-               	$(codeInput).val(ui.item.value);
 
-            },
-            focus: function (event, ui) {
-                event.preventDefault();
-                $(input).val(ui.item.label);
-                $(codeInput).val(ui.item.value);
-            }
-
-        });
-    }
-});
-
+            });
+        }
+    });
+}
 }

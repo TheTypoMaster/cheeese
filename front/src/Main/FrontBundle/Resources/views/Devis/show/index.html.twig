@@ -1,0 +1,65 @@
+{% extends "::layout.html.twig" %}
+{% block title %} {{ devis.title }}{% endblock %}
+{% block content %}
+{% if search %}
+<div class="pull-right">
+	<p class="pull-right">
+	<u>
+		<a href="{{ path('search')}}">Retour aux résultats</a>
+	</u>
+	</p>
+</div>
+{% endif %}
+<div class="col-sm-4 col-md-8">
+	<h1 class="text-center">{{ devis.title }}</h1>
+	<p class="text-center">
+		<span class="label label-success">{{ devis.category.name }}</span>
+	</p>
+	{% if devis.prestations != 0 %}
+	<p class="text-center">
+		{{ devis.note|number_format(2) }}
+	</p>
+	{% endif %}
+	{% include "MainFrontBundle:Devis\\show:photos.html.twig" %}
+	<br>
+	<blockquote>
+  	<p>{{ devis.presentation|nl2br }}</p>
+	</blockquote>
+	<br>
+	<br>
+	{% if is_granted('ROLE_PARTICULIER') %}
+		{% if bookable %}
+		{% include "MainFrontBundle:Devis\\show:form.html.twig" %}
+		{% else %}
+		<div class="col-md-6">
+			<div class="alert alert-danger">
+				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+				<strong>Oh snap!</strong>
+				Change a few things up and try submitting again.
+			</div>
+		</div>
+		{% endif %}
+	{% else %}
+		{% include "MainFrontBundle:Devis\\show:anonymous.html.twig" %}
+	{% endif %}
+</div>
+
+<div class="col-sm-2 col-md-4">
+	{% include "MainFrontBundle:Devis\\show:photographer.html.twig" %}
+	{% include "MainFrontBundle:Devis\\show:help.html.twig" %}
+	{% include "MainFrontBundle:Devis\\show:comments.html.twig" %}
+	
+</div>
+{% endblock %}
+
+{% block bottom_script %}
+{% javascripts '@MainFrontBundle/Resources/public/js/devis.js'
+			   '@MainFrontBundle/Resources/public/js/diacritics.js' %}
+<script type="text/javascript">
+    var towns 	= "{{ towns }}";
+    var dates   = "{{ dates }}";
+    var prices  = "{{ prices }}";
+    </script>    
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock bottom_script %}

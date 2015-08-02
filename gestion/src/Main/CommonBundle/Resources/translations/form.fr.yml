@@ -10,6 +10,11 @@ form:
             country: Pays
             department: Département
     search:
+        empty:
+            category: Votre événement
+            department: Département
+            startTime: Heure
+            duration: Durée
         placeholder:
             town_text: ville
             date: Date

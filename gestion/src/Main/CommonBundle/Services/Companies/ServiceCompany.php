@@ -105,7 +105,9 @@ class ServiceCompany
 				'name'	  => $data['town']	
 				));
 		$Company->setTown($town);
-		$Company->setIdentification($data['identification']);
+		if (isset($data['identification'])) {
+			$Company->setIdentification($data['identification']);	
+		}			
 		$Company->setTitle($data['title']);
 		$Company->setAddress($data['address']);
 		$Company->setUpdatedAt(new \DateTime('now'));
