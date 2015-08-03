@@ -1,0 +1,7 @@
+help:
+    presentation:
+        field:
+            firstName: Votre prénom
+            lastName: Votre nom
+            telephone: Votre numéro de téléphone
+            presentation: Votre présentation en au moins 140 caractéres

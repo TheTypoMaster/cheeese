@@ -107,8 +107,8 @@ class FormSecurityType extends AbstractType
         $data = $event->getdata();
         $form = $event->getForm();
         $good = $this->getCurrentUser()->getPassword();
-        $password = $this->encoder->encodePassword($this->getCurrentUser(),$data['oldPassword']);
-        if ($password != $good) 
+        $password = $this->encoder->encodePassword($this->getCurrentUser(),$data['oldPassword']);        
+        if ($password != $good || $data['oldPassword'] == '') 
         {
             $form->add('oldPassword', 'password',array(
             'label' => 'form.security.field.old',
@@ -119,7 +119,8 @@ class FormSecurityType extends AbstractType
                 new EqualTo(array(
                        'value'   => $good,
                        'message' => 'form.security.field.old' 
-                    ))
+                    )),
+                new NotBlank ( array())
                 )   
             ));
         }

@@ -5,3 +5,6 @@ menu:
     logout: Déconnexion
     login: Connexion
     register: Inscription
+    prestations: Mes prestations
+    informations: Mes informations
+    preferences: Mes préférences email

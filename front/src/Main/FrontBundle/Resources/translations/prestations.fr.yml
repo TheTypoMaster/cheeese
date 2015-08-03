@@ -1,16 +1,18 @@
 prestation:
     index:
+        title: Mes prestations
         you: Bonjour
         th:
             date: Date
-            town: Commune
+            town: Ville
             devis: Devis
             photographer: Photographe
             status: Statut
         btn:
             details: Détails
     show:
-        title %reference%: Détails de la prestation %reference% 
+        title %reference%: Détails de la prestation %reference%
+        h3 %reference%: Prestation %reference%
         header:
             details: Détails
             devis: Devis concerné

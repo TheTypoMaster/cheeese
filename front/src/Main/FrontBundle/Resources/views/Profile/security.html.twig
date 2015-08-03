@@ -1,0 +1,55 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{% trans %}user.security.title{% endtrans %}{% endblock%}
+{% block content %}
+<div class="col-md-3 content">
+    {{ include("MainFrontBundle:Menu:side_bar.html.twig" ,{id: 'informations'}, with_context = false) }}
+</div>
+<div class="col-md-9 content">
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center">
+            <h5 class="box-title">
+            	{% trans %}user.security.header {% endtrans %}
+            </h5>
+        </div>
+   {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+        <div class="panel-body">
+            <div class="form-group {% if not form.oldPassword.vars.valid %}has-error{% endif %}">                             
+            {{ form_label(form.oldPassword) }}                         
+            {{ form_widget(form.oldPassword) }}
+            <div class="text-red">
+            {{ form_errors(form.oldPassword) }}
+            </div>
+            </div>
+            <div class="form-group {% if not form.newPassword.first.vars.valid %}has-error{% endif %}">                             
+            {{ form_label(form.newPassword.first) }}                         
+            {{ form_widget(form.newPassword.first) }}
+            <div class="text-red">
+            {{ form_errors(form.newPassword.first) }}
+            </div>
+            </div>
+            <div class="form-group {% if not form.newPassword.second.vars.valid %}has-error{% endif %}">                             
+            {{ form_label(form.newPassword.second) }}                    
+            {{ form_widget(form.newPassword.second) }}
+            <div class="text-red">
+            {{ form_errors(form.newPassword.second) }}
+            </div>
+            </div>
+
+            							
+            {{ form_rest(form) }}
+        </div>
+
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">
+            	{% trans %}user.security.btn.submit{% endtrans %}
+            </button>
+            <a href="{{ path('presentation') }}" class="btn btn-link">
+                	{% trans %}user.edit.btn.back{% endtrans %}
+                </a>
+        </div>
+    {{ form_end(form) }}
+</div>
+		</div>	
+	</div>
+</section>
+{% endblock %}

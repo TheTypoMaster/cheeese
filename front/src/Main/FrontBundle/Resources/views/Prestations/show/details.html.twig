@@ -54,13 +54,13 @@
 			</div>
 			<div class="panel-body">
 				<div class="pull-right image">
-                            <img src="{{ image64(prestation.client.photo, prestation.client.photoType, 'pp') }}"  class="img-circle" height="40" width="40"/>
-                        </div>
-                            {{ prestation.devis.company.photographer.username }}
-                        <br>
-                        <i class="glyphicon glyphicon-star"></i> {{ prestation.devis.company.photographer.note|number_format(2) }}
-                        <i class="glyphicon glyphicon-comment"></i> {{ prestation.devis.company.photographer.prestations }}
-                </div>
+          <img src="{{ image64(prestation.devis.company.photographer.photo, prestation.devis.company.photographer.photoType, 'pp') }}"  class="img-circle" height="40" width="40"/>
+        </div>
+          {{ prestation.devis.company.photographer.username }}
+          <br>
+          <i class="glyphicon glyphicon-star"></i> {{ prestation.devis.company.photographer.note|number_format(2) }}
+          <i class="glyphicon glyphicon-comment"></i> {{ prestation.devis.company.photographer.prestations }}
+        </div>
                 <br>
 				<table class="table">
                     <tbody>

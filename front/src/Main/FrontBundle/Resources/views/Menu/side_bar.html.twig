@@ -1,0 +1,11 @@
+<div class="list-group">
+	<a class="list-group-item {% if id == 'prestations'%} active {% endif %}" href="{{ path('user_services') }}">
+			{% trans from "menu" %}menu.prestations{% endtrans %}
+	</a>
+	<a class="list-group-item {% if id == 'informations'%} active {% endif %}" href="{{ path('presentation') }}">
+			{% trans from "menu" %}menu.informations{% endtrans %}
+	</a>
+	<a class="list-group-item {% if id == 'emails'%} active {% endif %}" href="{{ path('preferences') }}">
+			{% trans from "menu" %}menu.preferences{% endtrans %}
+	</a>
+</div>

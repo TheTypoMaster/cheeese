@@ -147,7 +147,7 @@ class ServiceController extends Controller
 		}
 		else
 		{
-			if ($service->getStatus()->getId() != 1 || !in_array($slug, array('price', 'duration', 'date')))
+			if ($service->getStatus()->getId() > 2 || !in_array($slug, array('price', 'duration', 'date')))
 			{
 				return $this->redirect($this->generateUrl('service_show', array('id' => $id)));
 			}else{

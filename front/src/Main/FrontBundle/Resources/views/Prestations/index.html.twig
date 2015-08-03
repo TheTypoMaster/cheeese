@@ -1,8 +1,11 @@
 {% extends "::layout.html.twig" %}
-
+{% block title %}{% trans from "prestations" %}prestation.index.title{% endtrans %}{% endblock%}
 {% block content %}
 
-{% trans from "prestations" %}prestation.index.you{% endtrans %} {{ app.user.username }},
+<div class="col-md-3 content">
+	{{ include("MainFrontBundle:Menu:side_bar.html.twig" ,{id: 'prestations'}, with_context = false) }}
+</div>
+<div class="col-md-9 content">
 	   {% if prestations|length == 0 %}
 	   		PAS DE RESULTATS -- A IMPLEMENTER
 	   {% else %}
@@ -24,12 +27,12 @@
 			  		<td>{{ prestation.town.name }}</td>
 			  		<td>{{ prestation.devis.title }}</td>
 			  		<td>{{ prestation.devis.company.photographer.username }}</td>
-			  		<td>{{ prestation.status.libelle }}</td>
+			  		<td>{{ include('MainFrontBundle:Prestations:status.html.twig',{id: prestation.status.id}, with_context = false) }}</td>
 			  		<td><a href="{{ path('show_service', {'id': prestation.id}) }}">{% trans from "prestations" %}prestation.index.btn.details{% endtrans %}</href></td>
 			  	</tr>
 			  	{% endfor %}
 			  </tbody>
 			</table>
 	   {% endif %}
-
+</div>
 {% endblock %}

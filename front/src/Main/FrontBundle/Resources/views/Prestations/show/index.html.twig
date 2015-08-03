@@ -1,6 +1,7 @@
 {% extends "::layout.html.twig" %}
 {% block title %}{% trans with {"%reference%" : prestation.reference} from "prestations" %}prestation.show.title %reference%{% endtrans %}{% endblock %}
 {% block content %}
+	<h3 class="text-center">{% trans with {"%reference%" : prestation.reference} from "prestations" %}prestation.show.h3 %reference%{% endtrans %}</h3>
 	{#----------------------------------------------  DETAILS ---------------------------------------------------------- #}
 	{% include "MainFrontBundle:Prestations\\show:details.html.twig" %}
 		
@@ -39,26 +40,30 @@
 	</div>
     	{#----------------------------------------------  FORM ---------------------------------------------------------- #}
     	{% if commentAllowed  %}
-    	<div class="col-xs-12 col-md-6 text-center">
+    	<div class="col-md-4 content">
+    	</div>
+    	<div class="col-md-4 content">
 			<div class="panel panel-primary">
 				<div class="panel-heading text-center">
 				{% trans from "prestations" %}prestation.show.form.header{% endtrans %}
 				</div>
 				<div class="panel-body">
 					{{ form_start(form) }}
-					<div class="col-xs-12 col-md-6 form-group {% if not form.content.vars.valid %}has-error{% endif %}">
+					<div class="form-group {% if not form.content.vars.valid %}has-error{% endif %}">
 			   		{{ form_widget(form.content) }}
 		   	   		</div>
 		   	   		{{ form_rest(form) }}
 				</div>
 				<div class="panel-footer">
-					<button type="submit" class="btn btn-primary pull-right">
+					<button type="submit" class="btn btn-primary">
 				   	{% trans from "prestations" %}prestation.show.form.btn.submit{% endtrans %}
 				   </button>
 				</div>
 				{{ form_end(form) }}
 			</div>
 		</div>
+		<div class="col-md-4 content">
+    	</div>
 	   {% endif %}
 
 	    {% include "MainFrontBundle:Prestations:confirm_boxes.html.twig" %}

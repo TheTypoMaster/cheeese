@@ -113,3 +113,32 @@ devis:
                 message: Il ne vous sera demandé de payer que lorsque le photographe aura pré-approuvé votre demande
                 date %photographer%: Dates de disponibilités de %photographer%
                 town %photographer% %radius% %hometown%: %photographer% se déplace dans un rayon de %radius% kms autour de %hometown%
+user:
+    show:
+        title: Vos informations
+        header: Vos informations
+        since: Membre depuis
+        btn:
+            security: Changer votre mot de passe
+            edit: Modifier vos informations
+            pp: Changer votre photo de profil
+    edit:
+        title: Editer vos informations
+        header: Editer vos informations
+        btn:
+            submit: Envoyer
+            back: Retour
+    pp:
+        title: Changer votre photo de profil
+        header: Changer votre photo de profil
+    security:
+        title: Modifier votre mot de passe
+        header: Modifier votre mot de passe
+        btn:
+            submit: Envoyer
+            back: Retour
+    email:
+        title: Gérer vos préférences email
+        header: Gestion de vos préférences email
+        btn:
+            submit: Envoyer

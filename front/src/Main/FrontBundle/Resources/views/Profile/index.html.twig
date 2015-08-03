@@ -1,0 +1,46 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{% trans %}user.show.title{% endtrans %}{% endblock%}
+{% block content %}
+
+<div class="col-md-3 content">
+	{{ include("MainFrontBundle:Menu:side_bar.html.twig" ,{id: 'informations'}, with_context = false) }}
+</div>
+<div class="col-md-9 content">
+	<div class="panel panel-primary">
+		<div class="panel-heading text-center">
+			 	<h5 class="box-title">
+			 		{% trans %}user.show.header{% endtrans %}
+			 	</h5>
+		</div>
+		<div class="panel-body">
+            <div class="text-center">
+                <img src="{{ image64(user.photo, user.photoType, 'pp') }}"  class="img-circle"  height="80" width="80"/>
+            </div>
+                        
+			<h4 class="text-center">{{ user.username }}</h4>
+			<p class="text-center">
+				{{ user.firstName }} {{ user.lastName }}
+			</p>
+			<p class="text-center">
+				{{ user.telephone }}
+			</p>
+			<blockquote>
+				<p class="text-center">{{ user.presentation|nl2br }}</p>
+			</blockquote>
+			{% if user.prestations != 0 %}
+			<p class="text-center">
+				{{ user.note|number_format(2) }}
+			</p>
+			{% endif %}
+			<p class="text-center">
+				<i class="glyphicon glyphicon-ok"></i> {% trans %}user.show.since{% endtrans %} {{ user.createdAt|date('d-m-Y') }}
+			</p>
+			<br><br>
+		</div>
+		<div class="panel-footer">
+			<a href="{{ path('presentation_edit') }}" class="btn btn-primary">{% trans %}user.show.btn.edit{% endtrans %}</a>
+			<a href="{{ path('security') }}" class="btn btn-warning">{% trans %}user.show.btn.security{% endtrans %}</a>
+		</div>
+	</div>
+</div>
+{% endblock %}
