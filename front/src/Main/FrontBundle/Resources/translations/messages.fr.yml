@@ -1,5 +1,6 @@
 search:
     index:
+        title: Recheche de devis de photos sur 
         btn:
             submit: Trouver
     main:
@@ -86,6 +87,7 @@ about:
         text: Vous avez une question, une remarque, une envie partiuclière ? N’hésitez pas à nous contacter, nous vous répondons dans les plus brefs délais.
 devis:
     show:
+        back: Retour aux résultats
         photographer:
             header: A propos du photographe
             since: Membre depuis le  
@@ -113,6 +115,9 @@ devis:
                 message: Il ne vous sera demandé de payer que lorsque le photographe aura pré-approuvé votre demande
                 date %photographer%: Dates de disponibilités de %photographer%
                 town %photographer% %radius% %hometown%: %photographer% se déplace dans un rayon de %radius% kms autour de %hometown%
+        no:
+            strong: Demande de prestation impossible.
+            text %photographer%: %photographer% n'a pas mis à jour son offre.
 user:
     show:
         title: Vos informations

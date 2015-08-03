@@ -50,17 +50,12 @@ $(function () {
 
 {% block container %}
     	{% include "MainFrontBundle:Menu:menu.html.twig" %}
-
-<div class="corps">
-
+      {% block search %}  
+      {% endblock %}
     <div class="container">
-        <div class="row">
-                {% block content %}
-                
-                {% endblock %}
-        </div>    
+      {% block content %}          
+      {% endblock %}
     </div>
-</div>
 {% include "MainFrontBundle:Menu:footer.html.twig" %}
      {% block bottom_script %}
 

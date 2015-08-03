@@ -1,7 +1,6 @@
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
-        
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username_email
@@ -20,12 +19,15 @@ security:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
                 default_target_path: index_public
+                success_handler: redirect.after.login
             logout:
                 path: fos_user_security_logout
                 target: index_public
-            
-
     access_control:
-        - { path: ^/devis/book, role: ROLE_PARTICULIER }
+        - { path: ^/services, role: ROLE_PARTICULIER }
+        - { path: ^/service, role: ROLE_PARTICULIER }
+        - { path: ^/presentation, role: ROLE_PARTICULIER }
+        - { path: ^/security, role: ROLE_PARTICULIER }
+        - { path: ^/preferences, role: ROLE_PARTICULIER }
         - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY  }
 

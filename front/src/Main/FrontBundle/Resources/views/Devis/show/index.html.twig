@@ -4,9 +4,8 @@
 {% if search %}
 <div class="pull-right">
 	<p class="pull-right">
-	<u>
-		<a href="{{ path('search')}}">Retour aux résultats</a>
-	</u>
+		<a href="{{ path('search')}}" class="btn btn-link">
+			<i class="glyphicon glyphicon-chevron-left"></i>{% trans %}devis.show.back{% endtrans %}</a>
 	</p>
 </div>
 {% endif %}
@@ -31,11 +30,11 @@
 		{% if bookable %}
 		{% include "MainFrontBundle:Devis\\show:form.html.twig" %}
 		{% else %}
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<div class="alert alert-danger">
 				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-				<strong>Oh snap!</strong>
-				Change a few things up and try submitting again.
+				<strong>{% trans %}devis.show.no.strong{% endtrans %}</strong>
+				{% trans with {'%photographer%' : devis.company.photographer.username } %}devis.show.no.text %photographer%{% endtrans %}
 			</div>
 		</div>
 		{% endif %}

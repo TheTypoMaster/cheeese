@@ -1,41 +1,48 @@
 {% extends "::layout.html.twig" %}
 {% block title %}{% trans %}search.index.title{% endtrans %}{% endblock %}
-{% block content %}
-   <div class="row text-center">
-	   {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
-	   		<div class="col-xs-12 col-md-3 form-group {% if not form.category.vars.valid %}has-error{% endif %}">
-	   	   {{ form_widget(form.category) }}
-	   		</div>
-	   		<div class="col-xs-12 col-md-2 form-group {% if not form.day.vars.valid %}has-error{% endif %}">
-	   	   <div class="input-group">
-	   	   		{{ form_widget(form.day) }}
-	   	   		<span class="input-group-addon">
-	   	   		<i class="glyphicon glyphicon-calendar"></i>
-	   	   		</span>
-	   			</div>
-	   		</div>
-	   		<div class="col-xs-12 col-md-2 form-group {% if not form.day.vars.valid %}has-error{% endif %}">
-	   	   {{ form_widget(form.department) }}
-	   		</div>
-	   		<div class="col-xs-12 col-md-3 form-group {% if not form.day.vars.valid %}has-error{% endif %}">
-	   	   <div class="input-group">
-		   		{{ form_widget(form.town_text) }}
-		   		<span class="input-group-addon">
-		   		<i class="glyphicon glyphicon-map-marker"></i>
-		   		</span>
-				</div>
-		   {{ form_widget(form.town_code) }}
-			</div>
-	  	 <button type="submit" class="btn btn-normal">
-	  	 	{% trans %}search.index.btn.submit{% endtrans %}
-	  	 </button>
-	  	 {{ form_errors(form) }}
-	  	 {{ form_rest(form) }}
-	   {{ form_end(form) }}
+{% block search %}
+<section class="bg-primary-search">
+	 <div class="container">
+	   <div class="row">
+		   	<div class="col-lg-12 text-center">
+			   {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+			   		<div class="col-xs-12 col-md-3 form-group {% if not form.category.vars.valid %}has-error{% endif %}">
+			   	   {{ form_widget(form.category) }}
+			   		</div>
+			   		<div class="col-xs-12 col-md-2 form-group {% if not form.day.vars.valid %}has-error{% endif %}">
+				   	   <div class="input-group">
+				   	   		{{ form_widget(form.day) }}
+				   	   		<span class="input-group-addon">
+				   	   		<i class="glyphicon glyphicon-calendar"></i>
+				   	   		</span>
+				   			</div>
+				   		</div>
+			   		<div class="col-xs-12 col-md-2 form-group {% if not form.day.vars.valid %}has-error{% endif %}">
+			   	   {{ form_widget(form.department) }}
+			   		</div>
+			   		<div class="col-xs-12 col-md-3 form-group {% if not form.day.vars.valid %}has-error{% endif %}">
+				   	   <div class="input-group">
+					   		{{ form_widget(form.town_text) }}
+					   		<span class="input-group-addon">
+					   		<i class="glyphicon glyphicon-map-marker"></i>
+					   		</span>
+						</div>
+					   {{ form_widget(form.town_code) }}
+					</div>
+			  	 <button type="submit" class="btn btn-normal">
+			  	 	{% trans %}search.index.btn.submit{% endtrans %}
+			  	 </button>
+			  	 {{ form_errors(form) }}
+			  	 {{ form_rest(form) }}
+			   {{ form_end(form) }}
+		   </div>
+		</div>
+	</div>
+</section>
+{% endblock %}
 
-   </div>
+{% block content %}
    {# ------------------------------------------ RESULTATS DE LA REQUETES ----------------------------------------------- #}
-   <hr>
    	{% if search %}
     	{% if results|length == 0 %}
     	{% include "MainFrontBundle:Results:empty.html.twig" %}
@@ -48,7 +55,9 @@
 		  		{% trans %}search.main.results.count.more{% endtrans %}
 		  	{% endif %}
 			</h2>
+			<div class="row">
 	  		{% include "MainFrontBundle:Results:first.html.twig" %}
+	  		</div>
 		{% endif %}
 	{% endif %}
 {% endblock %}

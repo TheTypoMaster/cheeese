@@ -114,3 +114,7 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context, @translator.default]
         tags:
             - { name: "twig.extension"}
+#Handlers
+    redirect.after.login:
+        class: Main\CommonBundle\Redirection\AfterLoginRedirection
+        arguments: [@router, @service_session]

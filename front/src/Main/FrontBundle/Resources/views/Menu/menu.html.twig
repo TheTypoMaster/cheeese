@@ -17,9 +17,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{ path('fos_user_security_login') }}">{% trans from "menu" %}menu.login{% endtrans %}</a></li>
-        <li><a href="{{ path('fos_user_registration_register') }}">{% trans from "menu" %}menu.register{% endtrans %}</a></li>
-        <li><a href="#">{% trans from "menu" %}menu.contact{% endtrans %}</a></li>
+        <li>
+          <a href="{{ path('fos_user_security_login') }}">{% trans from "menu" %}menu.login{% endtrans %}</a>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
     {% endif %}

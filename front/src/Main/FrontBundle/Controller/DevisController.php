@@ -36,29 +36,36 @@ class DevisController extends Controller
             $notation = $this->get('service_notation');
             $comments = $notation->getDevisEvaluation($devis);
         }
-        $form   = null;
-        $radius = null;
-        $towns  = null;
-        $dates  = null;
-        $town = null;
-        $date = null;
-        $search = false;
-        $bookable = true;
+        $form       = null;
+        $radius     = null;
+        $towns      = null;
+        $dates      = null;
+        $town       = null;
+        $date       = null;
+        $search     = false;
+        $bookable   = true;
+        $serviceSession = $this->get('service_session');
+        $serviceSession->setDesiredDevis($id);
+        $args = $serviceSession->getSearchArgs();
+        if($args) {
+            $search = true;
+        }
         if ($this->container->get('security.context')->isGranted('ROLE_PARTICULIER')) {
             $availabilityService = $this->get('service_availability');
             $townService = $this->get('service_town');
             $movesService = $this->get('service_moves_radius');
             $dates = $availabilityService->findDatesByCompany($devis->getCompany()->getId());
             $radius = $movesService->getRadius($devis->getCompany());
-            $towns =  $townService->findTownsByCompany($devis->getCompany());            
+            $towns =  $townService->findTownsByCompany($devis->getCompany()); 
             if ($towns == null || $dates == null || $radius == null ) {
                 //Le photographe n'a pis mis à jour son offre,
                 //Il est donc pas possible de faire une demande
                 $bookable = false;
+                $dates = null;
+                $towns = null;
             }else{
                 //On peut faire une demande
                 //Pré-remplissage du formulaire
-                $serviceSession = $this->get('service_session');
                 $args = $serviceSession->getSearchArgs();
                 if($args) {
                     $search = true;
@@ -105,16 +112,5 @@ class DevisController extends Controller
             'dates'     => $dates,
             'search'    => $search
             ));
-    }
-    
-    /**
-     * @Route("/devis/add/{id}", name="devis_attach")
-     * @param unknown $id
-     */
-    public function devisAdd($id)
-    {
-    	$serviceSession = $this->get('service_session');
-    	$serviceSession->setDesiredDevis($id);
-    	return $this->redirect($this->generateUrl('devis_book'));
     }
 }

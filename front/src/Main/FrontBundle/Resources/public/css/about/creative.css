@@ -55,6 +55,13 @@ p {
     background-color: #f05f40;
 }
 
+.bg-primary-index {
+    background-image: url(../about/img/header.jpg);
+    background-position: bottom;
+    background-size: 100%;
+}
+
+
 .bg-dark {
     color: #fff;
     background-color: #222;
