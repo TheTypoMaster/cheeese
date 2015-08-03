@@ -76,7 +76,7 @@ class ServicesController extends Controller
 				$commentPhotographer = $notationService->findByPrestation($id, $service->getDevis()->getCompany()->getPhotographer()->getId()); 
 			}
 			
-			return $this->render('MainFrontBundle:Prestations:show.html.twig', array(
+			return $this->render('MainFrontBundle:Prestations\\show:index.html.twig', array(
 					'prestation' 			=> $service,
 					'messages'	 			=> $messages,
 					'commentAllowed' 		=> $allowed,
@@ -180,7 +180,8 @@ class ServicesController extends Controller
 					}
 				}
 				return $this->render('MainFrontBundle:Prestations:notation_create.html.twig', array(
-						'form'		 		=> $form->createView()
+						'form'		 		=> $form->createView(),
+						'prestation'		=> $service
 				));
 			}
 		}

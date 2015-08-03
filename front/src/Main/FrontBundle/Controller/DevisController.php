@@ -43,14 +43,14 @@ class DevisController extends Controller
         $town = null;
         $date = null;
         $search = false;
+        $bookable = true;
         if ($this->container->get('security.context')->isGranted('ROLE_PARTICULIER')) {
             $availabilityService = $this->get('service_availability');
             $townService = $this->get('service_town');
             $movesService = $this->get('service_moves_radius');
             $dates = $availabilityService->findDatesByCompany($devis->getCompany()->getId());
             $radius = $movesService->getRadius($devis->getCompany());
-            $towns =  $townService->findTownsByCompany($devis->getCompany());
-            $bookable = true;
+            $towns =  $townService->findTownsByCompany($devis->getCompany());            
             if ($towns == null || $dates == null || $radius == null ) {
                 //Le photographe n'a pis mis à jour son offre,
                 //Il est donc pas possible de faire une demande

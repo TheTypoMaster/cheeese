@@ -1,0 +1,66 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{% trans with {"%reference%" : prestation.reference} from "prestations" %}prestation.show.title %reference%{% endtrans %}{% endblock %}
+{% block content %}
+	{#----------------------------------------------  DETAILS ---------------------------------------------------------- #}
+	{% include "MainFrontBundle:Prestations\\show:details.html.twig" %}
+		
+		{#----------------------------------------------  NOTATION IF EXISTS ---------------------------------------------------------- #} 	
+	<div class="col-md-12 text-center">
+    	<a class="btn btn-link"  href="{{ path('user_services') }}">{% trans from "prestations" %}prestation.show.btn.back{% endtrans %}</a>
+    	{% if prestation.status.id == 1  or prestation.status.id == 2 %}
+    		<a class="btn btn-danger"  data-toggle="modal" data-target="#cancelModal">{% trans from "prestations" %}prestation.show.btn.cancel{% endtrans %}</a>
+    	{% endif %}
+    	{% if prestation.status.id == 2 %}
+    		<a class="btn btn-success" data-toggle="modal" data-target="#approveModal">{% trans from "prestations" %}prestation.show.btn.confirm{% endtrans %}</a>
+    	{% endif %}
+    	
+    	{% if passed %}
+    		{% if  null == commentClient %}
+    		<a class="btn btn-primary"  href="{{ path('notation', { 'id' : prestation.id}) }}">{% trans from "prestations" %}prestation.show.btn.evaluate{% endtrans %}</a>
+    		{% endif %} 
+    	{% endif %}
+    	{% if treated %}
+    	<a class="btn btn-success" data-toggle="modal" data-target="#deliverModal">{% trans from "prestations" %}prestation.show.btn.delivered{% endtrans %}</a>
+    	{% endif %}
+	</div>
+    {% if passed  %}		
+		{% if null != commentClient and null != commentPhotographer %}
+			{% include "MainFrontBundle:Prestations\\show:notations.html.twig" %}
+		{% endif %}
+	{% endif %}
+	{#----------------------------------------------  TIMELINE ---------------------------------------------------------- #} 
+	<div class="example">
+		<h2 class="example-title"></h2>
+		<div class="row">
+			<div class="col-md-12">
+				{% include "MainFrontBundle:Prestations\\show:timeline.html.twig" %}
+	    	</div>
+    	</div>
+	</div>
+    	{#----------------------------------------------  FORM ---------------------------------------------------------- #}
+    	{% if commentAllowed  %}
+    	<div class="col-xs-12 col-md-6 text-center">
+			<div class="panel panel-primary">
+				<div class="panel-heading text-center">
+				{% trans from "prestations" %}prestation.show.form.header{% endtrans %}
+				</div>
+				<div class="panel-body">
+					{{ form_start(form) }}
+					<div class="col-xs-12 col-md-6 form-group {% if not form.content.vars.valid %}has-error{% endif %}">
+			   		{{ form_widget(form.content) }}
+		   	   		</div>
+		   	   		{{ form_rest(form) }}
+				</div>
+				<div class="panel-footer">
+					<button type="submit" class="btn btn-primary pull-right">
+				   	{% trans from "prestations" %}prestation.show.form.btn.submit{% endtrans %}
+				   </button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	   {% endif %}
+
+	    {% include "MainFrontBundle:Prestations:confirm_boxes.html.twig" %}
+
+{% endblock %}

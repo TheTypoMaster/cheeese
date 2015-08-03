@@ -10,7 +10,17 @@ prestation:
         btn:
             details: Détails
     show:
-        header: Détails de la prestation
+        title %reference%: Détails de la prestation %reference% 
+        header:
+            details: Détails
+            devis: Devis concerné
+            price: Photographe et prix
+        h5:
+            devis: Rappel du contenu du devis
+        price:
+            devis: Prix du devis
+            tax: Frais de service
+            total: Total
         confirm:
                 header:
                     cancel: Vous êtes sur le point d’annuler cette réservation !
@@ -29,6 +39,10 @@ prestation:
                 btn:
                     back: Retour
                     confirm: Confirmer
+        form:
+            header: Répondre
+            btn:
+                submit: Envoyer
         btn:
             submit: Envoyer
             back: Retour à la liste
@@ -39,8 +53,8 @@ prestation:
         li:
             at: à
         evaluation:
-            title: Evaluation de la préstation
-            header: Evaluation
+            title: Evaluation de la prestation
+            header %photographer%: Evaluation de %photographer%
         photographer:
             title: Evaluation du photographe
         timeline:
@@ -57,3 +71,20 @@ prestation:
                 price %data%: Nouveau prix %data%
                 date %data%: Nouvelle date %data%
                 duration %data%: Nouvelle durée %data%
+    list:
+        td:    
+            status:
+                processing: En cours
+                photographer_ok: Pré-approuvée
+                photographer_ko: Refusée
+                client_ko: Annulée
+                success: Confirmée
+                old: Traitée
+                delivered: Livrée
+                closed: Cloturée
+    notation:
+        title %reference%: Notation de la prestation %reference%
+        header %reference%: Notation de la prestation %reference%
+        btn:
+            submit: Envoyer
+            back: Retour

@@ -14,7 +14,7 @@
                 <strong>{% trans from "prestations" %}prestation.show.confirm.attention.confirm{% endtrans %} </strong> {% trans from "prestations" %}prestation.show.confirm.message.confirm{% endtrans %}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">
                     	{% trans from "prestations" %}prestation.show.confirm.btn.back{% endtrans %}
                     </button>
                     <a href="{{ path('confirm_service', { 'id' : prestation.id }) }}" role="button" class="btn btn-success" id="aSuppr">
@@ -41,7 +41,7 @@
                 <strong>{% trans from "prestations" %}prestation.show.confirm.attention.cancel{% endtrans %} </strong> {% trans from "prestations" %}prestation.show.confirm.message.cancel{% endtrans %}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">
                     {% trans from "prestations" %}prestation.show.confirm.btn.back{% endtrans %}
                 </button>
                     <a href="{{ path('cancel_service', { 'id' : prestation.id } ) }}" role="button" class="btn btn-danger">
@@ -69,7 +69,7 @@
                 {% trans from "prestations" %}prestation.show.confirm.warningmessage{% endtrans %}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">
                     {% trans from "prestations" %}prestation.show.confirm.btn.back{% endtrans %}
                 </button>
                 </div>
@@ -89,7 +89,7 @@
                 <strong>{% trans from "prestations" %}prestation.show.confirm.attention.deliver{% endtrans %} </strong> {% trans from "prestations" %}prestation.show.confirm.message.deliver{% endtrans %}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">
                     {% trans from "prestations" %}prestation.show.confirm.btn.back{% endtrans %}
                 </button>
                     <a href="{{ path('deliver_service', { 'id' : prestation.id }) }}" role="button" class="btn btn-success">

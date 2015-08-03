@@ -5,6 +5,7 @@
 			<link rel="stylesheet" href="{{ asset('bundles/mainfront/css/bootstrap.min.css') }}" />
       <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/datepicker.css') }}" />
       <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/site.min.css') }}" />
+      <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/star-rating.min.css') }}" />
 	{% endblock %}
 {% endblock head_style %}
 
@@ -18,10 +19,9 @@
 <![endif]-->
 
 {% javascripts '@MainFrontBundle/Resources/public/js/library/site.min.js'
+               '@MainFrontBundle/Resources/public/js/star-rating.min.js'
                '@MainFrontBundle/Resources/public/js/library/jquery-ui-1.10.4.custom.js'
-               '@MainFrontBundle/Resources/public/js/library/bootstrap.min.js'
                '@MainFrontBundle/Resources/public/js/library/bootstrap-datepicker.js'
-                '@MainFrontBundle/Resources/public/js/star-rating.min.js'
 
                 %}
     <script type="text/javascript">

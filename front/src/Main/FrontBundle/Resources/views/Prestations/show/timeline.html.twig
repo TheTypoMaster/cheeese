@@ -1,0 +1,45 @@
+<div class="timeline">
+	<dl>
+		{% for message in messages %}
+			{% if 1 == message.type %}
+				{% if message.sender.username == app.user.username %}
+	        	<dd class="pos-right clearfix">
+				<div class="circ"></div>
+				<div class="time">{{ message.createdAt | date('d/m/y h:m')}}</div>
+				<div class="events">
+					<div class="pull-left">
+						<img class="events-object img-rounded" 
+						src="{{ image64(app.user.photo, app.user.photoType, 'pp') }}"
+						height="40" width="40" />
+					</div>
+					<div class="events-body">
+						<h4 class="events-heading">{% trans from "prestations" %}prestation.show.timeline.you{% endtrans %}</h4>
+							<p>{{ message.content}}</p>
+					</div>
+				</div>
+			</dd>
+				{% else %}
+					<dd class="pos-left clearfix">
+						  <div class="circ"></div>
+						  <div class="time">{{ message.createdAt | date('d/m/y h:m')}}</div>
+						  <div class="events">
+							  <div class="pull-left">
+								  <img class="events-object img-rounded" 
+								  src="{{ image64(message.sender.photo, message.sender.photoType, 'pp') }}" height="40" width="40"/>
+							  </div>
+							  <div class="events-body">
+								  <h4 class="events-heading">{{ message.sender.username }}</h4>
+								  <p>{{ message.content }}</p>
+							  </div>
+						  </div>
+					  </dd>
+	        		</li>
+				{% endif %}
+			{% elseif 2 == message.type%}
+			<dt>
+				{{ include('MainFrontBundle:Prestations:timeline_status.html.twig', {message: message}, with_context = false) }}
+			</dt>
+			{% endif %}
+		{% endfor %}
+	</dl>
+</div>
