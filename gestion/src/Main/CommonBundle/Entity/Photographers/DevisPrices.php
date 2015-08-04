@@ -8,9 +8,10 @@ use Main\CommonBundle\Entity\Photographers\Devis as Devis;
 use Main\CommonBundle\Entity\Utils\Duration as Duration;
 
 /**
- * @ORM\Entity
+ * @ORM\EntityListeners({ "Main\CommonBundle\Listener\DevisPricesListener" })
  * @ORM\Table(name="photographers.devis_prices")
  * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Photographers\DevisPricesRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class DevisPrices
 {

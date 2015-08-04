@@ -8,8 +8,10 @@ use Main\CommonBundle\Entity\Photographers\Devis as Devis;
 
 
 /**
- * @ORM\Entity
+ * @ORM\EntityListeners({ "Main\CommonBundle\Listener\DevisBookListener" })
+ * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Photographers\DevisBookRepository")
  * @ORM\Table(name="photographers.devis_book")
+ * @ORM\HasLifecycleCallbacks()
  */
 class DevisBook
 {

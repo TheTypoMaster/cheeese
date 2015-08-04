@@ -15,6 +15,7 @@ class MoveRadiusListener
         $entityManager = $event->getEntityManager();
         $cacheDriver = $entityManager->getConfiguration()->getResultCacheImpl();
         $cacheDriver->delete('getRadius_'.$moveRadius->getCompany()->getId());
+        $cacheDriver->delete('findTownsByPhotographer_'.$moveRadius->getCompany()->getId());
         $towns = $entityManager->getRepository('MainCommonBundle:Geo\town')->getTownsIntoRadius($entity->getCompany()->getTown(), $entity->getRadius());
         $entityManager->getRepository('MainCommonBundle:Photographers\Move')->UpdateMoves($entity->getCompany()->getId(), $towns);   
     }
@@ -26,6 +27,7 @@ class MoveRadiusListener
         $entityManager = $event->getEntityManager();
         $cacheDriver = $entityManager->getConfiguration()->getResultCacheImpl();
         $cacheDriver->delete('getRadius_'.$moveRadius->getCompany()->getId());
+        $cacheDriver->delete('findTownsByPhotographer_'.$moveRadius->getCompany()->getId());
         $towns = $entityManager->getRepository('MainCommonBundle:Geo\town')->getTownsIntoRadius($entity->getCompany()->getTown(), $entity->getRadius());
         $entityManager->getRepository('MainCommonBundle:Photographers\Move')->UpdateMoves($entity->getCompany()->getId(), $towns);   
     }

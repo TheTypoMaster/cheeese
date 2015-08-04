@@ -136,8 +136,5 @@ class ServiceAvailability
 	{
 		$date = new \DateTime('now'); 
 		$this->repository->removeOldDates($date->format('Y-m-d'));
-	}
-
-	
-	
+	}	
 }

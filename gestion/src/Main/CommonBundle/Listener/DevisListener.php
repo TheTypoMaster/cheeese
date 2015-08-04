@@ -15,6 +15,7 @@ class DevisListener
         $entityManager = $event->getEntityManager();
         $cacheDriver = $entityManager->getConfiguration()->getResultCacheImpl();
         $cacheDriver->delete('getCompanyDevis_'.$devis->getCompany()->getId());
+        $cacheDriver->delete('getDevisPublic_'.$devis->getCompany()->getId());
     }
 
      /** @ORM\PostUpdate */
@@ -24,5 +25,6 @@ class DevisListener
         $entityManager = $event->getEntityManager();
         $cacheDriver = $entityManager->getConfiguration()->getResultCacheImpl();
         $cacheDriver->delete('getCompanyDevis_'.$devis->getCompany()->getId());
+        $cacheDriver->delete('getDevisPublic_'.$devis->getCompany()->getId());
     }
 }

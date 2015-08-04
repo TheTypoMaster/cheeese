@@ -29,7 +29,7 @@ class DevisController extends Controller
         $bookService = $this->get('service_devis_book');
         $priceService = $this->get('service_prices');
         $photos = $bookService->getBook($devis);
-        $prices = $priceService->getPricesByDuration($devis);
+        $prices = $priceService->getPricesPublic($devis);
         $comments = null;
         if ($devis->getPrestations() > 0)
         {   

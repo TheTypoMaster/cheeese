@@ -50,7 +50,7 @@ class ServiceDevisBook
 	 */
 	public function getBook(Devis $devis)
 	{
-		return $this->repository->findByDevis($devis->getId());
+		return $this->repository->getBook($devis->getId());
 	}
 
 	/**

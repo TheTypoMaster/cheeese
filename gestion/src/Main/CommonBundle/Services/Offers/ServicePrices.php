@@ -149,5 +149,15 @@ class ServicePrices
 	{
 		return $this->repository->getPricesByDuration($devis->getId());
 	}
+
+	/**
+	 * [getPricesPublic description]
+	 * @param  Devis  $devis [description]
+	 * @return [type]        [description]
+	 */
+	public function getPricesPublic(Devis $devis)
+	{
+		return $this->repository->getPricesPublic($devis->getId());
+	}
 	
 }

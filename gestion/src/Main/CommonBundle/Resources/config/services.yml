@@ -87,6 +87,14 @@ services:
         class: Main\CommonBundle\Listener\DevisListener
         tags:
             - { name: doctrine.orm.entity_listener }
+    listener_devis_prices:
+        class: Main\CommonBundle\Listener\DevisPricesListener
+        tags:
+            - { name: doctrine.orm.entity_listener }
+    listener_devis_book:
+        class: Main\CommonBundle\Listener\DevisBookListener
+        tags:
+            - { name: doctrine.orm.entity_listener }
     listener_prestation:
         class: Main\CommonBundle\Listener\PrestationListener
         tags:
