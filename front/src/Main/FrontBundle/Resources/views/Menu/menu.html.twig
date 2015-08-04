@@ -9,6 +9,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="{{ path('about') }}">{% trans from "menu" %}menu.about{% endtrans %}</a>
+        </li>
         <li><a href="{{ path('user_services') }}">{% trans from "menu" %}menu.profile{% endtrans %}</a></li>
         <li><a href="{{ path('fos_user_security_logout') }}">{% trans from "menu" %}menu.logout{% endtrans %}</a></li>
       </ul>
@@ -17,6 +20,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="{{ path('about') }}">{% trans from "menu" %}menu.about{% endtrans %}</a>
+        </li>
         <li>
           <a href="{{ path('fos_user_security_login') }}">{% trans from "menu" %}menu.login{% endtrans %}</a>
         </li>
