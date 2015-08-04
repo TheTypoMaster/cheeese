@@ -28,15 +28,15 @@
 	<br>
 	{% if is_granted('ROLE_PARTICULIER') %}
 		{% if bookable %}
-		{% include "MainFrontBundle:Devis\\show:form.html.twig" %}
+			{% include "MainFrontBundle:Devis\\show:form.html.twig" %}
 		{% else %}
-		<div class="col-md-12">
-			<div class="alert alert-danger">
-				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-				<strong>{% trans %}devis.show.no.strong{% endtrans %}</strong>
-				{% trans with {'%photographer%' : devis.company.photographer.username } %}devis.show.no.text %photographer%{% endtrans %}
+			<div class="col-md-12">
+				<div class="alert alert-danger">
+					<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+					<strong>{% trans %}devis.show.no.strong{% endtrans %}</strong>
+					{% trans with {'%photographer%' : devis.company.photographer.username } %}devis.show.no.text %photographer%{% endtrans %}
+				</div>
 			</div>
-		</div>
 		{% endif %}
 	{% else %}
 		{% include "MainFrontBundle:Devis\\show:anonymous.html.twig" %}
@@ -58,6 +58,7 @@
     var towns 	= "{{ towns }}";
     var dates   = "{{ dates }}";
     var prices  = "{{ prices }}";
+    var rate    = "{{ rate }}";
     </script>    
     <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}

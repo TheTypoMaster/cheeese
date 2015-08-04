@@ -104,7 +104,7 @@ var hiddenDiv = document.getElementById("price");
         prices.forEach(function(obj) { 
             if (value == obj.id) {
                 document.getElementById('devis_price').innerHTML = obj.price.toFixed(2) +' €';
-                var percent = (obj.price * 10 / 100).toFixed(2);
+                var percent = (obj.price * rate / 100).toFixed(2);
                 document.getElementById('devis_tax').innerHTML = percent + ' €';
                 var total = parseFloat(percent) + parseFloat(obj.price); 
                 document.getElementById('devis_total').innerHTML = total.toFixed(2) + ' €';

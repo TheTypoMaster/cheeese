@@ -44,6 +44,7 @@ class DevisController extends Controller
         $date       = null;
         $search     = false;
         $bookable   = true;
+        $rate       = null;
         $serviceSession = $this->get('service_session');
         $serviceSession->setDesiredDevis($id);
         $args = $serviceSession->getSearchArgs();
@@ -67,6 +68,9 @@ class DevisController extends Controller
                 //On peut faire une demande
                 //Pré-remplissage du formulaire
                 $args = $serviceSession->getSearchArgs();
+                $commissionService = $this->get('service_commission');
+                $commission = $commissionService->getCommissionParticulier();
+                $rate = $commission->getCustomer();
                 if($args) {
                     $search = true;
                     if(isset($args['town']) && $args['town'] != ""){
@@ -110,7 +114,8 @@ class DevisController extends Controller
             'form'      => $form,
             'towns'     => $towns,
             'dates'     => $dates,
-            'search'    => $search
+            'search'    => $search,
+            'rate'      => $rate
             ));
     }
 }
