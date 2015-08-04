@@ -128,6 +128,16 @@ class ServiceAvailability
 		return $result;
 	}
 
+	/**
+	 * [removeOldDates description]
+	 * @return [type] [description]
+	 */
+	public function removeOldDates()
+	{
+		$date = new \DateTime('now'); 
+		$this->repository->removeOldDates($date->format('Y-m-d'));
+	}
+
 	
 	
 }

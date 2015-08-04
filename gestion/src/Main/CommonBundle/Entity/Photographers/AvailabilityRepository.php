@@ -61,4 +61,15 @@ class AvailabilityRepository extends EntityRepository
 				));	
 		}
 	}	
+
+	/**
+	 * [removeOldDates description]
+	 * @param  [type] $date [description]
+	 * @return [type]       [description]
+	 */
+	public function removeOldDates($date)
+	{
+		$q = $this->_em->createQuery("delete from MainCommonBundle:Photographers\availability a where a.day < '".$date."'");
+		$numDeleted = $q->execute();
+	}
 }
