@@ -14,7 +14,7 @@
 					</div>
 					<div class="events-body">
 						<h4 class="events-heading">{% trans from "prestations" %}prestation.show.timeline.you{% endtrans %}</h4>
-							<p>{{ message.content}}</p>
+							<p>{{ message.content|nl2br}}</p>
 					</div>
 				</div>
 			</dd>
@@ -29,7 +29,7 @@
 							  </div>
 							  <div class="events-body">
 								  <h4 class="events-heading">{{ message.sender.username }}</h4>
-								  <p>{{ message.content }}</p>
+								  <p>{{ message.content|nl2br }}</p>
 							  </div>
 						  </div>
 					  </dd>

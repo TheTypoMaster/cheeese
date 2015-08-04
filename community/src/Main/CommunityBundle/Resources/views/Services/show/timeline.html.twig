@@ -19,7 +19,7 @@
 											
 											            <h3 class="timeline-header"><a href="#"> {{ message.sender.username }} </a></h3>
 											
-											            <div class="timeline-body"> {{ message.content }} </div>
+											            <div class="timeline-body"> {{ message.content|nl2br }} </div>
 											        </div>
 											    </li>
 										    {% else %}
@@ -37,7 +37,7 @@
 														{% else %}
 											            <h3 class="timeline-header"><a href="#" style="color:orange;">{% trans from "services" %}community.service.show.timeline.title.you{% endtrans %}  </a></h3>
 														{% endif %}
-											            <div class="timeline-body"> {{ message.content }} </div>
+											            <div class="timeline-body"> {{ message.content|nl2br }} </div>
 											        </div>
 											    </li>
 										    {% endif %}
