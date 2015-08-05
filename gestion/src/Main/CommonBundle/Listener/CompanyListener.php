@@ -26,9 +26,16 @@ class CompanyListener
             $status = $entityManager->getRepository('MainCommonBundle:Status\PhotographerStatus')->findOneById(1);//To verify
             $company->setStatus($status);
         }
-        elseif($event->hasChangedField('status')) {
-            //Mise a jour du role du photographe
-        var_dump('status');
+    }
+
+     /** @ORM\PostUpdate */
+    public function postUpdate(Company $company, LifecycleEventArgs $event) 
+    {  
+        $entity = $event->getEntity();
+        $entityManager = $event->getEntityManager();
+        $cacheDriver = $entityManager->getConfiguration()->getResultCacheImpl();
+        $cacheDriver->delete('getCompany_'.$company->getPhotographer()->getId());
+        //Mise a jour du role du photographe
         $photographer = $company->getPhotographer();
         switch ($company->getStatus()->getId()) {
             case 2:
@@ -37,9 +44,13 @@ class CompanyListener
             default:
                 $photographer->setRoles(array('ROLE_PHOTOGRAPHER'));
                 break;
-            }
         }
-        $cacheDriver = $entityManager->getConfiguration()->getResultCacheImpl();
-        $cacheDriver->delete('getCompany_'.$company->getPhotographer()->getId());
+        try {
+            $entityManager->flush();
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+            die();
+        }
+        
     }
 }
