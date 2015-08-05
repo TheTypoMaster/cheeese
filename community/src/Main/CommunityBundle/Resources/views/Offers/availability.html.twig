@@ -6,75 +6,75 @@
 <i class="fa fa-play"></i>{% trans from "offers" %}community.availability.view.breadh1{% endtrans %}{% endblock %}
 {% block breadcrumbH2 %}{% trans from "offers" %}community.availability.view.breadh2{% endtrans %}{% endblock %}
 {% block content %}
-					<div class="callout callout-info">
-                            <h4>{% trans from "offers" %}community.availability.view.help.h4{% endtrans %}</h4>
-                            <p>{% trans from "offers" %}community.availability.view.help.p{% endtrans %}</p>
-                        </div>
-					<h4 class="page-header">
-                        {% trans from "offers" %}community.availability.view.header.big{% endtrans %}
-                        <small>{% trans from "offers" %}community.availability.view.header.small{% endtrans %}</small>
-                    </h4>
-                    <form action="{{ path('availability_submit') }}" method="post"}}>
-                    	<div class="col-md-12">
-							<p>
-								<button type="submit" class="btn btn-primary">{% trans from "offers" %}community.availability.view.btn.submit{% endtrans %}</button>
-							</p>						
-						</div>
-                    {% for i in 0..11 %}
-                    	<div class="col-md-4" style="height:370px; position:relative">                      	                            	
-                            <!-- Primary box -->
-                            {% if i == 0 %}
-                            	{% set time = "now"|date("U") %}
-                            	<div class="box box-solid box-success">                            	
-                            {% else %}
-                            	{% set value = "+"~ i ~ " month" %}
-                            	{% set time = value|date("U") %}
-                               <div class="box box-solid box-primary">                                                           
-                            {% endif %}
-                                <div class="box-header">
-                                    <h3 class="box-title">{{ time|date('m - Y', "Europe/Paris") }}</h3>
-                                </div>
-                                <div class="box-body">
-                                	<input type="checkbox" class="all-{{ i }}" /> {% trans from "offers" %}community.availability.view.selectall{% endtrans %}</th>
-                                	<p>
-	                                    <table>
-										<thead>
-											<tr>
-												<th width="17%">{% trans from "offers" %}community.availability.view.th.sun{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.view.th.mon{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.view.th.tue{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.view.th.wed{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.view.th.thu{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.view.th.fri{% endtrans %}</th>
-												<th width="17%">{% trans from "offers" %}community.availability.view.th.sat{% endtrans %}</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-											{% set data = time|date('Y-m') %}
-											{% set daysInMonth = time|date('t') %}
-											{% set startDow = time|date('F 1\\s\\t Y')|date('w') %}
-											{% set dow = startDow %}
-											{% for day in range(1,daysInMonth) %}
-												{% if day < 10 %}
-													{% set day = 0 ~ day %}
-												{% endif %}
-												{% set dayValue = data ~ "-" ~ day %}
-												{% if loop.first and startDow != 0 %}
-													<td colspan="{{ startDow }}"></td>
-												{% endif %}
-												<td>
-													<div>
-														{% if date(dayValue) > date('now') %}
-														<div>{{ day }}</div>
-														<div>																												
-														<input class="month--{{ i }}" type="checkbox" name="dates[]" value="{{ dayValue }}" {% if dayValue in dates %} checked {% endif %}>
-														</div>
-														{% else %}
-														<div></div><div></div>
-														{% endif %}													
-													</div>
-												</td>
+	<div class="callout callout-info">
+        <h4>{% trans from "offers" %}community.availability.view.help.h4{% endtrans %}</h4>
+        <p>{% trans from "offers" %}community.availability.view.help.p{% endtrans %}</p>
+    </div>
+	<h4 class="page-header">
+        {% trans from "offers" %}community.availability.view.header.big{% endtrans %}
+        <small>{% trans from "offers" %}community.availability.view.header.small{% endtrans %}</small>
+    </h4>
+    <form action="{{ path('availability_submit') }}" method="post"}}>
+    	<div class="col-md-12">
+			<p>
+				<button type="submit" class="btn btn-primary">{% trans from "offers" %}community.availability.view.btn.submit{% endtrans %}</button>
+			</p>						
+		</div>
+        {% for i in 0..11 %}
+        	<div class="col-md-4" style="height:370px; position:relative">                      	                            	
+                <!-- Primary box -->
+                {% if i == 0 %}
+                	{% set time = "now"|date("U") %}
+                	<div class="box box-solid box-success">                            	
+                {% else %}
+                	{% set value = "+"~ i ~ " month" %}
+                	{% set time = value|date("U") %}
+                   <div class="box box-solid box-primary">                                                           
+                {% endif %}
+                <div class="box-header">
+                    <h3 class="box-title">{{ time|date('m - Y', "Europe/Paris") }}</h3>
+                </div>
+                <div class="box-body">
+                	<input type="checkbox" class="all-{{ i }}" /> {% trans from "offers" %}community.availability.view.selectall{% endtrans %}</th>
+                	<p>
+                        <table>
+							<thead>
+								<tr>
+									<th width="17%">{% trans from "offers" %}community.availability.view.th.sun{% endtrans %}</th>
+									<th width="17%">{% trans from "offers" %}community.availability.view.th.mon{% endtrans %}</th>
+									<th width="17%">{% trans from "offers" %}community.availability.view.th.tue{% endtrans %}</th>
+									<th width="17%">{% trans from "offers" %}community.availability.view.th.wed{% endtrans %}</th>
+									<th width="17%">{% trans from "offers" %}community.availability.view.th.thu{% endtrans %}</th>
+									<th width="17%">{% trans from "offers" %}community.availability.view.th.fri{% endtrans %}</th>
+									<th width="17%">{% trans from "offers" %}community.availability.view.th.sat{% endtrans %}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									{% set data = time|date('Y-m') %}
+									{% set daysInMonth = time|date('t') %}
+									{% set startDow = time|date('F 1\\s\\t Y')|date('w') %}
+									{% set dow = startDow %}
+									{% for day in range(1,daysInMonth) %}
+										{% if day < 10 %}
+											{% set day = 0 ~ day %}
+										{% endif %}
+										{% set dayValue = data ~ "-" ~ day %}
+										{% if loop.first and startDow != 0 %}
+											<td colspan="{{ startDow }}"></td>
+										{% endif %}
+											<td>
+												<div>
+												{% if date(dayValue)|date('d-m-y') == date('now')|date('d-m-y') or date(dayValue) > date('now') %}
+													<div>{{ day }}</div>
+													<div>														<input class="month--{{ i }}" type="checkbox" name="dates[]" value="{{ dayValue }}" {% if dayValue in dates %} checked {% endif %}>
+												</div>
+												{% else %}
+													<div></div>
+													<div></div>
+												{% endif %}													
+											</div>
+											</td>
 												{% if loop.last and dow != 6 %}
 													<td colspan="{{ 6 - dow }}">&nbsp;</td>
 												{% endif %}
@@ -85,17 +85,16 @@
 												{% else %}
 													{% set dow = dow + 1 %}
 												{% endif %}
-											{% endfor %}
-											</tr>
-										</tbody>
-									</table>
-								</p>
-                                </div><!-- /.box-body -->
-                            </div><!-- /.box -->
-                        </div><!-- /.col -->
-                    {% endfor %} 
-						
-                    </form>    
+									{% endfor %}
+								</tr>
+							</tbody>
+						</table>
+					</p>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+            </div><!-- /.col -->
+        {% endfor %} 
+	</form>    
 {% endblock %}
 {% block javascripts_inline %}
         <script type="text/javascript">
