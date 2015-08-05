@@ -19,12 +19,14 @@
 		{{ devis.note|number_format(2) }}
 	</p>
 	{% endif %}
-	{% include "MainFrontBundle:Devis\\show:photos.html.twig" %}
-	<br>
-	<blockquote>
-  	<p>{{ devis.presentation|nl2br }}</p>
-	</blockquote>
-	<br>
+    <div class="jumbotron">
+      {% include "MainFrontBundle:Devis\\show:photos.html.twig" %}
+      <div class="jumbotron-contents">
+        <blockquote>
+	  		<p>{{ devis.presentation|nl2br }}</p>
+		</blockquote>
+      </div>
+    </div>
 	<br>
 	{% if is_granted('ROLE_PARTICULIER') %}
 		{% if bookable %}
