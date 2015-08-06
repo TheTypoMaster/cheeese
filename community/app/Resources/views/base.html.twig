@@ -61,7 +61,7 @@
                 {% endif %}
                 <section class="content">
                     {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
-                   {{ render(controller('MainCommunityBundle:Default:headBandDisplay')) }}  
+                        {{ render(controller('MainCommunityBundle:Default:headBandDisplay')) }}  
                                 {% for type, flashes in app.session.flashbag.all %}
                                     {% for flash in flashes %}
                                         <div class="alert alert-{{ type }} fade in" role="alert">
@@ -77,13 +77,7 @@
 	                {% block content %}            
 	                   
                     {% endblock %}                                       
-                </section>
-                {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}	
-                    <div class="main-footer navbar-fixed-bottom">
-                        {% include "MainCommunityBundle:Menu:footer.html.twig" %}
-                    </div>	
-                {% endif %}	
-                	
+                </section>                	
             </aside><!-- /.right-side -->            
         </div><!-- ./wrapper -->
 
