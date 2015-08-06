@@ -125,4 +125,6 @@ services:
 #Handlers
     redirect.after.login:
         class: Main\CommonBundle\Redirection\AfterLoginRedirection
-        arguments: [@router, @service_session]
+        arguments: [@router, @service_session, @security.http_utils]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }

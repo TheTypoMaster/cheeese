@@ -6,25 +6,33 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
+use Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler;
+use Symfony\Component\Security\Http\HttpUtils;
 use Main\CommonBundle\Services\Session\ServiceSession;
 
  
-class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
+class AfterLoginRedirection extends DefaultAuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterface
 {
     /**
      * @var \Symfony\Component\Routing\RouterInterface
      */
-    private $router;
+    protected $router;
 
-    private $session;
+    protected $session;
+
+    protected $httpUtils;
+
+    protected $options;
  
     /**
      * @param RouterInterface $router
      */
-    public function __construct(RouterInterface $router, ServiceSession $serviceSession)
+    public function __construct(RouterInterface $router, ServiceSession $serviceSession, HttpUtils $httpUtils,$options = null)
     {
         $this->router = $router;
         $this->session = $serviceSession;
+        $this->httpUtils = $httpUtils;
+        $this->options = $options;
     }
  
     /**
@@ -47,7 +55,9 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
         		'id' => $this->session->getDesiredDevis()
         		)
         		));
-        	}
+        	}else{
+                return $this->httpUtils->createRedirectResponse($request, $this->determineTargetUrl($request));
+                }
         }
     }
 }
