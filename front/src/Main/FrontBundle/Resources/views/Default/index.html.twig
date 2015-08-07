@@ -6,6 +6,20 @@
       <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/about/creative.css') }}" />
       <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/about/font-awesome.min.css') }}" />
 	{% endblock %}
+    <style type="text/css">
+      .opacite {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+    <!--[if lte IE 8]>
+      <style type="text/css">
+        .opacite {
+          background:transparent;
+          filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#800000,endColorstr=#800000);
+          zoom: 1;
+        } 
+      </style>
+    <![endif]-->
 {% endblock head_style %}
 
 {% block head_script %}
@@ -54,21 +68,28 @@ $(function () {
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-lg-6 text-center">
-                	<h2 class="section-heading">{% trans %}about.section1.h2{% endtrans %}</h2>
-                    <p class="text-fade">
-                    	<strong>
-                    	{% trans %}about.section1.p{% endtrans %}
-                    	</strong>
-                    </p>
-                     {{ form_start(form) }}
-	   				<div class="form-group {% if not form.category.vars.valid %}has-error{% endif %}">
-	   	   				{{ form_widget(form.category) }}
-	   				</div>
-				  	 <button type="submit" class="btn btn-default btn-xl">
-				  	 	{% trans %}search.index.btn.submit{% endtrans %}
-				  	 </button>
-				  	 {{ form_rest(form) }}
-				   {{ form_end(form) }}
+                    <div class="panel panel-primary opacite">
+                        <div class="panel-body">
+                            <h4 class="text-fade" style="color:white">
+                              {% trans %}about.section1.h2{% endtrans %}
+                            </h4>
+                            <hr>
+                            <p class="text-fade" style="color:white">
+                    	       {% trans %}about.section1.p{% endtrans %}
+                            </p>
+                            <hr>
+                            {{ form_start(form) }}
+	   				        <div class="form-group {% if not form.category.vars.valid %}has-error{% endif %}">
+	   	   				        {{ form_widget(form.category) }}
+	   				        </div>
+                            <hr>
+        				  	 <button type="submit" class="btn btn-default btn-xl">
+        				  	 	{% trans %}search.index.btn.submit{% endtrans %}
+        				  	 </button>
+        				  	 {{ form_rest(form) }}
+        				    {{ form_end(form) }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

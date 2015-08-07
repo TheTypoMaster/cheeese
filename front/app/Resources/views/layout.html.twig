@@ -7,6 +7,20 @@
       <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/site.min.css') }}" />
       <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/star-rating.min.css') }}" />
 	{% endblock %}
+  <style type="text/css">
+      .opacite {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+    <!--[if lte IE 8]>
+      <style type="text/css">
+        .opacite {
+          background:transparent;
+          filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#800000,endColorstr=#800000);
+          zoom: 1;
+        } 
+      </style>
+    <![endif]-->
 {% endblock head_style %}
 
 {% block head_script %}
