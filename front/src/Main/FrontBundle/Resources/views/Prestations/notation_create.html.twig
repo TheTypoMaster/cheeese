@@ -24,6 +24,8 @@
   	</div>
 {% endblock %}
 {% block bottom_script %}
+{% javascripts '@MainFrontBundle/Resources/public/js/star-rating.min.js' %} 
+<script type="text/javascript" src="{{ asset_url }}"></script>  
 
 <script type="text/javascript">
     $(function() {
@@ -33,5 +35,6 @@
 			    divsToHide[i].style.visibility="hidden";
 			    }
             });
-    </script>    
+    </script>  
+{% endjavascripts %}
 {% endblock bottom_script %}

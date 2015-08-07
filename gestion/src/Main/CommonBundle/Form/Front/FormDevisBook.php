@@ -82,7 +82,7 @@ class FormDevisBook extends AbstractType
                 'empty_value' => 'form.search.empty.startTime',
         		'choices'  => $this->getTimeChoices(),
                 'attr' => array(
-                        'class' => 'form-control selecter_3',
+                        'class' => 'form-control',
                         ),
                 'constraints'   => array(
                         new NotBlank ( array()),
@@ -98,7 +98,7 @@ class FormDevisBook extends AbstractType
                         return $er->findDurationsByDevis($devis);
                     },
                     'attr' => array(
-                        'class' => 'form-control selecter_3',
+                        'class' => 'form-control',
                         ),
                     'constraints'   => array(
                         new NotBlank ( array(

@@ -55,7 +55,7 @@ class FormSearch extends AbstractType
                         ->setParameter(':type', $type);
                     },
                     'attr' => array(
-                        'class' => 'form-control selecter_2',
+                        'class' => 'form-control',
                         ),
                     'constraints'   => array(
                         new NotBlank ( array(
@@ -120,7 +120,7 @@ class FormSearch extends AbstractType
                 'empty_value'   => 'form.search.empty.department',
                 'data'          => $this->data['department'],
                 'choices'       => $dptElements,
-                'attr'          => array('class' => 'form-control selecter_2'),
+                'attr'          => array('class' => 'form-control'),
         ));
     }
 

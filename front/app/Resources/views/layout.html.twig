@@ -18,9 +18,9 @@
   {% endjavascripts %}
 <![endif]-->
 
-{% javascripts '@MainFrontBundle/Resources/public/js/library/site.min.js'
-               '@MainFrontBundle/Resources/public/js/star-rating.min.js'
+{% javascripts '@MainFrontBundle/Resources/public/js/library/jquery-1.11.1.js'
                '@MainFrontBundle/Resources/public/js/library/jquery-ui-1.10.4.custom.js'
+               '@MainFrontBundle/Resources/public/js/library/bootstrap.min.js'
                '@MainFrontBundle/Resources/public/js/library/bootstrap-datepicker.js'
 
                 %}
@@ -49,11 +49,13 @@ $(function () {
 <body>
 {% block container %}
     	{% include "MainFrontBundle:Menu:menu.html.twig" %}
-      {% block search %}  
-      {% endblock %}
+        {% block search %}  
+        {% endblock %}
     <div class="container">
-      {% block content %}          
-      {% endblock %}
+      <div class="row">
+        {% block content %}          
+        {% endblock %}
+      </div>
     </div>
 {% include "MainFrontBundle:Menu:footer.html.twig" %}
      {% block bottom_script %}

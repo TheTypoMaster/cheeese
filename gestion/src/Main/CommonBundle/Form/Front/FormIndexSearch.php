@@ -57,7 +57,7 @@ class FormIndexSearch extends AbstractType
                         ->setParameter(':type', $type);
                     },
                     'attr'          => array(
-                        'class' => 'form-control selecter_4'),
+                        'class' => 'form-control'),
                     'constraints'   => array(
                         new NotBlank ( array())
                         )

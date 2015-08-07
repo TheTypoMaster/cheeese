@@ -59,6 +59,7 @@ p {
     background-image: url(../about/img/header.jpg);
     background-position: bottom;
     background-size: 100%;
+    background-repeat:no-repeat;
 }
 
 
