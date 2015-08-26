@@ -12,7 +12,7 @@ security:
         link:
             signin: Se connecter
             forgot: J'ai oublié mon mot de passe
-            register: Vous n'avez encore pas de compte ?
+            register: Vous n'avez encore pas de compte ? Inscription
     register:
         header: Nouveau membre
         title: Inscrivez vous sur Cheeese
@@ -39,7 +39,7 @@ security:
             title: Félicitations
             header: Félicitations
             p %username%: Félicitations %username%, votre compte est maintenant activé.
-            link: Votre espace.
+            link: Accédez à votre espace.
     resetting:
         reset:
             title: Modification de mon mot de passe
@@ -54,7 +54,7 @@ security:
             title: Mot de passe oublié
             header: Mot de passe oublié
             field:
-                username: Utilisateur
+                username: Indiquez votre nom d'utilisateur ou votre email
             btn:
                 submit: Envoyer
             link:
