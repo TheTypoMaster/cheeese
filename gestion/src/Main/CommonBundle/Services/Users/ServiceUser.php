@@ -80,6 +80,7 @@ class ServiceUser
 		$user->setLastName($data['lastName']);
 		$user->setPresentation($data['presentation']);
 		$user->setTelephone($data['telephone']);
+		$user->setBirthDate(new \DateTime(str_replace('/', '-', $data['birthDate'])));
 		$user->setUpdatedAt(new \DateTime('now'));
 		try{
 			$this->em->flush();

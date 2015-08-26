@@ -4,7 +4,12 @@ help:
             firstName: Votre prénom
             lastName: Votre nom
             telephone: Votre numéro de téléphone
-            presentation: Bloc d'aide
+            birthDate: Au format jj/mm/aaaa
+            presentation: Présentez-vous ici pour que vos clients vous connaissent mieux et comprennent votre manière de travailler : Depuis quand êtes vous photographe ? Quels sont vos domaines d’expertises ? Votre parcours ? Votre philosophie, vos valeurs, vos inspirations, vos motivations ? Quel matériel utilisez-vous ?
+            exemple:
+                title:  Exemple : 
+                p1: Photographe passionné et autodidacte depuis 2009, je sais immortaliser tous les moments importants d’une vie : Mariages, Baptême, Grossesses, Naissances, ou juste pour se faire plaisir lors d'une séance photo studio portrait, couple ou famille.
+                p2: Ma philosophie est la suivante : Faire qu'un instant soit éternel grâce à la photographie. Je saurai vous guider lors des shootings en studio tout comme je saurai rester discret lors des mariages ou autres évènements pour vous laisser profiter de ces instants magique avec les vôtres, tout en retranscrivant en photos ces magnifiques moments de vie. Je suis à votre écoute pour être au plus près de vos attentes.
     devis:
         field:
             title: Soyez le plus précis possible

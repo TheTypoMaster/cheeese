@@ -12,7 +12,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Length;
-
+use Symfony\Component\Validator\Constraints\Date;
+use Main\CommonBundle\Validator\Constraints\DateRange;
 
 class FormPresentationType extends AbstractType
 {
@@ -77,6 +78,24 @@ class FormPresentationType extends AbstractType
                         new NotBlank ( array(
                         )))
         	));
+
+       $builder ->add ( 'birthDate', 'date', array(
+                    'label'         => 'form.presentation.field.birthDate',
+                    'widget'        => 'single_text',
+                    'format'        => 'dd/MM/yyyy' ,
+                    'attr' => array(
+                        'class' => 'form-control',
+                        'placeholder'  => 'form.presentation.field.placeholder.birthDate'
+                    ),  
+                    'constraints'   => array(
+                        new NotBlank ( array()),
+                        new Date(),
+                        new DateRange(array(
+                            'max' => '- 16 years',
+                            'maxMessage' => 'form.presentation.field.birthDate'
+                            )) 
+                        )                     
+                ));
     	
     	$builder->add('presentation', 'textarea', array(
     			'label'	=> 'form.presentation.field.presentation',

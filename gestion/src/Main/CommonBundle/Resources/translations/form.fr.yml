@@ -29,11 +29,13 @@ form:
             lastname: Nom
             telephone: Téléphone
             presentation: Présentation
+            birthDate: Date de naissance
             placeholder:
                 presentation: Votre Présentation ici
                 firstname: Votre Prénom
                 lastname: Votre Nom
                 telephone: Votre Téléphone
+                birthDate: Votre date de naissance
     security:
         field:
             old: Ancien mot de passe

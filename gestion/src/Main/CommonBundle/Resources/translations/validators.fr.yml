@@ -18,3 +18,6 @@ form:
         field:
             max: La commission ne peut pas dépasser 50%
             min: La commission ne peut pas être inférieur à 3%
+    presentation:
+        field:
+            birthDate: Vous devez avoir au moins 16 ans
