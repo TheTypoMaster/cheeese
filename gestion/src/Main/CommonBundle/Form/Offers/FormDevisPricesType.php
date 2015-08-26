@@ -15,6 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 
 class FormDevisPricesType extends AbstractType
 {
@@ -72,6 +73,10 @@ class FormDevisPricesType extends AbstractType
     			),
     			'constraints'   => array(
     					new NotBlank ( array()),
+                        new GreaterThanOrEqual(array(
+                                'value'   => 20,
+                                'message' => 'form.devisprice.field.price'
+                            )),
                         new Regex(array(
                             'pattern' => '/(\d+(.\d+)?)/',
                         )))

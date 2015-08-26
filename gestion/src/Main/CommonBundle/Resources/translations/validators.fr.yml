@@ -21,3 +21,6 @@ form:
     presentation:
         field:
             birthDate: Vous devez avoir au moins 16 ans
+    devisprice:
+        field:
+            price: Le prix doit être supérieur ou égal à 20 €.
