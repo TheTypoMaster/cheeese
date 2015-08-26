@@ -56,7 +56,7 @@ class FormDevisBookType extends AbstractType
             'label'    => false,
             'constraints' => array(
                 new File(array(
-                    'maxSize' => '1M',
+                    'maxSize' => '2M',
                     'mimeTypes' => array(
                         'image/jpeg', 
                         'image/jpg'
@@ -67,6 +67,7 @@ class FormDevisBookType extends AbstractType
             )
                
         ));
+       $builder->add('cgu', 'hidden', array());
     }
     
     /**

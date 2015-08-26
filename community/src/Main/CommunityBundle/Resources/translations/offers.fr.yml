@@ -101,6 +101,9 @@ community:
                     btn:
                         submit: Soumettre
                         back: Retour
+                    cgu: 
+                        text: En cochant cette cache, je jure sur la vie de ma mére que cette photo est bien la mienne. Et je me conforme aux conditions générales d'utilisation de ce magnifique site.
+                        link: Lien vers les cgu
                 th:
                     profile: Photo de couverture
                     yes: Oui
