@@ -1,80 +1,85 @@
 
-    // Sélection code INSEE
-    var country     = $("#form_company_country");
-    var department  = $("#form_company_department");
-    var town        = $("#form_company_town");
-    onchange(country, department, town);
-    
-    $(department).change(function(e) {
-    	onchange(country, department, town);
-    });
-
-    /**
-     * 
-     * @param pays
-     * @param div
-     */
-    function onchange(country, dept, town){
-        $(form_company_department).change(function(e) {
-        	$(town).val('');
+        // Sélection code INSEE
+        //var country     = $("#form_company_country");
+        var department         = $("#form_company_department");
+        var town               = $("#form_company_town");
+        var town_id            = $("#form_company_town_id");
+        onchange(/*country,*/ department, town, town_id);
+        $(department).change(function(e) {
+        	onchange(department, town, town_id);
         });
-        var department = $(dept).val();
-        var country = $(country).val();
-        var input = town;
-        $.ajax({
-            url: base + '/api/department/'+ department + '/' + country + '/towns',
-            type:"get",
-            dataType: 'json',
-            async: true,
-            cache: true,
-            success: function (data) {
-                var suggestions = [];  
-                $.each(data, function(i, val){  
-                    suggestions.push({"value": val.id, "label": val.name});  
-                });
-                $(input).autocomplete({
-                    source: suggestions,                          
-                    open: function (event, ui) {
-                        var termTemplate = "<strong>%s</strong>";
-                        var ac = $(this).data('ui-autocomplete');
-                        var term = ac.term;                      
-                        var termCaps = term.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-                            return letter.toUpperCase();
-                        });                       
-                        var styledTerm = termTemplate.replace('%s', term);
-                        var styledTermCaps = termTemplate.replace('%s', termCaps);
-                        ac.menu.element.find('a').each(function() {
-                            var me = $(this)
-                            mapObj = {};
-                            mapObj[term] = styledTerm;
-                            mapObj[termCaps] = styledTermCaps;
-                            var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
-                            str = me.text().replace(re, function(matched){
-                              return mapObj[matched];
-                            });
-                            me.html( str) ;
-                        });
-                        var elem = document.getElementById('ui-id-1');
-                        elem.style.backgroundColor = 'white';
-                        elem.style.width = '80%';
-                    },
-                    change: function (event, ui) {
-                        if(ui.item != null){
-                           return;
-                        }
-                        $(input).val('');
-                    },
-                    select: function (event, ui) {
-                        event.preventDefault();
-                        $(input).val(ui.item.label);
-                    },
-                    focus: function (event, ui) {
-                        event.preventDefault();
-                        $(input).val(ui.item.label);
-                    }
-
-                });
-            }
+        var department_studio         = $("#form_company_department_studio");
+        var town_studio               = $("#form_company_town_studio");
+        var town_studio_id            = $("#form_company_town_studio_id");
+        onchange(department_studio, town_studio, town_studio_id);
+        $(department_studio).change(function(e) {
+            onchange(department_studio, town_studio, town_studio_id);
         });
         
-    }
+        /**
+         * 
+         * @param pays
+         * @param div
+         */
+        function onchange(dept, town, id){
+            $(dept).change(function(e) {
+            	$(id).val('');
+                $(town).val('');
+                $(town).typeahead("destroy");
+            });
+            var department = $(dept).val();
+            var country = 1;//$(country).val();
+            var input = town;  
+            var substringMatcher = function(strs) {
+              return function findMatches(q, cb) {
+                var matches, substringRegex;
+
+                matches = [];
+                substrRegex = new RegExp(q, 'i');
+                $.each(strs, function(i, str) {
+                  if (substrRegex.test(str)) {
+                    matches.push(str);
+                  }
+                });
+
+                cb(matches);
+              };
+            };      
+            $.ajax({
+                url: base + '/api/department/'+ department + '/' + country + '/towns',
+                type:"get",
+                dataType: 'json',
+                async: true,
+                cache: true,
+                success: function (data) {
+                    var suggestions = [];  
+                    $.each(data, function(i, val){  
+                        suggestions.push({"value": val.id, "label": val.name});  
+                    });
+                    objects = [];
+                    map = {};
+                    $.each(suggestions, function(i, object) {
+                        map[object.label] = object;
+                        objects.push(object.label);
+                    });
+                    $(input).typeahead({
+                      hint: true,
+                      highlight: true,
+                      minLength: 1
+                    },{
+                        source: substringMatcher(objects),
+                    });
+                    $(input).on('typeahead:selected', function (e, datum) {   
+                        $(id).val(map[datum].value);
+                      });
+                    $(input).on('typeahead:change', function (event, ui) {  
+                        if(map[ui] != undefined){
+                               return;
+                            }
+                        $(input).val('');
+                        $(id).val('');
+                      });
+                }
+            });
+         
+        }

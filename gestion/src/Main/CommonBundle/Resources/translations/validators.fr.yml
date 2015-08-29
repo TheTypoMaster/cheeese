@@ -5,7 +5,7 @@ form:
             newPassword: Le mot de passe doit faire au moins 6 caractéres, avec une majuscule, une minuscule et un chiffre
     company:
         field:
-            identification: Merci de rentrer un siret valide
+            identification: Merci de rentrer un siret valide,celui ci doit être composé de 14 chiffres
     user:
         field:
             plainPassword: Le mot de passe doit faire au moins 6 caractéres, avec une majuscule, une minuscule et un chiffre

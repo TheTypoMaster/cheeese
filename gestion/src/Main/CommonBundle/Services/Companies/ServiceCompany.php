@@ -73,19 +73,35 @@ class ServiceCompany
 	public function create($data)
 	{
 		$user = $this->getCurrentUser();
-		$Company = new Company();
-		$Company->setPhotographer($user);
-		$Company->setTown($this->em->getRepository('MainCommonBundle:Geo\Town')->findOneBy(array(
+		$townStudio = null;
+		if ($data['town_studio_id'] != '') {
+			$townStudio = $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneById($data['town_studio_id']);
+		}
+		if ($data['town_id'] == '') {
+			$town = $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneBy(array(
 				'country'    => $data['country'],
 				'department' => $data['department'],
 				'name'	     => $data['town']	
-				)));
+				));
+		}else {
+			$town = $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneById($data['town_id']);
+		}
+		$Company = new Company();
+		$Company->setPhotographer($user);
+		$Company->setTown($town);
 		$Company->setIdentification($data['identification']);
 		$Company->setTitle($data['title']);
 		$Company->setAddress($data['address']);
+		$Company->setStudio($data['title_studio']);
+		$Company->setStudioAddress($data['address_studio_numero'].';;;'.$data['address_studio']);
+		$Company->setStudioTown($townStudio);
 		$Company->setStatus($this->em->getRepository('MainCommonBundle:Status\PhotographerStatus')->findOneById(self::TO_VERIFY));
 		try{
 			$this->em->persist($Company);
+			if(isset($data['firstname'])) {
+				$user->setFirstName($data['firstname']);
+				$user->setLastName($data['lastname']);
+			}
 			$this->em->flush();
 			return true;
 		}catch(\Exception $e){
@@ -100,16 +116,20 @@ class ServiceCompany
 	 */
 	public function update(Company $Company, $data)
 	{
-		$town = $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneBy(array(
-				'country' => $data['country'],
-				'name'	  => $data['town']	
-				));
+		$town = $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneById($data['town_id']);
+		$townStudio = null;
+		if ($data['town_studio_id'] != '') {
+			$townStudio = $this->em->getRepository('MainCommonBundle:Geo\Town')->findOneById($data['town_studio_id']);
+		}
 		$Company->setTown($town);
+		$Company->setStudioTown($townStudio);
 		if (isset($data['identification'])) {
 			$Company->setIdentification($data['identification']);	
 		}			
 		$Company->setTitle($data['title']);
 		$Company->setAddress($data['address']);
+		$Company->setStudio($data['title_studio']);
+		$Company->setStudioAddress($data['address_studio_numero'].';;;'.$data['address_studio']);
 		$Company->setUpdatedAt(new \DateTime('now'));
 		try{
 			$this->em->flush();
@@ -183,5 +203,15 @@ class ServiceCompany
 	public function countAllBy($arg)
 	{
 		return $this->repository->countAllBy($arg);
+	}
+
+	/**
+	 * [canDoStudio description]
+	 * @param  Company $company [description]
+	 * @return [type]           [description]
+	 */
+	public function canDoStudio(Company $company)
+	{
+		return $company->getStudioTown() != null;
 	}
 }

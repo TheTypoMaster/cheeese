@@ -64,7 +64,7 @@ community:
             header: Mon evaluation
             help:
                 h4: Votre notation de la prestation.
-                p1: Notre communauté repose sur des commentaires honnêtes et transparents, ainsi que une attribution d’étoiles (plus vous mettez d’étoiles, plus vous êtes contents). Cela permet aux photographes et aux clients d’avoir une idée de la personne avec qui ils traitent, et de motiver leur décision finale.
+                p1: Notre communauté repose sur des commentaires honnêtes et transparents, ainsi que sur une attribution d’étoiles (plus vous mettez d’étoiles, plus vous êtes contents). Cela permet aux photographes et aux clients d’avoir une idée de la personne avec qui ils traitent, et de motiver leur décision finale.
                 p2: Nous vous remercions pour le temps que vous prendrez pour remplir cette évaluation.
                 caution: Attention, une fois soumise, votre évaluation ne pourra pas être modifiée.
             btn:

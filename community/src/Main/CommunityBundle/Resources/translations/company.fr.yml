@@ -5,15 +5,19 @@ companies:
             h2: Editer
             breadcrumbh1: Identification
             breadcrumbh2: Editer
-            header: Editer entreprise
+            header: Editer les informations de mon entreprise
+            studio: Editer les informations de mon studio
+            studiotext: Je souhaite proposer des devis en studio
             btn:
                 submit: Soumettre
+                back: Retour
         new:
             h1: Identification
             h2: Créer
             breadcrumbh1: Identification
             breadcrumbh2: Créer
-            header: Créer entreprise
+            header: Je renseigne les données de mon entreprise
+            studio: Je travaille aussi en studio
             btn:
                 submit: Soumettre
         view:
@@ -21,20 +25,26 @@ companies:
             h2: Détails
             breadcrumbh1: Identification
             breadcrumbh2: Détails
-            header: Mon entreprise
+            header:
+                company: Mon entreprise
+                studio: Mon studio
             btn:
                 edit: Editer
-            th:
+            company:
                 title: Dénomination sociale
                 address: Adresse
                 town: Ville
                 country: Pays
                 code: Siret
                 status: Statut
+            studio:
+                no: Je ne propose pas de devis en studio.
+                title: Nom du studio
+                address: Adresse
             status:
-                to_verify: En cours de vérification
-                refused: Refusée
-                accepted: Vérifiée
+                to_verify: Votre numéro de siret est en cours de vérification
+                refused: Vous avez entré un mauvais siret a été refusé.Merci de rentrer un siret valide pour pouvoir proposer des devis à des clients
+                accepted: Votre numéro de siret a été vérifié. Vous pouvez proposer des devis à des clients
     iban:
         view:
             h1: Détails bancaires

@@ -85,12 +85,7 @@ class CompanyController extends Controller
 			return $this->redirect($this->generateUrl('company_new'));
 		}
 		$form = $this->createForm('form_company', null, array(
-				'status'  		 => $company->getStatus()->getId(),
-				'title'	  		 => $company->getTitle(),
-				'address'		 => $company->getAddress(),
-				'town'	    	 => $company->getTown()->getName(),
-				'country' 		 => $company->getTown()->getCountry()->getId(),
-				'identification' => $company->getIdentification(),
+				'company'  		 => $company
 				));
 			
 		$form->handleRequest($request);

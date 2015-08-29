@@ -7,99 +7,199 @@
 {% block breadcrumbH2 %}{% trans from "company" %}companies.company.new.breadcrumbh2{% endtrans %}{% endblock %}
 {% block content %}
 <section class="content">
-	<div class="row">
-			<div class="col-md-12">
-                            <!-- general form elements -->
-                            <div class="box box-primary">
-                                <div class="box-header">
-                                    <h3 class="box-title">
-                                        {% trans from "company" %}companies.company.new.header{% endtrans %}</h3>
-                                </div><!-- /.box-header -->
-                                <!-- form start -->
-                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-                                    <div class="box-body">	
-                                    <div class="form-group {% if not form.title.vars.valid %}has-error{% endif %}">                             
-                                        {{ form_label(form.title) }}                         
-                                        {{ form_widget(form.title) }}
-                                        <div class="text-red">
-                                        {{ form_errors(form.title) }}
-                                        </div>
-                                        <p class="help-block">
-                                        {% trans from "forms" %}help.company.field.title {% endtrans %}
-                                        </p>
-                                        </div>
-                                        <div class="form-group {% if not form.country.vars.valid %}has-error{% endif %}">                             
-                                        {{ form_label(form.country) }}                         
-                                        {{ form_widget(form.country) }}
-                                        <div class="text-red">
-                                        {{ form_errors(form.country) }}
-                                        </div>
-                                        <p class="help-block">
-                                        {% trans from "forms" %}help.company.field.country {% endtrans %}
-                                        </p>
-                                        </div>
-                                        <div class="form-group {% if not form.department.vars.valid %}has-error{% endif %}">                             
-                                        {{ form_label(form.department) }}                         
-                                        {{ form_widget(form.department) }}
-                                        <div class="text-red">
-                                        {{ form_errors(form.department) }}
-                                        </div>
-                                        <p class="help-block">
-                                        {% trans from "forms" %}help.company.field.department {% endtrans %}
-                                        </p>
-                                        </div>
-
-                                        <div class="form-group {% if not form.town.vars.valid %}has-error{% endif %}">                             
-                                        {{ form_label(form.town) }}
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                            <i class="fa fa-map-marker"></i>
-                                            </div>                         
-                                            {{ form_widget(form.town) }}
-                                        </div>
-                                        <div class="text-red">
-                                        {{ form_errors(form.town) }}
-                                        </div>
-                                        <p class="help-block">
-                                        {% trans from "forms" %}help.company.field.town {% endtrans %}
-                                        </p>
-                                        </div>
-                                        <div class="form-group {% if not form.address.vars.valid %}has-error{% endif %}">                             
-                                        {{ form_label(form.address) }}                         
-                                        {{ form_widget(form.address) }}
-                                        <div class="text-red">
-                                        {{ form_errors(form.address) }}
-                                        </div>
-                                        <p class="help-block">
-                                        {% trans from "forms" %}help.company.field.address {% endtrans %}
-                                        </p>
-                                        </div>
-
-                                        <div class="form-group {% if not form.identification.vars.valid %}has-error{% endif %}">                             
-                                        {{ form_label(form.identification) }}                        
-                                        {{ form_widget(form.identification) }}
-                                        <div class="text-red">
-                                        {{ form_errors(form.identification) }}
-                                        </div>
-                                        <p class="help-block">
-                                        {% trans from "forms" %}help.company.field.identification {% endtrans %}
-                                        </p>
-                                        </div>								
-                                        {{ form_rest(form) }}
-                                    </div><!-- /.box-body -->
-
-                                    <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary">
-                                            {% trans from "company" %}companies.company.new.btn.submit{% endtrans %}</button>
-                                    </div>
-                                {{ form_end(form) }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">{% trans from "company" %}companies.company.new.header{% endtrans %}</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                <div class="box-body">
+                    {% if app.user.lastName == null %}
+                        <div class="row">
+                            <div class="col-xs-6 form-group {% if not form.firstname.vars.valid %}has-error{% endif %}">                             
+                            {{ form_label(form.firstname) }}                         
+                            {{ form_widget(form.firstname) }}
+                            <div class="text-red">
+                            {{ form_errors(form.firstname) }}
                             </div>
-		</div>	
-	</div>
+                            <p class="help-block">
+                            {% trans from "forms" %}help.company.field.firstname {% endtrans %}
+                            </p>
+                            </div>
+
+                            <div class="col-xs-6 form-group {% if not form.lastname.vars.valid %}has-error{% endif %}">                             
+                            {{ form_label(form.lastname) }}                         
+                            {{ form_widget(form.lastname) }}
+                            <div class="text-red">
+                            {{ form_errors(form.lastname) }}
+                            </div>
+                            <p class="help-block">
+                            {% trans from "forms" %}help.company.field.lastname {% endtrans %}
+                            </p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-xs-6 form-group {% if not form.title.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.title) }}                         
+                        {{ form_widget(form.title) }}
+                        <div class="text-red">
+                        {{ form_errors(form.title) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.title {% endtrans %}
+                        </p>
+                        </div>
+
+                        <div class="col-xs-6 form-group {% if not form.identification.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.identification) }}                        
+                        {{ form_widget(form.identification) }}
+                        <div class="text-red">
+                        {{ form_errors(form.identification) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.identification {% endtrans %}
+                        </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 form-group {% if not form.address.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.address) }}                         
+                        {{ form_widget(form.address) }}
+                        <div class="text-red">
+                        {{ form_errors(form.address) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.address {% endtrans %}
+                        </p>
+                        </div>
+                    </div>
+                    <div class="row">        
+                        <div class="col-xs-6 form-group {% if not form.department.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.department) }}                         
+                        {{ form_widget(form.department) }}
+                        <div class="text-red">
+                        {{ form_errors(form.department) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.department {% endtrans %}
+                        </p>
+                        </div>
+
+                        <div class="col-xs-6 form-group {% if not form.town.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.town) }}  
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                            <i class="fa fa-map-marker"></i>
+                            </div>                       
+                            {{ form_widget(form.town) }}
+                        </div>
+                        <div class="text-red">
+                        {{ form_errors(form.town) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.town {% endtrans %}
+                        </p>
+                        </div>
+                    </div>                        
+                </div><!-- /.box-body -->
+            </div>
+        </div>
+        <!-- STUDIO -->
+        <div class="col-md-6">
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title">{% trans from "company" %}companies.company.new.studio{% endtrans %}</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">                        
+                    <div class="row">
+                        <div class="col-xs-12 form-group">
+                        <p class="help-block">
+                            {% trans from "forms" %}help.company.field.studio {% endtrans %}
+                        </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 form-group {% if not form.title_studio.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.title_studio) }}                         
+                        {{ form_widget(form.title_studio) }}
+                        <div class="text-red">
+                        {{ form_errors(form.title_studio) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.title_studio {% endtrans %}
+                        </p>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-xs-2 form-group {% if not form.address_studio_numero.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.address_studio_numero) }}                         
+                        {{ form_widget(form.address_studio_numero) }}
+                        <div class="text-red">
+                        {{ form_errors(form.address_studio_numero) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.numero_studio {% endtrans %}
+                        </p>
+                        </div>
+                        <div class="col-xs-10 form-group {% if not form.address_studio.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.address_studio) }}                         
+                        {{ form_widget(form.address_studio) }}
+                        <div class="text-red">
+                        {{ form_errors(form.address_studio) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.address_studio {% endtrans %}
+                        </p>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 form-group {% if not form.department_studio.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.department_studio) }}                         
+                        {{ form_widget(form.department_studio) }}
+                        <div class="text-red">
+                        {{ form_errors(form.department_studio) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.department_studio {% endtrans %}
+                        </p>
+                        </div>
+
+                        <div class="col-xs-6 form-group {% if not form.town_studio.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.town_studio) }}  
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                            <i class="fa fa-map-marker"></i>
+                            </div>                       
+                            {{ form_widget(form.town_studio) }}
+                        </div>
+                        <div class="text-red">
+                        {{ form_errors(form.town_studio) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.town_studio {% endtrans %}
+                        </p>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">
+            {% trans from "company" %}companies.company.edit.btn.submit{% endtrans %}</button>
+            <a href="{{ path('company')}}" class="btn btn-default">{% trans from "company" %}companies.company.edit.btn.back{% endtrans %}</a>
+        </div>
+    {{ form_rest(form) }}
+    {{ form_end(form) }} 
+    </div>
 </section>
 {% endblock %}
 {% block javascripts_inline %}
-{% javascripts '@MainCommunityBundle/Resources/public/js/Added/company.js' %}   
+{% javascripts '@MainCommunityBundle/Resources/public/js/Added/company.js'%}   
     <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 {% endblock javascripts_inline %}

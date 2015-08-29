@@ -34,38 +34,43 @@ class DefaultController extends Controller
 	 */
 	public function dashboardAction(Request $request)
 	{		
-		$devisService 		= $this->get('service_devis');
-		$prestationService  = $this->get('service_prestation');
-		$radiusService		= $this->get('service_moves_radius');
-		$transactionService	= $this->get('service_transaction');
-		$serviceCompany = $this->get('service_company');
-		$company 		= $serviceCompany->getCurrentCompany();
-		if (!$company) {
-			$prestations = null;
-			$devis 		 = null;
-			$moves 		 = null;
-			$groupbydevis = null;
-			$groupbyprest = null;
-			$money 		  = null;
-			$week 		  = null;
+		if ($this->get('security.context')->isGranted('ROLE_PHOTOGRAPHER_VERIFIED')) {
+    		$devisService 		= $this->get('service_devis');
+			$prestationService  = $this->get('service_prestation');
+			$radiusService		= $this->get('service_moves_radius');
+			$transactionService	= $this->get('service_transaction');
+			$serviceCompany     = $this->get('service_company');
+			$company 		    = $serviceCompany->getCurrentCompany();
+			if (!$company) {
+				$prestations = null;
+				$devis 		 = null;
+				$moves 		 = null;
+				$groupbydevis = null;
+				$groupbyprest = null;
+				$money 		  = null;
+				$week 		  = null;
+			}else {
+				$prestations 	= $prestationService->countAllMyServices();
+				$devis 		 	= $devisService->CountAllMyActiveDevis();
+				$moves 		 	= $radiusService->getRadius($company);
+				$groupbydevis 	= $devisService->groupMyDevis();
+				$groupbyprest 	= $prestationService->groupMyPrestations();
+				$money			= $transactionService->getTotalMoney($company);	
+				$week			= $prestationService->getWeekPrestations();
+			}		
+			return $this->render('MainCommunityBundle:Default:index.html.twig',  array(
+					'prestations'	=> $prestations,
+					'devis'			=> $devis,
+					'moves'			=> $moves,
+					'groupByDevis'	=> json_encode($groupbydevis),
+					'groupByPrest'	=> json_encode($groupbyprest),
+					'money'			=> $money,
+					'week'			=> $week
+			));	
 		}else {
-			$prestations 	= $prestationService->countAllMyServices();
-			$devis 		 	= $devisService->CountAllMyActiveDevis();
-			$moves 		 	= $radiusService->getRadius($company);
-			$groupbydevis 	= $devisService->groupMyDevis();
-			$groupbyprest 	= $prestationService->groupMyPrestations();
-			$money			= $transactionService->getTotalMoney($company);	
-			$week			= $prestationService->getWeekPrestations();
-		}		
-		return $this->render('MainCommunityBundle:Default:index.html.twig',  array(
-				'prestations'	=> $prestations,
-				'devis'			=> $devis,
-				'moves'			=> $moves,
-				'groupByDevis'	=> json_encode($groupbydevis),
-				'groupByPrest'	=> json_encode($groupbyprest),
-				'money'			=> $money,
-				'week'			=> $week
-		));	
+			return $this->redirect($this->generateUrl('company'));
+		}
+		
 	}
 
 		/**

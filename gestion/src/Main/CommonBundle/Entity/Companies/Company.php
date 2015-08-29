@@ -52,13 +52,33 @@ class Company
 	 * @ORM\JoinColumn(name="town", referencedColumnName="id")
 	 */
 	private $town;
-	
-	/**
+
+		/**
 	 * @var text $lastname
 	 *
 	 * @ORM\Column(name="identification", type="string", length=50, nullable=false)
 	 */
 	private $identification;
+
+	/**
+	 * @var text $title
+	 *
+	 * @ORM\Column(name="studio", type="string", length=255, nullable=true)
+	 */
+	private $studio;
+
+	/**
+	 * @var text $address
+	 *
+	 * @ORM\Column(name="studio_address", type="string", length=255, nullable=true)
+	 */
+	private $studioAddress;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Geo\Town", fetch="EAGER")
+	 * @ORM\JoinColumn(name="studio_town", referencedColumnName="id", nullable=true)
+	 */
+	private $studioTown;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Main\CommonBundle\Entity\Status\PhotographerStatus", fetch="EAGER")
@@ -171,6 +191,57 @@ class Company
 	public function setIdentification($identification)
 	{
 		$this->identification = $identification;
+	}
+
+	/**
+	 * 
+	 */
+	public function getStudio()
+	{
+		return $this->studio;
+	}
+	
+	/**
+	 * 
+	 * @param string $title
+	 */
+	public function setStudio($studio)
+	{
+		$this->studio = $studio;
+	}
+
+	/**
+	 * 
+	 */
+	public function getStudioAddress()
+	{
+		return $this->studioAddress;
+	}
+	
+	/**
+	 * 
+	 * @param string $address
+	 */
+	public function setStudioAddress($studioAddress)
+	{
+		$this->studioAddress = $studioAddress;
+	}
+	
+	/**
+	 *
+	 */
+	public function getStudioTown()
+	{
+		return $this->studioTown;
+	}
+	
+	/**
+	 *
+	 * @param Town $town
+	 */
+	public function setStudioTown(Town $town = null)
+	{
+		$this->studioTown = $town;
 	}
 	
 	/**

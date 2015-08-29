@@ -3,7 +3,7 @@ community:
         headband:
             info:
                 banner: Nouveau photographe
-                message: Bienvenue sur Cheeese, vous devez rentrer les données de votre entreprise (onglet Mon entreprise) afin de pouvoir continuer.
+                message: Bienvenue sur Cheeese, vous devez rentrer les données de votre entreprise (onglet Mon entreprise > Identification ) afin de pouvoir continuer.
             warning:
                 banner: Vos données en cours de validation
                 message1: Nous vérifions actuellement votre statut professionnel (via votre numéro SIRET). Nous vous enverrons un email dans moins de 24 heures, une fois cette vérification effectuée. Merci pour votre patience ! 

@@ -31,6 +31,7 @@ class FormCompanyType extends AbstractType
 		$this->em = $entityManager;
 		$this->securityContext = $securityContext;	
 		$this->options = $options;
+        $this->company = $options['company'];
 	
 	}
 	
@@ -40,9 +41,34 @@ class FormCompanyType extends AbstractType
 	
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $company = $options['company'];
+        $studioAddress = split(';;;', $company == null ? null:$company->getStudioAddress()); 
+
+        if($this->getCurrentUser()->getLastName() === null) {
+            $builder->add('firstname', 'text', array(
+                    'label' => 'form.companytype.field.firstname',
+                    'attr' => array(
+                            'class' => 'form-control',
+                            'maxlength' => 50
+                            ),
+                    'constraints'   => array(
+                            new NotBlank ( array(
+                            )))
+                    ));
+            $builder->add('lastname', 'text', array(
+                    'label' => 'form.companytype.field.lastname',
+                    'attr' => array(
+                            'class' => 'form-control',
+                            'maxlength' => 50
+                            ),
+                    'constraints'   => array(
+                            new NotBlank ( array(
+                            )))
+                    ));
+        }
     	$builder->add('title', 'text', array(
     			'label' => 'form.companytype.field.title',
-    			'data' => $options['title'],
+    			'data' => $company == null ? null:$company->getTitle(),
     			'attr' => array(
     					'class' => 'form-control',
     					'maxlength' => 50
@@ -51,31 +77,35 @@ class FormCompanyType extends AbstractType
     					new NotBlank ( array(
     					)))
     			));
+        /*
          $builder->add('country', 'entity', array(
             'label' => 'form.companytype.field.country',
             'class' => 'MainCommonBundle:Geo\Country',
             'property' => 'name',
             'attr' => array('class' => 'form-control')            
             ));
-
+        */
         $builder->add('department');
 
         $builder->add('town', 'text', array(
                 'label' => 'form.companytype.field.town',
-                'data' => $options['town'],
+                'data' => $company == null ? null:$company->getTown()->getName(),
                 'attr' => array(
                         'class' => 'form-control',
-                        'autocomplete' => 'off'
+                        'autocomplete' => 'off',
+                        'data-provide' => 'typeahead'
                         ),
                 'constraints'   => array(
                         new NotBlank ( array(
                         )))
                 ));
-
+        $builder->add('town_id', 'hidden', array(
+                        'data' => $company == null ? null:$company->getTown()->getId()
+                        ));
 
         $builder->add('address', 'text', array(
         		'label' => 'form.companytype.field.address',
-        		'data' => $options['address'],
+        		'data' => $company == null ? null:$company->getAddress(),
         		'attr' => array(
         				'class' => 'form-control',
     					'maxlength' => 100
@@ -83,12 +113,59 @@ class FormCompanyType extends AbstractType
         		'constraints'   => array(
         				new NotBlank ( array(
         				)))
-        		));        
-        if ($options['status'] === '2') {
+        		));  
+        ////////////////////////:Partie Studio ////////////////////////////////
+        $builder->add('title_studio', 'text', array(
+                'label'=> false,
+                'data' => $company == null ? null:$company->getStudio(),
+                'attr' => array(
+                        'class' => 'form-control',
+                        'maxlength' => 50
+                        )
+                ));
+        $builder->add('address_studio_numero', 'text', array(
+                'label' => false,
+                'data' => $studioAddress[0],
+                'attr' => array(
+                        'class' => 'form-control',
+                        'maxlength' => 100
+                        )
+                ));  
+        $builder->add('address_studio', 'text', array(
+                'label' => false,
+                'data' => isset($studioAddress[1]) ? $studioAddress[1]:null,
+                'attr' => array(
+                        'class' => 'form-control',
+                        'maxlength' => 100
+                        )
+                ));  
+
+        $builder->add('department_studio');
+        $name = null;
+        $id = null;
+        if ($company != null) {
+            if ($company->getStudioTown() != null ) {
+                $name = $company->getStudioTown()->getName();
+                $id = $company->getStudioTown()->getId();
+            }
+        }
+        $builder->add('town_studio', 'text', array(
+                'label' => false,
+                'data' => $name,
+                'attr' => array(
+                        'class' => 'form-control',
+                        'autocomplete' => 'off'
+                        )
+                ));
+        $builder->add('town_studio_id', 'hidden', array(
+            'data' => $id)
+        );
+        $status = $company == null ? null: $company->getStatus()->getId();
+        if ($status === '2') {
                     $builder->add('identification', 'text', array(
         			'label' => 'form.companytype.field.identification',
         			'disabled' => true,
-        			'data' => $options['identification'],
+        			'data' => $company == null ? null:$company->getIdentification(),
         			'attr' => array(
         					'class' => 'form-control'
         					),
@@ -104,7 +181,7 @@ class FormCompanyType extends AbstractType
         }else{
         	$builder->add('identification', 'text', array(
         			'label' => 'form.companytype.field.identification',
-        			'data' => $options['identification'],
+        			'data' => $company == null ? null:$company->getIdentification(),
         			'attr' => array('class' => 'form-control'),
         			'constraints'   => array(
         					new NotBlank ( array(
@@ -133,18 +210,38 @@ class FormCompanyType extends AbstractType
     {
     
     	$form   = $event->getForm ();    
-
+        $company =  $event->getForm()->getConfig()->getOption('company');
         $departments = $this->em->getRepository('MainCommonBundle:Geo\Department')->findAvailabeDepts(0);
         $dptElements    = array();
         foreach ($departments as $department) {
             $dptElements[$department->getCode()] = $department->getName();
-            # code...
         }
     	// Ajout dans le formulaire
         asort($dptElements);
         $form->add ( 'department', 'choice', array (
                 'label' => 'form.companytype.field.department',
                 'choices'       => $dptElements,
+                'data'      => $company == null ? null:$company->getTown()->getDepartment(),
+                'attr' => array('class' => 'form-control'),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )),
+                        new Choice(array(
+                                'choices' => array_keys($dptElements),
+                                'message' => 'Wrong value',
+                        ))
+                )
+        ));
+        $dept = null;
+        if ($company != null) {
+            if ($company->getStudioTown() != null ) {
+                $dept = $company->getStudioTown()->getDepartment();
+            }
+        } 
+        $form->add ( 'department_studio', 'choice', array (
+                'label' => false,
+                'choices' => $dptElements,
+                'data'  => $dept ,
                 'attr' => array('class' => 'form-control'),
                 'constraints'   => array(
                         new NotBlank ( array(
@@ -164,12 +261,7 @@ class FormCompanyType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
     	$resolver->setDefaults(array(
-    			'status' 	     	 => 0,
-    			'title' 		 	 => null,
-    			'address' 		 	 => null,
-    			'town' 		     	 => null,
-    			'country' 		 	 => null,
-    			'identification' 	 => null,
+    			'company' 		 	 => null,
     			'translation_domain' => 'form'
     	));
     }

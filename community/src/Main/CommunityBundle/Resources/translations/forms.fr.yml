@@ -16,12 +16,20 @@ help:
             presentation: Soyez le plus précis possible en au moins 140 caractéres
     company:
         field:
+            firstname: Votre prénom
+            lastname: Votre nom
             title: Le nom de votre entreprise
             country: Le pays de votre entreprise
             department: Le département de votre entreprise
-            town: La ville de votre entreprise
+            town: La ville ou arrondissement de votre entreprise
             address: L'adresse de votre entreprise
             identification: Le numéro SIRET de votre entreprise
+            title_studio: Nom de votre studio
+            numero_studio : Numéro
+            address_studio : Rue,voie,avenue de votre studio
+            department_studio : Le département de votre studio
+            town_studio : La ville ou arrondissement de votre studio
+            studio: Merci de renseigner les champs ci-dessous si vous désirez proposer des devis de shootings en studio. Sinon, merci de les laisser vide.
     iban:
         field:
             name: Le nom de votre banque

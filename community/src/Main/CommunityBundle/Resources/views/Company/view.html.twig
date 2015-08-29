@@ -7,32 +7,33 @@
 {% block breadcrumbH2 %}{% trans from "company" %}companies.company.view.breadcrumbh2{% endtrans %}{% endblock %}
 {% block content %}
 	<div class="row">
-		<div class="col-xs-12">
-			<div class="box">
+		<div class="col-xs-6">
+			{% if 1 == company.status.id %}
+				<div class="box box-warning">
+			{% elseif 3 == company.status.id %}
+				<div class="box box-danger">
+			{% elseif 2 == company.status.id %}
+				<div class="box box-success">
+			{% endif %}			
 				<div class="box-header">
 					<h3 class="box-title">
-						{% trans from "company" %}companies.company.view.header{% endtrans %}</h3>
+						{% trans from "company" %}companies.company.view.header.company{% endtrans %}</h3>
 				</div>
-				<div class="box-body table-responsive no-passind">
-				 <table class="table table-hover">
-				 	<tbody>
-				 		<tr>
-				 			<th>{% trans from "company" %}companies.company.view.th.title{% endtrans %}</th>
-				 			<th>{% trans from "company" %}companies.company.view.th.address{% endtrans %}</th>
-				 			<th>{% trans from "company" %}companies.company.view.th.town{% endtrans %}</th>
-				 			<th>{% trans from "company" %}companies.company.view.th.country{% endtrans %}</th>
-				 			<th>{% trans from "company" %}companies.company.view.th.code{% endtrans %}</th>
-				 			<th>{% trans from "company" %}companies.company.view.th.status{% endtrans %}</th>
-				 			<th></th>
-				 		</tr>
-				 		<tr>
-				 		<td>{{ company.title }}</td>
-				 		<td>{{ company.address }}</td>
-				 		<td>{{ company.town.name }}</td>
-				 		<td>{{ company.town.country.name }}</td>
-				 		<td>{{ company.identification }}</td>
-				 		<td>
-				 		{% if 1 == company.status.id %}
+				<div class="box-body">
+					<h4><strong>
+						{% trans from "company" %}companies.company.view.company.title{% endtrans %}
+					</strong></h4>
+					{{ company.title }}
+					<h4><strong>
+						{% trans from "company" %}companies.company.view.company.address{% endtrans %}
+					</strong></h4>
+					{{ company.address }} {{ company.town.code }} {{ company.town.name }} {{ company.town.country.name }}
+					<h4><strong>
+						{% trans from "company" %}companies.company.view.company.code{% endtrans %}
+					</strong></h4>
+					{{ company.identification }}
+					<br><br>
+					{% if 1 == company.status.id %}
 				 		<span class="label label-warning">
 				 			{% trans from "company" %}companies.company.view.status.to_verify{% endtrans %}
 				 		</span>
@@ -44,17 +45,41 @@
 				 		<span class="label label-success">
 				 			{% trans from "company" %}companies.company.view.status.accepted{% endtrans %}
 				 		</span>
-				 		{% endif %}
-				 		</td>
-				 		<td>
-				 			<a class="btn btn-default btn-sm" href="{{ path('company_edit') }}">
-				 				{% trans from "company" %}companies.company.view.btn.edit{% endtrans %}</a>
-				 		</td>
-				 		</tr>
-				 	</tbody>
-				 </table>
+				 	{% endif %}
 				</div>
 			</div>
+		</div>
+		<div class="col-xs-6">
+			<div class="box box-default">
+				<div class="box-header">
+					<h3 class="box-title">
+						{% trans from "company" %}companies.company.view.header.studio{% endtrans %}</h3>
+				</div>
+				<div class="box-body">
+					{% if company.studiotown == null %}
+						<h4><strong>
+						{% trans from "company" %}companies.company.view.studio.no{% endtrans %}
+						</strong></h4>
+					{% else %}
+						<h4><strong>
+						{% trans from "company" %}companies.company.view.studio.title{% endtrans %}
+						</strong></h4>
+						{{ company.studio }}
+						<h4><strong>
+						{% trans from "company" %}companies.company.view.studio.address{% endtrans %}
+						</strong></h4>
+						{{ company.studioaddress|replace({';;;': ' '}) }} {{ company.town.code }} {{ company.studiotown.name }} {{ company.studiotown.country.name }}
+						{% endif %}
+				 
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<a class="btn btn-default btn-sm" href="{{ path('company_edit') }}">
+				{% trans from "company" %}companies.company.view.btn.edit{% endtrans %}
+			</a>
 		</div>
 	</div>
 {% endblock %}
