@@ -78,8 +78,8 @@ class FormPresentationType extends AbstractType
                         new NotBlank ( array(
                         )))
         	));
-
-       $builder ->add ( 'birthDate', 'date', array(
+    	if ($options['required']) {
+            $builder ->add ( 'birthDate', 'date', array(
                     'label'         => 'form.presentation.field.birthDate',
                     'widget'        => 'single_text',
                     'format'        => 'dd/MM/yyyy' ,
@@ -96,19 +96,45 @@ class FormPresentationType extends AbstractType
                             )) 
                         )                     
                 ));
-    	
-    	$builder->add('presentation', 'textarea', array(
-    			'label'	=> 'form.presentation.field.presentation',
-    			'attr' => array(
-    					'class' => 'form-control',
+
+            $builder->add('presentation', 'textarea', array(
+                'label' => 'form.presentation.field.presentation',
+                'attr' => array(
+                        'class' => 'form-control',
                         'placeholder'  => 'form.presentation.field.placeholder.presentation'
-    			),
+                ),
                 'constraints'   => array(
                         new NotBlank ( array()),
                         new Length(array(
                             'min' => 140
                             )))
-    			));
+                ));
+        }else {
+            $builder ->add ( 'birthDate', 'date', array(
+                    'label'         => 'form.presentation.field.birthDate',
+                    'widget'        => 'single_text',
+                    'format'        => 'dd/MM/yyyy' ,
+                    'attr' => array(
+                        'class' => 'form-control',
+                        'placeholder'  => 'form.presentation.field.placeholder.birthDate'
+                    ),  
+                    'constraints'   => array(
+                        new Date(),
+                        new DateRange(array(
+                            'max' => '- 16 years',
+                            'maxMessage' => 'form.presentation.field.birthDate'
+                            )) 
+                        )                     
+                ));
+            $builder->add('presentation', 'textarea', array(
+                'label' => 'form.presentation.field.presentation',
+                'attr' => array(
+                        'class' => 'form-control',
+                        'placeholder'  => 'form.presentation.field.placeholder.presentation'
+                )
+                ));
+        }
+    	
     }
     
     /**
@@ -119,7 +145,8 @@ class FormPresentationType extends AbstractType
     {
     	$resolver->setDefaults(array(
     			'data_class' => 'Main\CommonBundle\Entity\Users\User',
-    			'translation_domain' => 'form'
+    			'translation_domain' => 'form',
+                'required'           => true
     	));
     }
 

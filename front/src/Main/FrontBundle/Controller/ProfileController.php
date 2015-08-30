@@ -33,7 +33,9 @@ class ProfileController extends Controller
 	public function editPresentationAction(Request $request)
 	{
 		$usr= $this->get('security.context')->getToken()->getUser();
-		$form = $this->createForm('form_presentation', $usr, array());
+		$form = $this->createForm('form_presentation', $usr, array(
+			'required' => false
+			));
 		$form->handleRequest($request);
 		if($request->isMethod('POST'))
 		{
