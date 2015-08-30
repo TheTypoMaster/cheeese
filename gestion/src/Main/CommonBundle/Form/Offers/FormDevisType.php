@@ -48,6 +48,7 @@ class FormDevisType extends AbstractType
 	 */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $studio = $options['studio'];
     	$builder->add('title', 'text', array(
     			'label'	=> 'form.devis.field.title',
     			'attr' => array(
@@ -63,13 +64,20 @@ class FormDevisType extends AbstractType
     			'label'	=> 'form.devis.field.category',
     			'class' => 'MainCommonBundle:Utils\Category',
     			'property' => 'name',
-    			/*
-    			'query_builder' => function(EntityRepository $er) {
+    			'query_builder' => function(EntityRepository $er) use ($studio) {
+                    /*
     				return $er->createQueryBuilder('c')
     				->add('where', 'c.type = :type')
    					->setParameter(':type', 2);
+                    */
+                   if($studio){
+                    return $er->createQueryBuilder('c');
+                   }else{
+                    return $er->createQueryBuilder('c')
+                    ->add('where', 'c.name != :name')
+                    ->setParameter(':name', 'Shooting Studio');
+                   }
     			},
-    			*/
     			'attr' => array(
     					'class' => 'form-control',
     			),
@@ -120,6 +128,7 @@ class FormDevisType extends AbstractType
     {
     	$resolver->setDefaults(array(
     			'data_class' => 'Main\CommonBundle\Entity\Photographers\Devis',
+                'studio'    => false,
     			'translation_domain' => 'form'
     	));
     }

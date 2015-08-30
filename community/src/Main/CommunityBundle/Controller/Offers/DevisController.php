@@ -22,7 +22,11 @@ class DevisController extends Controller
 	{
 		$usr= $this->get('security.context')->getToken()->getUser();
 		//@TODO: Check that the user has the rights
-		$form = $this->createForm('form_devis', new Devis(), array());
+		$serviceCompany = $this->get('service_company');
+		$company = $serviceCompany->getCompany($usr->getId());
+		$form = $this->createForm('form_devis', new Devis(), array(
+			'studio' => $serviceCompany->canDoStudio($company)
+			));
 		$form->handleRequest($request);
 		if($request->isMethod('POST'))
 		{
@@ -61,7 +65,7 @@ class DevisController extends Controller
 		$serviceDevis = $this->get('service_devis');
 		$devis = $serviceDevis->read();
 		return $this->render('MainCommunityBundle:Offers:devis.html.twig', array(
-				'devis' => $devis
+				'devis'  => $devis,
 		));
 		
 	}
@@ -115,7 +119,11 @@ class DevisController extends Controller
 		if(!$devis){
 			return $this->redirect($this->generateUrl('devis'));
 		}else{
-			$form = $this->createForm('form_devis', $devis, array());
+			$serviceCompany = $this->get('service_company');
+			$company = $serviceCompany->getCompany($usr->getId());
+			$form = $this->createForm('form_devis', $devis, array(
+				'studio' => $serviceCompany->canDoStudio($company)
+				));
 			$request = $this->get('request');
 			$form->handleRequest($request);
 			if($request->isMethod('POST'))

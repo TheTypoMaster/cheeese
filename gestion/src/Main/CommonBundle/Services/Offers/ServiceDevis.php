@@ -234,4 +234,14 @@ class ServiceDevis
 		return $this->repository->getDevisPublic($id);
 	}
 	
+	/**
+	 * [isDevisStudio description]
+	 * @param  Devis   $devis [description]
+	 * @return boolean        [description]
+	 */
+	public function isDevisStudio(Devis $devis)
+	{
+		return $devis->getCategory()->getName() == 'Shooting Studio';
+	}
+	
 }
