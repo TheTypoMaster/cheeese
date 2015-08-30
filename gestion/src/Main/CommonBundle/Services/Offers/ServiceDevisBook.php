@@ -115,6 +115,7 @@ class ServiceDevisBook
 			$book->setUrl($url);
 			$book->setFileType($type);
 			$book->setFileSize($size);
+			$book->setCgu(1);
 			$this->em->persist($book);
 			$this->em->flush();
 			$this->session->successFlashMessage('flash.message.devis.book.create');

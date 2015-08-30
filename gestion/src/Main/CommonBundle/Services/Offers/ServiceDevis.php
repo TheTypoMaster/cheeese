@@ -86,6 +86,7 @@ class ServiceDevis
 		$devis->setCategory($category);
 		$devis->setCurrency($currency);
 		$devis->setPresentation($data['presentation']);
+		$devis->setCgu($data['cgu']);
 		try{
 			$this->em->persist($devis);
 			$this->em->flush();

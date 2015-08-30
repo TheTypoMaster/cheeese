@@ -13,6 +13,7 @@ help:
     devis:
         field:
             title: Soyez le plus précis possible
+            category: Sélectionnez la catégorie correspondant à votre devis
             presentation: Soyez le plus précis possible en au moins 140 caractéres
     company:
         field:

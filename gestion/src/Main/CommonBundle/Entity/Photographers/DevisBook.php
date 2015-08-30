@@ -55,6 +55,13 @@ class DevisBook
     private $profile;
 
     /**
+	 *
+	 * @ORM\Column(columnDefinition="SMALLINT DEFAULT 1 NOT NULL")
+	 *
+	 */
+	private $cgu;
+
+    /**
 	 * @var datetime $createdAt
 	 *
 	 * @ORM\Column(name="createdAt", type="datetime")
@@ -149,6 +156,26 @@ class DevisBook
 	public function setProfile($profile)
 	{
 		$this->profile = $profile;
+	}
+
+	/**
+	 *
+	 * @param tinyint $active
+	 */
+	public function setCgu($cgu)
+	{
+		$this->cgu = $cgu;
+	}
+
+	/**
+	 * Return active
+	 */
+	public function getCgu()
+	{
+		if ($this->cgu == 1) {
+			return true;
+		}
+		return $this->cgu;
 	}
 
 	/**

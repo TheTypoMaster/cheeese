@@ -11,6 +11,9 @@ community:
                 enable: Activer ce devis
                 disable: Désactiver ce devis
                 back: Retour
+            cgu:
+                text:
+                link:
         new:
             help:
                 h4: Nouveau devis
@@ -24,6 +27,9 @@ community:
             btn:
                 submit: Soumettre
                 back: Retour à la liste
+            cgu:
+                text: Texte des cgu
+                link: lien vers les cgu
         read:
             headband:
                 warning:

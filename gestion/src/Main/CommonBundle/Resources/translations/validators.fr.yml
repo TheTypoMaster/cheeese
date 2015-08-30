@@ -6,6 +6,7 @@ form:
     company:
         field:
             identification: Merci de rentrer un siret valide,celui ci doit être composé de 14 chiffres
+            numerostudio: Seuls les chiffres sont acceptés
     user:
         field:
             plainPassword: Le mot de passe doit faire au moins 6 caractéres, avec une majuscule, une minuscule et un chiffre
@@ -24,3 +25,9 @@ form:
     devisprice:
         field:
             price: Le prix doit être supérieur ou égal à 20 €.
+    devisbook:
+        field:
+            cgu: Vous devez cocher la case pour pouvoir continuer.
+    devis:
+        field:
+            cgu: Vous devez cocher la case pour pouvoir continuer.

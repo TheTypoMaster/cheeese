@@ -48,7 +48,6 @@ class FormDevisType extends AbstractType
 	 */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	
     	$builder->add('title', 'text', array(
     			'label'	=> 'form.devis.field.title',
     			'attr' => array(
@@ -104,6 +103,13 @@ class FormDevisType extends AbstractType
                             'min' => 140
                             )))
     			));
+        $builder->add('cgu', 'checkbox', array(
+                    'label'     => false,
+                    'constraints'   => array(
+                        new NotBlank ( array(
+                            'message' => 'form.devis.field.cgu'
+                            ))
+                )));
     }
     
     /**

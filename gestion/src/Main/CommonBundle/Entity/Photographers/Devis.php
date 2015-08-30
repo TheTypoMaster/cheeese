@@ -82,6 +82,13 @@ class Devis
 	 *
 	 */
 	private $active;
+
+	/**
+	 *
+	 * @ORM\Column(columnDefinition="SMALLINT DEFAULT 1 NOT NULL")
+	 *
+	 */
+	private $cgu;
 	
 	/**
 	 * @var datetime $createdAt
@@ -262,6 +269,26 @@ class Devis
 	 *
 	 * @param tinyint $active
 	 */
+	public function setCgu($cgu)
+	{
+		$this->cgu = $cgu;
+	}
+
+	/**
+	 * Return active
+	 */
+	public function getCgu()
+	{
+		if ($this->cgu == 1) {
+			return true;
+		}
+		return $this->cgu;
+	}
+	
+	/**
+	 *
+	 * @param tinyint $active
+	 */
 	public function setActive($active)
 	{
 		$this->active = $active;
@@ -309,10 +336,10 @@ class Devis
 	
 	public function __construct()
 	{
-		$this->note = 0;
-        $this->prestations = 0;
-        $this->directpay = 0;
-		$this->active 	 = 1;
+		$this->note 		= 0;
+        $this->prestations  = 0;
+        $this->directpay 	= 0;
+		$this->active 	 	= 1;
 		$this->createdAt = new \DateTime('now');
 		$this->updatedAt = new \DateTime('now');
 		//Ajout du status

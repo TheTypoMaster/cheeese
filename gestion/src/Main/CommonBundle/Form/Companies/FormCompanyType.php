@@ -129,7 +129,12 @@ class FormCompanyType extends AbstractType
                 'attr' => array(
                         'class' => 'form-control',
                         'maxlength' => 100
-                        )
+                        ),
+                'constraints'   => array(
+                        new Regex ( array(
+                            'pattern' => '/^[0-9]*$/',
+                            'message' => 'form.company.field.numerostudio'
+                        )))
                 ));  
         $builder->add('address_studio', 'text', array(
                 'label' => false,

@@ -67,7 +67,13 @@ class FormDevisBookType extends AbstractType
             )
                
         ));
-       $builder->add('cgu', 'hidden', array());
+       $builder->add('cgu', 'checkbox', array(
+                    'label'     => false,
+                    'constraints'   => array(
+                        new NotBlank ( array(
+                            'message' => 'form.devisbook.field.cgu'
+                            ))
+                )));
     }
     
     /**
