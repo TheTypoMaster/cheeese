@@ -5,6 +5,7 @@
 			<link rel="stylesheet" href="{{ asset('bundles/mainfront/css/bootstrap.min.css') }}" />
       <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/datepicker.css') }}" />
       <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/site.min.css') }}" />
+      <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/style.css') }}" />
       <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/star-rating.min.css') }}" />
 	{% endblock %}
   <style type="text/css">
@@ -32,11 +33,13 @@
   {% endjavascripts %}
 <![endif]-->
 
-{% javascripts '@MainFrontBundle/Resources/public/js/library/jquery-1.11.1.js'
+{% javascripts '@MainFrontBundle/Resources/public/js/library/jquery-1.11.3.min.js'
                '@MainFrontBundle/Resources/public/js/library/jquery-ui-1.10.4.custom.js'
                '@MainFrontBundle/Resources/public/js/library/bootstrap.min.js'
                '@MainFrontBundle/Resources/public/js/library/bootstrap-datepicker.js'
-
+               '@MainFrontBundle/Resources/public/js/library/ion.rangeSlider.js'
+               '@MainFrontBundle/Resources/public/js/typeahead/typeahead.bundle.min.js'
+               '@MainFrontBundle/Resources/public/js/typeahead/typeahead.jquery.min.js'
                 %}
     <script type="text/javascript">
       var base = location.protocol + "//" + location.host + '{{ app.request.baseUrl }}';

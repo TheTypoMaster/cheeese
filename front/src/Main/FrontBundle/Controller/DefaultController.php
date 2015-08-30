@@ -66,7 +66,8 @@ class DefaultController extends Controller
             $params = $request->request->get('form_front_search');                       
             if ($form->isValid())
             {
-                $serviceSession->setSearchArgs($params['category'], $params['town_code'], $params['town_text'], $params['day']);
+                $price = split(';', $params['price']);
+                $serviceSession->setSearchArgs($params['category'], $params['town_code'], $params['town_text'], $params['day'], $price[0], $price[1]);
                 $search = true;
                 $results = $serviceSearch->searchFirstStep($serviceSession->getSearchArgs(), $request->getClientIp());
              }      

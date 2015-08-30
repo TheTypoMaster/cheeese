@@ -1,5 +1,10 @@
 {% extends "::layout.html.twig" %}
 {% block title %}{% trans %}search.index.title{% endtrans %}{% endblock %}
+{% block more_script %}
+	<link rel="stylesheet" href="{{ asset('bundles/mainfront/css/ion.rangeSlider.css') }}"/>
+     <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/ion.rangeSlider.skinFlat.css') }}"/>
+     <link rel="stylesheet" href="{{ asset('bundles/mainfront/css/normalize.css') }}"/>
+    {% endblock more_script %} 
 {% block search %}
 <section class="bg-primary-search">
 	 <div class="container">
@@ -30,6 +35,9 @@
 						   		</span>
 							</div>
 						   {{ form_widget(form.town_code) }}
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-10">
+							{{ form_widget(form.price) }}
 						</div>
 				  	 <button type="submit" class="btn btn-normal">
 				  	 	{% trans %}search.index.btn.submit{% endtrans %}
@@ -71,10 +79,21 @@
 
 {% block bottom_script %}
 {% javascripts '@MainFrontBundle/Resources/public/js/search.js'
-			   '@MainFrontBundle/Resources/public/js/diacritics.js' %}
+			   '@MainFrontBundle/Resources/public/js/diacritics.js' 
+			    %}
 <script type="text/javascript">
     var base = location.protocol + "//" + location.host + '{{ app.request.baseUrl }}';
-    </script>    
-    <script type="text/javascript" src="{{ asset_url }}"></script>
+    $("#form_front_search_price").ionRangeSlider({
+            hide_min_max: true,
+            keyboard: true,
+            min: 20,
+            max: 4000,
+            type: 'double',
+            step: 10,
+            prefix: "€",
+            grid: true
+        });
+</script>   
+<script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 {% endblock bottom_script %}

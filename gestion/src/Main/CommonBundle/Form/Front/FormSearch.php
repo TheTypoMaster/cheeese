@@ -91,7 +91,12 @@ class FormSearch extends AbstractType
                         'class' => 'form-control',
                     )                          
                 ));
-                $builder->addEventListener ( FormEvents::PRE_SET_DATA, array (
+        $builder->add('price', 'text', array(
+                'label'         => false,
+                'required'      => false,
+                ));
+
+        $builder->addEventListener ( FormEvents::PRE_SET_DATA, array (
                 $this,
                 'onPreSetData'
         ));

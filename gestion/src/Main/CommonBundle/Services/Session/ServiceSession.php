@@ -25,7 +25,7 @@ class ServiceSession
 	 * @param unknown $town_name
 	 * @param unknown $day
 	 */
-	public function setSearchArgs($category, $town_code = null, $town_name = null, $day = null, $min = null, $max =null)
+	public function setSearchArgs($category, $town_code, $town_name, $day, $min, $max)
 	{
 		$this->session->set('front_search', array(
 				'category'  	=> $category,
