@@ -72,6 +72,8 @@ $(function() {
         ykeys: ['a'],
         hideHover: 'auto',
         yLabelFormat: function(y){return y != Math.round(y)?'':y;},
+        linewidth: 0,
+        labels: ['Total']
     });
 
 });
