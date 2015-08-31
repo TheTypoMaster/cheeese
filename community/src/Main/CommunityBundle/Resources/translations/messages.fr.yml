@@ -21,12 +21,13 @@ security:
             username: Nom d'utilisateur
             plainPassword:
                 first: Mot de passe
-                second: Répétez mot de passe
+                second: Confirmez votre mot de passe
+                help: Au moins 6 caractéres, avec une majuscule, une minuscule et un chiffre
             constraints:
                 username: Au moins 5 caractéres avec seulement des chiffres et des lettres
         btn:
             submit: M'inscrire
-        link: Connexion
+        link: Déja inscrit sur Cheeese ? Connectez-vous
         checkemail:
             title: Inscrivez vous sur Cheeese
             header: Nouveau membre

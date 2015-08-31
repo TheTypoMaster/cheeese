@@ -37,12 +37,17 @@
 	            {% for errorItem in form.plainPassword.first.vars.errors %}
 			      <label class="control-label has-error" for="{{ form.plainPassword.vars.id }}">{{ errorItem.message }}</label>
 			    {% endfor %}
+			    <p class="help-block">
+                    {% trans %}security.register.form.plainPassword.help{% endtrans %}
+                </p>
 	            </div>
 	            <div class="form-group">
 	             {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'security.register.form.plainPassword.second'|trans, 'required': 'required', 'class': 'form-control'}}) }}
 	            </div>
 	            <p>
 	            	<p>
+
+	            		<input type="checkbox" id="cgu" name="cgu" required="required"/>
 	            		{{ 'security.register.cgu.p' |trans}}
 	            	</p>
 	            	<a href="#">{{ 'security.register.cgu.link' |trans}}</a>
