@@ -46,6 +46,18 @@ prestation:
         p_lead %reference%: Nous sommes ravis de vous annoncer que la prestation %reference% a été payée par le client
         p1: Pour rappel, vous êtes tenus de respecter ce qui est décrit dans la prestation réservée, et ce qui a été convenu à travers votre conversation sur notre messagerie.
         p2: Nous vous transfèrerons le montant de la réservation effectuée sur votre compte, déduction faite des frais de services, une fois que le client aura confirmé avoir bien reçu le livrable convenu. S’il ne confirme pas, et si nous n’avons pas reçu de plaintes de la part du client, nous effectuerons le virement 30 jours après la date de la prestation.
+        reminder:
+            title: Voici le détail de la réservation
+            client: Client
+            address: Adresse de l'événement
+            telephone: Téléphone
+            date: Date
+            time: Heure de début
+            devis: Devis
+            category: Catégorie du devis
+            duration: Durée de la prestation
+            price: Prix
+            town: Ville
         panel: Pour plus d'informations sur cette prestation
         text: cliquez ici
     canceled:
@@ -74,6 +86,26 @@ prestation:
         p1: Heureusement, il y a d’autres photographes sur Cheeese ! Nous vous invitons à continuer vos recherches sur notre site et nous espérons que vous trouverez rapidement un photographe pour votre évènement.
         panel: Renouvelez votre recherche en 
         text: cliquant ici
+    paymentconfirmed:
+        subject: Félicitations ! Votre réservation est confirmée
+        p_lead %reference%: Nous vous confirmons la prestation %reference% que vous venez de payer.
+        p1: Pour rappel, vous êtes tenus de respecter ce qui est décrit dans la prestation que vous avez réservé, et ce qui a été convenu à travers votre conversation sur notre messagerie.
+        p2: Le montant de la prestation, incluant les frais de services, a été débité de votre compte. Rassurez-vous, nous ne verserons l’argent au photographe qu’après avoir reçu votre confirmation que vous avez bien reçu le livrable convenu. Nous vous recontacterons après la date de votre prestation pour vous expliquer comment faire.
+        reminder:
+            title: Voici le détail de la réservation
+            photographer: Photographe
+            address: Adresse de l'événement
+            telephone: Téléphone
+            date: Date
+            time: Heure de début
+            devis: Devis
+            category: Catégorie du devis
+            duration: Durée de la prestation
+            price: Prix
+            town: Ville
+        panel: Pour plus d'informations sur cette prestation
+        text: cliquez ici
+
     message:
         subject: Vous avez reçu un nouveau message
         p_lead %reference%: Vous avez reçu un nouveau message concernant la prestation %reference%
@@ -88,3 +120,4 @@ generic:
     mail:
         photographer: photographers@cheee.se
         client: clients@cheee.se
+        bye: Merci, à très vite ! L'équipe XXX

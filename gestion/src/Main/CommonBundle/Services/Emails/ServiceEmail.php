@@ -69,6 +69,7 @@ class ServiceEmail
         $photographer = $prestation->getDevis()->getCompany()->getPhotographer();
         $client = $prestation->getClient();
         $template = null;
+        $sendtwomails = false;
         switch ($status)
         {
             case 1:
@@ -106,6 +107,12 @@ class ServiceEmail
                 $subject = $this->translator->trans(
                     'prestation.accepted.subject',array(), 'email');;
                 $send = $this->canReceiveEmails($photographer, 1);
+                $sendtwomails = true;
+                $to1 = $client->getEmail();
+                $template1 = 'MainCommonBundle:Emails\Prestations:accepted_confirmation.html.twig';
+                $subject1 = $this->translator->trans(
+                    'prestation.paymentconfirmed.subject',array(), 'email');;
+                $send1 = $this->canReceiveEmails($client, 1);
                 break;
             /*
             case 6:
@@ -126,11 +133,24 @@ class ServiceEmail
         if($template != null && $send) {
         $from = self::EMAIL;
         if ($to == $photographer->getEmail()) {            
-            $body = $this->templating->render($template, array('prestation' => $prestation, 'base_url' => $this->community));
+            $body = $this->templating->render($template, array(
+                'prestation' => $prestation, 
+                'base_url' => $this->community
+            ));
         }elseif ($to == $client->getEmail()) {
-           $body = $this->templating->render($template, array('prestation' => $prestation, 'base_url' => $this->front));
+           $body = $this->templating->render($template, array(
+            'prestation' => $prestation, 
+            'base_url' => $this->front
+            ));
         }        
-        $this->sendMessage($from, $to, $subject, $body);    
+        $this->sendMessage($from, $to, $subject, $body);   
+        if ($sendtwomails) {
+            $body1 = $this->templating->render($template1, array(
+            'prestation' => $prestation, 
+            'base_url' => $this->front
+            ));
+            $this->sendMessage($from, $to1, $subject1, $body1); 
+        } 
         }
         
     }

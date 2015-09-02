@@ -1,0 +1,54 @@
+{% embed "MainCommonBundle:Emails:email.html.twig" %}
+		{% block h1 %}{{ prestation.client.username }},{% endblock %}
+		{% block p_lead %}
+			{% trans with{'%reference%' : prestation.reference} from "email" %}prestation.paymentconfirmed.p_lead %reference%
+			{% endtrans %}
+			<h4>{% trans from "email" %}prestation.paymentconfirmed.reminder.title{% endtrans %}</h4>
+			<ul>
+			<li>{% trans from "email" %}prestation.paymentconfirmed.reminder.photographer
+			{% endtrans %} : {{ prestation.devis.company.photographer.firstname }} {{ prestation.devis.company.photographer.lastname }}</li>
+			<li>{% trans from "email" %}prestation.paymentconfirmed.reminder.address
+			{% endtrans %} : {{ prestation.address }} {{ prestation.town.name }} {{ prestation.town.code }} {{ prestation.town.country.name }} </li>
+			<li>{% trans from "email" %}prestation.paymentconfirmed.reminder.telephone
+			{% endtrans %} : {{ prestation.devis.company.photographer.telephone }}</li>
+			<li>{% trans from "email" %}prestation.paymentconfirmed.reminder.devis
+			{% endtrans %} : {{ prestation.devis.title }}</li>
+			<li>{% trans from "email" %}prestation.paymentconfirmed.reminder.category
+			{% endtrans %} : {{ prestation.devis.category.name }} </li>
+			<li>{% trans from "email" %}prestation.paymentconfirmed.reminder.date
+			{% endtrans %} : {{ prestation.starttime | date('d-m-Y')}}</li>
+			<li>{% trans from "email" %}prestation.paymentconfirmed.reminder.time
+			{% endtrans %} : {{ prestation.starttime | date('H:i')}}</li>
+
+			<li>{% trans from "email" %}prestation.paymentconfirmed.reminder.duration
+			{% endtrans %} : {{ prestation.duration.libelle }}</li>
+			<li>{% trans from "email" %}prestation.paymentconfirmed.reminder.price
+			{% endtrans %} : {{ prestation.price|number_format(2) }} €</li>
+			</ul>
+		{% endblock %}
+		{% block p1 %}
+			{% trans from "email" %}prestation.paymentconfirmed.p1
+			{% endtrans %}
+		{% endblock %}
+		{% block p2 %}
+			{% trans from "email" %}prestation.paymentconfirmed.p2
+			{% endtrans %}
+			
+		{% endblock %}
+		{% block panel %}
+			{% trans from "email" %}prestation.paymentconfirmed.panel
+			{% endtrans %}
+		{% endblock %}
+		{% block link %}{{ base_url}}/service/{{ prestation.id }}{% endblock %}
+		{% block text %}
+			{% trans from "email" %}prestation.paymentconfirmed.text
+			{% endtrans %}
+		{% endblock %}
+
+		{% block mail %}
+			{% trans from "email" %}generic.mail.client
+			{% endtrans %}
+		{% endblock %}
+
+
+	{% endembed %}

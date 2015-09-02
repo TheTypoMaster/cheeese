@@ -3,6 +3,28 @@
 		{% block p_lead %}
 			{% trans with{'%reference%' : prestation.reference} from "email" %}prestation.accepted.p_lead %reference%
 			{% endtrans %}
+			<h4>{% trans from "email" %}prestation.accepted.reminder.title{% endtrans %}</h4>
+			<ul>
+			<li>{% trans from "email" %}prestation.accepted.reminder.client
+			{% endtrans %} : {{ prestation.client.firstname }} {{ prestation.client.lastname }}</li>
+			<li>{% trans from "email" %}prestation.accepted.reminder.address
+			{% endtrans %} : {{ prestation.address }} {{ prestation.town.name }} {{ prestation.town.code }} {{ prestation.town.country.name }} </li>
+			<li>{% trans from "email" %}prestation.accepted.reminder.telephone
+			{% endtrans %} : {{ prestation.client.telephone }}</li>
+			<li>{% trans from "email" %}prestation.accepted.reminder.devis
+			{% endtrans %} : {{ prestation.devis.title }}</li>
+			<li>{% trans from "email" %}prestation.accepted.reminder.category
+			{% endtrans %} : {{ prestation.devis.category.name }} </li>
+			<li>{% trans from "email" %}prestation.accepted.reminder.date
+			{% endtrans %} : {{ prestation.starttime | date('d-m-Y')}}</li>
+			<li>{% trans from "email" %}prestation.accepted.reminder.time
+			{% endtrans %} : {{ prestation.starttime | date('H:i')}}</li>
+
+			<li>{% trans from "email" %}prestation.accepted.reminder.duration
+			{% endtrans %} : {{ prestation.duration.libelle }}</li>
+			<li>{% trans from "email" %}prestation.accepted.reminder.price
+			{% endtrans %} : {{ prestation.price|number_format(2) }} €</li>
+			</ul>
 		{% endblock %}
 		{% block p1 %}
 			{% trans from "email" %}prestation.accepted.p1
@@ -11,6 +33,7 @@
 		{% block p2 %}
 			{% trans from "email" %}prestation.accepted.p2
 			{% endtrans %}
+			
 		{% endblock %}
 		{% block panel %}
 			{% trans from "email" %}prestation.accepted.panel
