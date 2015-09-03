@@ -67,6 +67,9 @@ gestion:
                 identification: Identification
                 creationdate: Date de création
                 update: Date maj
+                studio:
+                    th: Studio
+                    no: Pas de studio
                 status: Statut
                 href:
                     ok: Valide
@@ -74,6 +77,8 @@ gestion:
                 btn:
                     back: Retour
                     disable: Désactiver utilisateur
+                    suspend: Suspendre l'entreprise
+                    resume: Activer l'entreprise
             show:
                 h1: Photographe
                 h2: Détails
@@ -155,6 +160,23 @@ gestion:
             btn:
                 submit: Soumettre
                 back: Retour
+    companies:
+        suspend:
+            confirm:
+                header: Suspension d'entreprise
+                attention: Attention !
+                message: Voulez vous suspendre cette entreprise?
+                btn:
+                    back: Retour
+                    confirm: Confirmer
+        resume:
+            confirm:
+                header: Activation d'entreprise
+                attention: Attention !
+                message: Voulez vous activer cette entreprise?
+                btn:
+                    back: Retour
+                    confirm: Confirmer
 flash:
     message:
             error: Un probléme est  survenue

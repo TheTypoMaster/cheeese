@@ -1,0 +1,31 @@
+	{% embed "MainCommonBundle:Emails:email.html.twig" %}
+		{% block h1 %}{{ photographer.username }},{% endblock %}
+		{% block p_lead %}
+			{% trans from "email" %}community.verification.suspended.p_lead
+			{% endtrans %}
+		{% endblock %}
+		{% block p1 %}
+			{% trans from "email" %}community.verification.suspended.p1
+			{% endtrans %}
+		{% endblock %}
+		{% block p2 %}
+			{% trans from "email" %}community.verification.suspended.p2
+			{% endtrans %}
+		{% endblock %}
+		{% block panel %}
+			{% trans from "email" %}community.verification.suspended.panel
+			{% endtrans %}
+		{% endblock %}
+		{% block link %} {{ base_url}}/company{% endblock %}
+		{% block text %}
+			{% trans from "email" %}community.verification.suspended.text
+			{% endtrans %}
+		{% endblock %}
+
+		{% block mail %}
+			{% trans from "email" %}generic.mail.photographer
+			{% endtrans %}
+		{% endblock %}
+
+
+	{% endembed %}

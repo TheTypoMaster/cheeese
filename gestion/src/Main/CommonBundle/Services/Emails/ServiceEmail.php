@@ -47,10 +47,14 @@ class ServiceEmail
     public function companyVerificationEmail(User $photographer, $status)
     {
     	if($status == 2) {
-    		$template = 'MainCommonBundle:Emails:verificationOk.html.twig';
+    		$template = 'MainCommonBundle:Emails\Company:verificationOk.html.twig';
         	$subject = $this->translator->trans('community.verification.ok.subject %name%', array('%name%' => $photographer->getUsername()), 'email');
-    	}else {
-    		$template = 'MainCommonBundle:Emails:verificationKO.html.twig';
+    	}elseif($status == 4) {
+            $template = 'MainCommonBundle:Emails\Company:suspended.html.twig';
+            $subject = $this->translator->trans('community.verification.suspended.subject', array(), 'email');
+        }
+        else {
+    		$template = 'MainCommonBundle:Emails\Company:verificationKO.html.twig';
     		$subject = $this->translator->trans('community.verification.ko.subject', array(), 'email');
     	}
         $from = self::EMAIL;

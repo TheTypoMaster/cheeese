@@ -45,6 +45,7 @@ companies:
                 to_verify: Votre numéro de siret est en cours de vérification
                 refused: Vous avez entré un mauvais siret a été refusé.Merci de rentrer un siret valide pour pouvoir proposer des devis à des clients
                 accepted: Votre numéro de siret a été vérifié. Vous pouvez proposer des devis à des clients
+                suspended: Votre entreprise est suspendue, veuillez prendre contact avec nous pour régler ce probléme.
     iban:
         view:
             h1: Détails bancaires

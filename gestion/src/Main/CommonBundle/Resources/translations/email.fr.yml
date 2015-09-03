@@ -40,6 +40,13 @@ community:
             p2: Vous pouvez dès à présent vous reconnecter pour accéder à votre nouvel espace et compléter votre profil de manière à pouvoir proposer vos prestations. 
             panel: Grâce à Cheeese, vous allez pouvoir être mis en relation avec de nouveaux clients et accroître votre visibilité.
             text: Cliquez ici pour accéder à votre nouvel espace
+        suspended:
+            subject: Votre entreprise est suspendue
+            p_lead: Nous sommes dans le regret de vous annoncer que votre entreprise a été suspendue.
+            p1: p1
+            p2: p2
+            panel: panel
+            text: text
 prestation:
     accepted:
         subject: Félicitations ! Vous avez une nouvelle réservation

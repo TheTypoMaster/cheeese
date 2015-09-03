@@ -182,4 +182,43 @@ class UsersController extends Controller
 							'id' => $id
 						)));
 	}
+
+	/**
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/suspend-company/{id}", name="suspend_company")
+	 */
+	public function suspendCompanyAction($id)
+	{
+		$serviceCompany = $this->get('service_company');
+		$company = $serviceCompany->getCompany($id);
+		if (!$company) {
+			return $this->redirect($this->generateUrl('users', array(
+							'type' => 'photographers'
+						)));
+		}
+		$serviceCompany->suspendCompany($company);
+		return $this->redirect($this->generateUrl('user_show', array(
+							'id' => $id
+						)));
+	}
+
+	/**     
+     * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/resume-company/{id}", name="resume_company")
+	 */
+	public function resumeCompanyAction($id)
+	{
+		$serviceCompany = $this->get('service_company');
+		$company = $serviceCompany->getCompany($id);
+		if (!$company) {
+			return $this->redirect($this->generateUrl('users', array(
+							'type' => 'photographers'
+						)));
+		}
+		$serviceCompany->resumeCompany($company);
+		return $this->redirect($this->generateUrl('user_show', array(
+							'id' => $id
+						)));
+	}
 }

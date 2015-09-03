@@ -13,6 +13,7 @@ class ServiceCompany
 	const TO_VERIFY 			= 1;
 	const VERIFICATION_OK 		= 2;
 	const VERIFICATION_KO		= 3;
+	const SUPSENDED				= 4;
 
 	/**
 	 *
@@ -136,7 +137,6 @@ class ServiceCompany
 			return true;
 		}catch(\Exception $e){
 			$this->logger->error($e->getMessage());
-			var_dump($e->getMessage());die;
 			return false;
 		}
 	}
@@ -193,7 +193,7 @@ class ServiceCompany
 	*/
 	public function isVerifiedCompany(Company $company)
 	{
-		return $company->getStatus()->getId() == 2;
+		return $company->getStatus()->getId() == self::VERIFICATION_OK || $company->getStatus()->getId() == self::SUPSENDED;
 	}
 
 	/**
@@ -213,5 +213,44 @@ class ServiceCompany
 	public function canDoStudio(Company $company)
 	{
 		return $company->getStudioTown() != null;
+	}
+
+	/**
+	 * [resumeCompany description]
+	 * @param  Company $company [description]
+	 * @return [type]           [description]
+	 */
+	public function resumeCompany(Company $company)
+	{
+		$company->setStatus($this->em->getRepository('MainCommonBundle:Status\PhotographerStatus')->findOneById(self::VERIFICATION_OK));
+		$company->setUpdatedAt(new \DateTime('now'));
+		try{
+			$this->em->flush();
+			$this->mailer->companyVerificationEmail($company->getPhotographer(),$company->getStatus()->getId());
+			return true;
+		}catch(\Exception $e){
+			$this->logger->error($e->getMessage());
+			
+			return false;
+		}
+	}
+
+	/**
+	 * [suspendCompany description]
+	 * @param  Company $company [description]
+	 * @return [type]           [description]
+	 */
+	public function suspendCompany(Company $company)
+	{
+		$company->setStatus($this->em->getRepository('MainCommonBundle:Status\PhotographerStatus')->findOneById(self::SUPSENDED));
+		$company->setUpdatedAt(new \DateTime('now'));
+		try{
+			$this->em->flush();
+			$this->mailer->companyVerificationEmail($company->getPhotographer(),$company->getStatus()->getId());
+			return true;
+		}catch(\Exception $e){
+			$this->logger->error($e->getMessage());
+			return false;
+		}
 	}
 }

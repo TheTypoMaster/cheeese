@@ -7,108 +7,108 @@
 {% endblock %}
 {% block breadcrumbH2 %}{% trans %}gestion.users.photographers.show.breadh2{% endtrans %}{% endblock %}
 {% block content %}
-                <!-- Main content -->
-                      <div class="row">
-                        <div class="col-xs-12">  
-                            <div class="box">
-                                <div class="user-panel">
-                                    <div class="pull-left image">
-                                        <img src="{{ image64(user.photo, user.photoType, 'pp') }}"  class="img-circle" />
-                                    </div>                                    
-                                </div>
-                            <div class="box-header">
-                                    <h3 class="box-title">{% trans %}gestion.users.show.h2.informations{% endtrans %}</h3>
-                                </div>
-                            <div class="box-body">
-                                    <blockquote>
-                                        <p>{{ user.presentation }}</p>
-                                    </blockquote>
-                                    <dl class="dl-horizontal">
-                                        <dt> {% trans %}gestion.users.show.username{% endtrans %} 
-                                        </dt>
-                                        <dd> {{ user.username }}</dd>
-                                        <dt> {% trans %}gestion.users.show.firstName{% endtrans %} 
-                                        </dt>
-                                        <dd> {{ user.firstname}} </dd>
-                                        <dt> {% trans %}gestion.users.show.lastName{% endtrans %} 
-                                        </dt>
-                                        <dd> {{ user.lastname}} </dd>
-                                        <br>
-                                        <dt> {% trans %}gestion.users.show.email{% endtrans %} </dt>
-                                        <dd> {{ user.email}} </dd>
-                                        <dt> {% trans %}gestion.users.show.telephone{% endtrans %} 
-                                        </dt>
-                                        <dd> {{ user.telephone}} </dd>
-                                        <br>
-                                        <dt> {% trans %}gestion.users.show.createdAt{% endtrans %} 
-                                        </dt>
-                                        <dd> {{ user.createdat | date('d-m-Y H:i' )}} </dd>
-                                        <dt> {% trans %}gestion.users.show.lastLogin{% endtrans %} 
-                                        </dt>
-                                        <dd> {{ user.lastlogin | date('d-m-Y H:i') }} </dd>
-                                        <br>
-                                        <dt> {% trans %}gestion.users.show.note{% endtrans %} </dt>
-                                        <dd> {{ user.note|number_format(2) }} ( {{ user.prestations }} {% trans %}gestion.users.show.commentaires{% endtrans %})
-                                        </dd>
-                                        <dt>{% trans %}gestion.users.show.enable{% endtrans %}</dt>
-                                        <dd>
-                                            {% if user.enabled %}
-                                                <span class="label label-success">{% trans %}gestion.users.show.status.enabled{% endtrans %}</span>
-                                            {% else %}
-                                                <span class="label label-danger">{% trans %}gestion.users.show.status.disabled{% endtrans %}</span>
-                                            {% endif %}
-                                        </dd>
-                                        
-                                    </dl>
-                                </div><!-- /.box-body --> 
-                                <div class="box-footer clearfix">
-                                    <a class="btn btn-default pull-left" href="{{ path('users', {'type' : 'photographers' } ) }}">
-                                        {% trans %}gestion.users.photographers.list.btn.back{% endtrans %}
-                                    </a>
-                                    {% if is_granted('ROLE_SUPER_ADMIN') and 1 == user.enabled %}
-                                        <a class="btn btn-danger" data-toggle="modal" data-target="#disableModal" data-id="{{ user.id }}">
-                                        {% trans %}gestion.users.photographers.list.btn.disable{% endtrans %}
-                                        </a>
-                                    {% endif %}
-                                </div>  
-                            </div>
-                            </div>
-                        </div>
-                      <div class="row">
-                        <div class="col-xs-12">  
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">{% trans %}gestion.users.show.h2.company{% endtrans %}</h3>
-                                </div><!-- /.box-header -->
-                                {% if null != company %}
-                                    {% include "MainGestionBundle:Users/Photographers\\show:company.html.twig" %}    
-                                {% endif %}
-                            </div>
-                            </div>
-                        </div>
-                       {% if verified %} 
-                      <div class="row">
-                        <div class="col-xs-12">  
-                            <div class="box">
-                            <div class="box-header">
-                                    <h3 class="box-title">{% trans %}gestion.users.show.h2.devis{% endtrans %}</h3>
-                                </div><!-- /.box-header -->
-                            {% include "MainGestionBundle:Users/Photographers\\show:devis.html.twig" %}    
-                            </div>
-                            </div>
-                        </div>
-                      <div class="row">
-                        <div class="col-xs-12">  
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">{% trans %}gestion.users.show.h2.services{% endtrans %}</h3>
-                                </div><!-- /.box-header -->
-                             {% include "MainGestionBundle:Users/Photographers\\show:prestations.html.twig" %}   
-                            </div>
-                            </div>
-                        </div>
-                       {% endif %}
-                       {% include "MainGestionBundle:Users/Photographers\\show:confirm_boxes.html.twig" %}
+<!-- Main content -->
+  <div class="row">
+    <div class="col-xs-12">  
+        <div class="box">
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="{{ image64(user.photo, user.photoType, 'pp') }}"  class="img-circle" />
+                </div>                                    
+            </div>
+        <div class="box-header">
+                <h3 class="box-title">{% trans %}gestion.users.show.h2.informations{% endtrans %}</h3>
+            </div>
+        <div class="box-body">
+                <blockquote>
+                    <p>{{ user.presentation }}</p>
+                </blockquote>
+                <dl class="dl-horizontal">
+                    <dt> {% trans %}gestion.users.show.username{% endtrans %} 
+                    </dt>
+                    <dd> {{ user.username }}</dd>
+                    <dt> {% trans %}gestion.users.show.firstName{% endtrans %} 
+                    </dt>
+                    <dd> {{ user.firstname}} </dd>
+                    <dt> {% trans %}gestion.users.show.lastName{% endtrans %} 
+                    </dt>
+                    <dd> {{ user.lastname}} </dd>
+                    <br>
+                    <dt> {% trans %}gestion.users.show.email{% endtrans %} </dt>
+                    <dd> {{ user.email}} </dd>
+                    <dt> {% trans %}gestion.users.show.telephone{% endtrans %} 
+                    </dt>
+                    <dd> {{ user.telephone}} </dd>
+                    <br>
+                    <dt> {% trans %}gestion.users.show.createdAt{% endtrans %} 
+                    </dt>
+                    <dd> {{ user.createdat | date('d-m-Y H:i' )}} </dd>
+                    <dt> {% trans %}gestion.users.show.lastLogin{% endtrans %} 
+                    </dt>
+                    <dd> {{ user.lastlogin | date('d-m-Y H:i') }} </dd>
+                    <br>
+                    <dt> {% trans %}gestion.users.show.note{% endtrans %} </dt>
+                    <dd> {{ user.note|number_format(2) }} ( {{ user.prestations }} {% trans %}gestion.users.show.commentaires{% endtrans %})
+                    </dd>
+                    <dt>{% trans %}gestion.users.show.enable{% endtrans %}</dt>
+                    <dd>
+                        {% if user.enabled %}
+                            <span class="label label-success">{% trans %}gestion.users.show.status.enabled{% endtrans %}</span>
+                        {% else %}
+                            <span class="label label-danger">{% trans %}gestion.users.show.status.disabled{% endtrans %}</span>
+                        {% endif %}
+                    </dd>
+                    
+                </dl>
+            </div><!-- /.box-body --> 
+            <div class="box-footer clearfix">
+                <a class="btn btn-default pull-left" href="{{ path('users', {'type' : 'photographers' } ) }}">
+                    {% trans %}gestion.users.photographers.list.btn.back{% endtrans %}
+                </a>
+                {% if is_granted('ROLE_SUPER_ADMIN') and 1 == user.enabled %}
+                    <a class="btn btn-danger" data-toggle="modal" data-target="#disableModal" data-id="{{ user.id }}">
+                    {% trans %}gestion.users.photographers.list.btn.disable{% endtrans %}
+                    </a>
+                {% endif %}
+            </div>  
+        </div>
+        </div>
+    </div>
+  <div class="row">
+    <div class="col-xs-12">  
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{% trans %}gestion.users.show.h2.company{% endtrans %}</h3>
+            </div><!-- /.box-header -->
+            {% if null != company %}
+                {% include "MainGestionBundle:Users/Photographers\\show:company.html.twig" %}    
+            {% endif %}
+        </div>
+        </div>
+    </div>
+   {% if verified %} 
+  <div class="row">
+    <div class="col-xs-12">  
+        <div class="box">
+        <div class="box-header">
+                <h3 class="box-title">{% trans %}gestion.users.show.h2.devis{% endtrans %}</h3>
+            </div><!-- /.box-header -->
+        {% include "MainGestionBundle:Users/Photographers\\show:devis.html.twig" %}    
+        </div>
+        </div>
+    </div>
+  <div class="row">
+    <div class="col-xs-12">  
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{% trans %}gestion.users.show.h2.services{% endtrans %}</h3>
+            </div><!-- /.box-header -->
+         {% include "MainGestionBundle:Users/Photographers\\show:prestations.html.twig" %}   
+        </div>
+        </div>
+    </div>
+   {% endif %}
+   {% include "MainGestionBundle:Users/Photographers\\show:confirm_boxes.html.twig" %}
 {% endblock %}
 
 {% block javascripts_inline %}
@@ -141,7 +141,6 @@
                     aSupprSplited[aSupprSplited.length - 1] = id;
                     $('#aSuppr1').attr('href', aSupprSplited.join('/'));
                  });
-
                 });
                
         </script>

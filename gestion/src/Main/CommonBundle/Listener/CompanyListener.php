@@ -39,6 +39,7 @@ class CompanyListener
         $photographer = $company->getPhotographer();
         switch ($company->getStatus()->getId()) {
             case 2:
+            case 4:
                 $photographer->setRoles(array('ROLE_PHOTOGRAPHER_VERIFIED'));
                 break;
             default:

@@ -14,6 +14,8 @@
 				<div class="box box-danger">
 			{% elseif 2 == company.status.id %}
 				<div class="box box-success">
+			{% elseif 4 == company.status.id %}
+				<div class="box box-warning">
 			{% endif %}			
 				<div class="box-header">
 					<h3 class="box-title">
@@ -45,6 +47,10 @@
 				 		<span class="label label-success">
 				 			{% trans from "company" %}companies.company.view.status.accepted{% endtrans %}
 				 		</span>
+				 		{% elseif 4 == company.status.id %}
+				 		<span class="label label-warning">
+				 			{% trans from "company" %}companies.company.view.status.suspended{% endtrans %}
+				 		</span>
 				 	{% endif %}
 				</div>
 			</div>
@@ -75,6 +81,7 @@
 			</div>
 		</div>
 	</div>
+	{% if 4 != company.status.id %}
 	<div class="row">
 		<div class="col-xs-12">
 			<a class="btn btn-default btn-sm" href="{{ path('company_edit') }}">
@@ -82,4 +89,5 @@
 			</a>
 		</div>
 	</div>
+	{% endif %}
 {% endblock %}
