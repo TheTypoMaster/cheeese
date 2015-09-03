@@ -115,7 +115,8 @@ class DevisController extends Controller
             'towns'     => $towns,
             'dates'     => $dates,
             'search'    => $search,
-            'rate'      => $rate
+            'rate'      => $rate,
+            'pricesPub' => $priceService->getPricesByDuration($devis)
             ));
     }
 }

@@ -36,7 +36,7 @@
 				<div class="alert alert-danger">
 					<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
 					<strong>{% trans %}devis.show.no.strong{% endtrans %}</strong>
-					{% trans with {'%photographer%' : devis.company.photographer.username } %}devis.show.no.text %photographer%{% endtrans %}
+					{% trans with {'%photographer%' : devis.company.photographer.firstname } %}devis.show.no.text %photographer%{% endtrans %}
 				</div>
 			</div>
 		{% endif %}

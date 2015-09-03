@@ -20,7 +20,7 @@ class DevisPricesRepository extends EntityRepository
 	public function getPricesByDuration($devis)
 	{
 		$qb = $this->_em->createQueryBuilder();
-		$qb->select('p.price as price', 'd.id')
+		$qb->select('p.price as price', 'd.id', 'd.libelle')
 			->from('MainCommonBundle:Photographers\DevisPrices', 'p')
 			->leftjoin('p.duration', 'd')
 			->where('p.devis = :devis')

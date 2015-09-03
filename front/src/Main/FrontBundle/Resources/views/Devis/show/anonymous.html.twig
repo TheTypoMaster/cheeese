@@ -1,4 +1,29 @@
 <p class="text-center">
+	<div class="pricing">
+		<ul>
+			{% for i in 0..pricesPub|length - 1 %}
+				{% if i == 0 or i == 3 or i == 6 or i == 9 %}
+				<li class="unit price-primary">
+				{% elseif i == 1 or i == 4 or i == 7 or i == 10 %}
+				<li class="unit price-success active">
+				{% elseif i == 2 or i == 5 or i == 8 or i == 11 %}
+				<li class="unit price-warning">
+				{% endif %}
+					<div class="price-title">
+						<h3>{{ pricesPub[i]['price']}} €</h3>
+					</div>
+					<div class="price-body">						
+						<p> {% trans %}devis.show.price.duration{% endtrans %}
+							<h4>{{ pricesPub[i]['libelle']}}</h4>
+						</p>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</p>
+<br>
+<p class="text-center">
 	<a href="{{ path('fos_user_security_login')}}">
 		{% trans %}devis.show.anonymous.connect{% endtrans %} 
 	</a>

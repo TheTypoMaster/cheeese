@@ -64,6 +64,8 @@ class FormDevisBook extends AbstractType
                     'data'          => $this->setDate($options['date']),
                     'attr'          => array(
                         'class' => 'form-control',
+                        'readonly' => 'readonly',
+                        'onfocus'  => 'this.blur()',
                         'placeholder' => 'form.search.placeholder.date',
                     )                          
                 ))
@@ -141,22 +143,6 @@ class FormDevisBook extends AbstractType
 
     private function getTimeChoices(){
         return array(
-            '00:00' => '00:00',
-            '00:30' => '00:30',
-            '01:00' => '01:00',
-            '01:30' => '01:30',
-            '02:00' => '02:00',
-            '02:30' => '02:30',
-            '03:00' => '03:00',
-            '03:30' => '03:30',
-            '04:00' => '04:00',
-            '04:30' => '04:30',
-            '05:00' => '05:00',
-            '05:30' => '05:30',
-            '06:00' => '06:00',
-            '06:30' => '06:30',
-            '07:00' => '07:00',
-            '07:30' => '07:30',
             '08:00' => '08:00',
             '08:30' => '08:30',
             '09:00' => '09:00',

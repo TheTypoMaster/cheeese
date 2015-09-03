@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\NotEqualTo;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
@@ -79,8 +80,11 @@ class FormEvaluationType extends AbstractType
     						'class' => 'form-control',
     				),
                     'constraints'   => array(
-                        new NotBlank ( array(
-                        )))
+                        new NotBlank ( array()),
+                        new Length(array(
+                            'min' => 140
+                            ))
+                        )
     		));
     	}
 
@@ -106,7 +110,11 @@ class FormEvaluationType extends AbstractType
     			),
                 'constraints'   => array(
                         new NotBlank ( array(
-                        )))
+                        )),
+                        new Length(array(
+                            'min' => 140
+                            ))
+                        )
     	));
     }
     

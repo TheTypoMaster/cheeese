@@ -3,6 +3,7 @@
 
 towns = JSON.parse(towns.replace(/&quot;/g,'"'));
 datestopick = JSON.parse(dates.replace(/&quot;/g,'"'));
+
 $.fn.datepicker.dates['fr-FR'] = {
     days: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
     daysShort: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
@@ -15,23 +16,27 @@ $.fn.datepicker.dates['fr-FR'] = {
 var town      = $("#form_front_devis_book_town_text");
 var codeInput = $("#form_front_devis_book_town_code");
 var picker	  = $('#form_front_devis_book_day');
-
+var substringMatcher = function(strs) {
+              return function findMatches(q, cb) {
+                var matches, substringRegex;
+                matches = [];
+                substrRegex = new RegExp(q, 'i');
+                $.each(strs, function(i, str) {
+                  if (substrRegex.test(str)) {
+                    matches.push(str);
+                  }
+                });
+                cb(matches);
+              };
+            };
 onchange(town);
-$(picker).datepicker({
+$(picker).datepicker({             
                 format: "dd-mm-yyyy",
-                autoclose: true,
                 language: 'fr-FR', // A recuperer avec la locale
                 startDate: 'today',
                 endDate: '+6m',
-                beforeShowDay: function(date){
-                    var formattedDate = $.fn.datepicker.DPGlobal.formatDate(date, 'dd-mm-yyyy', 'fr-FR');
-                    if ($.inArray(formattedDate.toString(), datestopick) == -1){
-                        return {
-                            enabled : false
-                        };
-                    }
-                    return;
-                }
+                autoclose: true,
+                datesDisabled: getDisabled(),
             });
 /**
 * 
@@ -44,49 +49,29 @@ var input = town;
     $.each(towns, function(i, val){  
                 suggestions.push({"value": val.id, "label": val.name});  
             });
-    $(input).autocomplete({
-                source: suggestions,                          
-                open: function (event, ui) {
-                    var termTemplate = "<strong>%s</strong>";
-                    var ac = $(this).data('ui-autocomplete');
-                    var term = ac.term;                      
-                    var termCaps = term.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-                        return letter.toUpperCase();
-                    });                       
-                    var styledTerm = termTemplate.replace('%s', term);
-                    var styledTermCaps = termTemplate.replace('%s', termCaps);
-                    ac.menu.element.find('a').each(function() {
-                        var me = $(this)
-                        mapObj = {};
-                        mapObj[term] = styledTerm;
-                        mapObj[termCaps] = styledTermCaps;
-                        var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
-                        str = me.text().replace(re, function(matched){
-                          return mapObj[matched];
-                        });
-                        me.html( str) ;
-                    });
-                },
-                change: function (event, ui) {
-                    if(ui.item != null){
-                       return;
-                    }
+    objects = [];
+    map = {};
+    $.each(suggestions, function(i, object) {
+        map[object.label] = object;
+        objects.push(object.label);
+    });
+    $(input).typeahead({
+                  hint: true,
+                  highlight: true,
+                  minLength: 1
+                },{
+                    source: substringMatcher(objects),
+                });
+                $(input).on('typeahead:selected', function (e, datum) {   
+                    $(codeInput).val(map[datum].value);
+                  });
+                $(input).on('typeahead:change', function (event, ui) {  
+                    if(map[ui] != undefined){
+                           return;
+                        }
                     $(input).val('');
                     $(codeInput).val('');
-                },
-                select: function (event, ui) {
-                    event.preventDefault();
-                    $(input).val(ui.item.label);
-                    $(codeInput).val(ui.item.value);
-
-                },
-                focus: function (event, ui) {
-                    event.preventDefault();
-                    $(input).val(ui.item.label);
-                    $(codeInput).val(ui.item.value);
-                }
-
-            });
+                  });
 }
 
 var duration  = $("#form_front_devis_book_duration");
@@ -95,6 +80,7 @@ displayPrices(duration, prices);
 $(duration).change(function(e) {
 displayPrices(duration, prices);
 });
+
 function displayPrices(duration, prices){
 var value = $(duration).val();
 var hiddenDiv = document.getElementById("price");
@@ -112,4 +98,23 @@ var hiddenDiv = document.getElementById("price");
          });
         
     }
+}
+
+function addMonths(date, months) {
+  date.setMonth(date.getMonth() + months);
+  return date;
+}
+
+function getDisabled() {
+var start = new Date(Date.now());
+var end = addMonths(new Date(), 6);
+var disabled = [];
+for (var d = start; d <= end; d.setDate(d.getDate() + 1)) {
+    var day = new Date(d);
+    var dateString = ('0' + day.getDate()).slice(-2) + '-'+ ('0' + (day.getMonth()+1)).slice(-2) + '-' +  day.getFullYear()
+    if ($.inArray(dateString, datestopick) == -1){
+        disabled.push(dateString);                 
+    }
+}
+return disabled;
 }

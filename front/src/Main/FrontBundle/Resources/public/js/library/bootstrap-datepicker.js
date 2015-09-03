@@ -1,26 +1,10 @@
-/* =========================================================
- * bootstrap-datepicker.js
- * Repo: https://github.com/eternicode/bootstrap-datepicker/
- * Demo: http://eternicode.github.io/bootstrap-datepicker/
- * Docs: http://bootstrap-datepicker.readthedocs.org/
- * Forked from http://www.eyecon.ro/bootstrap-datepicker
- * =========================================================
- * Started by Stefan Petre; improvements by Andrew Rowls + contributors
+/*!
+ * Datepicker for Bootstrap v1.4.0 (https://github.com/eternicode/bootstrap-datepicker)
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ========================================================= */
-
-(function($, undefined){
+ * Copyright 2012 Stefan Petre
+ * Improvements by Andrew Rowls
+ * Licensed under the Apache License v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+ */(function($, undefined){
 
 	function UTCDate(){
 		return new Date(Date.UTC.apply(Date, arguments));
@@ -322,8 +306,7 @@
                     if ($.inArray(e.keyCode, [27, 37, 39, 38, 40, 32, 13, 9]) === -1)
                         this.update();
                 }, this),
-                keydown: $.proxy(this.keydown, this),
-                paste: $.proxy(this.paste, this)
+                keydown: $.proxy(this.keydown, this)
             };
 
             if (this.o.showOnFocus === true) {
@@ -369,15 +352,6 @@
 				}]
 			);
 
-			if (this.o.immediateUpdates) {
-				// Trigger input updates immediately on changed year/month
-				this._events.push([this.element, {
-					'changeYear changeMonth': $.proxy(function(e){
-						this.update(e.date);
-					}, this)
-				}]);
-			}
-
 			this._secondaryEvents = [
 				[this.picker, {
 					click: $.proxy(this.click, this)
@@ -386,7 +360,7 @@
 					resize: $.proxy(this.place, this)
 				}],
 				[$(document), {
-					mousedown: $.proxy(function(e){
+					'mousedown touchstart': $.proxy(function(e){
 						// Clicked outside the datepicker, hide it
 						if (!(
 							this.element.is(e.target) ||
@@ -394,7 +368,7 @@
 							this.picker.is(e.target) ||
 							this.picker.find(e.target).length
 						)){
-							$(this.picker).hide();
+							this.hide();
 						}
 					}, this)
 				}]
@@ -486,23 +460,6 @@
 				delete this.element.data().date;
 			}
 			return this;
-		},
-
-		paste: function(evt){
-			var dateString;
-			if (evt.originalEvent.clipboardData && evt.originalEvent.clipboardData.types
-				&& $.inArray('text/plain', evt.originalEvent.clipboardData.types) !== -1) {
-				dateString = evt.originalEvent.clipboardData.getData('text/plain');
-			}
-			else if (window.clipboardData) {
-				dateString = window.clipboardData.getData('Text');
-			}
-			else {
-				return;
-			}
-			this.setDate(dateString);
-			this.update();
-			evt.preventDefault();
 		},
 
 		_utc_to_local: function(utc){
@@ -1039,7 +996,6 @@
 
 		click: function(e){
 			e.preventDefault();
-			e.stopPropagation();
 			var target = $(e.target).closest('span, td, th'),
 				year, month, day;
 			if (target.length === 1){
@@ -1090,9 +1046,6 @@
 								this._trigger('changeMonth', this.viewDate);
 								if (this.o.minViewMode === 1){
 									this._setDate(UTCDate(year, month, day));
-									this.showMode();
-								} else {
-									this.showMode(-1);
 								}
 							}
 							else {
@@ -1104,8 +1057,8 @@
 								if (this.o.minViewMode === 2){
 									this._setDate(UTCDate(year, month, day));
 								}
-								this.showMode(-1);
 							}
+							this.showMode(-1);
 							this.fill();
 						}
 						break;
@@ -1252,7 +1205,7 @@
 
 		keydown: function(e){
 			if (!this.picker.is(':visible')){
-				if (e.keyCode === 40 || e.keyCode === 27) // allow down to re-show picker
+				if (e.keyCode === 27) // allow escape to hide and re-show picker
 					this.show();
 				return;
 			}
@@ -1397,7 +1350,7 @@
 		delete options.inputs;
 
 		datepickerPlugin.call($(this.inputs), options)
-			.on('changeDate', $.proxy(this.dateUpdated, this));
+			.bind('changeDate', $.proxy(this.dateUpdated, this));
 
 		this.pickers = $.map(this.inputs, function(i){
 			return $(i).data('datepicker');
@@ -1562,9 +1515,8 @@
 		todayHighlight: false,
 		weekStart: 0,
 		disableTouchKeyboard: false,
-		enableOnReadonly: true,
-		container: 'body',
-		immediateUpdates: false
+        enableOnReadonly: true,
+		container: 'body'
 	};
 	var locale_opts = $.fn.datepicker.locale_opts = [
 		'format',
@@ -1574,9 +1526,9 @@
 	$.fn.datepicker.Constructor = Datepicker;
 	var dates = $.fn.datepicker.dates = {
 		en: {
-			days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-			daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-			daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+			days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+			daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+			daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
 			months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 			today: "Today",
@@ -1806,7 +1758,7 @@
 
 	/* DATEPICKER VERSION
 	 * =================== */
-	$.fn.datepicker.version =  "1.4.1-dev";
+	$.fn.datepicker.version =  "1.4.0";
 
 	/* DATEPICKER DATA-API
 	* ================== */

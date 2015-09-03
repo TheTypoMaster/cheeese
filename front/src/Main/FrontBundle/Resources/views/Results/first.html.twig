@@ -5,14 +5,18 @@
 					<img class="img-rounded" src="{{ image64(result['book'].url,result['book'].fileType, 'devis')}}" alt="{{ result['devis'].title }}"/>
 					<div class="caption text-center">
 						<h3><strong>{{ result['devis'].title }}</strong></h3>
-						<p>(note et nombre d'avis du devis)</p>
+						<p>
+							{% if result['devis'].note != 0 %}
+							{{ result['devis'].note|number_format(2) }} ({{ result['devis'].prestations }})
+							{% endif %}
+						</p>
 						<p>{{ result['devis'].presentation |slice(0, 140)|nl2br }}...</p>
 						<hr>
 						<p>
 							<div class="text-center">
                 				<img src="{{ image64(result['devis'].company.photographer.photo, result['devis'].company.photographer.photoType, 'pp') }}"  class="img-circle"  height="40" width="40"/>
                 				<p>
-                					{{ result['devis'].company.photographer.username }}
+                					{{ result['devis'].company.photographer.firstname }}
                 				</p>
                 				{% if result['devis'].company.photographer.prestations != 0 %}
 	                				<p>

@@ -43,10 +43,11 @@ class DevisRepository extends EntityRepository
 			->where('c.status = :status')
 			->andWhere('d.active = :active')
 			->andWhere('b.profile = :profile')
-			->andWhere('p.active = :price')
-			->andWhere('p.price >= :min')
-			->andWhere('p.price <= :max')
-			->setParameters(array(
+			->andWhere('p.active = :price');
+			if ($min != null) {
+				$qb->andWhere('p.price >= :min')
+				   ->andWhere('p.price <= :max')
+				   ->setParameters(array(
 					'status'	 => 2,			
 					'active'	 => 1,
 					'profile'	 => 1,
@@ -54,6 +55,16 @@ class DevisRepository extends EntityRepository
 					'min'		 => $min,
 					'max'		 => $max,
 					));
+			}else {
+				$qb->setParameters(array(
+					'status'	 => 2,			
+					'active'	 => 1,
+					'profile'	 => 1,
+					'price'		 => 1
+					));
+			}
+			
+			
 			
 			if ($categoryId != null) {
 				$qb->andwhere('d.category = :categoryId')

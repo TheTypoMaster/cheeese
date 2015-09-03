@@ -91,6 +91,7 @@ devis:
         photographer:
             header: A propos du photographe
             since: Membre depuis le  
+            age: ans
         comments:
             header: Commentaires
             empty: Pas de commentaires pour ce devis
@@ -102,15 +103,17 @@ devis:
             connect: Connectez vous
             or: ou
             register: inscrivez vous
-            text: pour découvrir les prix de ce devis et pour faire une demande de prestation au photographe
+            text: pour faire une demande de prestation au photographe
+        price:
+            duration: Pour une prestation de 
         form:
             header: Demande de prestation
             btn:
                 submit: Envoyer demande
             price:
-                devis: Prix du devis
-                tax: Frais de service
-                total: Total
+                devis: Prix du devis 
+                tax: Frais de service 
+                total: Total (ttc)
             help:
                 message: Il ne vous sera demandé de payer que lorsque le photographe aura pré-approuvé votre demande
                 date %photographer%: Dates de disponibilités de %photographer%

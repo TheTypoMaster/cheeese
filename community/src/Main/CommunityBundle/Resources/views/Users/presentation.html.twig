@@ -29,7 +29,12 @@
                                                 </p>    
                                             {% endif %}
                                             <p> <i class="fa fa-phone"> {{ user.telephone }}</i> </p>
-                                            <p> <i class="fa fa-birthday-cake"> {{ user.birthDate|date('d/m/Y') }}</i> </p>
+                                            <p> <i class="fa fa-birthday-cake"> 
+                                                {% if user.birthDate != null %}
+                                                    {{ user.birthDate|date('d/m/Y') }}
+                                                {% endif %}
+                                                </i> 
+                                            </p>
                                             <blockquote>
                                                 <p>{{ user.presentation | nl2br }}</p>
                                             </blockquote>

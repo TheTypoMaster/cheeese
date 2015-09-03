@@ -8,10 +8,10 @@
 			{% trans %}devis.show.comments.empty{% endtrans %} 
 			</p>
 			{% else %}
-				<div class="table-responsive">
-                    <table class="table">
-						{% for comment in comments %}
-							<th style="width:30%">
+			<ul class="list-group">
+				{% for comment in comments %}
+					<li class="list-group-item">
+						<td style="width:30%">
 								<div class="text-center">
                 					<img class="img-rounded" src="{{ image64(comment.prestation.client.photo, comment.prestation.client.photoType, 'pp') }}" height="40" width="40"/>
             					</div>
@@ -25,14 +25,17 @@
             						<i class="glyphicon glyphicon-map-marker"></i>{{ comment.prestation.town.name }}
             					</p>
             					
-							</th>
-                            <td>
-                            	<p>{{ comment.prestationNotation|number_format(2) }}</p>
-                            	<i>{{ comment.prestationComment }}</i>
-                            </td>
-						{% endfor %}
-	  				</table>
-	  			</div>				
+						</td>
+                        <td>
+                          	<p class="text-center">
+                          		{{ comment.prestationNotation|number_format(2) }}
+                          	</p>
+                           	<i>{{ comment.prestationComment }}</i>
+                        </td>
+					</li>
+				{% endfor %}
+
+			</ul>				
 			{% endif %}			
 		</div>
 	</div>
