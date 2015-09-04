@@ -1,0 +1,168 @@
+{% if prestation.status.id == 1 %}
+<div class="callout callout-info">  
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.created.p1
+		{% endtrans %}
+	</p>
+		{% trans from "services" %}
+		community.service.show.help.created.p2
+		{% endtrans %}
+	<p>
+		
+	</p>  
+	<p>
+		
+		{% trans from "services" %}
+		community.service.show.help.created.p3.first
+		{% endtrans %}
+		<a href="#">{% trans from "services" %}
+		community.service.show.help.created.p3.link
+		{% endtrans %}</a>
+		{% trans from "services" %}
+		community.service.show.help.created.p3.second
+		{% endtrans %}
+	</p> 
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.created.p4
+		{% endtrans %}
+	</p>
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.contact
+		{% endtrans %}
+	</p>                                   
+</div>
+{% elseif prestation.status.id == 2 %}
+<div class="callout callout-warning">      
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.preapproved.p1
+		{% endtrans %}
+	</p>
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.contact
+		{% endtrans %}
+	</p>                      
+</div>
+{% elseif prestation.status.id == 3 %}
+<div class="callout callout-danger"> 
+	<p>
+		{% trans with {'%date%': prestation.updatedAt|date('d/m/Y'), '%heure%': prestation.updatedAt|date('H:i')} from "services" %}
+		community.service.show.help.refused.p1 %date% %heure%
+		{% endtrans %}
+	</p> 
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.contact
+		{% endtrans %}
+	</p>                          
+</div>
+{% elseif prestation.status.id == 4 %}
+<div class="callout callout-danger">  
+	<p>
+		{% trans with {'%client%': prestation.client.username, '%date%': prestation.updatedAt|date('d/m/Y'), '%heure%': prestation.updatedAt|date('H:i')} from "services" %}
+		community.service.show.help.canceled.p1 %client% %date% %heure%
+		{% endtrans %}
+	</p>
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.canceled.p2
+		{% endtrans %}
+	</p> 
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.contact
+		{% endtrans %}
+	</p>                          
+</div>
+{% elseif prestation.status.id == 5 %}
+<div class="callout callout-info">  
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.confirmed.p1
+		{% endtrans %}
+	</p>
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.confirmed.p2.first
+		{% endtrans %}
+		<a href="#">{% trans from "services" %}
+		community.service.show.help.confirmed.p2.link
+		{% endtrans %}</a>
+		{% trans from "services" %}
+		community.service.show.help.confirmed.p2.second
+		{% endtrans %}
+	</p>  
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.confirmed.p3
+		{% endtrans %}
+	</p> 
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.confirmed.p4.text
+		{% endtrans %}
+		<a href="#">{% trans from "services" %}
+		community.service.show.help.confirmed.p4.link
+		{% endtrans %}</a>
+	</p>
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.contact
+		{% endtrans %}
+	</p>                        
+</div>
+{% elseif prestation.status.id == 6 %}
+<div class="callout callout-info">  
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.passed.p1
+		{% endtrans %}
+	</p>
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.passed.p2
+		{% endtrans %}
+	</p>    
+	<p>
+		<strong>
+			{% trans from "services" %}
+			community.service.show.help.passed.p3.text
+			{% endtrans %}
+			<a href="#">{% trans from "services" %}
+			community.service.show.help.passed.p3.link
+			{% endtrans %}
+			</a>
+		</strong>
+	</p> 
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.contact
+		{% endtrans %}
+	</p>                      
+</div>
+{% elseif prestation.status.id == 7 %}
+<div class="callout callout-info"> 
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.delivered.p1
+		{% endtrans %}
+	</p>  
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.contact
+		{% endtrans %}
+	</p>                          
+</div>
+{% elseif prestation.status.id == 8 %}
+<div class="callout callout-info"> 
+	<p>
+		{% trans with {'%date%': prestation.updatedAt|date('d/m/Y'), '%heure%': prestation.updatedAt|date('H:i')} from "services" %}
+		community.service.show.help.closed.p1 %date% %heure%
+		{% endtrans %}
+	</p>                           
+</div>
+{% endif %}

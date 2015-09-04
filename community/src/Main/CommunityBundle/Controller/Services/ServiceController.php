@@ -52,6 +52,7 @@ class ServiceController extends Controller
 			$commentPhotographer = null;
 			$formView = null;
 			$allowed = false;
+			$telephoneDisplayed = $prestationService->isTelephoneDisplayed($service);
 			$passed = $prestationService->isPassed($service);			
 			$messageService->readMessages($id);
 			$messageNotification->readNotifications($id);
@@ -92,7 +93,8 @@ class ServiceController extends Controller
 					'commentClient'	 		=> $commentClient,
 					'commentPhotographer'	=> $commentPhotographer,
 					'form'		 			=> $formView,
-					'iban'					=> $iban
+					'iban'					=> $iban,
+					'telephone'				=> $telephoneDisplayed
 			));
 		}
 	}

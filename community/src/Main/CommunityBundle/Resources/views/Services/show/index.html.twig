@@ -6,10 +6,7 @@
 <i class="fa fa-calendar"></i>{% trans from "services" %}community.service.show.breadh1{% endtrans %}{% endblock %}
 {% block breadcrumbH2 %}{% trans from "services" %}community.service.show.breadh2{% endtrans %}{% endblock %}
 {% block content %}
-    <div class="callout callout-info">
-        a fournir
-                            
-    </div>
+    {% include "MainCommunityBundle:Services\\show:help.html.twig" %}
     <!-- Main content -->
     <h2 class="page-header">
     	{% trans from "services" %}community.service.show.header{% endtrans %} {{ prestation.reference }}
@@ -31,6 +28,10 @@
                         <br>
                         <i class="fa fa-star-o"></i> {{ prestation.client.note|number_format(2) }}
                         <i class="fa fa-comment-o"></i> {{ prestation.client.prestations }}
+                        <br><br>
+                        {% if telephone %}
+                            <i class="fa fa-phone"> {{ prestation.client.telephone }}</i>
+                        {% endif %}
                     </div>
                     <p>
                         <div class="table-responsive">
@@ -148,9 +149,10 @@
 		{% if 1 == prestation.status.id %}
 			<a class="btn btn-success" data-toggle="modal" data-target="#approveModal">{% trans from "services" %}community.service.show.confirm.approve{% endtrans %}
             </a>
+            <a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal">{% trans from "services" %}community.service.show.confirm.refuse{% endtrans %}
         {% endif %}
-        {% if 1 == prestation.status.id or 2 == prestation.status.id %}
-			<a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal">{% trans from "services" %}community.service.show.confirm.refuse{% endtrans %}
+        {% if 2 == prestation.status.id %}
+			<a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal">{% trans from "services" %}community.service.show.confirm.cancel{% endtrans %}
             </a>
 		{% endif %}   
     </div>

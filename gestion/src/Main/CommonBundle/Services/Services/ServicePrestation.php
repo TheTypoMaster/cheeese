@@ -257,6 +257,39 @@ class ServicePrestation
 	{
 		return $prestation->getStatus()->getId() == self::OLD_PRESTATION;
 	}
+	
+	/**
+	 * 
+	 * @param Prestation $prestation
+	 * @return boolean
+	 */
+	public function isCommentAllowed(Prestation $prestation)
+	{
+		return $prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK || $prestation->getStatus()->getId() == self::PRESTATION_OK;
+	}
+
+	/**
+	 * [isTelephoneDisplayed description]
+	 * @param  Prestation $prestation [description]
+	 * @return boolean                [description]
+	 */
+	public function isTelephoneDisplayed(Prestation $prestation)
+	{
+		return 
+		   $prestation->getStatus()->getId() == self::PRESTATION_OK
+		|| $prestation->getStatus()->getId() == self::OLD_PRESTATION
+	 	|| $prestation->getStatus()->getId() == self::PHOTOS_DELIVERED;
+	}
+
+	/**
+	 * [isPassed description]
+	 * @param  Prestation $prestation [description]
+	 * @return boolean                [description]
+	 */
+	public function isPassed(Prestation $prestation)
+	{
+		return $prestation->getStatus()->getId() > self::PRESTATION_OK;
+	}
 
 	/**
 	 * Update les prestations confirmées passées en old
@@ -282,26 +315,6 @@ class ServicePrestation
 				return false;
 			}
 		}		
-	}
-	
-	/**
-	 * 
-	 * @param Prestation $prestation
-	 * @return boolean
-	 */
-	public function isCommentAllowed(Prestation $prestation)
-	{
-		return $prestation->getStatus()->getId() == self::PRESTATION_ENCOURS || $prestation->getStatus()->getId() == self::PHOTOGRAPHER_OK || $prestation->getStatus()->getId() == self::PRESTATION_OK;
-	}
-
-	/**
-	 * [isPassed description]
-	 * @param  Prestation $prestation [description]
-	 * @return boolean                [description]
-	 */
-	public function isPassed(Prestation $prestation)
-	{
-		return $prestation->getStatus()->getId() > self::PRESTATION_OK;
 	}
 
 	public function countAllMyServices()

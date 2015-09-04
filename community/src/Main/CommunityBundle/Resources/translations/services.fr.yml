@@ -112,6 +112,7 @@ community:
                 back: Retour à la liste
                 approve: Pré-approuver cette prestation
                 refuse: Refuser cette prestation
+                cancel: Annuler cette prestation
                 evaluate: Evaluer cette prestation
                 confirm:
                     back: Retour
@@ -159,6 +160,43 @@ community:
                 add: Ajouter une réponse
                 btn:
                     submit: Soumettre
+            help:
+                created: 
+                    p1: Félicitations ! Vous avez reçu une nouvelle demande. 
+                    p2: Vous pouvez dès à présent pré-approuver cette demande, la refuser ou discuter via la messagerie si vous avez besoin de plus d’informations pour prendre votre décision. Il vous est également possible de proposer une nouvelle date, une nouvelle durée et un nouveau prix si besoin.
+                    p3:
+                        first: Attention, en pré-approuvant cette demande, vous acceptez nos
+                        link: CGUs et conditions d’annulation.
+                        second: Nous vous rappellons qu’en pré-acceptant cette demande, le client pourra ensuite confirmer la réservation. Si votre prestation comprend l’envoi de photos, vous vous engagez à ce que le client les réceptionne dans un délai de 3 semaines à compter de la date de la prestation (sauf accord avec le client, qui doit être stipulé par écrit via la messagerie).
+                    p4: Nous vous conseillons de répondre à cette demande dès que possible, afin de maximiser vos chances de réservation.
+                preapproved: 
+                    p1: Vous avez pré-accepté cette demande. Le client peut désormais confirmer la réservation. En attendant, il vous est toujours possible de modifier la date, la durée ou le prix de cette prestation, ou l’annuler. Vous pouvez également utiliser la messagerie pour contacter le client.
+                refused:
+                    p1 %date% %heure%: Vous avez refusé cette demande le %date% à %heure%. Nous avons prévenu le client de votre refus.
+                canceled:
+                    p1 %client% %date% %heure% : %client% a annulé cette prestation le %date% à %heure%. 
+                    p2: Le client n’ayant pas confirmé la réservation, aucun virement sur votre compte ne sera effectué. Nous sommes désolés qu'une opportunité comme celle-ci ne se soit pas concrétisée.
+                confirmed:
+                    p1: Félicitations ! Vous avez une nouvelle réservation.
+                    p2:
+                        first: Pour rappel, comme décrit dans nos
+                        second: ,vous êtes tenus de respecter ce qui est décrit dans la prestation réservée, et ce qui a été convenu à travers votre conversation sur notre messagerie.
+                        link: CGUs
+                    p3: Nous vous transférerons le montant de la réservation effectuée sur votre compte, déduction faite des frais de services, une fois que le client aura confirmé avoir bien reçu le livrable convenu. S’il ne confirme pas, et si nous n’avons pas reçu de plaintes de la part du client, nous effectuerons le virement 30 jours après la date de la prestation.
+                    p4:
+                        link: ici
+                        text: Au cas où vous seriez dans l’incapacité de traiter cette prestation, merci de cliquer
+                passed:
+                    p1: Vous pouvez désormais évaluer votre client. Il vous suffit pour cela de cliquer sur le bouton « Evaluer cette prestation » et de suivre les indications. 
+                    p2: Une fois que le client aura également rempli votre évaluation, vous serez en mesure de voir vos évaluations respectives.
+                    p3:
+                        text: En cas de litige survenu lors de cette prestation, vous pouvez nous faire parvenir votre réclamation en cliquant
+                        link: ici
+                delivered:
+                    p1: Vous avez été évalué par le client et vos évaluations respectives sont désormais disponibles, dans la section « Evaluations ». Par ailleurs, le client a confirmé la bonne réception des photos, nous allons donc procéder à votre virement dans les prochains jours.
+                closed:
+                    p1 %date% %heure%: Prestation clôturée le %date% à %heure% 
+                contact : Vous pouvez nous contacter à tout moment à l’adresse suivante si vous avez des questions : 
         edit:
             h1: Prestation
             h2: Modification
