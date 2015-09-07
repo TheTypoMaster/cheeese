@@ -68,55 +68,51 @@ class ServiceEmail
      * @param  Prestation $Prestation [description]
      * @return [type]                 [description]
      */
-    public function prestationUpdateEmail(Prestation $prestation) {
+    public function prestationUpdateEmail(Prestation $prestation, $comments = null) {
         $status = $prestation->getStatus()->getId();
         $photographer = $prestation->getDevis()->getCompany()->getPhotographer();
+        $emailPhotographer = $photographer->getEmail();
         $client = $prestation->getClient();
-        $template = null;
-        $sendtwomails = false;
+        $emailClient =$client->getEmail();
+        $sendToPhotographer = $this->canReceiveEmails($photographer, 1);
+        $sendToClient = $this->canReceiveEmails($client, 1);
+        $templatePhotographer = null;
+        $templateClient = null;
         switch ($status)
         {
             case 1:
-                $to = $photographer->getEmail();
-                $template = 'MainCommonBundle:Emails\Prestations:created.html.twig';
-                $subject = $this->translator->trans('prestation.created.subject', array(), 'email');
-                $send = $this->canReceiveEmails($photographer, 1);
+                $templatePhotographer = 'MainCommonBundle:Emails\Prestations\Created:to_photographer.html.twig';
+                $templateClient = 'MainCommonBundle:Emails\Prestations\Created:to_client.html.twig';
+                $subjectPhotographer = $this->translator->trans('prestation.created.photographer.subject', array(), 'email');
+                $subjectClient = $this->translator->trans('prestation.created.client.subject', array(), 'email');
                 break;
             case 2:
                 //PHOTOGRAPHER_OK
-                $to = $client->getEmail();
-                $template = 'MainCommonBundle:Emails\Prestations:pre_accepted.html.twig';
-                $subject = $this->translator->trans('prestation.pre_accepted.subject', array(),'email');
-                $send = $this->canReceiveEmails($client, 1);
+                $templatePhotographer = 'MainCommonBundle:Emails\Prestations\PreApproved:to_photographer.html.twig';
+                $templateClient = 'MainCommonBundle:Emails\Prestations\PreApproved:to_client.html.twig';
+                $subjectPhotographer = $this->translator->trans('prestation.preapproved.photographer.subject', array(), 'email');
+                $subjectClient = $this->translator->trans('prestation.preapproved.client.subject', array(), 'email');
                 break;
             case 3:
-            //Cancel-photographer
-                $to = $client->getEmail();
-                $template = 'MainCommonBundle:Emails\Prestations:refused.html.twig';
-                $subject = $this->translator->trans('prestation.refused.subject',array(),'email');
-                $send = $this->canReceiveEmails($client, 1);
+            //Refused-photographer
+                $templatePhotographer = 'MainCommonBundle:Emails\Prestations\Refused:to_photographer.html.twig';
+                $templateClient = 'MainCommonBundle:Emails\Prestations\Refused:to_client.html.twig';
+                $subjectPhotographer = $this->translator->trans('prestation.refused.photographer.subject', array(), 'email');
+                $subjectClient = $this->translator->trans('prestation.refused.client.subject', array(), 'email');
                 break;
             case 4:
             //Cancel-Client
-                $to = $photographer->getEmail();
-                $template = 'MainCommonBundle:Emails\Prestations:canceled.html.twig';
-                $subject = $this->translator->trans(
-                    'prestation.canceled.subject',array(),'email');
-                $send = $this->canReceiveEmails($photographer, 1);
+                $templatePhotographer = 'MainCommonBundle:Emails\Prestations\Abandonned:to_photographer.html.twig';
+                $templateClient = 'MainCommonBundle:Emails\Prestations\Abandonned:to_client.html.twig';
+                $subjectPhotographer = $this->translator->trans('prestation.abandonned.photographer.subject', array(), 'email');
+                $subjectClient = $this->translator->trans('prestation.abandonned.client.subject', array(), 'email');
                 break;
             case 5:
             //Valide
-                $to = $photographer->getEmail();
-                $template = 'MainCommonBundle:Emails\Prestations:accepted.html.twig';
-                $subject = $this->translator->trans(
-                    'prestation.accepted.subject',array(), 'email');;
-                $send = $this->canReceiveEmails($photographer, 1);
-                $sendtwomails = true;
-                $to1 = $client->getEmail();
-                $template1 = 'MainCommonBundle:Emails\Prestations:accepted_confirmation.html.twig';
-                $subject1 = $this->translator->trans(
-                    'prestation.paymentconfirmed.subject',array(), 'email');;
-                $send1 = $this->canReceiveEmails($client, 1);
+                $templatePhotographer = 'MainCommonBundle:Emails\Prestations\Confirmed:to_photographer.html.twig';
+                $templateClient = 'MainCommonBundle:Emails\Prestations\Confirmed:to_client.html.twig';
+                $subjectPhotographer = $this->translator->trans('prestation.confirmed.photographer.subject', array(), 'email');
+                $subjectClient = $this->translator->trans('prestation.confirmed.client.subject', array(), 'email');
                 break;
             /*
             case 6:
@@ -131,32 +127,66 @@ class ServiceEmail
                 $template = '';
                 $body = '';
                 break;
+            case 8:
+                $to = '';
+                $subject = '';
+                $template = '';
+                $body = '';
+                break;
             */
-
+           case 9 :
+                // Annulation photographer
+                $templatePhotographer = 'MainCommonBundle:Emails\Prestations\Cancel\Photographer:to_photographer.html.twig';
+                $templateClient = 'MainCommonBundle:Emails\Prestations\Cancel\Photographer:to_client.html.twig';
+                $subjectPhotographer = $this->translator->trans(
+                    'prestation.cancel.photographer.tophotographer.subject',array(), 'email');
+                $subjectClient = $this->translator->trans(
+                    'prestation.cancel.photographer.toclient.subject',array(), 'email');
+                break;
+           case 10:
+                // Annulation client
+                $templatePhotographer = 'MainCommonBundle:Emails\Prestations\Cancel\Client:to_photographer.html.twig';
+                $templateClient = 'MainCommonBundle:Emails\Prestations\Cancel\Client:to_client.html.twig';
+                $subjectPhotographer = $this->translator->trans(
+                    'prestation.cancel.client.tophotographer.subject',array(), 'email');
+                $subjectClient = $this->translator->trans(
+                    'prestation.cancel.client.toclient.subject',array(), 'email');
+                break;
+           case 11:
+                // Litige client
+                $templatePhotographer = 'MainCommonBundle:Emails\Prestations\Litige\Client:to_photographer.html.twig';
+                $templateClient = 'MainCommonBundle:Emails\Prestations\Litige\Client:to_client.html.twig';
+                $subjectPhotographer = $this->translator->trans(
+                    'prestation.litige.client.tophotographer.subject',array(), 'email');
+                $subjectClient = $this->translator->trans(
+                    'prestation.litige.client.toclient.subject',array(), 'email');
+                break;
+           case 12:
+                // litige photographer
+                $templatePhotographer = 'MainCommonBundle:Emails\Prestations\Litige\Photographer:to_photographer.html.twig';
+                $templateClient = 'MainCommonBundle:Emails\Prestations\Litige\Photographer:to_client.html.twig';
+                $subjectPhotographer = $this->translator->trans(
+                    'prestation.litige.photographer.tophotographer.subject',array(), 'email');
+                $subjectClient = $this->translator->trans(
+                    'prestation.litige.photographer.toclient.subject',array(), 'email');
+                break;
         }
-        if($template != null && $send) {
         $from = self::EMAIL;
-        if ($to == $photographer->getEmail()) {            
-            $body = $this->templating->render($template, array(
-                'prestation' => $prestation, 
-                'base_url' => $this->community
-            ));
-        }elseif ($to == $client->getEmail()) {
-           $body = $this->templating->render($template, array(
-            'prestation' => $prestation, 
-            'base_url' => $this->front
-            ));
-        }        
-        $this->sendMessage($from, $to, $subject, $body);   
-        if ($sendtwomails) {
-            $body1 = $this->templating->render($template1, array(
-            'prestation' => $prestation, 
-            'base_url' => $this->front
-            ));
-            $this->sendMessage($from, $to1, $subject1, $body1); 
-        } 
+        if ($templatePhotographer && $sendToPhotographer) {
+                $body = $this->templating->render($templatePhotographer, array(
+                    'prestation' => $prestation, 
+                    'base_url' => $this->community
+                ));
+            $this->sendMessage($from, $emailPhotographer, $subjectPhotographer, $body);
         }
-        
+        if ($templateClient && $sendToClient) {            
+                $body = $this->templating->render($templateClient, array(
+                'prestation' => $prestation,
+                'comments'   => $comments, 
+                'base_url'   => $this->front
+                ));
+            $this->sendMessage($from, $emailClient, $subjectClient, $body);
+        }
     }
 
     /**

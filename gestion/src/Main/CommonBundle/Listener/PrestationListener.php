@@ -73,25 +73,74 @@ class PrestationListener
                 $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
                     $id, 2, $model,$client, $photographer, $message);
                 break;
+            case 6:
+                //Passed message
+                $message = $entity->getReference();
+                $model = 6;
+                $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
+                    $id, 2, $model,$client, $photographer, $message);
+                break;
+            case 7:
+                //Close message
+                $message = $entity->getReference();
+                $model = 7;
+                $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
+                    $id, 2, $model,$client, $photographer, $message);
+                break;
+            case 8:
+                //Close message
+                $message = $entity->getReference();
+                $model = 8;
+                $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
+                    $id, 2, $model,$client, $photographer, $message);
+                break;
+            case 9:
+                //Annulation photographe
+                $message = $entity->getReference();
+                $model = 9;
+                $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
+                    $id, 2, $model,$client, $photographer, $message);
+                break;
+            case 10:
+                //Annulation client
+                $message = $entity->getReference();
+                $model = 10;
+                $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
+                    $id, 2, $model,$client, $photographer, $message);
+                break;
+            case 11:
+                //Litige client
+                $message = $entity->getReference();
+                $model = 11;
+                $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
+                    $id, 2, $model,$client, $photographer, $message);
+                break;
+            case 12:
+                //Litige photographer
+                $message = $entity->getReference();
+                $model = 12;
+                $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
+                    $id, 2, $model,$client, $photographer, $message);
+                break;
             default:
                 break;
         }
         }
         elseif($event->hasChangedField('startTime')){
                 $message = $entity->getStartTime()->format('d/m/Y H:i');
-                $model = 11;
+                $model = 21;
                 $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
                     $id, 2, $model,$photographer, $client, $message);
         }
         elseif($event->hasChangedField('price')){
                 $message = $entity->getPrice().' €';
-                $model = 12;
+                $model = 22;
                 $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
                     $id, 2, $model,$photographer, $client, $message);
         }
         elseif($event->hasChangedField('duration')){
                 $message = $entity->getDuration()->getLibelle();
-                $model = 13;
+                $model = 23;
                 $entityManager->getRepository('MainCommonBundle:Messages\Message')->createMessagePrestation(
                     $id, 2, $model,$photographer, $client, $message);
         }

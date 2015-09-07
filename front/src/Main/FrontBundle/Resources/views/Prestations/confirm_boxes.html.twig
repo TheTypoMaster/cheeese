@@ -44,7 +44,7 @@
                     <button type="button" class="btn btn-link" data-dismiss="modal">
                     {% trans from "prestations" %}prestation.show.confirm.btn.back{% endtrans %}
                 </button>
-                    <a href="{{ path('cancel_service', { 'id' : prestation.id } ) }}" role="button" class="btn btn-danger">
+                    <a href="{{ path('abandon_service', { 'id' : prestation.id } ) }}" role="button" class="btn btn-danger">
                     {% trans from "prestations" %}prestation.show.confirm.btn.confirm{% endtrans %}
                 </a>
                 </div>

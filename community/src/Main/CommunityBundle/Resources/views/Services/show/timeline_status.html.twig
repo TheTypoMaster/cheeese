@@ -18,16 +18,44 @@
 	{% elseif 5 == message.model %}
 		{% trans from "services" %}
 			community.service.show.timeline.title.status.confirmed
+		{% endtrans %}
+	{% elseif 6 == message.model %}
+		{% trans from "services" %}
+			community.service.show.timeline.title.status.passed
+		{% endtrans %}
+	{% elseif 7 == message.model %}
+		{% trans from "services" %}
+			community.service.show.timeline.title.status.delivered
+		{% endtrans %}
+	{% elseif 8 == message.model %}
+		{% trans from "services" %}
+			community.service.show.timeline.title.status.closed
+		{% endtrans %}
+	{% elseif 9 == message.model %}
+		{% trans from "services" %}
+			community.service.show.timeline.title.status.cancel.photographer
 		{% endtrans %} 
+	{% elseif 10 == message.model %}
+		{% trans from "services" %}
+			community.service.show.timeline.title.status.cancel.client
+		{% endtrans %}
 	{% elseif 11 == message.model %}
+		{% trans from "services" %}
+			community.service.show.timeline.title.status.litige.client
+		{% endtrans %}
+	{% elseif 12 == message.model %}
+		{% trans from "services" %}
+			community.service.show.timeline.title.status.litige.photographer
+		{% endtrans %}
+	{% elseif 21 == message.model %}
 		{% trans with {'%data%' : message.content} from "services" %}
 			community.service.show.timeline.title.edit.date %data%
 		{% endtrans %}
-	{% elseif 12 == message.model %}
+	{% elseif 22 == message.model %}
 		{% trans with {'%data%' : message.content} from "services" %}
 			community.service.show.timeline.title.edit.price %data%
 		{% endtrans %} 
-	{% elseif 13 == message.model %}
+	{% elseif 23 == message.model %}
 		{% trans with {'%data%' : message.content} from "services" %}
 			community.service.show.timeline.title.edit.duration %data%
 		{% endtrans %} 

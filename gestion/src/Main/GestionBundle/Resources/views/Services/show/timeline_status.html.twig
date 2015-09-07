@@ -18,16 +18,44 @@
 	{% elseif 5 == message.model %}
 		{% trans from "services" %}
 			gestion.service.show.timeline.status.confirmed
+		{% endtrans %}
+	{% elseif 6 == message.model %}
+		{% trans from "services" %}
+			gestion.service.show.timeline.status.passed
+		{% endtrans %}
+	{% elseif 7 == message.model %}
+		{% trans from "services" %}
+			gestion.service.show.timeline.status.delivered
+		{% endtrans %}
+	{% elseif 8 == message.model %}
+		{% trans from "services" %}
+			gestion.service.show.timeline.status.closed
+		{% endtrans %} 
+	{% elseif 9 == message.model %}
+		{% trans from "services" %}
+			gestion.service.show.timeline.status.photographercancel
+		{% endtrans %}
+	{% elseif 10 == message.model %}
+		{% trans from "services" %}
+			gestion.service.show.timeline.status.clientcancel
 		{% endtrans %} 
 	{% elseif 11 == message.model %}
+		{% trans from "services" %}
+			gestion.service.show.timeline.status.clientlitige
+		{% endtrans %}
+	{% elseif 12 == message.model %}
+		{% trans from "services" %}
+			gestion.service.show.timeline.status.photographerlitige
+		{% endtrans %} 
+	{% elseif 21 == message.model %}
 		{% trans with {'%data%' : message.content} from "services" %}
 			gestion.service.show.timeline.edit.date %data%
 		{% endtrans %}
-	{% elseif 12 == message.model %}
+	{% elseif 22 == message.model %}
 		{% trans with {'%data%' : message.content} from "services" %}
 			gestion.service.show.timeline.edit.price %data%
 		{% endtrans %} 
-	{% elseif 13 == message.model %}
+	{% elseif 23 == message.model %}
 		{% trans with {'%data%' : message.content} from "services" %}
 			gestion.service.show.timeline.edit.duration %data%
 		{% endtrans %} 

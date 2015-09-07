@@ -25,7 +25,7 @@ prestation:
             total: Total
         confirm:
                 header:
-                    cancel: Vous êtes sur le point d’annuler cette réservation !
+                    cancel: Vous êtes sur le point d’abandonner cette demande de réservation !
                     confirm: Vous êtes sur le point de confirmer votre réservation !
                     deliver: Vous êtes sur le point de confirmer la réception des photos !
                 warningheader: Evaluez cette prestation
@@ -48,10 +48,11 @@ prestation:
         btn:
             submit: Envoyer
             back: Retour à la liste
-            cancel: Annuler cette prestation
+            cancel: Abandonner cette prestation
             confirm: Confirmer cette prestation
             evaluate: Evaluer cette prestation
             delivered: Confirmer la reception des photos
+            canceled: Annuler ici
         li:
             at: à
         evaluation:
@@ -67,8 +68,15 @@ prestation:
                 created: Prestation créée
                 preapproved: Prestation pré-approuvée
                 refused: Prestation refusée
-                canceled: Prestation annulée
+                canceled: Prestation abandonnée
                 confirmed: Prestation confirmée
+                passed: Prestation Traitée
+                delivered: Photos délivrées
+                closed: Prestation clôturée
+                cancelphotographer: Annulée par photographe
+                cancelclient: Annulée par client
+                litigeclient: Litige client
+                litigephotographer: Litige Photographe
             edit:
                 price %data%: Nouveau prix %data%
                 date %data%: Nouvelle date %data%
@@ -79,14 +87,24 @@ prestation:
                 processing: En cours
                 photographer_ok: Pré-approuvée
                 photographer_ko: Refusée
-                client_ko: Annulée
+                client_ko: Abandonnée
                 success: Confirmée
                 old: Traitée
                 delivered: Livrée
                 closed: Cloturée
+                cancelphotographe: Annulée par photographe
+                cancelclient: Annulée par client
+                litigeclient: Litige client
+                litigephotographer: Litige Photographe
     notation:
         title %reference%: Notation de la prestation %reference%
         header %reference%: Notation de la prestation %reference%
+        btn:
+            submit: Envoyer
+            back: Retour
+    cancel:
+        title %reference%: Annuler la prestation %reference%
+        header %reference%: Annuler la prestation %reference%
         btn:
             submit: Envoyer
             back: Retour

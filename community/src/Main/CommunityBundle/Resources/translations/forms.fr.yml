@@ -41,3 +41,7 @@ help:
         field:
             date: Format jj/mm/aaaa
             time: Format hh:mm
+        cancel:
+            field:
+                comments: Cette explication sera envoyée au client par mail ainsi que publiée sur le fil de votre discussion
+                old: Merci de saisir votre mot de passe ainsi de vérifier votre identité.

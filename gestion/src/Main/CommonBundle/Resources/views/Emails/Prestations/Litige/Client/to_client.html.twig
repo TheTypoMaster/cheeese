@@ -1,0 +1,31 @@
+{% embed "MainCommonBundle:Emails:email.html.twig" %}
+		{% block h1 %}{{ prestation.client.username }},{% endblock %}
+		{% block p_lead %}
+			{% trans with {'%reference%' : prestation.reference} from "email" %}prestation.litige.client.toclient.p_lead %reference%
+			{% endtrans %}
+		{% endblock %}
+		{% block p1 %}
+			{% trans from "email" %}prestation.litige.client.toclient.p1
+			{% endtrans %}
+		{% endblock %}
+		{% block p2 %}
+			{% trans from "email" %}prestation.litige.client.toclient.p2
+			{% endtrans %}
+			<br>
+			"<br>{{ comments|nl2br }}<br>"			
+		{% endblock %}
+		{% block panel %}
+			{% trans from "email" %}prestation.litige.client.toclient.panel
+			{% endtrans %}
+		{% endblock %}
+		{% block link %}{{ base_url}}/service/{{ prestation.id }}{% endblock %}
+		{% block text %}
+			{% trans from "email" %}prestation.litige.client.toclient.text
+			{% endtrans %}
+		{% endblock %}
+
+		{% block mail %}
+			{% trans from "email" %}generic.mail.client
+			{% endtrans %}
+		{% endblock %}
+	{% endembed %}

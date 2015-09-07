@@ -13,5 +13,18 @@
 {% elseif 7 == id %}
     <span class="label label-primary">{% trans from "services" %}community.service.list.td.status.delivered{% endtrans %}</span>
 {% elseif 8 == id %}
-    <span class="label label-primary">{% trans from "services" %}community.service.list.td.status.closed{% endtrans %}</span>
+    <span class="label label-primary">{% trans from "services" %}community.service.list.td.status.closed{% endtrans %}
+    </span>
+{% elseif 9 == id %}
+    <span class="label label-danger">{% trans from "services" %}community.service.list.td.status.photographercancel{% endtrans %}
+    </span>
+{% elseif 10 == id %}
+    <span class="label label-danger">{% trans from "services" %}community.service.list.td.status.clientcancel{% endtrans %}
+    </span>
+{% elseif 11 == id %}
+    <span class="label label-warning">{% trans from "services" %}community.service.list.td.status.clientlitige{% endtrans %}
+    </span>
+{% elseif 12 == id %}
+    <span class="label label-warning">{% trans from "services" %}community.service.list.td.status.photographerlitige{% endtrans %}
+    </span>
 {% endif %}

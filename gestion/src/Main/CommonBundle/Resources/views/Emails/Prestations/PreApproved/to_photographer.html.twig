@@ -1,0 +1,32 @@
+{% embed "MainCommonBundle:Emails:email.html.twig" %}
+		{% block h1 %}{{ prestation.devis.company.photographer.username }},{% endblock %}
+		{% block p_lead %}
+			{% trans with {'%reference%' : prestation.reference} from "email" %}prestation.preapproved.photographer.p_lead %reference%
+			{% endtrans %}
+		{% endblock %}
+		{% block p1 %}
+			{% trans with {'%date%': prestation.updatedAt|date('d/m/Y'), 
+			'%heure%': prestation.updatedAt|date('H:i')} from "email" %}prestation.preapproved.photographer.p1 %date% %heure%
+			{% endtrans %}
+		{% endblock %}
+		{% block p2 %}
+			{% trans from "email" %}prestation.preapproved.photographer.p2
+			{% endtrans %}
+		{% endblock %}
+		{% block panel %}
+			{% trans from "email" %}prestation.preapproved.photographer.panel
+			{% endtrans %}
+		{% endblock %}
+		{% block link %}{{ base_url}}/service/{{ prestation.id }}{% endblock %}
+		{% block text %}
+			{% trans from "email" %}prestation.preapproved.photographer.text
+			{% endtrans %}
+		{% endblock %}
+
+		{% block mail %}
+			{% trans from "email" %}generic.mail.photographer
+			{% endtrans %}
+		{% endblock %}
+
+
+	{% endembed %}

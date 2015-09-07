@@ -17,17 +17,48 @@
 	{% elseif 5 == message.model %}
 		{% trans from "prestations" %}
 			prestation.show.timeline.status.confirmed
+		{% endtrans %}
+	{% elseif 6 == message.model %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.passed
+		{% endtrans %}
+	{% elseif 7 == message.model %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.delivered
+		{% endtrans %}
+	{% elseif 8 == message.model %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.closed
 		{% endtrans %} 
+	{% elseif 9 == message.model %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.cancelphotographer
+		{% endtrans %} 
+	{% elseif 10 == message.model %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.cancelclient
+		{% endtrans %}
 	{% elseif 11 == message.model %}
-		{% trans with {'%data%' : message.content} from "prestations" %}
-			prestation.show.timeline.edit.date %data%
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.litigeclient
 		{% endtrans %}
 	{% elseif 12 == message.model %}
-		{% trans with {'%data%' : message.content} from "prestations" %}
+		{% trans from "prestations" %}
+			prestation.show.timeline.status.litigephotographer
+		{% endtrans %} 
+	{% elseif 21 == message.model %}
+		{% trans with {'%data%' : message.content} 
+		from "prestations" %}
+			prestation.show.timeline.edit.date %data%
+		{% endtrans %}
+	{% elseif 22 == message.model %}
+		{% trans with {'%data%' : message.content} 
+		from "prestations" %}
 			prestation.show.timeline.edit.price %data%
 		{% endtrans %} 
-	{% elseif 13 == message.model %}
-		{% trans with {'%data%' : message.content} from "prestations" %}
+	{% elseif 23 == message.model %}
+		{% trans with {'%data%' : message.content} 
+		from "prestations" %}
 			prestation.show.timeline.edit.duration %data%
 		{% endtrans %} 
 	{% endif %}

@@ -95,6 +95,7 @@ class UsersController extends Controller
 		if(in_array('ROLE_ADMIN', $roles)) {
 			return $this->render('MainGestionBundle:Users\Administrators\show:index.html.twig', array(
 				'user' 	=> $user,
+				'company'	=> null
 				));
 		}
 		elseif(in_array('ROLE_PARTICULIER', $roles)) {
@@ -103,7 +104,8 @@ class UsersController extends Controller
 			$services = $servicePrestations->listAllClientServices($id);
 			return $this->render('MainGestionBundle:Users\Individuals\show:index.html.twig', array(
 				'user' 		=> $user,
-				'services'	=> $services
+				'services'	=> $services,
+				'company'	=> null
 				));
 		}
 		elseif(in_array('ROLE_PHOTOGRAPHER_VERIFIED', $roles) || in_array('ROLE_PHOTOGRAPHER', $roles)) {

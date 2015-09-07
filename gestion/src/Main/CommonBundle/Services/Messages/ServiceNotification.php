@@ -21,6 +21,11 @@ class ServiceNotification
 	const OLD_PRESTATION		= 6;
 	const PHOTOS_DELIVERED		= 7;
 	const CLOSED_PRESTATION		= 8;
+	const CANCELED_PHOTOGRAPHER	= 9;
+	const CANCELED_CLIENT		= 10;
+	const LITIGE_CLIENT			= 11;
+	const LITIGE_PHOTOGRAPHER	= 12;
+
 	/**
 	 *
 	 * @var EntityManager
@@ -120,6 +125,22 @@ class ServiceNotification
                 $to = $photographer;
                 $subject = self::CLOSED_PRESTATION;
                 break;
+            case 9:
+                $to = $client;
+                $subject = self::CANCELED_PHOTOGRAPHER;
+                break;
+            case 10:
+                $to = $photographer;
+                $subject = self::CANCELED_CLIENT;
+                break;
+            case 11:
+                $to = $photographer;
+                $subject = self::LITIGE_CLIENT;
+                break;
+            case 12:
+                $to = $client;
+                $subject = self::LITIGE_PHOTOGRAPHER;
+                break;
             
 
         }
@@ -133,8 +154,8 @@ class ServiceNotification
         	$this->em->flush();
         }catch(\Exception $e)
         {
-        	var_dump($e->getMessage());
-        	die;
+        	$this->session->errorFlashMessage();
+			$this->logger->error($e->getMessage());
         }
 	}
 	

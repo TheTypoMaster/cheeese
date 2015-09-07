@@ -109,3 +109,8 @@ services:
         arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: form.type, alias: form_prestation }
+    form_prestation_cancel:
+        class: "Main\CommonBundle\Form\Services\FormPrestationCancelType"
+        arguments: [@security.context, @security.password_encoder]
+        tags:
+            - { name: form.type, alias: form_prestation_cancel }

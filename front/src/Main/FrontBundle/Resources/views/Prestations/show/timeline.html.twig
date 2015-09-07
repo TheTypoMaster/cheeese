@@ -5,7 +5,7 @@
 				{% if message.sender.username == app.user.username %}
 	        	<dd class="pos-right clearfix">
 				<div class="circ"></div>
-				<div class="time">{{ message.createdAt | date('d/m/y h:m')}}</div>
+				<div class="time">{{ message.createdAt | date('d/m/y H:m')}}</div>
 				<div class="events">
 					<div class="pull-left">
 						<img class="events-object img-rounded" 
@@ -21,7 +21,7 @@
 				{% else %}
 					<dd class="pos-left clearfix">
 						  <div class="circ"></div>
-						  <div class="time">{{ message.createdAt | date('d/m/y h:m')}}</div>
+						  <div class="time">{{ message.createdAt | date('d/m/y H:m')}}</div>
 						  <div class="events">
 							  <div class="pull-left">
 								  <img class="events-object img-rounded" 

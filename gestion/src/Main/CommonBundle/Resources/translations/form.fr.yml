@@ -112,3 +112,8 @@ form:
             price: Prix
             date: Date
             time: Heure de début
+        cancel:
+            field:
+                old: Votre mot de passe
+                placeholder:
+                    comments: Merci d'expliquer en au moins 140 caractéres pourquoi vous annuler cette prestation.

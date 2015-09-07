@@ -48,70 +48,165 @@ community:
             panel: panel
             text: text
 prestation:
-    accepted:
-        subject: Félicitations ! Vous avez une nouvelle réservation
-        p_lead %reference%: Nous sommes ravis de vous annoncer que la prestation %reference% a été payée par le client
-        p1: Pour rappel, vous êtes tenus de respecter ce qui est décrit dans la prestation réservée, et ce qui a été convenu à travers votre conversation sur notre messagerie.
-        p2: Nous vous transfèrerons le montant de la réservation effectuée sur votre compte, déduction faite des frais de services, une fois que le client aura confirmé avoir bien reçu le livrable convenu. S’il ne confirme pas, et si nous n’avons pas reçu de plaintes de la part du client, nous effectuerons le virement 30 jours après la date de la prestation.
-        reminder:
-            title: Voici le détail de la réservation
-            client: Client
-            address: Adresse de l'événement
-            telephone: Téléphone
-            date: Date
-            time: Heure de début
-            devis: Devis
-            category: Catégorie du devis
-            duration: Durée de la prestation
-            price: Prix
-            town: Ville
-        panel: Pour plus d'informations sur cette prestation
-        text: cliquez ici
-    canceled:
-        subject: Votre réservation a été annulée 
-        p_lead %reference%: Malheureusement, la réservation en cours %reference% a été annulée par le client. Le client n’ayant pas confirmé la réservation, aucun virement sur votre compte ne sera effectué.
-        p1: Nous sommes désolés qu'une opportunité comme celle-ci ne se soit pas concrétisée.
-        panel: En mettant à jour régulièrement vos offres, vous maintenez vos chances de toujours apparaître dans les résultats de recherche des clients.
-        text: Accédez à votre espace
     created:
-        subject: Félicitations ! Vous avez reçu une nouvelle demande
-        p_lead %reference%: Nous sommes ravis de vous annoncer que vous avez reçu une nouvelle demande de prestation %reference%
-        p1: Vous pouvez dès à présent pré-approuver cette demande, la refuser ou discuter via la messagerie si vous avez besoin de plus d’informations pour prendre votre décision. 
-        p2: Attention, en pré-approuvant cette demande, vous acceptez nos conditions d’annulation.
-        panel: Nous vous conseillons de répondre à cette demande dès que possible, afin de maximiser vos chances de réservation.
-        text: Cliquez ici pour consulter cette demande
-    pre_accepted:
-        subject: Félicitations ! Votre demande a été pré-acceptée
-        p_lead %reference% %photographer%: Nous sommes ravis de vous annoncer que votre demande %reference% a été pré-acceptée par %photographer% 
-        p1: Vous pouvez dès à présent confirmer votre réservation, l’annuler ou discuter via la messagerie si vous avez besoin de plus d’informations pour prendre votre décision.
-        p2: Attention, en confirmant votre réservation, vous serez prélevé du montant de la prestation et vous acceptez nos conditions d’annulation. Rassurez-vous, nous ne payons le photographe que lorsque nous avons eu votre confirmation que la prestation s’est déroulée comme prévue, et que vous avez reçu vos photos.
-        panel: Nous vous conseillons de répondre dès que possible, afin de maximiser vos chances de réservation. Vous pouvez consulter cette demande en vous rendant sur votre 
-        text: espace
+        photographer:
+            subject: Félicitations ! Vous avez reçu une nouvelle demande
+            p_lead %reference%: Nous sommes ravis de vous annoncer que vous avez reçu une nouvelle demande de prestation %reference%
+            p1: Vous pouvez dès à présent pré-approuver cette demande, la refuser ou discuter via la messagerie si vous avez besoin de plus d’informations pour prendre votre décision. 
+            p2: Attention, en pré-approuvant cette demande, vous acceptez nos conditions d’annulation.
+            panel: Nous vous conseillons de répondre à cette demande dès que possible, afin de maximiser vos chances de réservation.
+            text: Cliquez ici pour consulter cette demande
+        client:
+            subject: Votre demande a bien été envoyée
+            p_lead %reference%: Votre demande de prestation %reference% a bien été envoyée au photographe
+            p1: p1 à venir
+            p2: p2 à venir
+            panel: panel à venir
+            text: Cliquez ici pour voir votre demande
+    preapproved:
+        client:
+            subject: Félicitations ! Votre demande a été pré-acceptée
+            p_lead %reference% %photographer%: Nous sommes ravis de vous annoncer que votre demande %reference% a été pré-acceptée par %photographer% 
+            p1: Vous pouvez dès à présent confirmer votre réservation, l’annuler ou discuter via la messagerie si vous avez besoin de plus d’informations pour prendre votre décision.
+            p2: Attention, en confirmant votre réservation, vous serez prélevé du montant de la prestation et vous acceptez nos conditions d’annulation. Rassurez-vous, nous ne payons le photographe que lorsque nous avons eu votre confirmation que la prestation s’est déroulée comme prévue, et que vous avez reçu vos photos.
+            panel: Nous vous conseillons de répondre dès que possible, afin de maximiser vos chances de réservation. Vous pouvez consulter cette demande en vous rendant sur votre 
+            text: espace
+        photographer:
+            subject: Vous avez pré-accepté une demande
+            p_lead %reference%: La prestation %reference% a bien été pré-acceptée
+            p1 %date% %heure%: Vous avez pré-accepté la demande le %date% à %heure%
+            p2: p2 à venir
+            panel: panel à venir
+            text: Cliquez ici pour voir cette demande
     refused:
-        subject: Votre demande a été refusée par le photographe
-        p_lead %reference%: Malheureusement, votre demande de réservation %reference% a été refusée par le photographe. Rassurez-vous, vous n’avez pas été débité.
-        p1: Heureusement, il y a d’autres photographes sur Cheeese ! Nous vous invitons à continuer vos recherches sur notre site et nous espérons que vous trouverez rapidement un photographe pour votre évènement.
-        panel: Renouvelez votre recherche en 
-        text: cliquant ici
-    paymentconfirmed:
-        subject: Félicitations ! Votre réservation est confirmée
-        p_lead %reference%: Nous vous confirmons la prestation %reference% que vous venez de payer.
-        p1: Pour rappel, vous êtes tenus de respecter ce qui est décrit dans la prestation que vous avez réservé, et ce qui a été convenu à travers votre conversation sur notre messagerie.
-        p2: Le montant de la prestation, incluant les frais de services, a été débité de votre compte. Rassurez-vous, nous ne verserons l’argent au photographe qu’après avoir reçu votre confirmation que vous avez bien reçu le livrable convenu. Nous vous recontacterons après la date de votre prestation pour vous expliquer comment faire.
-        reminder:
-            title: Voici le détail de la réservation
-            photographer: Photographe
-            address: Adresse de l'événement
-            telephone: Téléphone
-            date: Date
-            time: Heure de début
-            devis: Devis
-            category: Catégorie du devis
-            duration: Durée de la prestation
-            price: Prix
-            town: Ville
-        panel: Pour plus d'informations sur cette prestation
-        text: cliquez ici
+        client:
+            subject: Votre demande a été refusée par le photographe
+            p_lead %reference%: Malheureusement, votre demande de réservation %reference% a été refusée par le photographe. Rassurez-vous, vous n’avez pas été débité.
+            p1: Heureusement, il y a d’autres photographes sur Cheeese ! Nous vous invitons à continuer vos recherches sur notre site et nous espérons que vous trouverez rapidement un photographe pour votre évènement.
+            panel: Renouvelez votre recherche en 
+            text: cliquant ici
+        photographer:
+            subject: Vous avez bien refusé une demande
+            p_lead %reference%: Vous avez refusé la demande %reference%
+            p1 %date% %heure%: Vous avez refusé cette demande le %date% à %heure%
+            p2: p2 à venir
+            panel: panel à venir
+            text: Votre espace    
+    abandonned:
+        client:
+            subject: Votre demande a bien été abandonée
+            p_lead %reference%: La demande %reference% a bien été abandonnée
+            p1 %date% %heure%: Vous avez abandonné cette demande le %date% à %heure%
+            p2: p2 à venir
+            panel: panel à venir
+            text: Accédez à votre espace
+        photographer:
+            subject: Votre demande a été abandonée 
+            p_lead %reference%: Malheureusement, la réservation en cours %reference% a été abandonnée par le client. Le client n’ayant pas confirmé la réservation, aucun virement sur votre compte ne sera effectué.
+            p1: Nous sommes désolés qu'une opportunité comme celle-ci ne se soit pas concrétisée.
+            panel: En mettant à jour régulièrement vos offres, vous maintenez vos chances de toujours apparaître dans les résultats de recherche des clients.
+            text: Accédez à votre espace
+    confirmed:
+        photographer:
+            subject: Félicitations ! Vous avez une nouvelle réservation
+            p_lead %reference%: Nous sommes ravis de vous annoncer que la prestation %reference% a été payée par le client
+            p1: Pour rappel, vous êtes tenus de respecter ce qui est décrit dans la prestation réservée, et ce qui a été convenu à travers votre conversation sur notre messagerie.
+            p2: Nous vous transfèrerons le montant de la réservation effectuée sur votre compte, déduction faite des frais de services, une fois que le client aura confirmé avoir bien reçu le livrable convenu. S’il ne confirme pas, et si nous n’avons pas reçu de plaintes de la part du client, nous effectuerons le virement 30 jours après la date de la prestation.
+            reminder:
+                title: Voici le détail de la réservation
+                client: Client
+                address: Adresse de l'événement
+                telephone: Téléphone
+                date: Date
+                time: Heure de début
+                devis: Devis
+                category: Catégorie du devis
+                duration: Durée de la prestation
+                price: Prix
+                town: Ville
+            panel: Pour plus d'informations sur cette prestation
+            text: cliquez ici
+        client:
+            subject: Félicitations ! Votre réservation est confirmée
+            p_lead %reference%: Nous vous confirmons la prestation %reference% que vous venez de payer.
+            p1: Pour rappel, vous êtes tenus de respecter ce qui est décrit dans la prestation que vous avez réservé, et ce qui a été convenu à travers votre conversation sur notre messagerie.
+            p2: Le montant de la prestation, incluant les frais de services, a été débité de votre compte. Rassurez-vous, nous ne verserons l’argent au photographe qu’après avoir reçu votre confirmation que vous avez bien reçu le livrable convenu. Nous vous recontacterons après la date de votre prestation pour vous expliquer comment faire.
+            reminder:
+                title: Voici le détail de la réservation
+                photographer: Photographe
+                address: Adresse de l'événement
+                telephone: Téléphone
+                date: Date
+                time: Heure de début
+                devis: Devis
+                category: Catégorie du devis
+                duration: Durée de la prestation
+                price: Prix
+                town: Ville
+            panel: Pour plus d'informations sur cette prestation
+            text: cliquez ici
+    cancel:
+        photographer:
+            tophotographer:
+                subject: Votre prestation a bien été annulée
+                p_lead %reference%: Nous vous confirmons l'annulation de la prestation %reference%
+                p1: Texte P1
+                p2: Text P2
+                panel: Pour voir cette prestation
+                text: cliquez ici
+            toclient:
+                subject: Votre prestation a été annulée par le photographe
+                p_lead %reference%: Votre prestation %reference% a malheureusement été annulée par le photographe
+                p1: Texte P1
+                p2: Text P2
+                panel: Pour voir cette prestation
+                text: cliquez ici
+        client:
+            tophotographer:
+                subject: Votre prestation a été annulée par le client
+                p_lead %reference%: Votre prestation %reference% a malheureusement été annulée par le client
+                p1: Texte P1
+                p2: Text P2
+                panel: Pour voir cette prestation
+                text: cliquez ici
+            toclient:
+                subject: Votre prestation a bien été annulée
+                p_lead %reference%: Nous vous confirmons l'annulation de la prestation %reference%
+                p1: Texte P1
+                p2: Text P2
+                panel: Pour voir cette prestation
+                text: cliquez ici
+    litige:
+        photographer:
+            tophotographer:
+                subject: Votre litige a bien été pris en compte
+                p_lead %reference%: Votre litige concernant la prestation %reference% a bien été déclaré au client
+                p1: Texte P1
+                p2: Text P2
+                panel: Pour voir cette prestation
+                text: cliquez ici
+            toclient:
+                subject: Un litige a été déclaré par le photographe
+                p_lead %reference%: Un litige concernant la prestation %reference% a été déclaré par le photographe
+                p1: Texte P1
+                p2: Text P2
+                panel: Pour voir cette prestation
+                text: cliquez ici
+        client:
+            tophotographer:
+                subject: Un litige a été déclaré par le client
+                p_lead %reference%: Un litige concernant la prestation %reference% a été déclaré par le client
+                p1: Texte P1
+                p2: Text P2
+                panel: Pour voir cette prestation
+                text: cliquez ici
+            toclient:
+                subject: Votre litige a bien été déclaré
+                p_lead %reference%: Votre litige concernant la prestation %reference% a bien été déclaré au photographe
+                p1: Texte P1
+                p2: Text P2
+                panel: Pour voir cette prestation
+                text: cliquez ici
 
     message:
         subject: Vous avez reçu un nouveau message

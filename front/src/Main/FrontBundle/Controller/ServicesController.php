@@ -93,7 +93,7 @@ class ServicesController extends Controller
 	 * [cancelService description]
 	 * @param  [type] $id [description]
 	 * @return [type]     [description]
-	 * @Route("/service/{id}/cancel", name="cancel_service")
+	 * @Route("/service/{id}/abandon", name="abandon_service")
 	 */
 	public function cancelServiceAction($id)
 	{
@@ -125,6 +125,46 @@ class ServicesController extends Controller
 			$prestationService->confirmPrestation($service);
 			return $this->redirect($this->generateUrl('show_service', array('id' => $id)));
 		}
+	}
+
+	/**
+	 * [cancelAction description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 * @Route("/service/{id}/cancel", requirements={"id" = "\d+"}, name="service_cancel")
+	 */
+	public function cancelAction($id) {
+		$prestationService = $this->get('service_prestation');
+		$service = $prestationService->getPrestationAsClient($id);
+		if (!$service) {
+			throw $this->createNotFoundException('The service does not exist');
+		}
+		elseif (!$prestationService->isConfirmed($service)) {
+			return $this->redirect($this->generateUrl('show_service', array('id' => $id)));
+		}
+		else {
+			$form = $this->createForm('form_prestation_cancel', null, array());
+			$request = $this->get('request');
+			$form->handleRequest($request);
+			if($request->isMethod('POST'))
+			{
+				$params = $request->request->get('form_prestation_cancel');
+				if ($form->isValid())
+				{
+					$edit = $prestationService->setPrestationCanceled($service, $params['comments'], 2);
+					if($edit) 
+						{
+						return $this->redirect($this->generateUrl('show_service', array('id' => $id)));
+						}
+				}
+					
+			}
+		}
+		return $this->render('MainFrontBundle:Prestations:cancel.html.twig', array(
+				'prestation' => $service,
+				'form'		 => $form->createView()	
+			));
+
 	}
 
 	/**

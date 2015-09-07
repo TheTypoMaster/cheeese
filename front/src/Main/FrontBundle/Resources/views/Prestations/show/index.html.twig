@@ -4,7 +4,11 @@
 	<h3 class="text-center">{% trans with {"%reference%" : prestation.reference} from "prestations" %}prestation.show.h3 %reference%{% endtrans %}</h3>
 	{#----------------------------------------------  DETAILS ---------------------------------------------------------- #}
 	{% include "MainFrontBundle:Prestations\\show:details.html.twig" %}
-		
+	{% if prestation.status.id == 5 %}
+	<a href="{{ path('service_cancel', {'id' : prestation.id})}}">
+		{% trans from "prestations" %}prestation.show.btn.canceled{% endtrans %}
+	</a>
+	{% endif %}	
 		{#----------------------------------------------  NOTATION IF EXISTS ---------------------------------------------------------- #} 	
 	<div class="col-md-12 text-center">
     	<a class="btn btn-link"  href="{{ path('user_services') }}">{% trans from "prestations" %}prestation.show.btn.back{% endtrans %}</a>

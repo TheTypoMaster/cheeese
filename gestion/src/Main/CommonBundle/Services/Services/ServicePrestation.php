@@ -26,6 +26,10 @@ class ServicePrestation
 	const OLD_PRESTATION		= 6;
 	const PHOTOS_DELIVERED		= 7;
 	const CLOSED_PRESTATION		= 8;
+	const CANCELED_PHOTOGRAPHER	= 9;
+	const CANCELED_CLIENT		= 10;
+	const LITIGE_CLIENT			= 11;
+	const LITIGE_PHOTOGRAPHER	= 12;
 
 	
 	/**
@@ -234,6 +238,14 @@ class ServicePrestation
 		return $this->updatePrestation($prestation, self::CLOSED_PRESTATION);
 	}
 	/**
+	 * [isConfirmed description]
+	 * @param  Prestation $prestation [description]
+	 * @return boolean                [description]
+	 */
+	public function isConfirmed(Prestation $prestation) {
+		return $prestation->getStatus()->getId() == self::PRESTATION_OK;
+	}
+	/**
 	 * [isClosed description]
 	 * @param  Prestation $prestation [description]
 	 * @return boolean                [description]
@@ -381,6 +393,70 @@ class ServicePrestation
 				$prestation->getStatus()->getId() == self::OLD_PRESTATION;
 
 	}
+	/**
+	 * [setPrestationCanceled description]
+	 * @param Prestation $prestation [description]
+	 * @param [type]     $comments   [description]
+	 * @param [type]     $author     [description]
+	 */
+	public function setPrestationCanceled(Prestation $prestation, $comments, $author) {
+		if ($author == 1) {
+			$status = $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CANCELED_PHOTOGRAPHER);
+			$flashMessage = 'flash.message.prestation.status.index';
+			$sender = $prestation->getDevis()->getCompany()->getPhotographer();
+			$receiver = $prestation->getClient();
+		}elseif($author == 2) {
+			$status = $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CANCELED_CLIENT);
+			$flashMessage = 'flash.message.prestation.status.index';
+			$sender = $prestation->getClient();
+			$receiver = $prestation->getDevis()->getCompany()->getPhotographer();
+		}
+		$prestation->setStatus($status);
+		$prestation->setUpdatedAt(new \DateTime('now'));
+		try{
+			//Envoi du mail
+			$this->CreateMessage($prestation, $sender, $receiver, 1, $comments);
+			$this->em->flush();
+			$this->notification->createPrestationNotification($prestation);
+			$this->mailer->prestationUpdateEmail($prestation, $comments);
+			$this->session->successFlashMessage($flashMessage);
+			return true;
+		}catch(\Exception $e){
+			$this->session->errorFlashMessage();
+			$this->logger->error($e->getMessage());
+			return false;
+		}
+	}
+
+	/**
+	 * [setPrestationLitige description]
+	 * @param Prestation $prestation [description]
+	 * @param [type]     $comments   [description]
+	 * @param [type]     $author     [description]
+	 */
+	public function setPrestationLitige(Prestation $prestation, $author, $comments = null) {
+		if ($author == 1) {
+			$status = $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::LITIGE_PHOTOGRAPHER);
+			$flashMessage = 'flash.message.prestation.status.index';
+		}elseif($author == 2) {
+			$status = $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::LITIGE_CLIENT);
+			$flashMessage = 'flash.message.prestation.status.index';
+		}
+		$prestation->setStatus($status);
+		$prestation->setUpdatedAt(new \DateTime('now'));
+		try{
+			//Envoi du mail
+			$this->em->flush();
+			$this->notification->createPrestationNotification($prestation);
+			$this->mailer->prestationUpdateEmail($prestation, $comments);
+			$this->session->successFlashMessage($flashMessage);
+			return true;
+		}catch(\Exception $e){
+			$this->session->errorFlashMessage();
+			$this->logger->error($e->getMessage());
+			return false;
+		}
+	}
 
 
 	/**
@@ -424,7 +500,7 @@ class ServicePrestation
 		$prestation->setCommission($commission);
 		try{
 			$this->em->persist($prestation);
-			$this->CreateFirstPrestationMessage($prestation, $client, $devis->getCompany()->getPhotographer(), 1, $message);
+			$this->CreateMessage($prestation, $client, $devis->getCompany()->getPhotographer(), 1, $message);
 			$this->em->flush();
 			$this->mailer->prestationUpdateEmail($prestation);
 			$this->notification->createPrestationNotification($prestation);
@@ -439,7 +515,7 @@ class ServicePrestation
 		/**
 	 * Initialisation du 1er Message concernant la prestation
 	 */
-	protected function CreateFirstPrestationMessage(Prestation $prestation, User $sender, User $receiver, $type, $content)
+	protected function CreateMessage(Prestation $prestation, User $sender, User $receiver, $type, $content)
 	{
 		$message = new Message();
 		$message->setType($type);
@@ -449,10 +525,9 @@ class ServicePrestation
 		$message->setContent($content);
 		try{
 			$this->em->persist($message);
-			return true;
+			$this->em->flush();
 		}catch(\Exception $e){
 			$this->logger->error($e->getMessage());
-			return false;
 		}
 		
 	}
@@ -484,7 +559,6 @@ class ServicePrestation
 			$this->session->successFlashMessage($flashMessage);	
 			return true;
 		}catch(\Exception $e){
-			var_dump($e->getMessage());die;
 			$this->session->errorFlashMessage();
 			$this->logger->error($e->getMessage());
 			return false;
@@ -547,7 +621,12 @@ class ServicePrestation
 				}
 				break;
 			case 8:
-				if ($prestation->getStatus()->getId() == self::PHOTOS_DELIVERED)
+				if ($prestation->getStatus()->getId() == self::PHOTOS_DELIVERED || 
+					$prestation->getStatus()->getId() == self::LITIGE_PHOTOGRAPHER ||
+					$prestation->getStatus()->getId() == self::LITIGE_CLIENT 	||
+					$prestation->getStatus()->getId() == self::CANCELED_CLIENT ||
+					$prestation->getStatus()->getId() == self::CANCELED_PHOTOGRAPHER
+				)
 				{
 					$status 	= $this->em->getRepository('MainCommonBundle:Status\PrestationStatus')->findOneById(self::CLOSED_PRESTATION);
 					$flashMessage = 'flash.message.prestation.status.index';

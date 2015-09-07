@@ -40,11 +40,13 @@ menu:
             from %user%:  de %user% concernant la prestation
         notification:
             created: Vous avez une nouvelle demande
-            canceled: Une demande a été annulée
+            canceled: Une demande a été abandonnée
             confirmed: Une demande a été confirmée
             old: Vous pouvez noter votre prestation
             delivered: Votre prestation a été évaluée
             closed: Votre prestation a été cloturée
+            cancelclient: Une prestation a été annulée
+            litigeclient: Un litige a été créé
     footer:
         help: Aide et contact
         copyrights: Tous droits réservés

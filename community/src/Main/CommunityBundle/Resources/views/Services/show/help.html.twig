@@ -11,8 +11,7 @@
 	<p>
 		
 	</p>  
-	<p>
-		
+	<p>		
 		{% trans from "services" %}
 		community.service.show.help.created.p3.first
 		{% endtrans %}
@@ -105,7 +104,7 @@
 		{% trans from "services" %}
 		community.service.show.help.confirmed.p4.text
 		{% endtrans %}
-		<a href="#">{% trans from "services" %}
+		<a href="{{ path('service_cancel', {'id' : prestation.id}) }}">{% trans from "services" %}
 		community.service.show.help.confirmed.p4.link
 		{% endtrans %}</a>
 	</p>
@@ -164,5 +163,37 @@
 		community.service.show.help.closed.p1 %date% %heure%
 		{% endtrans %}
 	</p>                           
+</div>
+{% elseif prestation.status.id == 9 %}
+<div class="callout callout-danger"> 
+	<p>
+		{% trans with {'%date%': prestation.updatedAt|date('d/m/Y'), '%heure%': prestation.updatedAt|date('H:i')} from "services" %}
+		community.service.show.help.photographercancel.p1 %date% %heure%
+		{% endtrans %}
+	</p>                           
+</div>
+{% elseif prestation.status.id == 10 %}
+<div class="callout callout-danger"> 
+	<p>
+		{% trans with {'%date%': prestation.updatedAt|date('d/m/Y'), '%heure%': prestation.updatedAt|date('H:i')} from "services" %}
+		community.service.show.help.clientcancel.p1 %date% %heure%
+		{% endtrans %}
+	</p> 
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.clientcancel.p2.first
+		{% endtrans %}
+		<a href="#">{% trans from "services" %}
+		community.service.show.help.clientcancel.p2.link
+		{% endtrans %}</a>
+		{% trans from "services" %}
+		community.service.show.help.clientcancel.p2.second
+		{% endtrans %}
+	</p>
+	<p>
+		{% trans from "services" %}
+		community.service.show.help.contact
+		{% endtrans %}
+	</p>                          
 </div>
 {% endif %}

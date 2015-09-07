@@ -21,8 +21,8 @@ community:
                     status: Refusée
                     message: Vous avez refusé la prestation
                 li4:
-                    status: Annulée
-                    message: Le client a annulé sa demande
+                    status: Abandonnée
+                    message: Le client a abandonné sa demande
                 li5:
                     status: Confirmée 
                     message: La prestation est réservée
@@ -49,11 +49,15 @@ community:
                     processing: En cours
                     photographer_ok: Pré-approuvée
                     photographer_ko: Refusée
-                    client_ko: Annulée
+                    client_ko: Abandonnée
                     success: Confirmée
-                    old: Traitée
+                    passed: Traitée
                     delivered: Livrée
                     closed: Cloturée
+                    photographercancel: Annulée par photographe
+                    clientcancel: Annulée par client
+                    clientlitige: Litige via client
+                    photographerlitige: Litige via photographe
             btn:
                 details: Détails
         notation:
@@ -136,8 +140,17 @@ community:
                         created: Prestation créée
                         preapproved: Prestation pré-approuvée
                         refused: Prestation refusée
-                        canceled: Prestation annulée
+                        canceled: Prestation abandonnée
                         confirmed: Prestation confirmée
+                        closed: Prestation clotûrée
+                        passed: Prestation traitée
+                        delivered: Les photos ont étés livrées
+                        cancel:
+                            client: Prestation annulée par le client
+                            photographer: Prestation annulée par le photographe
+                        litige:
+                            client: Un litige a été déclaré par le client
+                            photographer: Un litige a été déclaré par le photographer
                     edit:
                         price %data%: Nouveau prix %data%
                         date %data%: Nouvelle date %data%
@@ -147,7 +160,7 @@ community:
                         creation: Prestation créée
                         preapproved: Prestation pré-approuvée
                         refused: Prestation refusée
-                        canceled: Prestation annulée
+                        canceled: Prestation abandonnée
                         confirmed: Prestation validée
             edit:
 
@@ -174,7 +187,7 @@ community:
                 refused:
                     p1 %date% %heure%: Vous avez refusé cette demande le %date% à %heure%. Nous avons prévenu le client de votre refus.
                 canceled:
-                    p1 %client% %date% %heure% : %client% a annulé cette prestation le %date% à %heure%. 
+                    p1 %client% %date% %heure% : %client% a abandonné cette prestation le %date% à %heure%.
                     p2: Le client n’ayant pas confirmé la réservation, aucun virement sur votre compte ne sera effectué. Nous sommes désolés qu'une opportunité comme celle-ci ne se soit pas concrétisée.
                 confirmed:
                     p1: Félicitations ! Vous avez une nouvelle réservation.
@@ -196,6 +209,14 @@ community:
                     p1: Vous avez été évalué par le client et vos évaluations respectives sont désormais disponibles, dans la section « Evaluations ». Par ailleurs, le client a confirmé la bonne réception des photos, nous allons donc procéder à votre virement dans les prochains jours.
                 closed:
                     p1 %date% %heure%: Prestation clôturée le %date% à %heure% 
+                photographercancel:
+                    p1 %date% %heure%: Vous avez annulé cette prestation le %date% à %heure% .Nous avons prévenu le client de votre annulation.
+                clientcancel:
+                    p1 %date% %heure%: Le client a annulé cette prestation le %date% à %heure%.
+                    p2:
+                        first: Dans le cas d’une annulation survenant après une réservation confirmée, nos
+                        link: CGUs et nos conditions d’annulation
+                        second: s’appliquent. Il est donc possible que vous receviez un versement de notre part dans les jours à venir. Nous allons étudier votre situation et nous reviendrons vers vous rapidement pour vous tenir au courant.
                 contact : Vous pouvez nous contacter à tout moment à l’adresse suivante si vous avez des questions : 
         edit:
             h1: Prestation
@@ -209,3 +230,20 @@ community:
             btn:
                 back: Retour
                 submit: Soumettre
+        cancel:
+            title %reference%: Annuler la prestation %reference%
+            h1: Prestation
+            h2: Annuler la prestation
+            breadh1: Prestation
+            breadh2: Annuler la prestation
+            header %reference%: Vous souhaitez annuler la prestation %reference%
+            warning:
+                p1:
+                    first:  Dans le cas d’une annulation, nos
+                    link: CGUs et conditions d’annulation
+                    second: que vous avez acceptées lors de votre inscription s’appliquent. Nous déduirons donc les frais de service de cette réservation sur le montant de votre prochaine réservation.
+                p2: Attention, une fois le formulaire soumit vous ne pourrez plus revenir en arriére.
+            help:
+                title: Le saviez vous?
+                text1: Nous pouvons changer la date de la prestation si vous êtes d'accord avec votre client. Il suffit de le stipuler dans votre discussion et nous contacter par la suite.
+                text2: Avez vous proposez une autre date?

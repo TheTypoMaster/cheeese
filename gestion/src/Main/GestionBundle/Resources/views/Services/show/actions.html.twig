@@ -1,0 +1,94 @@
+{% if 5 == prestation.status.id %}
+	Editer les informations
+	<a class="btn btn-primary"  href="#">{% trans from "services" %}gestion.service.show.btn.edit{% endtrans %}
+    </a>
+{% elseif 6 == prestation.status.id %}
+	<a class="btn btn-danger"  data-toggle="modal" data-target="#litigePhotographerModal">{% trans from "services" %}gestion.service.show.btn.litigephotographer{% endtrans %}
+    </a>
+    <a class="btn btn-danger"  data-toggle="modal" data-target="#litigeClientModal">{% trans from "services" %}gestion.service.show.btn.litigeclient{% endtrans %}
+    </a>
+{% elseif 8 < prestation.status.id  %}
+	<a class="btn btn-primary"  data-toggle="modal" data-target="#closeModal">{% trans from "services" %}gestion.service.show.btn.close{% endtrans %}
+    </a>
+{% endif %}
+<!--  Modal -->
+<div class="modal fade" id="closeModal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-primary" id="titleModal">
+                    {% trans from "services" %}gestion.service.show.confirm.header.close{% endtrans %}
+                	</h4>
+                </div>
+                <div class="modal-body">
+                <strong>{% trans from "services" %}gestion.service.show.confirm.attention{% endtrans %} </strong> {% trans from "services" %}gestion.service.show.confirm.message.close{% endtrans %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {% trans from "services" %}gestion.service.show.confirm.btn.back{% endtrans %}
+                </button>
+                    <a href="{{ path('service_close', { 'id' : prestation.id })}}" role="button" class="btn btn-primary">
+                    {% trans from "services" %}gestion.service.show.confirm.btn.yes{% endtrans %}
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Litige photographe -->
+<div class="modal fade" id="litigePhotographerModal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-danger" id="titleModal">
+                    {% trans from "services" %}gestion.service.show.confirm.header.litigephotographer{% endtrans %}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                <strong>{% trans from "services" %}gestion.service.show.confirm.attention{% endtrans %} </strong> {% trans from "services" %}gestion.service.show.confirm.message.litigephotographer{% endtrans %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {% trans from "services" %}gestion.service.show.confirm.btn.back{% endtrans %}
+                </button>
+                    <a href="{{ path('service_litige', { 'id' : prestation.id, 'type' : 1 })}}" role="button" class="btn btn-danger">
+                    {% trans from "services" %}gestion.service.show.confirm.btn.yes{% endtrans %}
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Litige Client -->
+<div class="modal fade" id="litigeClientModal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-danger" id="titleModal">
+                    {% trans from "services" %}gestion.service.show.confirm.header.litigeclient{% endtrans %}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                <strong>{% trans from "services" %}gestion.service.show.confirm.attention{% endtrans %} </strong> {% trans from "services" %}gestion.service.show.confirm.message.litigeclient{% endtrans %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {% trans from "services" %}gestion.service.show.confirm.btn.back{% endtrans %}
+                </button>
+                    <a href="{{ path('service_litige', { 'id' : prestation.id, 'type' : 2 })}}"}}" role="button" class="btn btn-danger">
+                    {% trans from "services" %}gestion.service.show.confirm.btn.yes{% endtrans %}
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>

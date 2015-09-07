@@ -183,6 +183,46 @@ class ServiceController extends Controller
 			}
 		}
 	}
+
+	/**
+	 * [cancelAction description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 * @Route("/service/{id}/cancel", requirements={"id" = "\d+"}, name="service_cancel")
+	 */
+	public function cancelAction($id) {
+		$prestationService = $this->get('service_prestation');
+		$service = $prestationService->getPrestationAsPhotographer($id);
+		if (!$service) {
+			throw $this->createNotFoundException('The service does not exist');
+		}
+		elseif (!$prestationService->isConfirmed($service)) {
+			return $this->redirect($this->generateUrl('service_show', array('id' => $id)));
+		}
+		else {
+			$form = $this->createForm('form_prestation_cancel', null, array());
+			$request = $this->get('request');
+			$form->handleRequest($request);
+			if($request->isMethod('POST'))
+			{
+				$params = $request->request->get('form_prestation_cancel');
+				if ($form->isValid())
+				{
+					$edit = $prestationService->setPrestationCanceled($service, $params['comments'], 1);
+					if($edit) 
+						{
+						return $this->redirect($this->generateUrl('service_show', array('id' => $id)));
+						}
+				}
+					
+			}
+		}
+		return $this->render('MainCommunityBundle:Services:cancel.html.twig', array(
+				'prestation' => $service,
+				'form'		 => $form->createView()	
+			));
+
+	}
 	
 	/**
 	 * @return Symfony\Component\HttpFoundation\Response

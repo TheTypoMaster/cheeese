@@ -51,6 +51,13 @@ gestion:
                     refused: Prestation refusée
                     canceled: Prestation annulée
                     confirmed: Prestation confirmée
+                    old: Traitée
+                    delivered: Livrée
+                    closed: Cloturée
+                    photographercancel: Annulée par photographe
+                    clientcancel: Annulée par client
+                    clientlitige: Litige via client
+                    photographerlitige: Litige via photographe
                 edit:
                     price %data%: Nouveau prix %data%
                     date %data%: Nouvelle date %data%
@@ -65,6 +72,10 @@ gestion:
                 back: Retour
                 evaluations: Evaluations
                 pay: Payer photographe
+                edit: Modifier
+                close: Clotûrer prestation
+                litigeclient: Litige client
+                litigephotographer: Litige photographe
             price: Prix de la prestation
             commission:
                 customer: Commission client
@@ -72,6 +83,19 @@ gestion:
                 btn:
                     customer: Modifier
                     photographer: Modifier
+            confirm:
+                header:
+                    close: Clotûrer la prestation?
+                    litigeclient: Déclarer un litige client?
+                    litigephotographer: Déclarer un litige photographe ?
+                attention: Attention!
+                message:
+                    close: Etes vous sûr de vouloir clotûrer cette prestation?
+                    litigeclient: Etes vous sûr de vouloir déclarer ce litige client?
+                    litigephotographer: Etes vous sûr de vouloir déclarer ce litige photographe?
+                btn:
+                    yes: Oui
+                    back: Retour
         pay:
             h1: Prestation
             h2: Payer

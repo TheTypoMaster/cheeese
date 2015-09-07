@@ -165,4 +165,53 @@ class ServicesController extends Controller
 			));
 		}
 	}
+
+	/**
+	 *
+	 * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/service/{id}/litige/{type}", requirements={"id" = "\d+"}, name="service_litige")
+	 */
+	public function declareLitigeAction($id, $type) {
+		$prestationService = $this->get('service_prestation');
+		$service = $prestationService->getPrestation($id);
+		if(!$service) {
+			throw $this->createNotFoundException('The service does not exist');
+		}
+		else
+		{
+			$update = $prestationService->setPrestationLitige($service, $type);
+			if ($update) {
+				return $this->redirect($this->generateUrl('service_show', array(
+					'id' => $id
+						))
+				);
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/service/{id}/close", requirements={"id" = "\d+"}, name="service_close")
+	 */
+	public function closeServiceAction($id)
+	{
+		$prestationService = $this->get('service_prestation');
+		$service = $prestationService->getPrestation($id);
+		if(!$service) {
+			throw $this->createNotFoundException('The service does not exist');
+		}
+		else
+		{
+			$close = $prestationService->closePrestation($service);
+			if ($close) {
+				return $this->redirect($this->generateUrl('service_show', array(
+					'id' => $id
+						))
+				);
+			}
+		}
+	}
+
+
 }

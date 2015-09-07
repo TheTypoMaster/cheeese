@@ -1,0 +1,27 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{% trans with {'%reference%' : prestation.reference} from "prestations" %}prestation.cancel.title %reference%{% endtrans %}{% endblock %}
+{% block content %}
+	<div class="col-md-12 content">
+  		<div class="panel panel-danger">
+			<div class="panel-heading">
+				{% trans with {'%reference%' : prestation.reference} from "prestations" %}prestation.cancel.header %reference%{% endtrans %}
+			</div>
+			<div class="panel-body">
+				 {{ form_start(form) }}
+				   {{ form_widget(form) }}
+			</div>
+			<div class="panel-footer">
+			   <button type="submit" class="btn btn-danger">
+			   	{% trans from "prestations" %}prestation.cancel.btn.submit{% endtrans %}
+			   </button>
+			   <a class="btn btn-link" href="{{ path('show_service', { 'id' : prestation.id })}}">
+			   {% trans from "prestations" %}prestation.cancel.btn.back{% endtrans %}
+			</a>
+			 </div>
+			{{ form_end(form) }}
+			
+		</div>
+  	</div>
+{% endblock %}
+{% block bottom_script %}
+{% endblock bottom_script %}

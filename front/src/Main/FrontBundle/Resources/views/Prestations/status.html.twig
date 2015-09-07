@@ -14,4 +14,12 @@
     <span class="label label-primary">{% trans from "prestations" %}prestation.list.td.status.delivered{% endtrans %}</span>
 {% elseif 8 == id %}
     <span class="label label-primary">{% trans from "prestations" %}prestation.list.td.status.closed{% endtrans %}</span>
+{% elseif 9 == id %}
+    <span class="label label-danger">{% trans from "prestations" %}prestation.list.td.status.cancelphotographer{% endtrans %}</span>
+{% elseif 10 == id %}
+    <span class="label label-danger">{% trans from "prestations" %}prestation.list.td.status.cancelclient{% endtrans %}</span>
+{% elseif 11 == id %}
+    <span class="label label-warning">{% trans from "prestations" %}prestation.list.td.status.litigeclient{% endtrans %}</span>
+{% elseif 12 == id %}
+    <span class="label label-warning">{% trans from "prestations" %}prestation.list.td.status.litigephotographer{% endtrans %}</span>
 {% endif %}
