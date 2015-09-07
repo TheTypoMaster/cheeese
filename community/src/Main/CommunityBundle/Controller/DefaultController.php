@@ -73,7 +73,7 @@ class DefaultController extends Controller
 		
 	}
 
-		/**
+	/**
 	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
      *
      * @return Symfony\Component\HttpFoundation\Response
@@ -83,6 +83,19 @@ class DefaultController extends Controller
 	{		
 		
 		return $this->render('MainCommunityBundle:Default:help.html.twig',  array(
+		));	
+	}
+
+	/**
+	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/cgu", name="cgu")
+	 */
+	public function cguAction(Request $request)
+	{		
+		
+		return $this->render('MainCommunityBundle:Default:cgu.html.twig',  array(
 		));	
 	}
 

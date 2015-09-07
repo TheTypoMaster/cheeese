@@ -62,15 +62,12 @@ class DevisRepository extends EntityRepository
 					'profile'	 => 1,
 					'price'		 => 1
 					));
-			}
-			
-			
-			
+			}			
 			if ($categoryId != null) {
 				$qb->andwhere('d.category = :categoryId')
 					->setParameter('categoryId', $categoryId);
 			}
-			elseif ($townId != null) {
+			if ($townId != null) {
 				$qb->innerJoin('MainCommonBundle:Photographers\Move', 'm', 'WITH', 'd.company = m.company')
 					->andwhere('m.town = :town')
 					->setParameter('town', $townId);

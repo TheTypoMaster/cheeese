@@ -30,7 +30,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-
+    globals:
+        link_community: "%link_community%"
+        link_front: "%link_front%"
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
