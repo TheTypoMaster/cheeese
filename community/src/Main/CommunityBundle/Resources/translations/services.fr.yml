@@ -51,7 +51,7 @@ community:
                     photographer_ko: Refusée
                     client_ko: Abandonnée
                     success: Confirmée
-                    passed: Traitée
+                    old: Traitée
                     delivered: Livrée
                     closed: Cloturée
                     photographercancel: Annulée par photographe

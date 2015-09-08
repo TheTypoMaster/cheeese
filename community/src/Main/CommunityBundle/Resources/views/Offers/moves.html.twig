@@ -6,72 +6,72 @@
 <i class="fa fa-car"></i>{% trans from "offers" %}community.moves.view.breadh1{% endtrans %}{% endblock %}
 {% block breadcrumbH2 %}{% trans from "offers" %}community.moves.view.breadh2{% endtrans %}{% endblock %}
 {% block content %}
-                <!-- Main content -->
-                	{% if radius == 0 %}
-                		<div class="callout callout-warning">
-                            <h4>{% trans from "offers" %}community.moves.view.help.no.h4{% endtrans %}</h4>
-                            <p>{% trans with {'%town%': company.town.name} from "offers" %}community.moves.view.help.no.p1 %town%{% endtrans %}</p>
-                            <p>
-                            	<strong>
-                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
-                            	</strong>
-                            </p>
+    <!-- Main content -->
+	{% if radius == 0 %}
+		<div class="callout callout-warning">
+            <h4>{% trans from "offers" %}community.moves.view.help.no.h4{% endtrans %}</h4>
+            <p>{% trans with {'%town%': company.town.name} from "offers" %}community.moves.view.help.no.p1 %town%{% endtrans %}</p>
+            <p>
+            	<strong>
+            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
+            	</strong>
+            </p>
+        </div>
+	{% elseif radius == 1 %}
+		<div class="callout callout-info">
+            <h4>{% trans from "offers" %}community.moves.view.help.has.h4{% endtrans %}</h4>
+            <p>{% trans with {'%town%': company.town.name} from "offers" %}community.moves.view.help.has.p1 %town%{% endtrans %}</p>
+            <p>
+            	<strong>
+            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
+            	</strong>
+            </p>
+        </div>
+	{% else %}
+		<div class="callout callout-info">
+            <h4>{% trans from "offers" %}community.moves.view.help.has.h4{% endtrans %}</h4>
+            <p>{% trans with {'%town%': company.town.name, '%kms%': radius} from "offers" %}community.moves.view.help.has.p %kms% %town%{% endtrans %}</p>
+            <p>
+            	<strong>
+            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
+            	</strong>
+            </p>
+        </div>
+	{% endif %}
+    <h4 class="page-header">
+        {% trans from "offers" %}community.moves.view.header.big{% endtrans %}
+        <small>{% trans from "offers" %}community.moves.view.header.small{% endtrans %}</small>
+    </h4>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="map-canvas"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                <div class="box-body">	
+                    <div class="form-group {% if not form.radius.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.radius) }}                    
+                        {{ form_widget(form.radius) }}
+                        <div class="text-red">
+                        {{ form_errors(form.radius) }}
                         </div>
-                	{% elseif radius == 1 %}
-                		<div class="callout callout-info">
-                            <h4>{% trans from "offers" %}community.moves.view.help.has.h4{% endtrans %}</h4>
-                            <p>{% trans with {'%town%': company.town.name} from "offers" %}community.moves.view.help.has.p1 %town%{% endtrans %}</p>
-                            <p>
-                            	<strong>
-                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
-                            	</strong>
-                            </p>
-                        </div>
-                	{% else %}
-                		<div class="callout callout-info">
-                            <h4>{% trans from "offers" %}community.moves.view.help.has.h4{% endtrans %}</h4>
-                            <p>{% trans with {'%town%': company.town.name, '%kms%': radius} from "offers" %}community.moves.view.help.has.p %kms% %town%{% endtrans %}</p>
-                            <p>
-                            	<strong>
-                            		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
-                            	</strong>
-                            </p>
-                        </div>
-                	{% endif %}
-                    <h4 class="page-header">
-                        {% trans from "offers" %}community.moves.view.header.big{% endtrans %}
-                        <small>{% trans from "offers" %}community.moves.view.header.small{% endtrans %}</small>
-                    </h4>
-                    
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-body">
-                                	<div id="map-canvas" style="height:400px; margin: 0; padding: 0;position:relative"></div>                               	
-                                    
-                                </div><!-- /.box-body -->
-                                <!-- form start -->
-                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-                                    <div class="box-body">	
-                                    <div class="form-group {% if not form.radius.vars.valid %}has-error{% endif %}">                             
-                                        {{ form_label(form.radius) }}                    
-                                        {{ form_widget(form.radius) }}
-                                        <div class="text-red">
-                                        {{ form_errors(form.radius) }}
-                                        </div>
-                                        <span class="help-block">{% trans from "offers" %}community.moves.view.helpblock{% endtrans %}</span>
-                                        </div>								
-                                        {{ form_rest(form) }}
-                                        
-                                    </div><!-- /.box-body -->
+                        <span class="help-block">{% trans from "offers" %}community.moves.view.helpblock{% endtrans %}</span>
+                        </div>								
+                        {{ form_rest(form) }}
+                        
+                    </div><!-- /.box-body -->
 
-                                    <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary">{% trans from "offers" %}community.moves.view.btn.submit{% endtrans %}</button>
-                                    </div>
-                                {{ form_end(form) }}
-                            </div><!-- /.box -->
-                        </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">{% trans from "offers" %}community.moves.view.btn.submit{% endtrans %}</button>
                     </div>
+                </div>
+                {{ form_end(form) }}
+            </div><!-- /.box -->
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts_inline %}
@@ -80,13 +80,14 @@
 		var cityCircle;
         var latitude = {{ company.town.latitude }};
         var longitude = {{ company.town.longitude }};
-        citymap = { center: new google.maps.LatLng(latitude, longitude) };        
+        citymap = { 
+                center: new google.maps.LatLng(latitude, longitude) };        
         var initrad = {{ radius }}; 
         // Create the map.
           mapOptions = {
             zoom: getZoom(initrad),   
             center: new google.maps.LatLng(latitude, longitude),
-            mapTypeId: google.maps.MapTypeId.TERRAIN,
+            mapTypeId: google.maps.MapTypeId.HYBRID,
             disableDefaultUI: true            
           };
 

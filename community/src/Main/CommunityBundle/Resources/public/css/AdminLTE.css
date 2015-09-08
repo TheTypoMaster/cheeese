@@ -3594,3 +3594,7 @@ fieldset[disabled] .btn-vk.active {
 .tt-suggestion p {
   margin: 0;
 }
+
+#map-canvas {
+  height: 400px;
+}
