@@ -1,50 +1,45 @@
-<div class="box-body table-responsive">
-                                	
-                                    <table id="datatable" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>{% trans %}gestion.users.list.username{% endtrans %}</th>
-										  		<th>{% trans %}gestion.users.list.lastname{% endtrans %}</th>
-										  		<th>{% trans %}gestion.users.list.firstname{% endtrans %}</th>
-										  		<th>{% trans %}gestion.users.list.creationdate{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.lastconnexion{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.prestation{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.note{% endtrans %}</th>
-										  		<th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for entity in users %}
-        									<tr>
-                                                <td> {{ entity.username }} </td>
-                                                <td> {{ entity.lastName }} </td>
-                                                <td> {{ entity.firstName }} </td>
-                                                <td> {{ entity.createdat | date('d-m-Y H:i')}} </td>
-                                                <td> {{ entity.lastlogin | date('d-m-Y H:i')}} </td>
-                                                <td> {{ entity.prestations }} </td>
-                                                <td> {{ entity.note|number_format(2) }} </td>
-                                                <td><form action="{{ path('user_show', {'id' : entity.id }) }}">
-                                                    <button class="btn btn-default btn-sm">
-                                                    {% trans %}gestion.users.list.btn.details{% endtrans %}
-                                                    </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-    									{% endfor %}
-                                            
-                                            
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>{% trans %}gestion.users.list.username{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.lastname{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.firstname{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.creationdate{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.lastconnexion{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.prestation{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.note{% endtrans %}</th>
-                                                <th></th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div><!-- /.box-body -->
+<thead>
+    <tr>
+        <th>{% trans %}gestion.users.list.username{% endtrans %}</th>
+  		<th>{% trans %}gestion.users.list.lastname{% endtrans %}</th>
+  		<th>{% trans %}gestion.users.list.firstname{% endtrans %}</th>
+  		<th>{% trans %}gestion.users.list.creationdate{% endtrans %}</th>
+        <th>{% trans %}gestion.users.list.lastconnexion{% endtrans %}</th>
+        <th>{% trans %}gestion.users.list.prestation{% endtrans %}</th>
+        <th>{% trans %}gestion.users.list.note{% endtrans %}</th>
+  		<th></th>
+    </tr>
+</thead>
+<tbody>
+{% for entity in users %}
+	<tr>
+        <td> {{ entity.username }} </td>
+        <td> {{ entity.lastName }} </td>
+        <td> {{ entity.firstName }} </td>
+        <td> {{ entity.createdat | date('d-m-Y H:i')}} </td>
+        <td> {{ entity.lastlogin | date('d-m-Y H:i')}} </td>
+        <td> {{ entity.prestations }} </td>
+        <td> {{ entity.note|number_format(2) }} </td>
+        <td><form action="{{ path('user_show', {'id' : entity.id }) }}">
+            <button class="btn btn-default btn-sm">
+            {% trans %}gestion.users.list.btn.details{% endtrans %}
+            </button>
+            </form>
+        </td>
+    </tr>
+{% endfor %}
+    
+    
+</tbody>
+<tfoot>
+    <tr>
+        <th>{% trans %}gestion.users.list.username{% endtrans %}</th>
+        <th>{% trans %}gestion.users.list.lastname{% endtrans %}</th>
+        <th>{% trans %}gestion.users.list.firstname{% endtrans %}</th>
+        <th>{% trans %}gestion.users.list.creationdate{% endtrans %}</th>
+        <th>{% trans %}gestion.users.list.lastconnexion{% endtrans %}</th>
+        <th>{% trans %}gestion.users.list.prestation{% endtrans %}</th>
+        <th>{% trans %}gestion.users.list.note{% endtrans %}</th>
+        <th></th>
+    </tr>
+</tfoot>

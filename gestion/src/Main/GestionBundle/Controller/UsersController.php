@@ -26,10 +26,12 @@ class UsersController extends Controller
 		}	
 		elseif($type === 'photographers') {
 			$users = $serviceUser->getUsersByRole('ROLE_PHOTOGRAPHER_VERIFIED');
+			$others = $serviceUser->getUsersByRole('ROLE_PHOTOGRAPHER');
 			$serviceCompany = $this->get('service_company');
 			$verify = $serviceCompany->getCountUnverifiedCompanies();
 			return $this->render('MainGestionBundle:Users\Photographers:index.html.twig', array(
 				'users' 	=> $users,
+				'others'	=> $others,
 				'verify'	=>	$verify
 				));
 		}elseif($type === 'individuals') {
@@ -109,24 +111,28 @@ class UsersController extends Controller
 				));
 		}
 		elseif(in_array('ROLE_PHOTOGRAPHER_VERIFIED', $roles) || in_array('ROLE_PHOTOGRAPHER', $roles)) {
-			$devis 		 = null;
-			$services = null;
-
+			$devis 		= null;
+			$services 	= null;
+			$company 	= null;
+			$verified 	= false;
 			$serviceCompany = $this->get('service_company');
 			$company = $serviceCompany->getCompany($id);
-
-			if ($serviceCompany->isVerifiedCompany($company)) {
-				$serviceDevis  = $this->get('service_devis');
-				$devis = $serviceDevis->getAllByCompany($company->getId());
-				$servicePrestations = $this->get('service_prestation');
-				$services = $servicePrestations->listAllServices($id);
+			if ($company) {
+				if ($serviceCompany->isVerifiedCompany($company)) {
+					$serviceDevis  = $this->get('service_devis');
+					$devis = $serviceDevis->getAllByCompany($company->getId());
+					$servicePrestations = $this->get('service_prestation');
+					$services = $servicePrestations->listAllServices($id);
+					$verified = $serviceCompany->isVerifiedCompany($company);
+				}
 			}
+			
 
 			
 			return $this->render('MainGestionBundle:Users\Photographers\show:index.html.twig', array(
 				'user' 			=> $user,
 				'company'		=> $company,
-				'verified'		=> $serviceCompany->isVerifiedCompany($company),
+				'verified'		=> $verified,
 				'offers'		=> $devis,
 				'services'		=> $services
 				));

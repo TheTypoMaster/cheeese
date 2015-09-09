@@ -47,7 +47,8 @@ gestion:
         photographers:
             index:
                 h1: Photographes
-                h2: Liste des photographes
+                h2: Liste des photographes vérifés
+                h22: Liste des photographes non vérifés
                 breadh1: Photographes
                 breadh2: Liste des photographes
                 btn:
