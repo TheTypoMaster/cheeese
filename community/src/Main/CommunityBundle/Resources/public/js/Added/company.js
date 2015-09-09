@@ -8,12 +8,13 @@
         $(department).change(function(e) {
         	onchange(department, town, town_id);
         });
+
         var department_studio         = $("#form_company_department_studio");
         var town_studio               = $("#form_company_town_studio");
         var town_studio_id            = $("#form_company_town_studio_id");
-        onchange(department_studio, town_studio, town_studio_id);
+        onchangeStudio(department_studio, town_studio, town_studio_id);
         $(department_studio).change(function(e) {
-            onchange(department_studio, town_studio, town_studio_id);
+            onchangeStudio(department_studio, town_studio, town_studio_id);
         });
         
         /**
@@ -33,7 +34,6 @@
             var substringMatcher = function(strs) {
               return function findMatches(q, cb) {
                 var matches, substringRegex;
-
                 matches = [];
                 substrRegex = new RegExp(q, 'i');
                 $.each(strs, function(i, str) {
@@ -41,7 +41,6 @@
                     matches.push(str);
                   }
                 });
-
                 cb(matches);
               };
             };      
@@ -69,11 +68,72 @@
                     },{
                         source: substringMatcher(objects),
                     });
-                    $(input).on('typeahead:selected', function (e, datum) {   
+                    $(input).bind('typeahead:selected', function(obj, datum, name) {      
                         $(id).val(map[datum].value);
-                      });
+                    });
                     $(input).on('typeahead:change', function (event, ui) {  
                         if(map[ui] != undefined){
+                               return;
+                            }
+                        $(input).val('');
+                        $(id).val('');
+                      });
+                }
+            });
+         
+        }
+
+        function onchangeStudio(dept, town, id){
+            $(dept).change(function(e) {
+                $(id).val('');
+                $(town).val('');
+                $(town).typeahead("destroy");
+            });
+            var department = $(dept).val();
+            var country = 1;//$(country).val();
+            var input = town;  
+            var substringMatcher = function(strs) {
+              return function findMatches(q, cb) {
+                var matches, substringRegex;
+                matches = [];
+                substrRegex = new RegExp(q, 'i');
+                $.each(strs, function(i, str) {
+                  if (substrRegex.test(str)) {
+                    matches.push(str);
+                  }
+                });
+                cb(matches);
+              };
+            };      
+            $.ajax({
+                url: base + '/api/department/'+ department + '/' + country + '/towns',
+                type:"get",
+                dataType: 'json',
+                async: true,
+                cache: true,
+                success: function (data) {
+                    var suggestions = [];  
+                    $.each(data, function(i, val){  
+                        suggestions.push({"value": val.id, "label": val.name});  
+                    });
+                    objects = [];
+                    mapStudio = {};
+                    $.each(suggestions, function(i, object) {
+                        mapStudio[object.label] = object;
+                        objects.push(object.label);
+                    });
+                    $(input).typeahead({
+                      hint: true,
+                      highlight: true,
+                      minLength: 1
+                    },{
+                        source: substringMatcher(objects),
+                    });
+                    $(input).bind('typeahead:selected', function(obj, datum, name) {      
+                        $(id).val(mapStudio[datum].value);
+                    });
+                    $(input).on('typeahead:change', function (event, ui) {  
+                        if(mapStudio[ui] != undefined){
                                return;
                             }
                         $(input).val('');
