@@ -1,72 +1,78 @@
 <aside class="left-side sidebar-offcanvas">
                 <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-                    <!-- Sidebar user panel -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="" class="img-circle" alt="User Image" />
-                        </div>
-                        <div class="pull-left info">
-                        	{% if app.user.lastname == null %}
-                            <p>Hello, {{ app.user.username }}</p>
-                            {% else %}
-                            <p>Hello, {{ app.user.firstname }}</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu">
-                        <li>
-                            <a href="{{ path('dashboard') }}">
-                                <i class="fa fa-dashboard"></i> <span>{% trans from "menu" %}menu.left.dashboard{% endtrans %}</span>
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-user"></i> 
-                                <span>{% trans from "menu" %}menu.left.users.title{% endtrans %}</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">                                
-                                <li><a href="{{ path('users', {'type' : 'administrators' } ) }}"><i class="fa fa-university"></i> {% trans from "menu" %}menu.left.users.administrators{% endtrans %}</a></li>
-                                <li><a href="{{ path('users', {'type' : 'photographers' } ) }}"><i class="fa fa-camera-retro"></i> {% trans from "menu" %}menu.left.users.photographers{% endtrans %}</a></li>
-                                <li><a href="{{ path('users', {'type' : 'individuals' } ) }}"><i class="fa fa-child"></i> {% trans from "menu" %}menu.left.users.individuals{% endtrans %}</a></li>                                
-                            </ul>
-                        </li>
-                        
-                        <li>
-                            <a href="{{ path('offers') }}">
-                                <i class="fa fa-copyright"></i> 
-                                <span>{% trans from "menu" %}menu.left.offers{% endtrans %}</span>
-                            </a>
-                            
-                        </li>
-                        
-                        <li>
-                            <a href="{{ path('services') }}">
-                                <i class="fa fa-calendar"></i> 
-                                <span>{% trans from "menu" %}menu.left.services{% endtrans %}</span>
-                            </a>
-                        </li>
-                        {% if is_granted('ROLE_SUPER_ADMIN') %}
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-arrows"></i> 
-                                <span>{% trans from "menu" %}menu.left.options.title{% endtrans %}</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">                                
-                                <li>
-                                    <a href="{{ path('geo') }}">
-                                        <i class="fa fa-globe"></i> 
-                                        <span>{% trans from "menu" %}menu.left.options.geo{% endtrans %}</span>
-                                    </a>
-                                </li>
-                                <li><a href="{{ path('commission') }}"><i class="fa fa-money"></i> {% trans from "menu" %}menu.left.options.commission{% endtrans %}</a></li>                               
-                            </ul>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </section>
-                <!-- /.sidebar -->
-            </aside>
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="" class="img-circle" alt="User Image" />
+            </div>
+            <div class="pull-left info">
+            	{% if app.user.lastname == null %}
+                <p>Hello, {{ app.user.username }}</p>
+                {% else %}
+                <p>Hello, {{ app.user.firstname }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ path('dashboard') }}">
+                    <i class="fa fa-dashboard"></i> <span>{% trans from "menu" %}menu.left.dashboard{% endtrans %}</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user"></i> 
+                    <span>{% trans from "menu" %}menu.left.users.title{% endtrans %}</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">                                
+                    <li><a href="{{ path('users', {'type' : 'administrators' } ) }}"><i class="fa fa-university"></i> {% trans from "menu" %}menu.left.users.administrators{% endtrans %}</a></li>
+                    <li><a href="{{ path('users', {'type' : 'photographers' } ) }}"><i class="fa fa-camera-retro"></i> {% trans from "menu" %}menu.left.users.photographers{% endtrans %}</a></li>
+                    <li><a href="{{ path('users', {'type' : 'individuals' } ) }}"><i class="fa fa-child"></i> {% trans from "menu" %}menu.left.users.individuals{% endtrans %}</a></li>                                
+                </ul>
+            </li>
+            
+            <li>
+                <a href="{{ path('offers') }}">
+                    <i class="fa fa-copyright"></i> 
+                    <span>{% trans from "menu" %}menu.left.offers{% endtrans %}</span>
+                </a>
+                
+            </li>
+            
+            <li>
+                <a href="{{ path('services') }}">
+                    <i class="fa fa-calendar"></i> 
+                    <span>{% trans from "menu" %}menu.left.services{% endtrans %}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('security') }}">
+                    <i class="fa fa-database"></i> 
+                    <span>{% trans from "menu" %}menu.left.security{% endtrans %}</span>
+                </a>
+                
+            </li>
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-arrows"></i> 
+                    <span>{% trans from "menu" %}menu.left.options.title{% endtrans %}</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">                                
+                    <li>
+                        <a href="{{ path('geo') }}">
+                            <i class="fa fa-globe"></i> 
+                            <span>{% trans from "menu" %}menu.left.options.geo{% endtrans %}</span>
+                        </a>
+                    </li>
+                    <li><a href="{{ path('commission') }}"><i class="fa fa-money"></i> {% trans from "menu" %}menu.left.options.commission{% endtrans %}</a></li>                               
+                </ul>
+            </li>
+            {% endif %}
+        </ul>
+    </section>
+</aside>

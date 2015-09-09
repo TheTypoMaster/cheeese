@@ -12,6 +12,7 @@ menu:
             title: options
             geo: Données Géo
             commission: Commissions
+        security: Sécurité
     up:
         membersince: Membre depuis
         profile: Profil

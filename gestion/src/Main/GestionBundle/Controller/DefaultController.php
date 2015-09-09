@@ -55,13 +55,7 @@ class DefaultController extends Controller
 			{
 
 				$serviceUser = $this->get('service_user');
-				$edit = $serviceUser->updatePassword($usr, $params);
-				if($edit){
-					return $this->redirect($this->generateUrl('user_show', array(
-							'id' => $usr->getId()
-						)));
-				}
-				
+				$edit = $serviceUser->updatePassword($usr, $params);				
 			}
 				
 		}

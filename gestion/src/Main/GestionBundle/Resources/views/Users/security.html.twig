@@ -10,26 +10,49 @@
 {% block content %}
 <section class="content">
 	<div class="row">
-			<div class="col-md-12">
-                            <div class="box box-primary">
-                                <div class="box-header">
-                                    <h3 class="box-title">
-                                    	{% trans from "users" %}gestion.security.read.header {% endtrans %}
-                                    </h3>
-                                </div>
-                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-                                    <div class="box-body">									
-                                        {{ form_rest(form) }}
-                                    </div>
+		<div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">
+                	{% trans from "users" %}gestion.security.read.header {% endtrans %}
+                    </h3>
+                </div>
+                {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                <div class="box-body">									
+                    <div class="form-group {% if not form.oldPassword.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.oldPassword) }}                         
+                        {{ form_widget(form.oldPassword) }}
+                        <div class="text-red">
+                        {{ form_errors(form.oldPassword) }}
+                        </div>
+                        </div>
+                        <div class="form-group {% if not form.newPassword.first.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.newPassword.first) }}                         
+                        {{ form_widget(form.newPassword.first) }}
+                        <div class="text-red">
+                        {{ form_errors(form.newPassword.first) }}
+                        </div>
+                        </div>
+                        <div class="form-group {% if not form.newPassword.second.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.newPassword.second) }}                    
+                        {{ form_widget(form.newPassword.second) }}
+                        <div class="text-red">
+                        {{ form_errors(form.newPassword.second) }}
+                        </div>
+                        </div>
 
-                                    <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary">
-                                        	{% trans from "users" %}gestion.security.read.btn.submit{% endtrans %}
-                                        </button>
-                                    </div>
-                                {{ form_end(form) }}
-                            </div>
-		</div>	
-	</div>
+                                                    
+                        {{ form_rest(form) }}
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">
+                    	{% trans from "users" %}gestion.security.read.btn.submit{% endtrans %}
+                    </button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+	</div>	
+</div>
 </section>
 {% endblock %}
