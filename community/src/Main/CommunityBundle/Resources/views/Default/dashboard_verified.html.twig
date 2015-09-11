@@ -13,20 +13,6 @@
 {% endif %}
     <div class="row">                       
         <div class="col-lg-3 col-xs-6">
-            <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>{{ prestations }}</h3>
-                    <p>{% trans from "default"%}community.dashboard.verified.box.prestations{% endtrans %}</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-bag"></i>
-                </div>
-                <a href="{{ path('service') }}" class="small-box-footer">
-                    {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %} <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div><!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
             <div class="small-box bg-maroon">
                 <div class="inner">
                     <h3>{{ devis }}</h3>
@@ -37,6 +23,20 @@
                </div>
                 <a href="{{ path('devis') }}" class="small-box-footer">
                     {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %}<i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>{{ prestations }}</h3>
+                    <p>{% trans from "default"%}community.dashboard.verified.box.prestations{% endtrans %}</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="{{ path('service') }}" class="small-box-footer">
+                    {% trans from "default"%}community.dashboard.verified.box.href.more{% endtrans %} <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
         </div><!-- ./col -->

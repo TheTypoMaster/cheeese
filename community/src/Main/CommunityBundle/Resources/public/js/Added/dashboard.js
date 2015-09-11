@@ -22,7 +22,7 @@ $(function() {
                 entry['y'] = 'Refusée';
                 break;
             case 'CANCELED':
-                entry['y'] = 'Annulée';
+                entry['y'] = 'Abandonnée';
                 break;
             case 'CONFIRMED':
                 entry['y'] = 'Confirmée';
@@ -35,6 +35,18 @@ $(function() {
                 break;
             case 'CLOSED':
                 entry['y'] = 'Clotûrée';
+                break;
+            case 'CANCELED_PHOTOGRAPHER':
+                entry['y'] = 'Annulée photographe';
+                break;
+            case 'CANCELED_CLIENT':
+                entry['y'] = 'Annulée client';
+                break;
+            case 'LITIGE_CLIENT':
+                entry['y'] = 'Litige client';
+                break;
+            case 'LITIGE_PHOTOGRAPHER':
+                entry['y'] = 'Litige photographe';
                 break;
             } 
     });
