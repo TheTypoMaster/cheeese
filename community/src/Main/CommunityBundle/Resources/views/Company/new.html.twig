@@ -8,6 +8,15 @@
 {% block content %}
 <section class="content">
     <div class="row">
+        <div class="callout callout-info">
+            <h4>{% trans from "company" %}companies.company.new.help.h4{% endtrans %}</h4>
+            <p>{% trans from "company" %}companies.company.new.help.p1{% endtrans %}</p>
+            <p>
+                <strong>
+                    {% trans from "company" %}companies.company.new.help.p2{% endtrans %}
+                </strong>
+            </p>
+        </div>
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header">
@@ -65,7 +74,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12 form-group {% if not form.address.vars.valid %}has-error{% endif %}">                             
+                        <div class="col-xs-2 form-group {% if not form.address_numero.vars.valid %}has-error{% endif %}">                             
+                        {{ form_label(form.address_numero) }}                         
+                        {{ form_widget(form.address_numero) }}
+                        <div class="text-red">
+                        {{ form_errors(form.address_numero) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.company.field.numero_address {% endtrans %}
+                        </p>
+                        </div>
+                        <div class="col-xs-10 form-group {% if not form.address.vars.valid %}has-error{% endif %}">                             
                         {{ form_label(form.address) }}                         
                         {{ form_widget(form.address) }}
                         <div class="text-red">
@@ -115,13 +134,6 @@
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body">                        
-                    <div class="row">
-                        <div class="col-xs-12 form-group">
-                        <p class="help-block">
-                            {% trans from "forms" %}help.company.field.studio {% endtrans %}
-                        </p>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-xs-12 form-group {% if not form.title_studio.vars.valid %}has-error{% endif %}">                             
                         {{ form_label(form.title_studio) }}                         

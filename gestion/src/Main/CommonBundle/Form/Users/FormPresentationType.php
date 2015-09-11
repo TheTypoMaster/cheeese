@@ -46,27 +46,53 @@ class FormPresentationType extends AbstractType
 	 */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	
-    	$builder->add('firstName', 'text', array(
-    			'label'	=> 'form.presentation.field.firstname',
-    			'attr' => array(
-    					'class' => 'form-control',
+    	$roles = $this->getCurrentUser()->getRoles();
+        if(in_array('ROLE_PHOTOGRAPHER_VERIFIED', $roles)) {
+            $builder->add('firstName', 'text', array(
+                'label' => 'form.presentation.field.firstname',
+                'disabled' => true,
+                'attr' => array(
+                        'class' => 'form-control',
                         'placeholder'  => 'form.presentation.field.placeholder.firstname'
-    			),
+                ),
                 'constraints'   => array(
                         new NotBlank ( array(
                         )))
-    		));
+            ));
         $builder->add('lastName', 'text', array(
-        		'label'	=> 'form.presentation.field.lastname',
-    			'attr' => array(
-    					'class' => 'form-control',
+                'label' => 'form.presentation.field.lastname',
+                'disabled' => true,
+                'attr' => array(
+                        'class' => 'form-control',
                         'placeholder'  => 'form.presentation.field.placeholder.lastname'
-    			),
+                ),
                 'constraints'   => array(
                         new NotBlank ( array(
                         )))
-        	));
+            ));
+        }else {
+            $builder->add('firstName', 'text', array(
+                'label' => 'form.presentation.field.firstname',
+                'attr' => array(
+                        'class' => 'form-control',
+                        'placeholder'  => 'form.presentation.field.placeholder.firstname'
+                ),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
+            ));
+        $builder->add('lastName', 'text', array(
+                'label' => 'form.presentation.field.lastname',
+                'attr' => array(
+                        'class' => 'form-control',
+                        'placeholder'  => 'form.presentation.field.placeholder.lastname'
+                ),
+                'constraints'   => array(
+                        new NotBlank ( array(
+                        )))
+            ));
+        }
+    	
 
        $builder->add('telephone', 'text', array(
         		'label'	=> 'form.presentation.field.telephone',
@@ -100,14 +126,13 @@ class FormPresentationType extends AbstractType
             $builder->add('presentation', 'textarea', array(
                 'label' => 'form.presentation.field.presentation',
                 'attr' => array(
+                        'rows' => 10,
                         'class' => 'form-control',
                         'placeholder'  => 'form.presentation.field.placeholder.presentation'
                 ),
                 'constraints'   => array(
-                        new NotBlank ( array()),
-                        new Length(array(
-                            'min' => 140
-                            )))
+                        new NotBlank ( array())
+                        )
                 ));
         }else {
             $builder ->add ( 'birthDate', 'date', array(
@@ -129,6 +154,7 @@ class FormPresentationType extends AbstractType
             $builder->add('presentation', 'textarea', array(
                 'label' => 'form.presentation.field.presentation',
                 'attr' => array(
+                        'rows' => 10,
                         'class' => 'form-control',
                         'placeholder'  => 'form.presentation.field.placeholder.presentation'
                 )

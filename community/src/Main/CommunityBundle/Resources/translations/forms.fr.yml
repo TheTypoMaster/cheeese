@@ -3,7 +3,7 @@ help:
         field:
             firstName: Votre prénom
             lastName: Votre nom
-            telephone: Votre numéro de téléphone
+            telephone: Votre numéro de téléphone ne sera divulgué que pour les prestations payées
             birthDate: Au format jj/mm/aaaa
             presentation: Présentez-vous ici pour que vos clients vous connaissent mieux et comprennent votre manière de travailler : Depuis quand êtes vous photographe ? Quels sont vos domaines d’expertises ? Votre parcours ? Votre philosophie, vos valeurs, vos inspirations, vos motivations ? Quel matériel utilisez-vous ?
             exemple:
@@ -23,14 +23,14 @@ help:
             country: Le pays de votre entreprise
             department: Le département de votre entreprise
             town: La ville ou arrondissement de votre entreprise
-            address: L'adresse de votre entreprise
+            numero_address: Numéro
+            address: Rue,voie,avenue de votre entreprise
             identification: Le numéro SIRET de votre entreprise
             title_studio: Nom de votre studio
             numero_studio : Numéro
             address_studio : Rue,voie,avenue de votre studio
             department_studio : Le département de votre studio
             town_studio : La ville ou arrondissement de votre studio
-            studio: Merci de renseigner les champs ci-dessous si vous désirez proposer des devis de shootings en studio. Sinon, merci de les laisser vide.
     iban:
         field:
             name: Le nom de votre banque

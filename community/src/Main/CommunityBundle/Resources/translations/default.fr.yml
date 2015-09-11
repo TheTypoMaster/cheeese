@@ -35,8 +35,8 @@ community:
                 li3: Gardant à jour vos disponibilités
         verified:
             box:
-                prestations: prestations
-                devis: Devis actifs
+                prestations: prestations (vos demandes)
+                devis: Devis (vos offres)
                 moves: Votre zone de déplacements
                 money: Gains avec Cheeese
                 href:

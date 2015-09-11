@@ -49,7 +49,8 @@ class FormClientNotationType extends AbstractType
     	$builder->add('prestation_comment', 'textarea', array(
     			'label' => 'form.clientnotation.field.prestation_comment',
     			'attr' => array(
-    					'class' => 'form-control',
+    					'rows' => 10,
+                        'class' => 'form-control',
     			),
                 'constraints'   => array(
                         new NotBlank ( array(
@@ -71,7 +72,8 @@ class FormClientNotationType extends AbstractType
     	$builder->add('photographer_comment', 'textarea', array(
     			'label' => 'form.clientnotation.field.photographer_comment',
     			'attr' => array(
-    					'class' => 'form-control',
+    					'rows' => 10,
+                        'class' => 'form-control',
     			),
                 'constraints'   => array(
                         new NotBlank ( array(

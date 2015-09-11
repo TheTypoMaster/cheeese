@@ -92,7 +92,7 @@ class ServiceCompany
 		$Company->setTown($town);
 		$Company->setIdentification($data['identification']);
 		$Company->setTitle($data['title']);
-		$Company->setAddress($data['address']);
+		$Company->setAddress($data['address_numero'].';;;'.$data['address']);
 		$Company->setStudio($data['title_studio']);
 		$Company->setStudioAddress($data['address_studio_numero'].';;;'.$data['address_studio']);
 		$Company->setStudioTown($townStudio);
@@ -128,7 +128,7 @@ class ServiceCompany
 			$Company->setIdentification($data['identification']);	
 		}			
 		$Company->setTitle($data['title']);
-		$Company->setAddress($data['address']);
+		$Company->setAddress($data['address_numero'].';;;'.$data['address']);
 		$Company->setStudio($data['title_studio']);
 		$Company->setStudioAddress($data['address_studio_numero'].';;;'.$data['address_studio']);
 		$Company->setUpdatedAt(new \DateTime('now'));

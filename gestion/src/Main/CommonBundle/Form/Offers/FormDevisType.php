@@ -102,14 +102,13 @@ class FormDevisType extends AbstractType
     	$builder->add('presentation', 'textarea', array(
     			'label'	=> 'form.devis.field.presentation',
     			'attr' => array(
-    					'class' => 'form-control',
+    					'rows' => 10,
+                        'class' => 'form-control',
                         'placeholder'  => 'form.devis.field.placeholder.presentation'
     			),
                 'constraints'   => array(
-                        new NotBlank ( array()),
-                        new Length(array(
-                            'min' => 140
-                            )))
+                        new NotBlank ( array())
+                        )
     			));
         $builder->add('cgu', 'checkbox', array(
                     'label'     => false,

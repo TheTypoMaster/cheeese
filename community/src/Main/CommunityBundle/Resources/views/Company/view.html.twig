@@ -29,7 +29,8 @@
 					<h4><strong>
 						{% trans from "company" %}companies.company.view.company.address{% endtrans %}
 					</strong></h4>
-					{{ company.address }} {{ company.town.code }} {{ company.town.name }} {{ company.town.country.name }}
+					{{ company.address|replace({';;;': ' '}) }}
+					{{ company.town.code }} {{ company.town.name }} {{ company.town.country.name }}
 					<h4><strong>
 						{% trans from "company" %}companies.company.view.company.code{% endtrans %}
 					</strong></h4>
@@ -74,7 +75,7 @@
 						<h4><strong>
 						{% trans from "company" %}companies.company.view.studio.address{% endtrans %}
 						</strong></h4>
-						{{ company.studioaddress|replace({';;;': ' '}) }} {{ company.town.code }} {{ company.studiotown.name }} {{ company.studiotown.country.name }}
+						{{ company.studioaddress|replace({';;;': ' '}) }} {{ company.studiotown.code }} {{ company.studiotown.name }} {{ company.studiotown.country.name }}
 						{% endif %}
 				 
 				</div>

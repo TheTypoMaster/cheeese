@@ -9,7 +9,7 @@ form:
             identification: N° Siret
             country: Pays
             department: Département
-            studio: Nom
+            studio: Studio
     search:
         empty:
             category: Votre événement

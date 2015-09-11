@@ -1,70 +1,70 @@
 <div class="box-body table-responsive">
                                     
-                                    <table id="datatable" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>{% trans %}gestion.users.list.username{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.lastname{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.firstname{% endtrans %}</th>
-                                                <th>
-                                                    {% trans %}gestion.users.photographers.list.address{% endtrans %}
-                                                </th>
-                                                <th>
-                                                    {% trans %}gestion.users.photographers.list.identification{% endtrans %}
-                                                </th>
-                                                <th>
-                                                    {% trans %}gestion.users.photographers.list.creationdate{% endtrans %}
-                                                </th>
-                                                <th>{% trans %}gestion.users.photographers.list.update{% endtrans %}</th>
-                                                
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for entity in users %}
-                                            <tr>
-                                                <td> 
-                                                    <a href="{{ path('user_show', {'id' : entity.photographer.id }) }}" target="_blank">{{ entity.photographer.username }}</a> 
-                                                </td>
-                                                <td> {{ entity.photographer.lastName }} </td>
-                                                <td> {{ entity.photographer.firstName }} </td>
-                                                <td> 
-                                                    {{ entity.address }} , {{ entity.town.name }}, {{ entity.town.country.name }} 
-                                                </td>
-                                                <td> {{ entity.identification }} </td>
-                                                <td> {{ entity.createdat | date('d-m-Y H:i')}} </td>
-                                                <td> {{ entity.updatedat | date('d-m-Y H:i')}} </td>
-                                                <td> <a class="btn btn-success" data-toggle="modal" data-target="#approveModal" data-id="{{ entity.photographer.id }}"> 
-                                                    {% trans %}gestion.users.photographers.list.href.ok{% endtrans %} </a>
-                                                </td>   
-                                                <td> <a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal" data-id="{{ entity.photographer.id }}">
-                                                    {% trans %}gestion.users.photographers.list.href.ko{% endtrans %}</a>
-                                                </td> 
-                                            </tr>
-                                        {% endfor %}
-                                            
-                                            
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>{% trans %}gestion.users.list.username{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.lastname{% endtrans %}</th>
-                                                <th>{% trans %}gestion.users.list.firstname{% endtrans %}</th>
-                                                <th>
-                                                    {% trans %}gestion.users.photographers.list.address{% endtrans %}
-                                                </th>
-                                                <th>
-                                                    {% trans %}gestion.users.photographers.list.identification{% endtrans %}
-                                                </th>
-                                                <th>
-                                                    {% trans %}gestion.users.photographers.list.creationdate{% endtrans %}
-                                                </th>
-                                                <th>{% trans %}gestion.users.photographers.list.update{% endtrans %}</th>
-                                                
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div><!-- /.box-body -->
+    <table id="datatable" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>{% trans %}gestion.users.list.username{% endtrans %}</th>
+                <th>{% trans %}gestion.users.list.lastname{% endtrans %}</th>
+                <th>{% trans %}gestion.users.list.firstname{% endtrans %}</th>
+                <th>
+                    {% trans %}gestion.users.photographers.list.address{% endtrans %}
+                </th>
+                <th>
+                    {% trans %}gestion.users.photographers.list.identification{% endtrans %}
+                </th>
+                <th>
+                    {% trans %}gestion.users.photographers.list.creationdate{% endtrans %}
+                </th>
+                <th>{% trans %}gestion.users.photographers.list.update{% endtrans %}</th>
+                
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in users %}
+            <tr>
+                <td> 
+                    <a href="{{ path('user_show', {'id' : entity.photographer.id }) }}" target="_blank">{{ entity.photographer.username }}</a> 
+                </td>
+                <td> {{ entity.photographer.lastName }} </td>
+                <td> {{ entity.photographer.firstName }} </td>
+                <td> 
+                    {{ entity.address|replace({';;;': ' '}) }} , {{ entity.town.name }}, {{ entity.town.country.name }} 
+                </td>
+                <td> {{ entity.identification }} </td>
+                <td> {{ entity.createdat | date('d-m-Y H:i')}} </td>
+                <td> {{ entity.updatedat | date('d-m-Y H:i')}} </td>
+                <td> <a class="btn btn-success" data-toggle="modal" data-target="#approveModal" data-id="{{ entity.photographer.id }}"> 
+                    {% trans %}gestion.users.photographers.list.href.ok{% endtrans %} </a>
+                </td>   
+                <td> <a class="btn btn-danger" data-toggle="modal" data-target="#refuseModal" data-id="{{ entity.photographer.id }}">
+                    {% trans %}gestion.users.photographers.list.href.ko{% endtrans %}</a>
+                </td> 
+            </tr>
+        {% endfor %}
+            
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>{% trans %}gestion.users.list.username{% endtrans %}</th>
+                <th>{% trans %}gestion.users.list.lastname{% endtrans %}</th>
+                <th>{% trans %}gestion.users.list.firstname{% endtrans %}</th>
+                <th>
+                    {% trans %}gestion.users.photographers.list.address{% endtrans %}
+                </th>
+                <th>
+                    {% trans %}gestion.users.photographers.list.identification{% endtrans %}
+                </th>
+                <th>
+                    {% trans %}gestion.users.photographers.list.creationdate{% endtrans %}
+                </th>
+                <th>{% trans %}gestion.users.photographers.list.update{% endtrans %}</th>
+                
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</div><!-- /.box-body -->
