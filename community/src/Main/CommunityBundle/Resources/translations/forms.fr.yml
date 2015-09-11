@@ -3,7 +3,7 @@ help:
         field:
             firstName: Votre prénom
             lastName: Votre nom
-            telephone: Votre numéro de téléphone ne sera divulgué que pour les prestations payées
+            telephone: Il sera uniquement communiqué aux clients ayant réservé et payé l'une de vos prestations afin de faciliter vos échanges. 
             birthDate: Au format jj/mm/aaaa
             presentation: Présentez-vous ici pour que vos clients vous connaissent mieux et comprennent votre manière de travailler : Depuis quand êtes vous photographe ? Quels sont vos domaines d’expertises ? Votre parcours ? Votre philosophie, vos valeurs, vos inspirations, vos motivations ? Quel matériel utilisez-vous ?
             exemple:
