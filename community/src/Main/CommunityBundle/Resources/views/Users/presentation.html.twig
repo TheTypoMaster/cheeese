@@ -6,49 +6,46 @@
 <i class="fa fa-child"></i>{% trans from "users" %}community.presentation.read.breadh1{% endtrans %}{% endblock %}
 {% block breadcrumbH2 %}{% trans from "users" %}community.presentation.read.breadh2{% endtrans %}{% endblock %}
 {% block content %}
-                <!-- Main content -->
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-header">
-                                </div><!-- /.box-header -->
-                                
-                                <div class="box-body">   
-                                    <div class="text-center">
-                                            <p>
-                                             <img src="{{ image64(app.user.photo, app.user.photoType, 'pp') }}"  class="img-circle" height="160" width="160" />
-                                            </p>
-                                            <p>
-                                                <h4>{{ user.firstname}} {{ user.lastname }} </h4>
-                                            </p>
-                                            {% if user.note > 0 %}
-                                                <p> 
-                                                    <i class="fa fa-star"> {{ user.note|number_format(2)}}</i> 
-                                                </p>
-                                                <p><i class="fa fa-comment"> {{ user.prestations }}</i>
-                                                </p>    
-                                            {% endif %}
-                                            <p> <i class="fa fa-phone"> {{ user.telephone }}</i> </p>
-                                            <p> <i class="fa fa-birthday-cake"> 
-                                                {% if user.birthDate != null %}
-                                                    {{ user.birthDate|date('d/m/Y') }}
-                                                {% endif %}
-                                                </i> 
-                                            </p>
-                                            <blockquote>
-                                                <p>{{ user.presentation | nl2br }}</p>
-                                            </blockquote>
-                                            
-                                    </div>
-                                	
-                                </div><!-- /.box-body -->  
-                                <div class="box-footer">
-                                    <a href="{{ path('presentation_edit') }}" class="btn btn-primary btn-sm">
-                                        {% trans from "users" %}community.presentation.read.btn.edit{% endtrans %}
-                                    </a>
-                                    <a href="{{ path('presentation_pp')}}" class="btn btn-success btn-sm">{% trans from "users" %}community.presentation.read.btn.picture{% endtrans %}</a>
-                                </div>                              
-                            </div><!-- /.box -->
-                        </div>
-                    </div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">            
+            <div class="box-body">   
+                <div class="text-center">
+                        <p>
+                         <img src="{{ image64(app.user.photo, app.user.photoType, 'pp') }}"  class="img-circle" height="160" width="160" />
+                        </p>
+                        <p>
+                            <h4>{{ user.firstname}} {{ user.lastname }} </h4>
+                        </p>
+                        {% if user.note > 0 %}
+                            <p> 
+                                <i class="fa fa-star"> {{ user.note|number_format(2)}}</i> 
+                            </p>
+                            <p><i class="fa fa-comment"> {{ user.prestations }}</i>
+                            </p>    
+                        {% endif %}
+                        <p> <i class="fa fa-phone"> {{ user.telephone }}</i> </p>
+                        <p> <i class="fa fa-birthday-cake"> 
+                            {% if user.birthDate != null %}
+                                {{ user.birthDate|date('d/m/Y') }}
+                            {% endif %}
+                            </i> 
+                        </p>
+                        <blockquote>
+                            {% set text = encryptText(user.presentation, user.lastname) %}
+                            <p>{{ text | nl2br }}</p>
+                        </blockquote>
+                        
+                </div>
+            	
+            </div><!-- /.box-body -->  
+            <div class="box-footer">
+                <a href="{{ path('presentation_edit') }}" class="btn btn-primary btn-sm">
+                    {% trans from "users" %}community.presentation.read.btn.edit{% endtrans %}
+                </a>
+                <a href="{{ path('presentation_pp')}}" class="btn btn-success btn-sm">{% trans from "users" %}community.presentation.read.btn.picture{% endtrans %}</a>
+            </div>                              
+        </div><!-- /.box -->
+    </div>
+</div>
 {% endblock %}

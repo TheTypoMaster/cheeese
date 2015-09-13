@@ -5,9 +5,7 @@
             <div class="box-body">
 	            <ul class="timeline">
 
-					{% for message in messages %}
-				 								
-					    <!-- timeline item -->
+					{% for message in messages %} 
 					    {% if 1 == message.type %}
 					    	{% if message.sender.id != app.user.id %}
 							    <li>
@@ -17,7 +15,10 @@
 							
 							            <h3 class="timeline-header"><a href="#"> {{ message.sender.username }} </a></h3>
 							
-							            <div class="timeline-body"> {{ message.content|nl2br }} </div>
+							            <div class="timeline-body">
+							            {% set text = encryptText(message.content, message.sender.lastname) %}
+                    					{{ text | nl2br }}
+                     					 </div>
 							        </div>
 							    </li>
 						    {% else %}
