@@ -37,6 +37,7 @@ class TwigEncryption extends \Twig_Extension
     	$final = str_replace($tld,'***',$final);
     	$final = str_replace($others,'***',$final);
     	$final = preg_replace("#[1-68]([-. /]?[0-9]{2}){4}#",'***',$final);
+        $final = preg_replace("#[1-68]([-. /]?[0-9]{1}){8}#",'***',$final);
     	$final = str_replace(mb_strtolower($name, 'UTF-8'),'***',$final);
 		return $final;                    
         
