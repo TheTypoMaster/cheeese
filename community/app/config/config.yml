@@ -33,6 +33,8 @@ twig:
     globals:
         link_community: "%link_community%"
         link_front: "%link_front%"
+        contact:
+            help: "%contact_help%"
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"

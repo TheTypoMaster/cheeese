@@ -207,6 +207,11 @@ community:
                     h4: Votre zone de déplacements est définie
                     p %kms% %town%: %kms% kms autour de %town%
                     p1 %town%: Vous ne vous déplacez pas hors de %town%
+                    p2:
+                        ul: Votre zone de déplacement est déterminée en fonction de :
+                        li1: La ville ou de l'arrondissement de votre 
+                        li1_link: entreprise
+                        li2: Du rayon de déplacement défini
                 no:
                     h4: Votre zone de déplacements n'est pas encore définie
                     p1 %town%: Merci de choisir un nombre de kilométres pour vos déplacements autour de %town% (vous pouvez aussi ne pas vous déplacer si vous ne travaillez que dans votre studio).

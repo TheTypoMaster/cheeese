@@ -19,6 +19,7 @@ class TransactionController extends Controller
 	 */
 	public function viewAction(Request $request)
 	{
+		/*
 		$usr= $this->get('security.context')->getToken()->getUser();
 		$roles = $usr->getRoles();
 		//Find company
@@ -32,7 +33,9 @@ class TransactionController extends Controller
 			return $this->render('MainCommunityBundle:Company:transactions.html.twig', array(
 					'transactions' 	=> $transactions,
 			));
-			
 		}
+		*/
+	return $this->render('MainCommunityBundle:Company:transactions_v09.html.twig', array(
+			));
 	}
 }

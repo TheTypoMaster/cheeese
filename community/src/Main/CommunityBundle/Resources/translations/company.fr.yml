@@ -6,9 +6,9 @@ companies:
             breadcrumbh1: Identification
             breadcrumbh2: Editer
             help:
-                h4: h4
-                p1: p1
-                p2: Vous devez renseigner la partie studio si vous désirez proposer des devis de shootings en studio. Sinon, merci de les laisser vide.
+                h4: Bienvenue dans votre rubrique "Identification"
+                p1: Les informations de votre entreprise nous permettent de vérifier votre statut de photographe professionnel et de définir votre zone de déplacement.
+                p2: Si vous avez un studio, et que vous souhaitez proposer des shootings en studio, merci de remplir également les informations du bloc de droite.
             header: Editer les informations de mon entreprise
             studio: Editer les informations de mon studio
             studiotext: Je souhaite proposer des devis en studio
@@ -21,9 +21,9 @@ companies:
             breadcrumbh1: Identification
             breadcrumbh2: Créer
             help:
-                h4: h4
-                p1: p1
-                p2: Vous devez renseigner la partie studio si vous désirez proposer des devis de shootings en studio. Sinon, merci de les laisser vide.
+                h4: Bienvenue dans votre rubrique "Identification"
+                p1: Les informations de votre entreprise nous permettent de vérifier votre statut de photographe professionnel et de définir votre zone de déplacement.
+                p2: Si vous avez un studio, et que vous souhaitez proposer des shootings en studio, merci de remplir également les informations du bloc de droite.
             header: Je renseigne les données de mon entreprise
             studio: Je travaille aussi en studio
             btn:
@@ -88,6 +88,12 @@ companies:
             btn:
                 submit: Soumettre
     transaction:
+        V09:
+            help:
+                h4: Transactions
+                p1: Dans cet espace, vous retrouverez bientôt le détail de toutes vos transactions. 
+                p2: Les transactions correspondront aux virements que nous aurons effectué sur votre compte bancaire. Pour le moment, il n'est pas encore possible pour les clients de faire des réservations. Encore un peu de patience :)
+                contact %email%: Vous pouvez nous contacter à tout moment à l’adresse suivante si vous avez des questions : %email%
         view:
             h1: Transactions
             h2: Liste

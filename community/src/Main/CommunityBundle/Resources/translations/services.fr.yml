@@ -1,5 +1,11 @@
 community:
     service:
+        V09:
+            help:
+                h4: Prestations à venir
+                p1: Dans cet espace, vous retrouverez bientôt le détail de toutes vos prestations.
+                p2: Pour le moment, il n'est pas encore possible pour les clients de les réserver. Encore un peu de patience :)
+                contact %email%: Vous pouvez nous contacter à tout moment à l’adresse suivante si vous avez des questions : %email%
         index:
             h1: Prestations
             h2: Toutes mes prestations

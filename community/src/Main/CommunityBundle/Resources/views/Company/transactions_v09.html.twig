@@ -1,0 +1,17 @@
+{% extends '::base.html.twig'%}
+{% block title %}{% trans from "company" %}companies.transaction.view.h1{% endtrans %}{% endblock %}
+{% block titleH1 %}{% trans from "company" %}companies.transaction.view.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans from "company" %}companies.transaction.view.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-credit-card"></i>{% trans from "company" %}companies.transaction.view.breadcrumbh1{% endtrans %}{% endblock %}
+{% block breadcrumbH2 %}{% trans from "company" %}companies.transaction.view.breadcrumbh2{% endtrans %}{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="callout callout-info">
+            <h4>{% trans from "company" %}companies.transaction.V09.help.h4{% endtrans %}</h4>
+            <p>{% trans from "company" %}companies.transaction.V09.help.p1{% endtrans %}</p>
+            <p>{% trans from "company" %}companies.transaction.V09.help.p2{% endtrans %}</p>
+            <p>{% trans with {'%email%' : contact.help} from "company" %}companies.transaction.V09.help.contact %email%{% endtrans %}</p>
+        </div>
+	</div>
+{% endblock %}

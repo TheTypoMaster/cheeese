@@ -12,7 +12,7 @@ use Main\CommonBundle\Entity\Prestations\Evaluation;
 
 class ServiceController extends Controller
 {	
-	//List
+
 	/**
 	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
 	 *
@@ -21,12 +21,14 @@ class ServiceController extends Controller
 	 */
 	public function listAction(Request $request)
 	{
+		/*
 		$servicePrestation = $this->get('service_prestation');
 		$prestations = $servicePrestation->listPhotographerServices();
 		return $this->render('MainCommunityBundle:Services:index.html.twig', array(
 				'services' => $prestations
 		));
-		
+		*/
+		return $this->render('MainCommunityBundle:Services:v09.html.twig', array());
 	}
 	
 	
