@@ -76,8 +76,12 @@ class ServiceUser
 	 */
 	public function updateUser(User $user, $data)
 	{
-		$user->setFirstName($data['firstName']);
-		$user->setLastName($data['lastName']);
+		if(isset($data['firstName'])) {
+			$user->setFirstName($data['firstName']);
+		}
+		if(isset($data['lastName'])) {
+			$user->setFirstName($data['lastName']);
+		}
 		$user->setPresentation($data['presentation']);
 		$user->setTelephone($data['telephone']);
 		$user->setBirthDate(new \DateTime(str_replace('/', '-', $data['birthDate'])));

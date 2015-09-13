@@ -47,6 +47,7 @@ class FormMovesType extends AbstractType
     			'label'	=> 'form.moves.field.moves',
     			'choices'   => array(
                             1   => 'form.moves.field.values.no',
+                            5   => '5',
                             10  => '10', 
                             25  => '25',
                             50  => '50',
@@ -58,7 +59,7 @@ class FormMovesType extends AbstractType
     			'constraints'   => array(
     					new NotBlank (array()),
                         new Choice(array(
-                            'choices'   => array('1', '10', '25', '50', '75', '100')
+                            'choices'   => array('1', '5','10', '25', '50', '75', '100')
                             ))
                         )
     	));

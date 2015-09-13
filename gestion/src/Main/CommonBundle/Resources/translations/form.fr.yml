@@ -35,7 +35,7 @@ form:
                 presentation: Votre Présentation ici
                 firstname: Votre Prénom
                 lastname: Votre Nom
-                telephone: Votre Téléphone
+                telephone: Votre numéro de téléphone
                 birthDate: Votre date de naissance
     security:
         field:

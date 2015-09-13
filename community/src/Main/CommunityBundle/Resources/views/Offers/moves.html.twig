@@ -22,6 +22,16 @@
             <h4>{% trans from "offers" %}community.moves.view.help.has.h4{% endtrans %}</h4>
             <p>{% trans with {'%town%': company.town.name} from "offers" %}community.moves.view.help.has.p1 %town%{% endtrans %}</p>
             <p>
+                {% trans from "offers" %}community.moves.view.help.has.p2.ul{% endtrans %}
+                <ul>                    
+                    <li>{% trans from "offers" %}community.moves.view.help.has.p2.li1{% endtrans %}
+                        <a href="{{path('company')}}">
+                        {% trans from "offers" %}community.moves.view.help.has.p2.li1_link{% endtrans %}</a> 
+                    </li>
+                </ul>
+            </p>
+            
+            <p>
             	<strong>
             		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
             	</strong>
@@ -31,6 +41,16 @@
 		<div class="callout callout-info">
             <h4>{% trans from "offers" %}community.moves.view.help.has.h4{% endtrans %}</h4>
             <p>{% trans with {'%town%': company.town.name, '%kms%': radius} from "offers" %}community.moves.view.help.has.p %kms% %town%{% endtrans %}</p>
+            <p>
+                {% trans from "offers" %}community.moves.view.help.has.p2.ul{% endtrans %}
+                <ul>                    
+                    <li>{% trans from "offers" %}community.moves.view.help.has.p2.li1{% endtrans %}
+                        <a href="{{path('company')}}">
+                        {% trans from "offers" %}community.moves.view.help.has.p2.li1_link{% endtrans %}</a> 
+                    </li>
+                    <li>{% trans from "offers" %}community.moves.view.help.has.p2.li2{% endtrans %}</li>
+                </ul>
+            </p>
             <p>
             	<strong>
             		{% trans from "offers" %}community.moves.view.help.p{% endtrans %}
@@ -113,9 +133,11 @@
 		function getZoom(rad) {
 		        switch(rad){
 		        			case 0:
-		        				return 11;
+		        				return 12;
 		        			case 1:
-		        				return 11;
+		        				return 12;
+                            case 5:
+                                return 10;
 		                    case 10:
 		                        return 10;
 		                    case 25:
@@ -131,8 +153,10 @@
         document.getElementById("form_moves_radius").addEventListener("change", function() {
 		    rad = document.getElementById("form_moves_radius").value;
 		    cityCircle.setOptions({radius:rad * 1000});
-		    if( rad == 0){ map.setZoom(11); }
-		    else if( rad == 10){ map.setZoom(11); }
+		    if( rad == 0){ map.setZoom(12); }
+		    else if( rad == 1){ map.setZoom(12); }
+            else if( rad == 5){ map.setZoom(12); }
+            else if( rad == 10){ map.setZoom(11); }
 		    else if( rad == 25){ map.setZoom(9); }
 		    else if( rad == 50){ map.setZoom(8); }
 		    else if( rad >= 75){ map.setZoom(7); }
