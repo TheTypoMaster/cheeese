@@ -16,7 +16,6 @@ class TwigEncryption extends \Twig_Extension
     public function encryptText($text, $name)
     {
     	$final = mb_strtolower($text, 'UTF-8');
-    	$test = array('photographe', 'autodidacte', 'attente');
     	$social = array(
     		'facebook','twitter','instagram', 'flickr', '500px'
     		); 

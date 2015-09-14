@@ -8,84 +8,219 @@
 {% block content %}
 <section class="content">
 	<div class="row">
-            <div class="callout callout-info">
-                 <h4>{% trans from "offers" %}community.devis.new.help.h4{% endtrans %}</h4>
-                 <p>{% trans from "offers" %}community.devis.new.help.p1{% endtrans %}</p>
-                 <p>{% trans from "offers" %}community.devis.new.help.p2{% endtrans %}</p>
+        <div class="callout callout-info">
+             <h4>{% trans from "offers" %}community.devis.new.help.h4{% endtrans %}</h4>
+             <p>{% trans from "offers" %}community.devis.new.help.p1{% endtrans %}</p>
+             <p>{% trans from "offers" %}community.devis.new.help.p2{% endtrans %}</p>
+        </div>
+        {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+		<div class="col-md-4">
+            <!-- general form elements -->
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">{% trans from "offers" %}community.devis.new.header.details{% endtrans %}</h3>
+                </div>             
+                <div class="box-body">		
+                    <div class="form-group {% if not form.details.title.vars.valid %}has-error{% endif %}">     
+                        {{ form_label(form.details.title) }} 
+                        {{ form_widget(form.details.title) }}
+                        <div class="text-red">
+                            {{ form_errors(form.details.title) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}
+                        help.devis.field.title{% endtrans %}
+                        </p>
+                    </div>
+
+                    <div class="form-group {% if not form.details.category.vars.valid %}has-error{% endif %}">
+                    {{ form_label(form.details.category) }} 
+                    {{ form_widget(form.details.category) }}
+                    <div class="text-red">
+                    {{ form_errors(form.details.category) }}
+                    </div>
+                     <p class="help-block">
+                    {% trans from "forms" %}help.devis.field.category{% endtrans %}
+                    </p>
+                    </div>                               
+                    <div class="form-group {% if not form.details.presentation.vars.valid %}has-error{% endif %}">
+                    {{ form_label(form.details.presentation) }} 
+                    {{ form_widget(form.details.presentation) }}
+                    <div class="text-red">
+                    {{ form_errors(form.details.presentation) }}
+                    </div>
+                     <p class="help-block">
+                    {% trans from "forms" %}help.devis.field.presentation{% endtrans %}
+                    </p>
+                    </div> 
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <p class="help-block">
+                        
+                    </p>
+                </div>
             </div>
-			<div class="col-md-12">
-                            <!-- general form elements -->
-                            <div class="box box-primary">
-                                <div class="box-header">
-                                    <h3 class="box-title">{% trans from "offers" %}community.devis.new.header{% endtrans %}</h3>
-                                </div><!-- /.box-header -->
-                                <!-- form start -->
-                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-                                    <div class="box-body">		
-                                        <div class="form-group {% if not form.title.vars.valid %}has-error{% endif %}">                             
-                                        {{ form_label(form.title) }}                         
-                                        {{ form_widget(form.title) }}
-                                        <div class="text-red">
-                                        {{ form_errors(form.title) }}
-                                        </div>
-                                        <p class="help-block">
-                                        {% trans from "forms" %}help.devis.field.title {% endtrans %}
-                                        </p>
-                                        </div>
+		</div>
+        <div class="col-md-4">
+            <!-- PHOTOS -->
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">{% trans from "offers" %}community.devis.new.header.photos{% endtrans %}</h3>
+                </div>                
+                <div class="box-body">  
+                    <div class="text-red">
+                        {{ form_errors(form) }}
+                    </div>
+                    <div class="form-group {% if not form.photos.cover.vars.valid %}has-error{% endif %}">    
+                        {{ form_label(form.photos.cover) }} 
+                        {{ form_widget(form.photos.cover) }}
+                        <div class="text-red">
+                            {{ form_errors(form.photos.cover) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.devisbook.field.cover{% endtrans %}
+                        </p>
+                    </div> 
+                    <div class="form-group {% if not form.photos.photo1.vars.valid %}has-error{% endif %}">    
+                        {{ form_label(form.photos.photo1) }} 
+                        {{ form_widget(form.photos.photo1) }}
+                        <div class="text-red">
+                            {{ form_errors(form.photos.photo1) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.devisbook.field.photo1{% endtrans %}
+                        </p>
+                    </div> 
+                    <div class="form-group {% if not form.photos.photo2.vars.valid %}has-error{% endif %}">    
+                        {{ form_label(form.photos.photo2) }} 
+                        {{ form_widget(form.photos.photo2) }}
+                        <div class="text-red">
+                            {{ form_errors(form.photos.photo2) }}
+                        </div>
+                        <p class="help-block">
+                        {% trans from "forms" %}help.devisbook.field.photo2{% endtrans %}
+                        </p>
+                    </div>                            
+                </div>
+                <div class="box-footer">
+                    <p class="help-block">
+                        <strong>
+                            {% trans from "forms" %}help.devisbook.field.help{% endtrans %}
+                        </strong>
+                    </p>
+                </div>                
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- PRICES -->
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">{% trans from "offers" %}community.devis.new.header.price{% endtrans %}</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">                                           
+                    <div class="form-group {% if not form.details.currency.vars.valid %}has-error{% endif %}">
+                    {{ form_label(form.details.currency) }} 
+                    {{ form_widget(form.details.currency) }}
+                        <div class="text-red">
+                        {{ form_errors(form.details.currency) }}
+                        </div>
+                    </div>
+                    <div class="form-group {% if not form.prices.one.vars.valid %}has-error{% endif %}">     
+                        {{ form_label(form.prices.one) }} 
+                        {{ form_widget(form.prices.one) }}
+                        <div class="text-red">
+                            {{ form_errors(form.prices.one) }}
+                        </div>
+                    </div>
+                    <div class="form-group {% if not form.prices.two.vars.valid %}has-error{% endif %}">     
+                        {{ form_label(form.prices.two) }} 
+                        {{ form_widget(form.prices.two) }}
+                        <div class="text-red">
+                            {{ form_errors(form.prices.two) }}
+                        </div>
+                    </div>
+                    <div class="form-group {% if not form.prices.three.vars.valid %}has-error{% endif %}">     
+                        {{ form_label(form.prices.three) }} 
+                        {{ form_widget(form.prices.three) }}
+                        <div class="text-red">
+                            {{ form_errors(form.prices.three) }}
+                        </div>
+                    </div>
+                    <div class="form-group {% if not form.prices.four.vars.valid %}has-error{% endif %}">     
+                        {{ form_label(form.prices.four) }} 
+                        {{ form_widget(form.prices.four) }}
+                        <div class="text-red">
+                            {{ form_errors(form.prices.four) }}
+                        </div>
+                    </div>
+                    <div class="form-group {% if not form.prices.six.vars.valid %}has-error{% endif %}">     
+                        {{ form_label(form.prices.six) }} 
+                        {{ form_widget(form.prices.six) }}
+                        <div class="text-red">
+                            {{ form_errors(form.prices.six) }}
+                        </div>
+                    </div>
+                    <div class="form-group {% if not form.prices.eight.vars.valid %}has-error{% endif %}">     
+                        {{ form_label(form.prices.eight) }} 
+                        {{ form_widget(form.prices.eight) }}
+                        <div class="text-red">
+                            {{ form_errors(form.prices.eight) }}
+                        </div>
+                    </div>
+                    <div class="form-group {% if not form.prices.ten.vars.valid %}has-error{% endif %}">     
+                        {{ form_label(form.prices.ten) }} 
+                        {{ form_widget(form.prices.ten) }}
+                        <div class="text-red">
+                            {{ form_errors(form.prices.ten) }}
+                        </div>
+                    </div>
 
-                                        <div class="form-group {% if not form.category.vars.valid %}has-error{% endif %}">
-                                        {{ form_label(form.category) }} 
-                                        {{ form_widget(form.category) }}
-                                        <div class="text-red">
-                                        {{ form_errors(form.category) }}
-                                        </div>
-                                         <p class="help-block">
-                                        {% trans from "forms" %}help.devis.field.category{% endtrans %}
-                                        </p>
-                                        </div>
-                                        
-                                        <div class="form-group {% if not form.currency.vars.valid %}has-error{% endif %}">
-                                        {{ form_label(form.currency) }} 
-                                        {{ form_widget(form.currency) }}
-                                        <div class="text-red">
-                                        {{ form_errors(form.currency) }}
-                                        </div>
-                                        </div>
-
-                                        <div class="form-group {% if not form.presentation.vars.valid %}has-error{% endif %}">
-                                        {{ form_label(form.presentation) }} 
-                                        {{ form_widget(form.presentation) }}
-                                        <div class="text-red">
-                                        {{ form_errors(form.presentation) }}
-                                        </div>
-                                         <p class="help-block">
-                                        {% trans from "forms" %}help.devis.field.presentation {% endtrans %}
-                                        </p>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    {{ form_widget(form.cgu) }}
-                                                    {% trans from "offers" %}community.devis.new.cgu.text{% endtrans %}<a href="#" target="_blank">{% trans from "offers" %}community.devis.new.cgu.link{% endtrans %}</a>
-                                                </label>
-                                            </div>
-                                            <div class="text-red">
-                                            {{ form_errors(form.cgu) }}
-                                            </div>
-                                        </div> 
-
-                                        {{ form_rest(form) }}
-                                    </div><!-- /.box-body -->
-
-                                    <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary">{% trans from "offers" %}community.devis.new.btn.submit{% endtrans %}</button>
-                                        <a href="{{ path('devis') }}" class="btn btn-default">
-                                        {% trans from "offers" %}community.devis.new.btn.back{% endtrans %}
-                                    </a>
-                                    </div>
-                                {{ form_end(form) }}
-                            </div>
-		</div>	
-	</div>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <p class="help-block">
+                        <strong>
+                            {% trans from "forms" %}help.devisprice.field.help{% endtrans %}
+                        </strong>
+                    </p>
+                </div>
+            </div>
+        </div>   	
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                {{ form_widget(form.photos.cgu) }}
+                                {% trans from "offers" %}community.devis.read.book.new.cgu.text{% endtrans %}<a href="#" target="_blank">{% trans from "offers" %}community.devis.read.book.new.cgu.link{% endtrans %}</a>
+                            </label>
+                        </div>
+                        <div class="text-red">
+                        {{ form_errors(form.photos.cgu) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                {{ form_widget(form.details.cgu) }}
+                                {% trans from "offers" %}community.devis.new.cgu.text{% endtrans %}<a href="#" target="_blank">{% trans from "offers" %}community.devis.new.cgu.link{% endtrans %}</a>
+                            </label>
+                        </div>
+                        <div class="text-red">
+                        {{ form_errors(form.details.cgu) }}
+                        </div>
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">{% trans from "offers" %}community.devis.new.btn.submit{% endtrans %}</button>
+                    <a href="{{ path('devis') }}" class="btn btn-default">
+                    {% trans from "offers" %}community.devis.new.btn.back{% endtrans %}
+                    </a>
+                </div>
+            </div>
+        </div> 
+    {{ form_end(form) }}
+	</div>    
 </section>
 {% endblock %}

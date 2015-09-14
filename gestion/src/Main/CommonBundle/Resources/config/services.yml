@@ -29,15 +29,15 @@ services:
     service_user:
         class: "Main\CommonBundle\Services\Users\ServiceUser"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "%upload_pp_path%", "@logger"]
-    service_devis:
-        class: "Main\CommonBundle\Services\Offers\ServiceDevis"
-        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]
     service_prices:
         class: "Main\CommonBundle\Services\Offers\ServicePrices"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]
     service_devis_book:
         class: "Main\CommonBundle\Services\Offers\ServiceDevisBook"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "%upload_devis_path%", "@logger"]
+    service_devis:
+        class: "Main\CommonBundle\Services\Offers\ServiceDevis"
+        arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger", @service_devis_book, @service_prices]
     service_moves_radius:
         class: "Main\CommonBundle\Services\Offers\ServiceMovesRadius"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]

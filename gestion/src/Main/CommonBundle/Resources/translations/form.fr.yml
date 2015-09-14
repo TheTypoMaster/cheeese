@@ -55,13 +55,33 @@ form:
             currency: Devise
             presentation: Présentation
             placeholder:
-                title: Exemple : Séance shooting en studio, Mariage de rêve, Votre incroyable Anniversaire, ...
+                title: Exemple : Séance shooting en studio, Mariage de rêve, ...
                 presentation: Exemple : 1h ou 2h de shooting en agence, dont 15 min de maquillage par une maquilleuse professionnelle. Vous repartez avec un book de 100 photos en basse résolution, ainsi que 4 photos retouchées remises sur clé USB
     devisprice:
         field:
             duration: Durée
             price: Prix (€)
+            one: 1h
+            two: 2h
+            three: 3h
+            four: 4h
+            six: 6h
+            eight: 8h
+            ten: 10h            
+        placeholder:
+            one: Prix pour 1h de prestation
+            two: Prix pour 2h de prestation
+            three: Prix pour 3h de prestation
+            four: Prix pour 4h de prestation
+            six: Prix pour 6h de prestation
+            eight: Prix pour 8h de prestation
+            ten: Prix pour 10h de prestation
     devisbook:
+        field:
+            cover: Photo de couverture
+            photo1: Deuxiéme photo
+            photo2: Troisiéme photo
+    servicebook:
         field:
             address: Adresse de l'évenement
             startTime: Heure de début

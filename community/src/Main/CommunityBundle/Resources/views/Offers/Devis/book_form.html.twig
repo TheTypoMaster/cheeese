@@ -13,49 +13,48 @@
 {% block content %}
 <section class="content">
 	<div class="row">
-			<div class="col-md-12">
-                            <div class="box box-primary">
-                                <div class="box-header">
-                                    <h3 class="box-title">
-                                    	{% trans from "offers" %}community.devis.read.book.new.header {% endtrans %}
-                                        <strong>{{ devis.title }}</strong>                                        
-                                    </h3>
-                                </div>
-                               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-                                    
-                                    <div class="box-body">	
-                                        <div class="form-group {% if not form.photo.vars.valid %}has-error{% endif %}">                             
-                                            {{ form_label(form.photo) }}                         
-                                            {{ form_widget(form.photo) }}
-                                            <div class="text-red">
-                                            {{ form_errors(form.photo) }}
-                                            </div>
-                                            </div>								
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    {{ form_widget(form.cgu) }}
-                                                    {% trans from "offers" %}community.devis.read.book.new.cgu.text{% endtrans %}<a href="#" target="_blank">{% trans from "offers" %}community.devis.read.book.new.cgu.link{% endtrans %}</a>
-                                                </label>
-                                            </div>
-                                            <div class="text-red">
-                                            {{ form_errors(form.cgu) }}
-                                            </div>
-                                        </div>
-                                                                 
-                                        {{ form_rest(form) }}
-
-                                    <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary">
-                                        	{% trans from "offers" %}community.devis.read.book.new.btn.submit{% endtrans %}
-                                        </button>
-                                        <a href="{{ path('devis_read', {'id' : devis.id}) }}" class="btn btn-default">
-                                        	{% trans from "offers" %}community.devis.read.book.new.btn.back{% endtrans %}
-                                        </a>
-                                    </div>
-                                {{ form_end(form) }}
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">
+                    	{% trans from "offers" %}community.devis.read.book.new.header {% endtrans %}
+                        <strong>{{ devis.title }}</strong>                                        
+                    </h3>
+                </div>
+               {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                    
+                    <div class="box-body">	
+                        <div class="form-group {% if not form.photo.vars.valid %}has-error{% endif %}">                             
+                            {{ form_label(form.photo) }}                         
+                            {{ form_widget(form.photo) }}
+                            <div class="text-red">
+                            {{ form_errors(form.photo) }}
                             </div>
+                        </div>								
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form_widget(form.cgu) }}
+                                    {% trans from "offers" %}community.devis.read.book.new.cgu.text{% endtrans %}<a href="#" target="_blank">{% trans from "offers" %}community.devis.read.book.new.cgu.link{% endtrans %}</a>
+                                </label>
+                            </div>
+                            <div class="text-red">
+                            {{ form_errors(form.cgu) }}
+                            </div>
+                        </div>
+                                                 
+                        {{ form_rest(form) }}
+                    </div>  
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">
+                        	{% trans from "offers" %}community.devis.read.book.new.btn.submit{% endtrans %}
+                        </button>
+                        <a href="{{ path('devis_read', {'id' : devis.id}) }}" class="btn btn-default">
+                        	{% trans from "offers" %}community.devis.read.book.new.btn.back{% endtrans %}
+                        </a>
+                    </div>
+                {{ form_end(form) }}
+            </div>
 		</div>	
 	</div>
 </section>

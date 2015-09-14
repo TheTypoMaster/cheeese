@@ -24,17 +24,17 @@ class DevisController extends Controller
 		//@TODO: Check that the user has the rights
 		$serviceCompany = $this->get('service_company');
 		$company = $serviceCompany->getCompany($usr->getId());
-		$form = $this->createForm('form_devis', new Devis(), array(
+		$form = $this->createForm('form_create_devis', null, array(
 			'studio' => $serviceCompany->canDoStudio($company)
 			));
 		$form->handleRequest($request);
 		if($request->isMethod('POST'))
 		{
-			$params = $request->request->get('form_devis');
+			$params = $request->request->get('form_create_devis');
 			if ($form->isValid())
 			{
 				$serviceDevis = $this->get('service_devis');
-				$devis = $serviceDevis->create($params);
+				$devis = $serviceDevis->create($form->getData());
 				if($devis) {
 					return $this->redirect($this->generateUrl('devis_read', array( 
 						'id' => $devis->getId()

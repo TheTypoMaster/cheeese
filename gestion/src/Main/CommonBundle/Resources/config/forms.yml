@@ -34,16 +34,31 @@ services:
         class: "Main\CommonBundle\Form\Companies\FormConfirmCompanyType"
         tags:
             - { name: form.type, alias: form_confirm_company }
+    form_create_devis:
+        class: "Main\CommonBundle\Form\Offers\FormCreateDevisType"
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+        tags:
+            - { name: form.type, alias: form_create_devis }
     form_devis:
         class: "Main\CommonBundle\Form\Offers\FormDevisType"
         arguments: [@doctrine.orm.entity_manager, @security.context]
         tags:
             - { name: form.type, alias: form_devis }
+    form_create_devis_prices:
+        class: "Main\CommonBundle\Form\Offers\FormCreateDevisPricesType"
+        arguments: []
+        tags:
+            - { name: form.type, alias: form_create_devis_prices }
     form_devis_prices:
         class: "Main\CommonBundle\Form\Offers\FormDevisPricesType"
         arguments: [@doctrine.orm.entity_manager, @security.context]
         tags:
             - { name: form.type, alias: form_devis_prices }
+    form_create_devis_book:
+        class: "Main\CommonBundle\Form\Offers\FormCreateDevisBookType"
+        arguments: [@security.context]
+        tags:
+            - { name: form.type, alias: form_create_devis_book }
     form_devis_book:
         class: "Main\CommonBundle\Form\Offers\FormDevisBookType"
         arguments: [@security.context]

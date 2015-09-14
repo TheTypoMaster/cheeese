@@ -7,6 +7,8 @@ use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Main\CommonBundle\Entity\Photographers\Devis;
 use Main\CommonBundle\Services\Session\ServiceSession;
+use Main\CommonBundle\Services\Offers\ServiceDevisBook;
+use Main\CommonBundle\Services\Offers\ServicePrices;
 
 
 class ServiceDevis 
@@ -29,14 +31,20 @@ class ServiceDevis
 
 	private $logger;
 
+	private $devisBook;
+
+	private $devisPrices;
+
 	
-	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, LoggerInterface $logger)
+	public function __construct(EntityManager $entityManager, SecurityContext $securityContext, ServiceSession $service, LoggerInterface $logger, ServiceDevisBook $book, ServicePrices $prices)
 	{
 		$this->em = $entityManager;
 		$this->repository = $this->em->getRepository('MainCommonBundle:Photographers\Devis');
 		$this->securityContext = $securityContext;
 		$this->session = $service;
 		$this->logger = $logger;
+		$this->devisBook = $book;
+		$this->devisPrices = $prices;
 	}
 	
 	/**
@@ -77,18 +85,16 @@ class ServiceDevis
 	 */
 	public function create($data)
 	{
-		$category = $this->em->getRepository('MainCommonBundle:Utils\Category')->findOneById($data['category']);
-		$currency = $this->em->getRepository('MainCommonBundle:Utils\Currency')->findOneById($data['currency']);
-		$company  = $this->getCurrentCompany();
-		$devis = new Devis();
-		$devis->setTitle($data['title']);
+		$devis 		= $data['details'];
+		$prices 	= $data['prices'];
+		$book 		= $data['photos'];
+		$company  	= $this->getCurrentCompany();
 		$devis->setCompany($company);
-		$devis->setCategory($category);
-		$devis->setCurrency($currency);
-		$devis->setPresentation($data['presentation']);
-		$devis->setCgu($data['cgu']);
 		try{
 			$this->em->persist($devis);
+			$this->em->flush();
+			$this->devisPrices->createPrices($devis, $prices);
+			$this->devisBook->createBook($devis, $book);
 			$this->em->flush();
 			$this->session->successFlashMessage('flash.message.devis.create');
 			return $devis;

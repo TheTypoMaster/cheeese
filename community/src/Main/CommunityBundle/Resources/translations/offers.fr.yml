@@ -23,7 +23,10 @@ community:
             h2: Créer
             breadh1: Devis
             breadh2: Créer
-            header: Nouveau devis
+            header:
+                details: Détails
+                photos: Photos
+                price: Prix
             btn:
                 submit: Soumettre
                 back: Retour à la liste

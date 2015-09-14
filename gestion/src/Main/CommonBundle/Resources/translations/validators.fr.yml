@@ -25,6 +25,7 @@ form:
     devisprice:
         field:
             price: Le prix doit être supérieur ou égal à 20 €.
+            notblank: Merci de rentrer au moins 1 prix.
     devisbook:
         field:
             cgu: Vous devez cocher la case pour pouvoir continuer.

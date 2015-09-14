@@ -14,7 +14,16 @@ help:
         field:
             title: Soyez le plus précis possible
             category: Sélectionnez la catégorie correspondant à votre devis
-            presentation: Soyez le plus précis possible en au moins 140 caractéres
+            presentation: Soyez le plus précis possible.
+    devisbook:
+        field:
+            cover: Une photo de couverture est obligatoire
+            photo1: Une deuxiéme photo est optionnelle
+            photo2: Une troisiéme photo est optionnelle
+            help: Votre devis doit au moins avoir une photo de couverture
+    devisprice:
+        field:
+            help: Votre devis doit avoir au moins 1 prix. Tous vos prix doivent être en TTC.
     company:
         field:
             firstname: Votre prénom

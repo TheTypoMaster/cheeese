@@ -53,15 +53,28 @@ class ServiceDevisBook
 		return $this->repository->getBook($devis->getId());
 	}
 
+	public function createBook(Devis $devis, $data) {
+		$this->addPhoto($devis, $data['cover'], false, true);
+		if ($data['photo1'] != null ){
+			$this->addPhoto($devis, $data['photo1'], false, false);
+		}
+		if ($data['photo2'] != null ){
+			$this->addPhoto($devis, $data['photo2'], false, false);
+		}
+	}
+
 	/**
 	 * [addPhoto description]
 	 * @param Devis  $devis [description]
 	 * @param [type] $data  [description]
 	 */
-	public function addPhoto(Devis $devis, $data)
+	public function addPhoto(Devis $devis, $data, $flush = true, $isCover = false)
 	{
-
-		$photo = $data['photo'];
+		if ($data instanceof UploadedFile) {
+			$photo = $data;
+		}else {
+			$photo = $data['photo'];	
+		}		
 		if ($photo instanceof UploadedFile) {
                 // traitement spéciale pour la pièce jointe
                 $pjPath	= $photo->getPathName ();
@@ -75,7 +88,7 @@ class ServiceDevisBook
                             $file = fopen($this->path . $url, 'a');
                             fputs($file, $content);
                             fclose($file);
-                            return $this->createPhoto($devis, $url, $mime, $size);
+                            return $this->createPhoto($devis, $url, $mime, $size, $flush, $isCover);
                         } catch (\Exception $e) {
                         	$this->session->errorFlashMessage();
                         	$this->logger->error($e->getMessage());
@@ -107,7 +120,7 @@ class ServiceDevisBook
 	 * @param  [type] $size             [description]
 	 * @return [type]                   [description]
 	 */
-	private function createPhoto(Devis $devis, $url, $type, $size)
+	private function createPhoto(Devis $devis, $url, $type, $size, $flush = true,$profile = false)
 	{
 		try {
 			$book = new DevisBook();
@@ -117,8 +130,13 @@ class ServiceDevisBook
 			$book->setFileSize($size);
 			$book->setCgu(1);
 			$this->em->persist($book);
-			$this->em->flush();
-			$this->session->successFlashMessage('flash.message.devis.book.create');
+			if ($flush) {
+				$this->em->flush();
+				$this->session->successFlashMessage('flash.message.devis.book.create');
+			}			
+			if ($profile) {
+				$this->setcoverPhoto($book, $devis, false);
+			}
 			return true;
 		}catch(\Exception $e){
 			$this->session->errorFlashMessage();
@@ -163,7 +181,7 @@ class ServiceDevisBook
 	 * @param  Devis     $devis [description]
 	 * @return [type]           [description]
 	 */
-	public function setcoverPhoto(DevisBook $photo, Devis $devis)
+	public function setcoverPhoto(DevisBook $photo, Devis $devis, $flush = true)
 	{
 		$oldCover = $this->repository->findOneBy(array(
 			'profile' => 1,
@@ -174,8 +192,10 @@ class ServiceDevisBook
 		$oldCover->setProfile(0);		
 		}
 		try {
-			$this->em->flush();
-			$this->session->successFlashMessage('flash.message.devis.book.edit');
+			if ($flush) {
+				$this->em->flush();
+				$this->session->successFlashMessage('flash.message.devis.book.edit');			
+			}
 			return true;	
 		} catch (Exception $e) {
 			$this->session->errorFlashMessage();

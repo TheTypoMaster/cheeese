@@ -11,6 +11,14 @@ use Main\CommonBundle\Services\Session\ServiceSession;
 
 class ServicePrices 
 {
+	const ONE 	= 1;
+	const TWO 	= 2;
+	const THREE	= 3;
+	const FOUR	= 4;
+	const SIX	= 5;
+	const EIGHT	= 6;
+	const TEN	= 7;
+
 	/**
 	 *
 	 * @var EntityManager
@@ -52,13 +60,37 @@ class ServicePrices
 			);
 	}
 
+	public function createPrices(Devis $devis, $data) {
+		if ($data['one'] != '') {
+			$this->addPrice($devis, self::ONE, $data['one'], false);
+		}
+		if ($data['two'] != '') {
+			$this->addPrice($devis, self::TWO, $data['two'], false);
+		}
+		if ($data['three'] != '') {
+			$this->addPrice($devis, self::THREE, $data['three'], false);
+		}
+		if ($data['four'] != '') {
+			$this->addPrice($devis, self::FOUR, $data['four'], false);
+		}
+		if ($data['six'] != '') {
+			$this->addPrice($devis, self::SIX, $data['six'], false);
+		}
+		if ($data['eight'] != '') {
+			$this->addPrice($devis, self::EIGHT, $data['eight'], false);
+		}
+		if ($data['ten'] != '') {
+			$this->addPrice($devis, self::TEN, $data['ten'], false);
+		}
+	}
+
 	/**
 	 * [addPrice description]
 	 * @param Devis  $devis    [description]
 	 * @param [type] $duration [description]
 	 * @param [type] $price    [description]
 	 */
-	public function addPrice (Devis $devis, $duration, $new) 
+	public function addPrice (Devis $devis, $duration, $new, $flush = true) 
 	{	
 		$price = $this->fetch($devis, $duration);
 		if($price)
@@ -71,8 +103,10 @@ class ServicePrices
 			$price->setPrice((double)$new);
 			try{
 				$this->em->persist($price);
-				$this->em->flush();
-				$this->session->successFlashMessage('flash.message.devis.price.create');
+				if ($flush) {
+					$this->em->flush();
+					$this->session->successFlashMessage('flash.message.devis.price.create');
+				}				
 				return true;
 			}catch(\Exception $e){
 				$this->session->errorFlashMessage();
