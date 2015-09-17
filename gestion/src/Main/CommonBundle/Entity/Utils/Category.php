@@ -7,8 +7,9 @@ use Main\CommonBundle\Entity\Geo\Country as Country;
 
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="utils.category")
+ * @ORM\EntityListeners({ "Main\CommonBundle\Listener\CategoryListener" })
+ * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Utils\CategoryRepository")
  */
 class Category
 {

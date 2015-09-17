@@ -12,6 +12,7 @@ menu:
             title: options
             geo: Données Géo
             commission: Commissions
+            categories: Catégories
         security: Sécurité
     up:
         membersince: Membre depuis

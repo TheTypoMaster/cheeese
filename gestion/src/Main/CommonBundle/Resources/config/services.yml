@@ -2,6 +2,9 @@ imports:
     - { resource: forms.yml }
 services:
 #services
+    service_categories:
+        class: "Main\CommonBundle\Services\Utils\ServiceCategories"
+        arguments: [@doctrine.orm.entity_manager, "@logger"]
     service_preference_emails:
         class: "Main\CommonBundle\Services\Users\ServiceEmail"
         arguments: [@doctrine.orm.entity_manager, @security.context, @service_session, "@logger"]
@@ -109,6 +112,10 @@ services:
             - { name: doctrine.orm.entity_listener }
     listener_notification:
         class: Main\CommonBundle\Listener\NotificationListener
+        tags:
+            - { name: doctrine.orm.entity_listener }
+    listener_category:
+        class: Main\CommonBundle\Listener\CategoryListener
         tags:
             - { name: doctrine.orm.entity_listener }
 #Extension

@@ -1,0 +1,57 @@
+{% extends '::base.html.twig'%}
+{% block titleH1 %}{% trans %}gestion.utils.categories.h1{% endtrans %}{% endblock %}
+{% block titleH2 %}{% trans %}gestion.utils.categories.h2{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-cog"></i>
+{% trans %}gestion.utils.categories.breadh1{% endtrans %}
+{% endblock %}
+{% block breadcrumbH2 %}{% trans %}gestion.utils.categories.breadh2{% endtrans %}{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">{% trans %}gestion.utils.categories.header{% endtrans %}</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive">
+				    <table id="datatable" class="table">
+				        <thead>
+				            <tr>
+				                <th>{% trans %}gestion.utils.categories.name{% endtrans %}</th>
+						  		<th>{% trans %}gestion.utils.categories.visibility{% endtrans %}
+						  		</th>
+						  		<th></th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        {% for entity in categories %}
+							<tr>
+				                <td> {{ entity.name }} </td>
+				                {% if 0 == entity.active %}
+				                <td>	
+				                	<span class="label label-warning">
+				                       {% trans %}gestion.utils.categories.status.no{% endtrans%}
+				                    </span>
+				                </td>    
+				                {% elseif 1 == entity.active %}
+				                <td>
+				                	<span class="label label-success">
+				                       {% trans %}gestion.utils.categories.status.all{% endtrans%}
+				                    </span>
+				                </td>
+				                {% endif %}
+				                <td>
+				                	<a href="{{ path('geo_update_category', { 'id' : entity.id})}}" class="label label-primary">
+				                		{% trans %}gestion.utils.categories.btn.visibility{% endtrans %}
+				                	</a>
+				                </td>
+				            </tr>
+						{% endfor %}		            
+				            
+				        </tbody>
+				    </table>
+				</div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+{% endblock %}

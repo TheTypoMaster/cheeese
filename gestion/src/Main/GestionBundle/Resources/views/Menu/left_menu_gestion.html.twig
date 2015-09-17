@@ -68,8 +68,17 @@
                             <i class="fa fa-globe"></i> 
                             <span>{% trans from "menu" %}menu.left.options.geo{% endtrans %}</span>
                         </a>
+                    </li>                    
+                    <li>
+                        <a href="{{ path('categories') }}">
+                            <i class="fa fa-cog"></i> {% trans from "menu" %}menu.left.options.categories{% endtrans %}
+                        </a>
                     </li>
-                    <li><a href="{{ path('commission') }}"><i class="fa fa-money"></i> {% trans from "menu" %}menu.left.options.commission{% endtrans %}</a></li>                               
+                    <li>
+                        <a href="{{ path('commission') }}">
+                            <i class="fa fa-money"></i> {% trans from "menu" %}menu.left.options.commission{% endtrans %}
+                        </a>
+                    </li>                              
                 </ul>
             </li>
             {% endif %}
