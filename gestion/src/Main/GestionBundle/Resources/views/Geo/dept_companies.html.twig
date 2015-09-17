@@ -1,0 +1,47 @@
+<div class="box-body table-responsive">
+    <table id="datatableCompanies" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>{% trans %}gestion.geo.dept.company.name{% endtrans %}
+                </th>
+          		<th>{% trans %}gestion.geo.dept.company.owner{% endtrans %}
+                </th>
+          		<th>{% trans %}gestion.geo.dept.company.address{% endtrans %}</th>
+          		<th>{% trans %}gestion.geo.dept.company.status{% endtrans %}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+        	<tr>
+                <td> {{ company.title }} </td>
+                <td> <a href="{{ path('user_show', {id : company.photographer.id} ) }}">{{ company.photographer.firstname }} {{ company.photographer.lastname }}</a> </td>
+                <td> {{ company.address|replace({';;;': ' '}) }} {{ company.town.code }}
+                 {{ company.town.name }}</td>
+                <td> 
+                    {% if 1 == company.status.id %}
+                    <span class="label label-warning">{{ company.status.libelle }}</span>
+                    {% elseif 3 == company.status.id %}
+                    <span class="label label-danger">{{ company.status.libelle }}</span>
+                    {% elseif 2 == company.status.id %}
+                    <span class="label label-success">{{ company.status.libelle }}</span>
+                    {% elseif 4 == company.status.id %}
+                    <span class="label label-warning">{{ company.status.libelle }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}  
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>{% trans %}gestion.geo.dept.company.name{% endtrans %}
+                </th>
+                <th>{% trans %}gestion.geo.dept.company.owner{% endtrans %}
+                </th>
+                <th>{% trans %}gestion.geo.dept.company.address{% endtrans %}</th>
+                <th>{% trans %}gestion.geo.dept.company.status{% endtrans %}
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

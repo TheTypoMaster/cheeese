@@ -129,6 +129,20 @@ gestion:
             breadh2: Départements
             header: Liste des départements
         dept:
+            h2: Détails
+            breadh2: Détails
+            header:
+                main %name%: Détails de %name%
+                companies: Entreprises
+                services: Prestations
+            h4:
+                companies %name%: Liste des entreprises de %name%
+                services %name%: Liste des prestations de %name%
+            company:
+                name: Nom
+                owner: Propriétaire
+                address: Adresse
+                status: Statut
             code: code
             name: Nom
             country: Pays
@@ -178,6 +192,20 @@ gestion:
                 btn:
                     back: Retour
                     confirm: Confirmer
+    utils:
+        categories:
+            h1: Catégories
+            h2: Liste
+            breadh1: Catégories
+            breadh2: Liste
+            header: Liste de toutes les catégories
+            name: Nom
+            visibility: Visibilité
+            status:
+                all: Publique
+                no: Restreinte
+            btn:
+                visibility: Modifier
 flash:
     message:
             error: Un probléme est  survenue

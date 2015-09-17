@@ -1,58 +1,62 @@
 <div class="box-body table-responsive">
                                 	
-                                    <table id="datatable" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>{% trans %}gestion.geo.dept.name{% endtrans %}</th>
-										  		<th>{% trans %}gestion.geo.dept.code{% endtrans %}</th>
-										  		<th>{% trans %}gestion.geo.dept.country{% endtrans %}</th>
-										  		<th>{% trans %}gestion.geo.dept.visibility{% endtrans %}</th>
-										  		<th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for entity in depts %}
-        									<tr>
-                                                <td> {{ entity.name }} </td>
-                                                <td> {{ entity.code }} </td>
-                                                <td> {{ entity.country.name }} </td>
-                                                {% if 0 == entity.active %}
-                                                <td>	
-                                                	<span class="label label-danger">
-                                                       {% trans %}gestion.geo.dept.status.no{% endtrans%}
-                                                    </span>
-                                                </td>    
-                                                {% elseif 1 == entity.active %}
-                                                <td>
-                                                	<span class="label label-warning">
-                                                       {% trans %}gestion.geo.dept.status.photographer{% endtrans%}
-                                                    </span>
-                                                </td>
-                                                {% elseif 2 == entity.active %}
-                                                <td>
-                                                	<span class="label label-success">
-                                                       {% trans %}gestion.geo.dept.status.all{% endtrans%}
-                                                    </span>
-                                                </td>
-                                                {% endif %}
-                                                <td>
-                                                	<a href="{{ path('geo_update_dept', {'country' : entity.country.id, 'code' : entity.code}) }}" class="label label-primary">
-                                                		{% trans %}gestion.geo.dept.btn.visibility{% endtrans %}
-                                                	</a>
-                                                </td>
-                                            </tr>
-    									{% endfor %}
-                                            
-                                            
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>{% trans %}gestion.geo.dept.name{% endtrans %}</th>
-										  		<th>{% trans %}gestion.geo.dept.code{% endtrans %}</th>
-										  		<th>{% trans %}gestion.geo.dept.country{% endtrans %}</th>
-										  		<th>{% trans %}gestion.geo.dept.visibility{% endtrans %}</th>
-										  		<th></th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div><!-- /.box-body -->
+    <table id="datatable" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>{% trans %}gestion.geo.dept.name{% endtrans %}</th>
+		  		<th>{% trans %}gestion.geo.dept.code{% endtrans %}</th>
+		  		<th>{% trans %}gestion.geo.dept.country{% endtrans %}</th>
+		  		<th>{% trans %}gestion.geo.dept.visibility{% endtrans %}</th>
+		  		<th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in depts %}
+			<tr>
+                {% if 0 == entity.active %}
+                    <td> {{ entity.name }} </td>
+                {% else %}
+                    <td> <a href="{{ path('geo_dept', {'code': entity.code})}}">{{ entity.name }}</a> </td>
+                {% endif %}
+                <td> {{ entity.code }} </td>
+                <td> {{ entity.country.name }} </td>
+                {% if 0 == entity.active %}
+                <td>	
+                	<span class="label label-danger">
+                       {% trans %}gestion.geo.dept.status.no{% endtrans%}
+                    </span>
+                </td>    
+                {% elseif 1 == entity.active %}
+                <td>
+                	<span class="label label-warning">
+                       {% trans %}gestion.geo.dept.status.photographer{% endtrans%}
+                    </span>
+                </td>
+                {% elseif 2 == entity.active %}
+                <td>
+                	<span class="label label-success">
+                       {% trans %}gestion.geo.dept.status.all{% endtrans%}
+                    </span>
+                </td>
+                {% endif %}
+                <td>
+                	<a href="{{ path('geo_update_dept', {'country' : entity.country.id, 'code' : entity.code}) }}" class="label label-primary">
+                		{% trans %}gestion.geo.dept.btn.visibility{% endtrans %}
+                	</a>
+                </td>
+            </tr>
+		{% endfor %}
+            
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>{% trans %}gestion.geo.dept.name{% endtrans %}</th>
+		  		<th>{% trans %}gestion.geo.dept.code{% endtrans %}</th>
+		  		<th>{% trans %}gestion.geo.dept.country{% endtrans %}</th>
+		  		<th>{% trans %}gestion.geo.dept.visibility{% endtrans %}</th>
+		  		<th></th>
+            </tr>
+        </tfoot>
+    </table>
+</div><!-- /.box-body -->

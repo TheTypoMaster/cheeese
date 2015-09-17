@@ -142,6 +142,26 @@ class ServiceCompany
 	}
 
 	/**
+	 * [getCompaniesByDept description]
+	 * @param  [type] $dept [description]
+	 * @return [type]       [description]
+	 */
+	public function getCompaniesByDept($dept)
+	{
+		return $this->repository->getCompaniesByDept($dept);
+	}
+
+	/**
+	 * [groupByDept description]
+	 * @param  [type] $code [description]
+	 * @return [type]       [description]
+	 */
+	public function groupByDept($dept)
+	{
+		return $this->repository->groupByDept($dept);
+	}
+
+	/**
 	* Vérifie le nombre de compagnies par encore vérifiées
 	*
 	*/

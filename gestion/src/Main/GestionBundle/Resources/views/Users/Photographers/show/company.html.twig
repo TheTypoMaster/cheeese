@@ -19,7 +19,7 @@
         <tbody>
             <tr>
                 <td> 
-                    {{ company.address }} , {{ company.town.name }}, {{ company.town.country.name }} 
+                    {{ company.address|replace({';;;': ' '}) }} , {{ company.town.name }}, {{ company.town.country.name }} 
                 </td>
                 <td> {{ company.identification }} </td>
                 <td> {{ company.createdat | date('d-m-Y H:i')}} </td>

@@ -52,6 +52,16 @@ class ServiceDepartment
 			'country'	=> $country
 			));
 	}
+	
+	/**
+	 * [findByCode description]
+	 * @param  [type] $code [description]
+	 * @return [type]       [description]
+	 */
+	public function findByCode($code)
+	{
+		return $this->repository->findOneByCode($code);
+	}
 
 	/**
 	 * [updateDept description]

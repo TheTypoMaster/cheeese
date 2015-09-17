@@ -43,5 +43,28 @@ class GeoController extends Controller
 		}
 	}
 
+	/**
+	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/dept/{code}", name="geo_dept")
+	 */
+	public function deptAction($code) 
+	{
+		$serviceGeo = $this->get('service_department');
+		$dept = $serviceGeo->findByCode($code);
+		if(!$dept) {
+			return $this->redirect($this->generateUrl('geo'));
+		}
+		$serviceCompany = $this->get('service_company');
+		$companies = $serviceCompany->getCompaniesByDept($code);
+		$groupbyStatus = $serviceCompany->groupByDept($code);
+		return $this->render('MainGestionBundle:Geo:department.html.twig', array(
+			'department' 	=> $dept,
+			'companies'	 	=> $companies,
+			'groupByStatus'	=> json_encode($groupbyStatus),
+			));
+	}
+
 	
 }
