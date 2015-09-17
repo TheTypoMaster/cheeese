@@ -67,6 +67,13 @@ community:
                     h4: Prix de vos prestations
                     p1: Ici, vous définissez les durées et les prix de vos prestations pour le devis créé. En fonction du nombre d’heures de votre prestation, vous définissez un prix correspondant.
                     p2: Vous pouvez en définir autant que vous voulez, et cela augmente vos chances d'apparaître dans les résultats de recherche des clients.
+                    p3: 
+                        first:
+                            text: Notez que votre prix doit absolument inclure toutes les taxes 
+                            strong: (TTC)
+                        second:
+                            text: Nous vous rappelons aussi que notre commission est de
+                            strong: 10% 
                 title: Prix
                 empty: Vous n'avez pas de prix rattachés à ce devis.
                 new:

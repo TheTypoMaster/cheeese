@@ -232,10 +232,10 @@ class DevisController extends Controller
 			
 			}
 			return $this->render('MainCommunityBundle:Offers\Devis:prices_form.html.twig', array(
-					'form'  => $form->createView(),
-					'devis'	=> $devis,
-					'new'	=> true,
-					'price'	=> null
+					'form'  		=> $form->createView(),
+					'devis'			=> $devis,
+					'new'			=> true,
+					'price'			=> null,
 			));
 		}
 	}

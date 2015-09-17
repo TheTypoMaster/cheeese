@@ -1,9 +1,9 @@
 {% extends '::base.html.twig'%}
-{% block title %}{% trans from "offers" %}community.devis.read.h1{% endtrans %}{% endblock %}
-{% block titleH1 %}{% trans from "offers" %}community.devis.read.h1{% endtrans %}{% endblock %}
+{% block title %}{% trans from "offers" %}community.devis.read.h1{% endtrans %} : {{ devis.title }}{% endblock %}
+{% block titleH1 %}{{ devis.title }}{% endblock %}
 {% block titleH2 %}{% trans from "offers" %}community.devis.read.h2{% endtrans %}{% endblock %}
 {% block breadcrumbH1 %}
-<i class="fa fa-briefcase"></i>{% trans from "offers" %}community.devis.read.breadh1{% endtrans %}{% endblock %}
+<i class="fa fa-briefcase"></i>{{ devis.title }}{% endblock %}
 {% block breadcrumbH2 %}{% trans from "offers" %}community.devis.read.breadh2{% endtrans %}{% endblock %}
 {% block content %}
 <!-- Main content -->
@@ -20,32 +20,45 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">{{ devis.title }}</h3>
             </div><!-- /.box-header -->            
             <div class="box-body">
-            	<blockquote>
+                <div class="text-center">
+                    <blockquote>
                     {% set text = encryptText(devis.presentation, devis.company.photographer.lastname) %}
-                    <p>{{ text | nl2br }}</p>            		
-            	</blockquote>
-            	<dl class="dl-horizontal">
-            		<dt> {% trans from "offers" %}community.devis.read.dt.category{% endtrans %} </dt>
-            		<dd> {{ devis.category.name}} </dd>
-            		<dt> {% trans from "offers" %}community.devis.read.dt.status{% endtrans %} </dt>
-            		<dd>
-            		 {% if 1 == devis.active %}
-                            <td><span class="label label-success">{% trans from "offers" %}community.devis.read.dt.active.enabled{% endtrans %}</span></td>
-                            {% elseif 0 == devis.active %}
-                            <td><span class="label label-danger">{% trans from "offers" %}community.devis.read.dt.active.disabled{% endtrans %}</span></td>
-                            {% endif %}
-                   	</dd>
-                   	{% if devis.prestations == 1 %}
-            		<dt> {% trans from "offers" %}community.devis.read.dt.notation.title{% endtrans %} </dt>
-            		<dd> {{ devis.note }} ({{ devis.prestations}} {% trans from "offers" %}community.devis.read.dt.notation.count{% endtrans %})</dd>
-            		{% elseif devis.prestations > 1 %}
-            		<dt> {% trans from "offers" %}community.devis.read.dt.notation.title{% endtrans %} </dt>
-            		<dd> {{ devis.note }} ({{ devis.prestations}} {% trans from "offers" %}community.devis.read.dt.notation.count{% endtrans %})</dd>
-            		{% endif %}
-            	</dl>
+                    <p>{{ text | nl2br }}</p>                   
+                    </blockquote>
+                    <p>
+                        <span class="label label-primary">
+                            {{ devis.category.name}}
+                        </span>
+                    </p>
+                    <p>
+                        {% if 1 == devis.active %}
+                            <span class="label label-success">
+                                {% trans from "offers" %}community.devis.read.dt.active.enabled{% endtrans %}
+                            </span>
+                        {% elseif 0 == devis.active %}
+                            <span class="label label-danger">
+                                {% trans from "offers" %}community.devis.read.dt.active.disabled{% endtrans %}
+                            </span>
+                        {% endif %}
+                    </p>
+                    <p>
+                        {% if devis.prestations == 1 %}
+                            {{ devis.note }} 
+                            ({{ devis.prestations}} 
+                            {% trans from "offers" %}
+                            community.devis.read.dt.notation.count
+                            {% endtrans %})
+                        {% elseif devis.prestations > 1 %}
+                            {{ devis.note }} 
+                            ({{ devis.prestations}} 
+                            {% trans from "offers" %}
+                            community.devis.read.dt.notation.count
+                            {% endtrans %})
+                        {% endif %}
+                    </p>
+                </div>
             </div><!-- /.box-body -->  
             <div class="box-footer">
                 <a href="{{ path('devis_edit', {'id' : devis.id}) }}" class="btn btn-primary btn-sm">
