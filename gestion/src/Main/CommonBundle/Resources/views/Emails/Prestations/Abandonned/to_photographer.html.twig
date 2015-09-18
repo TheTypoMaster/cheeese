@@ -1,20 +1,20 @@
 {% embed "MainCommonBundle:Emails:email.html.twig" %}
 		{% block h1 %}{{ prestation.devis.company.photographer.username }},{% endblock %}
 		{% block p_lead %}
-			{% trans with{'%reference%' : prestation.reference} from "email" %}prestation.abandonned.photographer.p_lead %reference%
+			{% trans with{'%reference%' : prestation.reference} from "email" %}prestation.abandoned.photographer.p_lead %reference%
 			{% endtrans %}
 		{% endblock %}
 		{% block p1 %}
-			{% trans from "email" %}prestation.abandonned.photographer.p1
+			{% trans from "email" %}prestation.abandoned.photographer.p1
 			{% endtrans %}
 		{% endblock %}
 		{% block panel %}
-			{% trans from "email" %}prestation.abandonned.photographer.panel
+			{% trans from "email" %}prestation.abandoned.photographer.panel
 			{% endtrans %}
 		{% endblock %}
 		{% block link %}{{ base_url}}/{% endblock %}
 		{% block text %}
-			{% trans from "email" %}prestation.abandonned.photographer.text
+			{% trans from "email" %}prestation.abandoned.photographer.text
 			{% endtrans %}
 		{% endblock %}
 

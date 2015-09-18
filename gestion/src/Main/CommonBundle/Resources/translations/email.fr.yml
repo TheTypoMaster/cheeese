@@ -92,7 +92,7 @@ prestation:
             p2: p2 à venir
             panel: panel à venir
             text: Votre espace    
-    abandonned:
+    abandoned:
         client:
             subject: Votre demande a bien été abandonée
             p_lead %reference%: La demande %reference% a bien été abandonnée

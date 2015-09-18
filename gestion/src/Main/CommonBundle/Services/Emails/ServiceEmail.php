@@ -104,8 +104,8 @@ class ServiceEmail
             //Cancel-Client
                 $templatePhotographer = 'MainCommonBundle:Emails\Prestations\Abandonned:to_photographer.html.twig';
                 $templateClient = 'MainCommonBundle:Emails\Prestations\Abandonned:to_client.html.twig';
-                $subjectPhotographer = $this->translator->trans('prestation.abandonned.photographer.subject', array(), 'email');
-                $subjectClient = $this->translator->trans('prestation.abandonned.client.subject', array(), 'email');
+                $subjectPhotographer = $this->translator->trans('prestation.abandoned.photographer.subject', array(), 'email');
+                $subjectClient = $this->translator->trans('prestation.abandoned.client.subject', array(), 'email');
                 break;
             case 5:
             //Valide
