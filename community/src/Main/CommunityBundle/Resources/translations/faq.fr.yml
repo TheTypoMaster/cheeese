@@ -1,0 +1,68 @@
+faq:
+    h3:
+        first: Devis et prestations
+        second: Déplacements et disponibilités
+        third: Paiements
+        fourth: Commentaires
+        fifth: Contact
+    q1:
+        q: Quelle est la différence entre un devis et une prestation
+        a1: Le devis est votre offre sur PhotoPresta. C’est ce que vous proposez de faire à un client. Votre offre est globale mais peut être personnalisé selon les prestations.
+        a2: Une prestation est une demande de service concernant l’une de vos offres (l’un de vos devis donc), une prestation est donc spécifique à un client et à un devis.
+    q2:
+        q: Combien de devis puis-je proposer
+        a: Vous pouvez proposer autant de devis que vous le souhaitez pour chaque catégorie, il n’y a pas de limite. Plus vous avez de devis, plus vous augmentez vos chances d’être contacté par des clients.
+    q3:
+        q: Comment dois-je fixer le prix de mes devis
+        a1: Les photographes fixent librement les prix de leurs devis. C’est à vous de proposer, pour chacun de vos devis, le prix qui vous parait juste.
+        a2: Prenez bien en compte que le prix que vous fixez pour un devis comprend les éventuels frais de déplacements dans la zone de déplacement que vous avez défini (Mon offre > Zone de déplacements - par défaut 1km) et l’envoi des photos sous format numérique ou clé USB.
+        a3: Prenez également en compte que PhotoPresta prélève 10% de commissions sur le montant de vos prestations réservées (plus de détails : Comment se rémunère PhotoPresta ?)
+    q4:
+        q: Puis-je modifier le prix de mes devis
+        a: Les photographes peuvent modifier à tout moment les prix de leurs devis. Nous vous encourageons d’ailleurs à modifier vos prix si vous ne recevez pas de demandes, de manière à augmenter vos chances d’être contacté par les clients.
+    q5:
+        q: Est-il possible de modifier sa zone de déplacement
+        a: Oui, il vous suffit de vous rendre dans la section “Mon offre” > “Zone de déplacements” et de modifier votre rayon de déplacements. Votre zone de déplacement détermine le rayon dans lequel vous êtes susceptibles de vous déplacer pour réaliser une de vos prestations, à vos frais.
+    q6:
+        q: Est-il possible de modifier ses disponibilités
+        a: Oui, il vous suffit de vous rendre dans la section “Mon offre” > “Disponibilités” et de modifier votre calendrier de disponibilités en cochant/décochant les jours où vous être disponibles ou indisponibles pour réaliser vos prestations.
+    q7:
+        q: Combien coûte l’inscription
+        a: Proposer vos services sur PhotoPresta est entièrement gratuit et, à la différence de d’autres sites de mise en relation, PhotoPresta ne propose pas à ses photographes de payer pour être mis en avant ou remonter dans les classements.
+    q8:
+        q: Comment suis-je payé
+        a1: Les paiements des photographes sont effectués par virements bancaires. Le photographe enregistre en toute sécurité ses coordonnées bancaires (son RIB) dans son espace personnel (Mon entreprise > Détails bancaires). Vérifiez bien que vos coordonnées bancaires sont enregistrées, sinon les virements ne peuvent pas être effectuées.
+        a2: Lorsqu’un virement est envoyé sur son compte, le photographe est notifié par email. Le délai des virements dépend de la confirmation par le client de la bonne réception des photos (jusqu’à 30 jours après la prestation), et de la banque du photographe (entre 3 et 5 jours).
+    q9:
+        q: Pourquoi le paiement n’a t-il pas lieu juste après la prestation
+        a1: Nous conservons l’argent jusqu’à ce que le client confirme qu’il a bien reçu les photos comme convenu dans la description du devis et comme détaillé dans votre conversation. Cela nous permet d’étudier la situation en cas de litige, si nous recevons une plainte de votre part, ou de la part du client.
+        a2: Nous encourageons les photographes à envoyer les fichiers sous format numérique ou clé USB, de manière à raccourcir les délais de livraisons, et votre paiement par virement.
+    q10:
+        q: Que se passe t-il si le client n’a pas confirmé la bonne réception des photos
+        a1: Si le client ne confirme pas la bonne réception des photos sous 30 jours, et que nous n’avons pas reçu de plainte de sa part, nous effectuons le virement correspondant à la prestation réalisée sur votre compte.
+        a2: Rassurez-vous, nous effectuons de nombreux rappels aux clients pour qu’ils confirment au plus vite la réception des photos, de manière à vous payer le plus rapidement possible.
+    q11:
+        q: Comment se rémunère PhotoPresta
+        a1: PhotoPresta se rémunère en prenant une commission de 10% sur chacune des réservations, dont les photographes fixent librement le prix. Si un photographe ne gagne pas d’argent, PhotoPresta n’en gagne pas non plus. La commission de 10% correspond au frais de services du site.
+        a2: Par exemple, si vous avez effectué une prestation réservée sur notre site d’un montant de 100€, nous vous versons 90€, soit 100€ moins les 10% correspondant aux frais de services.
+    q12:
+        q: Est-ce que je peux convenir d’un paiement en dehors du site
+        a: Il est interdit de proposer au client un autre moyen de paiement que celui proposé sur le site. Tout manquement peut engendrer ma désinscription du site.
+    q13:
+        q: Comment fonctionne les commentaires
+        a: Les commentaires sont rédigés par les clients et les photographes, après une prestation. Chaque commentaire se compose d’une description et d’une note avec un système d’étoiles. Les commentaires et les notes sont visibles à tous. Ils sont honnêtes et transparents.
+    q14:
+        q: Puis-je modifier un commentaire
+        a: Non, il n’est pas possible de modifier un commentaire reçu ou donné.
+    q15:
+        q: Puis-je contester un commentaire
+        a: Pour contester un commentaire, vous pouvez nous écrire à : xx@photopresta.com
+    q16:
+        q: Puis-je échanger mes coordonnées avec le client
+        a: Il est interdit d’échanger avec les clients des coordonnées permettant de vous contacter autrement que via le site et la messagerie. Nous nous chargeons de communiquer vos coordonnées aux clients une fois les réservations effectuées.
+    q17:
+        q: Quand vais-je recevoir les coordonnées du client
+        a: Une fois la réservation acceptée, les numéros de téléphone et emails des deux parties seront échangés. Une fois le numéro révélé, il vous est possible d’appeler l’autre personne. Avant la réservation, les numéros de téléphone, les adresses emails et d’autres informations permettant de vous contacter sont cryptées.
+    q18:
+        q: Comment nous contacter
+        a: Vous pouvez nous contacter à tout moment ici, qu’il s’agisse d’une question, d’un problème, d’une réclamation, ou même pour nous dire coucou : xx@photopresta.com
