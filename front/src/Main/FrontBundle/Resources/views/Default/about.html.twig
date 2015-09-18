@@ -20,6 +20,20 @@
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+      .opacite {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+    <!--[if lte IE 8]>
+      <style type="text/css">
+        .opacite {
+          background:transparent;
+          filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#800000,endColorstr=#800000);
+          zoom: 1;
+        } 
+      </style>
+    <![endif]-->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,7 +56,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Cheee<strong>se</strong></a>
+                <a class="navbar-brand page-scroll" href="#page-top">Photo<strong>Presta</strong></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,13 +77,15 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
     <header>
         <div class="header-content">
-            <div class="header-content-inner">
-
-                <a href="#about" class="btn btn-circle page-scroll"><i class="fa fa-angle-double-down animated"></i></a>
-
+            <div class="panel panel-primary opacite">
+                <div class="panel-body">
+                    <h2 class="text-fade" style="color:white">
+                      {% trans %}about.section1.h2{% endtrans %}
+                    </h2>
+                    <a href="#about" class="btn btn-circle page-scroll"><i class="fa fa-angle-double-down animated"></i></a>
+                </div>
             </div>
         </div>
     </header>
@@ -78,10 +94,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">{% trans %}about.section1.h2{% endtrans %}</h2>
+                    <h2 class="section-heading">{% trans %}about.section1.btn{% endtrans %}</h2>
                     <hr class="light">
                     <p class="text-faded">{% trans %}about.section1.p{% endtrans %}</p>
-                    <a href="#" class="btn btn-default btn-xl">{% trans %}about.section1.btn{% endtrans %}</a>
                 </div>
             </div>
         </div>
@@ -135,7 +150,7 @@
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>{% trans %}about.photographers.h2{% endtrans %}</h2>
-                <a href="http://PhotoPresta-community/app_dev.php/about" class="btn btn-success btn-xl wow tada">{% trans %}about.photographers.btn{% endtrans %}</a>
+                <a href="{{ link_community }}/about" class="btn btn-success btn-xl wow tada">{% trans %}about.photographers.btn{% endtrans %}</a>
             </div>
         </div>
     </aside>
@@ -150,16 +165,16 @@
                 </div>
                 <div class="col-lg-3 col-lg-offset-2 text-center">
                     <i class="fa fa-retweet fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><a href="http://facebook.com">Nom de la page</a></p>
+                    <p><a href="https://twitter.com/photopresta">photopresta</a></p>
                 </div>
                 <div class="col-lg-3 text-center">
                     <i class="fa fa-facebook-f fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><a href="http://facebook.com">Nom de la page</a></p>
+                    <p><a href="https://facebook.com/photopresta">photopresta</a></p>
                 </div>
 
                 <div class="col-lg-3 text-center">
                     <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><a href="#">hello@cheee.se</a></p>
+                    <p><a href="#">hello@photopresta.com</a></p>
                 </div>
             </div>
         </div>
