@@ -2,8 +2,8 @@ security:
     about:
         link: A propos
     login:
-        title: Bienvenue sur Cheeese!
-        header: Bienvenue sur Cheeese!
+        title: Bienvenue sur PhotoPresta!
+        header: Bienvenue sur PhotoPresta!
         error: Utilisateur ou/et mot de passe incorrects
         field:
             username: Utilisateur
@@ -15,7 +15,7 @@ security:
             register: Vous n'avez encore pas de compte ? Inscription
     register:
         header: Nouveau membre
-        title: Inscrivez vous sur Cheeese
+        title: Inscrivez vous sur PhotoPresta
         form:
             email: Email
             username: Nom d'utilisateur
@@ -27,9 +27,9 @@ security:
                 username: Au moins 5 caractéres avec seulement des chiffres et des lettres
         btn:
             submit: M'inscrire
-        link: Déja inscrit sur Cheeese ? Connectez-vous
+        link: Déja inscrit sur PhotoPresta ? Connectez-vous
         checkemail:
-            title: Inscrivez vous sur Cheeese
+            title: Inscrivez vous sur PhotoPresta
             header: Nouveau membre
             p %email%: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte.
             link: Connexion
@@ -122,21 +122,21 @@ about:
         join: Rejoindre
         contact: Contact
     head:
-        h1: Cheeese
+        h1: PhotoPresta
         p1: Vous êtes photographe professionnel ?
         p2: Inscription gratuite, simple et sans engagement.
     section1:
         h2: Notre promesse
-        p1: Au sein de Cheeese, nous avons la volonté de proposer à tout un chacun de trouver et de réserver une prestation photographique pour un évènement en quelques clics seulement, et en toute sécurité. En fonction de son budget, de sa localité, et de ses disponibilités.
-        p2: Cheeese, c’est aussi donner envie aux photographes de proposer leurs prestations librement, leur permettre de gérer leurs réservations facilement, d’échanger avec des clients potentiels, et cela sans payer d’abonnements qui ne leur assurent aucune retombées économiques.Grâce à un espace de gestion privé de qualité que nous mettons à leur disposition gratuitement.
+        p1: Au sein de PhotoPresta, nous avons la volonté de proposer à tout un chacun de trouver et de réserver une prestation photographique pour un évènement en quelques clics seulement, et en toute sécurité. En fonction de son budget, de sa localité, et de ses disponibilités.
+        p2: PhotoPresta, c’est aussi donner envie aux photographes de proposer leurs prestations librement, leur permettre de gérer leurs réservations facilement, d’échanger avec des clients potentiels, et cela sans payer d’abonnements qui ne leur assurent aucune retombées économiques.Grâce à un espace de gestion privé de qualité que nous mettons à leur disposition gratuitement.
         p3: Shooting photo, anniversaire, mariage, reportage, etc... : en vous inscrivant et en proposant vos prestations sur XXXX, nous vous permettons d’augmenter votre visibilité, de trouver et de fidéliser de nouveaux clients, d'augmenter vos revenus et de booster votre réputation.
-        p4: Cheeese est une plateforme gratuite, vous vous inscrivez sans abonnement ni contribution. Nous prélevons uniquement une commission de 10% sur chacune de vos prestations réservées, dont vous aurez fixé le prix librement. Si vous ne gagnez pas d’argent, nous n’en gagnons pas non plus.
+        p4: PhotoPresta est une plateforme gratuite, vous vous inscrivez sans abonnement ni contribution. Nous prélevons uniquement une commission de 10% sur chacune de vos prestations réservées, dont vous aurez fixé le prix librement. Si vous ne gagnez pas d’argent, nous n’en gagnons pas non plus.
     section2:
         h2: Vous avez un numéro SIRET?
         a: Rejoindre
         p: Rejoignez notre communauté et bénéficiez de nos services. Créez votre profil en quelques minutes seulement ! 
     section3:
-        h2: Restez en contact avec cheeese
+        h2: Restez en contact avec PhotoPresta
         p: Une question ? Contactez-nous ! 
 error:
     404:

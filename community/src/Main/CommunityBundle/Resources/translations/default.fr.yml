@@ -3,14 +3,14 @@ community:
         headband:
             info:
                 banner: Nouveau photographe
-                message: Bienvenue sur Cheeese, vous devez rentrer les données de votre entreprise (onglet Mon entreprise > Identification ) afin de pouvoir continuer.
+                message: Bienvenue sur PhotoPresta, vous devez rentrer les données de votre entreprise (onglet Mon entreprise > Identification ) afin de pouvoir continuer.
             warning:
                 banner: Vos données en cours de validation
                 message1: Nous vérifions actuellement votre statut professionnel (via votre numéro SIRET). Nous vous enverrons un email dans moins de 24 heures, une fois cette vérification effectuée. Merci pour votre patience ! 
                 message2: En attendant, vous pouvez d'ores et déjà commencer à compléter votre profil dans la section "Profil". A très vite !
             success:
                 banner: Données validées
-                message1: Félicitations, votre inscription a été validée par l'équipe de Cheeese !
+                message1: Félicitations, votre inscription a été validée par l'équipe de PhotoPresta !
                 message2: Reconnectez-vous pour accéder à votre nouvel espace et proposer vos prestations. Merci et à très vite !
             danger:
                 banner: Données non valide
@@ -20,6 +20,16 @@ community:
             h2: index
             breadh1: Tableau de bord
             breadh2: Index
+        faq:
+            h1: FAQ
+            h2: Foire aux questions
+            breadh1: FAQ
+            breadh2: Foire aux questions
+        cgu:
+            h1: CGU
+            h2: Conditions générales d'utilisation
+            breadh1: CGU
+            breadh2: Conditions générales d'utilisation
         help:
             h1: Aide & contacts
             h2: page d'aide
@@ -38,7 +48,7 @@ community:
                 prestations: prestations (vos demandes)
                 devis: Devis (vos offres)
                 moves: Votre zone de déplacements
-                money: Gains avec Cheeese
+                money: Gains avec PhotoPresta
                 href:
                     more: En savoir plus...
             devis: Devis par catégorie

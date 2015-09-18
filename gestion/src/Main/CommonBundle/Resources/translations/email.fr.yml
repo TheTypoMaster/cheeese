@@ -1,9 +1,9 @@
 fosuser:
     community:
         confirmation:
-            subject %name%: Bienvenue sur Cheeese, %name%
-            p_lead: Vous venez de vous inscrire sur Cheeese. Pour activer votre compte, merci de cliquer sur ce lien en dessous de page.
-            p1: Cheeese fait la promesse à ses utilisateurs de les mettre en contact avec des professionnels de la photographie.
+            subject %name%: Bienvenue sur PhotoPresta, %name%
+            p_lead: Vous venez de vous inscrire sur PhotoPresta. Pour activer votre compte, merci de cliquer sur ce lien en dessous de page.
+            p1: PhotoPresta fait la promesse à ses utilisateurs de les mettre en contact avec des professionnels de la photographie.
             p2: Afin de pouvoir tenir cette promesse, nous vous invitons à vous rendre au plus vite dans la section « Identification » de l’onglet « Mon entreprise » et à renseigner votre numéro SIRET. Nous pourrons ainsi vérifier votre statut de professionnel et vous pourrez ensuite profiter librement de votre espace.
             panel: Pour activer votre compte
             text: Cliquez ici
@@ -14,9 +14,9 @@ fosuser:
             text: Cliquez ici
     front:
         confirmation:
-            subject %name%: Bienvenue sur Cheeese, %name%
-            p_lead: Vous venez de vous inscrire sur Cheeese. Nous sommes ravis de vous compter parmis nos utilisateurs !
-            p1: Grâce à Cheeese, vous allez pouvoir trouver et réserver des photographes pour vos évènements en quelques clics, et en toute sécurité !
+            subject %name%: Bienvenue sur PhotoPresta, %name%
+            p_lead: Vous venez de vous inscrire sur PhotoPresta. Nous sommes ravis de vous compter parmis nos utilisateurs !
+            p1: Grâce à PhotoPresta, vous allez pouvoir trouver et réserver des photographes pour vos évènements en quelques clics, et en toute sécurité !
             panel: Pour activer votre compte, merci de cliquer sur ce
             text: lien d’activation.
         resetting:
@@ -28,7 +28,7 @@ community:
     verification:
         ko:
             subject: Votre numéro SIRET n’est pas valide
-            p_lead: Vous vous êtes récemment inscrit en tant que photographe sur Cheeese
+            p_lead: Vous vous êtes récemment inscrit en tant que photographe sur PhotoPresta
             p1: Malheureusement, nous n’avons pas pu valider votre compte pour le moment. Le numéro SIRET que vous avez renseigné ne nous permet pas de vérifier que vous êtes un photographe disposant d’un statut professionnel, une condition nécessaire pour faire partie de notre communauté de photographes.
             p2: Il est possible que votre numéro SIRET ne soit plus valide, ou que vous l’ayez mal renseigné lors de la saisie. N’hésitez pas à faire une nouvelle tentative !
             panel: Merci et nous espérons vous compter parmi notre communauté très bientôt.
@@ -36,9 +36,9 @@ community:
         ok:
             subject %name%: Félicitations %name%! Vos données ont été validées
             p_lead: Félicitations, votre inscription a été validée par notre équipe !
-            p1: Nous sommes très heureux de vous compter parmi la communauté des photographes professionnels de Cheeese.
+            p1: Nous sommes très heureux de vous compter parmi la communauté des photographes professionnels de PhotoPresta.
             p2: Vous pouvez dès à présent vous reconnecter pour accéder à votre nouvel espace et compléter votre profil de manière à pouvoir proposer vos prestations. 
-            panel: Grâce à Cheeese, vous allez pouvoir être mis en relation avec de nouveaux clients et accroître votre visibilité.
+            panel: Grâce à PhotoPresta, vous allez pouvoir être mis en relation avec de nouveaux clients et accroître votre visibilité.
             text: Cliquez ici pour accéder à votre nouvel espace
         suspended:
             subject: Votre entreprise est suspendue
@@ -82,7 +82,7 @@ prestation:
         client:
             subject: Votre demande a été refusée par le photographe
             p_lead %reference%: Malheureusement, votre demande de réservation %reference% a été refusée par le photographe. Rassurez-vous, vous n’avez pas été débité.
-            p1: Heureusement, il y a d’autres photographes sur Cheeese ! Nous vous invitons à continuer vos recherches sur notre site et nous espérons que vous trouverez rapidement un photographe pour votre évènement.
+            p1: Heureusement, il y a d’autres photographes sur PhotoPresta ! Nous vous invitons à continuer vos recherches sur notre site et nous espérons que vous trouverez rapidement un photographe pour votre évènement.
             panel: Renouvelez votre recherche en 
             text: cliquant ici
         photographer:

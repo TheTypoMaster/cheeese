@@ -231,7 +231,7 @@ class ServiceEmail
     {
         $mail = \Swift_Message::newInstance();
         $mail
-            ->setFrom(array($from => 'cheeese'))
+            ->setFrom(array($from => 'PhotoPresta'))
             ->setTo($to)
             ->setSubject($subject)
             ->setBody($body)
