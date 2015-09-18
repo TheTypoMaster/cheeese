@@ -3,9 +3,254 @@
 
 {% block titleH1 %}{% trans from "default" %}community.default.help.h1{% endtrans %}{% endblock %}
 {% block titleH2 %}{% trans from "default" %}community.default.help.h2{% endtrans %}{% endblock %}
-{% block breadcrumbH1 %}{% trans from "default" %}community.default.help.breadh1{% endtrans %}{% endblock %}
+{% block breadcrumbH1 %}
+<i class="fa fa-question"></i>
+{% trans from "default" %}community.default.help.breadh1{% endtrans %}{% endblock %}
 {% block breadcrumbH2 %}{% trans from "default" %}community.default.help.breadh2{% endtrans %}{% endblock %}
 {% block content %}
-<!-- Main content -->
+<div class="row">
+	<div class="callout callout-info">
+	    <h4>{% trans from "help" %}help.question.h4{% endtrans %}
+	    </h4>
+	    <br>
+	    <p>
+	    	{% trans from "help" %}help.question.p1.faq.text1{% endtrans %}
+	    	<strong>
+	    		{% trans from "help" %}help.question.p1.faq.strong{% endtrans %}
+	    	</strong>
+	    	{% trans from "help" %}help.question.p1.faq.text2{% endtrans %}
+	    	<a href="{{path('faq')}}" target="_blank"> {% trans from "help" %}help.question.p1.faq.link{% endtrans %}</a>
 
+	    	{% trans from "help" %}help.question.p1.cgu.text1{% endtrans %}
+	    	<strong>
+	    		{% trans from "help" %}help.question.p1.cgu.strong{% endtrans %}
+	    	</strong>
+	    	{% trans from "help" %}help.question.p1.cgu.text2{% endtrans %}
+	    	<a href="{{path('cgu')}}" target="_blank"> {% trans from "help" %}help.question.p1.cgu.link{% endtrans %}</a>
+	    </p>
+	    <p>
+	    	{% trans from "help" %}help.question.p2.text{% endtrans %}	    	
+	    </p>
+	    <p>
+			{% trans from "help" %}help.question.p3.social.facebook.text{% endtrans %}
+			<a href="#" target="_blank">{% trans from "help" %}help.question.p3.social.facebook.link{% endtrans %}</a>
+			{% trans from "help" %}help.question.p3.social.twitter.text{% endtrans %}
+			<a href="#" target="_blank">{% trans from "help" %}help.question.p3.social.twitter.link{% endtrans %}</a>
+	    </p>
+	                            
+	</div>
+    <section class="col-lg-6 connectedSortable">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-right">
+                <li class="pull-left header"><i class="fa fa-flag-checkered"></i>
+                   {% trans from "help"%}help.inscription.header{% endtrans %}
+                </li>
+            </ul>
+            <div class="tab-content">
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.inscription.h3.first{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.inscription.p.first.texte1{% endtrans %}
+               	<br>
+               	{% trans from "help"%}help.inscription.p.first.texte2{% endtrans %}
+               </p>
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.inscription.h3.second{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.inscription.p.second{% endtrans %}
+               </p>
+            </div>
+        </div>               
+    </section>
+    <section class="col-lg-6 connectedSortable">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-right">
+                <li class="pull-left header"><i class="fa fa-dashboard"></i>
+                   {% trans from "help"%}help.dashboard.header{% endtrans %}
+                </li>
+            </ul>
+            <div class="tab-content">
+               <p>
+               	{% trans from "help"%}help.dashboard.ul.header{% endtrans %}
+               	<ul>
+               		<li> {% trans from "help"%}help.dashboard.ul.li.first{% endtrans %}
+               		</li>
+               		<li> {% trans from "help"%}help.dashboard.ul.li.second{% endtrans %}
+               		</li>
+               		<li> {% trans from "help"%}help.dashboard.ul.li.third{% endtrans %}
+               		</li>
+               		<li> {% trans from "help"%}help.dashboard.ul.li.fourth{% endtrans %}
+               		</li>
+               		<li> {% trans from "help"%}help.dashboard.ul.li.fifth{% endtrans %}
+               		</li>
+               		<li> {% trans from "help"%}help.dashboard.ul.li.sixth{% endtrans %}
+               		</li>
+               		<li> {% trans from "help"%}help.dashboard.ul.li.seventh{% endtrans %}
+               		</li>
+               	</ul>
+               </p>
+            </div>
+        </div>               
+    </section>
+</div>
+<div class="row">
+    <section class="col-lg-6 connectedSortable">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-right">
+                <li class="pull-left header"><i class="fa fa-copyright"></i>
+                   {% trans from "help"%}help.offers.header{% endtrans %}
+                </li>
+            </ul>
+            <div class="tab-content">
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.offers.h3.first{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.offers.p.first.texte1{% endtrans %}
+               	<br>
+               	{% trans from "help"%}help.offers.p.first.texte2{% endtrans %}
+               	<br>
+               	{% trans from "help"%}help.offers.p.first.texte3{% endtrans %}
+               	<br>
+               	{% trans from "help"%}help.offers.p.first.texte4{% endtrans %}
+               </p>
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.offers.h3.second{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.offers.p.second{% endtrans %}
+               </p>
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.offers.h3.third{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.offers.p.third{% endtrans %}
+               </p>
+            </div>
+        </div>               
+    </section>
+    <section class="col-lg-6 connectedSortable">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-right">
+                <li class="pull-left header"><i class="fa fa-calendar"></i>
+                   {% trans from "help"%}help.services.header{% endtrans %}
+                </li>
+            </ul>
+            <div class="tab-content">
+               <p>
+               	{% trans from "help"%}help.services.p.first{% endtrans %}
+               	<br>
+               	{% trans from "help"%}help.services.p.ul{% endtrans %}
+               	<ul>
+               		<li>
+               			<strong>{% trans from "help"%}help.services.li1.strong{% endtrans %}</strong>
+               			{% trans from "help"%}help.services.li1.text{% endtrans %}
+               		</li>
+               		<li>
+               			<strong>{% trans from "help"%}help.services.li2.strong{% endtrans %}</strong>
+               			{% trans from "help"%}help.services.li2.text{% endtrans %}
+               		</li>
+               		<li>
+               			<strong>{% trans from "help"%}help.services.li3.strong{% endtrans %}</strong>
+               			{% trans from "help"%}help.services.li3.text{% endtrans %}
+               		</li>
+               		<li>
+               			<strong>{% trans from "help"%}help.services.li4.strong{% endtrans %}</strong>
+               			{% trans from "help"%}help.services.li4.text{% endtrans %}
+               		</li>
+               		<li>
+               			<strong>{% trans from "help"%}help.services.li5.strong{% endtrans %}</strong>
+               			{% trans from "help"%}help.services.li5.text{% endtrans %}
+               		</li>
+               		<li>
+               			<strong>{% trans from "help"%}help.services.li6.strong{% endtrans %}</strong>
+               			{% trans from "help"%}help.services.li6.text{% endtrans %}
+               		</li>
+               		<li>
+               			<strong>{% trans from "help"%}help.services.li7.strong{% endtrans %}</strong>
+               			{% trans from "help"%}help.services.li7.text{% endtrans %}
+               		</li>
+               		<li>
+               			<strong>{% trans from "help"%}help.services.li8.strong{% endtrans %}</strong>
+               			{% trans from "help"%}help.services.li8.text{% endtrans %}
+               		</li>
+               	</ul>
+               </p>
+               <p>
+               	{% trans from "help"%}help.services.p.second{% endtrans %}
+               </p>
+            </div>
+        </div>               
+    </section>
+</div>
+<div class="row">
+    <section class="col-lg-6 connectedSortable">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-right">
+                <li class="pull-left header"><i class="fa fa-user"></i>
+                   {% trans from "help"%}help.profile.header{% endtrans %}
+                </li>
+            </ul>
+            <div class="tab-content">
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.profile.h3.first{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.profile.p.first.texte1{% endtrans %}
+               	<br>
+               	{% trans from "help"%}help.profile.p.first.texte2{% endtrans %}
+               	<br>
+               </p>
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.profile.h3.second{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.profile.p.second{% endtrans %}
+               </p>
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.profile.h3.third{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.profile.p.third.ul{% endtrans %}
+               	<ul>
+               		<li>{% trans from "help"%}help.profile.p.third.li1{% endtrans %}</li>
+               		<li>{% trans from "help"%}help.profile.p.third.li2{% endtrans %}</li>
+               		<li>{% trans from "help"%}help.profile.p.third.li3{% endtrans %}</li>
+               	</ul>
+               </p>
+            </div>
+        </div>               
+    </section>
+    <section class="col-lg-6 connectedSortable">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-right">
+                <li class="pull-left header"><i class="fa fa-university"></i>
+                   {% trans from "help"%}help.company.header{% endtrans %}
+                </li>
+            </ul>
+            <div class="tab-content">
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.company.h3.first{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.company.p.first{% endtrans %}
+               </p>
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.company.h3.second{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.company.p.second{% endtrans %}
+               </p>
+               <h3 style="color:#3C8DBC">
+               	{% trans from "help"%}help.company.h3.third{% endtrans %}
+               </h3>
+               <p>
+               	{% trans from "help"%}help.company.p.third{% endtrans %}
+               </p>
+            </div>
+        </div>               
+    </section>
+</div>
 {% endblock %}

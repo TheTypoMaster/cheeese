@@ -1,0 +1,116 @@
+help:
+    question:
+        h4: Vous avez une question?
+        p1:
+            faq:
+                text1: Notre
+                strong: foire aux questions
+                text2: peut vous aider
+                link: ici.
+            cgu:
+                text1: Nos  
+                strong: conditions générales d'utilisation
+                text2: sont aussi disponible
+                link: ici
+        p2: 
+            text: Si vous avez une autre question, une remarque, ou simplement envie de nous envoyer un petit mot juste comme ça ? Vous pouvez nous écrire à tout moment à l’adresse suivante : xxx@yyy.com
+        p3:
+            social:
+                facebook:
+                    text: Nous sommes aussi sur
+                    link: Facebook
+                twitter:
+                    text: et sur
+                    link: Twitter
+    inscription:
+        header: Inscription
+        h3:
+            first: Validation de vos données professionnelles
+            second: Données professionnelles valides / non-valides
+        p:
+            first:
+                texte1: Pour confirmer votre inscription de manière définitive, et vous permettre de proposer vos offres, nous devons impérativement vérifier votre statut de photographe professionnel, à l’aide d’informations nous permettant de vous identifiez. Rendez-vous dans la section « identification » de la rubrique « Mon entreprise ».
+                texte2: Une fois toutes les informations renseignées, cliquez sur le bouton « soumettre », nous serons alors en mesure de vérifier votre statut et valider définitivement votre inscription. Nous vous tiendrons au courant dans un délai maixmum de 3 jours, mais cela devrait de manière générale nous prendre quelques heures. Surveillez votre boite mail, nous vous enverrons un email pour vous tenir au courant.
+            second: Si vos données professionnelles sont validées, nous vous donnons accès à l’intégralité de votre compte. Sinon, nous vous invitons à vérifier les informations que vous nous avez transmises et à nous les soumettre à nouveau.
+    dashboard:
+        header: Tableau de bord
+        ul:
+            header: Votre tableau de bord vous permet d’avoir un aperçu de votre activité : 
+            li:
+                first: Votre nombre de prestations
+                second: Votre nombre de devis actif 
+                third: Votre zone de déplacement
+                fourth: Vos gains
+                fifth: Le nombre de devis par catégorie
+                sixth: Le statut de vos prestations
+                seventh: Vos prestations dans les 7 prochains jours
+    offers:
+        header: Mon offre
+        h3:
+            first: Mes devis
+            second: Zone de déplacements
+            third: Disponibilités
+        p:
+            first:
+                texte1: La section « Mes Devis » vous permet de définir tous les devis que vous allez proposer sur XXX. Le nombre de devis est illimité. Pour créer un devis, il vous suffit de cliquer sur "Créer un devis".
+                texte2: Pour chaque nouveau devis, il vous faudra d’abord définir un titre, une catégorie, une devise et une présentation. Ensuite, il faudra également illustrer votre devis avec des photos (3 photos maximum) et définir vos prix, en fonction de la durée de vos prestations. Une fois toutes ces informations fournies, votre devis pourra apparaitre dans les résultats de recherche.
+                texte3: Vous retrouvez également tous les devis que vous avez créés. Il vous est possible de les désactiver si vous ne voulez plus qu’ils apparaissent en cliquant sur le bouton « désactiver », et vous pouvez également entrer dans chacun de ces devis pour voir les détails et/ou les modifier, à l’aide du bouton « détails / modifier ».
+                texte4: Pour augmenter vos chances d’être contacté, nous vous conseillons de remplir des devis illustrant chacune de vos expertises, et de proposer pour chaque devis différents prix/durées. Votre profil ressortira ainsi plus fréquemment dans les résultats de recherches.
+            second: Dans la section « Zone de déplacements », vous déterminez la zone dans laquelle vous acceptez de vous déplacer pour réaliser vos prestations à vos frais. Nous vous donnons le choix entre plusieurs options vous permettant de vous déplacer à vos frais dans un rayon maximum de 100km autour de votre adresse que vous avez défini dans la rubrique « Mon entreprise », section « Identification ».
+            third: La section “Disponibilités” correspond à votre calendrier. C’est ici que vous définissez les jours où vous êtes disponibles et ceux où vous ne pouvez pas accepter de réservations. Il est important de tenir cet espace à jour de manière à pouvoir maximiser vos chances de réservations. Vous pouvez mettre à jour vos disponibilités autant de fois que vous le souhaitez.
+    services:
+        header: Prestations
+        p: 
+            first: Dans la section “Prestations”, vous retrouvez le détail de vos prestations, ainsi que leur statut.
+            ul: Dès lors que vous êtes contacté par un client, une nouvelle prestation est créée. Selon le stade d’avancement de votre prestation, elle prendra l’un des statuts ci-dessous :
+            second: Il vous est possible, à tout moment, d’accéder aux détails de chacune de vos prestations en cliquant sur le bouton “Détails” dans la colonne tout à droite.
+        li1:
+            strong: En cours :
+            text: Vous avez reçu une nouvelle demande, mais vous n’avez pas encore pré-approuvé ou refusé
+        li2:
+            strong: Pré-approuvée :
+            text: Vous avez pré-accepté la prestation, vous attendez désormais que le client confirme ou annule
+        li3:
+            strong: Refusée :
+            text: Vous avez refusé la prestation
+        li4:
+            strong: Abandonnée :
+            text: Le client a abandonné sa demande
+        li5:
+            strong: Confirmée :
+            text: La prestation est réservée
+        li6:
+            strong: Traitée :
+            text: La prestation a été traitée
+        li7:
+            strong: Livrée :
+            text: Le client a confirmer la fin de la prestation, vous allez bientôt recevoir un virement bancaire.
+        li8:
+            strong: Cloturée :
+            text: Vous avez été payé pour la prestation. Elle est cloturée.
+    profile:
+        header: Mon profil
+        h3:
+            first: Présentation
+            second: Sécurité et mot de passe
+            third: gestion des préférences
+        p:
+            first:
+                texte1: Dans la section « Présentation », vous définissez votre photo profil, ainsi que votre présentation. Ces deux éléments sont très importants car ils constituent votre vitrine lorsque les utilisateurs recherchent une prestation. Il s’agit de votre premier rapport avec eux, et ils peuvent augmenter ou diminuer grandement vos chances d’être contacté.
+                texte2: Seul votre prénom apparaîtra dans les résultats de recherche, nous ne divulguerons votre nom et votre numéro de téléphone qu’aux clients ayant réservé une prestation avec vous, de manière à ce qu’ils puissent vous contacter librement une fois leur réservation effectuée.
+            second: La section « Sécurité et mot de passe » vous permet, si vous le souhaitez, de modifier votre mot de passe. Pour cela, il vous faudra renseigner votre ancien mot de passe, définir un nouveau mot de passe et répéter ce nouveau mot de passe.
+            third:
+                ul: La section « Gestion des préférences » vous permet de déterminer vos préférences pour la réception des emails.Vous déterminez ici si vous souhaitez ou non recevoir un email quand :
+                li1: Une prestation est mise à jour (par exemple, vous pouvez être prévenu chaque fois qu’un photographe pré-approuve une de vos demandes de réservation)
+                li2: Vous recevez un nouveau message
+                li3: Nous envoyons une newsletter pour vous tenir au courant des dernières nouveautés ou d’offres spéciales
+    company:
+        header: Mon entreprise
+        h3:
+            first: Identification
+            second: Détails bancaires
+            third: Transactions
+        p:
+            first: La section “Identification” vous permet de renseigner les informations concernant votre entreprise et de votre studio (si vous avez un studio et si vous souhaitez proposer des prestations depuis votre studio). Ces informations nous permettent notamment de nous assurer que les informations que vous nous transmettez sont bien celles liées à votre numéro SIRET, et ainsi de confirmer votre inscription.
+            second: Dans la section “Détails bancaires”, vous devez renseigner vos informations bancaires (Iban, BIC). Ces informations nous permettront de vous virer l’argent correspondant au montant de vos prestations réalisées.
+            third: Dans la section “Transactions”, vous retrouvez tous les virements que nous avons effectués sur votre compte bancaire.

@@ -22,9 +22,9 @@ community:
             breadh2: Index
         help:
             h1: Aide & contacts
-            h2: page d'aides
+            h2: page d'aide
             breadh1: Aide & contacts
-            breadh2: Page d'aides
+            breadh2: Page d'aide
     dashboard:
         headband:
             success:

@@ -90,6 +90,19 @@ class DefaultController extends Controller
 	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
      *
      * @return Symfony\Component\HttpFoundation\Response
+	 * @Route("/faq", name="faq")
+	 */
+	public function faqAction(Request $request)
+	{		
+		
+		return $this->render('MainCommunityBundle:Default:faq.html.twig',  array(
+		));	
+	}
+
+	/**
+	 * * @param Symfony\Component\HttpFoundation\Request $request Requête HTTP
+     *
+     * @return Symfony\Component\HttpFoundation\Response
 	 * @Route("/cgu", name="cgu")
 	 */
 	public function cguAction(Request $request)
